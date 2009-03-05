@@ -7,19 +7,19 @@ Name: Extras\Songs; Description: Songs; Flags: checkablealone; Types: full
 Name: Bibles; Description: Bibles; Types: full
 Name: Bibles\KJV; Description: King James Version; Types: full
 Name: Languages; Description: Languages
-Name: Languages\Deutsch; Description: Deutsch
-Name: Languages\DeutschNeutral; Description: DeutschNeutral
-Name: Languages\Espanol; Description: Espanol
-Name: Languages\Francais; Description: Francais
+Name: Languages\German; Description: Deutsch
+Name: Languages\GermanNeutral; Description: Deutsch (Neutral)
+Name: Languages\Spanish; Description: Espanol
+Name: Languages\French; Description: Francais
 Name: Languages\Norwegian; Description: Norwegian
 Name: Languages\Portugues; Description: Portugues
 Name: Languages\PortuguesBrasil; Description: Português (Brasil)
-Name: Languages\Svenska; Description: Svenska
-Name: Languages\Nederlands; Description: Nederlands
-Name: Languages\Polski; Description: Polski
+Name: Languages\Swedish; Description: Svenska
+Name: Languages\Dutch; Description: Nederlands
+Name: Languages\Polish; Description: Polski
 Name: Languages\Czech; Description: Czech
 Name: Languages\Slovenian; Description: Slovenian
-Name: Languages\HungarianMagyar; Description: Hungarian-Magyar
+Name: Languages\Hungarian; Description: Magyar
 [Dirs]
 Name: {app}\OpenSong Defaults; Components:
 Name: {app}\OpenSong Scripture
@@ -54,31 +54,31 @@ Source: "..\OpenSong Defaults\Sets\*"; DestDir: "{app}\OpenSong Defaults\Sets"; 
 Source: "..\OpenSong Defaults\Songs\*"; DestDir: "{app}\OpenSong Defaults\Songs"; Components: "Extras\Songs"
 Source: "..\OpenSong Scripture\*"; DestDir: "{app}\OpenSong Scripture"; Components: "Bibles\KJV"
 Source: "..\OpenSong Settings\*"; DestDir: "{app}\OpenSong Settings"
-Source: "..\OpenSong Languages\Svenska"; DestDir: "{app}\OpenSong Languages"; Components: "Languages\Svenska"
-Source: "..\OpenSong Languages\Deutsch"; DestDir: "{app}\OpenSong Languages"; Components: "Languages\Deutsch"
-Source: "..\OpenSong Languages\DeutschNeutral"; DestDir: "{app}\OpenSong Languages"; Components: "Languages\DeutschNeutral"
+Source: "..\OpenSong Languages\Svenska"; DestDir: "{app}\OpenSong Languages"; Components: "Languages\Swedish"
+Source: "..\OpenSong Languages\Deutsch"; DestDir: "{app}\OpenSong Languages"; Components: "Languages\German"
+Source: "..\OpenSong Languages\DeutschNeutral"; DestDir: "{app}\OpenSong Languages"; Components: "Languages\GermanNeutral"
 Source: "..\OpenSong Languages\English"; DestDir: "{app}\OpenSong Languages"
-Source: "..\OpenSong Languages\Espanol"; DestDir: "{app}\OpenSong Languages"; Components: "Languages\Espanol"
-Source: "..\OpenSong Languages\Francais"; DestDir: "{app}\OpenSong Languages"; Components: "Languages\Francais"
+Source: "..\OpenSong Languages\Espanol"; DestDir: "{app}\OpenSong Languages"; Components: "Languages\Spanish"
+Source: "..\OpenSong Languages\Francais"; DestDir: "{app}\OpenSong Languages"; Components: "Languages\French"
 Source: "..\OpenSong Languages\Portugues"; DestDir: "{app}\OpenSong Languages"; Components: "Languages\Portugues"
 Source: "..\OpenSong Languages\Portugues(Brasil)"; DestDir: "{app}\OpenSong Languages"; Components: "Languages\PortuguesBrasil"
 Source: "..\OpenSong Languages\Norwegian"; DestDir: "{app}\OpenSong Languages"; Components: "Languages\Norwegian"
-Source: "..\OpenSong Languages\Polski"; DestDir: "{app}\OpenSong Languages"; Components: "Languages\Polski"
+Source: "..\OpenSong Languages\Polski"; DestDir: "{app}\OpenSong Languages"; Components: "Languages\Polish"
 Source: "..\OpenSong Languages\Czech"; DestDir: "{app}\OpenSong Languages"; Components: "Languages\Czech"
 Source: "..\OpenSong Languages\Slovenian"; DestDir: "{app}\OpenSong Languages"; Components: "Languages\Slovenian"
-Source: "..\OpenSong Languages\Nederlands"; DestDir: "{app}\OpenSong Languages"; Components: "Languages\Nederlands"
-Source: "..\OpenSong Languages\Hungarian-Magyar"; DestDir: "{app}\OpenSong Languages"; Components: "Languages\HungarianMagyar"
+Source: "..\OpenSong Languages\Nederlands"; DestDir: "{app}\OpenSong Languages"; Components: "Languages\Dutch"
+Source: "..\OpenSong Languages\Magyar"; DestDir: "{app}\OpenSong Languages"; Components: "Languages\Hungarian"
 Source: "OpenSongUninstall.ICO"; DestDir: "{app}"
-Source: "gpl-sv.txt"; DestDir: "{app}"; Components: "Languages\Svenska"
+Source: "gpl-sv.txt"; DestDir: "{app}"; Components: "Languages\Swedish"
 Source: "gpl-pt.txt"; DestDir: "{app}"; Components: "Languages\Portugues"
-Source: "gpl-de.txt"; DestDir: "{app}"; Components: "Languages\DeutschNeutral Languages\Deutsch"
-Source: "gpl-fr.txt"; DestDir: "{app}"; Components: "Languages\Francais"
+Source: "gpl-de.txt"; DestDir: "{app}"; Components: "Languages\GermanNeutral Languages\German"
+Source: "gpl-fr.txt"; DestDir: "{app}"; Components: "Languages\French"
 Source: "gpl-pt_BR.txt"; DestDir: "{app}"; Components: "Languages\PortuguesBrasil"
-Source: "gpl-es.txt"; DestDir: "{app}"; Components: "Languages\Espanol"
-Source: "gpl-nl.txt"; DestDir: "{app}"; Components: "Languages\Nederlands"
-Source: "gpl-pl.pdf"; DestDir: "{app}"; Components: "Languages\Polski"
+Source: "gpl-es.txt"; DestDir: "{app}"; Components: "Languages\Spanish"
+Source: "gpl-nl.txt"; DestDir: "{app}"; Components: "Languages\Dutch"
+Source: "gpl-pl.pdf"; DestDir: "{app}"; Components: "Languages\Polish"
 Source: "gpl-cs.pdf"; DestDir: "{app}"; Components: "Languages\Czech"
-Source: "gpl-hu.txt"; DestDir: "{app}"; Components: "Languages\HungarianMagyar"
+Source: "gpl-hu.txt"; DestDir: "{app}"; Components: "Languages\Hungarian"
 Source: "gpl-no.txt"; DestDir: "{app}"; Components: "Languages\Norwegian"
 [Icons]
 Name: {group}\OpenSong; Filename: {app}\OpenSong.exe; WorkingDir: {app}; IconIndex: 0; Tasks:
@@ -102,6 +102,6 @@ Name: Nederlands; MessagesFile: compiler:Languages\Dutch.isl; LicenseFile: gpl-n
 Name: Czech; MessagesFile: compiler:Languages\Czech.isl; LicenseFile: gpl-cs.pdf
 Name: Polski; MessagesFile: compiler:Languages\Polish.isl; LicenseFile: gpl-pl.pdf
 Name: Slovenian; MessagesFile: compiler:Languages\Slovenian.isl; LicenseFile: gpl-en.txt
-Name: HungarianMagyar; MessagesFile: compiler:Languages\Hungarian.isl; LicenseFile: gpl-hu.txt
+Name: Magyar; MessagesFile: compiler:Languages\Hungarian.isl; LicenseFile: gpl-hu.txt
 [Run]
 Filename: {app}\OpenSong.exe; Components: ; Flags: postinstall nowait; Description: Start OpenSong
