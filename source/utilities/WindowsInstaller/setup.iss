@@ -20,6 +20,7 @@ Name: Languages\Polish; Description: Polski
 Name: Languages\Czech; Description: Czech
 Name: Languages\Slovenian; Description: Slovenian
 Name: Languages\Hungarian; Description: Magyar
+Name: Languages\Italian; Description: Italiano
 [Dirs]
 Name: {app}\OpenSong Defaults; Components: 
 Name: {app}\OpenSong Scripture
@@ -70,6 +71,7 @@ Source: ..\OpenSong Languages\Czech; DestDir: {app}\OpenSong Languages; Componen
 Source: ..\OpenSong Languages\Slovenian; DestDir: {app}\OpenSong Languages; Components: Languages\Slovenian
 Source: ..\OpenSong Languages\Nederlands; DestDir: {app}\OpenSong Languages; Components: Languages\Dutch
 Source: ..\OpenSong Languages\Magyar; DestDir: {app}\OpenSong Languages; Components: Languages\Hungarian
+Source: ..\OpenSong Languages\Italiano; DestDir: {app}\OpenSong Languages; Components: Languages\Italian
 Source: OpenSongUninstall.ICO; DestDir: {app}
 Source: gpl-sv.txt; DestDir: {app}; Components: Languages\Swedish
 Source: gpl-pt.txt; DestDir: {app}; Components: Languages\Portugues
@@ -82,6 +84,7 @@ Source: gpl-pl.pdf; DestDir: {app}; Components: Languages\Polish
 Source: gpl-cs.pdf; DestDir: {app}; Components: Languages\Czech
 Source: gpl-hu.txt; DestDir: {app}; Components: Languages\Hungarian
 Source: gpl-no.txt; DestDir: {app}; Components: Languages\Norwegian
+Source: gpl-it.txt; DestDir: {app}; Components: Languages\Italian
 [Icons]
 Name: {group}\OpenSong; Filename: {app}\OpenSong.exe; WorkingDir: {app}; IconIndex: 0; Tasks: 
 Name: {userappdata}\Microsoft\Internet Explorer\Quick Launch\OpenSong; Filename: {app}\OpenSong.exe; IconIndex: 0; Components: ; Tasks: quicklaunchicon
@@ -104,5 +107,7 @@ Name: Czech; MessagesFile: compiler:Languages\Czech.isl; LicenseFile: gpl-cs.pdf
 Name: Polski; MessagesFile: compiler:Languages\Polish.isl; LicenseFile: gpl-pl.pdf
 Name: Slovenian; MessagesFile: compiler:Languages\Slovenian.isl; LicenseFile: gpl-en.txt
 Name: Magyar; MessagesFile: compiler:Languages\Hungarian.isl; LicenseFile: gpl-hu.txt
+Name: Svenska; MessagesFile: compiler:Languages\Swedish.isl; LicenseFile: gpl-sv.txt
+Name: Italiano; MessagesFile: compiler:Languages\Italian.isl; LicenseFile: gpl-it.txt
 [Run]
 Filename: {app}\OpenSong.exe; Components: ; Flags: postinstall nowait; Description: Start OpenSong
