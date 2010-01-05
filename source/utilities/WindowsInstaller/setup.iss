@@ -21,6 +21,7 @@ Name: Languages\Czech; Description: Czech
 Name: Languages\Slovenian; Description: Slovenian
 Name: Languages\Hungarian; Description: Magyar
 Name: Languages\Italian; Description: Italiano
+Name: Languages\Russian; Description: Russian
 [Dirs]
 Name: {app}\OpenSong Defaults; Components: 
 Name: {app}\OpenSong Scripture
@@ -35,13 +36,13 @@ Name: {app}\OpenSong Libs
 DefaultDirName={pf}\OpenSong
 VersionInfoCompany=OpenSong
 AppName=OpenSong
-AppVerName=OpenSong Version 1.6.1 alpha
+AppVerName=OpenSong Version 1.5.2
 LicenseFile=gpl-en.txt
 SetupIconFile=OpenSongInstall.ICO
 UninstallDisplayIcon={app}\OpenSongUninstall.ICO
-VersionInfoVersion=1.6.0.99
+VersionInfoVersion=1.5.2
 VersionInfoDescription=OpenSong is a free, open-source software application created to manage lyrics, chords, lead sheets, overheads, computer projection, and more.
-VersionInfoCopyright=2009
+VersionInfoCopyright=2010
 AppCopyright=2003
 DefaultGroupName=OpenSong
 AllowNoIcons=true
@@ -72,6 +73,7 @@ Source: ..\OpenSong Languages\Slovenian; DestDir: {app}\OpenSong Languages; Comp
 Source: ..\OpenSong Languages\Nederlands; DestDir: {app}\OpenSong Languages; Components: Languages\Dutch
 Source: ..\OpenSong Languages\Magyar; DestDir: {app}\OpenSong Languages; Components: Languages\Hungarian
 Source: ..\OpenSong Languages\Italiano; DestDir: {app}\OpenSong Languages; Components: Languages\Italian
+Source: ..\OpenSong Languages\Russian; DestDir: {app}\OpenSong Languages; Components: Languages\Russian
 Source: OpenSongUninstall.ICO; DestDir: {app}
 Source: gpl-sv.txt; DestDir: {app}; Components: Languages\Swedish
 Source: gpl-pt.txt; DestDir: {app}; Components: Languages\Portugues
@@ -85,6 +87,7 @@ Source: gpl-cs.pdf; DestDir: {app}; Components: Languages\Czech
 Source: gpl-hu.txt; DestDir: {app}; Components: Languages\Hungarian
 Source: gpl-no.txt; DestDir: {app}; Components: Languages\Norwegian
 Source: gpl-it.txt; DestDir: {app}; Components: Languages\Italian
+Source: gpl-ru.txt; DestDir: {app}; Components: Languages\Russian
 [Icons]
 Name: {group}\OpenSong; Filename: {app}\OpenSong.exe; WorkingDir: {app}; IconIndex: 0; Tasks: 
 Name: {userappdata}\Microsoft\Internet Explorer\Quick Launch\OpenSong; Filename: {app}\OpenSong.exe; IconIndex: 0; Components: ; Tasks: quicklaunchicon
@@ -109,5 +112,6 @@ Name: Slovenian; MessagesFile: compiler:Languages\Slovenian.isl; LicenseFile: gp
 Name: Magyar; MessagesFile: compiler:Languages\Hungarian.isl; LicenseFile: gpl-hu.txt
 Name: Svenska; MessagesFile: compiler:Languages\Swedish.isl; LicenseFile: gpl-sv.txt
 Name: Italiano; MessagesFile: compiler:Languages\Italian.isl; LicenseFile: gpl-it.txt
+Name: Russian; MessagesFile: compiler:Languages\Russian.isl; LicenseFile: gpl-ru.txt
 [Run]
 Filename: {app}\OpenSong.exe; Components: ; Flags: postinstall nowait; Description: Start OpenSong
