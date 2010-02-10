@@ -8,7 +8,6 @@ Name: Bibles; Description: Bibles; Types: full
 Name: Bibles\KJV; Description: King James Version; Types: full
 Name: Languages; Description: Languages
 Name: Languages\German; Description: Deutsch
-Name: Languages\GermanNeutral; Description: Deutsch (Neutral)
 Name: Languages\Spanish; Description: Espanol
 Name: Languages\French; Description: Francais
 Name: Languages\Norwegian; Description: Norwegian
@@ -36,11 +35,11 @@ Name: {app}\OpenSong Libs
 DefaultDirName={pf}\OpenSong
 VersionInfoCompany=OpenSong
 AppName=OpenSong
-AppVerName=OpenSong Version 1.5.2
+AppVerName=OpenSong Version 1.6
 LicenseFile=gpl-en.txt
 SetupIconFile=OpenSongInstall.ICO
 UninstallDisplayIcon={app}\OpenSongUninstall.ICO
-VersionInfoVersion=1.5.2
+VersionInfoVersion=1.6
 VersionInfoDescription=OpenSong is a free, open-source software application created to manage lyrics, chords, lead sheets, overheads, computer projection, and more.
 VersionInfoCopyright=2010
 AppCopyright=2003
@@ -60,7 +59,6 @@ Source: ..\OpenSong Settings\*; DestDir: {app}\OpenSong Settings
 Source: ..\OpenSong Libs\*; DestDir: {app}\OpenSong Libs
 Source: ..\OpenSong Languages\Svenska; DestDir: {app}\OpenSong Languages; Components: Languages\Swedish
 Source: ..\OpenSong Languages\Deutsch; DestDir: {app}\OpenSong Languages; Components: Languages\German
-Source: ..\OpenSong Languages\DeutschNeutral; DestDir: {app}\OpenSong Languages; Components: Languages\GermanNeutral
 Source: ..\OpenSong Languages\English; DestDir: {app}\OpenSong Languages
 Source: ..\OpenSong Languages\Espanol; DestDir: {app}\OpenSong Languages; Components: Languages\Spanish
 Source: ..\OpenSong Languages\Francais; DestDir: {app}\OpenSong Languages; Components: Languages\French
@@ -77,7 +75,7 @@ Source: ..\OpenSong Languages\Russian; DestDir: {app}\OpenSong Languages; Compon
 Source: OpenSongUninstall.ICO; DestDir: {app}
 Source: gpl-sv.txt; DestDir: {app}; Components: Languages\Swedish
 Source: gpl-pt.txt; DestDir: {app}; Components: Languages\Portugues
-Source: gpl-de.txt; DestDir: {app}; Components: Languages\GermanNeutral Languages\German
+Source: gpl-de.txt; DestDir: {app}; Components: Languages\German
 Source: gpl-fr.txt; DestDir: {app}; Components: Languages\French
 Source: gpl-pt_BR.txt; DestDir: {app}; Components: Languages\PortuguesBrasil
 Source: gpl-es.txt; DestDir: {app}; Components: Languages\Spanish
