@@ -21,6 +21,7 @@ Name: Languages\Slovenian; Description: Slovenian
 Name: Languages\Hungarian; Description: Magyar
 Name: Languages\Italian; Description: Italiano
 Name: Languages\Russian; Description: Russian
+Name: Languages\Slovak; Description: Slovak
 [Dirs]
 Name: {app}\OpenSong Defaults; Components: 
 Name: {app}\OpenSong Scripture
@@ -72,6 +73,7 @@ Source: ..\OpenSong Languages\Nederlands; DestDir: {app}\OpenSong Languages; Com
 Source: ..\OpenSong Languages\Magyar; DestDir: {app}\OpenSong Languages; Components: Languages\Hungarian
 Source: ..\OpenSong Languages\Italiano; DestDir: {app}\OpenSong Languages; Components: Languages\Italian
 Source: ..\OpenSong Languages\Russian; DestDir: {app}\OpenSong Languages; Components: Languages\Russian
+Source: ..\OpenSong Languages\Slovak; DestDir: {app}\OpenSong Languages; Components: Languages\Slovak
 Source: OpenSongUninstall.ICO; DestDir: {app}
 Source: gpl-sv.txt; DestDir: {app}; Components: Languages\Swedish
 Source: gpl-pt.txt; DestDir: {app}; Components: Languages\Portugues
@@ -111,5 +113,6 @@ Name: Magyar; MessagesFile: compiler:Languages\Hungarian.isl; LicenseFile: gpl-h
 Name: Svenska; MessagesFile: compiler:Languages\Swedish.isl; LicenseFile: gpl-sv.txt
 Name: Italiano; MessagesFile: compiler:Languages\Italian.isl; LicenseFile: gpl-it.txt
 Name: Russian; MessagesFile: compiler:Languages\Russian.isl; LicenseFile: gpl-ru.txt
+Name: Slovak; MessagesFile: compiler:Slovak.isl; LicenseFile: gpl-en.txt
 [Run]
 Filename: {app}\OpenSong.exe; Components: ; Flags: postinstall nowait; Description: Start OpenSong
