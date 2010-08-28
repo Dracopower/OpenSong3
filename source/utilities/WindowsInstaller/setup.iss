@@ -40,7 +40,7 @@ AppVerName=OpenSong Version 1.6
 LicenseFile=gpl-en.txt
 SetupIconFile=OpenSongInstall.ICO
 UninstallDisplayIcon={app}\OpenSongUninstall.ICO
-VersionInfoVersion=1.6.1
+VersionInfoVersion=1.6.2
 VersionInfoDescription=OpenSong is a free, open-source software application created to manage lyrics, chords, lead sheets, overheads, computer projection, and more.
 VersionInfoCopyright=2010
 AppCopyright=2003
@@ -113,6 +113,6 @@ Name: Magyar; MessagesFile: compiler:Languages\Hungarian.isl; LicenseFile: gpl-h
 Name: Svenska; MessagesFile: compiler:Languages\Swedish.isl; LicenseFile: gpl-sv.txt
 Name: Italiano; MessagesFile: compiler:Languages\Italian.isl; LicenseFile: gpl-it.txt
 Name: Russian; MessagesFile: compiler:Languages\Russian.isl; LicenseFile: gpl-ru.txt
-Name: Slovak; MessagesFile: compiler:Slovak.isl; LicenseFile: gpl-en.txt
+Name: Slovak; MessagesFile: compiler:Languages\Slovak.isl; LicenseFile: gpl-en.txt
 [Run]
 Filename: {app}\OpenSong.exe; Components: ; Flags: postinstall nowait; Description: Start OpenSong
