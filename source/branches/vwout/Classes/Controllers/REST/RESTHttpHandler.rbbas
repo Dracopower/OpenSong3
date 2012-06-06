@@ -18,7 +18,6 @@ Implements REST.RESTProtocolHandler
 	#tag Method, Flags = &h0
 		Function AuthenticationKey() As Variant
 		  // Part of the REST.RESTProtocolHandler interface.
-		  
 		  Dim key As String
 		  
 		  If m_reqHeaders.HasKey(REST.kHeaderAuthorization) Then
@@ -185,6 +184,7 @@ Implements REST.RESTProtocolHandler
 		  m_restSocket.Write "HTTP/1.1 " + status + REST.CrLf()
 		  
 		  AddHeader(REST.kHeaderContentLength, LenB(data))
+		  AddHeader(REST.kAccessControlAllowOrigin, "*")
 		  
 		  For iHeader As Integer = 0 To m_sendHeaders.Count() -1
 		    m_restSocket.Write m_sendHeaders.Key(iHeader).StringValue + ": " + m_sendHeaders.Value(m_sendHeaders.Key(iHeader).StringValue).StringValue + REST.CrLf()

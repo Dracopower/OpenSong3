@@ -383,10 +383,9 @@ Inherits Application
 		  m_ControlServer.AddResource(New REST.RESTResourceSet)
 		  m_ControlServer.AddResource(New REST.RESTResourcePresent)
 		  m_ControlServer.AddResource(New REST.RESTResourceWebSocket)
-		  m_ControlServer.Port = 8080
 		  m_ControlServer.MinimumSocketsAvailable = 2
 		  m_ControlServer.MaximumSocketsConnected = 25
-		  m_ControlServer.Listen
+		  InitControlServer()
 		  
 		  MainWindow.Show
 		End Sub
@@ -747,6 +746,22 @@ Inherits Application
 		  'Return MyPrinterSetup
 		  '#EndIf
 		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub InitControlServer()
+		  If (SmartML.GetValueB(App.MyMainSettings.DocumentElement, "rcserver/@enable", False)) Then
+		    If SmartML.GetValueN(App.MyMainSettings.DocumentElement, "rcserver/@port")>0 Then
+		      m_ControlServer.Port = SmartML.GetValueN(App.MyMainSettings.DocumentElement, "rcserver/@port")
+		    Else
+		      m_ControlServer.Port = 8080
+		    End If
+		    m_ControlServer.Key(SmartML.GetValue(App.MyMainSettings.DocumentElement, "rcserver/key"))
+		    m_ControlServer.Listen()
+		  Else
+		    m_ControlServer.StopListening()
+		  End If
+		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h1

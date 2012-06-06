@@ -2,14 +2,58 @@
 Protected Class RESTResourceSong
 Implements REST.RESTResource
 	#tag Method, Flags = &h21
+		Private Function GetSong(song As String, folder As String = "") As REST.RESTResponse
+		  Dim result As REST.RESTresponse = Nil
+		  Dim xml As XmlDocument
+		  Dim root As XmlNode
+		  
+		  song = ReplaceAll(song, "/", "")
+		  song = ReplaceAll(song, "\", "")
+		  song = ReplaceAll(song, "..", "")
+		  folder = ReplaceAll(folder, "..", "")
+		  
+		  Dim folders() As String = MainWindow.Songs.GetFolders()
+		  If folders.IndexOf(folder) > -1 Then
+		    
+		    Dim songFile As String = folder
+		    If Not songFile.EndsWith("/") Then songFile = songFile + "/"
+		    songFile = songFile + song
+		    
+		    Dim f As FolderItem = MainWindow.Songs.GetFile(songFile)
+		    If f <> Nil And f.Exists Then
+		      Dim songDoc As XmlDocument = SmartML.XDocFromFile(f)
+		      If Not IsNull(songDoc) then
+		        xml = result.CreateXmlResponse(Name(), "detail", name)
+		        root = xml.DocumentElement()
+		        root.AppendChild(xml.ImportNode(songDoc.DocumentElement(), True))
+		        result.response = xml.ToString
+		      End If
+		    End If
+		  End If
+		  
+		  If IsNull(result) Then
+		    result = New REST.RESTresponse("The requested action is not available.", "404 Not Found")
+		  End If
+		  
+		  return result
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
 		Private Function ListFolders() As REST.RESTResponse
 		  Dim result As New REST.RESTresponse
 		  Dim xml As XmlDocument
-		  Dim root, folder As XmlNode
+		  Dim root, xml_folders As XmlNode
 		  
 		  xml = result.CreateXmlResponse(Name(), "folders")
 		  root = xml.DocumentElement()
+		  xml_folders = root.AppendChild(xml.CreateElement("folders"))
 		  
+		  Dim folders() As String = MainWindow.Songs.GetFolders()
+		  For Each folder As String In folders
+		    Dim xml_folder As XmlNode = xml_folders.AppendChild(xml.CreateElement("folder"))
+		    SmartML.SetValue(xml_folder, "@name", folder)
+		  Next
 		  
 		  result.response = xml.ToString
 		  return result
@@ -17,14 +61,27 @@ Implements REST.RESTResource
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
-		Private Function ListSongs() As REST.RESTResponse
+		Private Function ListSongs(folder As String = "") As REST.RESTResponse
 		  Dim result As New REST.RESTresponse
 		  Dim xml As XmlDocument
-		  Dim root, song As XmlNode
+		  Dim root, xml_songs As XmlNode
 		  
-		  xml = result.CreateXmlResponse(Name())
+		  folder = ReplaceAll(folder, "..", "")
+		  Dim folders() As String = MainWindow.Songs.GetFolders()
+		  
+		  xml = result.CreateXmlResponse(Name(), "list")
 		  root = xml.DocumentElement()
+		  xml_songs = root.AppendChild(xml.CreateElement("songs"))
 		  
+		  If folders.IndexOf(folder) > -1 Then
+		    SmartML.SetValue(xml_songs, "@folder", folder )
+		    
+		    Dim songs() As String = MainWindow.Songs.GetFiles(folder)
+		    For Each song As String In songs
+		      Dim xml_song As XmlNode = root.AppendChild(xml.CreateElement("song"))
+		      SmartML.SetValue(xml_song, "@name", song)
+		    Next
+		  End If
 		  
 		  result.response = xml.ToString
 		  return result
@@ -50,23 +107,16 @@ Implements REST.RESTResource
 		    "list"
 		    
 		    If protocolHandler.Identifier().Len() = 0 Then
-		      result = ListSongs()
+		      result = ListSongs(protocolHandler.Parameter("folder", ""))
 		    Else
-		      'result = GetSong(protocolHandler.Identifier())
-		      result.response = "Todo."
-		      result.status = "501 Not Implemented"
+		      result = GetSong(protocolHandler.Identifier(), protocolHandler.Parameter("folder", ""))
 		    End If
 		    
 		  Case "folders"
-		    
-		    'result = ListFolders()
-		    result.response = "Todo."
-		    result.status = "501 Not Implemented"
+		    result = ListFolders()
 		    
 		  Case "detail"
-		    
-		    result.response = "Todo."
-		    result.status = "501 Not Implemented"
+		    result = GetSong(protocolHandler.Identifier(), protocolHandler.Parameter("folder", ""))
 		    
 		  case "present", _
 		    "load"

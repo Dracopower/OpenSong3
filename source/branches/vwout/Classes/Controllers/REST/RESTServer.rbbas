@@ -25,8 +25,7 @@ Inherits ServerSocket
 
 	#tag Method, Flags = &h0
 		Function CheckAuthentication(key As String) As Boolean
-		  'Return m_key = key
-		  Return True
+		  Return m_key = key
 		End Function
 	#tag EndMethod
 

@@ -113,6 +113,9 @@ Protected Module REST
 	#tag EndNote
 
 
+	#tag Constant, Name = kAccessControlAllowOrigin, Type = String, Dynamic = False, Default = \"Access-Control-Allow-Origin", Scope = Public
+	#tag EndConstant
+
 	#tag Constant, Name = kContentType, Type = String, Dynamic = False, Default = \"Content-Type", Scope = Public
 	#tag EndConstant
 

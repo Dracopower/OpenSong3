@@ -2147,13 +2147,12 @@ End
 		    End If
 		    Profiler.EndProfilerEntry
 		    
-		    UpdateStatusNotifiers "change"
-		    
 		    ' === Add the Alert ===
 		    If Len(AlertText) > 0 Then
 		      DrawAlert CurrentPicture.Graphics, AlertText
 		      DrawAlert PreviewPicture.Graphics, AlertText
 		    End If
+		    
 		    ' === Check for auto-advance ===
 		    If SmartML.GetValueN(XCurrentSlide.Parent.Parent, "@seconds", True) > 0 Then
 		      timerAdvance.Mode = 1
@@ -2171,8 +2170,11 @@ End
 		      timerTransition.Reset
 		      timerTransition.Enabled = True
 		    End If
+		    
 		    cnvSlide.Refresh False
 		  End If
+		  
+		  UpdateStatusNotifiers "change"
 		  
 		  'Keep a copy of this slide to be able do a cleanup when a next slide is shown
 		  'A 'next' slide is always set in XCurrentSlide before this method is called and can therefore not be used for this purpose
