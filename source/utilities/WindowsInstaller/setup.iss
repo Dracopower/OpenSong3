@@ -37,14 +37,14 @@ Name: {app}\OpenSong Libs
 DefaultDirName={pf}\OpenSong
 VersionInfoCompany=OpenSong
 AppName=OpenSong
-AppVerName=OpenSong Version 2.0 Beta 1
+AppVerName=OpenSong Version 2.0 Beta 2
 LicenseFile=gpl-en.txt
 SetupIconFile=OpenSongInstall.ICO
 UninstallDisplayIcon={app}\OpenSongUninstall.ICO
-VersionInfoVersion=2.0
+VersionInfoVersion=2.0.1
 VersionInfoDescription=OpenSong is a free, open-source software application created to manage lyrics, chords, lead sheets, overheads, computer projection, and more.
-VersionInfoCopyright=2010
-AppCopyright=2003
+VersionInfoCopyright=2012
+AppCopyright=2012
 DefaultGroupName=OpenSong
 AllowNoIcons=true
 [Files]
