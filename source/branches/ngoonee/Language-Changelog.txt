@@ -1,4 +1,7 @@
+sets_mode/new_item/add_video, add_powerpoint (Deleted)
+
 -= Version 2.0 Beta 2 =-
+general_settings/rcserver
 videolan_preset_list (modified parameters)
 module/generate_index (modified)
 errors/no_scripture_folder (modified)

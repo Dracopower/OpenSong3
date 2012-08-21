@@ -25,19 +25,15 @@ Begin Window MainWindow Implements ScriptureReceiver
    Visible         =   False
    Width           =   750
    Begin ContextualMenu mnu_clipboard
-      Enabled         =   True
       Height          =   32
       Index           =   -2147483648
       InitialParent   =   ""
       Left            =   759
       LockedInPosition=   False
       Scope           =   0
-      TabIndex        =   0
       TabPanelIndex   =   0
-      TabStop         =   True
       Top             =   26
       UseMacCMM       =   ""
-      Visible         =   True
       Width           =   32
    End
    Begin SButton btn_mode_songs_mode
@@ -122,7 +118,6 @@ Begin Window MainWindow Implements ScriptureReceiver
       Selectable      =   False
       TabIndex        =   3
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   ""
       TextAlign       =   0
       TextColor       =   0
@@ -153,7 +148,6 @@ Begin Window MainWindow Implements ScriptureReceiver
       Scope           =   0
       TabIndex        =   4
       TabPanelIndex   =   0
-      TabStop         =   True
       Top             =   35
       Value           =   1
       Visible         =   True
@@ -234,7 +228,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   0
             TabPanelIndex   =   1
-            TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   11
             TextUnit        =   0
@@ -531,7 +524,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   5
             TabPanelIndex   =   1
-            TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   11
             TextUnit        =   0
@@ -649,7 +641,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   4
             TabPanelIndex   =   1
-            TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   11
             TextUnit        =   0
@@ -740,7 +731,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   6
             TabPanelIndex   =   1
-            TabStop         =   True
             Text            =   "Folders:"
             TextAlign       =   0
             TextColor       =   0
@@ -775,7 +765,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   7
             TabPanelIndex   =   1
-            TabStop         =   True
             Text            =   "Songs:"
             TextAlign       =   0
             TextColor       =   0
@@ -840,7 +829,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   9
             TabPanelIndex   =   1
-            TabStop         =   True
             Text            =   "Containing Folder:"
             TextAlign       =   0
             TextColor       =   0
@@ -1024,7 +1012,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   0
             TabPanelIndex   =   2
-            TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   11
             TextUnit        =   0
@@ -1113,7 +1100,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   3
             TabPanelIndex   =   2
-            TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   11
             TextUnit        =   0
@@ -1351,7 +1337,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   1
             TabPanelIndex   =   2
-            TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   11
             TextUnit        =   0
@@ -1621,7 +1606,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   4
             TabPanelIndex   =   2
-            TabStop         =   True
             Text            =   "Items In Set:"
             TextAlign       =   0
             TextColor       =   0
@@ -1653,7 +1637,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   2
             TabPanelIndex   =   2
-            TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   11
             TextUnit        =   0
@@ -1912,9 +1895,8 @@ Begin Window MainWindow Implements ScriptureReceiver
       Scope           =   0
       TabIndex        =   5
       TabPanelIndex   =   0
-      TabStop         =   True
       Top             =   34
-      Value           =   5
+      Value           =   0
       Visible         =   True
       Width           =   495
       Begin Canvas cnv_editor_style_change
@@ -1965,7 +1947,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   0
             TabPanelIndex   =   4
-            TabStop         =   True
             Text            =   "Style Change"
             TextAlign       =   0
             TextColor       =   0
@@ -2113,7 +2094,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   12
             TabPanelIndex   =   2
-            TabStop         =   True
             Text            =   "AKA:"
             TextAlign       =   0
             TextColor       =   0
@@ -2148,7 +2128,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   1
             TabPanelIndex   =   2
-            TabStop         =   True
             Text            =   "Themes:"
             TextAlign       =   0
             TextColor       =   0
@@ -2183,7 +2162,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   3
             TabPanelIndex   =   2
-            TabStop         =   True
             Text            =   "Capo:"
             TextAlign       =   0
             TextColor       =   0
@@ -2218,7 +2196,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   14
             TabPanelIndex   =   2
-            TabStop         =   True
             Text            =   "Key Line:"
             TextAlign       =   0
             TextColor       =   0
@@ -2333,7 +2310,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   6
             TabPanelIndex   =   2
-            TabStop         =   True
             Text            =   "Key:"
             TextAlign       =   0
             TextColor       =   0
@@ -2368,7 +2344,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   8
             TabPanelIndex   =   2
-            TabStop         =   True
             Text            =   "Time Signature:"
             TextAlign       =   0
             TextColor       =   0
@@ -2434,7 +2409,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   18
             TabPanelIndex   =   2
-            TabStop         =   True
             Text            =   "User Defined 2:"
             TextAlign       =   0
             TextColor       =   0
@@ -2469,7 +2443,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   10
             TabPanelIndex   =   2
-            TabStop         =   True
             Text            =   "Tempo:"
             TextAlign       =   0
             TextColor       =   0
@@ -2504,7 +2477,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   20
             TabPanelIndex   =   2
-            TabStop         =   True
             Text            =   "User Defined 3:"
             TextAlign       =   0
             TextColor       =   0
@@ -2858,7 +2830,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   16
             TabPanelIndex   =   2
-            TabStop         =   True
             Text            =   "User Defined 1:"
             TextAlign       =   0
             TextColor       =   0
@@ -2893,7 +2864,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   0
             TabPanelIndex   =   2
-            TabStop         =   True
             Text            =   "Song Editor"
             TextAlign       =   0
             TextColor       =   0
@@ -3090,7 +3060,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   0
             TabPanelIndex   =   1
-            TabStop         =   True
             Text            =   "Song Editor"
             TextAlign       =   0
             TextColor       =   0
@@ -3125,7 +3094,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   7
             TabPanelIndex   =   1
-            TabStop         =   True
             Text            =   "CCLI #:"
             TextAlign       =   0
             TextColor       =   0
@@ -3160,7 +3128,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   5
             TabPanelIndex   =   1
-            TabStop         =   True
             Text            =   "Copyright:"
             TextAlign       =   0
             TextColor       =   0
@@ -3195,7 +3162,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   3
             TabPanelIndex   =   1
-            TabStop         =   True
             Text            =   "Author:"
             TextAlign       =   0
             TextColor       =   0
@@ -3230,7 +3196,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   9
             TabPanelIndex   =   1
-            TabStop         =   True
             Text            =   "Presentation:"
             TextAlign       =   0
             TextColor       =   0
@@ -3265,7 +3230,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   13
             TabPanelIndex   =   1
-            TabStop         =   True
             Text            =   "Chord/Lyrics:"
             TextAlign       =   0
             TextColor       =   0
@@ -3300,7 +3264,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   11
             TabPanelIndex   =   1
-            TabStop         =   True
             Text            =   "Hymn #:"
             TextAlign       =   0
             TextColor       =   0
@@ -3335,7 +3298,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   15
             TabPanelIndex   =   1
-            TabStop         =   True
             Text            =   "Insert:"
             TextAlign       =   0
             TextColor       =   0
@@ -3370,7 +3332,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   1
             TabPanelIndex   =   1
-            TabStop         =   True
             Text            =   "Title:"
             TextAlign       =   0
             TextColor       =   0
@@ -3402,7 +3363,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   22
             TabPanelIndex   =   1
-            TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   11
             TextUnit        =   0
@@ -3463,7 +3423,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                Selectable      =   False
                TabIndex        =   1
                TabPanelIndex   =   1
-               TabStop         =   True
                Text            =   "Using:"
                TextAlign       =   0
                TextColor       =   &h000000
@@ -4112,7 +4071,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   21
             TabPanelIndex   =   3
-            TabStop         =   True
             Text            =   "Auto-advance slide(s) every..."
             TextAlign       =   1
             TextColor       =   0
@@ -4147,7 +4105,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   23
             TabPanelIndex   =   3
-            TabStop         =   True
             Text            =   "seconds"
             TextAlign       =   1
             TextColor       =   0
@@ -4182,7 +4139,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   17
             TabPanelIndex   =   3
-            TabStop         =   True
             Text            =   "Insert:"
             TextAlign       =   0
             TextColor       =   0
@@ -4434,7 +4390,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   13
             TabPanelIndex   =   3
-            TabStop         =   True
             Text            =   "File Folder"
             TextAlign       =   0
             TextColor       =   0
@@ -4469,7 +4424,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   0
             TabPanelIndex   =   3
-            TabStop         =   True
             Text            =   "Custom Slide Editor"
             TextAlign       =   0
             TextColor       =   0
@@ -4504,7 +4458,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   9
             TabPanelIndex   =   3
-            TabStop         =   True
             Text            =   "Custom Presentation Order:"
             TextAlign       =   0
             TextColor       =   0
@@ -4539,7 +4492,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   11
             TabPanelIndex   =   3
-            TabStop         =   True
             Text            =   "Original Presentation Order:"
             TextAlign       =   0
             TextColor       =   0
@@ -4619,7 +4571,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   5
             TabPanelIndex   =   3
-            TabStop         =   True
             Text            =   "Name:"
             TextAlign       =   0
             TextColor       =   0
@@ -4654,7 +4605,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   3
             TabPanelIndex   =   3
-            TabStop         =   True
             Text            =   "Subtitle:"
             TextAlign       =   0
             TextColor       =   0
@@ -4689,7 +4639,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   1
             TabPanelIndex   =   3
-            TabStop         =   True
             Text            =   "Title:"
             TextAlign       =   0
             TextColor       =   0
@@ -4724,7 +4673,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   7
             TabPanelIndex   =   3
-            TabStop         =   True
             Text            =   "Slides:"
             TextAlign       =   0
             TextColor       =   0
@@ -4759,7 +4707,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   26
             TabPanelIndex   =   3
-            TabStop         =   True
             Text            =   "Use Transition"
             TextAlign       =   0
             TextColor       =   0
@@ -4794,7 +4741,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   15
             TabPanelIndex   =   3
-            TabStop         =   True
             Text            =   "Notes:"
             TextAlign       =   0
             TextColor       =   0
@@ -5184,7 +5130,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   26
             TabPanelIndex   =   5
-            TabStop         =   True
             Text            =   "seconds"
             TextAlign       =   1
             TextColor       =   0
@@ -5219,7 +5164,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   18
             TabPanelIndex   =   5
-            TabStop         =   True
             Text            =   "Auto-advance slide(s) every..."
             TextAlign       =   1
             TextColor       =   0
@@ -5254,7 +5198,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   29
             TabPanelIndex   =   5
-            TabStop         =   True
             Text            =   "Use Transition"
             TextAlign       =   0
             TextColor       =   0
@@ -5321,7 +5264,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   0
             TabPanelIndex   =   5
-            TabStop         =   True
             Text            =   "Image Slide Editor"
             TextAlign       =   0
             TextColor       =   0
@@ -5387,7 +5329,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   6
             TabPanelIndex   =   5
-            TabStop         =   True
             Text            =   "Name:"
             TextAlign       =   0
             TextColor       =   0
@@ -5550,7 +5491,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   24
             TabPanelIndex   =   5
-            TabStop         =   True
             Text            =   "Notes:"
             TextAlign       =   0
             TextColor       =   0
@@ -5585,7 +5525,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   1
             TabPanelIndex   =   5
-            TabStop         =   True
             Text            =   "Title:"
             TextAlign       =   0
             TextColor       =   0
@@ -5620,7 +5559,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   10
             TabPanelIndex   =   5
-            TabStop         =   True
             Text            =   "Insert:"
             TextAlign       =   0
             TextColor       =   0
@@ -5764,7 +5702,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   3
             TabPanelIndex   =   5
-            TabStop         =   True
             Text            =   "Subtitle:"
             TextAlign       =   0
             TextColor       =   &h000000
@@ -5799,7 +5736,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   8
             TabPanelIndex   =   5
-            TabStop         =   True
             Text            =   "Images:"
             TextAlign       =   0
             TextColor       =   &h000000
@@ -6301,7 +6237,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   0
             TabPanelIndex   =   6
-            TabStop         =   True
             Text            =   "External Slide Editor"
             TextAlign       =   0
             TextColor       =   0
@@ -6336,7 +6271,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   1
             TabPanelIndex   =   6
-            TabStop         =   True
             Text            =   "Name:"
             TextAlign       =   0
             TextColor       =   0
@@ -6371,7 +6305,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   2
             TabPanelIndex   =   6
-            TabStop         =   True
             Text            =   "Notes:"
             TextAlign       =   0
             TextColor       =   0
@@ -6406,7 +6339,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   3
             TabPanelIndex   =   6
-            TabStop         =   True
             Text            =   "Application:"
             TextAlign       =   0
             TextColor       =   0
@@ -6649,7 +6581,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   10
             TabPanelIndex   =   6
-            TabStop         =   True
             Top             =   146
             Value           =   2
             Visible         =   True
@@ -6673,7 +6604,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                Scope           =   0
                TabIndex        =   0
                TabPanelIndex   =   2
-               TabStop         =   True
                TextFont        =   "Arial"
                TextSize        =   11
                TextUnit        =   0
@@ -6764,7 +6694,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Selectable      =   False
                   TabIndex        =   2
                   TabPanelIndex   =   2
-                  TabStop         =   True
                   Text            =   "Presentation filename"
                   TextAlign       =   0
                   TextColor       =   &h000000
@@ -6886,7 +6815,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Selectable      =   False
                   TabIndex        =   6
                   TabPanelIndex   =   2
-                  TabStop         =   True
                   Text            =   "Which application should be used to run the presentation?"
                   TextAlign       =   0
                   TextColor       =   &h000000
@@ -6998,7 +6926,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Selectable      =   False
                   TabIndex        =   9
                   TabPanelIndex   =   2
-                  TabStop         =   True
                   Text            =   "For full control over your PowerPoint presentation an installation of Microsoft Office is required."
                   TextAlign       =   0
                   TextColor       =   &h000000
@@ -7033,7 +6960,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Selectable      =   False
                   TabIndex        =   10
                   TabPanelIndex   =   2
-                  TabStop         =   True
                   Text            =   "For showing your PowerPoint presentation without interaction, you can use the free Microsoft PowerPoint Viewer. OpenSong tries to detect it. You can set a specific viewer in the general settings."
                   TextAlign       =   0
                   TextColor       =   &h000000
@@ -7068,7 +6994,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Selectable      =   False
                   TabIndex        =   11
                   TabPanelIndex   =   2
-                  TabStop         =   True
                   Text            =   "For full control of an Impress or PowerPoint presentation the free OpenOffice.org suite is required."
                   TextAlign       =   0
                   TextColor       =   &h000000
@@ -7101,7 +7026,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                Scope           =   0
                TabIndex        =   0
                TabPanelIndex   =   1
-               TabStop         =   True
                TextFont        =   "Arial"
                TextSize        =   11
                TextUnit        =   0
@@ -7131,7 +7055,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Selectable      =   False
                   TabIndex        =   0
                   TabPanelIndex   =   1
-                  TabStop         =   True
                   Text            =   "Select an application to use as source for this slides content."
                   TextAlign       =   1
                   TextColor       =   &h000000
@@ -7164,7 +7087,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                Scope           =   0
                TabIndex        =   0
                TabPanelIndex   =   4
-               TabStop         =   True
                TextFont        =   "Arial"
                TextSize        =   11
                TextUnit        =   0
@@ -7194,7 +7116,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Selectable      =   False
                   TabIndex        =   0
                   TabPanelIndex   =   4
-                  TabStop         =   True
                   Text            =   "Application parameters"
                   TextAlign       =   0
                   TextColor       =   &h000000
@@ -7229,7 +7150,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Selectable      =   False
                   TabIndex        =   1
                   TabPanelIndex   =   4
-                  TabStop         =   True
                   Text            =   "Path to application executable"
                   TextAlign       =   0
                   TextColor       =   &h000000
@@ -7471,7 +7391,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                Scope           =   0
                TabIndex        =   0
                TabPanelIndex   =   3
-               TabStop         =   True
                TextFont        =   "Arial"
                TextSize        =   11
                TextUnit        =   0
@@ -7682,7 +7601,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Selectable      =   False
                   TabIndex        =   6
                   TabPanelIndex   =   3
-                  TabStop         =   True
                   Text            =   "Path to media file to play"
                   TextAlign       =   0
                   TextColor       =   &h000000
@@ -7717,7 +7635,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Selectable      =   False
                   TabIndex        =   7
                   TabPanelIndex   =   3
-                  TabStop         =   True
                   Text            =   "Use the following preset with parameters"
                   TextAlign       =   0
                   TextColor       =   &h000000
@@ -7752,7 +7669,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Selectable      =   False
                   TabIndex        =   8
                   TabPanelIndex   =   3
-                  TabStop         =   True
                   Text            =   "Manually adjusted parameters (use %d for display number, %s for mediafile)"
                   TextAlign       =   0
                   TextColor       =   &h000000
@@ -7921,7 +7837,6 @@ Begin Window MainWindow Implements ScriptureReceiver
       Width           =   750
    End
    Begin Timer tmr_lookup
-      Enabled         =   True
       Height          =   32
       Index           =   -2147483648
       InitialParent   =   ""
@@ -7930,11 +7845,8 @@ Begin Window MainWindow Implements ScriptureReceiver
       Mode            =   2
       Period          =   1500
       Scope           =   0
-      TabIndex        =   8
       TabPanelIndex   =   0
-      TabStop         =   True
       Top             =   -18
-      Visible         =   True
       Width           =   32
    End
 End
@@ -8585,6 +8497,9 @@ End
 		  '++JRC
 		  Globals.OldFolderSel = -1
 		  CurrentSetIndex = -1
+		  
+		  pop_sets_sets.AddRow("")
+		  pop_sets_sets.DeleteAllRows
 		  '--
 		  
 		  Splash.SetStatus App.T.Translate("load_data/bible") + "..."
@@ -8637,13 +8552,21 @@ End
 		  'If App.MainPreferences.GetValueB(Prefs.kUseOldFolderDB) Then
 		  'Songs = New FolderDBOld(App.DocsFolder.Child("Songs"))
 		  'Else
-		  Songs = New FolderDB(App.DocsFolder.Child("Songs"))
+		  '++JRC If DocsFolder is Nil set Songs to Nil as well (and cross our fingers :)
+		  If App.DocsFolder <> Nil Then
+		    Songs = New FolderDB(App.DocsFolder.Child("Songs"))
+		  Else
+		    Songs = Nil
+		  End If
 		  'End If
-		  Songs.SetBuiltinFilters "( " + App.T.Translate("songs_mode/song_folders/filter_all/@caption") + " )", _
-		  "( " + App.T.Translate("/songs_mode/song_folders/filter_main/@caption") + " )"
+		  If Songs <> Nil Then
+		    Songs.SetBuiltinFilters "( " + App.T.Translate("songs_mode/song_folders/filter_all/@caption") + " )", _
+		    "( " + App.T.Translate("/songs_mode/song_folders/filter_main/@caption") + " )"
+		  End If
 		  
 		  Splash.SetStatus App.T.Translate("load_data/folders") + "..."
-		  If UBound(Songs.GetFolders(pop_songs_song_folders)) = 0 Then
+		  If Songs <> Nil Then
+		    Call Songs.GetFolders(pop_songs_song_folders)
 		  End If
 		  
 		  Splash.SetStatus App.T.Translate("load_data/songs") + "..."
@@ -9112,6 +9035,7 @@ End
 	#tag MenuHandler
 		Function mnu_settings_general() As Boolean Handles mnu_settings_general.Action
 			MainSettingsWindow.ShowModalWithin MainWindow
+			App.InitControlServer()
 			lst_set_items.Invalidate(True)
 			Return True
 		End Function
@@ -9126,6 +9050,7 @@ End
 			Dim newBible As Bible
 			
 			'++JRC Fixed GetOpenFolderItem was not being called correctly
+			XMM = FileTypes.OpenSongModule
 			XMM.Name = App.T.Translate("module/file_type")
 			XMM.Extensions = "xmm"
 			XMM.MacType = "XMM"
@@ -9635,6 +9560,95 @@ End
 		End Sub
 	#tag EndMethod
 
+	#tag Method, Flags = &h1000
+		Sub ActionSetAddSong()
+		  Dim f As FolderItem
+		  Dim SongPath As String
+		  Dim FolderPath As String
+		  Dim Where As Integer
+		  Dim presentation As String
+		  Dim xgroups, newGroup As XmlNode
+		  
+		  '++JRC Check if we have a songs folder if not try to create one
+		  If App.CheckDocumentFolders(App.SONGS_FOLDER) = App.NO_FOLDER Then
+		    If  App.DocsFolder <> Nil Then
+		      InputBox.Message App.T.Translate("errors/create_songs_folder", App.DocsFolder.AbsolutePath + App.STR_SONGS)
+		    Else
+		      InputBox.Message App.T.Translate("errors/no_docs_folder", "")
+		    End If
+		    Return
+		  End If
+		  '--
+		  '++JRC If Songs is Nil, try to generate FolderDB
+		  If Songs = Nil Then
+		    If App.DocsFolder <> Nil Then
+		      Songs = New FolderDB(App.DocsFolder.Child(App.STR_SONGS))
+		    Else
+		      'InputBox.Message App.T.Translate("errors/no_docs_folder", "")
+		      Return
+		    End If
+		    If Songs = Nil Then
+		      'Songs is still Nil, return (should never get here but we probably should
+		      'give some error message anyway ;)
+		      Return
+		    End If
+		  End If
+		  
+		  xgroups = SmartML.GetNode(CurrentSet.DocumentElement, "slide_groups", True)
+		  
+		  Where = lst_set_items.ListIndex
+		  
+		  f = SongPickerWindow.Popup(presentation)
+		  If f <> Nil Then
+		    Status_SetChanged = True
+		    'Status_InSetChanged = False
+		    ' No need to EnableMenuItems, since the following selection change will call it
+		  End If
+		  
+		  While f <> Nil
+		    If lst_set_items.ListIndex >= 0 Then
+		      Where = lst_set_items.ListIndex + 1
+		    Else
+		      Where = lst_set_items.ListCount
+		    End If
+		    newGroup = SmartML.InsertChild(xgroups, "slide_group", Where)
+		    SmartML.SetValue newGroup, "@name", f.Name
+		    SmartML.SetValue newGroup, "@type", "song"
+		    SmartML.SetValue newGroup, "@presentation", presentation
+		    //++
+		    // EMP, May 2006
+		    //
+		    // Add a path attribute relative to the base songs directory.  Otherwise, two instances
+		    // of the same song name in a parent/child folder relationship will never find the song
+		    // in the child folder.
+		    //
+		    SongPath = f.Parent.AbsolutePath
+		    FolderPath = MainWindow.Songs.GetRootFolder.AbsolutePath
+		    SongPath = Mid(SongPath, Len(FolderPath) + 1) //Take off the leading path separator
+		    // Change path separator to forward slant "/" to match separator in FolderDB
+		    // This is platform specific
+		    #If TargetWin32
+		      SongPath = ReplaceAll(SongPath, "\", "/")
+		    #ElseIf TargetMacOS
+		      SongPath = ReplaceAll(SongPath, ":", "/")
+		    #EndIf
+		    SmartML.SetValue newGroup, "@path", SongPath
+		    //--
+		    If lst_set_items.ListIndex >= 0 Then
+		      lst_set_items.InsertRow Where, f.Name + " "  + App.T.Translate("sets_mode/items/song/@caption")
+		    Else
+		      lst_set_items.AddRow f.Name + " " + App.T.Translate("sets_mode/items/song/@caption")
+		    End If
+		    
+		    lst_set_items.ListIndex = Where
+		    f = SongPickerWindow.Popup(presentation)
+		  Wend
+		  lst_set_items.ListIndex = Where
+		  lst_set_items.SetFocus
+		  
+		End Sub
+	#tag EndMethod
+
 	#tag Method, Flags = &h1
 		Protected Function ActionSetAskSave() As Boolean
 		  //
@@ -9703,6 +9717,39 @@ End
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
+		Sub ActionSetDelete()
+		  If Not ActionSetAskSave Then Return
+		  
+		  '++JRC Check if we have a sets folder if not offer to create one
+		  If App.CheckDocumentFolders(App.SETS_FOLDER) = App.NO_FOLDER Then
+		    If App.DocsFolder <> Nil Then
+		      InputBox.Message App.T.Translate("errors/create_sets_folder", App.DocsFolder.AbsolutePath + App.STR_SETS)
+		    Else
+		      MsgBox App.T.Translate("errors/no_docs_folder", "")
+		    End If
+		    Return
+		  End If
+		  '--
+		  
+		  If InputBox.Ask(App.T.Translate("questions/delete/@caption", pop_sets_sets.Text)) Then
+		    If App.DocsFolder.Child(App.STR_SETS).Child(pop_sets_sets.Text) <> Nil Then
+		      App.DocsFolder.Child(App.STR_SETS).Child(pop_sets_sets.Text).Delete
+		    End If
+		    pop_sets_sets.RemoveRow pop_sets_sets.ListIndex
+		    pop_sets_sets.ListIndex = -1
+		    
+		    Status_SetOpen = False
+		    Status_SetChanged = False
+		    Status_InSetOpen = False
+		    Status_InSetChanged = False
+		    Status_InSetEditable = False
+		    EnableMenuItems
+		  End If
+		  
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
 		Sub ActionSetExport()
 		  // 1.2: Add code to put the songs in a folder name Songs, and set goes into Sets
 		  //TODO:
@@ -9760,8 +9807,32 @@ End
 		    End If
 		  End If
 		  
+		  '++JRC Check if we have a sets folder if not offer to create one
+		  If App.CheckDocumentFolders(App.SETS_FOLDER) = App.NO_FOLDER Then
+		    If App.DocsFolder <> Nil Then
+		      InputBox.Message App.T.Translate("errors/create_sets_folder", App.DocsFolder.AbsolutePath + App.STR_SETS)
+		    Else
+		      MsgBox App.T.Translate("errors/no_docs_folder", "")
+		    End If
+		    Return
+		  End If
+		  '--
+		  '++JRC If Songs is Nil, try to generate FolderDB
+		  If Songs = Nil Then
+		    If App.DocsFolder <> Nil Then
+		      Songs = New FolderDB(App.DocsFolder.Child(App.STR_SONGS))
+		    Else
+		      'InputBox.Message App.T.Translate("errors/no_docs_folder", "")
+		      Return
+		    End If
+		    If Songs = Nil Then
+		      'Songs is still Nil, return (should never get here but we probably should
+		      'give some error message anyway ;)
+		      Return
+		    End If
+		  End If
+		  
 		  //Start of the calculation and copying bit
-		  App.MouseCursor = System.Cursors.Wait
 		  Dim f, songFile, setFile As FolderItem
 		  Dim SongPath As String
 		  Dim AbsFiles(0) As FolderItem
@@ -9781,8 +9852,16 @@ End
 		    CurrentSet.documentElement.SetAttribute("name",CurrentSetName)
 		  end if
 		  
-		  setFile = App.DocsFolder.Child("Sets").Child(CurrentSetName)
+		  '++JRC
+		  setFile = App.DocsFolder.Child(App.STR_SETS).Child(CurrentSetName)
+		  If setFile = Nil Or NOT setFile.Exists Then
+		    InputBox.Message App.T.Translate("errors/no_such_set", App.DocsFolder.Child(App.STR_SETS).AbsolutePath + CurrentSetName)
+		    Return
+		  End If
+		  '--
 		  AbsFiles.append(setFile)
+		  
+		  App.MouseCursor = System.Cursors.Wait
 		  
 		  //Append the FolderItem used in each SlideGroup to AbsFiles
 		  //Should be a call to CurrentSet.GetChildFolderItems
@@ -9893,6 +9972,17 @@ End
 		  
 		  'Ask if user wants to save
 		  If NOT ActionSetAskSave Then Return 'User Canceled
+		  
+		  '++JRC Check if we have a sets folder if not offer to create one
+		  If App.CheckDocumentFolders(App.SETS_FOLDER) = App.NO_FOLDER Then
+		    If App.DocsFolder <> Nil Then
+		      InputBox.Message App.T.Translate("errors/create_sets_folder", App.DocsFolder.AbsolutePath + App.STR_SETS)
+		    Else
+		      MsgBox App.T.Translate("errors/no_docs_folder", "")
+		    End If
+		    Return
+		  End If
+		  '--
 		  
 		  t = InputBox.Input(App.T.Translate("questions/new_name/@caption"), "")
 		  If Len(t) > 0 Then
@@ -10130,6 +10220,69 @@ End
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
+		Sub ActionSetRename()
+		  Dim t as String
+		  Dim old as String
+		  Dim f as FolderItem
+		  Dim i As Integer
+		  
+		  'Ask if user wants to save
+		  If NOT ActionSetAskSave Then Return 'User Canceled
+		  
+		  '++JRC Check if we have a sets folder if not try to create one
+		  If App.CheckDocumentFolders(App.SETS_FOLDER) = App.NO_FOLDER Then
+		    If App.DocsFolder <> Nil Then
+		      InputBox.Message App.T.Translate("errors/create_sets_folder", App.DocsFolder.AbsolutePath +  App.STR_SETS)
+		    Else
+		      MsgBox App.T.Translate("errors/no_docs_folder", "")
+		    End If
+		    Return
+		  End If
+		  '--
+		  
+		  old = pop_sets_sets.Text
+		  
+		  t = InputBox.Input(App.T.Translate("questions/rename/@caption", old), old)
+		  If Len(t) > 0 Then
+		    If Not FileUtils.IsSafeFileName(t) Then
+		      InputBox.Message App.T.Translate("errors/bad_file_name", t)
+		      Return
+		    End If
+		    
+		    f = App.DocsFolder.Child("Sets").Child(t)
+		    If f <> Nil Then
+		      If f.Exists Then
+		        InputBox.Message App.T.Translate("folderdb_errors/error[@code=3]", f.AbsolutePath) ' already exists
+		        Exit
+		      End If
+		    End If
+		    
+		    f = App.DocsFolder.Child("Sets").Child(old)
+		    If f = Nil Or Not f.Exists Then
+		      InputBox.Message App.T.Translate("folderdb_errors/error[@code=8]", f.AbsolutePath) ' could not find file
+		      Exit
+		    End If
+		    
+		    f.Name = t
+		    i = pop_sets_sets.ListIndex
+		    pop_sets_sets.RemoveRow i
+		    pop_sets_sets.InsertRow i, t
+		    '++JRC Prevent Second save prompt
+		    If Status_SetChanged Then
+		      Status_SetChanged = false
+		      pop_sets_sets.ListIndex = i
+		      Status_SetChanged = true
+		      EnableMenuItems
+		    else
+		      pop_sets_sets.ListIndex = i
+		    End If
+		    '--
+		  End If
+		  
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
 		Sub ActionSetSave()
 		  Dim f As FolderItem
 		  Dim i As Integer
@@ -10141,6 +10294,17 @@ End
 		      Return
 		    End If
 		  End If
+		  
+		  '++JRC Check if we have a sets folder if not try to create one
+		  If App.CheckDocumentFolders(App.SETS_FOLDER) = App.NO_FOLDER Then
+		    If App.DocsFolder <> Nil Then
+		      InputBox.Message App.T.Translate("errors/create_sets_folder", App.DocsFolder.AbsolutePath +  App.STR_SETS)
+		    Else
+		      MsgBox App.T.Translate("errors/no_docs_folder", "")
+		    End If
+		    Return
+		  End If
+		  '--
 		  
 		  App.MouseCursor = System.Cursors.Wait
 		  
@@ -10245,6 +10409,31 @@ End
 		  'Ask if user wants to save
 		  If NOT ActionSongAskSave Then Return 'User Canceled
 		  
+		  '++JRC Check if we have a songs folder if not try to create one
+		  If App.CheckDocumentFolders(App.SONGS_FOLDER) = App.NO_FOLDER Then
+		    If  App.DocsFolder <> Nil Then
+		      InputBox.Message App.T.Translate("errors/create_songs_folder", App.DocsFolder.AbsolutePath + App.STR_SONGS)
+		    Else
+		      InputBox.Message App.T.Translate("errors/no_docs_folder", "")
+		    End If
+		    Return
+		  End If
+		  
+		  '++JRC If Songs is Nil, try to generate FolderDB
+		  If Songs = Nil Then
+		    If App.DocsFolder <> Nil Then
+		      Songs = New FolderDB(App.DocsFolder.Child(App.STR_SONGS))
+		    Else
+		      InputBox.Message App.T.Translate("errors/no_docs_folder", "")
+		      Return
+		    End If
+		    If Songs = Nil Then
+		      'Songs is still Nil, return (should never get here but we probably should
+		      'give some error message anyway ;)
+		      Return
+		    End If
+		  End If
+		  
 		  listindex = lst_songs_songs.ListIndex
 		  oldfolder = lst_songs_songs.CellTag(listindex, 0)
 		  folders = Songs.GetFolders
@@ -10304,6 +10493,192 @@ End
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
+		Sub ActionSongExport()
+		  Dim output As TextOutputStream
+		  Dim song As XmlDocument
+		  Dim exportOptionsWin As HTMLExportWindow
+		  Dim exportOptions As HTMLExportOptions
+		  Dim cancelled As Boolean
+		  Dim songHTML As String
+		  Dim printSettings as XmlElement
+		  Dim printCSSfile As FolderItem
+		  Dim printCSS As String
+		  Dim printCSSfileName As String
+		  
+		  'Ask if user wants to save
+		  If NOT ActionSongAskSave Then Return 'User Canceled
+		  
+		  '++JRC Check if we have a songs folder if not try to create one
+		  If App.CheckDocumentFolders(App.SONGS_FOLDER) = App.NO_FOLDER Then
+		    If  App.DocsFolder <> Nil Then
+		      InputBox.Message App.T.Translate("errors/create_songs_folder", App.DocsFolder.AbsolutePath + App.STR_SONGS)
+		    Else
+		      InputBox.Message App.T.Translate("errors/no_docs_folder", "")
+		    End If
+		  End If
+		  '--
+		  '++JRC If Songs is Nil, try to generate FolderDB
+		  If Songs = Nil Then
+		    If App.DocsFolder <> Nil Then
+		      Songs = New FolderDB(App.DocsFolder.Child(App.STR_SONGS))
+		    Else
+		      'InputBox.Message App.T.Translate("errors/no_docs_folder", "")
+		      Return
+		    End If
+		    If Songs = Nil Then
+		      'Songs is still Nil, return (should never get here but we probably should
+		      'give some error message anyway ;)
+		      Return
+		    End If
+		  End If
+		  
+		  exportOptions = New HTMLExportOptions
+		  exportOptions.Load(App.MainPreferences)
+		  
+		  exportOptionsWin = New HTMLExportWindow
+		  cancelled = exportOptionsWin.ShowDialog(exportOptions)
+		  
+		  If cancelled Then
+		    Return
+		  End If
+		  
+		  exportOptions.Save(App.MainPreferences)
+		  App.MouseCursor = System.Cursors.Wait
+		  output = TextOutputStream.Create(exportOptions.OutputFolder.Child(MakeSafeURLName(lst_songs_songs.Text, False) + ".html"))
+		  song = SmartML.XDocFromFile(Songs.GetFile(lst_songs_songs.CellTag(lst_songs_songs.ListIndex ,0) + lst_songs_songs.List(lst_songs_songs.ListIndex)))
+		  If output <> Nil And song <> Nil Then
+		    //++
+		    // If the user has selected to use the printer settings, create a CSS file based on those settings
+		    //--
+		    If exportOptions.PrintStyle Then
+		      printSettings = App.MyPrintSettings.DocumentElement
+		      printCSS = PrintSettingsToCSS(printSettings)
+		      printCSSfile = GetTemporaryFolderItem()
+		      If printCSSfile <> Nil Then
+		        printCSSfileName = printCSSfile.Name + ".css"
+		        printCSSfile = exportOptions.OutputFolder.Child(printCSSfileName)
+		        Dim printCSSoutput As TextOutputStream
+		        printCSSoutput = TextOutputStream.Create(printCSSfile)
+		        printCSSoutput.Write printCSS
+		        printCSSoutput.Close
+		        
+		      End If
+		      exportOptions.StyleSheet = printCSSfile
+		    End If
+		    songHTML = SongML.ToHTML(song.DocumentElement, exportOptions)
+		    output.Write songHTML
+		    output.Close
+		    // Hooks for future...
+		    'app.MouseCursor = Nil
+		    'Dim previewWindow As New HTMLPreviewWindow
+		    'previewWindow.LoadAndShow(songHTML,exportOptions.OutputFolder)
+		  End If
+		  App.MouseCursor = Nil
+		  
+		  If (exportOptions.StyleSheet <> Nil) And (Not exportOptions.EmbedCSS) Then
+		    exportOptions.StyleSheet.CopyFileTo exportOptions.OutputFolder
+		  End If
+		  
+		  InputBox.Message App.T.Translate("shared/done/@caption")
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub ActionSongFolderAdd()
+		  Dim f As FolderItem
+		  Dim t As String
+		  Dim i As Integer
+		  
+		  t = InputBox.Input(App.T.Translate("questions/new_name/@caption"), "")
+		  If Len(t) > 0 Then
+		    If Not FileUtils.IsSafeFileName(t) Then
+		      InputBox.Message App.T.Translate("errors/bad_file_name", t)
+		      Return
+		    End If
+		    
+		    '++JRC Check if we have a songs folder if not try to create one
+		    If App.CheckDocumentFolders(App.SONGS_FOLDER) = App.NO_FOLDER Then
+		      If  App.DocsFolder <> Nil Then
+		        InputBox.Message App.T.Translate("errors/create_songs_folder", App.DocsFolder.AbsolutePath + App.STR_SONGS)
+		      Else
+		        InputBox.Message App.T.Translate("errors/no_docs_folder", "")
+		      End If
+		      Return
+		    End If
+		    '++JRC If Songs is Nil, try to generate FolderDB
+		    If Songs = Nil Then
+		      If App.DocsFolder <> Nil Then
+		        Songs = New FolderDB(App.DocsFolder.Child(App.STR_SONGS))
+		      Else
+		        InputBox.Message App.T.Translate("errors/no_docs_folder", "")
+		        Return
+		      End If
+		      If Songs = Nil Then
+		        'Songs is still Nil, return (should never get here but we probably should
+		        'give some error message anyway ;)
+		        Return
+		      End If
+		    End If
+		    
+		    If pop_songs_song_folders.ListIndex >= 2 Then t = pop_songs_song_folders.Text + "/" + t
+		    f = Songs.AddFolder(t)
+		    
+		    If f = Nil Then
+		      InputBox.Message App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", t)
+		      Return
+		    End If
+		    
+		    If UBound(Songs.GetFolders(pop_songs_song_folders)) = 0 Then
+		    End If
+		    
+		    For i = 0 To pop_songs_song_folders.ListCount - 1
+		      If StrComp(pop_songs_song_folders.List(i), t, 1) = 0 Then pop_songs_song_folders.ListIndex = i
+		    Next i
+		  End If
+		  
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub ActionSongFolderDelete()
+		  If pop_songs_song_folders.ListIndex <= 1 Then Return
+		  
+		  If InputBox.Ask(App.T.Translate("questions/delete/@caption", pop_songs_song_folders.Text)) Then
+		    '++JRC Check if we have a songs folder if not try to create one
+		    If App.CheckDocumentFolders(App.SONGS_FOLDER) = App.NO_FOLDER Then
+		      If  App.DocsFolder <> Nil Then
+		        InputBox.Message App.T.Translate("errors/create_songs_folder", App.DocsFolder.AbsolutePath + App.STR_SONGS)
+		      Else
+		        InputBox.Message App.T.Translate("errors/no_docs_folder", "")
+		      End If
+		      Return
+		    End If
+		    '++JRC If Songs is Nil, try to generate FolderDB
+		    If Songs = Nil Then
+		      If App.DocsFolder <> Nil Then
+		        Songs = New FolderDB(App.DocsFolder.Child(App.STR_SONGS))
+		      Else
+		        InputBox.Message App.T.Translate("errors/no_docs_folder", "")
+		        Return
+		      End If
+		      If Songs = Nil Then
+		        'Songs is still Nil, return (should never get here but we probably should
+		        'give some error message anyway ;)
+		        Return
+		      End If
+		    End If
+		    
+		    If Not Songs.DeleteFolder(pop_songs_song_folders.Text) Then
+		      InputBox.Message App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", pop_songs_song_folders.Text)
+		    Else
+		      pop_songs_song_folders.RemoveRow pop_songs_song_folders.ListIndex
+		      pop_songs_song_folders.ListIndex = 0
+		    End If
+		  End If
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
 		Sub ActionSongMove()
 		  Dim folder, folders(0) As String
 		  Dim oldfolder As String
@@ -10312,6 +10687,31 @@ End
 		  
 		  'Ask if user wants to save
 		  If NOT ActionSongAskSave Then Return 'User Canceled
+		  
+		  '++JRC Check if we have a songs folder if not try to create one
+		  If App.CheckDocumentFolders(App.SONGS_FOLDER) = App.NO_FOLDER Then
+		    If  App.DocsFolder <> Nil Then
+		      InputBox.Message App.T.Translate("errors/create_songs_folder", App.DocsFolder.AbsolutePath + App.STR_SONGS)
+		    Else
+		      InputBox.Message App.T.Translate("errors/no_docs_folder", "")
+		    End If
+		    Return
+		  End If
+		  
+		  '++JRC If Songs is Nil, try to generate FolderDB
+		  If Songs = Nil Then
+		    If App.DocsFolder <> Nil Then
+		      Songs = New FolderDB(App.DocsFolder.Child(App.STR_SONGS))
+		    Else
+		      InputBox.Message App.T.Translate("errors/no_docs_folder", "")
+		      Return
+		    End If
+		    If Songs = Nil Then
+		      'Songs is still Nil, return (should never get here but we probably should
+		      'give some error message anyway ;)
+		      Return
+		    End If
+		  End If
 		  
 		  listindex = lst_songs_songs.ListIndex
 		  oldfolder = lst_songs_songs.CellTag(listindex, 0)
@@ -10389,65 +10789,84 @@ End
 		      Return
 		    End If
 		    
-		    If pop_songs_song_folders.ListIndex > 1 Then
-		      f = Songs.AddFile(pop_songs_song_folders.Text + "/" + t)
-		    Else
-		      f = Songs.AddFile(t)
-		    End If
-		    
-		    If f = Nil Then
-		      InputBox.Message App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", t)
-		      Return
-		    End If
-		    
-		    CurrentSong = New XmlDocument
-		    xnode = CurrentSong.AppendChild(CurrentSong.CreateElement("song"))
-		    SmartML.SetValue xnode, "title", t
-		    
-		    If Not SmartML.XDocToFile(CurrentSong, f) Then
-		      SmartML.DisplayError
-		      Return
-		    End If
-		    
-		    '++JRC Log song creation
-		    If App.MainPreferences.GetValueB(App.kActivityLog, True) And Globals.SongActivityLog <> Nil Then
-		      Dim Log As New LogEntry(Globals.SongActivityLog)
-		      Dim d As New Date
+		    If App.CheckDocumentFolders(App.SONGS_FOLDER) <> App.NO_FOLDER Then
+		      '++JRC If Songs is Nil, try to generate FolderDB
+		      If Songs = Nil Then
+		        Songs = New FolderDB(App.DocsFolder.Child(App.STR_SONGS))
+		        If Songs = Nil Then
+		          'Songs is still Nil, return (should never get here but we probably should
+		          'give some error message anyway ;)
+		          Return
+		        End If
+		      End If
 		      
-		      Log.Title = t
-		      Log.Author = ""
-		      Log.CCLISongNumber = ""
-		      Log.SongFileName =  pop_songs_song_folders.Text + "/" + t 'Should we use AbsolutePath?
-		      Log.DateAndTime = d
-		      Log.HasChords = False 'Probably not ;)
-		      Log.Created = True
-		      
-		      If NOT Log.AddLogEntry Then
-		        InputBox.Message App.T.Translate("errors/adding_entry") '++JRC Translated
+		      If pop_songs_song_folders.ListIndex > 1 Then
+		        f = Songs.AddFile(pop_songs_song_folders.Text + "/" + t)
 		      Else
-		        Log.UpdateNumEntries(Globals.SongActivityLog)
+		        f = Songs.AddFile(t)
+		      End If
+		      
+		      If f = Nil Then
+		        InputBox.Message App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", t)
+		        Return
+		      End If
+		      
+		      CurrentSong = New XmlDocument
+		      xnode = CurrentSong.AppendChild(CurrentSong.CreateElement("song"))
+		      SmartML.SetValue xnode, "title", t
+		      
+		      If Not SmartML.XDocToFile(CurrentSong, f) Then
+		        SmartML.DisplayError
+		        Return
+		      End If
+		      
+		      '++JRC Log song creation
+		      If App.MainPreferences.GetValueB(App.kActivityLog, True) And Globals.SongActivityLog <> Nil Then
+		        Dim Log As New LogEntry(Globals.SongActivityLog)
+		        Dim d As New Date
+		        
+		        Log.Title = t
+		        Log.Author = ""
+		        Log.CCLISongNumber = ""
+		        Log.SongFileName =  pop_songs_song_folders.Text + "/" + t 'Should we use AbsolutePath?
+		        Log.DateAndTime = d
+		        Log.HasChords = False 'Probably not ;)
+		        Log.Created = True
+		        
+		        If NOT Log.AddLogEntry Then
+		          InputBox.Message App.T.Translate("errors/adding_entry") '++JRC Translated
+		        Else
+		          Log.UpdateNumEntries(Globals.SongActivityLog)
+		        End If
+		      End If
+		      '--
+		      
+		      i = 0
+		      // Look for the place to insert the new song
+		      While i < lst_songs_songs.ListCount And CompareHymnBookOrder(Lowercase(t), Lowercase(lst_songs_songs.List(i))) = 1
+		        i = i + 1
+		      Wend
+		      lst_songs_songs.InsertRow i, t
+		      Loc = lst_songs_songs.LastIndex
+		      lst_songs_songs.CellTag(Loc, 0) = pop_songs_song_folders.Text + "/"
+		      Globals.OldSongFileName = ""
+		      Status_SongOpen = False //Hold off on unnecessary refreshes
+		      LoadSongFields 'f
+		      Status_SongOpen = True
+		      Status_SongChanged = False
+		      lst_songs_songs.ListIndex = Loc
+		      lst_songs_songs.selected(Loc) = True
+		      Globals.OldSongFileName = GetSongFolderPath(pop_songs_song_folders.Text) + "/" + t
+		      Globals.OldSongSel = Loc
+		    Else
+		      If App.DocsFolder <> Nil Then
+		        InputBox.Message App.T.Translate("errors/create_songs_folder",  App.DocsFolder.AbsolutePath + App.STR_SONGS)
+		      Else
+		        InputBox.Message App.T.Translate("errors/no_docs_folder", "")
 		      End If
 		    End If
-		    '--
-		    
-		    i = 0
-		    // Look for the place to insert the new song
-		    While i < lst_songs_songs.ListCount And CompareHymnBookOrder(Lowercase(t), Lowercase(lst_songs_songs.List(i))) = 1
-		      i = i + 1
-		    Wend
-		    lst_songs_songs.InsertRow i, t
-		    Loc = lst_songs_songs.LastIndex
-		    lst_songs_songs.CellTag(Loc, 0) = pop_songs_song_folders.Text + "/"
-		    Globals.OldSongFileName = ""
-		    Status_SongOpen = False //Hold off on unnecessary refreshes
-		    LoadSongFields 'f
-		    Status_SongOpen = True
-		    Status_SongChanged = False
-		    lst_songs_songs.ListIndex = Loc
-		    lst_songs_songs.selected(Loc) = True
-		    Globals.OldSongFileName = GetSongFolderPath(pop_songs_song_folders.Text) + "/" + t
-		    Globals.OldSongSel = Loc
 		  End If
+		  
 		  UpdateMenuItems
 		  If pge_contents.Value = 0 Then //General panel, go to author field
 		    edt_song_author.SetFocus
@@ -10456,7 +10875,7 @@ End
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub ActionSongPresent(mode As Integer)
+		Sub ActionSongPresent(mode As Integer, ItemNumber As Integer = 0)
 		  
 		  'Ask if user wants to save
 		  If NOT ActionSongAskSave Then Return 'User Canceled, Don't Present
@@ -10530,7 +10949,7 @@ End
 		  '++JRC Fix issue were PresentWindow wasn't getting focus
 		  MainWindow.SetFocus
 		  
-		  PresentWindow.Present setDoc, Mode
+		  PresentWindow.Present setDoc, Mode, ItemNumber
 		  
 		  'Self.Hide
 		  
@@ -10618,6 +11037,31 @@ End
 		  listindex = lst_songs_songs.ListIndex
 		  
 		  If InputBox.Ask(App.T.Translate("questions/delete/@caption", lst_songs_songs.Text)) Then
+		    '++JRC Check if we have a songs folder if not try to create one
+		    If App.CheckDocumentFolders(App.SONGS_FOLDER) = App.NO_FOLDER Then
+		      If  App.DocsFolder <> Nil Then
+		        InputBox.Message App.T.Translate("errors/create_songs_folder", App.DocsFolder.AbsolutePath + App.STR_SONGS)
+		      Else
+		        InputBox.Message App.T.Translate("errors/no_docs_folder", "")
+		      End If
+		      Return
+		    End If
+		    '--
+		    '++JRC If Songs is Nil, try to generate FolderDB
+		    If Songs = Nil Then
+		      If App.DocsFolder <> Nil Then
+		        Songs = New FolderDB(App.DocsFolder.Child(App.STR_SONGS))
+		      Else
+		        'InputBox.Message App.T.Translate("errors/no_docs_folder", "")
+		        Return
+		      End If
+		      If Songs = Nil Then
+		        'Songs is still Nil, return (should never get here but we probably should
+		        'give some error message anyway ;)
+		        Return
+		      End If
+		    End If
+		    
 		    If Not Songs.DeleteFile(lst_songs_songs.CellTag(ListIndex, 0) + lst_songs_songs.Text) Then
 		      InputBox.Message App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", lst_songs_songs.Text)
 		    Else
@@ -10661,6 +11105,31 @@ End
 		  
 		  'Ask if user wants to save
 		  If NOT ActionSongAskSave Then Return 'User Canceled
+		  
+		  '++JRC Check if we have a songs folder if not try to create one
+		  If App.CheckDocumentFolders(App.SONGS_FOLDER) = App.NO_FOLDER Then
+		    If  App.DocsFolder <> Nil Then
+		      InputBox.Message App.T.Translate("errors/create_songs_folder", App.DocsFolder.AbsolutePath + App.STR_SONGS)
+		    Else
+		      InputBox.Message App.T.Translate("errors/no_docs_folder", "")
+		    End If
+		    Return
+		  End If
+		  '--
+		  '++JRC If Songs is Nil, try to generate FolderDB
+		  If Songs = Nil Then
+		    If App.DocsFolder <> Nil Then
+		      Songs = New FolderDB(App.DocsFolder.Child(App.STR_SONGS))
+		    Else
+		      'InputBox.Message App.T.Translate("errors/no_docs_folder", "")
+		      Return
+		    End If
+		    If Songs = Nil Then
+		      'Songs is still Nil, return (should never get here but we probably should
+		      'give some error message anyway ;)
+		      Return
+		    End If
+		  End If
 		  
 		  old = lst_songs_songs.Text
 		  
@@ -10743,43 +11212,55 @@ End
 		  Dim FullName As String
 		  
 		  If Not noWrite Then
-		    '++JRC Check if we have a songs folder if not offer to create one
+		    '++JRC Check if we have a songs folder if not try to create one
 		    If App.CheckDocumentFolders(App.SONGS_FOLDER) = App.NO_FOLDER Then
-		      If InputBox.AskYN(App.T.Translate("questions/no_songs_folder/@caption")) Then
-		        If Not FileUtils.CreateFolder(App.DocsFolder.Child(App.STR_SONGS)) Then
-		          InputBox.Message App.T.Translate("errors/create_songs_folder", App.DocsFolder.Child(App.STR_SONGS).AbsolutePath)
-		          noWrite = True
-		        End If
+		      If  App.DocsFolder <> Nil Then
+		        InputBox.Message App.T.Translate("errors/create_songs_folder", App.DocsFolder.AbsolutePath + App.STR_SONGS)
 		      Else
-		        InputBox.Message App.T.Translate("errors/create_songs_folder", App.DocsFolder.Child(App.STR_SONGS).AbsolutePath)
-		        noWrite = True
+		        InputBox.Message App.T.Translate("errors/no_docs_folder", "")
 		      End If
+		      noWrite = True
 		    End If
 		    '--
 		    
 		    If Not noWrite Then
+		      '++JRC If Songs is Nil, try to generate FolderDB
+		      If Songs = Nil Then
+		        If App.DocsFolder <> Nil Then
+		          Songs = New FolderDB(App.DocsFolder.Child(App.STR_SONGS))
+		        Else
+		          'InputBox.Message App.T.Translate("errors/no_docs_folder", "")
+		        End If
+		      End If
+		      
 		      if SaveOldSong = true then
-		        f = Songs.GetFile(Globals.OldSongFileName)
-		        If f = Nil Then
-		          'File dosen't exist, try to create it
-		          f = Songs.AddFile(Globals.OldSongFileName)
-		          If f = Nil Then 'we tried
-		            InputBox.Message App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", Globals.OldSongFileName)
-		            noWrite  = True
+		        If Songs <> Nil Then
+		          f = Songs.GetFile(Globals.OldSongFileName)
+		          If f = Nil Then
+		            'File dosen't exist, try to create it
+		            f = Songs.AddFile(Globals.OldSongFileName)
+		            If f = Nil Then 'we tried
+		              InputBox.Message App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", Globals.OldSongFileName)
+		              noWrite  = True
+		            End If
 		          End If
 		        End If
 		      Else
-		        FullName = lst_songs_songs.CellTag(Globals.OldSongSel, 0).StringValue + lst_songs_songs.Text
-		        f = Songs.GetFile(FullName)
-		        If f = Nil Then
-		          'File dosen't exist, try to create it
-		          f = Songs.AddFile(FullName)
-		          If f = Nil Then 'we tried
-		            noWrite = True
-		            InputBox.Message App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", FullName)
+		        If Songs <> Nil Then
+		          FullName = lst_songs_songs.CellTag(Globals.OldSongSel, 0).StringValue + lst_songs_songs.Text
+		          f = Songs.GetFile(FullName)
+		          If f = Nil Then
+		            'File dosen't exist, try to create it
+		            f = Songs.AddFile(FullName)
+		            If f = Nil Then 'we tried
+		              noWrite = True
+		              InputBox.Message App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", FullName)
+		            End If
 		          End If
 		        End If
+		        
 		      End if
+		      
 		    End If
 		  End If
 		  
@@ -11503,6 +11984,101 @@ End
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
+		Function LoadSet(setName As String) As Boolean
+		  Dim success As Boolean = False
+		  Dim f As FolderItem
+		  Dim xnode As XmlNode
+		  Dim slideType As String
+		  
+		  If Status_InSetLoading Then
+		    Return success
+		  End If
+		  Status_InSetLoading = True
+		  
+		  lst_set_items.DeleteAllRows
+		  
+		  Dim index As Integer = -1
+		  For i As Integer = 0 To pop_sets_sets.ListCount-1
+		    If pop_sets_sets.List(i) = setName Then
+		      index = i
+		      Exit
+		    End If
+		  Next
+		  
+		  If index > -1 Then
+		    pop_sets_sets.ListIndex = index
+		    CurrentSetIndex = index
+		    
+		    f = App.DocsFolder.Child("Sets").Child(setName)
+		    CurrentSet = SmartML.XDocFromFile(f)
+		    If CurrentSet = Nil Then
+		      App.MouseCursor = Nil
+		      CurrentSet = New XmlDocument
+		      xnode = CurrentSet.AppendChild(CurrentSet.CreateElement("set"))
+		      SmartML.DisplayError
+		    End If
+		    // This section gets the /set/@name value from the current document
+		    // Since this is a non-existent attribute in the released version, add it if
+		    // it's not already there.
+		    //EMP 10/9/04
+		    dim nameAtt as xmlattribute
+		    
+		    nameAtt = CurrentSet.DocumentElement.GetAttributeNode("name")
+		    
+		    if nameatt = Nil then
+		      CurrentSet.DocumentElement.SetAttribute("name", setName)
+		    end if
+		    
+		    CurrentSetName = setName
+		    
+		    //--
+		    Dim slide_groups, xchild As XmlNode
+		    
+		    slide_groups = SmartML.GetNode(CurrentSet.DocumentElement, "slide_groups", True)
+		    If Not IsNull(slide_groups)Then
+		      xchild = slide_groups.FirstChild
+		      While xchild <> Nil
+		        '++JRC Fix broken set item type displaying in set list
+		        slideType = App.T.Translate("sets_mode/items/" + xchild.GetAttribute("type") + "/@caption")
+		        If slideType = "" Then // unknown slide type
+		          App.DebugWriter.Write "MainWindow.pop_sets_sets.Change: Unknown slide type '" + xchild.GetAttribute("type") + "/@caption" + "'", 1
+		          slideType = "*ERROR*"
+		        End If
+		        lst_set_items.AddRow xchild.GetAttribute("name") + " " + slideType
+		        lst_set_items.CellTag(lst_set_items.ListCount-1, 0) = xchild.GetAttribute("type")
+		        xchild = xchild.NextSibling
+		      Wend
+		      
+		      '++JRC Save backup copy
+		      TempSet = New XmlDocument
+		      TempSet.AppendChild TempSet.ImportNode(CurrentSet.DocumentElement, True)
+		      '--
+		      
+		      Status_SetOpen = True
+		      Status_SetChanged = False
+		      Status_InSetOpen = False
+		      Status_InSetChanged = False
+		      '++JRC Correct issue where the first and last item in a set weren't accessable
+		      CurrentInSetItem = -1
+		      '--
+		      EnableMenuItems
+		      
+		      success = True
+		    Else
+		      
+		      success = False
+		    End If
+		    
+		  Else
+		    success = False
+		  End If
+		  
+		  Status_InSetLoading = False
+		  Return success
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
 		Sub LoadSets(folder As FolderItem)
 		  Dim x As Integer
 		  Dim s(0) As String
@@ -11533,6 +12109,103 @@ End
 		  lst_set_items.DeleteAllRows
 		  App.MouseCursor = Nil
 		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function LoadSong(f As FolderItem) As Boolean
+		  Dim result As Boolean = False
+		  
+		  If Status_InSongLoading Then
+		    Return result
+		  End If
+		  Status_InSongLoading = True
+		  
+		  Dim fullpath As String = f.AbsolutePath().Mid(Songs.GetRootFolder().AbsolutePath().Len + 1)
+		  
+		  If f <> Nil And f.Exists Then
+		    App.MouseCursor = System.Cursors.Wait
+		    
+		    Dim folderPath As String = fullpath.Mid(1, fullpath.Len() - f.Name().Len() - 1)
+		    folderPath = ReplaceAll(folderPath, "\", "/")
+		    
+		    Dim index As Integer = -1
+		    For i As Integer = 0 To pop_songs_song_folders.ListCount-1
+		      If pop_songs_song_folders.List(i) = folderPath Or _
+		        pop_songs_song_folders.List(i) = folderPath.ReplaceAll("/", "\") Then
+		        index = i
+		        folderPath = pop_songs_song_folders.List(i)
+		        Exit
+		      End If
+		    Next
+		    
+		    If index > -1 Then
+		      If pop_songs_song_folders.ListIndex <> index Then
+		        pop_songs_song_folders.ListIndex = index
+		        
+		        Globals.OldFolderSel = index
+		        Globals.CurrentSongFolder = folderPath
+		        
+		        Call Songs.GetFiles(folderPath, lst_songs_songs)
+		      End If
+		      
+		      index = -1
+		      For i As Integer = 0 To lst_songs_songs.ListCount-1
+		        If lst_songs_songs.List(i) = f.Name Then
+		          index = i
+		          Exit
+		        End If
+		      Next
+		      
+		      lst_songs_songs.ListIndex = index
+		      
+		      CurrentSong = SmartML.XDocFromFile(f)
+		      
+		      // Open as Object...
+		      'CurrentSongObj = New Song
+		      'Call CurrentSongObj.Load(f) // We'll ignore error handling for the moment.  Not a good thing.
+		      
+		      'Changed save current song filename
+		      Globals.OldSongFileName = fullpath
+		      //++EMP 8/9/05 -- Show which folder this song is found in
+		      edt_songs_curr_folder.Text = folderPath
+		      
+		      If right(edt_songs_curr_folder.Text, 1) = "/" Then edt_songs_curr_folder.Text = Left(edt_songs_curr_folder.Text, Len(edt_songs_curr_folder.Text) - 1)
+		      //--
+		      App.MouseCursor = Nil
+		      If CurrentSong <> Nil  Then
+		        Status_SongOpen = False ' Just to keep the field changes from calling EnableMenuItems
+		        LoadSongFields
+		        Status_SongOpen = True
+		        Status_SongChanged = False
+		        EnableMenuItems
+		        
+		        result = True
+		      Else
+		        // Dummy up a doc to avoid a Nil object
+		        CurrentSong = New XmlDocument
+		        Dim xnode As XmlNode = CurrentSong.AppendChild(CurrentSong.CreateElement("song"))
+		        SmartML.SetValue xnode, "title", f.Name
+		        LoadSongFields
+		        Status_SongOpen = True
+		        Status_SongChanged = False
+		        EnableMenuItems
+		        SmartML.DisplayError
+		      End If
+		    Else
+		      result = False
+		    End If
+		  Else
+		    InputBox.Message App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", lst_songs_songs.Text)
+		    Status_SongOpen = False
+		    Status_SongChanged = False
+		    EnableMenuItems
+		  End If
+		  
+		  
+		  App.MouseCursor = Nil
+		  Status_InSongLoading = False
+		  Return result
+		End Function
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
@@ -11773,64 +12446,6 @@ End
 		    txt_context_help.Text = App.T.Translate(str)
 		  End If
 		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h1
-		Protected Function SetLoadSet(f As FolderItem) As Boolean
-		  Dim xnode As XmlNode
-		  Dim slideType As String
-		  
-		  // Simple sanity checks
-		  If f = Nil Then Return False
-		  If Not f.Exists Then Return False
-		  
-		  CurrentSet = SmartML.XDocFromFile(f)
-		  Status_InSetChanged = False
-		  Status_SetChanged = False
-		  Status_InSetOpen = False
-		  lst_set_items.DeleteAllRows
-		  If CurrentSet = Nil Then
-		    Status_SetOpen = False
-		    CurrentSet = New XmlDocument
-		    xnode = CurrentSet.AppendChild(CurrentSet.CreateElement("set"))
-		    SmartML.DisplayError
-		    Return False
-		  End If
-		  Status_SetOpen = True
-		  // This section gets the /set/@name value from the current document
-		  // Since this is a non-existent attribute in the 0.9.9 version, add it if
-		  // it's not already there.
-		  //EMP 10/9/04
-		  dim nameAtt as xmlattribute
-		  
-		  nameAtt = CurrentSet.DocumentElement.GetAttributeNode("name")
-		  
-		  if nameatt = Nil then
-		    CurrentSet.DocumentElement.SetAttribute("name", pop_sets_sets.text)
-		  end if
-		  
-		  CurrentSetName = pop_sets_sets.text
-		  //--
-		  Dim slide_groups, xchild As XmlNode
-		  
-		  slide_groups = SmartML.GetNode(CurrentSet.DocumentElement, "slide_groups", True)
-		  If slide_groups = Nil Then Return True
-		  
-		  xchild = slide_groups.FirstChild
-		  While xchild <> Nil
-		    '++JRC Fix broken set item type displaying in set list
-		    slideType = App.T.Translate("sets_mode/items/" + xchild.GetAttribute("type") + "/@caption")
-		    If slideType = "" Then // unknown slide type
-		      App.DebugWriter.Write "MainWindow.pop_sets_sets.Change: Unknown slide type '" + xchild.GetAttribute("type") + "/@caption" + "'", 1
-		      slideType = "*ERROR*"
-		    End If
-		    lst_set_items.AddRow xchild.GetAttribute("name") + " " + slideType
-		    xchild = xchild.NextSibling
-		  Wend
-		  
-		  EnableMenuItems
-		  Return True
-		End Function
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
@@ -12206,12 +12821,20 @@ End
 		Protected Status_InSetEditable As Boolean
 	#tag EndProperty
 
+	#tag Property, Flags = &h21
+		Private Status_InSetLoading As Boolean = False
+	#tag EndProperty
+
 	#tag Property, Flags = &h1
 		Protected Status_InSetOpen As Boolean
 	#tag EndProperty
 
 	#tag Property, Flags = &h1
 		Protected Status_InSetSongEdit As Boolean
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
+		Private Status_InSongLoading As Boolean = False
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
@@ -12222,8 +12845,8 @@ End
 		Protected Status_ProgramInitialized As Boolean
 	#tag EndProperty
 
-	#tag Property, Flags = &h1
-		Protected Status_SetChanged As Boolean
+	#tag Property, Flags = &h0
+		Status_SetChanged As Boolean
 	#tag EndProperty
 
 	#tag Property, Flags = &h1
@@ -12345,49 +12968,50 @@ End
 #tag Events pop_songs_song_folders
 	#tag Event
 		Sub Change()
+		  If Status_InSongLoading Then
+		    Return
+		  End If
+		  
 		  '++JRC
 		  Dim f As FolderItem
-		  
 		  f = FileUtils.RelativePathToFolderItem(App.DocsFolder.Child(App.STR_SONGS), Me.Text)
 		  
 		  If f = Nil Or NOT f.Exists Then
 		    If Me.Text = "( " + App.T.Translate("songs_mode/song_folders/filter_all/@caption") + " )" Or Me.Text = "( " + App.T.Translate("songs_mode/song_folders/filter_main/@caption") + " )" Then
-		      'Check if we have a songs folder if not offer to create one
+		      'Check if we have a songs folder if not try to create one
 		      If App.CheckDocumentFolders(App.SONGS_FOLDER) = App.NO_FOLDER Then
-		        If InputBox.AskYN(App.T.Translate("questions/no_songs_folder/@caption")) Then
-		          If Not FileUtils.CreateFolder(App.DocsFolder.Child(App.STR_SONGS)) Then
-		            InputBox.Message App.T.Translate("errors/create_songs_folder", App.DocsFolder.Child(App.STR_SONGS).AbsolutePath)
-		            Globals.Status_SongsFolderUpdating = True
-		            Me.ListIndex = Globals.OldFolderSel
-		          End If
-		        Else
+		        If App.DocsFolder <> Nil Then
 		          InputBox.Message App.T.Translate("errors/create_songs_folder", App.DocsFolder.Child(App.STR_SONGS).AbsolutePath)
-		          Globals.Status_SongsFolderUpdating = True
-		          Me.ListIndex = Globals.OldFolderSel
+		        Else
+		          MsgBox App.T.Translate("errors/no_docs_folder", "")
 		        End If
+		        
+		        Me.ListIndex = -1
+		        Globals.OldFolderSel = -1
 		      End If
 		      '--
 		      
 		    Else
-		      If InputBox.AskYN(App.T.Translate("questions/no_folder/@caption", App.DocsFolder.Child(App.STR_SONGS).AbsolutePath + "\" + ReplaceAll(Me.Text, "/", "\"))) Then
-		        If NOT FileUtils.CreateFolderTree(App.DocsFolder.Child(App.STR_SONGS), Me.Text) Then
-		          Globals.Status_SongsFolderUpdating = True
-		          Me.ListIndex = Globals.OldFolderSel
+		      If App.DocsFolder <> Nil Then
+		        If InputBox.AskYN(App.T.Translate("questions/no_folder/@caption", App.DocsFolder.Child(App.STR_SONGS).AbsolutePath + "\" + ReplaceAll(Me.Text, "/", "\"))) Then
+		          If NOT FileUtils.CreateFolderTree(App.DocsFolder.Child(App.STR_SONGS), Me.Text) Then
+		            Me.ListIndex = -1
+		            Globals.OldFolderSel = -1
+		          End If
+		        Else
+		          Me.ListIndex = -1
+		          Globals.OldFolderSel = -1
 		        End If
 		      Else
-		        Globals.Status_SongsFolderUpdating = True
-		        Me.ListIndex = Globals.OldFolderSel
+		        MsgBox App.T.Translate("errors/no_docs_folder", "")
 		      End If
+		      
 		    End If
-		    
 		  End If
-		  
 		  
 		  If Globals.OldFolderSel = Me.ListIndex Then
 		    Return
 		  end If
-		  
-		  If Globals.Status_SongsFolderUpdating Then Globals.Status_SongsFolderUpdating = False
 		  
 		  Globals.OldFolderSel = Me.ListIndex
 		  '--
@@ -12539,42 +13163,6 @@ End
 #tag EndEvents
 #tag Events btn_song_export
 	#tag Event
-		Sub Action()
-		  Dim i As Integer
-		  Dim dlg as New SelectFolderDialog
-		  Dim f, g as FolderItem
-		  Dim output, goutput As TextOutputStream
-		  Dim song As XmlDocument
-		  
-		  'Ask if user wants to save
-		  If NOT ActionSongAskSave Then Return 'User Canceled
-		  
-		  'build dialog
-		  dlg.ActionButtonCaption = App.T.Translate("shared/ok/@caption")
-		  dlg.CancelButtonCaption = App.T.Translate("shared/cancel/@caption")
-		  dlg.InitialDirectory = App.AppDocumentsFolder
-		  dlg.PromptText = App.T.Translate("shared/export_to/@caption")
-		  dlg.Title = App.T.Translate("shared/browse_for/@caption")
-		  
-		  f = dlg.ShowModal() 'show dialog
-		  If f <> Nil Then
-		    App.MouseCursor = System.Cursors.Wait
-		    output = TextOutputStream.Create(f.Child(MakeSafeURLName(lst_songs_songs.Text, False) + ".html"))
-		    song = SmartML.XDocFromFile(Songs.GetFile(lst_songs_songs.CellTag(lst_songs_songs.ListIndex ,0) + lst_songs_songs.List(lst_songs_songs.ListIndex)))
-		    If output <> Nil And song <> Nil Then
-		      output.Write SongML.ToHTML(song.DocumentElement)
-		      If goutput <> Nil Then goutput.WriteLine "<li><a href=""" + MakeSafeURLName(lst_songs_songs.List(i), True) + ".html"">" + lst_songs_songs.List(i) + "</a></li>"
-		      output.Close
-		    End If
-		    App.MouseCursor = Nil
-		    g = App.AppFolder.Child("OpenSong Settings").Child("style.css")
-		    If g <> Nil Then g.CopyFileTo f
-		    
-		    InputBox.Message App.T.Translate("shared/done/@caption")
-		  End If
-		End Sub
-	#tag EndEvent
-	#tag Event
 		Sub MouseEnter()
 		  SetHelp "songs_mode/selected_song/export"
 		End Sub
@@ -12587,6 +13175,11 @@ End
 	#tag Event
 		Sub Open()
 		  Me.SetIcon filesaveaspic, filesaveasmask
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub Action()
+		  ActionSongExport
 		End Sub
 	#tag EndEvent
 #tag EndEvents
@@ -12853,37 +13446,6 @@ End
 #tag EndEvents
 #tag Events btn_songs_song_folders_add
 	#tag Event
-		Sub Action()
-		  Dim f As FolderItem
-		  Dim t As String
-		  Dim i As Integer
-		  
-		  t = InputBox.Input(App.T.Translate("questions/new_name/@caption"), "")
-		  If Len(t) > 0 Then
-		    If Not FileUtils.IsSafeFileName(t) Then
-		      InputBox.Message App.T.Translate("errors/bad_file_name", t)
-		      Return
-		    End If
-		    
-		    If pop_songs_song_folders.ListIndex >= 2 Then t = pop_songs_song_folders.Text + "/" + t
-		    f = Songs.AddFolder(t)
-		    
-		    If f = Nil Then
-		      InputBox.Message App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", t)
-		      Return
-		    End If
-		    
-		    If UBound(Songs.GetFolders(pop_songs_song_folders)) = 0 Then
-		    End If
-		    
-		    For i = 0 To pop_songs_song_folders.ListCount - 1
-		      If StrComp(pop_songs_song_folders.List(i), t, 1) = 0 Then pop_songs_song_folders.ListIndex = i
-		    Next i
-		  End If
-		  
-		End Sub
-	#tag EndEvent
-	#tag Event
 		Sub MouseEnter()
 		  SetHelp "songs_mode/song_folders/new"
 		End Sub
@@ -12898,22 +13460,13 @@ End
 		  Me.SetIcon addpic, addmask
 		End Sub
 	#tag EndEvent
-#tag EndEvents
-#tag Events btn_songs_song_folders_delete
 	#tag Event
 		Sub Action()
-		  If pop_songs_song_folders.ListIndex <= 1 Then Return
-		  
-		  If InputBox.Ask(App.T.Translate("questions/delete/@caption", pop_songs_song_folders.Text)) Then
-		    If Not Songs.DeleteFolder(pop_songs_song_folders.Text) Then
-		      InputBox.Message App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", pop_songs_song_folders.Text)
-		    Else
-		      pop_songs_song_folders.RemoveRow pop_songs_song_folders.ListIndex
-		      pop_songs_song_folders.ListIndex = 0
-		    End If
-		  End If
+		  ActionSongFolderAdd
 		End Sub
 	#tag EndEvent
+#tag EndEvents
+#tag Events btn_songs_song_folders_delete
 	#tag Event
 		Sub MouseEnter()
 		  SetHelp "songs_mode/song_folders/delete"
@@ -12929,13 +13482,21 @@ End
 		  Me.SetIcon removepic, removemask
 		End Sub
 	#tag EndEvent
+	#tag Event
+		Sub Action()
+		  ActionSongFolderDelete
+		End Sub
+	#tag EndEvent
 #tag EndEvents
 #tag Events lst_songs_songs
 	#tag Event
 		Sub Change()
 		  Dim f As FolderItem
-		  Dim xnode As XmlNode
 		  Dim fullpath As String
+		  
+		  If Status_InSongLoading Then
+		    Return
+		  End If
 		  
 		  //++EMP 18 Feb 2006
 		  // If Globals.OldSongSel < 0, then immediately return.
@@ -12971,48 +13532,38 @@ End
 		  End if
 		  
 		  If lst_songs_songs.ListIndex >= 0 Then
+		    '++JRC Check if we have a songs folder if not try to create one
+		    If App.CheckDocumentFolders(App.SONGS_FOLDER) = App.NO_FOLDER Then
+		      If  App.DocsFolder <> Nil Then
+		        InputBox.Message App.T.Translate("errors/create_songs_folder", App.DocsFolder.AbsolutePath + App.STR_SONGS)
+		      Else
+		        InputBox.Message App.T.Translate("errors/no_docs_folder", "")
+		      End If
+		      lst_songs_songs.ListIndex = -1
+		      Return
+		    End If
+		    
+		    '++JRC If Songs is Nil, try to generate FolderDB
+		    If Songs = Nil Then
+		      If App.DocsFolder <> Nil Then
+		        Songs = New FolderDB(App.DocsFolder.Child(App.STR_SONGS))
+		      Else
+		        InputBox.Message App.T.Translate("errors/no_docs_folder", "")
+		        lst_songs_songs.ListIndex = -1
+		        Return
+		      End If
+		      If Songs = Nil Then
+		        'Songs is still Nil, return (should never get here but we probably should
+		        'give some error message anyway ;)
+		        lst_songs_songs.ListIndex = -1
+		        Return
+		      End If
+		    End If
+		    
 		    'f = Songs.GetFile(pop_songs_song_folders.Text + "/" + lst_songs_songs.Text)
 		    fullpath = lst_songs_songs.CellTag(Me.ListIndex, 0).StringValue + lst_songs_songs.Text
-		    f = Songs.GetFile(fullpath)
+		    Call LoadSong(Songs.GetFile(fullpath))
 		    
-		    If f <> Nil And f.Exists Then
-		      App.MouseCursor = System.Cursors.Wait
-		      CurrentSong = SmartML.XDocFromFile(f)
-		      
-		      // Open as Object...
-		      'CurrentSongObj = New Song
-		      'Call CurrentSongObj.Load(f) // We'll ignore error handling for the moment.  Not a good thing.
-		      
-		      'Changed save current song filename
-		      Globals.OldSongFileName = fullpath
-		      //++EMP 8/9/05 -- Show which folder this song is found in
-		      edt_songs_curr_folder.Text = lst_songs_songs.CellTag(Me.ListIndex, 0).StringValue
-		      If right(edt_songs_curr_folder.Text, 1) = "/" Then edt_songs_curr_folder.Text = Left(edt_songs_curr_folder.Text, Len(edt_songs_curr_folder.Text) - 1)
-		      //--
-		      App.MouseCursor = Nil
-		      If CurrentSong <> Nil  Then
-		        Status_SongOpen = False ' Just to keep the field changes from calling EnableMenuItems
-		        LoadSongFields
-		        Status_SongOpen = True
-		        Status_SongChanged = False
-		        EnableMenuItems
-		      Else
-		        // Dummy up a doc to avoid a Nil object
-		        CurrentSong = New XmlDocument
-		        xnode = CurrentSong.AppendChild(CurrentSong.CreateElement("song"))
-		        SmartML.SetValue xnode, "title", f.Name
-		        LoadSongFields
-		        Status_SongOpen = True
-		        Status_SongChanged = False
-		        EnableMenuItems
-		        SmartML.DisplayError
-		      End If
-		    Else
-		      InputBox.Message App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", lst_songs_songs.Text)
-		      Status_SongOpen = False
-		      Status_SongChanged = False
-		      EnableMenuItems
-		    End If
 		  Else
 		    Status_SongOpen = False
 		    Status_SongChanged = False
@@ -13100,6 +13651,29 @@ End
 #tag Events pop_sets_sets
 	#tag Event
 		Sub Change()
+		  If Status_InSetLoading Then
+		    Return
+		  End If
+		  
+		  If Me.ListIndex < 0 Then
+		    CurrentSetIndex = -1
+		    Return
+		  End If
+		  
+		  '++JRC Check if we have a sets folder if not try to create one
+		  If App.CheckDocumentFolders(App.SETS_FOLDER) = App.NO_FOLDER Then
+		    If App.DocsFolder <> Nil Then
+		      InputBox.Message App.T.Translate("errors/create_sets_folder", App.DocsFolder.Child(App.STR_SETS).AbsolutePath)
+		      Me.ListIndex = -1
+		      CurrentSetIndex = -1
+		      Return
+		    Else
+		      MsgBox App.T.Translate("errors/no_docs_folder", "")
+		    End If
+		    
+		  End If
+		  '--
+		  
 		  'Ask if user wants to save
 		  If NOT ActionSetAskSave Then
 		    If CurrentSetIndex >= 0 Then
@@ -13118,67 +13692,9 @@ End
 		    Return
 		  End If
 		  
-		  Dim f As FolderItem
-		  Dim xnode As XmlNode
-		  Dim slideType As String
-		  
-		  lst_set_items.DeleteAllRows
-		  
-		  f = App.DocsFolder.Child("Sets").Child(pop_sets_sets.Text)
-		  CurrentSet = SmartML.XDocFromFile(f)
-		  If CurrentSet = Nil Then
-		    App.MouseCursor = Nil
-		    CurrentSet = New XmlDocument
-		    xnode = CurrentSet.AppendChild(CurrentSet.CreateElement("set"))
-		    SmartML.DisplayError
-		  End If
-		  // This section gets the /set/@name value from the current document
-		  // Since this is a non-existent attribute in the released version, add it if
-		  // it's not already there.
-		  //EMP 10/9/04
-		  dim nameAtt as xmlattribute
-		  
-		  nameAtt = CurrentSet.DocumentElement.GetAttributeNode("name")
-		  
-		  if nameatt = Nil then
-		    CurrentSet.DocumentElement.SetAttribute("name", me.text)
-		  end if
-		  
-		  CurrentSetName = me.text
-		  //--
-		  Dim slide_groups, xchild As XmlNode
-		  
-		  slide_groups = SmartML.GetNode(CurrentSet.DocumentElement, "slide_groups", True)
-		  If slide_groups = Nil Then Return
-		  
-		  xchild = slide_groups.FirstChild
-		  While xchild <> Nil
-		    '++JRC Fix broken set item type displaying in set list
-		    slideType = App.T.Translate("sets_mode/items/" + xchild.GetAttribute("type") + "/@caption")
-		    If slideType = "" Then // unknown slide type
-		      App.DebugWriter.Write "MainWindow.pop_sets_sets.Change: Unknown slide type '" + xchild.GetAttribute("type") + "/@caption" + "'", 1
-		      slideType = "*ERROR*"
-		    End If
-		    lst_set_items.AddRow xchild.GetAttribute("name") + " " + slideType
-		    lst_set_items.CellTag(lst_set_items.ListCount-1, 0) = xchild.GetAttribute("type")
-		    xchild = xchild.NextSibling
-		  Wend
-		  
-		  '++JRC Save backup copy
-		  TempSet = New XmlDocument
-		  TempSet.AppendChild TempSet.ImportNode(CurrentSet.DocumentElement, True)
-		  '--
-		  
-		  Status_SetOpen = True
-		  Status_SetChanged = False
-		  Status_InSetOpen = False
-		  Status_InSetChanged = False
-		  '++JRC Correct issue where the first and last item in a set weren't accessable
-		  CurrentInSetItem = -1
-		  '--
-		  EnableMenuItems
-		  
+		  Call LoadSet(me.Text)
 		  App.MouseCursor = Nil
+		  
 		End Sub
 	#tag EndEvent
 	#tag Event
@@ -13415,24 +13931,6 @@ End
 #tag EndEvents
 #tag Events btn_set_delete
 	#tag Event
-		Sub Action()
-		  If Not ActionSetAskSave Then Return
-		  If InputBox.Ask(App.T.Translate("questions/delete/@caption", pop_sets_sets.Text)) Then
-		    App.DocsFolder.Child("Sets").Child(pop_sets_sets.Text).Delete
-		    
-		    pop_sets_sets.RemoveRow pop_sets_sets.ListIndex
-		    pop_sets_sets.ListIndex = -1
-		    
-		    Status_SetOpen = False
-		    Status_SetChanged = False
-		    Status_InSetOpen = False
-		    Status_InSetChanged = False
-		    Status_InSetEditable = False
-		    EnableMenuItems
-		  End If
-		End Sub
-	#tag EndEvent
-	#tag Event
 		Sub MouseEnter()
 		  SetHelp "sets_mode/current_set/delete"
 		End Sub
@@ -13445,6 +13943,11 @@ End
 	#tag Event
 		Sub Open()
 		  Me.SetIcon editdeletepic, editdeletemask
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub Action()
+		  ActionSetDelete
 		End Sub
 	#tag EndEvent
 #tag EndEvents
@@ -13482,53 +13985,6 @@ End
 #tag EndEvents
 #tag Events btn_set_rename
 	#tag Event
-		Sub Action()
-		  Dim t as String
-		  Dim old as String
-		  Dim f as FolderItem
-		  Dim i As Integer
-		  
-		  'Ask if user wants to save
-		  If NOT ActionSetAskSave Then Return 'User Canceled
-		  
-		  old = pop_sets_sets.Text
-		  
-		  t = InputBox.Input(App.T.Translate("questions/rename/@caption", old), old)
-		  If Len(t) > 0 Then
-		    If Not FileUtils.IsSafeFileName(t) Then
-		      InputBox.Message App.T.Translate("errors/bad_file_name", t)
-		      Return
-		    End If
-		    
-		    f = App.DocsFolder.Child("Sets").Child(t)
-		    If f.Exists Then
-		      InputBox.Message App.T.Translate("folderdb_errors/error[@code=3]", f.AbsolutePath) ' already exists
-		      Exit
-		    End If
-		    
-		    f = App.DocsFolder.Child("Sets").Child(old)
-		    If Not f.Exists Then
-		      InputBox.Message App.T.Translate("folderdb_errors/error[@code=8]", f.AbsolutePath) ' could not find file
-		      Exit
-		    End If
-		    f.Name = t
-		    i = pop_sets_sets.ListIndex
-		    pop_sets_sets.RemoveRow i
-		    pop_sets_sets.InsertRow i, t
-		    '++JRC Prevent Second save prompt
-		    If Status_SetChanged Then
-		      Status_SetChanged = false
-		      pop_sets_sets.ListIndex = i
-		      Status_SetChanged = true
-		      EnableMenuItems
-		    else
-		      pop_sets_sets.ListIndex = i
-		    End If
-		    '--
-		  End If
-		End Sub
-	#tag EndEvent
-	#tag Event
 		Sub MouseEnter()
 		  SetHelp "sets_mode/current_set/rename"
 		End Sub
@@ -13541,6 +13997,11 @@ End
 	#tag Event
 		Sub Open()
 		  Me.SetIcon redopic, redomask
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub Action()
+		  ActionSetRename
 		End Sub
 	#tag EndEvent
 #tag EndEvents
@@ -13822,68 +14283,6 @@ End
 #tag EndEvents
 #tag Events btn_set_add_song
 	#tag Event
-		Sub Action()
-		  Dim f As FolderItem
-		  Dim SongPath As String
-		  Dim FolderPath As String
-		  Dim Where As Integer
-		  Dim presentation As String
-		  
-		  Dim xgroups, newGroup As XmlNode
-		  xgroups = SmartML.GetNode(CurrentSet.DocumentElement, "slide_groups", True)
-		  
-		  Where = lst_set_items.ListIndex
-		  
-		  f = SongPickerWindow.Popup(presentation)
-		  If f <> Nil Then
-		    Status_SetChanged = True
-		    'Status_InSetChanged = False
-		    ' No need to EnableMenuItems, since the following selection change will call it
-		  End If
-		  
-		  While f <> Nil
-		    If lst_set_items.ListIndex >= 0 Then
-		      Where = lst_set_items.ListIndex + 1
-		    Else
-		      Where = lst_set_items.ListCount
-		    End If
-		    newGroup = SmartML.InsertChild(xgroups, "slide_group", Where)
-		    SmartML.SetValue newGroup, "@name", f.Name
-		    SmartML.SetValue newGroup, "@type", "song"
-		    SmartML.SetValue newGroup, "@presentation", presentation
-		    //++
-		    // EMP, May 2006
-		    //
-		    // Add a path attribute relative to the base songs directory.  Otherwise, two instances
-		    // of the same song name in a parent/child folder relationship will never find the song
-		    // in the child folder.
-		    //
-		    SongPath = f.Parent.AbsolutePath
-		    FolderPath = MainWindow.Songs.GetRootFolder.AbsolutePath
-		    SongPath = Mid(SongPath, Len(FolderPath) + 1) //Take off the leading path separator
-		    // Change path separator to forward slant "/" to match separator in FolderDB
-		    // This is platform specific
-		    #If TargetWin32
-		      SongPath = ReplaceAll(SongPath, "\", "/")
-		    #ElseIf TargetMacOS
-		      SongPath = ReplaceAll(SongPath, ":", "/")
-		    #EndIf
-		    SmartML.SetValue newGroup, "@path", SongPath
-		    //--
-		    If lst_set_items.ListIndex >= 0 Then
-		      lst_set_items.InsertRow Where, f.Name + " "  + App.T.Translate("sets_mode/items/song/@caption")
-		    Else
-		      lst_set_items.AddRow f.Name + " " + App.T.Translate("sets_mode/items/song/@caption")
-		    End If
-		    
-		    lst_set_items.ListIndex = Where
-		    f = SongPickerWindow.Popup(presentation)
-		  Wend
-		  lst_set_items.ListIndex = Where
-		  lst_set_items.SetFocus
-		End Sub
-	#tag EndEvent
-	#tag Event
 		Sub MouseEnter()
 		  SetHelp "sets_mode/new_item/add_song"
 		End Sub
@@ -13896,6 +14295,11 @@ End
 	#tag Event
 		Sub Open()
 		  Me.SetIcon midipic, midimask
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub Action()
+		  ActionSetAddSong
 		End Sub
 	#tag EndEvent
 #tag EndEvents
@@ -14226,7 +14630,7 @@ End
 		    
 		    lst_external_videolan_preset.DeleteAllRows
 		    For i = 0 To App.VideolanPresetList.Count()-1
-		      lst_external_videolan_preset.AddRow CStr(App.VideolanPresetList.Key(i))
+		      lst_external_videolan_preset.AddRow App.VideolanPresetList.Key(i).StringValue
 		    Next i
 		    
 		    Select Case SmartML.GetValue(xgroup, "@application")
@@ -16299,7 +16703,7 @@ End
 		    If obj.PictureAvailable() Then
 		      rejectdrop = False
 		    ElseIf obj.FolderItemAvailable() Then
-		      rejectdrop = ( obj.FolderItem().OpenAsPicture() = Nil )
+		      rejectdrop = ( Picture.Open(obj.FolderItem()) = Nil )
 		    ElseIf obj.PrivateRawData("StIm")<>"" Then
 		      rejectdrop = False
 		    End If

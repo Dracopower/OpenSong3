@@ -112,7 +112,7 @@ Protected Class FolderDB
 		  
 		  // by Mike Bailey ... http://forums.realbasic.com/viewtopic.php?t=4637
 		  
-		  dim bit as integer
+		  dim bit as uint64
 		  bit = bitwise.shiftLeft( 1, offset-1 )
 		  return (bitwise.bitAnd( number, bit ) > 0)
 		  
@@ -418,7 +418,7 @@ Protected Class FolderDB
 		    
 		    If list <> Nil Then
 		      'we currently don't use array if the list is Nil
-		      list.AddRow CStr(fileDict(i).Value("Name"))
+		      list.AddRow fileDict(i).Value("Name").StringValue
 		      list.CellTag(list.LastIndex, 0) = ReplaceAll(path + fileDict(i).Value("Path"), "\", "/")
 		    else
 		      'list is Nil, array WILL be used
