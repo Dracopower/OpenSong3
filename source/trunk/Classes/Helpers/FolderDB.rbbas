@@ -431,6 +431,18 @@ Protected Class FolderDB
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
+		Function GetFilterAll() As string
+		  Return FilterAll
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function GetFilterMain() As string
+		  Return FilterMain
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
 		Function GetFolders(popup As PopupMenu = Nil) As String()
 		  Dim temp() As String
 		  

@@ -1,4 +1,6 @@
-﻿* Extended Automation API implementation: added load and present actions for song and set. (Vwout)
+﻿* Fix in song loading, files in 'Main' or when 'All' is selected could not be loaded either from OpenSong or using the API. (Vwout)
+
+* Extended Automation API implementation: added load and present actions for song and set. (Vwout)
 
 * Small bugfixes in Automation API. (Vwout)
 

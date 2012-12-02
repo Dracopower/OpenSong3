@@ -304,6 +304,8 @@ Begin Menu MainMenu
          SpecialMenu = 0
          Text = "Songs Mode"
          Index = -2147483648
+         ShortcutKey = "-"
+         Shortcut = "Cmd+-"
          MenuModifier = True
          AutoEnable = True
       End

@@ -191,14 +191,15 @@ Implements REST.RESTResource
 		  Dim result As New REST.RESTresponse
 		  
 		  Select Case protocolHandler.Action()
-		  Case "", _
-		    "list"
-		    
+		  Case ""
 		    If protocolHandler.Identifier().Len() = 0 Then
 		      result = ListSongs(protocolHandler.Parameter("folder", ""))
 		    Else
 		      result = GetSong(protocolHandler.Identifier(), protocolHandler.Parameter("folder", ""))
 		    End If
+		    
+		  Case "list"
+		    result = ListSongs(protocolHandler.Parameter("folder", ""))
 		    
 		  Case "folders"
 		    result = ListFolders()
@@ -206,7 +207,7 @@ Implements REST.RESTResource
 		  Case "detail"
 		    result = GetSong(protocolHandler.Identifier(), protocolHandler.Parameter("folder", ""))
 		    
-		  case "present", _
+		  Case "present", _
 		    "load"
 		    
 		    Select Case protocolHandler.Method()
@@ -234,8 +235,12 @@ Implements REST.RESTResource
 		    End Select
 		    
 		  Else
-		    result.response = "The requested action is not available."
-		    result.status = "404 Not Found"
+		    If protocolHandler.Identifier().Len() = 0 Then
+		      result = GetSong(protocolHandler.Action(), protocolHandler.Parameter("folder", ""))
+		    Else
+		      result.response = "The requested action is not available."
+		      result.status = "404 Not Found"
+		    End If
 		  End Select
 		  
 		  Return result

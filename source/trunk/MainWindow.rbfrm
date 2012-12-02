@@ -10450,7 +10450,7 @@ End
 		  If Not status Then
 		    InputBox.Message App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", lst_songs_songs.Text, folder)
 		  Else
-		    'If pop_songs_song_folders.Text <> "( " + App.T.Translate("songs_mode/song_folders/filter_all/@caption") + " )" Then
+		    'If pop_songs_song_folders.Text <> Songs.GetFilterAll() Then
 		    'lst_songs_songs.RemoveRow lst_songs_songs.ListIndex
 		    // Open the song at the same index if possible
 		    'If listindex < lst_songs_songs.ListCount Then
@@ -10729,7 +10729,7 @@ End
 		  If Not status Then
 		    InputBox.Message App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", lst_songs_songs.Text, folder)
 		  Else
-		    If pop_songs_song_folders.Text <> "( " + App.T.Translate("songs_mode/song_folders/filter_all/@caption") + " )" Then
+		    If pop_songs_song_folders.Text <> Songs.GetFilterAll() Then
 		      lst_songs_songs.RemoveRow lst_songs_songs.ListIndex
 		      // Open the song at the same index if possible
 		      If listindex < lst_songs_songs.ListCount Then
@@ -11653,15 +11653,14 @@ End
 		  // must be passed to a Songs FolderDB to return a FolderItem pointing
 		  // to it.  This blows up if the folder being used is the main folder.
 		  //--
-		  Dim PseudoFolder As String
+		  
 		  Dim RealPath As String = ""
-		  PseudoFolder = App.T.Translate("songs_mode/song_folders/filter_all/@caption")
-		  If FolderName <> "( " + PseudoFolder + " )" Then
-		    PseudoFolder = App.T.Translate("songs_mode/song_folders/filter_main/@caption")
-		    If FolderName <> "( " + PseudoFolder + " )" Then
-		      RealPath = FolderName
-		    End If
+		  
+		  If FolderName <> Songs.GetFilterAll() And _
+		    FolderName <> Songs.GetFilterMain() Then
+		    RealPath = FolderName
 		  End If
+		  
 		  Return RealPath
 		End Function
 	#tag EndMethod
@@ -12129,14 +12128,29 @@ End
 		    folderPath = ReplaceAll(folderPath, "\", "/")
 		    
 		    Dim index As Integer = -1
-		    For i As Integer = 0 To pop_songs_song_folders.ListCount-1
-		      If pop_songs_song_folders.List(i) = folderPath Or _
-		        pop_songs_song_folders.List(i) = folderPath.ReplaceAll("/", "\") Then
-		        index = i
-		        folderPath = pop_songs_song_folders.List(i)
-		        Exit
+		    If folderPath = "" Then
+		      If pop_songs_song_folders.Text = Songs.GetFilterAll() Or _
+		        pop_songs_song_folders.Text = Songs.GetFilterMain() Then
+		        index = pop_songs_song_folders.ListIndex
+		      Else
+		        For i As Integer = 0 To pop_songs_song_folders.ListCount-1
+		          If pop_songs_song_folders.List(i) = Songs.GetFilterMain() Then
+		            index = i
+		            folderPath = Songs.GetFilterMain()
+		            Exit
+		          End If
+		        Next
 		      End If
-		    Next
+		    Else
+		      For i As Integer = 0 To pop_songs_song_folders.ListCount-1
+		        If pop_songs_song_folders.List(i) = folderPath Or _
+		          pop_songs_song_folders.List(i) = folderPath.ReplaceAll("/", "\") Then
+		          index = i
+		          folderPath = pop_songs_song_folders.List(i)
+		          Exit
+		        End If
+		      Next
+		    End If
 		    
 		    If index > -1 Then
 		      If pop_songs_song_folders.ListIndex <> index Then
@@ -12150,7 +12164,8 @@ End
 		      
 		      index = -1
 		      For i As Integer = 0 To lst_songs_songs.ListCount-1
-		        If lst_songs_songs.List(i) = f.Name Then
+		        If lst_songs_songs.CellTag(i, 0).StringValue = folderPath And _
+		          lst_songs_songs.List(i) = f.Name Then
 		          index = i
 		          Exit
 		        End If
@@ -12666,8 +12681,7 @@ End
 		  Songs.SetBuiltinFilters "( " + App.T.Translate("songs_mode/song_folders/filter_all/@caption") + " )", _
 		  "( " + App.T.Translate("songs_mode/song_folders/filter_main/@caption") + " )"
 		  
-		  If UBound(Songs.GetFolders(pop_songs_song_folders)) = 0 Then
-		  End If
+		  Call Songs.GetFolders(pop_songs_song_folders)
 		  
 		  pop_songs_song_folders.ListIndex = OldIndex
 		  'Rebuild old File Name
@@ -12977,7 +12991,8 @@ End
 		  f = FileUtils.RelativePathToFolderItem(App.DocsFolder.Child(App.STR_SONGS), Me.Text)
 		  
 		  If f = Nil Or NOT f.Exists Then
-		    If Me.Text = "( " + App.T.Translate("songs_mode/song_folders/filter_all/@caption") + " )" Or Me.Text = "( " + App.T.Translate("songs_mode/song_folders/filter_main/@caption") + " )" Then
+		    If Me.Text = Songs.GetFilterAll() Or _
+		      Me.Text = Songs.GetFilterMain() Then
 		      'Check if we have a songs folder if not try to create one
 		      If App.CheckDocumentFolders(App.SONGS_FOLDER) = App.NO_FOLDER Then
 		        If App.DocsFolder <> Nil Then
@@ -14764,10 +14779,12 @@ End
 		  If SmartML.GetValue(currentSetItem, "@type") <> "song" Then Return
 		  path = SmartML.GetValue(currentSetItem, "@path")
 		  path = Left(path, path.Len - 1) // Chop trailing /
+		  
 		  songModePath = pop_songs_song_folders.Text
-		  If songModePath = "( " + App.T.Translate("songs_mode/song_folders/filter_main/@caption") + " )" Then songModePath = ""
+		  If songModePath = Songs.GetFilterAll() Then songModePath = ""
+		  
 		  Select Case songModePath
-		  Case "( " + App.T.Translate("songs_mode/song_folders/filter_all/@caption") + " )"
+		  Case Songs.GetFilterMain()
 		    // Nothing to do, but it's a special case so it has to be detected
 		  Case ""
 		    If path <> "" Then SetSongEditorPath(path)
