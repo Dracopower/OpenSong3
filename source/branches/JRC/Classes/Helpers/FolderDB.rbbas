@@ -10,6 +10,13 @@ Protected Class FolderDB
 		  
 		  f = FileUtils.RelativePathToFolderItem(Folder, path)
 		  
+		  '++JRC Prevent NilObjectException
+		  If f = Nil Then
+		    ErrorCode = 4
+		    ErrorString = "Could not find path to folder."
+		    Return Nil
+		  End If
+		  
 		  If f.Exists Then
 		    ErrorCode = 3
 		    ErrorString = "File already exists."
@@ -105,7 +112,7 @@ Protected Class FolderDB
 		  
 		  // by Mike Bailey ... http://forums.realbasic.com/viewtopic.php?t=4637
 		  
-		  dim bit as integer
+		  dim bit as uint64
 		  bit = bitwise.shiftLeft( 1, offset-1 )
 		  return (bitwise.bitAnd( number, bit ) > 0)
 		  
@@ -411,7 +418,7 @@ Protected Class FolderDB
 		    
 		    If list <> Nil Then
 		      'we currently don't use array if the list is Nil
-		      list.AddRow fileDict(i).Value("Name")
+		      list.AddRow fileDict(i).Value("Name").StringValue
 		      list.CellTag(list.LastIndex, 0) = ReplaceAll(path + fileDict(i).Value("Path"), "\", "/")
 		    else
 		      'list is Nil, array WILL be used
@@ -420,6 +427,18 @@ Protected Class FolderDB
 		  Next
 		  
 		  Return fileList
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function GetFilterAll() As string
+		  Return FilterAll
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function GetFilterMain() As string
+		  Return FilterMain
 		End Function
 	#tag EndMethod
 

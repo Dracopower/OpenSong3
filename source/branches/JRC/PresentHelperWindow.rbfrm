@@ -328,6 +328,7 @@ Begin Window PresentHelperWindow
       LockTop         =   False
       Multiline       =   True
       Scope           =   0
+      Selectable      =   False
       TabIndex        =   3
       TabPanelIndex   =   0
       TabStop         =   True
@@ -338,6 +339,7 @@ Begin Window PresentHelperWindow
       TextSize        =   9
       TextUnit        =   0
       Top             =   212
+      Transparent     =   False
       Underline       =   False
       Visible         =   True
       Width           =   101
@@ -593,7 +595,6 @@ Begin Window PresentHelperWindow
       Width           =   160
    End
    Begin Label lbl_preview
-      Active          =   ""
       AutoDeactivate  =   True
       Bold            =   ""
       DataField       =   ""
@@ -621,16 +622,14 @@ Begin Window PresentHelperWindow
       TextColor       =   &h000000
       TextFont        =   "System"
       TextSize        =   0
+      TextUnit        =   0
       Top             =   204
       Transparent     =   False
       Underline       =   ""
       Visible         =   True
       Width           =   332
-      Window          =   0
-      _mWindow        =   0
    End
    Begin Label lbl_preview_next
-      Active          =   ""
       AutoDeactivate  =   True
       Bold            =   ""
       DataField       =   ""
@@ -658,13 +657,12 @@ Begin Window PresentHelperWindow
       TextColor       =   &h000000
       TextFont        =   "System"
       TextSize        =   0
+      TextUnit        =   0
       Top             =   204
       Transparent     =   False
       Underline       =   ""
       Visible         =   True
       Width           =   160
-      Window          =   0
-      _mWindow        =   0
    End
 End
 #tag EndWindow
@@ -712,9 +710,20 @@ End
 		  App.T.TranslateWindow Me, "presentation_helper", App.TranslationFonts
 		  txt_shortcut_keys.Caption = App.T.Translate("presentation_helper/keys")
 		  
+		  
 		  Dim screenWidth As Double = OSScreen(PresentWindow.PresentScreen).Width
 		  Dim screenHeight As Double =  OSScreen(PresentWindow.PresentScreen).Height
 		  m_screenRatio = screenWidth / screenHeight
+		  
+		  '++JRC
+		  Self.Title = Self.Title + " - " + SmartML.GetValue(PresentWindow.CurrentSet.DocumentElement, "@name", False)
+		  
+		  If UBound(BibleFactory.BibleList) < 0 Then
+		    btn_action_scripture.Enabled = False
+		  Else
+		    btn_action_scripture.Enabled = True
+		  End If
+		  '
 		  
 		  If SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "monitors/@force_4_3_preview", False, False) Then
 		    If m_screenRatio > 1.0 Then
@@ -1086,9 +1095,8 @@ End
 		Sub Change()
 		  Dim midpoint As Integer
 		  If Me.ListIndex >= 0 Then
-		    PresentWindow.CurrentSlide = Me.ListIndex + 1
-		    PresentWindow.XCurrentSlide = SetML.GetSlide(PresentWindow.CurrentSet, Me.ListIndex + 1)
-		    PresentWindow.ResetPaint PresentWindow.XCurrentSlide
+		    Call PresentWindow.GoSlide(Me.ListIndex + 1)
+		    
 		    //++
 		    // Try to keep the active slide in the center of the visible items
 		    //--

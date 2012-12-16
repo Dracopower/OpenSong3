@@ -982,6 +982,8 @@ Module SongML
 		  tempFont.OntoGraphics g
 		  g.TextSize = Round(g.TextSize * zoom)
 		  y = y + g.TextHeight ' Skip past the chord line
+		  y = y + (SmartML.GetValueN(App.MyPrintSettings.DocumentElement, "layout/chords/@space_before") * zoom)
+		  y = y + (SmartML.GetValueN(App.MyPrintSettings.DocumentElement, "layout/chords/@space_after") * zoom)
 		  
 		  ' Skip the capo line if needed
 		  If SmartML.GetValueB(songDoc.DocumentElement, "capo/@print") Then
@@ -989,6 +991,8 @@ Module SongML
 		    tempFont.OntoGraphics g
 		    g.TextSize = Round(g.TextSize * zoom)
 		    y = y + g.TextHeight ' Skip past the chord line
+		    y = y + (SmartML.GetValueN(App.MyPrintSettings.DocumentElement, "layout/capo/@space_before") * zoom)
+		    y = y + (SmartML.GetValueN(App.MyPrintSettings.DocumentElement, "layout/capo/@space_after") * zoom)
 		  End If
 		  
 		  tempFont = SmartML.GetValueF(App.MyPrintSettings.DocumentElement, "lyrics")
@@ -999,6 +1003,7 @@ Module SongML
 		  
 		  lineTop = y
 		  For j = 2 To lineCount ' Loop through the lines and print
+		    lineTop = lineTop + (SmartML.GetValueN(App.MyPrintSettings.DocumentElement, "layout/lyrics/@space_before") * zoom)
 		    prefix = Left(slices(j),1)
 		    lineLeft = x + g.StringWidth(prefix)
 		    ts = New StringShape
@@ -1014,6 +1019,7 @@ Module SongML
 		    ts.Bold = tempFont.Bold
 		    If lineLeft > nextLeft Then nextLeft = lineLeft
 		    lineTop = lineTop + g.TextHeight
+		    lineTop = lineTop + (SmartML.GetValueN(App.MyPrintSettings.DocumentElement, "layout/lyrics/@space_after") * zoom)
 		  Next j
 		  
 		  ' Draw the line
@@ -1048,31 +1054,47 @@ Module SongML
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
-		Private Function Draw_SoloChordLine(songDoc As XmlDocument, g As Graphics, x As Integer, y As Integer, ColWidth As Integer, zoom As Double, ByRef chords() As String, ByRef Page As Group2D) As Integer
+		Private Function Draw_SoloChordLine(songDoc As XmlDocument, g As Graphics, x As Single, y As Single, ColWidth As Single, zoom As Double, ByRef chords() As String, ByRef Page As Group2D) As Single
 		  //++
 		  // EMP, 23 March 2006
 		  //  Fix bug where scaling doesn't get applied to font [Bug 1456327]
 		  //  Streamline to quit making calls to GetValueF all the time
+		  //
+		  // EMP, 16 December 2011
+		  //  Add support for spacing before and after lines
+		  //  Slight optimizations
+		  //  Change X & Y calculations to floating point as part of a transition from integer calculations for x, y and font size.
 		  //--
-		  Dim oldY, chordHeight, chordWidth, capoChordHeight, capoChordWidth As Integer
+		  Dim oldY, chordHeight, chordWidth, capoChordHeight, capoChordWidth As Single
 		  Dim ChordFont As FontFace
 		  Dim CapoFont As FontFace
 		  Dim capoChord As String
-		  Dim OneEMSpace As Integer
+		  Dim OneEMSpace As Single
 		  Dim temp As Integer
+		  Dim ChordSpaceBefore, ChordSpaceAfter, CapoSpaceBefore, CapoSpaceAfter As Single
+		  Dim ChordY, CapoY As Single
+		  Dim PrintCapo As Boolean
 		  
 		  Dim s As StringShape
 		  
 		  oldY = y
 		  
-		  CapoFont = SmartML.GetValueF(App.MyPrintSettings.DocumentElement, "capo_chords")
-		  CapoFont.Size = Round(CapoFont.Size * zoom)
-		  CapoFont.OntoGraphics g
-		  OneEMSpace = g.StringWidth("M")
+		  ChordSpaceBefore = SmartML.GetValueN(App.MyPrintSettings.DocumentElement, "layout/chords/@space_before")
+		  ChordSpaceAfter = SmartML.GetValueN(App.MyPrintSettings.DocumentElement, "layout/chords/@space_after")
+		  CapoSpaceBefore = SmartML.GetValueN(App.MyPrintSettings.DocumentElement, "layout/capo/@space_before")
+		  CapoSpaceAfter = SmartML.GetValueN(App.MyPrintSettings.DocumentElement, "layout/capo/@space_after")
+		  PrintCapo = SmartML.GetValueB(SmartML.GetNode(songDoc.DocumentElement, "capo"), "@print")
 		  
 		  ChordFont = SmartML.GetValueF(App.MyPrintSettings.DocumentElement, "chords")
 		  ChordFont.Size = Round(ChordFont.Size * zoom)
 		  ChordFont.OntoGraphics g
+		  ChordY = y + (ChordSpaceAfter * zoom) + g.TextAscent
+		  OneEMSpace = g.StringWidth("M")
+		  
+		  CapoFont = SmartML.GetValueF(App.MyPrintSettings.DocumentElement, "capo_chords")
+		  CapoFont.Size = Round(CapoFont.Size * zoom)
+		  CapoFont.OntoGraphics g
+		  CapoY = ChordY + (ChordSpaceAfter + CapoSpaceBefore) * zoom + g.TextAscent
 		  temp = g.StringWidth("M")
 		  If temp > OneEMSpace Then OneEMSpace = temp
 		  
@@ -1086,18 +1108,15 @@ Module SongML
 		    chordWidth = g.StringWidth(chords(i)) ' Don't get the chords too close together, add a little gap
 		    s = New StringShape
 		    s.x = x + (chordWidth / 2)
-		    y = y + (SmartML.GetValueN(App.MyPrintSettings.DocumentElement, "layout/chords/@space_before") * zoom)
-		    s.y = y + g.TextAscent
-		    y = y + (SmartML.GetValueN(App.MyPrintSettings.DocumentElement, "layout/chords/@space_after") * zoom)
+		    s.y = ChordY
 		    s.Text = chords(i)
 		    ChordFont.OntoStringShape s
 		    Page.Append s
-		    'g.DrawString chords(i), x, y + g.TextHeight - g.TextAscent
 		    
 		    ' Place Capo Chord
 		    
 		    capoChordHeight = 0
-		    If SmartML.GetValueB(SmartML.GetNode(songDoc.DocumentElement, "capo"), "@print") Then
+		    If PrintCapo Then
 		      If MainWindow.pop_song_accidentals.ListIndex = 0 Then
 		        capoChord = SingleTranspose(chords(i), -SmartML.GetValueN(songDoc.DocumentElement, "capo"), True)
 		      Else
@@ -1111,11 +1130,9 @@ Module SongML
 		      CapoFont.OntoStringShape s
 		      s.Text = capoChord
 		      s.x = x + (capoChordWidth / 2)
-		      y = y + (SmartML.GetValueN(App.MyPrintSettings.DocumentElement, "layout/capo/@space_before") * zoom)
-		      s.y = y + chordHeight + g.TextAscent
-		      y = y + (SmartML.GetValueN(App.MyPrintSettings.DocumentElement, "layout/capo/@space_after") * zoom)
+		      s.y = CapoY
 		      Page.Append s
-		      'g.DrawString capoChord, x, y + capoChordHeight + g.TextHeight - g.TextAscent
+		      
 		      If capoChordWidth > chordWidth Then chordWidth = capoChordWidth
 		    End If
 		    
@@ -1123,7 +1140,12 @@ Module SongML
 		    
 		  Next i
 		  
-		  y = y + capoChordHeight + chordHeight
+		  If PrintCapo Then
+		    y = CapoY + (CapoSpaceAfter * zoom)
+		  Else
+		    y = ChordY + (ChordSpaceAfter * zoom)
+		  End If
+		  
 		  Return y - oldY
 		End Function
 	#tag EndMethod
@@ -1155,6 +1177,7 @@ Module SongML
 		  y = y + (SmartML.GetValueN(App.MyPrintSettings.DocumentElement, "layout/lyrics/@space_before") * zoom)
 		  y = y + GraphicsX.DrawFontString(g, tempstring, x, y, tempFont, width, Page)
 		  y = y + (SmartML.GetValueN(App.MyPrintSettings.DocumentElement, "layout/lyrics/@space_after") * zoom)
+		  Return y - oldY
 		End Function
 	#tag EndMethod
 
@@ -1577,17 +1600,230 @@ Module SongML
 		  // Tag HTML with UTF-8 encoding [Bug 1477964]
 		  // Properly encode text in HTML.  Utilizes the HTMLEntityEncode method
 		  // in OpenSongUtils [Bug 1607916]
+		  //
+		  // May 2012, EMP
+		  //   This version is now deprecated.  Please make all changes to the new version that supports HTMLExportOptions
+		  //
 		  //--
-		  'TODO: Configurable Export Options?
-		  CleanLyrics songElement.OwnerDocument
 		  
 		  Dim s As String
 		  Dim lastChar As String
+		  
+		  CleanLyrics songElement.OwnerDocument
 		  
 		  s = "<html><head>" + EndOfLine
 		  s = s + "  <meta http-equiv=""Content-type"" content=""text/html;charset=UTF-8"" />" + EndOfLine
 		  s = s + "  <title>" + SmartML.GetValue(songElement, "title").HTMLEntityEncode + "</title>" + EndOfLine
 		  s = s + "  <link rel=""stylesheet"" href=""style.css"" type=""text/css""/>" + EndOfLine
+		  s = s + "</head>" + EndOfLine + "<body>" + EndOfLine
+		  
+		  s = s + "  <div id=""title"">" + SmartML.GetValue(songElement, "title").HTMLEntityEncode + "</div>" + EndOfLine
+		  s = s + "  <div id=""author"">" + SmartML.GetValue(songElement, "author").HTMLEntityEncode + "</div>" + EndOfLine
+		  '++JRC inlucde hymn number in export
+		  If SmartML.GetValue(songElement, "hymn_number").Len > 0 Then _
+		  s = s + "  <div id=""hymn_number"">" + App.T.Translate("general_song_editor/hymn_number/@caption").HTMLEntityEncode + " " + SmartML.GetValue(songElement, "hymn_number").HTMLEntityEncode + "</div>" + EndOfLine
+		  '--
+		  If SmartML.GetValue(songElement, "time_sig").Len > 0 Then _
+		  s = s + "  <div id=""time_sig"">" + App.T.Translate("advanced_song_editor/time_sig/@caption").HTMLEntityEncode + ": " + SmartML.GetValue(songElement, "time_sig").HTMLEntityEncode + "</div>" + EndOfLine
+		  If SmartML.GetValue(songElement, "tempo").Len > 0 Then _
+		  s = s + "  <div id=""tempo"">" + App.T.Translate("advanced_song_editor/tempo/@caption").HTMLEntityEncode + ": " + SmartML.GetValue(songElement, "tempo").HTMLEntityEncode + "</div>" + EndOfLine
+		  If SmartML.GetValue(songElement, "capo").Len > 0 Then _
+		  s = s + "  <div id=""capo"">" + App.T.Translate("advanced_song_editor/capo/@caption").HTMLEntityEncode + " " + SmartML.GetValue(songElement, "capo").HTMLEntityEncode + "</div>" + EndOfLine
+		  '++JRC inlucde presentation order in export
+		  If SmartML.GetValue(songElement, "presentation").Len > 0 Then _
+		  s = s + "  <div id=""presentation"">" + App.T.Translate("general_song_editor/presentation/@caption").HTMLEntityEncode + " " + SmartML.GetValue(songElement, "presentation").HTMLEntityEncode + "</div>" + EndOfLine
+		  '--
+		  Dim slices(0), lines(0) As String
+		  LyricsToLines songElement.OwnerDocument, lines
+		  Dim currSlice, currVerse, lineCount, sliceCount As Integer
+		  
+		  s = s + "<br/>" + EndOfLine
+		  Dim currLine as Integer
+		  For currLine = 1 To UBound(lines)
+		    If Left(lines(currLine), 1) = "." And currLine < UBound(lines) And InStr("123456789 ", Left(lines(currLine+1), 1)) > 0 Then
+		      ' --------------- CHORDS W/ LYRICS ---------------
+		      lineCount = LinesToSlices(lines, currLine, slices, False)
+		      sliceCount = UBound(slices) / lineCount
+		      s = s + "  <table border=""0"" cellpadding=""0"" cellspacing=""0"">" + EndOfLine
+		      
+		      //++
+		      // Don't print capo chords if we wouldn't on regular hardcopy [Bug 1691058]
+		      //--
+		      If SmartML.GetValueB(songElement, "capo/@print", True, False) Then
+		        s = s + "    <tr>" + EndOfLine
+		        For currSlice = 0 To sliceCount - 1 ' Loop through each chord slice
+		          If currSlice = 0 Then
+		            s = s + "      <td class=""capochords"">" + Trim(Mid(SingleTranspose(slices(currSlice*lineCount+1),_
+		            12-SmartML.GetValueN(songElement, "capo"), True), 2)).HTMLEntityEncode + "&nbsp;</td>" + EndOfLine
+		          Else
+		            s = s + "      <td class=""capochords"">" + Trim(SingleTranspose(slices(currSlice*lineCount+1),_
+		            12-SmartML.GetValueN(songElement, "capo"), False)).HTMLEntityEncode + "&nbsp;</td>" + EndOfLine
+		          End If
+		        Next currSlice
+		        s = s + "    </tr>" + EndOfLine
+		      End If
+		      
+		      For currSlice = 0 To sliceCount - 1 ' Loop through each chord slice
+		        If currSlice = 0 Then
+		          s = s + "      <td class=""chords"">" + Trim(Mid(slices(currSlice*lineCount+1),2)).HTMLEntityEncode + "&nbsp;</td>" + EndOfLine
+		        Else
+		          s = s + "      <td class=""chords"">" + Trim(slices(currSlice*lineCount+1)).HTMLEntityEncode + "&nbsp;</td>" + EndOfLine
+		        End If
+		      Next currSlice
+		      s = s + "    </tr>" + EndOfLine
+		      
+		      For currVerse = 2 To lineCount ' Loop through the lines and print
+		        s = s + "    <tr>" + EndOfLine
+		        For currSlice = 0 To sliceCount - 1 ' Loop through each slice
+		          If slices(currSlice*lineCount+currVerse).Len = 0 Then
+		            slices(currSlice*lineCount+currVerse) = "&nbsp;"
+		          Else
+		            slices(currSlice*linecount+currVerse) = slices(currSlice*linecount+currVerse).HTMLEntityEncode
+		            If Right(slices(currSlice*lineCount+currVerse),1) = " " Then
+		              If currSlice = 0 Then
+		                If Left(slices(currSlice*lineCount+currVerse),2) = "  " Then slices(currSlice*lineCount+currVerse) = " &nbsp;" + Mid(slices(currSlice*lineCount+currVerse),2)
+		                s = s + "      <td class=""lyrics"">" + Trim(Mid(slices(currSlice*lineCount+currVerse),2)) + "&nbsp;</td>" + EndOfLine
+		              Else
+		                If Left(slices(currSlice*lineCount+currVerse),1) = " " Then slices(currSlice*lineCount+currVerse) = "&nbsp;" + Mid(slices(currSlice*lineCount+currVerse),2)
+		                s = s + "      <td class=""lyrics"">" + Trim(slices(currSlice*lineCount+currVerse)) + "&nbsp;</td>" + EndOfLine
+		              End If
+		            Else
+		              '
+		              ' Check for a break in the middle of the word
+		              '
+		              If currSlice < sliceCount - 1 Then 'Not on the last slice
+		                lastChar = Right(slices(currSlice*lineCount + currVerse), 1)
+		                If StringUtils.isalpha(asc(lastChar)) Then 'Not an explicitly designated syllable end or a word break
+		                  If StringUtils.isalpha(asc(Left(slices((currSlice + 1)*lineCount + currVerse), 1))) Then 'there is no space at the end of this slice or beginning of the next
+		                    slices(currSlice*lineCount + currVerse) = slices(currSlice*lineCount + currVerse) + " -&nbsp;"
+		                  End If
+		                End If
+		              End If
+		              slices(currSlice*lineCount+currVerse) = StringUtils.Squeeze(slices(currSlice*lineCount+currVerse), "_")
+		              slices(currSlice*lineCount+currVerse) = ReplaceAll(slices(currSlice*lineCount+currVerse), "_", " -&nbsp;")
+		              If currSlice = 0 Then
+		                If Left(slices(currSlice*lineCount+currVerse),2) = "  " Then slices(currSlice*lineCount+currVerse) = " &nbsp;" + Mid(slices(currSlice*lineCount+currVerse),2)
+		                s = s + "      <td class=""lyrics"">" + Trim(Mid(slices(currSlice*lineCount+currVerse),2)) + "</td>" + EndOfLine
+		              Else
+		                If Left(slices(currSlice*lineCount+currVerse),1) = " " Then slices(currSlice*lineCount+currVerse) = "&nbsp;" + Mid(slices(currSlice*lineCount+currVerse),2)
+		                s = s + "      <td class=""lyrics"">" + Trim(slices(currSlice*lineCount+currVerse)) + "</td>" + EndOfLine
+		              End If
+		            End If
+		          End If
+		        Next currSlice
+		        s = s + "    </tr>" + EndOfLine
+		      Next currVerse
+		      
+		      s = s + "</table>" + EndOfLine
+		      currLine = currLine + lineCount - 1 ' currLine will increment again b/c of the For loop
+		      
+		    ElseIf Left(lines(currLine), 1) = "-" Then // A variety of printing directives
+		      If Mid(lines(currLine), 2, 2) = "!!" Then // PageBreak
+		        s = s + "<div style=""page-break-before: always;""></div>"
+		      ElseIf Mid(lines(currLine), 2, 2) = "__" Then // Horizontal line
+		        s = s + "<hr />" + EndOfLine
+		      End If
+		    ElseIf Left(lines(currLine), 1) = "." Then
+		      s = s + "  <div class=""chords"">" + Mid(lines(currLine), 2).HTMLEntityEncode + "</div>" + EndOfLine
+		      
+		    ElseIf Left(lines(currLine), 1) = ";" Then
+		      s = s + "  <div class=""comment"">" + Mid(lines(currLine), 2).HTMLEntityEncode + "</div>" + EndOfLine
+		      
+		    ElseIf Left(lines(currLine), 1) = "[" Then
+		      s = s + "  <p/><div class=""heading"">" + FullHeading(Mid(lines(currLine), 2, lines(currLine).Len-2), True).HTMLEntityEncode + "</div>" + EndOfLine
+		      
+		    Else
+		      s = s + "  <div class=""lyrics"">" + Mid(lines(currLine), 2, lines(currLine).Len-1).HTMLEntityEncode + "</div>" + EndOfLine
+		      
+		    End If
+		  Next currLine
+		  s = s + "<br/>" + EndOfLine
+		  
+		  If SmartML.GetValue(songElement, "aka").Len > 0 Then _
+		  s = s + "  <div id=""aka"">" + App.T.Translate("advanced_song_editor/aka/@caption").HTMLEntityEncode + " " + SmartML.GetValue(songElement, "aka").HTMLEntityEncode + "</div>" + EndOfLine
+		  If SmartML.GetValue(songElement, "copyright").Len > 0 Then _
+		  s = s + "  <div id=""copyright"">" + App.T.Translate("general_song_editor/copyright/@caption").HTMLEntityEncode + " " + SmartML.GetValue(songElement, "copyright").HTMLEntityEncode + "</div>" + EndOfLine
+		  If SmartML.GetValue(songElement, "ccli").Len > 0 Then _
+		  s = s + "  <div id=""ccli"">" + App.T.Translate("general_song_editor/ccli/@caption").HTMLEntityEncode + " " + SmartML.GetValue(songElement, "ccli").HTMLEntityEncode + "</div>" + EndOfLine
+		  If ColonTrim(SmartML.GetValue(songElement, "theme")).Len > 0 Then _
+		  s = s + "  <div id=""themes"">" + App.T.Translate("advanced_song_editor/themes/@caption").HTMLEntityEncode + ": " + _
+		  ColonTrim(SmartML.GetValue(songElement, "theme")).HTMLEntityEncode + "</div>" + EndOfLine
+		  If SmartML.GetValue(songElement, "key_line").Len > 0 Then _
+		  s = s + "  <div id=""key_line"">" + App.T.Translate("advanced_song_editor/key_line/@caption").HTMLEntityEncode + ": " + _
+		  SmartML.GetValue(songElement, "key_line").HTMLEntityEncode + "</div>" + EndOfLine
+		  If SmartML.GetValue(songElement, "key").Len > 0 Then _
+		  s = s + "  <div id=""key"">" + App.T.Translate("advanced_song_editor/key/@caption").HTMLEntityEncode + " " + _
+		  SmartML.GetValue(songElement, "key").HTMLEntityEncode + "</div>" + EndOfLine
+		  
+		  If SmartML.GetValue(songElement, "user1").Len > 0 Then _
+		  s = s + "  <div id=""user1"">" + MainWindow.lbl_song_user1.Text.HTMLEntityEncode + " " + _
+		  SmartML.GetValue(songElement, "user1").HTMLEntityEncode + "</div>" + EndOfLine
+		  If SmartML.GetValue(songElement, "user2").Len > 0 Then _
+		  s = s + "  <div id=""user2"">" + MainWindow.lbl_song_user2.Text.HTMLEntityEncode + " " + _
+		  SmartML.GetValue(songElement, "user2").HTMLEntityEncode + "</div>" + EndOfLine
+		  If SmartML.GetValue(songElement, "user3").Len > 0 Then _
+		  s = s + "  <div id=""user3"">" + MainWindow.lbl_song_user3.Text.HTMLEntityEncode + " " + _
+		  SmartML.GetValue(songElement, "user3").HTMLEntityEncode + "</div>" + EndOfLine
+		  
+		  s = s + "<p><a class=""opensong"" href=""http://www.opensong.org/"">" + _
+		  App.T.Translate("about/created_with_opensong").HTMLEntityEncode + "</a></p>" + EndOfLine
+		  s = s + "</body></html>"
+		  
+		  Return s
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function ToHTML(songElement As XmlNode, exportOptions As HTMLExportOptions) As String
+		  //++
+		  // 3 December 2006, EMP
+		  // Tag HTML with UTF-8 encoding [Bug 1477964]
+		  // Properly encode text in HTML.  Utilizes the HTMLEntityEncode method
+		  // in OpenSongUtils [Bug 1607916]
+		  //
+		  // May 2012, EMP
+		  //   Add HTMLExportOptions and logic for embedding CSS instead of linking to a statically-named CSS file
+		  //   Copied from original ToHTML(XmlNode) routine, which is now deprecated
+		  //--
+		  
+		  
+		  Dim s As String
+		  Dim lastChar As String
+		  
+		  CleanLyrics songElement.OwnerDocument
+		  
+		  s = "<html><head>" + EndOfLine
+		  s = s + "  <meta http-equiv=""Content-type"" content=""text/html;charset=UTF-8"" />" + EndOfLine
+		  s = s + "  <title>" + SmartML.GetValue(songElement, "title").HTMLEntityEncode + "</title>" + EndOfLine
+		  //++
+		  // Process the CSS. Link or Embed per the HTMLExportOptions
+		  //--
+		  If exportOptions.EmbedCSS Then
+		    Dim cssText As String
+		    Dim cssInput As TextInputStream
+		    If exportOptions.StyleSheet <> Nil Then
+		      cssInput = TextInputStream.Open(exportOptions.StyleSheet)
+		      //++
+		      // Read the file the long way (with a loop) because the CSS file may not use the platform's native line endings
+		      // ReadLine will ignore all line endings; ReadAll maintains the input file's line endings even if
+		      // they aren't native to the platform.
+		      //--
+		      While Not cssInput.EOF
+		        cssText = cssText + cssInput.ReadLine + EndOfLine
+		      Wend
+		      cssInput.Close
+		    End If
+		    s = s + "<style type=""text/css"">" + EndOfLine
+		    s = s + "<!--" + EndOfLine
+		    s = s + cssText + EndOfLine
+		    s = s + "-->" + EndOfLine
+		    s = s + "</style>"
+		  Else
+		    //++
+		    // This makes the (possibly inaccurate) assumption that the stylesheet can be found in the same folder as the HTML
+		    //--
+		    s = s + "  <link rel=""stylesheet"" href=""" + exportOptions.StyleSheet.Name + """ type=""text/css""/>" + EndOfLine
+		  End If
 		  s = s + "</head>" + EndOfLine + "<body>" + EndOfLine
 		  
 		  s = s + "  <div id=""title"">" + SmartML.GetValue(songElement, "title").HTMLEntityEncode + "</div>" + EndOfLine
@@ -1785,7 +2021,16 @@ Module SongML
 		  'sections = Split(Trim(SmartML.GetValue(songElement, "presentation", True)), " ")
 		  sections = Split(Trim(presentation), " ")
 		  
-		  If UBound(sections) < 0 Then sections = Split(order, "|") ' If there is no presentation defined, we just do the sections in order
+		  If UBound(sections) < 0 Then
+		    '++JRC
+		    ' If there is no presentation defined, we just do the sections in order
+		    'modified to pull the presentation order from the lyrics
+		    order = Trim(order)
+		    order = ReplaceAll(order, "|", " ")
+		    SmartML.SetValue(songElement, "presentation", order)
+		    sections = Split(order, " ")
+		  End If
+		  '--
 		  
 		  Dim ChorusNr, PresentationIndex as integer 'GP
 		  ChorusNr = 0 'GP

@@ -55,7 +55,7 @@ mkdir -p opensong/usr/share/applications/
 cp "${BUILD_DIR}"/opensong opensong/opt/OpenSong/
 cp "${BUILD_DIR}"/opensong\ Libs/* opensong/opt/OpenSong/opensong\ Libs/
 cp "${BASE_DIR}"/Language-Changelog.txt opensong/opt/OpenSong/
-cp "${BASE_DIR}"/Images/ProgramIconPic48-8.xpm opensong/opt/OpenSong/opensong.xpm
+cp ProgramIcon48.xpm opensong/opt/OpenSong/opensong.xpm
 cp "${BASE_DIR}"/OpenSong\ Defaults/Backgrounds/* opensong/opt/OpenSong/OpenSong\ Defaults/Backgrounds/
 cp "${BASE_DIR}"/OpenSong\ Defaults/Sets/* opensong/opt/OpenSong/OpenSong\ Defaults/Sets/
 cp "${BASE_DIR}"/OpenSong\ Defaults/Settings/* opensong/opt/OpenSong/OpenSong\ Defaults/Settings/

@@ -1,4 +1,102 @@
-﻿* Fix for automatic lyric indentation in song editor on Linux (Bug #3459158) (Vwout)
+﻿* Display Set name in PresentHelper Window's title. (Feature Request #338) (JRC)
+
+* Fix in song loading, files in 'Main' or when 'All' is selected could not be loaded either from OpenSong or using the API. (Vwout)
+
+* Extended Automation API implementation: added load and present actions for song and set. (Vwout)
+
+* Small bugfixes in Automation API. (Vwout)
+
+* Fix for "Song Lookup" does not populate 'All' at initial load - (Bug # 3546361) (Vwout)
+
+* Moved Linux install script to utilities subproject
+
+-= 2.0 Beta 2 =-
+* Introduced an Automation API for remote control purposes using REST over HTTP and/or WebSocket. (Vwout)
+For a full description of the API see http://opensong.org/d/api. The current implementation supports all information retrieval operations (GET).
+
+* Improved snapshotting behavior to be less intrusive to the presentation interaction. At slow storage systems, the response on slide changes degraded. This is improved by moving the snapshot storage to a seperate thread with less priority. (Vwout)
+
+* Code cleanup, removed deprecated and incorrect type casting code constructions
+
+* The code for the following MainWindow buttons was moved to separate functions: btn_SetAddSong, btn_set_delete, btn_set_rename, btn_song_folders_add, btn_song_folders_delete. (JRC)
+
+* If Documents folder does not exist OpenSong now tries to create it. (JRC)
+
+* Change behavior for empty Documents folder to: Ask user if they want to copy the default Documents to the folder. (JRC)
+
+* If Settings folder does not exist OpenSong now tries to create it. (JRC)
+
+* Change behavior for empty Settings folder to: Ask user if they want to copy the default Settings to the folder. (JRC)
+
+* Add new dialog on exporting a song to HTML to give the user more control over the style and resulting HTML file. (swampcat)
+
+* Fix Mac issues on certain filetypes because of missing UTI definition. (swampcat)
+
+* Fix UTF-8 issues in StringUtils.isalpha and StringUtils.isalnum. (swampcat)
+
+* Fix a drawing error in the SFontCanvas that prevented previewing the font when certain colors were chosen. (swampcat)
+
+* Added check for backgrounds folder in ImageChooserWindow. If it doesn't exist switch to the Op System documents folder.(JRC)
+
+* If Backgrounds folder does not exist OpenSong now tries to create it. (JRC)
+
+* Change behavior for empty Backgrounds folder to: Ask user if they want to copy the default Backgrounds to the folder. (JRC)
+
+* If Sets folder does not exist OpenSong now tries to create it. (JRC)
+
+* Change behavior for empty Sets folder to: Ask user if they want to copy the default Set to the folder. (JRC)
+
+* If Song folders do not exist OpenSong now tries to create them. (JRC)
+
+* Change behavior for empty Songs folder to: Ask user if they want to copy the default songs to the folder. (JRC)
+
+* Moved default folder check to a separate function. (JRC)
+
+* Added Function CreateFolderTree to FileUtils (JRC)
+
+* Improved external presentation application detection for Impress (bug #3471022) (Vwout)
+
+* Improved loading and detection order for PPTView, manually set path in general settings always overides automatic detection of PPTView (bug #3471022) (Vwout)
+
+* Reduced screen flickering while changing forth an back between an OpenSong slide and an external presentation item or VideoLan (bug #3471022) (Vwout)
+
+* Flickering when changing to an external presentation or VideoLan can be caused by animation effects that Windows applies when minimizing and maximizing. OpenSong will automatically try to disable animations during a presentation. A tutorial on how to disable the animations in Windows 7 can be found here: http://www.addictivetips.com/windows-tips/disable-the-maximize-minimize-windows-animation-in-windows-7/ (thx Marten) (Vwout)
+
+* The OpenSong presentation window no longer maintains the last presented OpenSong slide when switching to an external item. Instead a black screen is used (bug #3471022) (Vwout)
+
+* Improved internal exception handling of external presentation objects (OLE and DCOM) to solve several different types of crashes on start and end of PowerPoint and Impress presentations (bug #3468371) (Vwout)
+
+* Userinterface improvements on external slide panels (Vwout)
+
+* Fix embedding of presentation items (PowerPoint and Impress files) in the set. Added embedding of media files for playback with Videolan (Vwout)
+
+* Overhauled VLC integration to fix fullscreen playback on presentation screen. OpenSong is now also using the RemoteControl interface instead of telnet for controling VideoLan. Note: a VideoLan instance that is launched by OpenSong can always manually be closed using the global keystroke 'Ctrl-Alt-Shift-Q'. (Vwout)
+
+* Small improvement in forcing Impress to use the presentation screen. OpenOffice Impress seems to ignore the display settings if display 1 is set as secondary (presentation) screen and display 2 as primary (control) screen. (Vwout)
+
+* Prevent OutOfBounds Exception in TranslateWindow (if e.g. passed font list is less than six) (JRC)
+
+* OpenSong now tries to load the next available Bible if the default Bible cannot be loaded. (JRC)
+
+* Change behavior for empty scripture folder to inform user and continue running with Scripture Picker disabled. (JRC)
+
+* Prompt before Generating Scripture Index. (JRC)
+
+* Fix bug when Reverting a song -- was asking twice (Bug #3455320). (swampcat)
+
+* Fix line spacing when printing lyrics without chords and multiple verse format (with verse numbers at beginning of the lyric line) (Bug #3466172). (swampcat)
+
+* Support displaying verse numbers without having to define the presentation order (JRC)
+
+* Fix display issues with font preview. (swampcat)
+
+* Mark window dirty using Window.ContentsChanged so the appropriate visual indication is given in the close button on OSX. (swampcat)
+
+* Fix error in line spacing for chord lines with no lyrics (Bug #3459341). (swampcat)
+
+* Add special/any filetype to allow for selection of files on Mac for use with VideoLan external. (swampcat)
+
+* Fix for automatic lyric indentation in song editor on Linux (Bug #3459158) (Vwout)
 
 * Changed layout to Help window and added a Close button.  Help is now modeless: the dialog can remain open while continuing to work in OpenSong. (swampcat)
 
@@ -1350,5 +1448,5 @@ OSX and MouseUp for the other platforms.  Action event is still called in MouseU
 * Added Print Categorized Table of Contents
 * Added Print Alphabetical Table of Contents
 
-$Date: 2011-12-15 16:06:06 -0600 (Thu, 15 Dec 2011) $
-$Revision: 726 $
+$Date: 2012-12-02 15:46:19 -0600 (Sun, 02 Dec 2012) $
+$Revision: 795 $

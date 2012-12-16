@@ -22,6 +22,7 @@ Name: Languages\Hungarian; Description: Magyar
 Name: Languages\Italian; Description: Italiano
 Name: Languages\Russian; Description: Russian
 Name: Languages\Slovak; Description: Slovak
+Name: Languages\Estonian; Description: Estonian
 [Dirs]
 Name: {app}\OpenSong Defaults; Components: 
 Name: {app}\OpenSong Scripture
@@ -36,14 +37,14 @@ Name: {app}\OpenSong Libs
 DefaultDirName={pf}\OpenSong
 VersionInfoCompany=OpenSong
 AppName=OpenSong
-AppVerName=OpenSong Version 1.6
+AppVerName=OpenSong Version 2.0 Beta 2
 LicenseFile=gpl-en.txt
 SetupIconFile=OpenSongInstall.ICO
 UninstallDisplayIcon={app}\OpenSongUninstall.ICO
-VersionInfoVersion=1.6.1
+VersionInfoVersion=2.0.1
 VersionInfoDescription=OpenSong is a free, open-source software application created to manage lyrics, chords, lead sheets, overheads, computer projection, and more.
-VersionInfoCopyright=2010
-AppCopyright=2003
+VersionInfoCopyright=2012
+AppCopyright=2012
 DefaultGroupName=OpenSong
 AllowNoIcons=true
 [Files]
@@ -61,7 +62,7 @@ Source: ..\OpenSong Libs\*; DestDir: {app}\OpenSong Libs
 Source: ..\OpenSong Languages\Svenska; DestDir: {app}\OpenSong Languages; Components: Languages\Swedish
 Source: ..\OpenSong Languages\Deutsch; DestDir: {app}\OpenSong Languages; Components: Languages\German
 Source: ..\OpenSong Languages\English; DestDir: {app}\OpenSong Languages
-Source: ..\OpenSong Languages\Espanol; DestDir: {app}\OpenSong Languages; Components: Languages\Spanish
+Source: ..\OpenSong Languages\Español; DestDir: {app}\OpenSong Languages; Components: Languages\Spanish
 Source: ..\OpenSong Languages\Francais; DestDir: {app}\OpenSong Languages; Components: Languages\French
 Source: ..\OpenSong Languages\Portugues; DestDir: {app}\OpenSong Languages; Components: Languages\Portugues
 Source: ..\OpenSong Languages\Portugues(Brasil); DestDir: {app}\OpenSong Languages; Components: Languages\PortuguesBrasil
@@ -74,6 +75,7 @@ Source: ..\OpenSong Languages\Magyar; DestDir: {app}\OpenSong Languages; Compone
 Source: ..\OpenSong Languages\Italiano; DestDir: {app}\OpenSong Languages; Components: Languages\Italian
 Source: ..\OpenSong Languages\Russian; DestDir: {app}\OpenSong Languages; Components: Languages\Russian
 Source: ..\OpenSong Languages\Slovak; DestDir: {app}\OpenSong Languages; Components: Languages\Slovak
+Source: ..\OpenSong Languages\Estonian; DestDir: {app}\OpenSong Languages; Components: Languages\Estonian
 Source: OpenSongUninstall.ICO; DestDir: {app}
 Source: gpl-sv.txt; DestDir: {app}; Components: Languages\Swedish
 Source: gpl-pt.txt; DestDir: {app}; Components: Languages\Portugues
@@ -113,6 +115,7 @@ Name: Magyar; MessagesFile: compiler:Languages\Hungarian.isl; LicenseFile: gpl-h
 Name: Svenska; MessagesFile: compiler:Languages\Swedish.isl; LicenseFile: gpl-sv.txt
 Name: Italiano; MessagesFile: compiler:Languages\Italian.isl; LicenseFile: gpl-it.txt
 Name: Russian; MessagesFile: compiler:Languages\Russian.isl; LicenseFile: gpl-ru.txt
-Name: Slovak; MessagesFile: compiler:Slovak.isl; LicenseFile: gpl-en.txt
+Name: Slovak; MessagesFile: compiler:Languages\Slovak.isl; LicenseFile: gpl-en.txt
+Name: Estonian; MessagesFile: compiler:Languages\Estonian.isl; LicenseFile: gpl-en.txt
 [Run]
 Filename: {app}\OpenSong.exe; Components: ; Flags: postinstall nowait; Description: Start OpenSong

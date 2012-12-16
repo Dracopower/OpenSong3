@@ -50,7 +50,7 @@ Protected Module Globals
 		  CurrPos = 0
 		  Pos = 0
 		  Ext = false
-		  Globals.Filters = NewMemoryBlock(5000)
+		  Globals.Filters = New MemoryBlock(5000)
 		  c = InStr(CurrPos, Globals.AudioPluginFormats, "|")
 		  
 		  while c <> 0
@@ -192,6 +192,10 @@ Protected Module Globals
 
 	#tag Property, Flags = &h1
 		Protected Status_SongPickerOpen As Boolean
+	#tag EndProperty
+
+	#tag Property, Flags = &h1
+		Protected Status_SongsFolderUpdating As Boolean
 	#tag EndProperty
 
 	#tag Property, Flags = &h0

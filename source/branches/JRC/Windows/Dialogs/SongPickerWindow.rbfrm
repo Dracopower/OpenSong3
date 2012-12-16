@@ -644,17 +644,15 @@ End
 
 	#tag Event
 		Sub Open()
-		  Dim x As Integer
-		  
 		  '++JRC
 		  CurrentSel = -1
 		  '--
-		  If UBound(MainWindow.Songs.GetFolders(pop_select_folder)) = 0 Then
-		  End If
+		  Call MainWindow.Songs.GetFolders(pop_select_folder)
+		  
 		  If Globals.CurrentSongPickerFolder = "" Then
 		    pop_select_folder.ListIndex = 0
 		  Else
-		    For x = 0 to pop_select_folder.ListCount - 1
+		    For x As Integer = 0 to pop_select_folder.ListCount - 1
 		      If Globals.CurrentSongPickerFolder = pop_select_folder.List(x) Then
 		        pop_select_folder.ListIndex = x
 		        Exit
@@ -662,6 +660,9 @@ End
 		    Next
 		  End If
 		  
+		  '++JRC
+		  SongFolderSel = pop_select_folder.ListIndex
+		  '--
 		  App.T.TranslateWindow Me, "song_lookup", App.TranslationFonts
 		  App.CenterInControlScreen Me
 		  lst_all_songs.ListIndex = 0
@@ -690,6 +691,9 @@ End
 		  If Globals.CurrentSongPickerFolder = "" Then
 		    Globals.CurrentSongPickerFolder = Globals.CurrentSongFolder
 		  End If
+		  // Make sure for proper initialisation
+		  SongFolderSel = -1
+		  
 		  // call the Window constructor, or Open events will not fire
 		  Super.Window()
 		  
@@ -748,6 +752,10 @@ End
 		Protected PresentationOrder As String
 	#tag EndProperty
 
+	#tag Property, Flags = &h1
+		Protected SongFolderSel As Integer = -1
+	#tag EndProperty
+
 
 	#tag Constant, Name = kListColumnPath, Type = Double, Dynamic = False, Default = \"1", Scope = Public
 	#tag EndConstant
@@ -769,8 +777,59 @@ End
 		  //--
 		  Dim multipleFolders As Boolean = False
 		  Dim lastFolder As String
-		  If UBound(MainWindow.Songs.GetFiles(Me.Text, lst_all_songs)) = 0 Then
+		  '++JRC
+		  Dim f As FolderItem
+		  
+		  If Me.ListIndex < 0 Then
+		    SongFolderSel = -1
+		    Return
 		  End If
+		  
+		  f = FileUtils.RelativePathToFolderItem(App.DocsFolder.Child(App.STR_SONGS), Me.Text)
+		  
+		  If f = Nil Or NOT f.Exists Then
+		    If Me.Text = "( " + App.T.Translate("songs_mode/song_folders/filter_all/@caption") + " )" Or Me.Text = "( " + App.T.Translate("songs_mode/song_folders/filter_main/@caption") + " )" Then
+		      'Check if we have a songs folder if not offer to create one
+		      If App.CheckDocumentFolders(App.SONGS_FOLDER) = App.NO_FOLDER Then
+		        If InputBox.AskYN(App.T.Translate("questions/no_songs_folder/@caption")) Then
+		          If Not FileUtils.CreateFolder(App.DocsFolder.Child(App.STR_SONGS)) Then
+		            InputBox.Message App.T.Translate("errors/create_songs_folder", App.DocsFolder.Child(App.STR_SONGS).AbsolutePath)
+		            Me.ListIndex = -1
+		            SongFolderSel = -1
+		          End If
+		        Else
+		          InputBox.Message App.T.Translate("errors/create_songs_folder", App.DocsFolder.Child(App.STR_SONGS).AbsolutePath)
+		          Me.ListIndex = -1
+		          SongFolderSel = -1
+		        End If
+		      End If
+		      '--
+		      
+		    Else
+		      If InputBox.AskYN(App.T.Translate("questions/no_folder/@caption", App.DocsFolder.Child(App.STR_SONGS).AbsolutePath + "\" + ReplaceAll(Me.Text, "/", "\"))) Then
+		        If NOT FileUtils.CreateFolderTree(App.DocsFolder.Child(App.STR_SONGS), Me.Text) Then
+		          Me.ListIndex = -1
+		          SongFolderSel = -1
+		        End If
+		      Else
+		        Me.ListIndex = -1
+		        SongFolderSel = -1
+		      End If
+		    End If
+		    
+		  End If
+		  
+		  If SongFolderSel = Me.ListIndex Then
+		    Return
+		  end If
+		  
+		  
+		  SongFolderSel = Me.ListIndex
+		  
+		  '--
+		  App.MouseCursor = System.Cursors.Wait
+		  Call MainWindow.Songs.GetFiles(Me.Text, lst_all_songs)
+		  
 		  For i As Integer = 0 To lst_all_songs.ListCount - 1
 		    lst_all_songs.Cell(i, kListColumnPath) = _
 		    StringUtils.Chop(lst_all_songs.CellTag(i, kListColumnSong).StringValue, "/")
@@ -782,6 +841,8 @@ End
 		      lastFolder = lst_all_songs.Cell(i, kListColumnPath)
 		    End If
 		  Next
+		  App.MouseCursor = Nil
+		  
 		  If multipleFolders Then
 		    lst_all_songs.ColumnWidths = "66%,*"
 		  Else

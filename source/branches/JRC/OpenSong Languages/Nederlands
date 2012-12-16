@@ -11,7 +11,7 @@
     <themes>Laden thema lijst</themes>
     <time_signatures>Laden maatsoort lijst</time_signatures>
     <imagequality>Laden afbeeldingskwaliteiten lijst</imagequality>
-	<videolan_preset>Laden Videolan parameter voorkeuzen</videolan_preset>
+	<videolan_preset>Laden Videolan parameter voorkeuzes</videolan_preset>
 	<fonts>Laden lettertype lijst</fonts>
     <latest_version>Controle laatste versie
       <newer_available>Er is een nieuwere versie (%1) beschikbaar. Ga naar: www.opensong.org voor downloaden.</newer_available>
@@ -23,12 +23,12 @@
       <songs_cache>Caching liederen</songs_cache>
       <folders>Laden liederen mappen</folders>
       <songs>Laden liederen</songs>
-      <sets>Laden sets</sets>
+      <sets>Laden projecten</sets>
   </load_data>
 
   <welcome>Welkom !</welcome>
 
-  <songs_mode caption="Liederen Mode">Gebruik dit om liederen toe te voegen of te wijzigen. Liederen kunnen worden geprint als noten bladen, of gepresenteerd als dia's.
+  <songs_mode caption="Liederen Mode">Gebruik deze modus om liederen toe te voegen of te wijzigen. Liederen kunnen worden afgedrukt als noten bladen, of gepresenteerd als dia's. Bij het omschakelen van lied naar project modus, zal worden gevraagd om eventuele wijzigingen op te slaan.
     <all_songs caption="Alle liederen">
       <print caption="Afdrukken">Drukt alle beschikbare liederen af. Met deze optie kun je liederenbundels afdrukken.</print>
       <export caption="Exporteren">Exporteren van alle liederen.</export>
@@ -115,13 +115,13 @@
     <key caption="Key">Geeft de sleutel weer van het geselecteerde lied.</key>
     <aka caption="Alt">Geeft de alternatieve titel weer van het geselecteerde lied.</aka>
     <key_line caption="Key Line">Geef een regel op waarmee het lied makkelijker is te zoeken.</key_line>
-    <style caption="Aangepaste stijl">Klik hier om de stijl voordit lied aan te passen. Aangepaste stijlen worden gebruikt boven de standaars stijl.</style>
-    <user1 caption="Door gebruiker gedefiniëerd 1">Hier kun je alles gebruiken wat je wilt m.b.t. tot liederen. Kan ook worden gebruikt door andere applicaties.</user1>
-    <user2 caption="Door gebruiker gedefiniëerd 2">Hier kun je alles gebruiken wat je wilt m.b.t. tot liederen. Kan ook worden gebruikt door andere applicaties.</user2>
-    <user3 caption="Door gebruiker gedefiniëerd 3">Set this to whatever you want it to be. This field can be used by 3rd party applications, etc.</user3>
+    <style caption="Aangepaste stijl">Klik hier om de stijl voor dit lied aan te passen. Aangepaste stijlen vervangen de standaard stijl voor liederen.</style>
+    <user1 caption="Vrij definiëerbaar veld 1">Hier kun je alles gebruiken wat je wilt m.b.t. tot liederen. Kan ook worden gebruikt door andere applicaties.</user1>
+    <user2 caption="Vrij definiëerbaar veld 2">Hier kun je alles gebruiken wat je wilt m.b.t. tot liederen. Kan ook worden gebruikt door andere applicaties.</user2>
+    <user3 caption="Vrij definiëerbaar veld 3">Hier kun je alles gebruiken wat je wilt m.b.t. tot liederen. Kan ook worden gebruikt door andere applicaties.</user3>
   </advanced_song_editor>
 
-  <sets_mode caption="Projecten (diensten)">Gebruik dit om projecten (diensten) samen te stellen. Projecten zijn een verzameling liederen, bijbelteksten, dia's etc.
+  <sets_mode caption="Projecten (diensten)">Gebruik dit om projecten (diensten) samen te stellen. Projecten zijn een verzameling liederen, bijbelteksten, dia's etc. Bij het omschakelen van project naar lied modus, zal worden gevraagd om eventuele wijzigingen op te slaan.
     <sets caption="Projecten">Selecteer een project uit de lijst om te kunnen aanpassen.
       <add>Voegt een nieuw project toe aan OpenSong.</add>
     </sets>
@@ -134,7 +134,7 @@
         <single_screen caption="Enkel scherm"/>
         <dual_screen caption="Dubbel scherm"/>
         <preview_dual_screen caption="Voorbeeld dubbel scherm"/>
-        <no_slides>Er moet minimaal 1 dia aanwezig zijn voor om te presenteren.</no_slides>
+        <no_slides>Er moet minimaal 1 dia aanwezig zijn in het project om het te kunnen presenteren.</no_slides>
       </present>
       <print_songs caption="Liederen">Afdrukken liederen die in het project staan.
         <no_songs>Er zitten geen liederen in het project.</no_songs>
@@ -145,12 +145,10 @@
     <new_item caption="Nieuw Item">
       <add_song caption="Lied">Voegt een lied toe aan het huidige project. De totale lijst liederen die beschikbaar zijn wordt hier weergegeven om te kiezen.</add_song>
       <add_scripture caption="Bijbeltekst">Voegt een Bijbeltekst toe aan het huidige project. Hier wordt de totale lijst met Bijbelteksten weer gegeven om te kiezen.</add_scripture>
-      <add_slides caption="Dia">Voegt een aangepaste dia toe aan het huidige project. Hier kun je je eigen titel, subtitel, body tekst en stijl. Een aangepaste dia kan een serie dia 's bevatten.</add_slides>
-      <add_style caption="Stijl">Wijzigt de stijl van het huidige project en plaatst dit in het project. Stijlwijzigingen kunnen een nieuwe stijl definieren of terug keren naar een vorige stijl.</add_style>
+      <add_slides caption="Dia">Voegt een aangepaste dia toe aan het huidige project. Hier kun je je eigen titel, subtitel, body tekst en stijl opgeven. Een aangepaste dia kan een serie dia's bevatten.</add_slides>
+      <add_style caption="Stijl">Wijzigt de huidige stijl van het project op de (willekeurig) gekozen plaats  in het project. Stijlwijzigingen kunnen een nieuwe stijl definieren of terug keren naar een vorige stijl.</add_style>
       <add_image caption="Afbeelding">Voegt een afbeelding als dia toe aan het huidige project. Deze optie geeft je de mogelijkheid om een enkele afbeelding dan wel een serie afbeeldingen weer te geven in plaats van tekst.</add_image>
       <add_external caption="Extern">Voegt een nieuwe dia toe aan het huidige project waarmee externe programma's kunnen worden gestart. Hiermee is het mogelijk om een presentatie of een DVD te vertonen.</add_external>
-      <add_video caption="Video">Voegt een video bestand toe aan het huidige project. Dit is te gebruiken om een filmpje te laten zien vanuit OpenSong.</add_video>
-      <add_powerpoint caption="PowerPoint">Voegt een PowerPoint presentatie toe aan het huidige project. Dit is te gebruiken om een PowerPoint presentatie te tonen vanuit OpenSong.</add_powerpoint>
     </new_item>
     <current_item caption="Huidig Item">
       <move_up caption="Omhoog">Verplaatst het huidige item naar boven (voren) in het project.</move_up>
@@ -218,7 +216,7 @@
     <fit_to_screen caption="Schaal afbeeldingen zodat ze op het scherm passen">Afbeeldingen die te groot zijn om te projecteren worden geschaald zodat ze volledig getoond kunnen worden. Dit gebeurt ook voor afbeeldingen die kleiner zijn dan de schermresolutie.</fit_to_screen>
     <fit_to_body caption="Schaal afbeeldingen zodat ze in het tekstgebied passen">Afbeeldingen worden geschaald zodat ze altijd in het tekstgebied passen dat is vastgelegd voor de body stijl. Dit geldt voor afbeeldingen die groter zijn dan de het body gebied zowel als voor afbeeldingen die kleiner zijn.</fit_to_body>
     <keepaspect caption="Behoudt hoogte- en breedteverhoudingen bij het schalen">Als afbeeldingen worden geschaald bij een van bovenstaande, zal de horizontale en verticale verhouding behouden blijven.</keepaspect>
-    <store_as_link caption="Bewaar de afbeelding niet in het project, maar gebruik een link naar de plek waar de afbeelding staat">Afbeeldingen bewaren in het project geeft snel grote project bestanden en kunnen de kwaliteit benadelen. Gebruik van een link voorkomt dit. Afbeeldingen worden vanuit de 'Backgrounds' directory bewaard als relatieve link, wat de switch naar de presentatie computer makkelijker maakt. Let op! als de presentatie gemaakt is op een macchine anders dan de presentatie computer!</store_as_link>
+    <store_as_link caption="Bewaar de afbeelding niet in het project, maar gebruik een link naar de plek waar de afbeelding staat">Afbeeldingen bewaren in het project geeft snel grote project bestanden en kunnen de afbeeldingskwaliteit verminderen. Gebruik van een link voorkomt dit. Afbeeldingen worden vanuit de 'Backgrounds' directory bewaard als relatieve link, wat de switch naar de presentatie computer makkelijker maakt. Let op! wees voorzichtig en controleer de werking als het project op een andere computer is opgemaakt als de presentatie-computer!</store_as_link>
     <notes caption="link(slide_editor/notes/@caption)">link(slide_editor/notes)</notes>
     <action caption="Activiteit" />
       <ins_image caption="Toevoegen">Voegt een afbeelding toe aan het project. Hiermee kunnen dia-series worden gemaakt die dezelfde titel-, subtitel-, stijl-, en automatische overgangsinstellingen delen. Op deze wijze gemaakte dia's kunnen ook in een automatische loop worden gezet.</ins_image>
@@ -259,6 +257,7 @@
     <videolan_settings caption="Videolan instellingen">
       <videolan_start caption="Start Videolan"/>
 	  <videolan_mediafilename caption="Locatie van het af te spelen mediabestand">Kies de bestandsnaam van het audio of videobestand dat moet worden afgespeeld.</videolan_mediafilename>
+	  <embed_mediafile caption="Het mediabestand opslaan in het OpenSong project"/>
 	  <videolan_preset caption="Gebruik de volgende voorkeuze met parameters"/>
 	  <videolan_manual caption="Handmatig aangepaste parameters (gebruik %d voor het beeldschermnummer, %s voor de bestandsnaam)"/>
       <wait_for_videolan caption="Wacht met het doorgaan naar de volgende dia tot het afspelen is voltooid"/>
@@ -324,14 +323,14 @@
     <caption caption="Zoeken in de Bijbel middels kernwoord"/>
     <example caption="Om te zoeken naar exacte tekst, plaats dit tussen dubbele quotes, voorbeeld &quot;Simon Petrus&quot;"/>
     <match caption="Overeenkomst">
-      <exact caption="Exact"/>
-      <begin caption="Begint met"/>
+      <exact caption="E&amp;xact"/>
+      <begin caption="&amp;Begint met"/>
     </match>
     <words caption="Vers moet bevatten">
-      <all caption="Alle woorden"/>
-      <any caption="Enkele woorden"/>
+      <all caption="A&amp;lle woorden"/>
+      <any caption="E&amp;nkele woorden"/>
     </words>
-    <search caption="Zoeken"/>
+    <search caption="&amp;Zoeken"/>
     <result caption="%1 gevonden met het opgegeven kernwoord."/>
     <ok caption="link(shared/ok/@caption)"/>
     <cancel caption="link(shared/cancel/@caption)"/>
@@ -341,28 +340,28 @@
   <main_menu>
     <file caption="_Bestand">
       <new caption="_Nieuw"/>
-      <save caption="_Opslaan"/>
+      <save caption="Op_slaan"/>
       <present caption="_Presenteer">
         <single_screen caption="_Enkel Scherm"/>
         <dual_screen caption="_Twee schermen"/>
         <preview_dual_screen caption="_Voorbeeld twee schermen"/>
       </present>
       <pagesetup caption="Pa_gina Instellingen"/>
-      <print caption="_Afdrukken"/>
-      <print_alphabetical_toc caption="Afdrukken _Alfabetisch TOC"/>
-      <print_categorical_toc caption="Afdrukken _Per Categorie TOC"/>
+      <print caption="Af_drukken"/>
+      <print_alphabetical_toc caption="Afdrukken Alfabetisch _TOC"/>
+      <print_categorical_toc caption="Afdrukken per _Categorie TOC"/>
       <song_act caption="Bekijk lied gebruik _logboek"/>
       <scripture caption="Bijbelteksten _zoeken"/>
-      <quit caption="Af_sluiten"/>
+      <quit caption="_Afsluiten"/>
     </file>
     <edit caption="_Wijzigen">
       <undo caption="_Ongedaan maken"/>
-      <cut caption="_Knippen"/>
-      <copy caption="K_opieren"/>
+      <cut caption="Kn_ippen"/>
+      <copy caption="_Kopieren"/>
       <paste caption="_Plakken"/>
       <clear caption="_Leegmaken"/>
       <find caption="_Zoeken"/>
-      <find_next caption="Zoeken _Opnieuw"/>
+      <find_next caption="Zoeken Opnieu_w"/>
       <selall caption="Selecteer _Alles" />
     </edit>
     <mode caption="_Versie">
@@ -374,28 +373,33 @@
       <print caption="Afdruk _instellingen"/>
       <general caption="_Algemene  instellingen"/>
       <refresh_songs caption="_Liederen map verversen"/>
-      <refresh_sets caption="_Projekten map verversen"/>
-      <install_module caption="_Installeer Module"/>
+      <refresh_sets caption="Projekten map _verversen"/>
+      <install_module caption="Installeer _Module"/>
     </settings>
     <help caption="_Help">
       <help_topics caption="Help _Onderwerpen"/>
       <user_manual caption="Online _Gebruikershandleiding"/>
       <translating caption="_Vertaal OpenSong"/>
-      <about caption="_Over OpenSong"/>
+      <about caption="Over Open_Song"/>
     </help>
   </main_menu>
 
   <general_settings title="Algemene instellingen">
     <general caption="Algemeen" head1="Basis" head2="Bestandslocaties" head3="Systeem" head4="Uiterlijk">
       <ccli caption="CCLI Licentie #"/>
-      <version_check caption="Controleer voor nieuwere versies bij starten."/>
+      <version_check caption="Controleer op nieuwere versies bij het opstarten."/>
       <language caption="Taal"/>
     </general>
     <proxy caption="Proxy">
       <host caption="Host"/>
       <port caption="Poort"/>
     </proxy>
-    <user_defined caption="Door gebruiker gedefinieerd">
+    <rcserver caption="Automatiserings API">
+      <enable caption="Remote control server inschakelen"/>
+      <key caption="Beveiligings sleutel"/>
+      <port caption="Poort"/>
+    </rcserver>
+    <user_defined caption="Naamgeving voor instelbare velden voor liederen">
       <user1 caption="link(advanced_song_editor/user1/@caption)"/>
       <user2 caption="link(advanced_song_editor/user2/@caption)"/>
       <user3 caption="link(advanced_song_editor/user3/@caption)"/>
@@ -411,7 +415,7 @@
       <newpaint caption="Gebruik nieuwe stijl"/>
     </fonts>
     <documents_folder caption="Documenten map">
-      <warning caption="Wees voorzichtig met het gebruik; forceert een herstart van het programma."/>
+      <warning caption="Wees voorzichtig met het gebruik; aanpassingen pas actief worden na herstart van het programma."/>
       <default caption="Standaard"/>
       <custom caption="Aangepast"/>
       <message>Om het gebruikt van de nieuwe documenten map te voltooien moet OpenSong worden afgesloten. Verplaats indien gewenst de OpenSong documenten naar de nieuwe locatie voordat OpenSong wordt gestart.</message>
@@ -553,7 +557,7 @@
         <ibeam caption="Tekstselector"/> 
       </mouse_cursor>
       <blanks caption="Een lege dia's invoegen"/>
-      <blanks_between caption="tussen project items"/>
+      <blanks_between caption="tussen de project items"/>
       <blank_style caption="Blanco dia's nemen stijl over van"/>
       <blank_default caption="standaard dia"/>
       <blank_prev caption="Vorige dia"/>
@@ -866,7 +870,7 @@ Als het Presentatie veld leeg is, ordend de Presentatie de dia's gebaseerd op de
   <smartml>
     <attrib_except>SmartML.GetAttribute: Uitzondering kijkt naar naar attribuut '%1' in '%2'</attrib_except>
     <no_path>Pad niet gevonden.</no_path>
-    <no_File>Bestand niet gevonden: %1</no_File>
+    <no_file>Bestand niet gevonden: %1</no_file>
     <cant_open>Fout bij openen bestand: %1</cant_open>
     <cant_create>Bestand kan niet gemaakt worden: %1</cant_create>
     <xml_error>Error parsing XML: %1</xml_error>
@@ -987,30 +991,35 @@ Als het Presentatie veld leeg is, ordend de Presentatie de dia's gebaseerd op de
   </song_activity>
   
   <scripture_lookup title="Bijbelteksten zoeken">
-    <search caption="Op bijbeltekst zoeken"/>
-    <books caption="Bijbel boek">
-	  <ot caption="Oude testament"/>
-	  <nt caption="Nieuw testament"/>
-    </books>
     <lookup caption="Snel zoeken">
       <reference caption="Referentie"/>
       <lookup caption="Zoeken"/>
       <example caption="Bijv:  2Pet 1:1-2 of  2Pet 1:1-2 (KJV)"/>
     </lookup>
+    <search caption="Op bijbeltekst zoeken"/>
+    <books caption="Bijbel boek">
+	  <ot caption="Oude testament"/>
+	  <nt caption="Nieuw testament"/>
+    </books>
     <paragraph caption="Hoofdstuk"/>
     <colon caption=":"/>
     <from_verse caption="vanaf vers"/>
     <dash caption="-"/>
     <to_verse caption="t/m vers"/>
-    <version caption="Vertaling"/>
+    <version caption="Gebruikte vertaling"/>
     <select_file caption="Selecteer een bijbelvertalingsbestand."/>
-    <verses_per_slide caption="Bijbelvers per dia" />
-    <chars_per_slide caption="Max. karakters per dia" />
+    <verses_per_slide caption="Aantal versen per dia" />
+    <chars_per_slide caption="Aantal tekens per dia" />
     <format caption="Formaat">
       <paragraph caption="Hoofdstuk"/>
       <verse caption="Vers"/>
     </format>
-    <preview caption="Voorbeeldweergave van schriftgedeelte"/>
+    <shownumbers caption="Toon vers nummers"/>
+    <preview caption="Voorbeeldweergave van het geselecteerde schriftgedeelte"/>
+    <insert caption="link(shared/insert/@caption)"/>
+    <add caption="link(shared/add/@caption)"/>
+    <copy caption="link(shared/copy/@caption)"/>
+    <done caption="link(shared/done/@caption)"/>
     <bad_reference>
       <format>Controleer de samenstelling van de zoekopdracht en probeer het nogmaals.</format>
       <empty>Foute referentie: de referentie was leeg.</empty>
@@ -1021,9 +1030,6 @@ Als het Presentatie veld leeg is, ordend de Presentatie de dia's gebaseerd op de
       <verse>Foute referentie: kan vers '%1' niet vinden.</verse>
       <verse_range>Foute referentie: het 'tot' vers moet groter dan of gelijk zijn aan het 'van' vers.</verse_range>
     </bad_reference>
-    <insert caption="link(shared/insert/@caption)"/>
-    <search caption="link(shared/search/@caption)"/>
-    <shownumbers caption="Toon vers nummers"/>
   </scripture_lookup>
 
   <module>
@@ -1033,7 +1039,7 @@ Als het Presentatie veld leeg is, ordend de Presentatie de dia's gebaseerd op de
     <rename_error>Fout bij hernoemen van het module bestand. Controleer of u schrijfrechten heeft voor '%1'.</rename_error>
     <success>Module succesvol geladen.</success>
     <file_type>OpenSong Modules (*.xmm)</file_type>
-    <generate_index>Moet er een index worden opgebouwd voor het bijbel bestand?</generate_index>
+    <generate_index>Moet er een index worden opgebouwd voor het bijbel bestand: '%1'?</generate_index>
     <generate_error>Er is een fout opgetreden bij het opbouwen van de index; heeft u schrijftoegang voor '%1'?</generate_error>
   </module>
 
@@ -1127,7 +1133,7 @@ Als het Presentatie veld leeg is, ordend de Presentatie de dia's gebaseerd op de
     <option name="Aanbidding: Intimiteit"/>
     <option name="Aanbidding: Uitnodigen"/>
     <option name="Aanbidding: Aanbidding"/>
-    <option name="Aanbidding: Gebed/Devotion"/>
+    <option name="Aanbidding: Gebed/Toewijding"/>
     <option name="Aanbidding: Toerusten"/>
     <option name="Aanbidding: Dankbaarheid"/>
     <option name="Aanbidding: Rust"/>
@@ -1166,8 +1172,8 @@ Als het Presentatie veld leeg is, ordend de Presentatie de dia's gebaseerd op de
   
   <videolan_preset_list>
 	<preset name="Videoweergave als bureaublad achtergrond in Windows (gebruik achtergrondkleur RGB 0,0,1)" parameters="--no-video-deco --no-video-title-show --no-osd --video-wallpaper --direct3d-desktop --one-instance --directx-device=\\.\DISPLAY%d %s"/>
-	<preset name="Volledig scherm videoweergave op presentatiescherm" parameters="--no-video-deco --no-video-title-show --no-osd --fullscreen --one-instance --directx-device=\\.\DISPLAY%d %s"/>
-	<preset name="Volledig scherm videoweergave vanaf DirectShow video apparaat" parameters="--no-video-deco --no-video-title-show --no-osd --fullscreen --one-instance --directx-device=\\.\DISPLAY%d dshow://"/>
+	<preset name="Volledig scherm videoweergave op presentatiescherm" parameters="--no-video-deco --no-video-title-show --no-osd --one-instance %s"/>
+	<preset name="Volledig scherm videoweergave vanaf DirectShow video apparaat" parameters="--no-video-deco --no-video-title-show --no-osd --one-instance dshow://"/>
 	<!-- The line below is mandatory. Translators: only modify the value for 'name' -->
 	<preset name="Handmatig" parameters=""/>
   </videolan_preset_list>
@@ -1221,6 +1227,7 @@ Klik op de dia om de stijl te wijzigen.</body>
     <select caption="Selecteer"/>
     <exit_program caption="Programma afsluiten"/>
     <export_to caption="Selecteer de map waar de export van het logboek moet worden geplaatst."/>
+    <style_file caption="Selecteer een opmaak definitie (XSL)"/>
   </shared>
 
   <questions>
@@ -1238,6 +1245,14 @@ Klik op de dia om de stijl te wijzigen.</body>
     <select_docs_folder caption="Selecteer de OpenSong Documenten map">Waar moeten de OpenSong bestanden (liederen en projecten) worden opgeslagen?</select_docs_folder>
     <activity_log caption="Moeten de liederen die in deze presentatie worden gebruikt aan het lied gebruik logboek worden toegevoegd? Dit heeft ook betrekking op liederen die tijdens het presenteren worden toegevoegd!"/>
     <import_presentation caption="Presentatie afbeeldingen importeren">Selecteer de presentatie die als afbeeldingen moet worden geïmporteerd.</import_presentation>
+    <documents_folder_empty caption="De Documenten map bestaat niet of is leeg. Moeten de standaard bestanden worden gekopieerd?"/>
+    <songs_folder_empty caption="De map met liederen is leeg. Moeten de standaard liederen naar deze map worden gekopieerd?"/>
+    <sets_folder_empty caption="De projecten map is leeg. Moeten de standaard projecten worden gekopieerd naar deze map?"/>
+    <settings_folder_empty caption="De instellingen map is leeg. Moeten de standaard instellingen worden gekopieerd naar deze map?"/>
+    <backgrounds_folder_empty caption="De map met achtergronden is leeg. Moeten de standaard achtergronden worden gekopieerd naar deze map?"/>
+    <no_songs_folder caption="De map met liederen kan niet worden gevonden, moet deze map worden gemaakt?"/>
+    <no_sets_folder caption="De map met projecten kan niet gevonden worden, moet deze map worden gemaakt?"/>
+    <no_folder caption="De map '%1' kan niet gevonden worden, moet deze map worden gemaakt?"/>
   </questions>
 
   <about>
@@ -1283,6 +1298,7 @@ Het afbeeldingsbestand PuffyClouds1.jpg wat opgenomen is in de map Backgrounds v
     <bad_file_name>Foutieve bestandsnaam '%1'.</bad_file_name>
     <internal>Interne fout. Neem contact op met de technische ondersteuning.</internal>
     <no_such_song>Kan lied niet vinden.</no_such_song>
+    <no_such_set>Het projectbestand kan niet worden gevonden: '%1'.</no_such_set>
     <number_please>Geef een goed nummer.</number_please>
     <number_range>Geef een nnummer tussen %1 en %2.</number_range>
     <no_path_allowed>Bestandsnaam mag geen pad bevatten.</no_path_allowed>
@@ -1290,17 +1306,20 @@ Het afbeeldingsbestand PuffyClouds1.jpg wat opgenomen is in de map Backgrounds v
     <general1>In '%1': Onbekende fout</general1>
     <general2>In '%1': '%2'</general2>
     <folder_error>Interne map error. Neem contact op met support.</folder_error>
-    <create_backgrounds_folder>Kan achtergrond map: %1 niet maken.</create_backgrounds_folder>
-    <create_sets_folder>Kan projecten map:  %1 niet maken/wijzigen.</create_sets_folder>
-    <create_settings_folder>Kan de instellingen map: %1 niet maken.</create_settings_folder>
-    <create_songs_folder>Kan de liederenmap: %1 niet maken</create_songs_folder>
+    <create_backgrounds_folder>Kan de map met achtergronden niet maken: %1. Zorg ervoor dat er schrijf toegang is naar deze map, of selecteer een nieuwe Documenten map in de Algemene Instellingen.</create_backgrounds_folder>
+    <create_sets_folder>Kan de map met projecten niet maken of wijzigen: %1. Zorg ervoor dat er schrijf toegang is naar deze map, of selecteer een nieuwe Documenten map in de Algemene Instellingen. Het is niet mogelijk om projecten op te slaan of te presenteren zonder een projecten map.</create_sets_folder>
+    <create_settings_folder>Kan de instellingen map: %1 niet maken. Zorg ervoor dat er schrijf toegang is naar deze map, of selecteer een nieuwe Documenten map in de Algemene Instellingen.</create_settings_folder>
+    <load_default_settings>OpenSong probeert om de standaard instellingen te laden.</load_default_settings>
+    <create_songs_folder>Kan de liederenmap: %1 niet maken. Zorg ervoor dat er schrijf toegang is naar deze map, of selecteer een nieuwe Documenten map in de Algemene Instellingen. Het is niet mogelijk om liederen op te slaan of te presenteren zonder een liederen map.</create_songs_folder>
+    <copy_default_songs>Er is een fout opgetreden bij het kopieeren van de standaard liederen naar de liederen map: %1. Zorg ervoor dat er schrijf toegang is naar deze map.</copy_default_songs>
     <no_backgrounds_folder>Kan de standaard achtergrondmap: %1 niet vinden.</no_backgrounds_folder>
     <no_defaults_folder>Kan de standaard map: %1 niet vinden</no_defaults_folder>
-    <no_scripture_folder>Kan de Bijbelteksten map: %1 niet vinden</no_scripture_folder>
-    <no_sets_folder>Kan de standaard projecten map: %1 niet vinden</no_sets_folder>
-    <no_settings_folder>Kan de standaard instellingen map: %1 niet vinden</no_settings_folder>
-    <no_songs_folder>Kan de standaard liedernmap: %1 niet vinden</no_songs_folder>
-    <no_docs_folder>Kan de documenten map: %1 niet maken/wijzigen</no_docs_folder>
+    <no_scripture_folder>Kan de Bijbelteksten map: '%1' niet vinden. Het zoeken in de bijbel wordt uitgeschakeld. Voeg een bijbel toe door in het menu 'Instellingen, de optie 'Installeer Module' te kiezen, of door het opnieuw installeren van OpenSong.</no_scripture_folder>
+    <load_bible>De standaard bijbel kan niet worden geladen: '%1'. OpenSong zal proberen om de eerstvolgende beschikbare bijbel te openen.</load_bible>
+    <no_sets_folder>Kan de standaard projecten map: %1 niet vinden, of deze map is leeg.</no_sets_folder>
+    <no_settings_folder>Kan de standaard instellingen map: %1 niet vinden, of deze map is leeg.</no_settings_folder>
+    <no_songs_folder>Kan de standaard liederenmap: %1 niet vinden, of deze map is leeg.</no_songs_folder>
+    <no_docs_folder>De Documenten map: %1 kan niet gemaakt of gewijzigd worden. Zorg ervoor dat er schrijf toegang is naar deze map, of selecteer een nieuwe Documenten map in de Algemene Instellingen. Veel van de functionaliteit van OpenSong is niet beschikbaar zonder aanwezigheid van een Documenten map.</no_docs_folder>
     <docs_folder>De Documenten map kan geen submap zijn van 'OpenSong Defaults'
 Tijdelijk gewwijzigd in: %1
 Wijzig de instellingen.</docs_folder>
@@ -1317,6 +1336,7 @@ Herstart OpenSong en probeer het nogmaals.</notenoughmemory>
        <unknownerror>Onbekende fout bij de toegang tot bestand %1</unknownerror>
        <notaregularfile>Er wordt verwacht dat %1 een bestand is en geen map.</notaregularfile>
        <notafolder>Er wordt verwacht dat %1 een map is en geen bestand.</notafolder>
+       <temporaryfailed>Het maken van een tijdelijk bestand voor %1 is mislukt.</temporaryfailed>
     </fileutils>
     <cclinotavailable>De CCLI website is ingrijpend veranderd.
 Hierdoor is de Import functie niet bruikbaar meer totdat er een nieuwe interface is ontwikkeld.
@@ -1358,6 +1378,7 @@ De logging van lied gebruik is uitgeschakeld.</activity_disabled>
       <save>Fout bij het opslaan van gewijzigd bestand '%1.'</save>
     </errors>
 
+    <load_successful>Het laden van bijbelbestand '%1' is gelukt.</load_successful>
     <messages>
       <bnames>Boek namen moeten worden toegevoegd aan deze vertaling.
 &#10;Kies de juiste taal voor de namen.</bnames>
@@ -1410,6 +1431,27 @@ De logging van lied gebruik is uitgeschakeld.</activity_disabled>
     <load_externals>Laden externe dia('s)</load_externals>
     <pass1>Sorteren, 1e ronde</pass1>
     <pass2>Sorteren, 2e ronde</pass2>
+    <detect_presentation_hosts>Detecteren van beschikbare presentatie programma's</detect_presentation_hosts>
   </progress_status>
-
+	<export_options title="Instellingen voor exporteren naar HTML">
+		<handling caption="CSS opmaak lokatie">
+			<link caption="Gebruik een link naar het opmaakbestand"/>
+			<embed caption="De CSS opmaak opnemen in het export bestand"/>
+		</handling>
+		<options caption="CSS opmaak instellingen">
+			<default caption="Gebruik een opgegeven opmaak bestand"/>
+			<print caption="Gebruik de opmaak gebaseerd op de afdruk instellingen"/>
+		</options>
+		<export caption="Gecombineerde export">
+			<single caption="Een enkel export bestand voor alle liederen"/>
+			<unique caption="Een uniek bestand per lied"/>
+		</export>
+		<cssfile caption="CSS opmaak bestand">link(shared/style_file/@caption)</cssfile>
+		<outdir caption="Export map">link(shared/export_to/@caption)</outdir>
+		<outfile>Export bestand</outfile>
+		<cancel caption="link(shared/cancel/@caption)"/>
+		<ok caption="link(shared/ok/@caption)"/>
+		<nofile>(Geen)</nofile>
+		<filter_css>Cascading Style Sheet</filter_css>
+	</export_options>
 </language>

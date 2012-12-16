@@ -149,8 +149,6 @@
       <add_style caption="Style">Change le style par défaut de la liste à n'importe quel endroit de celle-ci. Les changement de style peuvent en définir un nouveau ou revenir au précédant.</add_style>
 	  <add_image caption="Image">Ajoute une image à la liste en cours. Les diapos d'images vous permettront de montrer une image seule ou un diaporama d'images au lieu d'un texte.</add_image>
 	  <add_external caption="Externe">Ajoute un nouvel élement à la liste en cours permettant d'activier une source externe comme la lecture d'un DVD.</add_external>	  
-	  <add_video caption="Vidéo">Ajoute un fichier vidéo à la liste en cours. A utiliser pour projeter une vidéo dans OpenSong.</add_video>
-      <add_powerpoint caption="PowerPoint">Ajoute une présentation PowerPoint à la liste en cours. A utiliser pour controler une présentation PowerPoint directement dans OpenSong.</add_powerpoint>
     </new_item>
     <current_item caption="Elément en cours">
       <move_up caption="Vers le haut">Déplace l'élément sélectionné vers le haut de la liste.</move_up>
@@ -1125,8 +1123,8 @@ Si l'ordre des sections est vide, la présentation se fera dans l'ordre des secti
 
   <videolan_preset_list>
 	<preset name="Vidéo comme fond d'écran Windows (utilise la couleur RGB 0,0,1)" parameters="--no-video-deco --no-video-title-show --no-osd --video-wallpaper --direct3d-desktop --one-instance --directx-device=\\.\DISPLAY%d %s"/>
-	<preset name="Vidéo plein écran sur l'écran de présentation" parameters="--no-video-deco --no-video-title-show --no-osd --fullscreen --one-instance --directx-device=\\.\DISPLAY%d %s"/>
-	<preset name="Vidéo plein écran à partir de l'entrée vidéo DirectShow par défaut" parameters="--no-video-deco --no-video-title-show --no-osd --fullscreen --one-instance --directx-device=\\.\DISPLAY%d dshow://"/>
+	<preset name="Vidéo plein écran sur l'écran de présentation" parameters="--no-video-deco --no-video-title-show --no-osd --one-instance %s"/>
+	<preset name="Vidéo plein écran à partir de l'entrée vidéo DirectShow par défaut" parameters="--no-video-deco --no-video-title-show --no-osd --one-instance dshow://"/>
 	<!-- The line below is mandatory. Translators: only modify the value for 'name' -->
 	<preset name="Manuel" parameters=""/>
   </videolan_preset_list>

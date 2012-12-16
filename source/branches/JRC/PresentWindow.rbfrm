@@ -84,6 +84,23 @@ Begin Window PresentWindow Implements ScriptureReceiver
          Visible         =   True
          Width           =   32
       End
+      Begin SnapshotThread m_SnapshotThread
+         Enabled         =   True
+         Height          =   32
+         Index           =   -2147483648
+         InitialParent   =   "cnvSlide"
+         Left            =   161
+         LockedInPosition=   False
+         Priority        =   5
+         Scope           =   2
+         StackSize       =   0
+         TabIndex        =   2
+         TabPanelIndex   =   0
+         TabStop         =   True
+         Top             =   249
+         Visible         =   True
+         Width           =   32
+      End
    End
 End
 #tag EndWindow
@@ -131,6 +148,15 @@ End
 		  If HelperActive Then PresentHelperWindow.Close
 		  timerAdvance.Enabled = False
 		  
+		  m_updatingSlide = False
+		  While m_SnapshotThread.State = Thread.Running Or m_SnapshotThread.State = Thread.Sleeping
+		    App.SleepCurrentThread(100)
+		  Wend
+		  
+		  MainWindow.CleanupPresentation CurrentSet
+		  
+		  UpdateStatusNotifiers "closed"
+		  
 		  '++JRC Prevent resizing MainWindow
 		  'MainWindow.Show
 		  #If Not TargetMacOS
@@ -138,8 +164,6 @@ End
 		  #endif
 		  App.SetForeground(MainWindow)
 		  '--
-		  '++JRC
-		  MainWindow.AddPresentedSongsToLog
 		  
 		  MainWindow.SetFocus
 		End Sub
@@ -231,6 +255,7 @@ End
 		  
 		  m_videolanController = New VideolanController 'Initialise shell control for videolan
 		  m_AppLaunchShell = New Shell 'Initialise shell control for external applications
+		  m_updatingSlide = False
 		  
 		  App.DebugWriter.Write("PresentWindow.Open: Exit")
 		End Sub
@@ -238,7 +263,7 @@ End
 
 
 	#tag Method, Flags = &h1
-		Protected Function DoClosePresentation() As Boolean
+		Protected Function DoClosePresentation(confirmClose As Boolean = True) As Boolean
 		  Dim messagebox As New MessageDialog
 		  Dim msgboxbutton As MessageDialogButton
 		  Dim bFound As Boolean
@@ -257,7 +282,8 @@ End
 		  Next
 		  If bFound Then Return True
 		  '++JRC: made the prompt optional
-		  if SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "style/@exit_prompt") then
+		  if confirmClose And _
+		    SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "style/@exit_prompt") then
 		    If PresentationMode = MODE_SINGLE_SCREEN Then // Use operating system message box
 		      messagebox.Message = App.T.Translate("presentation_helper/exit/@caption")
 		      messagebox.Title = "OpenSong"
@@ -290,6 +316,10 @@ End
 		  
 		  Dim c As ScripturePickerController
 		  
+		  '++JRC No Bibles were found, return
+		  If UBound(BibleFactory.BibleList) < 0 Then Return False
+		  '--
+		  
 		  c = New ScripturePickerController
 		  c.registerScriptureReceiver Self
 		  
@@ -318,6 +348,31 @@ End
 		  Dim newSlide As Integer
 		  Dim i As Integer
 		  Dim presentation As String
+		  
+		  '++JRC Check if we have a songs folder if not try to create one
+		  If App.CheckDocumentFolders(App.SONGS_FOLDER) = App.NO_FOLDER Then
+		    If  App.DocsFolder <> Nil Then
+		      InputBox.Message App.T.Translate("errors/create_songs_folder", App.DocsFolder.AbsolutePath + App.STR_SONGS)
+		    Else
+		      InputBox.Message App.T.Translate("errors/no_docs_folder", "")
+		    End If
+		    Return False
+		  End If
+		  '--
+		  '++JRC If Songs is Nil, try to generate FolderDB
+		  If MainWindow.Songs = Nil Then
+		    If App.DocsFolder <> Nil Then
+		      MainWindow.Songs = New FolderDB(App.DocsFolder.Child(App.STR_SONGS))
+		    Else
+		      'InputBox.Message App.T.Translate("errors/no_docs_folder", "")
+		      Return False
+		    End If
+		    If MainWindow.Songs = Nil Then
+		      'Songs is still Nil, return (should never get here but we probably should
+		      'give some error message anyway ;)
+		      Return False
+		    End If
+		  End If
 		  
 		  ' Added code to remember current position so song can be inserted without changing
 		  ' what's up on the screen (allows operator to cue next song in a highly dynamic,
@@ -474,151 +529,6 @@ End
 		  Border = CalcBorderSize(g)
 		  Call GraphicsX.DrawFontString(g, alert, Border*3, Border, _
 		  alertFont, cnvSlide.Width-Border*6, align, cnvSlide.Height-Border*7, valign)
-		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h21
-		Private Sub ExportSnapshot(image As Picture, slide As XmlNode, style As XmlNode)
-		  Dim snapshot_filename As String = SmartML.GetValue(App.MyPresentSettings.DocumentElement, "snapshot/filename", False)
-		  Dim export_live_insertions As Boolean = SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "snapshot/@export_live_insertions", False, True)
-		  Dim export_metadata As Boolean = SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "snapshot/@export_metadata", False, True)
-		  
-		  If SmartML.GetValue(slide.Parent.Parent, "@type") = "blank" Then
-		    'Blank slides will not be exported as snapshot
-		    Return
-		  End If
-		  
-		  If Not export_live_insertions Then
-		    'Check if the current slide is flagged that is has been added during a live set
-		    If SmartML.GetValueB(slide.Parent.Parent, "@LiveInsertion", False, False) Then
-		      Return
-		    End If
-		  End If
-		  
-		  Dim d As New Date
-		  Dim re As New RegEx
-		  Dim start As Integer=0
-		  re.SearchPattern = "(%[dhimnNPsSTVy]{1})"
-		  re.Options.CaseSensitive = True
-		  
-		  Dim match As RegExMatch = re.Search(snapshot_filename)
-		  While match <> Nil
-		    Select Case Asc(Mid(match.SubExpressionString(1), 2, 1))
-		    Case Asc("d")
-		      'The day of the current month (01-31)
-		      Dim sd As String = Str(d.Day)
-		      If sd.Len() = 1 Then sd = "0" + sd
-		      snapshot_filename = ReplaceAllB(snapshot_filename, "%d", sd)
-		    Case Asc("h")
-		      'The hour from the current time of day in 24-hour format (00-23)
-		      Dim sh As String = Str(d.Hour)
-		      If sh.Len() = 1 Then sh = "0" + sh
-		      snapshot_filename = ReplaceAllB(snapshot_filename, "%h", sh)
-		    Case Asc("i")
-		      'The minutes from the current time (00-59)
-		      Dim si As String = Str(d.Minute)
-		      If si.Len() = 1 Then si = "0" + si
-		      snapshot_filename = ReplaceAllB(snapshot_filename, "%i", si)
-		    Case Asc("m")
-		      'The current month (01-12)
-		      Dim sm As String = Str(d.Month)
-		      If sm.Len() = 1 Then sm = "0" + sm
-		      snapshot_filename = ReplaceAllB(snapshot_filename, "%m", sm)
-		    Case Asc("n")
-		      'The number of the slide in the current set (with leading zeroes)
-		      Dim sn As String = Str(SmartML.GetValueN(slide.Parent.Parent, "@ItemNumber"))
-		      If sn.Len() = 1 Then sn = "0" + sn
-		      If sn.Len() = 2 Then sn = "0" + sn
-		      snapshot_filename = ReplaceAllB(snapshot_filename, "%n", sn)
-		    Case Asc("N")
-		      'The name of the current slide
-		      Dim sN As String = SmartML.GetValue(slide.Parent.Parent, "@name")
-		      snapshot_filename = ReplaceAllB(snapshot_filename, "%N", sN)
-		    Case Asc("P")
-		      'The name of the current slide
-		      Dim sP As String = Str(CurrentSlide)
-		      If sP.Len() = 1 Then sP = "0" + sP
-		      If sP.Len() = 2 Then sP = "0" + sP
-		      snapshot_filename = ReplaceAllB(snapshot_filename, "%P", sP)
-		    Case Asc("s")
-		      'The seconds from the current time (00-59)
-		      Dim ss As String = Str(d.Second)
-		      If ss.Len() = 1 Then ss = "0" + ss
-		      snapshot_filename = ReplaceAllB(snapshot_filename, "%s", ss)
-		    Case Asc("S")
-		      'The name of the current set
-		      Dim sS As String = SmartML.GetValue(slide.Parent.Parent.Parent.Parent, "@name")
-		      snapshot_filename = ReplaceAllB(snapshot_filename, "%S", sS)
-		    Case Asc("T")
-		      'The title of the current set
-		      Dim sT As String = SmartML.GetValue(slide.Parent.Parent, "title")
-		      snapshot_filename = ReplaceAllB(snapshot_filename, "%T", sT)
-		    Case Asc("V")
-		      'The title of the current set
-		      Dim sV As String = SmartML.GetValue(slide, "@id", False)
-		      snapshot_filename = ReplaceAllB(snapshot_filename, "%V", sV)
-		    Case Asc("y")
-		      'The current year (4 digits)
-		      Dim sy As String = Str(d.Year)
-		      If sy.Len() = 1 Then sy = "0" + sy
-		      snapshot_filename = ReplaceAllB(snapshot_filename, "%y", sy)
-		    Case Else
-		      start = match.SubExpressionStartB(1)+2
-		    End Select
-		    
-		    match = re.Search(snapshot_filename, start)
-		  Wend
-		  
-		  If snapshot_filename.EndsWith( ".jpg" ) Then
-		    snapshot_filename = Left(snapshot_filename, snapshot_filename.Len()-4)
-		  End If
-		  
-		  If IsNull(GetFolderItem(snapshot_filename + ".jpg")) Then
-		    Dim base_folder As FolderItem = Nil
-		    Dim folder_element As String
-		    Dim folder_elements() As String = Split(ReplaceAll(snapshot_filename, "\", "/"), "/")
-		    Call folder_elements.Pop() 'Remove the filename part
-		    
-		    For Each folder_element in folder_elements
-		      If IsNull(base_folder) Then
-		        base_folder = GetFolderItem(folder_element)
-		      Else
-		        base_folder = base_folder.Child(folder_element)
-		        If Not base_folder.Exists() Then
-		          base_folder.CreateAsFolder()
-		        End If
-		      End If
-		    Next
-		  End If
-		  
-		  Dim imageFileName As FolderItem = GetFolderItem(snapshot_filename + ".jpg")
-		  Dim metaFileName As FolderItem = GetFolderItem(snapshot_filename + ".xml")
-		  
-		  If Not IsNull(imageFileName) Then
-		    Try
-		      '++JRC Comented out second parameter for compatibilty with RB 2010r3
-		      image.Save(ImageFileName, 151) ' , 85)
-		      
-		      If export_metadata And Not IsNull(metaFileName) then
-		        Dim metaDoc As New XmlDocument
-		        Dim metaSlide As XmlElement = metaDoc.CreateElement("slide")
-		        metaDoc.DocumentElement.AppendChild(metaSlide)
-		        SmartML.CloneChildren(slide.Parent.Parent, metaSlide)
-		        SmartML.CloneAttributes(slide.Parent.Parent, metaSlide)
-		        
-		        metaDoc.DocumentElement.RemoveChild(SmartML.GetNode(metaSlide, "slides", True))
-		        metaDoc.DocumentElement.AppendChild metaDoc.ImportNode(slide, True)
-		        
-		        metaDoc.DocumentElement.RemoveChild(SmartML.GetNode(metaSlide, "style", True))
-		        metaDoc.DocumentElement.AppendChild metaDoc.ImportNode(style, True)
-		        
-		        Call SmartML.XDocToFile(metaDoc, metaFileName)
-		      End If
-		    Catch err
-		      'Snapshot will not be saved...
-		    End Try
-		  End If
-		  
 		End Sub
 	#tag EndMethod
 
@@ -1112,6 +1022,16 @@ End
 		End Function
 	#tag EndMethod
 
+	#tag Method, Flags = &h0
+		Function GoSlide(slideIndex As Integer) As Boolean
+		  me.CurrentSlide = slideIndex
+		  me.XCurrentSlide = SetML.GetSlide(me.CurrentSet, slideIndex)
+		  me.ResetPaint me.XCurrentSlide
+		  
+		  Return Not IsNull(me.XCurrentSlide)
+		End Function
+	#tag EndMethod
+
 	#tag Method, Flags = &h1
 		Protected Function GoSong(number As Integer) As Boolean
 		  'RealBasic: The Definitive Guide
@@ -1267,6 +1187,13 @@ End
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
+		Function IsUpdatingSlide() As Boolean
+		  Return m_updatingSlide Or _
+		  (timerTransition.Enabled And timerTransition.Mode <> Timer.ModeOff)
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
 		Function KeyDownX(Key As String) As Boolean
 		  '
 		  ' This routine was originally where all the code to decode a keystroke was kept
@@ -1294,7 +1221,6 @@ End
 		  Const ASC_KEY_HOME=1
 		  Const ASC_KEY_END=4
 		  
-		  Dim DontCare As Boolean
 		  Dim Command As Integer
 		  
 		  If Asc(Key) = ASC_KEY_PGDN Then Key = Chr(ASC_KEY_DOWN)
@@ -1307,8 +1233,7 @@ End
 		    Command = ACTION_NEXT_SLIDE
 		  End Select
 		  
-		  DontCare = PerformAction(Command)
-		  Return DontCare
+		  Return PerformAction(Command)
 		End Function
 	#tag EndMethod
 
@@ -1324,8 +1249,8 @@ End
 		End Sub
 	#tag EndMethod
 
-	#tag Method, Flags = &h1
-		Protected Function PerformAction(Action As Integer) As Boolean
+	#tag Method, Flags = &h0
+		Function PerformAction(Action As Integer, param As Variant = Nil) As Boolean
 		  
 		  'Constants added for clarity EMP 9/30/04
 		  Const ASC_KEY_LEFT = 28
@@ -1362,55 +1287,69 @@ End
 		    ' PREVIOUS SLIDE
 		    '
 		  ElseIf Keyboard.AsyncKeyDown(KEY_UP)  Or _
-		    Action = ASC_KEY_UP Then
+		    Action = ASC_KEY_UP Or _
+		    Action = ACTION_PREV_SLIDE Then
 		    Return GoPreviousSlide
 		    '
 		    ' FIRST SLIDE in presentation
 		    '
-		  ElseIf Action = ASC_KEY_HOME Then
+		  ElseIf Action = ASC_KEY_HOME Or _
+		    Action = ACTION_FIRST_SLIDE Then
 		    Return GoFirstSlide
 		    '
 		    ' LAST SLIDE in presentation
 		    '
-		  ElseIf Action = ASC_KEY_END Then
+		  ElseIf Action = ASC_KEY_END Or _
+		    Action = ACTION_LAST_SLIDE Then
 		    Return GoLastSlide
 		    '
 		    ' NEXT SECTION
 		    '
-		  ElseIf (Keyboard.AsyncKeyDown(KEY_RIGHT) Or Action = ASC_KEY_RIGHT) Then
+		  ElseIf Keyboard.AsyncKeyDown(KEY_RIGHT) Or _
+		    Action = ASC_KEY_RIGHT Or _
+		    Action = ACTION_NEXT_SECTION Then
 		    Return GoNextSection
 		    '
 		    ' PREVIOUS SECTION
 		    '
-		  ElseIf Keyboard.AsyncKeyDown(KEY_LEFT) Or Action = ASC_KEY_LEFT _
-		    Or Action = ASC_KEY_BACKSPACE _
-		    Or Action = ACTION_FIRST_SLIDE_OF_SECTION Then 'special code 126 comes from inside the program instead of keyboard
+		  ElseIf Keyboard.AsyncKeyDown(KEY_LEFT) Or _
+		    Action = ASC_KEY_LEFT Or _
+		    Action = ASC_KEY_BACKSPACE Or _
+		    Action = ACTION_FIRST_SLIDE_OF_SECTION Or _
+		    Action = ACTION_PREV_SECTION Then 'special code 126 comes from inside the program instead of keyboard
 		    Return GoPreviousSection(Action)
 		    '
 		    ' Jump to Chorus
 		    '
-		  ElseIf Lowercase(Key) = "c" Or Key = "`" Then ' c = Chorus
+		  ElseIf Lowercase(Key) = "c" Or Key = "`" Or _
+		    Action = ACTION_CHORUS Then ' c = Chorus
 		    Return GoChorus
 		    '
 		    ' Jump to  Bridge
 		    '
-		  ElseIf Lowercase(Key) = "b" Then ' b = Bridge
+		  ElseIf Lowercase(Key) = "b" Or _
+		    Action = ACTION_BRIDGE Then ' b = Bridge
 		    Return GoBridge
 		    '
 		    ' Jump to PreChorus
 		    '
-		  ElseIf Lowercase(Key) = "p" Then ' p = Pre-chorus
+		  ElseIf Lowercase(Key) = "p" Or _
+		    Action = ACTION_PRECHORUS Then ' p = Pre-chorus
 		    Return GoPreChorus
 		    '
 		    ' Jump to tag
 		    '
-		  ElseIf Lowercase(Key) = "t" Then ' t = Tag
+		  ElseIf Lowercase(Key) = "t" Or _
+		    Action = ACTION_TAG Then ' t = Tag
 		    Return GoTag
 		    '
 		    ' Jump to Verse "N"
 		    '
 		  ElseIf lowercase(key) = "v" or isNumeric(key) Then ' n = Verse
 		    Return GoVerse(key)
+		  ElseIf Action = ACTION_VERSE And _
+		    Not IsNull(param) And param.IsNumeric Then
+		    Return GoVerse(param.StringValue)
 		    '
 		    ' Jump to Song "N"
 		    '
@@ -1444,47 +1383,62 @@ End
 		    Return GoSong(14)
 		  ElseIf KeyBoard.AsyncKeyDown(KEY_F15) Then ' AKA Pause
 		    Return GoSong(15)
+		  ElseIf Action = ACTION_SONG And _
+		    Not IsNull(param) And param.IsNumeric Then
+		    Return GoSong(param.IntegerValue)
+		    
 		    '
 		    ' Close Presentation
 		    '
 		  ElseIf  Action = KEY_ESCAPE Then ' Escape
 		    Return DoClosePresentation
+		  ElseIf Action = ACTION_EXIT_NOPROMPT Then
+		    Return DoClosePresentation(False)
+		    
 		    '
 		    ' Black screen (can't be "B" since that's the hotkey for "Bridge" :-(
 		    '
-		  ElseIf Lowercase(Key) = "k"  Then
+		  ElseIf Lowercase(Key) = "k"Or _
+		    Action = ACTION_BLACK Then
 		    Return ToggleBlack
 		    '
 		    ' White Screen
 		    '
-		  ElseIf Lowercase(Key) = "w" Then
+		  ElseIf Lowercase(Key) = "w"Or _
+		    Action = ACTION_WHITE Then
 		    Return ToggleWhite
 		    '
 		    ' Hide Slide (leaves background up)
 		    '
-		  ElseIf Lowercase(Key) = "h" Then
+		  ElseIf Lowercase(Key) = "h"Or _
+		    Action = ACTION_HIDE Then
 		    Return ToggleHidden
 		    '
 		    ' Put up the LOGO
 		    '
-		  ElseIf Lowercase(Key) = "l" Then
+		  ElseIf Lowercase(Key) = "l"Or _
+		    Action = ACTION_LOGO Then
 		    Return ToggleLogo
 		    '
 		    ' Freeze display screen
 		    '
-		  ElseIf Lowercase(Key) = "f" Then
+		  ElseIf Lowercase(Key) = "f" Or _
+		    Action = ACTION_FREEZE Then
 		    Return ToggleFreeze
 		    '
 		    '  Normal Screen (less important now that the modes are toggles)
 		    '  It's a trump -- disables any other mode
 		    '
-		  ElseIf Lowercase(Key) = "n" Then
+		  ElseIf Lowercase(Key) = "n" Or _
+		    Action = ACTION_NORMAL Then
 		    Return ShowNormal
 		    '
 		    ' Put up an ALERT
 		    '
-		  ElseIf Lowercase(Key) = "a" Then
-		    Return ShowAlert
+		  ElseIf Lowercase(Key) = "a" Or _
+		    Action = ACTION_ALERT Then
+		    Return ShowAlert(param)
+		    
 		    '
 		    ' SCRIPTURE
 		    '
@@ -1697,13 +1651,13 @@ End
 		  //--
 		  'System.DebugLog "Allocate Picture space"
 		  If HelperActive And Width < 320 Then
-		    CurrentPicture = NewPicture(320, 240, 32)
-		    LastPicture = NewPicture(320, 240, 32)
-		    PreviewPicture = NewPicture(320, 240, 32)
+		    CurrentPicture = New Picture(320, 240, 32)
+		    LastPicture = New Picture(320, 240, 32)
+		    PreviewPicture = New Picture(320, 240, 32)
 		  Else
-		    CurrentPicture = NewPicture(Width, Height, 32)
-		    LastPicture = NewPicture(Width, Height, 32)
-		    PreviewPicture = NewPicture(Width, Height, 32)
+		    CurrentPicture = New Picture(Width, Height, 32)
+		    LastPicture = New Picture(Width, Height, 32)
+		    PreviewPicture = New Picture(Width, Height, 32)
 		  End If
 		  CurrentPicture.Graphics.ForeColor = RGB(0,0,0)
 		  CurrentPicture.Graphics.FillRect(0, 0, CurrentPicture.Width, CurrentPicture.Height)
@@ -1714,13 +1668,15 @@ End
 		  tmpPic = SmartML.GetValueP(App.MyPresentSettings.DocumentElement, "logo")
 		  
 		  If tmpPic <> Nil Then
-		    LogoCache = NewPicture(tmpPic.Width, tmpPic.Height, 32)
+		    LogoCache = New Picture(tmpPic.Width, tmpPic.Height, 32)
 		    LogoCache.Graphics.DrawPicture tmpPic, 0, 0
 		    LogoCache.Mask.Graphics.DrawPicture SmartML.GetValueP(App.MyPresentSettings.DocumentElement, "logo_mask"), 0, 0
 		  End If
 		  
 		  'CurrentSlide = 1
 		  'XCurrentSlide = SetML.GetSlide(CurrentSet, 1)
+		  
+		  UpdateStatusNotifiers "starting"
 		  
 		  If HelperActive Then
 		    PresentHelperWindow.Show
@@ -1757,6 +1713,7 @@ End
 		  #if Not TargetMacOS
 		    App.MinimizeWindow(MainWindow)
 		  #endif
+		  
 		  If HelperActive Then
 		    PresentHelperWindow.SetMode Me.Mode, False
 		    App.RestoreWindow(PresentHelperWindow)
@@ -1802,32 +1759,51 @@ End
 		  Dim xStyle As XmlNode
 		  Dim w, h As Integer
 		  Dim advanceNext As Boolean = False
+		  Dim currAppl As String
+		  
+		  If Not IsNull(slide) Then
+		    currAppl = SmartML.GetValue(slide.Parent.Parent, "@application", False)
+		  End If
 		  
 		  If SetML.IsExternal(PreviousSlide) Then
 		    'Check if we need to close the running external.
 		    Dim bClose As Boolean = False
 		    Dim prevAppl As string = SmartML.GetValue(PreviousSlide, "@application", False)
 		    Dim prevHost As string = SmartML.GetValue(PreviousSlide, "@host", False)
-		    Dim prevFile As String = SmartML.GetValue(PreviousSlide, "@filename", False)
+		    Dim prevFile As String = SmartML.GetValue(PreviousSlide, "@_localfilename", False)
+		    If prevFile.Len() = 0 Then
+		      prevFile = SmartML.GetValue(PreviousSlide, "@filename", False)
+		    End If
 		    
 		    If Not SetML.IsExternal(slide) Then
 		      bClose = True
 		    Else
 		      'See if the external in the new slide is equal to the current slide.
-		      If SmartML.GetValue(slide.Parent.Parent, "@application", False) <> prevAppl Or _
-		        SmartML.GetValue(slide.Parent.Parent, "@host", False) <> prevHost Or _
-		        SmartML.GetValue(slide.Parent.Parent, "@filename", False) <> prevFile Then
-		        bClose = True
+		      If Not IsNull(slide) Then
+		        If currAppl <> prevAppl Or _
+		          SmartML.GetValue(slide.Parent.Parent, "@host", False) <> prevHost Or _
+		          (SmartML.GetValue(slide.Parent.Parent, "@_localfilename", False) <> prevFile And _
+		          SmartML.GetValue(slide.Parent.Parent, "@filename", False) <> prevFile) Then
+		          bClose = True
+		        End If
 		      End If
 		    End If
 		    
 		    If bClose Then
 		      self._IsClosingExternal = True
 		      
+		      If prevAppl = "presentation" Or prevAppl = "videolan" Then
+		        If currAppl <> "presentation" And currAppl <> "videolan" Then
+		          PresentWindow.Restore()
+		          'PresentWindow.Show()
+		          'If PresentWindow.HelperActive Then
+		          'PresentHelperWindow.SetFocus
+		          'End If
+		        End If
+		      End If
+		      
 		      Select Case prevAppl
 		      Case "presentation"
-		        App.RestoreWindow(PresentWindow)
-		        
 		        Dim presFile As FolderItem = GetFolderItem( prevFile )
 		        If Not IsNull(presFile) Then
 		          If presFile.Exists() Then
@@ -1835,11 +1811,20 @@ End
 		            Dim presHost As PresentationHost = PresentationHost.Automatic
 		            Select Case prevHost
 		            Case "ppt"
-		              presHost = PresentationHost.PowerPoint
+		              If PresentationFactory.PowerPointAvailable() Then
+		                presHost = PresentationHost.PowerPoint
+		              End If
+		              If PresentationFactory.OpenOfficeAvailable() Then
+		                presHost = PresentationHost.OpenOffice
+		              End If
 		            Case "pptview"
-		              presHost = PresentationHost.PowerPointViewer
+		              If PresentationFactory.PPTViewAvailable() Then
+		                presHost = PresentationHost.PowerPointViewer
+		              End If
 		            Case "impress"
-		              presHost = PresentationHost.OpenOffice
+		              If PresentationFactory.OpenOfficeAvailable() Then
+		                presHost = PresentationHost.OpenOffice
+		              End If
 		            End Select
 		            
 		            Dim oExtPres As iPresentation = PresentationFactory.GetOrCreate( presFile.AbsolutePath(), presHost )
@@ -1864,27 +1849,44 @@ End
 		    End If
 		  End If
 		  
-		  If IsNull( slide ) Then Return
+		  If IsNull( slide ) Then
+		    UpdateStatusNotifiers "clear"
+		    Return
+		  End If
 		  
 		  If SetML.IsExternal(slide) Then
 		    _IsSlidechangeExternal = True
 		    
 		    If mode = "N" then
-		      Select Case SmartML.GetValue(slide.Parent.Parent, "@application", False)
+		      Select Case currAppl
 		      Case "presentation"
 		        
-		        Dim presFile As FolderItem = GetFolderItem( SmartML.GetValue(slide.Parent.Parent, "@filename", False) )
+		        'First check if there is a 'local' filename (a saved embedded presentation)
+		        Dim presFilename As String = SmartML.GetValue(slide.Parent.Parent, "@_localfilename", False)
+		        If presFilename.Len() = 0 Then
+		          presFilename = SmartML.GetValue(slide.Parent.Parent, "@filename", False)
+		        End If
+		        Dim presFile As FolderItem = GetFolderItem( presFilename )
 		        If Not IsNull(presFile) Then
 		          If presFile.Exists() Then
 		            
 		            Dim presHost As PresentationHost = PresentationHost.Automatic
 		            Select Case SmartML.GetValue(slide.Parent.Parent, "@host", False)
 		            Case "ppt"
-		              presHost = PresentationHost.PowerPoint
+		              If PresentationFactory.PowerPointAvailable() Then
+		                presHost = PresentationHost.PowerPoint
+		              End If
+		              If PresentationFactory.OpenOfficeAvailable() Then
+		                presHost = PresentationHost.OpenOffice
+		              End If
 		            Case "pptview"
-		              presHost = PresentationHost.PowerPointViewer
+		              If PresentationFactory.PPTViewAvailable() Then
+		                presHost = PresentationHost.PowerPointViewer
+		              End If
 		            Case "impress"
-		              presHost = PresentationHost.OpenOffice
+		              If PresentationFactory.OpenOfficeAvailable() Then
+		                presHost = PresentationHost.OpenOffice
+		              End If
 		            End Select
 		            
 		            Dim oExtPres As iPresentation = PresentationFactory.GetOrCreate( presFile.AbsolutePath(), presHost )
@@ -1918,9 +1920,14 @@ End
 		          If img.SetImageAsString( sPreviewImage ) Then
 		            Dim slidePreview As Picture = img.GetImage()
 		            PreviewPicture.Graphics.DrawPicture slidePreview, 0, 0, PreviewPicture.Width, PreviewPicture.Height, 0, 0, slidePreview.Width, slidePreview.Height
+		            CurrentPicture.Graphics.DrawPicture slidePreview, 0, 0, CurrentPicture.Width, CurrentPicture.Height, 0, 0, slidePreview.Width, slidePreview.Height
 		          End If
+		        Else
+		          CurrentPicture.Graphics.ForeColor = RGB(0,0,0)
+		          CurrentPicture.Graphics.FillRect 0, 0, CurrentPicture.Graphics.Width, CurrentPicture.Graphics.Height
 		        End If
 		        
+		        'PresentWindow.Hide()
 		        App.MinimizeWindow(PresentWindow)
 		        
 		      Case "videolan"
@@ -1928,24 +1935,39 @@ End
 		        
 		        If SmartML.GetValue(slide.Parent.Parent, "@action") = "start" Then
 		          Dim params As String = SmartML.GetValue(slide.Parent.Parent, "@videolan_parameters")
-		          params = ReplaceAllB(params, "%d", Str(SmartML.GetValueN(App.MyPresentSettings.DocumentElement, "monitors/@control")))
-		          If InStr(params, "%s") = 0 Then
-		            params = params + " """ + SmartML.GetValue(slide.Parent.Parent, "@filename") + """"
-		          Else
-		            params = ReplaceAllB(params, "%s", """" + SmartML.GetValue(slide.Parent.Parent, "@filename") + """")
+		          Dim waitForPlayback As Boolean = SmartML.GetValueB(slide.Parent.Parent, "@wait_to_finish")
+		          
+		          'First check if there is a 'local' filename (a saved embedded media file)
+		          Dim mediaFilename As String = SmartML.GetValue(slide.Parent.Parent, "@_localfilename", False)
+		          If mediaFilename.Len = 0 Then
+		            mediaFilename = SmartML.GetValue(slide.Parent.Parent, "@filename", False)
 		          End If
 		          
-		          Call m_VideolanController.Start(params)
+		          Dim fullScreen As Boolean = PresentationMode <> MODE_PREVIEW
+		          If m_VideolanController.Start(mediaFilename, params, presentScreen, waitForPlayback, fullScreen) Then
+		            CurrentPicture.Graphics.ForeColor = RGB(0,0,0)
+		            CurrentPicture.Graphics.FillRect 0, 0, CurrentPicture.Graphics.Width, CurrentPicture.Graphics.Height
+		            
+		            'PresentWindow.Hide()
+		            App.MinimizeWindow(PresentWindow)
+		            
+		            advanceNext = Not waitForPlayback
+		          End If
 		        Else
-		          'Case @action = stop is covered by generic application close above
+		          'Case @action = stop is covered by generic application close above _
+		          advanceNext = True
 		        End If
-		        
-		        advanceNext = True
 		        
 		      Case "launch"
 		        Dim launchAppLocation As FolderItem = GetFolderItem(SmartML.GetValue(slide.Parent.Parent, "@app_filename", False))
-		        Dim cmd As String = launchAppLocation.AbsolutePath()
+		        Dim cmd As String
 		        Dim params As String = SmartML.GetValue(slide.Parent.Parent, "@app_parameters", False)
+		        
+		        If Not IsNull(launchAppLocation) Then
+		          If launchAppLocation.Exists() Then
+		            cmd = launchAppLocation.AbsolutePath()
+		          End If
+		        End If
 		        
 		        If m_AppLaunchShell.IsRunning Then
 		          'Close any running external application instance.
@@ -1958,7 +1980,13 @@ End
 		          Else
 		            m_AppLaunchShell.Mode = 1 'Asynchronous
 		          End If
-		          m_AppLaunchShell.Execute( """" + cmd + """" + " " + params )
+		          
+		          CurrentPicture.Graphics.ForeColor = RGB(0,0,0)
+		          CurrentPicture.Graphics.FillRect 0, 0, CurrentPicture.Graphics.Width, CurrentPicture.Graphics.Height
+		          
+		          If cmd.Len() > 0 Then
+		            m_AppLaunchShell.Execute( """" + cmd + """" + " " + params )
+		          End If
 		        Else
 		          'Case @action = stop is covered by generic application close above
 		        End If
@@ -1982,6 +2010,7 @@ End
 		    'LastPicture = LastPicture.CXG_Composite(CurrentPicture, 1.0, 0, 0)
 		    
 		    ' === Draw the slide to the PreviewPicture ===
+		    m_updatingSlide = True
 		    
 		    Profiler.BeginProfilerEntry "PresentWindow::ResetPaint::PreviewPicture"
 		    ' -- Old way -- (value not passed)
@@ -2024,7 +2053,7 @@ End
 		      CurrentPicture.Graphics.DrawPicture PreviewPicture, 0, 0
 		      'CurrentPicture = CurrentPicture.CXG_Composite(PreviewPicture, 1.0, 0, 0)
 		      If m_Snapshots Then
-		        ExportSnapshot PreviewPicture, slide, xStyle
+		        m_snapshotThread.Export CurrentSlide, PreviewPicture, slide, xStyle
 		      End If
 		    End If
 		    Profiler.EndProfilerEntry
@@ -2034,6 +2063,7 @@ End
 		      DrawAlert CurrentPicture.Graphics, AlertText
 		      DrawAlert PreviewPicture.Graphics, AlertText
 		    End If
+		    
 		    ' === Check for auto-advance ===
 		    If SmartML.GetValueN(XCurrentSlide.Parent.Parent, "@seconds", True) > 0 Then
 		      timerAdvance.Mode = 1
@@ -2051,8 +2081,12 @@ End
 		      timerTransition.Reset
 		      timerTransition.Enabled = True
 		    End If
+		    
 		    cnvSlide.Refresh False
+		    m_updatingSlide = False
 		  End If
+		  
+		  UpdateStatusNotifiers "change"
 		  
 		  'Keep a copy of this slide to be able do a cleanup when a next slide is shown
 		  'A 'next' slide is always set in XCurrentSlide before this method is called and can therefore not be used for this purpose
@@ -2140,8 +2174,13 @@ End
 	#tag EndMethod
 
 	#tag Method, Flags = &h1
-		Protected Function ShowAlert() As Boolean
-		  AlertText = InputBox.Input(App.T.Translate("presentation_helper/actions/alert") + ":", "")
+		Protected Function ShowAlert(alert As Variant = Nil) As Boolean
+		  If IsNull(alert) Then
+		    AlertText = InputBox.Input(App.T.Translate("presentation_helper/actions/alert") + ":", "")
+		  Else
+		    AlertText = alert.StringValue
+		  End If
+		  
 		  If HelperActive Then
 		    ResetPaint XCurrentSlide
 		    PresentHelperWindow.Refresh False
@@ -2178,6 +2217,15 @@ End
 		  For i as Integer = 1 To UBound(ActLog)
 		    If ActLog(i).SetItemNumber = ItemNumber Then ActLog(i).Displayed = true
 		  Next i
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub SubscribeStatusNotifier(subject As iStatusNotifier)
+		  if m_statusNotifiers.IndexOf(subject) < 0 Then
+		    m_statusNotifiers.Append(subject)
+		    subject.StatusNotification("present", "subscribe")
+		  end if
 		End Sub
 	#tag EndMethod
 
@@ -2276,6 +2324,23 @@ End
 		  End If
 		  Return True
 		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub UnsubscribeStatusNotifier(subject As iStatusNotifier)
+		  Dim i As Integer = m_statusNotifiers.IndexOf(subject)
+		  If i >= 0 Then
+		    m_statusNotifiers.Remove(i)
+		  End If
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Private Sub UpdateStatusNotifiers(info As String)
+		  For Each subject As iStatusNotifier in m_statusNotifiers
+		    subject.StatusNotification("present", info)
+		  Next
+		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h1
@@ -2420,6 +2485,14 @@ End
 	#tag EndProperty
 
 	#tag Property, Flags = &h21
+		Private m_statusNotifiers() As iStatusNotifier
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
+		Private m_updatingSlide As Boolean = False
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
 		Private m_VideolanController As VideolanController = Nil
 	#tag EndProperty
 
@@ -2484,6 +2557,9 @@ End
 	#tag EndProperty
 
 
+	#tag Constant, Name = ACTION_ALERT, Type = Double, Dynamic = False, Default = \"1021", Scope = Public
+	#tag EndConstant
+
 	#tag Constant, Name = ACTION_BLACK, Type = Integer, Dynamic = False, Default = \"1013", Scope = Public
 	#tag EndConstant
 
@@ -2536,6 +2612,9 @@ End
 	#tag EndConstant
 
 	#tag Constant, Name = ACTION_PREV_SLIDE, Type = Integer, Dynamic = False, Default = \"1002", Scope = Public
+	#tag EndConstant
+
+	#tag Constant, Name = ACTION_SONG, Type = Double, Dynamic = False, Default = \"1021", Scope = Public
 	#tag EndConstant
 
 	#tag Constant, Name = ACTION_TAG, Type = Integer, Dynamic = False, Default = \"1011", Scope = Public
@@ -2639,9 +2718,11 @@ End
 	#tag Event
 		Sub Paint(g As Graphics)
 		  If Not Globals.Status_Presentation Then Return
+		  
 		  '#if DebugBuild then
 		  'App.DebugWriter.Write("PresentWindow.cnvSlide.Paint: Enter")
 		  '#endif
+		  
 		  If (doTransition And (curslideTransition = SlideTransitionEnum.ApplicationDefault)) Or (curslideTransition = SlideTransitionEnum.UseTransition) Then
 		    Profiler.BeginProfilerEntry "PresentWindow::Repaint Timer::Blit"
 		    CurrentPicture.Mask.Graphics.ForeColor = rgb(255*(TransitionFrames-TransitionFrame)/TransitionFrames, 255*(TransitionFrames-TransitionFrame)/TransitionFrames, 255*(TransitionFrames-TransitionFrame)/TransitionFrames)
@@ -2655,9 +2736,11 @@ End
 		  Else
 		    g.DrawPicture CurrentPicture, 0, 0, g.Width, g.Height, 0, 0, CurrentPicture.Width, CurrentPicture.Height
 		  End If
+		  
 		  '#if DebugBuild Then
 		  'App.DebugWriter.Write("PresentWindow.cnvSlide.Paint: Exit")
 		  '#endif
+		  
 		  //++
 		  // EMP: handle any exceptions by ignoring them.
 		  // This corrects an issue seen when changing the SButton style
@@ -2673,6 +2756,11 @@ End
 #tag Events timerAdvance
 	#tag Event
 		Sub Action()
+		  If Not Globals.Status_Presentation Then
+		    Me.Enabled = False
+		    Return
+		  End If
+		  
 		  If XCurrentSlide.NextSibling = Nil And SmartML.GetValueB(XCurrentSlide.Parent.Parent, "@loop") Then
 		    Call PerformAction(ACTION_FIRST_SLIDE_OF_SECTION)
 		  Else
@@ -2686,6 +2774,10 @@ End
 #tag Events timerTransition
 	#tag Event
 		Sub Action()
+		  If Not Globals.Status_Presentation Then
+		    Me.Enabled = False
+		    Return
+		  End If
 		  
 		  If TransitionFrame = TransitionFrames Then
 		    Me.Enabled = False
