@@ -1,4 +1,6 @@
-﻿* Fix in song loading, files in 'Main' or when 'All' is selected could not be loaded either from OpenSong or using the API. (Vwout)
+﻿* Display Set name in PresentHelper Window's title. (Feature Request #338) (JRC)
+
+* Fix in song loading, files in 'Main' or when 'All' is selected could not be loaded either from OpenSong or using the API. (Vwout)
 
 * Extended Automation API implementation: added load and present actions for song and set. (Vwout)
 
