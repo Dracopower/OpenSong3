@@ -12143,11 +12143,16 @@ End
 		      End If
 		    Else
 		      For i As Integer = 0 To pop_songs_song_folders.ListCount-1
-		        If pop_songs_song_folders.List(i) = folderPath Or _
-		          pop_songs_song_folders.List(i) = folderPath.ReplaceAll("/", "\") Then
+		        '++JRC Add trailing slash to folderPath to match value in CellTag
+		        If pop_songs_song_folders.List(i) = folderPath Then
 		          index = i
 		          folderPath = pop_songs_song_folders.List(i)
+		          folderPath = folderPath + "/"
 		          Exit
+		        ElseIf pop_songs_song_folders.List(i) = folderPath.ReplaceAll("/", "\") Then
+		          index = i
+		          folderPath = pop_songs_song_folders.List(i)
+		          folderPath = folderPath + "\"
 		        End If
 		      Next
 		    End If
@@ -12163,6 +12168,7 @@ End
 		      End If
 		      
 		      index = -1
+		      
 		      For i As Integer = 0 To lst_songs_songs.ListCount-1
 		        If lst_songs_songs.CellTag(i, 0).StringValue = folderPath And _
 		          lst_songs_songs.List(i) = f.Name Then
