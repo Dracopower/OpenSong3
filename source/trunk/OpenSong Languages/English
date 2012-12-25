@@ -1222,6 +1222,7 @@ Click on this slide to edit its style.</body>
     <no_songs_folder caption="Could not find Songs folder, would you like to create this folder?"/>
     <no_sets_folder caption="Could not find Sets folder, would you like to create this folder?"/>
     <no_folder caption="Could not find folder '%1', would you like to create this folder?"/>
+    <destination_exists caption="File exists in the destination folder. Would you like to rename this file?"/>
   </questions>
 
   <about>
@@ -1272,6 +1273,7 @@ The image file PuffyClouds1.jpg included in the Backgrounds folder is Copyright 
     <number_range>Please enter a number between %1 and %2.</number_range>
     <no_path_allowed>File name may not include a path.</no_path_allowed>
     <rename_error>Unable to rename file.</rename_error>
+    <same_filename>Destination file is the same as source.</same_filename>
     <general1>In '%1': Unknown error</general1>
     <general2>In '%1': '%2'</general2>
     <folder_error>Internal folder error. Contact technical support.</folder_error>

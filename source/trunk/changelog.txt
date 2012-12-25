@@ -1,4 +1,6 @@
-﻿* Display Set name in PresentHelper Window's title. (Feature Request #338) (JRC)
+﻿* Change behavior for copying a song if source and destination are the same to: Prompt the user to rename the file. (JRC)
+
+* Display Set name in PresentHelper Window's title. (Feature Request #338) (JRC)
 
 * Fix in song loading, files in 'Main' or when 'All' is selected could not be loaded either from OpenSong or using the API. (Vwout)
 

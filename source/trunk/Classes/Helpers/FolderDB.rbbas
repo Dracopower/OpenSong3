@@ -194,6 +194,51 @@ Protected Class FolderDB
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
+		Function CopyFileEx(path As String, destFile As String) As Boolean
+		  Dim i, cacheSlots(0) As Integer
+		  Dim f,  fo As FolderItem
+		  Dim g As FolderItem
+		  Dim found As Boolean
+		  
+		  destFile = CleanPath(destFile)
+		  destFile = ReplaceAll(destFile, "/", "\")
+		  path = CleanPath(path)
+		  
+		  fo = FileUtils.RelativePathToFolderItem(Folder, path)
+		  If fo = Nil Or Not fo.Exists Then
+		    ErrorCode = 10
+		    ErrorString = "Source for rename does not exist"
+		    Return False
+		  End If
+		  
+		  
+		  g = fo.Parent.Child(destFile)
+		  
+		  If g.Exists Then
+		    ErrorCode = 3
+		    ErrorString = App.T.Translate("errors/already_exists", destFile)
+		    Return False
+		  End If
+		  
+		  fo.CopyFileTo g
+		  
+		  If fo.LastErrorCode <> 0 Then
+		    If g.Exists And fo.Exists Then // File with that name already in destination folder
+		      ErrorCode = 13
+		      ErrorString = "Destination file exists."
+		    Else
+		      ErrorCode = 12
+		      ErrorString = "Could not copy file."
+		    End If
+		    Return False
+		  End If
+		  
+		  Return True
+		  
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
 		Function DeleteFile(path As String) As Boolean
 		  Dim f As FolderItem
 		  path = CleanPath(path)
