@@ -1,4 +1,6 @@
-﻿* Change behavior for copying a song if source and destination are the same to: Prompt the user to rename the file. (JRC)
+﻿* Fix user defined fields not updating when returning from MainSettings. (JRC)
+
+* Change behavior for copying a song if source and destination are the same to: Prompt the user to rename the file. (JRC)
 
 * Display Set name in PresentHelper Window's title. (Feature Request #338) (JRC)
 
