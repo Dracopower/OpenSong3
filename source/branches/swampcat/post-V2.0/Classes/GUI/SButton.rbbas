@@ -2,6 +2,20 @@
 Class SButton
 Inherits Canvas
 	#tag Event
+		Function ConstructContextualMenu(base as MenuItem, x as Integer, y as Integer) As Boolean
+		  App.DebugWriter.Write("In SButton.ConstructContextualMenu for SButton " + Me.Name, 3)
+		  
+		End Function
+	#tag EndEvent
+
+	#tag Event
+		Function ContextualMenuAction(hitItem as MenuItem) As Boolean
+		  App.DebugWriter.Write("In SButton.ContextualMenuAction for " + Me.Name, 3)
+		  App.DebugWriter.Write("  hititem is " + hitItem.Name + ", " + hitItem.Text, 3)
+		End Function
+	#tag EndEvent
+
+	#tag Event
 		Sub GotFocus()
 		  IsMouseOver = True
 		  HasFocus = True
@@ -38,8 +52,12 @@ Inherits Canvas
 		    // Mac OSX will open the popup on MouseDown,
 		    // Windows & Linux open in MouseUp
 		    #If TargetMacOS
-		      If Popup <> Nil Then
-		        Popup.Open
+		      If PopupMenu <> Nil Then
+		        Dim SelectedMenuItem As MenuItem
+		        SelectedMenuItem = PopupMenu.PopUp()
+		        If SelectedMenuItem <> Nil Then
+		          MenuItem = SelectedMenuItem.Name
+		        End If
 		      End If
 		    #Endif
 		    Return True
@@ -70,8 +88,12 @@ Inherits Canvas
 		  // a contextual dialog on mouse up, but OS X
 		  // does it on mouse down.
 		  #if Not TargetMacOS
-		    If Popup <> Nil Then
-		      Popup.Open
+		    If PopupMenu <> Nil Then
+		      Dim SelectedMenuItem As MenuItem
+		      SelectedMenuItem = PopupMenu.PopUp()
+		      If SelectedMenuItem <> Nil Then
+		        MenuItem = SelectedMenuItem.Name
+		      End If
 		    End If
 		  #endif
 		  IsMouseDown = False
@@ -159,8 +181,8 @@ Inherits Canvas
 		    g.DrawString Label, i, Ceil((Height + g.TextAscent) / 2) - 2 + offset
 		  End If
 		  
-		  If Popup <> Nil Then
-		    i = g.TextAscent/4
+		  If PopupMenu <> Nil Then
+		    i = g.TextAscent/3
 		    tri(1) = Width - i*3
 		    tri(2) = Height/2 - i
 		    tri(3) = Width - i*2
@@ -184,33 +206,33 @@ Inherits Canvas
 
 	#tag Method, Flags = &h0
 		Sub AddPopupRow(str As String)
-		  If Popup = Nil Then
-		    Popup = New SButtonPopup
-		    Popup.Parent = Me
+		  If PopupMenu = Nil Then
+		    PopupMenu = New MenuItem
+		    PopupMenu.Name = "Popup"
+		    PopupMenu.Text = "PopupText"
 		  End If
 		  
-		  '++JRC Workaround for RB 2007 issue where UTF-8 strings are
-		  'improperly encoded in ContextualMenus (bug #1829317)
-		  Popup.AddRow str
-		  Popup.GoodStrings.Append str
-		  
+		  Dim newRow As New MenuItem(str)
+		  newRow.Name = str
+		  PopupMenu.Append newRow
 		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
 		Sub AddPopupSeparator()
-		  If Popup = Nil Then
-		    Popup = New SButtonPopup
-		    Popup.Parent = Me
+		  If PopupMenu = Nil Then
+		    PopupMenu = New MenuItem
+		    PopupMenu.Name = "Popup"
+		    PopupMenu.Text = "PopupText"
 		  End If
 		  
-		  Popup.AddSeparator
+		  PopupMenu.Append New MenuItem(PopupMenu.TextSeparator)
 		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
 		Sub DeletePopup()
-		  Popup = Nil
+		  PopupMenu = Nil
 		End Sub
 	#tag EndMethod
 
@@ -418,7 +440,7 @@ Inherits Canvas
 		    g.DrawString Label, i, Ceil((Height + g.TextAscent) / 2) - 2 + offset
 		  End If
 		  
-		  If Popup <> Nil Then
+		  If PopupMenu <> Nil Then
 		    i = g.TextAscent/4
 		    tri(1) = Width - i*3
 		    tri(2) = Height/2 - i
@@ -560,8 +582,8 @@ Inherits Canvas
 		Protected NewPaint As Boolean
 	#tag EndProperty
 
-	#tag Property, Flags = &h1
-		Protected Popup As SButtonPopup
+	#tag Property, Flags = &h21
+		Private PopupMenu As MenuItem
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
