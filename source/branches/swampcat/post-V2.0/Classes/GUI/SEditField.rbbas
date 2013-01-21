@@ -2,6 +2,58 @@
 Protected Class SEditField
 Inherits TextArea
 	#tag Event
+		Function ConstructContextualMenu(base as MenuItem, x as Integer, y as Integer) As Boolean
+		  base.Append(New MenuItem(App.T.Translate("shared/cut/@caption"), kCut))
+		  base.Append(New MenuItem(App.T.Translate("shared/copy/@caption"),kCopy))
+		  
+		  Dim c As New Clipboard
+		  
+		  If c.TextAvailable Then
+		    base.Append(New MenuItem(MenuItem.TextSeparator, kSeparator))
+		    base.Append(New MenuItem(App.T.Translate("shared/paste/@caption"), kPaste))
+		  End If
+		  
+		  Return True
+		End Function
+	#tag EndEvent
+
+	#tag Event
+		Function ContextualMenuAction(hitItem as MenuItem) As Boolean
+		  Dim actionResult As Boolean = False
+		  Dim c As New Clipboard
+		  
+		  If hitItem.Tag = kCut Then
+		    c.SetText SelText
+		    SelText = ""
+		    actionResult = True
+		  ElseIf hitItem.Tag = kCopy Then
+		    c.SetText SelText
+		    actionResult = True
+		  ElseIf hitItem.Tag = kPaste Then
+		    ''++JRC
+		    'm = NewMemoryBlock(50000)
+		    'ClipboardUNICODEtoTXT(MainWindow.Handle, m)
+		    ''edf_song_lyrics.Text = m.CString(0)
+		    'ActiveEditField.SelText = m.CString(0)
+		    '
+		    ''--
+		    if c.TextAvailable then
+		      Try
+		        c.Text = ConvertEncoding(c.Text, encodings.UTF8)
+		      Catch ex
+		        App.DebugWriter.Write("Can't convert string to paste, string is '" + c.text + "'", 1)
+		      End Try
+		    End If
+		    SelText = c.text
+		    actionResult = True
+		  End If
+		  
+		  Return actionResult
+		  
+		End Function
+	#tag EndEvent
+
+	#tag Event
 		Sub EnableMenuItems()
 		  Dim State As Boolean
 		  Dim c As New Clipboard
@@ -81,6 +133,19 @@ Inherits TextArea
 	#tag EndNote
 
 
+	#tag Constant, Name = kCopy, Type = String, Dynamic = False, Default = \"copy", Scope = Private
+	#tag EndConstant
+
+	#tag Constant, Name = kCut, Type = String, Dynamic = False, Default = \"cut", Scope = Private
+	#tag EndConstant
+
+	#tag Constant, Name = kPaste, Type = String, Dynamic = False, Default = \"paste", Scope = Private
+	#tag EndConstant
+
+	#tag Constant, Name = kSeparator, Type = String, Dynamic = False, Default = \"separator", Scope = Private
+	#tag EndConstant
+
+
 	#tag ViewBehavior
 		#tag ViewProperty
 			Name="AcceptTabs"
@@ -105,6 +170,14 @@ Inherits TextArea
 			InitialValue="True"
 			Type="Boolean"
 			InheritedFrom="EditField"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="AutomaticallyCheckSpelling"
+			Visible=true
+			Group="Behavior"
+			InitialValue="True"
+			Type="boolean"
+			InheritedFrom="TextArea"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="BackColor"
@@ -177,14 +250,18 @@ Inherits TextArea
 			InheritedFrom="EditField"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="HideSelection"
+			Visible=true
+			Group="Appearance"
+			InitialValue="True"
+			Type="Boolean"
+			InheritedFrom="TextArea"
+		#tag EndViewProperty
+		#tag ViewProperty
 			Name="Index"
 			Visible=true
 			Group="ID"
 			Type="Integer"
-			InheritedFrom="EditField"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="InitialParent"
 			InheritedFrom="EditField"
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -208,6 +285,22 @@ Inherits TextArea
 			InitialValue="0"
 			Type="Integer"
 			InheritedFrom="EditField"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="LineHeight"
+			Visible=true
+			Group="Appearance"
+			InitialValue="0"
+			Type="Double"
+			InheritedFrom="TextArea"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="LineSpacing"
+			Visible=true
+			Group="Appearance"
+			InitialValue="1"
+			Type="Double"
+			InheritedFrom="TextArea"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="LockBottom"
@@ -256,13 +349,6 @@ Inherits TextArea
 			Visible=true
 			Group="ID"
 			Type="String"
-			InheritedFrom="EditField"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="Password"
-			Visible=true
-			Group="Appearance"
-			Type="Boolean"
 			InheritedFrom="EditField"
 		#tag EndViewProperty
 		#tag ViewProperty
