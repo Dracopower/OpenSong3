@@ -214,20 +214,39 @@ Protected Class Translator
 		  Dim i As Integer
 		  Dim tfrom, tto As String
 		  Dim appendDots As Boolean
+		  Dim menuNode As XmlNode
+		  Dim keyboardShortcut As String
+		  Dim numItems As Integer
+		  Dim thisItem As MenuItem
 		  
-		  For i = 0 To menu.Count - 1
-		    tfrom = Lowercase(Mid(menu.Item(i).Name, InStr(5, menu.Item(i).Name, "_")+1))
+		  numItems = menu.Count
+		  
+		  For i = 0 To numItems - 1
+		    thisItem = menu.Item(i)
+		    tfrom = Lowercase(Mid(thisItem.Name, InStr(5, thisItem.Name, "_")+1))
 		    appendDots = False
-		    If Right(menu.Item(i).Text, 3) = "..." Then appendDots = True
+		    If Right(thisItem.Text, 3) = "..." Then appendDots = True
 		    If tfrom.Len > 1 Then ' skips bag text and separators
 		      tto = Translate(menuTag + "/" + tfrom + "/@caption")
+		      menuNode = GetNode(menuTag + "/" + tfrom)
+		      keyboardShortcut = ""
+		      #if TargetWin32 Then
+		        keyboardShortcut = SmartML.GetValue(menuNode, "@windowskey", False)
+		      #elseif TargetMacOS
+		        keyboardShortcut = SmartML.GetValue(menuNode, "@mackey", False)
+		      #elseif TargetLinux
+		        keyboardShortcut = SmartML.GetValue(menuNode, "@linuxkey", False)
+		      #endif
+		      If keyboardShortcut <> "" Then 
+		        thisItem.KeyboardShortcut = keyboardShortcut
+		      End If
 		      tto = ReplaceAll(tto, "_", "&")
 		      If tto.Len > 0 Then
 		        If appendDots Then tto = tto + "..."
-		        menu.Item(i).Text = tto
+		        thisItem.Text = tto
 		      End if
-		      If menu.Item(i).Count > 0 Then
-		        TranslateMenu menuTag + "/" + tfrom, menu.Item(i)
+		      If thisItem.Count > 0 Then
+		        TranslateMenu menuTag + "/" + tfrom, thisItem
 		      End If
 		    End If
 		  Next i
