@@ -1,3 +1,5 @@
+questions/destination_exists
+errors/same_filename
 sets_mode/new_item/add_video, add_powerpoint (Deleted)
 
 -= Version 2.0 Beta 2 =-
