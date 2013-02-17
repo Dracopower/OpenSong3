@@ -1,4 +1,6 @@
-﻿* Fix user defined fields not updating when returning from MainSettings. (JRC)
+﻿* New Logo! Many thanks to Daniel Ma for creating it.
+
+* Fix user defined fields not updating when returning from MainSettings. (JRC)
 
 * Change behavior for copying a song if source and destination are the same to: Prompt the user to rename the file. (JRC)
 

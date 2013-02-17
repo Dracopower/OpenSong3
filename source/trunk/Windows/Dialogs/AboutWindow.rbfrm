@@ -60,7 +60,7 @@ Begin Window AboutWindow
       Enabled         =   True
       Height          =   128
       HelpTag         =   ""
-      Image           =   -1045728915
+      Image           =   1430269951
       Index           =   -2147483648
       InitialParent   =   ""
       Left            =   20
