@@ -1,4 +1,8 @@
-﻿* New Logo! Many thanks to Daniel Ma for creating it.
+﻿* Fix for issue with VLC; background VLC session is always closed, regardless of settings, when you try to step to the next slide, rendering the feature useless. (Bug #387) (Vwout)
+
+* Fix to reduce artifacts when changing slides during a transition (Vwout)
+
+* New Logo! Many thanks to Daniel Ma for creating it.
 
 * Fix user defined fields not updating when returning from MainSettings. (JRC)
 

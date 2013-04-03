@@ -1835,7 +1835,8 @@ End
 		        End If
 		        
 		      Case "videolan"
-		        m_VideolanController.Stop()
+		        'Videolan is only stopped when explicitly set in the slide
+		        'm_VideolanController.Stop()
 		        
 		      Case "launch"
 		        If IsNull(slide) And m_AppLaunchShell.IsRunning Then
@@ -1850,9 +1851,16 @@ End
 		  End If
 		  
 		  If IsNull( slide ) Then
+		    m_VideolanController.Stop()
+		    If m_AppLaunchShell.IsRunning Then
+		      m_AppLaunchShell.Close()
+		    End If
+		    
 		    UpdateStatusNotifiers "clear"
 		    Return
 		  End If
+		  
+		  timerAdvance.Enabled = False
 		  
 		  If SetML.IsExternal(slide) Then
 		    _IsSlidechangeExternal = True
@@ -2080,6 +2088,8 @@ End
 		      timerTransition.Mode = 2
 		      timerTransition.Reset
 		      timerTransition.Enabled = True
+		    Else
+		      TransitionFrame = TransitionFrames
 		    End If
 		    
 		    cnvSlide.Refresh False
