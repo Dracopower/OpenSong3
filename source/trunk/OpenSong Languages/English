@@ -1193,6 +1193,8 @@ Click on this slide to edit its style.</body>
     <cut caption="Cut"/>
     <copy caption="Copy"/>
     <paste caption="Paste"/>
+    <clear caption="Clear"/>
+    <selectall caption="Select All"/>
     <select caption="Select"/>
     <exit_program caption="Exit Program"/>
     <export_to caption="Select a folder to export to."/>

@@ -1,3 +1,5 @@
+shared/clear
+shared/selectall
 questions/destination_exists
 errors/same_filename
 sets_mode/new_item/add_video, add_powerpoint (Deleted)

@@ -24,22 +24,6 @@ Begin Window MainWindow Implements ScriptureReceiver
    Title           =   "OpenSong"
    Visible         =   False
    Width           =   750
-   Begin ContextualMenu mnu_clipboard
-      Enabled         =   True
-      Height          =   32
-      Index           =   -2147483648
-      InitialParent   =   ""
-      Left            =   759
-      LockedInPosition=   False
-      Scope           =   0
-      TabIndex        =   0
-      TabPanelIndex   =   0
-      TabStop         =   True
-      Top             =   26
-      UseMacCMM       =   ""
-      Visible         =   True
-      Width           =   32
-   End
    Begin SButton btn_mode_songs_mode
       AcceptFocus     =   True
       AcceptTabs      =   False
@@ -12843,10 +12827,6 @@ End
 
 
 	#tag Property, Flags = &h1
-		Protected ActiveEditField As SEditField
-	#tag EndProperty
-
-	#tag Property, Flags = &h1
 		Protected CurrentInSetItem As Integer
 	#tag EndProperty
 
@@ -12924,10 +12904,6 @@ End
 
 	#tag Property, Flags = &h21
 		Private m_Reordering As Boolean = False
-	#tag EndProperty
-
-	#tag Property, Flags = &h1
-		Protected PopupClicked As Boolean
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
@@ -13020,55 +12996,6 @@ End
 
 #tag EndWindowCode
 
-#tag Events mnu_clipboard
-	#tag Event
-		Sub Action(item As String)
-		  If ActiveEditField = Nil Then Return
-		  //++ EMP, 17 Feb 2006
-		  // Changed Joshua's Win32 approach to one using
-		  // RB's built-in character encoding support
-		  //--
-		  ''++JRC
-		  'dim m As MemoryBlock
-		  'Declare Sub ClipboardUNICODEtoTXT lib "utility.dll" (Handle as integer, Buffer as Ptr)
-		  ''--
-		  
-		  Dim c As New Clipboard
-		  
-		  If item = App.T.Translate("shared/cut/@caption") Then
-		    c.SetText  ActiveEditField.SelText
-		    ActiveEditField.SelText = ""
-		  ElseIf item = App.T.Translate("shared/copy/@caption") Then
-		    c.SetText ActiveEditField.SelText
-		  ElseIf item = App.T.Translate("shared/paste/@caption") Then
-		    ''++JRC
-		    'm = NewMemoryBlock(50000)
-		    'ClipboardUNICODEtoTXT(MainWindow.Handle, m)
-		    ''edf_song_lyrics.Text = m.CString(0)
-		    'ActiveEditField.SelText = m.CString(0)
-		    '
-		    ''--
-		    if c.TextAvailable then
-		      Try
-		        c.Text = ConvertEncoding(c.Text, encodings.UTF8)
-		      Catch ex
-		        App.DebugWriter.Write("Can't convert string to paste, string is '" + c.text + "'", 1)
-		      End Try
-		    End If
-		    ActiveEditField.SelText = c.text
-		  End If
-		  
-		  PopupClicked = True
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub Open()
-		  Me.AddRow App.T.Translate("shared/cut/@caption")
-		  Me.AddRow App.T.Translate("shared/copy/@caption")
-		  Me.AddRow App.T.Translate("shared/paste/@caption")
-		End Sub
-	#tag EndEvent
-#tag EndEvents
 #tag Events btn_mode_songs_mode
 	#tag Event
 		Sub Action()
@@ -15299,16 +15226,6 @@ End
 		End Sub
 	#tag EndEvent
 	#tag Event
-		Function MouseDown(X As Integer, Y As Integer) As Boolean
-		  If Me.Enabled And IsContextualClick Then
-		    ActiveEditField = Me
-		    PopupClicked = False
-		    mnu_clipboard.Open
-		    Return PopupClicked
-		  End If
-		End Function
-	#tag EndEvent
-	#tag Event
 		Sub MouseEnter()
 		  SetHelp "advanced_song_editor/key"
 		End Sub
@@ -15332,16 +15249,6 @@ End
 		Sub GotFocus()
 		  FindFocus = 12
 		End Sub
-	#tag EndEvent
-	#tag Event
-		Function MouseDown(X As Integer, Y As Integer) As Boolean
-		  If Me.Enabled And IsContextualClick Then
-		    ActiveEditField = Me
-		    PopupClicked = False
-		    mnu_clipboard.Open
-		    Return PopupClicked
-		  End If
-		End Function
 	#tag EndEvent
 	#tag Event
 		Sub MouseEnter()
@@ -15394,16 +15301,6 @@ End
 		End Sub
 	#tag EndEvent
 	#tag Event
-		Function MouseDown(X As Integer, Y As Integer) As Boolean
-		  If Me.Enabled And IsContextualClick Then
-		    ActiveEditField = Me
-		    PopupClicked = False
-		    mnu_clipboard.Open
-		    Return PopupClicked
-		  End If
-		End Function
-	#tag EndEvent
-	#tag Event
 		Sub MouseEnter()
 		  SetHelp "advanced_song_editor/key_line"
 		End Sub
@@ -15427,16 +15324,6 @@ End
 		Sub GotFocus()
 		  FindFocus = 14
 		End Sub
-	#tag EndEvent
-	#tag Event
-		Function MouseDown(X As Integer, Y As Integer) As Boolean
-		  If Me.Enabled And IsContextualClick Then
-		    ActiveEditField = Me
-		    PopupClicked = False
-		    mnu_clipboard.Open
-		    Return PopupClicked
-		  End If
-		End Function
 	#tag EndEvent
 	#tag Event
 		Sub MouseEnter()
@@ -15464,16 +15351,6 @@ End
 		End Sub
 	#tag EndEvent
 	#tag Event
-		Function MouseDown(X As Integer, Y As Integer) As Boolean
-		  If Me.Enabled And IsContextualClick Then
-		    ActiveEditField = Me
-		    PopupClicked = False
-		    mnu_clipboard.Open
-		    Return PopupClicked
-		  End If
-		End Function
-	#tag EndEvent
-	#tag Event
 		Sub MouseEnter()
 		  SetHelp "advanced_song_editor/user2"
 		End Sub
@@ -15497,16 +15374,6 @@ End
 		Sub GotFocus()
 		  FindFocus = 16
 		End Sub
-	#tag EndEvent
-	#tag Event
-		Function MouseDown(X As Integer, Y As Integer) As Boolean
-		  If Me.Enabled And IsContextualClick Then
-		    ActiveEditField = Me
-		    PopupClicked = False
-		    mnu_clipboard.Open
-		    Return PopupClicked
-		  End If
-		End Function
 	#tag EndEvent
 	#tag Event
 		Sub MouseEnter()
@@ -15575,16 +15442,6 @@ End
 		End Sub
 	#tag EndEvent
 	#tag Event
-		Function MouseDown(X As Integer, Y As Integer) As Boolean
-		  If Me.Enabled And IsContextualClick Then
-		    ActiveEditField = Me
-		    PopupClicked = False
-		    mnu_clipboard.Open
-		    Return PopupClicked
-		  End If
-		End Function
-	#tag EndEvent
-	#tag Event
 		Sub MouseEnter()
 		  SetHelp "general_song_editor/author"
 		End Sub
@@ -15610,16 +15467,6 @@ End
 		End Sub
 	#tag EndEvent
 	#tag Event
-		Function MouseDown(X As Integer, Y As Integer) As Boolean
-		  If Me.Enabled And IsContextualClick Then
-		    ActiveEditField = Me
-		    PopupClicked = False
-		    mnu_clipboard.Open
-		    Return PopupClicked
-		  End If
-		End Function
-	#tag EndEvent
-	#tag Event
 		Sub MouseEnter()
 		  SetHelp "general_song_editor/lyrics"
 		End Sub
@@ -15643,16 +15490,6 @@ End
 		Sub GotFocus()
 		  'FindFocus = 3
 		End Sub
-	#tag EndEvent
-	#tag Event
-		Function MouseDown(X As Integer, Y As Integer) As Boolean
-		  If Me.Enabled And IsContextualClick Then
-		    ActiveEditField = Me
-		    PopupClicked = False
-		    mnu_clipboard.Open
-		    Return PopupClicked
-		  End If
-		End Function
 	#tag EndEvent
 	#tag Event
 		Sub MouseEnter()
@@ -15914,16 +15751,6 @@ End
 		End Sub
 	#tag EndEvent
 	#tag Event
-		Function MouseDown(X As Integer, Y As Integer) As Boolean
-		  If Me.Enabled And IsContextualClick Then
-		    ActiveEditField = Me
-		    PopupClicked = False
-		    mnu_clipboard.Open
-		    Return PopupClicked
-		  End If
-		End Function
-	#tag EndEvent
-	#tag Event
 		Sub MouseEnter()
 		  SetHelp "general_song_editor/ccli"
 		End Sub
@@ -15947,16 +15774,6 @@ End
 		Sub GotFocus()
 		  FindFocus = 5
 		End Sub
-	#tag EndEvent
-	#tag Event
-		Function MouseDown(X As Integer, Y As Integer) As Boolean
-		  If Me.Enabled And IsContextualClick Then
-		    ActiveEditField = Me
-		    PopupClicked = False
-		    mnu_clipboard.Open
-		    Return PopupClicked
-		  End If
-		End Function
 	#tag EndEvent
 	#tag Event
 		Sub MouseEnter()
@@ -15984,16 +15801,6 @@ End
 		End Sub
 	#tag EndEvent
 	#tag Event
-		Function MouseDown(X As Integer, Y As Integer) As Boolean
-		  If Me.Enabled And IsContextualClick Then
-		    ActiveEditField = Me
-		    PopupClicked = False
-		    mnu_clipboard.Open
-		    Return PopupClicked
-		  End If
-		End Function
-	#tag EndEvent
-	#tag Event
 		Sub MouseEnter()
 		  SetHelp "general_song_editor/copyright"
 		End Sub
@@ -16017,16 +15824,6 @@ End
 		Sub GotFocus()
 		  FindFocus = 1
 		End Sub
-	#tag EndEvent
-	#tag Event
-		Function MouseDown(X As Integer, Y As Integer) As Boolean
-		  If Me.Enabled And IsContextualClick Then
-		    ActiveEditField = Me
-		    PopupClicked = False
-		    mnu_clipboard.Open
-		    Return PopupClicked
-		  End If
-		End Function
 	#tag EndEvent
 	#tag Event
 		Sub MouseEnter()
@@ -16068,16 +15865,6 @@ End
 	#tag EndEvent
 #tag EndEvents
 #tag Events edt_slide_auto_advance
-	#tag Event
-		Function MouseDown(X As Integer, Y As Integer) As Boolean
-		  If Me.Enabled And IsContextualClick Then
-		    ActiveEditField = Me
-		    PopupClicked = False
-		    mnu_clipboard.Open
-		    Return PopupClicked
-		  End If
-		End Function
-	#tag EndEvent
 	#tag Event
 		Sub MouseEnter()
 		  SetHelp "slide_editor/auto_advance"
@@ -16197,16 +15984,6 @@ End
 #tag EndEvents
 #tag Events edt_slide_origorder
 	#tag Event
-		Function MouseDown(X As Integer, Y As Integer) As Boolean
-		  If Me.Enabled And IsContextualClick Then
-		    ActiveEditField = Me
-		    PopupClicked = False
-		    mnu_clipboard.Open
-		    Return PopupClicked
-		  End If
-		End Function
-	#tag EndEvent
-	#tag Event
 		Sub MouseEnter()
 		  '++JRC
 		  SetHelp "slide_editor/origorder"
@@ -16220,16 +15997,6 @@ End
 	#tag EndEvent
 #tag EndEvents
 #tag Events edt_slide_order
-	#tag Event
-		Function MouseDown(X As Integer, Y As Integer) As Boolean
-		  If Me.Enabled And IsContextualClick Then
-		    ActiveEditField = Me
-		    PopupClicked = False
-		    mnu_clipboard.Open
-		    Return PopupClicked
-		  End If
-		End Function
-	#tag EndEvent
 	#tag Event
 		Sub MouseEnter()
 		  '++JRC
@@ -16253,16 +16020,6 @@ End
 #tag EndEvents
 #tag Events edt_slide_subtitle
 	#tag Event
-		Function MouseDown(X As Integer, Y As Integer) As Boolean
-		  If Me.Enabled And IsContextualClick Then
-		    ActiveEditField = Me
-		    PopupClicked = False
-		    mnu_clipboard.Open
-		    Return PopupClicked
-		  End If
-		End Function
-	#tag EndEvent
-	#tag Event
 		Sub MouseEnter()
 		  SetHelp "slide_editor/subtitle"
 		End Sub
@@ -16282,16 +16039,6 @@ End
 	#tag EndEvent
 #tag EndEvents
 #tag Events edt_slide_title
-	#tag Event
-		Function MouseDown(X As Integer, Y As Integer) As Boolean
-		  If Me.Enabled And IsContextualClick Then
-		    ActiveEditField = Me
-		    PopupClicked = False
-		    mnu_clipboard.Open
-		    Return PopupClicked
-		  End If
-		End Function
-	#tag EndEvent
 	#tag Event
 		Sub MouseEnter()
 		  SetHelp "slide_editor/title"
@@ -16313,16 +16060,6 @@ End
 #tag EndEvents
 #tag Events edt_slide_name
 	#tag Event
-		Function MouseDown(X As Integer, Y As Integer) As Boolean
-		  If Me.Enabled And IsContextualClick Then
-		    ActiveEditField = Me
-		    PopupClicked = False
-		    mnu_clipboard.Open
-		    Return PopupClicked
-		  End If
-		End Function
-	#tag EndEvent
-	#tag Event
 		Sub MouseEnter()
 		  SetHelp "slide_editor/name"
 		End Sub
@@ -16343,16 +16080,6 @@ End
 #tag EndEvents
 #tag Events edt_slide_slides
 	#tag Event
-		Function MouseDown(X As Integer, Y As Integer) As Boolean
-		  If Me.Enabled And IsContextualClick Then
-		    ActiveEditField = Me
-		    PopupClicked = False
-		    mnu_clipboard.Open
-		    Return PopupClicked
-		  End If
-		End Function
-	#tag EndEvent
-	#tag Event
 		Sub MouseEnter()
 		  SetHelp "slide_editor/slides"
 		End Sub
@@ -16372,16 +16099,6 @@ End
 	#tag EndEvent
 #tag EndEvents
 #tag Events edt_slide_folder
-	#tag Event
-		Function MouseDown(X As Integer, Y As Integer) As Boolean
-		  If Me.Enabled And IsContextualClick Then
-		    ActiveEditField = Me
-		    PopupClicked = False
-		    mnu_clipboard.Open
-		    Return PopupClicked
-		  End If
-		End Function
-	#tag EndEvent
 	#tag Event
 		Sub MouseEnter()
 		  '++JRC
@@ -16431,16 +16148,6 @@ End
 	#tag EndEvent
 #tag EndEvents
 #tag Events edt_slide_notes
-	#tag Event
-		Function MouseDown(X As Integer, Y As Integer) As Boolean
-		  If Me.Enabled And IsContextualClick Then
-		    ActiveEditField = Me
-		    PopupClicked = False
-		    mnu_clipboard.Open
-		    Return PopupClicked
-		  End If
-		End Function
-	#tag EndEvent
 	#tag Event
 		Sub MouseEnter()
 		  SetHelp "slide_editor/notes"
@@ -16684,16 +16391,6 @@ End
 #tag EndEvents
 #tag Events edt_image_auto_advance
 	#tag Event
-		Function MouseDown(X As Integer, Y As Integer) As Boolean
-		  If Me.Enabled And IsContextualClick Then
-		    ActiveEditField = Me
-		    PopupClicked = False
-		    mnu_clipboard.Open
-		    Return PopupClicked
-		  End If
-		End Function
-	#tag EndEvent
-	#tag Event
 		Sub MouseEnter()
 		  SetHelp "slide_editor/auto_advance"
 		End Sub
@@ -16733,16 +16430,6 @@ End
 	#tag EndEvent
 #tag EndEvents
 #tag Events edt_image_title
-	#tag Event
-		Function MouseDown(X As Integer, Y As Integer) As Boolean
-		  If Me.Enabled And IsContextualClick Then
-		    ActiveEditField = Me
-		    PopupClicked = False
-		    mnu_clipboard.Open
-		    Return PopupClicked
-		  End If
-		End Function
-	#tag EndEvent
 	#tag Event
 		Sub MouseEnter()
 		  SetHelp "slide_editor/title"
@@ -16786,16 +16473,6 @@ End
 #tag EndEvents
 #tag Events edt_image_subtitle
 	#tag Event
-		Function MouseDown(X As Integer, Y As Integer) As Boolean
-		  If Me.Enabled And IsContextualClick Then
-		    ActiveEditField = Me
-		    PopupClicked = False
-		    mnu_clipboard.Open
-		    Return PopupClicked
-		  End If
-		End Function
-	#tag EndEvent
-	#tag Event
 		Sub MouseEnter()
 		  SetHelp "slide_editor/subtitle"
 		End Sub
@@ -16815,16 +16492,6 @@ End
 	#tag EndEvent
 #tag EndEvents
 #tag Events edt_image_name
-	#tag Event
-		Function MouseDown(X As Integer, Y As Integer) As Boolean
-		  If Me.Enabled And IsContextualClick Then
-		    ActiveEditField = Me
-		    PopupClicked = False
-		    mnu_clipboard.Open
-		    Return PopupClicked
-		  End If
-		End Function
-	#tag EndEvent
 	#tag Event
 		Sub MouseEnter()
 		  SetHelp "slide_editor/name"
@@ -16945,16 +16612,6 @@ End
 	#tag EndEvent
 #tag EndEvents
 #tag Events edt_image_notes
-	#tag Event
-		Function MouseDown(X As Integer, Y As Integer) As Boolean
-		  If Me.Enabled And IsContextualClick Then
-		    ActiveEditField = Me
-		    PopupClicked = False
-		    mnu_clipboard.Open
-		    Return PopupClicked
-		  End If
-		End Function
-	#tag EndEvent
 	#tag Event
 		Sub MouseEnter()
 		  SetHelp "slide_editor/notes"
@@ -17198,16 +16855,6 @@ End
 #tag EndEvents
 #tag Events edt_external_name
 	#tag Event
-		Function MouseDown(X As Integer, Y As Integer) As Boolean
-		  If Me.Enabled And IsContextualClick Then
-		    ActiveEditField = Me
-		    PopupClicked = False
-		    mnu_clipboard.Open
-		    Return PopupClicked
-		  End If
-		End Function
-	#tag EndEvent
-	#tag Event
 		Sub MouseEnter()
 		  SetHelp "slide_editor/name"
 		End Sub
@@ -17227,16 +16874,6 @@ End
 	#tag EndEvent
 #tag EndEvents
 #tag Events edt_external_notes
-	#tag Event
-		Function MouseDown(X As Integer, Y As Integer) As Boolean
-		  If Me.Enabled And IsContextualClick Then
-		    ActiveEditField = Me
-		    PopupClicked = False
-		    mnu_clipboard.Open
-		    Return PopupClicked
-		  End If
-		End Function
-	#tag EndEvent
 	#tag Event
 		Sub MouseEnter()
 		  SetHelp "slide_editor/notes"

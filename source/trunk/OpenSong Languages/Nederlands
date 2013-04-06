@@ -1224,6 +1224,8 @@ Klik op de dia om de stijl te wijzigen.</body>
     <cut caption="Knippen"/>
     <copy caption="Kopiëren"/>
     <paste caption="Plakken"/>
+    <clear caption="Leegmaken"/>
+    <selectall caption="Selecteer Alles" />
     <select caption="Selecteer"/>
     <exit_program caption="Programma afsluiten"/>
     <export_to caption="Selecteer de map waar de export van het logboek moet worden geplaatst."/>

@@ -1,4 +1,6 @@
-﻿* Fix for issue with VLC; background VLC session is always closed, regardless of settings, when you try to step to the next slide, rendering the feature useless. (Bug #387) (Vwout)
+﻿* Make context menu on edit fields more generic using the standard RealBasic approach so that OpenSong now also compiles on RealStudio 2012 (Vwout)
+
+* Fix for issue with VLC; background VLC session is always closed, regardless of settings, when you try to step to the next slide, rendering the feature useless. (Bug #387) (Vwout)
 
 * Fix to reduce artifacts when changing slides during a transition (Vwout)
 

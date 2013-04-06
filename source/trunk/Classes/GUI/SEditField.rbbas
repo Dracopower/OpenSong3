@@ -2,10 +2,64 @@
 Protected Class SEditField
 Inherits TextArea
 	#tag Event
+		Function ConstructContextualMenu(base as MenuItem, x as Integer, y as Integer) As Boolean
+		  If Me.Enabled Then
+		    Dim State As Boolean = SelLength > 0
+		    Dim c As New Clipboard
+		    Dim m as MenuItem
+		    
+		    m = new MenuItem( App.T.Translate("shared/cut/@caption"), ACTION_CUT )
+		    m.Enabled = State
+		    base.Append(m)
+		    
+		    m = new MenuItem( App.T.Translate("shared/copy/@caption"), ACTION_COPY )
+		    m.Enabled = State
+		    base.Append(m)
+		    
+		    m = new MenuItem( App.T.Translate("shared/paste/@caption"), ACTION_PASTE )
+		    m.Enabled = c.TextAvailable
+		    base.Append(m)
+		    
+		    m = new MenuItem( App.T.Translate("shared/clear/@caption"), ACTION_CLEAR )
+		    m.Enabled = State
+		    base.Append(m)
+		    
+		    base.Append( new MenuItem( MenuItem.TextSeparator ) )
+		    
+		    m = new MenuItem( App.T.Translate("shared/selectall/@caption"), ACTION_SELECTALL )
+		    m.Enabled = Len(Text) > 0
+		    base.Append(m)
+		    
+		    Return True
+		  Else
+		    Return False
+		  End If
+		End Function
+	#tag EndEvent
+
+	#tag Event
+		Function ContextualMenuAction(hitItem as MenuItem) As Boolean
+		  If hitItem.Tag = ACTION_CUT Then
+		    Call DoCut()
+		  ElseIf hitItem.Tag = ACTION_COPY Then
+		    Call DoCopy()
+		  ElseIf hitItem.Tag = ACTION_PASTE Then
+		    Call DoPaste()
+		  ElseIf hitItem.Tag = ACTION_CLEAR Then
+		    Call DoClear()
+		  ElseIf hitItem.Tag = ACTION_SELECTALL Then
+		    Call DoSelectAll()
+		  End If
+		  
+		  Return True
+		End Function
+	#tag EndEvent
+
+	#tag Event
 		Sub EnableMenuItems()
-		  Dim State As Boolean
+		  Dim State As Boolean = SelLength > 0
 		  Dim c As New Clipboard
-		  State = SelLength > 0
+		  
 		  mnu_edit_clear.Enabled = State
 		  mnu_edit_cut.Enabled = State
 		  mnu_edit_copy.Enabled = State
@@ -18,58 +72,100 @@ Inherits TextArea
 
 	#tag MenuHandler
 		Function mnu_copy_paste() As Boolean Handles mnu_copy_paste.Action
-			Dim c As New Clipboard
-			Dim f As FontFace
-			
-			If c.TextAvailable Then
-			SelText = ConvertEncoding(c.Text, Encodings.UTF8)
-			If Left(Name, 3) = "edf" Then // Fixed font EditField
-			f = SmartML.GetValueF(App.MyMainSettings.DocumentElement, "fonts/fixed_width")
-			SelTextFont = f.Name
-			SelTextSize = f.Size
-			SelBold = f.Bold
-			SelItalic = f.Italic
-			SelUnderline = f.Underline
-			End If
-			End If
-			Return True
+			Return DoPaste()
 		End Function
 	#tag EndMenuHandler
 
 	#tag MenuHandler
 		Function mnu_edit_clear() As Boolean Handles mnu_edit_clear.Action
-			SelText = ""
-			Return True
+			Return DoClear()
 		End Function
 	#tag EndMenuHandler
 
 	#tag MenuHandler
 		Function mnu_edit_copy() As Boolean Handles mnu_edit_copy.Action
-			Dim c As New Clipboard
-			If SelText.Len > 0 Then
-			c.SetText SelText
-			End If
-			Return True
+			Return DoCopy()
 		End Function
 	#tag EndMenuHandler
 
 	#tag MenuHandler
 		Function mnu_edit_cut() As Boolean Handles mnu_edit_cut.Action
-			Dim c As New Clipboard
-			If SelText.Len > 0 Then
-			c.SetText SelText
-			SelText = ""
-			End If
-			Return True
+			Return DoCut()
 		End Function
 	#tag EndMenuHandler
 
 	#tag MenuHandler
 		Function mnu_edit_selall() As Boolean Handles mnu_edit_selall.Action
-			SelStart = 0
-			SelLength = Len(Text)
+			Return DoSelectAll()
 		End Function
 	#tag EndMenuHandler
+
+
+	#tag Method, Flags = &h1
+		Protected Function DoClear() As Boolean
+		  SelText = ""
+		  Return True
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h1
+		Protected Function DoCopy() As Boolean
+		  Dim c As New Clipboard
+		  
+		  If SelText.Len > 0 Then
+		    c.SetText SelText
+		  End If
+		  
+		  Return True
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h1
+		Protected Function DoCut() As Boolean
+		  Dim c As New Clipboard
+		  
+		  If SelText.Len > 0 Then
+		    c.SetText SelText
+		    SelText = ""
+		  End If
+		  
+		  Return True
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h1
+		Protected Function DoPaste() As Boolean
+		  Dim c As New Clipboard
+		  Dim f As FontFace
+		  
+		  If c.TextAvailable Then
+		    Try
+		      SelText = ConvertEncoding(c.Text, encodings.UTF8)
+		    Catch ex
+		      App.DebugWriter.Write("Can't convert string to paste, string is '" + c.text + "'", 1)
+		    End Try
+		    
+		    If Left(Name, 3) = "edf" Then // Fixed font EditField
+		      f = SmartML.GetValueF(App.MyMainSettings.DocumentElement, "fonts/fixed_width")
+		      SelTextFont = f.Name
+		      SelTextSize = f.Size
+		      SelBold = f.Bold
+		      SelItalic = f.Italic
+		      SelUnderline = f.Underline
+		    End If
+		  End If
+		  
+		  Return True
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h1
+		Protected Function DoSelectAll() As Boolean
+		  SelStart = 0
+		  SelLength = Len(Text)
+		  Return True
+		End Function
+	#tag EndMethod
 
 
 	#tag Note, Name = Overview
@@ -79,6 +175,22 @@ Inherits TextArea
 		Assumes that a control with a name starting "edt" is a standard
 		EditField, but one starting "edf" is a fixed-font EditField.
 	#tag EndNote
+
+
+	#tag Constant, Name = ACTION_CLEAR, Type = Double, Dynamic = False, Default = \"2", Scope = Private
+	#tag EndConstant
+
+	#tag Constant, Name = ACTION_COPY, Type = Double, Dynamic = False, Default = \"3", Scope = Private
+	#tag EndConstant
+
+	#tag Constant, Name = ACTION_CUT, Type = Double, Dynamic = False, Default = \"4", Scope = Private
+	#tag EndConstant
+
+	#tag Constant, Name = ACTION_PASTE, Type = Double, Dynamic = False, Default = \"1", Scope = Private
+	#tag EndConstant
+
+	#tag Constant, Name = ACTION_SELECTALL, Type = Double, Dynamic = False, Default = \"5", Scope = Private
+	#tag EndConstant
 
 
 	#tag ViewBehavior
