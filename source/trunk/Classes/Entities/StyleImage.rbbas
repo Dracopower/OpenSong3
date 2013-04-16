@@ -105,14 +105,12 @@ Protected Class StyleImage
 
 	#tag Method, Flags = &h0
 		Function SetImageFromFile(File As FolderItem) As Boolean
-		  Dim inputStream As BinaryStream
-		  Dim bSuccess As Boolean
+		  Dim bSuccess As Boolean = False
 		  
-		  bSuccess = False
 		  If File<>Nil And File.Exists() Then
 		    If File.AbsolutePath() <> Me.sFilename Then
 		      
-		      inputStream = BinaryStream.Open(File, False)
+		      Dim inputStream As BinaryStream = BinaryStream.Open(File, False)
 		      If inputStream <> Nil Then
 		        Me.oImage = Picture.Open(File)
 		        
@@ -152,9 +150,8 @@ Protected Class StyleImage
 	#tag Method, Flags = &h0
 		Function SetImageFromFileName(Filename As String) As Boolean
 		  Dim result As Boolean = False
-		  Dim f as FolderItem
 		  
-		  f=GetFolderItem(FileName)
+		  Dim f as FolderItem = GetFolderItem(FileName)
 		  If IsNull(f) Then
 		    If Filename <> "" Then
 		      InputBox.Message App.T.Translate("errors/unreadable_image", Filename)

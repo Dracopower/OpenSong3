@@ -3,40 +3,40 @@ Protected Class ImageListbox
 Inherits Listbox
 	#tag Event
 		Function CellBackgroundPaint(g As Graphics, row As Integer, column As Integer) As Boolean
-		  Dim result As Boolean
-		  Dim img As StyleImage
-		  Dim pic As Picture
-		  Dim width, colwidth As Integer
-		  Dim scale As Double
-		  Dim imageMargin As Integer = 4
+		  Dim result As Boolean = False
 		  
-		  result = False
-		  
-		  If column = 0 Then
+		  If column = m_ImageColumn Then
 		    If Me.Column(column).WidthActual <> Me.DefaultRowHeight Then
 		      Me.DefaultRowHeight = Me.Column(column).WidthActual
 		    End If
 		    
-		    If row < ListCount() Then
-		      If CellTag( row, 0 ) IsA StyleImage Then
-		        scale = 1
-		        colwidth = Me.Column(column).WidthActual - imageMargin
-		        
-		        img  = CellTag( row, 0 )
-		        pic = img.GetImage()
-		        If Not IsNull( pic ) Then
-		          width = pic.Width / pic.Height * (Me.DefaultRowHeight - imageMargin)
-		          If (width > colwidth) And (width <> 0) Then
-		            scale = colwidth / width
-		            width = colwidth
+		    If Me.Column(column).WidthActual > m_ImageMargin And _
+		      Me.DefaultRowHeight > m_ImageMargin Then
+		      
+		      If row < ListCount() Then
+		        If Not IsNull(CellTag( row, 0 )) And CellTag( row, 0 ) IsA StyleImage Then
+		          Dim scale As Double = 1.0
+		          Dim colwidth As Integer = Me.Column(column).WidthActual - m_ImageMargin
+		          
+		          Dim img As StyleImage = CellTag( row, 0 )
+		          Dim pic As Picture = img.GetImage()
+		          
+		          If Not IsNull( pic ) Then
+		            Dim width As Integer = pic.Width / pic.Height * (Me.DefaultRowHeight - m_ImageMargin)
+		            
+		            If (width > colwidth) And (width > 0) Then
+		              scale = colwidth / width
+		              width = colwidth
+		            End If
+		            
+		            g.DrawPicture( pic, (m_ImageMargin/2) + (colwidth - width) / 2, (m_ImageMargin/2) + (Me.DefaultRowHeight - (Me.DefaultRowHeight * scale)) / 2, width, Me.DefaultRowHeight * scale, 0, 0, pic.Width, pic.Height )
+		            
+		            result = True
 		          End If
-		          
-		          g.DrawPicture( pic, (imageMargin/2) + (colwidth - width) / 2, (imageMargin/2) + (Me.DefaultRowHeight - (Me.DefaultRowHeight * scale)) / 2, width, Me.DefaultRowHeight * scale, 0, 0, pic.Width, pic.Height )
-		          
-		          result = True
 		        End If
 		        
 		      End If
+		      
 		    End If
 		    
 		  End If
@@ -146,6 +146,15 @@ Inherits Listbox
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
+		Sub ClearImage(row As Integer)
+		  If row > -1 And row < Me.ListCount() Then
+		    CellTag( row, 0 ) = Nil
+		  End If
+		  
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
 		Function GetImage(row As Integer) As StyleImage
 		  Dim result As StyleImage
 		  result = Nil
@@ -165,9 +174,25 @@ Inherits Listbox
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
+		Function HasImage(row As Integer) As Boolean
+		  Return CellTag( row, 0 ) IsA StyleImage And _
+		  Not (CellTag( row, 0 ) Is Nil)
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
 		Sub InsertImage(row As Integer, image As StyleImage)
 		  InsertRow( row, "" )
 		  CellTag( LastIndex(), 0 ) = image
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub SetImage(row As Integer, image as StyleImage)
+		  If row > -1 And row < Me.ListCount() Then
+		    CellTag( row, 0 ) = image
+		  End If
+		  
 		End Sub
 	#tag EndMethod
 
@@ -219,7 +244,7 @@ Inherits Listbox
 
 	#tag Note, Name = Info
 		Imagelistbox is an extended Listbox adding a image preview column.
-		The image is stored in the first column and is managed by ImageListBox.
+		The image is stored in the column identified by ImageColumn and is managed by ImageListBox.
 		
 		The other columns are freely usable.
 	#tag EndNote
@@ -229,8 +254,50 @@ Inherits Listbox
 		Private currentDropRow As Integer
 	#tag EndProperty
 
+	#tag ComputedProperty, Flags = &h0
+		#tag Getter
+			Get
+			  return m_ImageColumn
+			End Get
+		#tag EndGetter
+		#tag Setter
+			Set
+			  If m_ImageColumn <> value Then
+			    m_ImageColumn = value
+			    Me.Invalidate()
+			  End If
+			End Set
+		#tag EndSetter
+		ImageColumn As Integer
+	#tag EndComputedProperty
+
+	#tag ComputedProperty, Flags = &h0
+		#tag Getter
+			Get
+			  return m_ImageMargin
+			End Get
+		#tag EndGetter
+		#tag Setter
+			Set
+			  If m_ImageMargin <> value Then
+			    m_ImageMargin = value
+			    Me.Invalidate()
+			  End If
+			End Set
+		#tag EndSetter
+		ImageMargin As Integer
+	#tag EndComputedProperty
+
 	#tag Property, Flags = &h21
 		Private isFocused As Boolean = False
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
+		Private m_ImageColumn As Integer = 0
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
+		Private m_ImageMargin As Integer = 4
 	#tag EndProperty
 
 
@@ -390,6 +457,16 @@ Inherits Listbox
 			Group="Behavior"
 			Type="Boolean"
 			InheritedFrom="Listbox"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="ImageColumn"
+			Group="Behavior"
+			Type="Integer"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="ImageMargin"
+			Group="Behavior"
+			Type="Integer"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Index"
