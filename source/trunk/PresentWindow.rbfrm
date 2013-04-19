@@ -348,6 +348,13 @@ End
 		  Dim newSlide As Integer
 		  Dim i As Integer
 		  Dim presentation As String
+		  '++JRC
+		  Dim Answer As Boolean
+		  Dim AddToLog As Boolean
+		  Dim sDoc() As FolderItem
+		  Dim CheckLinked As Boolean = True
+		  Dim j As Integer = 0
+		  '--
 		  
 		  '++JRC Check if we have a songs folder if not try to create one
 		  If App.CheckDocumentFolders(App.SONGS_FOLDER) = App.NO_FOLDER Then
@@ -387,14 +394,21 @@ End
 		  OldSlide = CurrentSlide
 		  
 		  
-		  ' Get a reference
-		  newGroup = SmartML.InsertAfter(XCurrentSlide.Parent.Parent, "slide_group")
 		  
 		  f = SongPickerWindow.Popup(presentation)
-		  If f <> Nil Then
+		  
+		  While f <> Nil
 		    App.MouseCursor = System.Cursors.Wait
 		    
 		    s = SmartML.XDocFromFile(f)
+		    If s = Nil Then
+		      SmartML.DisplayError
+		      f = Nil
+		      Continue
+		    End If
+		    
+		    ' Get a reference
+		    newGroup = SmartML.InsertAfter(XCurrentSlide.Parent.Parent, "slide_group")
 		    
 		    '++JRC get song info for logging
 		    'Don't log in preview mode
@@ -415,8 +429,26 @@ End
 		      ActLog(i).SetItemNumber = NumberOfItems  'Assign an index to this song
 		      ActLog(i).Displayed = false 'Set this to true if user displays this song
 		      
+		      'AddToLog = True
 		    Else
 		      
+		    End If
+		    
+		    If CheckLinked Then
+		      sDoc = MainWindow.AddLinkedSongsFolderItem(s.DocumentElement, False)
+		      If UBound(sDoc) >= 0 Then
+		        If SmartML.GetValueB(App.MyMainSettings.DocumentElement, "linked_songs/@prompt", True) Then
+		          App.MouseCursor = Nil
+		          
+		          Answer = InputBox.AskYN(App.T.Translate("questions/linked_songs/@caption"))
+		          
+		          App.MouseCursor = System.Cursors.Wait
+		        Else
+		          Answer = True
+		        End If
+		      End If
+		      
+		      CheckLinked = False
 		    End If
 		    '--
 		    
@@ -475,24 +507,34 @@ End
 		      End If
 		    End If
 		    
-		    ' Added to move back to original position (see EMP 6/20/05 comments above).
-		    '
-		    XCurrentSlide = xOldSlide
-		    CurrentSlide  = OldSlide
 		    
-		    '
-		    If HelperActive Then
-		      App.MouseCursor = Nil
-		      PresentHelperWindow.ScrollTo currentSlide
+		    If j <= UBound(sDoc) And Answer Then
+		      f = sDoc(j)
+		      j = j + 1
+		      presentation = ""
 		    Else
-		      App.MouseCursor = Nil
-		      ResetPaint XCurrentSlide
+		      f = Nil
 		    End If
 		    
+		    currentSlide = currentSlide + 1
+		    XCurrentSlide = SetML.GetSlide(CurrentSet, currentSlide)
+		    
+		  Wend
+		  
+		  ' Added to move back to original position (see EMP 6/20/05 comments above).
+		  '
+		  XCurrentSlide = xOldSlide
+		  CurrentSlide  = OldSlide
+		  '
+		  If HelperActive Then
+		    App.MouseCursor = Nil
+		    PresentHelperWindow.ScrollTo currentSlide
 		  Else
-		    ' must have cancelled the picker window
-		    newGroup.Parent.RemoveChild newGroup
+		    App.MouseCursor = Nil
+		    ResetPaint XCurrentSlide
 		  End If
+		  
+		  
 		  Return True
 		End Function
 	#tag EndMethod

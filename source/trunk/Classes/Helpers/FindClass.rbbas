@@ -5,9 +5,21 @@ Protected Class FindClass
 		  FindTitle = True
 		  FindAuthor = True
 		  FindLyrics = True
+		  '++JRC
+		  Found = 0
+		  FoundPos = 0
+		  
 		End Sub
 	#tag EndMethod
 
+
+	#tag Property, Flags = &h0
+		ChordForm As String
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
+		ChordKey As String
+	#tag EndProperty
 
 	#tag Property, Flags = &h0
 		FindAKA As Boolean
@@ -23,6 +35,10 @@ Protected Class FindClass
 
 	#tag Property, Flags = &h0
 		FindCCLI As Boolean
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
+		FindChord As Boolean
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
@@ -81,40 +97,85 @@ Protected Class FindClass
 		FindUser3 As Boolean
 	#tag EndProperty
 
+	#tag Property, Flags = &h0
+		Found As Integer
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
+		FoundPos As Integer
+	#tag EndProperty
+
+
+	#tag Constant, Name = kAKA, Type = Double, Dynamic = False, Default = \"19", Scope = Public
+	#tag EndConstant
+
+	#tag Constant, Name = kAuthor, Type = Double, Dynamic = False, Default = \"3", Scope = Public
+	#tag EndConstant
+
+	#tag Constant, Name = kCapo, Type = Double, Dynamic = False, Default = \"8", Scope = Public
+	#tag EndConstant
+
+	#tag Constant, Name = kCCLI, Type = Double, Dynamic = False, Default = \"9", Scope = Public
+	#tag EndConstant
+
+	#tag Constant, Name = kChord, Type = Double, Dynamic = False, Default = \"7", Scope = Public
+	#tag EndConstant
+
+	#tag Constant, Name = kCopyright, Type = Double, Dynamic = False, Default = \"4", Scope = Public
+	#tag EndConstant
+
+	#tag Constant, Name = kHymnNumber, Type = Double, Dynamic = False, Default = \"5", Scope = Public
+	#tag EndConstant
+
+	#tag Constant, Name = kKey, Type = Double, Dynamic = False, Default = \"10", Scope = Public
+	#tag EndConstant
+
+	#tag Constant, Name = kKeyLine, Type = Double, Dynamic = False, Default = \"18", Scope = Public
+	#tag EndConstant
+
+	#tag Constant, Name = kLyrics, Type = Double, Dynamic = False, Default = \"6", Scope = Public
+	#tag EndConstant
+
+	#tag Constant, Name = kPresentation, Type = Double, Dynamic = False, Default = \"11", Scope = Public
+	#tag EndConstant
+
+	#tag Constant, Name = kSubTitle, Type = Double, Dynamic = False, Default = \"2", Scope = Public
+	#tag EndConstant
+
+	#tag Constant, Name = kTempo, Type = Double, Dynamic = False, Default = \"12", Scope = Public
+	#tag EndConstant
+
+	#tag Constant, Name = kThemes, Type = Double, Dynamic = False, Default = \"13", Scope = Public
+	#tag EndConstant
+
+	#tag Constant, Name = kTimeSig, Type = Double, Dynamic = False, Default = \"14", Scope = Public
+	#tag EndConstant
+
+	#tag Constant, Name = kTitle, Type = Double, Dynamic = False, Default = \"1", Scope = Public
+	#tag EndConstant
+
+	#tag Constant, Name = kUser1, Type = Double, Dynamic = False, Default = \"15", Scope = Public
+	#tag EndConstant
+
+	#tag Constant, Name = kUser2, Type = Double, Dynamic = False, Default = \"16", Scope = Public
+	#tag EndConstant
+
+	#tag Constant, Name = kUser3, Type = Double, Dynamic = False, Default = \"17", Scope = Public
+	#tag EndConstant
+
 
 	#tag ViewBehavior
 		#tag ViewProperty
-			Name="Name"
-			Visible=true
-			Group="ID"
-			InheritedFrom="Object"
+			Name="ChordForm"
+			Group="Behavior"
+			Type="String"
+			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="Index"
-			Visible=true
-			Group="ID"
-			InitialValue="-2147483648"
-			InheritedFrom="Object"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="Super"
-			Visible=true
-			Group="ID"
-			InheritedFrom="Object"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="Left"
-			Visible=true
-			Group="Position"
-			InitialValue="0"
-			InheritedFrom="Object"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="Top"
-			Visible=true
-			Group="Position"
-			InitialValue="0"
-			InheritedFrom="Object"
+			Name="ChordKey"
+			Group="Behavior"
+			Type="String"
+			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="FindAKA"
@@ -138,6 +199,11 @@ Protected Class FindClass
 			Name="FindCCLI"
 			Group="Behavior"
 			InitialValue="0"
+			Type="Boolean"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="FindChord"
+			Group="Behavior"
 			Type="Boolean"
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -223,6 +289,49 @@ Protected Class FindClass
 			Group="Behavior"
 			InitialValue="0"
 			Type="Boolean"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Found"
+			Group="Behavior"
+			Type="Integer"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="FoundPos"
+			Group="Behavior"
+			Type="Integer"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Index"
+			Visible=true
+			Group="ID"
+			InitialValue="-2147483648"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Left"
+			Visible=true
+			Group="Position"
+			InitialValue="0"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Name"
+			Visible=true
+			Group="ID"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Super"
+			Visible=true
+			Group="ID"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Top"
+			Visible=true
+			Group="Position"
+			InitialValue="0"
+			InheritedFrom="Object"
 		#tag EndViewProperty
 	#tag EndViewBehavior
 End Class

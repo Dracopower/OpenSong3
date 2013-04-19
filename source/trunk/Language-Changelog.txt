@@ -1,3 +1,6 @@
+shared/* (added several)
+song_lookup/header (modified)
+song_lookup/text
 advanced_song_editor/fit_to_screen
 advanced_song_editor/fit_to_body
 advanced_song_editor/keepaspect

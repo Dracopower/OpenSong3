@@ -7,7 +7,7 @@ Begin Window SongPickerWindow
    Frame           =   1
    FullScreen      =   False
    HasBackColor    =   False
-   Height          =   533
+   Height          =   5.55e+2
    ImplicitInstance=   True
    LiveResize      =   False
    MacProcID       =   1046
@@ -23,14 +23,14 @@ Begin Window SongPickerWindow
    Resizeable      =   True
    Title           =   "Song Lookup"
    Visible         =   True
-   Width           =   436
+   Width           =   4.36e+2
    Begin Label txt_explanation_header
       AutoDeactivate  =   True
       Bold            =   False
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
-      Height          =   45
+      Height          =   62
       HelpTag         =   ""
       Index           =   -2147483648
       InitialParent   =   ""
@@ -46,7 +46,7 @@ Begin Window SongPickerWindow
       Selectable      =   False
       TabIndex        =   0
       TabPanelIndex   =   0
-      Text            =   "To add a song, click the song title below and click the ""Add"" button. If you know the name of the song you can type it into the Quick Lookup field, and click ""Add"" or press Enter. You can also double-click on the song name to add it."
+      Text            =   "To add a song, click the song title below and click the ""Add"" button. If you know the name of the song you can type it into the Quick Lookup field, and click ""Add"" or press Enter. Or you can click Search(Ctrl+F) to search song, Ctrl+G to repeat search . You can also double-click on the song name to add it."
       TextAlign       =   0
       TextColor       =   0
       TextFont        =   "Arial"
@@ -86,7 +86,7 @@ Begin Window SongPickerWindow
       TextFont        =   "Arial"
       TextSize        =   10
       TextUnit        =   0
-      Top             =   55
+      Top             =   75
       Transparent     =   False
       Underline       =   False
       Visible         =   True
@@ -118,7 +118,7 @@ Begin Window SongPickerWindow
       TextFont        =   "Arial"
       TextSize        =   10
       TextUnit        =   0
-      Top             =   69
+      Top             =   89
       Underline       =   False
       Visible         =   True
       Width           =   206
@@ -151,7 +151,7 @@ Begin Window SongPickerWindow
       TextFont        =   "Arial"
       TextSize        =   10
       TextUnit        =   0
-      Top             =   52
+      Top             =   72
       Transparent     =   False
       Underline       =   False
       Visible         =   True
@@ -196,7 +196,7 @@ Begin Window SongPickerWindow
       TextFont        =   "Arial"
       TextSize        =   10
       TextUnit        =   0
-      Top             =   69
+      Top             =   89
       Underline       =   False
       UseFocusRing    =   True
       Visible         =   True
@@ -244,7 +244,7 @@ Begin Window SongPickerWindow
       TextFont        =   "Arial"
       TextSize        =   11
       TextUnit        =   0
-      Top             =   106
+      Top             =   121
       Underline       =   False
       UseFocusRing    =   True
       Visible         =   True
@@ -286,7 +286,7 @@ Begin Window SongPickerWindow
       TabIndex        =   0
       TabPanelIndex   =   0
       TabStop         =   True
-      Top             =   278
+      Top             =   296
       UseFocusRing    =   True
       Visible         =   True
       Width           =   406
@@ -319,7 +319,7 @@ Begin Window SongPickerWindow
       TextFont        =   "Arial"
       TextSize        =   10
       TextUnit        =   0
-      Top             =   289
+      Top             =   315
       Transparent     =   False
       Underline       =   False
       Visible         =   True
@@ -336,7 +336,7 @@ Begin Window SongPickerWindow
       DataSource      =   ""
       Enabled         =   True
       Format          =   ""
-      Height          =   117
+      Height          =   111
       HelpTag         =   ""
       HideSelection   =   True
       Index           =   -2147483648
@@ -364,7 +364,7 @@ Begin Window SongPickerWindow
       TextFont        =   "Arial"
       TextSize        =   10
       TextUnit        =   0
-      Top             =   304
+      Top             =   339
       Underline       =   False
       UseFocusRing    =   True
       Visible         =   True
@@ -398,7 +398,7 @@ Begin Window SongPickerWindow
       TextFont        =   "Arial"
       TextSize        =   10
       TextUnit        =   0
-      Top             =   433
+      Top             =   461
       Transparent     =   False
       Underline       =   False
       Visible         =   True
@@ -440,7 +440,7 @@ Begin Window SongPickerWindow
       TextFont        =   "Arial"
       TextSize        =   10
       TextUnit        =   0
-      Top             =   447
+      Top             =   475
       Underline       =   False
       UseFocusRing    =   True
       Visible         =   True
@@ -474,7 +474,7 @@ Begin Window SongPickerWindow
       TextFont        =   "Arial"
       TextSize        =   10
       TextUnit        =   0
-      Top             =   433
+      Top             =   461
       Transparent     =   False
       Underline       =   False
       Visible         =   True
@@ -516,7 +516,7 @@ Begin Window SongPickerWindow
       TextFont        =   "Arial"
       TextSize        =   10
       TextUnit        =   0
-      Top             =   447
+      Top             =   475
       Underline       =   False
       UseFocusRing    =   True
       Visible         =   True
@@ -548,7 +548,7 @@ Begin Window SongPickerWindow
       TextFont        =   "Arial"
       TextSize        =   10
       TextUnit        =   0
-      Top             =   491
+      Top             =   515
       Underline       =   False
       Visible         =   True
       Width           =   69
@@ -579,7 +579,7 @@ Begin Window SongPickerWindow
       TextFont        =   "Arial"
       TextSize        =   10
       TextUnit        =   0
-      Top             =   490
+      Top             =   515
       Underline       =   False
       Visible         =   True
       Width           =   69
@@ -625,6 +625,71 @@ Begin Window SongPickerWindow
       Visible         =   True
       Width           =   54
    End
+   Begin PushButton btn_search
+      AutoDeactivate  =   True
+      Bold            =   ""
+      ButtonStyle     =   0
+      Cancel          =   ""
+      Caption         =   "Search"
+      Default         =   ""
+      Enabled         =   True
+      Height          =   23
+      HelpTag         =   ""
+      Index           =   -2147483648
+      InitialParent   =   ""
+      Italic          =   ""
+      Left            =   12
+      LockBottom      =   True
+      LockedInPosition=   False
+      LockLeft        =   True
+      LockRight       =   ""
+      LockTop         =   False
+      Scope           =   0
+      TabIndex        =   17
+      TabPanelIndex   =   0
+      TabStop         =   True
+      TextFont        =   "System"
+      TextSize        =   0
+      TextUnit        =   0
+      Top             =   513
+      Underline       =   ""
+      Visible         =   True
+      Width           =   80
+   End
+   Begin Label lbl_found_text
+      AutoDeactivate  =   True
+      Bold            =   ""
+      DataField       =   ""
+      DataSource      =   ""
+      Enabled         =   True
+      Height          =   20
+      HelpTag         =   ""
+      Index           =   -2147483648
+      InitialParent   =   ""
+      Italic          =   ""
+      Left            =   221
+      LockBottom      =   ""
+      LockedInPosition=   False
+      LockLeft        =   True
+      LockRight       =   ""
+      LockTop         =   True
+      Multiline       =   ""
+      Scope           =   0
+      Selectable      =   False
+      TabIndex        =   18
+      TabPanelIndex   =   0
+      Text            =   "Found text in:"
+      TextAlign       =   0
+      TextColor       =   &h000000
+      TextFont        =   "Arial"
+      TextSize        =   10
+      TextUnit        =   0
+      Top             =   315
+      Transparent     =   False
+      Underline       =   ""
+      Visible         =   True
+      Width           =   197
+   End
 End
 #tag EndWindow
 
@@ -640,6 +705,18 @@ End
 		  
 		  Globals.Status_SongPickerOpen = False
 		End Sub
+	#tag EndEvent
+
+	#tag Event
+		Function KeyDown(Key As String) As Boolean
+		  If Keyboard.AsyncControlKey Then
+		    If Keyboard.AsyncKeyDown(&h03) Then 'Ctrl+F
+		      Find
+		    ElseIf Keyboard.AsyncKeyDown(&h05) Then 'Ctrl+G
+		      FindNext
+		    End If
+		  End If
+		End Function
 	#tag EndEvent
 
 	#tag Event
@@ -662,6 +739,8 @@ End
 		  
 		  '++JRC
 		  SongFolderSel = pop_select_folder.ListIndex
+		  
+		  Find = New FindClass
 		  '--
 		  App.T.TranslateWindow Me, "song_lookup", App.TranslationFonts
 		  App.CenterInControlScreen Me
@@ -711,16 +790,329 @@ End
 		End Sub
 	#tag EndMethod
 
-	#tag Method, Flags = &h0
-		Function Popup(ByRef presentation As String) As FolderItem
+	#tag Method, Flags = &h1
+		Protected Sub Find()
+		  App.DebugWriter.Write "SongPickerWindow.Find: Enter"
+		  If FindWindow.Popup(Find) Then
+		    FindStartSong = lst_all_songs.ListIndex
+		    App.DebugWriter.Write "SongPickerWindow.Find: FindStartSong = " + Str(lst_all_songs.ListIndex)
+		    FindNext
+		  End If
+		  App.DebugWriter.Write "SongPickerWindow.Find: Exit"
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h1
+		Protected Sub FindNext()
+		  App.DebugWriter.Write "MainWindow.FindNext: Enter"
 		  '++JRC
+		  If Find.FindString.Len = 0 And NOT find.FindChord Then
+		    Find
+		    Return
+		  End If
+		  
+		  Dim t as String
+		  Dim s As XmlDocument
+		  Dim i As Integer
+		  Dim f As FolderItem
+		  Dim found As Boolean = False 'RectControl = Nil
+		  Dim edtFound As TextEdit
+		  
+		  '++JRC
+		  Dim ChordKey As String
+		  Dim ChordForm As String
+		  Dim c As String
+		  Dim chords() As String
+		  Dim pos As Integer
+		  
+		  ChordKey = find.ChordKey
+		  ChordForm = find.ChordForm
+		  '--
+		  
+		  App.MouseCursor = System.Cursors.Wait
+		  
+		  'If Status_SongChanged Then ActionSongSave True ' updates CurrentSong but doesn't write it to file
+		  'If pge_controls.Value <> 0 Then SetMode 0
+		  
+		  t = Lowercase(find.FindString)
+		  '++JRC Redundant
+		  'If Len(t) = 0  Then Return
+		  
+		  If lst_all_songs.ListCount() > 0 Then
+		    i = lst_all_songs.ListIndex
+		    If i < 0 Then
+		      i = 0 ' if there is no song selected, select the first
+		      If FindStartSong < 0 Then FindStartSong = 0 //By implication, if i<0, this is too
+		      App.DebugWriter.Write("MainWindow.FindNext: Open " + str(i) + " " +  lst_all_songs.CellTag(i, 0).StringValue + lst_all_songs.List(i))
+		      f = MainWindow.Songs.GetFile(lst_all_songs.CellTag(i, 0).StringValue + lst_all_songs.List(i))
+		      If f = Nil Or Not f.Exists Then
+		        App.MouseCursor = Nil
+		        InputBox.Message App.T.Translate("folderdb_errors/error[@code='"+Str(MainWindow.Songs.ErrorCode)+"']", lst_all_songs.List(i))
+		        Return
+		      End If
+		      s = SmartML.XDocFromFile(f)
+		    Else
+		      s = CurrentSong
+		    End If
+		    
+		    //++
+		    // Bug 1089442: Catch s = Nil.  Unlikely to happen, but possible if i < 0 and the first document isn't valid
+		    //
+		    // For the moment, just error and return.  Could be avoided by splitting out the code that opens the song
+		    // files and determines when done (i.e., XmlDocument = GetNextSong( ByRef i, FindStartSong ))
+		    //--
+		    If s = Nil Then
+		      App.MouseCursor = Nil
+		      InputBox.Message App.T.Translate("folderdb_errors/error[@code='"+Str(MainWindow.Songs.ErrorCode)+"']", lst_all_songs.List(i))
+		      Return
+		    End If
+		    
+		    ProgressWindow.SetProgress 0
+		    ProgressWindow.lbl_status.Text =  App.T.Translate("progress_status/song_search") + "..."
+		    ProgressWindow.Show()
+		    
+		    While found = False And i < lst_all_songs.ListCount
+		      ProgressWindow.SetProgress (i+1) / lst_all_songs.ListCount * 100
+		      ProgressWindow.SetStatus lst_all_songs.List(i)
+		      
+		      If find.FindTitle And InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "title")), t) > 0 And (i <> lst_all_songs.ListIndex Or find.FoundPos = 0  ) Then
+		        found = True
+		        find.Found = find.kTitle
+		        find.FoundPos = InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "title")), t)
+		      ElseIf find.FindAuthor And InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "author")), t) > 0 And (i <> lst_all_songs.ListIndex Or find.FoundPos = 0  ) Then
+		        found = True
+		        find.Found = find.kAuthor
+		        find.FoundPos = InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "author")), t)
+		      ElseIf find.FindCopyright And InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "copyright")), t) > 0 And (i <> lst_all_songs.ListIndex Or find.FoundPos = 0  ) Then
+		        found = True
+		        find.Found = find.kCopyright
+		        find.FoundPos = InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "copyright")), t)
+		      ElseIf find.FindCCLI And InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "ccli")), t) > 0 And (i <> lst_all_songs.ListIndex Or find.FoundPos = 0  ) Then
+		        found = True
+		        find.Found = find.kCCLI
+		        find.FoundPos = InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "ccli")), t)
+		      ElseIf find.FindPresentation And InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "presentation")), t) > 0 And (i <> lst_all_songs.ListIndex Or find.FoundPos = 0  ) Then
+		        found = True
+		        find.Found = find.kPresentation
+		        find.FoundPos = InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "presentation")), t)
+		      ElseIf find.FindLyrics And InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "lyrics")), t) > 0 And (i <> lst_all_songs.ListIndex  Or ( (edt_preview.SelStart+edt_preview.SelLength = 0 Or InStr(edt_preview.SelStart+edt_preview.SelLength+1, Lowercase(edt_preview.Text), t) > 0) ) ) Then
+		        found = True
+		        find.Found = find.kLyrics
+		        find.FoundPos = InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "lyrics")), t)
+		      ElseIf find.FindThemes And InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "theme")), t) > 0 And (i <> lst_all_songs.ListIndex Or find.FoundPos = 0  ) Then
+		        found = True
+		        find.Found = find.kThemes
+		        find.FoundPos = InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "theme")), t)
+		      ElseIf find.FindTimeSig And InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "time_sig")), t) > 0 And (i <> lst_all_songs.ListIndex Or find.FoundPos = 0  ) Then
+		        found = True
+		        find.Found = find.kTimeSig
+		        find.FoundPos = InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "time_sig")), t)
+		      ElseIf find.FindTempo And InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "tempo")), t) > 0 And (i <> lst_all_songs.ListIndex Or find.FoundPos = 0  ) Then
+		        found = True
+		        find.Found = find.kTempo
+		        find.FoundPos = InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "tempo")), t)
+		      ElseIf find.FindKey And InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "key")), t) > 0 And (i <> lst_all_songs.ListIndex Or find.FoundPos = 0  ) Then
+		        found = True
+		        find.Found = find.kKey
+		        find.FoundPos = InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "key")), t)
+		      ElseIf find.FindAKA And InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "aka")), t) > 0 And (i <> lst_all_songs.ListIndex Or find.FoundPos = 0  ) Then
+		        found = True
+		        find.Found = find.kAKA
+		        find.FoundPos = InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "aka")), t)
+		      ElseIf find.FindKeyLine And InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "key_line")), t) > 0 And (i <> lst_all_songs.ListIndex Or find.FoundPos = 0  ) Then
+		        found = True
+		        find.Found = find.kKeyLine
+		        find.FoundPos = InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "key_line")), t)
+		      ElseIf find.FindUser1 And InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "user1")), t) > 0 And (i <> lst_all_songs.ListIndex Or find.FoundPos = 0  ) Then
+		        found = True
+		        find.Found = find.kUser1
+		        find.FoundPos = InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "user1")), t)
+		      ElseIf find.FindUser2 And InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "user2")), t) > 0 And (i <> lst_all_songs.ListIndex Or find.FoundPos = 0  ) Then
+		        found = True
+		        find.Found = find.kUser2
+		        find.FoundPos = InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "user2")), t)
+		      ElseIf find.FindUser3 And InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "user3")), t) > 0 And (i <> lst_all_songs.ListIndex Or find.FoundPos = 0  ) Then
+		        found = True
+		        find.Found = find.kUser3
+		        find.FoundPos = InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "user3")), t)
+		      ElseIf find.FindHymnNumber And InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "hymn_number")), t) > 0 And (i <> lst_all_songs.ListIndex Or find.FoundPos = 0  ) Then
+		        found = True
+		        find.Found = find.kHymnNumber
+		        find.FoundPos = InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "hymn_number")), t)
+		        
+		      ElseIf find.FindChord  Then
+		        
+		        pos = SongML.FindChord(s.DocumentElement, ChordKey, ChordForm, (edt_preview.SelStart + edt_preview.SelLength + 1), c)
+		        If pos > 0 Then
+		          found = True
+		          find.Found = find.kChord
+		          find.FoundPos = InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "hymn_number")), t)
+		          
+		          If lst_all_songs.ListIndex <> i Then lst_all_songs.ListIndex = i
+		          edt_preview.SelStart = (pos - c.Len - 1)
+		          edt_preview.SelLength = c.Len
+		          
+		          t = c
+		        Else
+		          found = False
+		        End If
+		        
+		        '--
+		      End If
+		      
+		      If found Then
+		        If lst_all_songs.ListIndex <> i Then lst_all_songs.ListIndex = i
+		        
+		        SetFoundInText
+		        
+		        If find.Found = find.kLyrics Or find.Found = find.kChord Then
+		          If edt_preview.SelStart+edt_preview.SelLength = 0 Then
+		            edt_preview.SelStart = InStr(Lowercase(edt_preview.Text), t) - 1
+		          Else
+		            edt_preview.SelStart = InStr(edt_preview.SelStart+edt_preview.SelLength+1, Lowercase(edt_preview.Text), t) - 1
+		          End If
+		          edt_preview.SelLength = t.Len 'find.FindString.Len
+		        Else
+		          
+		        End If
+		        
+		        'found.SetFocus
+		        'If found IsA TextEdit Then
+		        'edtFound = TextEdit(found)
+		        'If edtFound.SelStart+edtFound.SelLength = 0 Then
+		        'edtFound.SelStart = InStr(Lowercase(edtFound.Text), t) - 1
+		        'Else
+		        'edtFound.SelStart = InStr(edtFound.SelStart+edtFound.SelLength+1, Lowercase(edtFound.Text), t) - 1
+		        'End If
+		        'edtFound.SelLength = t.Len 'find.FindString.Len
+		        'End If
+		        
+		        
+		      Else
+		        Do
+		          i = i + 1
+		          If i >= lst_all_songs.ListCount Then
+		            i = 0 // Circle around to the beginning
+		          End If
+		          //
+		          //++ Check for finished
+		          //
+		          If i = FindStartSong Then Exit
+		          //--
+		          If i < lst_all_songs.ListCount Then
+		            f = MainWindow.Songs.GetFile(lst_all_songs.CellTag(i, 0).StringValue + lst_all_songs.List(i))
+		            If f = Nil Or Not f.Exists Then
+		              App.MouseCursor = Nil
+		              InputBox.Message App.T.Translate("folderdb_errors/error[@code='"+Str(MainWindow.Songs.ErrorCode)+"']", lst_all_songs.List(i))
+		              ProgressWindow.Close()
+		              Return
+		            End If
+		            s = SmartML.XDocFromFile(f)
+		            If s = Nil Then
+		              App.DebugWriter.Write("MainWindow.FindNext: Error converting file to XML String: " + lst_all_songs.CellTag(i, 0).StringValue + lst_all_songs.list(i), 1)
+		              App.MouseCursor = Nil
+		              InputBox.Message App.T.Translate("errors/bad_format", lst_all_songs.List(i))
+		              App.MouseCursor = System.Cursors.Wait
+		            End If
+		          End If
+		        Loop Until s <> Nil
+		        '++JRC
+		        If find.FindChord Then
+		          edt_preview.SelStart = 0
+		        End If
+		        '--
+		      End If
+		      //++
+		      // See if we left the loop because we are at the end.  If so, leave the While loop
+		      //--
+		      If i = FindStartSong Then
+		        Exit
+		      End If
+		    Wend
+		    
+		    ProgressWindow.Close()
+		  End If
+		  
+		  If NOT found Then
+		    App.MouseCursor = Nil
+		    InputBox.Message App.T.Translate("errors/end_of_songs")
+		  End If
+		  
+		  App.MouseCursor = Nil
+		  App.DebugWriter.Write("MainWindow.FindNext: Exit")
+		  Return
+		  
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function Popup(ByRef presentation As String, ShowPresentaion As Boolean = True) As FolderItem
+		  '++JRC 
 		  Globals.Status_SongPickerOpen = True
+		  
+		  If NOT ShowPresentaion Then
+		    lbl_presentation.Visible = False
+		    edt_order.Visible = False
+		  End If
 		  '--
 		  PresentationOrder = ""
 		  ShowModalWithin(MainWindow)
 		  presentation = PresentationOrder
 		  Return f
 		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h1
+		Protected Sub SetFoundInText()
+		  Dim str As String
+		  
+		  Select Case find.Found
+		  Case find.kLyrics
+		    str = App.T.Translate("shared/lyrics/@caption")
+		  Case find.kTitle
+		    str = App.T.Translate("shared/title/@caption")
+		  Case find.kAuthor
+		    str = App.T.Translate("shared/author/@caption")
+		  Case find.kCopyright
+		    str = App.T.Translate("shared/copyright/@caption")
+		  Case find.kCCLI
+		    str = App.T.Translate("shared/ccli/@caption")
+		  Case find.kPresentation
+		    str = App.T.Translate("shared/presentation/@caption")
+		  Case find.kChord
+		    str = App.T.Translate("shared/chord/@caption")
+		  Case find.kHymnNumber
+		    str = App.T.Translate("shared/hymn_number/@caption")
+		  Case find.kKey
+		    str = App.T.Translate("shared/key/@caption")
+		  Case find.kKeyLine
+		    str = App.T.Translate("shared/key_line/@caption")
+		  Case find.kAKA
+		    str = App.T.Translate("shared/aka/@caption")
+		  Case find.kCapo
+		    str = App.T.Translate("shared/capo/@caption")
+		  Case find.kThemes
+		    str = App.T.Translate("shared/theme/@caption")
+		  Case find.kTempo
+		    str = App.T.Translate("shared/tempo/@caption")
+		  Case find.kTimeSig
+		    str = App.T.Translate("shared/time_sig/@caption")
+		  Case find.kUser1
+		    str = App.T.Translate("shared/user1/@caption")
+		  Case find.kUser2
+		    str = App.T.Translate("shared/user2/@caption")
+		  Case find.kUser3
+		    str = App.T.Translate("shared/user3/@caption")
+		    
+		  End Select
+		  
+		  
+		  str = App.T.Translate("song_lookup/text/@caption") + " " + str
+		  
+		  lbl_found_text.Text = str
+		  Return
+		  
+		End Sub
 	#tag EndMethod
 
 
@@ -738,6 +1130,14 @@ End
 
 	#tag Property, Flags = &h1
 		Protected f As FolderItem
+	#tag EndProperty
+
+	#tag Property, Flags = &h1
+		Protected Find As FindClass
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
+		FindStartSong As Integer
 	#tag EndProperty
 
 	#tag Property, Flags = &h1
@@ -876,7 +1276,17 @@ End
 		  Dim found As Boolean
 		  Dim reSearch As RegEx
 		  Dim reoSearch As RegExOptions
-		  
+		  '++JRC
+		  If Keyboard.AsyncControlKey Then
+		    If Keyboard.AsyncKeyDown(&h03) Then 'Ctrl+F
+		      Find
+		      Return True
+		    ElseIf Keyboard.AsyncKeyDown(&h05) Then 'Ctrl+G
+		      FindNext
+		      Return True
+		    End If
+		  End If
+		  '--
 		  If Keyboard.CommandKey Or Keyboard.ControlKey Or Keyboard.OptionKey Then Return False
 		  
 		  Select Case Asc(key)
@@ -1164,6 +1574,21 @@ End
 		End Sub
 	#tag EndEvent
 #tag EndEvents
+#tag Events edt_preview
+	#tag Event
+		Function KeyDown(Key As String) As Boolean
+		  If Keyboard.AsyncControlKey Then
+		    If Keyboard.AsyncKeyDown(&h03) Then 'Ctrl+F
+		      Find
+		      Return True
+		    ElseIf Keyboard.AsyncKeyDown(&h05) Then 'Ctrl+G
+		      FindNext
+		      Return True
+		    End If
+		  End If
+		End Function
+	#tag EndEvent
+#tag EndEvents
 #tag Events btn_add
 	#tag Event
 		Sub Action()
@@ -1191,6 +1616,13 @@ End
 	#tag Event
 		Sub Action()
 		  KeyedSearch = ""
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events btn_search
+	#tag Event
+		Sub Action()
+		  Find
 		End Sub
 	#tag EndEvent
 #tag EndEvents

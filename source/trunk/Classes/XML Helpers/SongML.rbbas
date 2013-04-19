@@ -1181,6 +1181,145 @@ Module SongML
 		End Function
 	#tag EndMethod
 
+	#tag Method, Flags = &h1
+		Protected Function FindChord(songElement As XmlNode, ChordKey As String, ChordForm As String, startPos As Integer = 1, ByRef FoundChord As String) As Integer
+		  // JRC
+		  //Find the specified chord in song lyrics
+		  //startPos is an optional starting position in the lyrics
+		  //Returns the location of the chord in the lyrics
+		  //or zero if the specified chord cannot be found
+		  
+		  Dim rawLyrics As String
+		  Dim lyricArray() As String
+		  Dim i As Integer
+		  Dim pos As Integer
+		  Dim chordP As Integer
+		  Dim formP As Integer
+		  Dim startP As Integer
+		  Dim chords() As String
+		  Dim forms() As String
+		  Dim p As Integer
+		  Dim KeyIndex As Integer
+		  Dim FormIndex As Integer
+		  
+		  ' "Any" chord
+		  If ChordKey = "." Then
+		    chords = Split(App.T.Translate("songml/chordkeys"), ",")
+		    chords.Remove 0
+		  Else
+		    chords.Append  ChordKey
+		  End If
+		  
+		  ' "Any" chord form
+		  If ChordForm = "." Then
+		    forms = Split(App.T.Translate("songml/chordforms"), ",")
+		    forms.Remove 0
+		  Else
+		    forms.Append  ChordForm
+		  End If
+		  
+		  rawLyrics = SmartML.GetValue(songElement, "lyrics", False).FormatUnixEndOfLine
+		  
+		  'startPos > lyrics length, probably means we've reached the end of the song from the previous call
+		  If startPos > rawLyrics.Len Then
+		    startPos = 1
+		    pos = 1
+		  ElseIf startPos > 0 Then
+		    'find start of line from startPos for reference
+		    startP = StringUtils.InStrReverse(startPos, rawLyrics, EndOfLine.UNIX)
+		    startP = startP + 1
+		    pos = startP
+		    rawlyrics = Mid(rawlyrics, pos)
+		  Else
+		    pos = 1
+		  End If
+		  
+		  'split lyrics to separate lines
+		  lyricArray = Split(rawLyrics, EndOfLine.UNIX)
+		  
+		  
+		  While i <= UBound(lyricArray)
+		    
+		    'see if this is a chord line
+		    If Instr(0, ".", Left(lyricArray(i), 1)) > 0 Then
+		      
+		      'first try to find chord key in line
+		      chordP = StringUtils.InStrList(0,  lyricArray(i), chords, KeyIndex)
+		      If chordP > 0 Then
+		        formP = StringUtils.InStrList(chordP+chords(KeyIndex).Len,  lyricArray(i), forms, FormIndex)
+		        If formP = 0 Then
+		          'Since "Major" chord has no symbol associated with it
+		          'a zero return value here may still be valid 
+		          If ChordForm = "." Or ChordForm = "" Then
+		            'set formP to end of chordP
+		            formP  = chordP + chords(KeyIndex).Len
+		            FormIndex = 0 ' "Major" chord
+		          Else
+		            'no match, skip it
+		            chordP = 0
+		          End If
+		        End If
+		      End If
+		      
+		      If startP > 0 Then
+		        'starting line
+		        If pos >= startP Then
+		          startP = Pos
+		          
+		          while chordP > 0
+		            
+		            If ((startP + chordP) > startPos) And formP > 0  And (formP - chords(KeyIndex).Len ) = chordP  Then
+		              pos = (startP + chordP) - 1
+		              FoundChord = chords(KeyIndex) + forms(FormIndex)
+		              
+		              Return pos
+		            End If
+		            
+		            'try to find next chord key in line
+		            chordP = StringUtils.InStrList(chordP+chords(KeyIndex).Len,  lyricArray(i), chords, KeyIndex)
+		            If chordP > 0 Then
+		              formP = StringUtils.InStrList(chordP+chords(KeyIndex).Len,  lyricArray(i), forms, FormIndex)
+		              If formP = 0 Then
+		                'Since "Major" chord has no symbol associated with it
+		                'a zero return value here may still be valid
+		                If ChordForm = "." Or ChordForm = "" Then
+		                  'set formP to end of chordP
+		                  formP  = chordP + chords(KeyIndex).Len
+		                  FormIndex = 0   ' "Major" chord
+		                End If
+		              End If
+		            End If
+		            
+		          Wend
+		        Else
+		          'keep going
+		          chordP = 0
+		        End If
+		      End If
+		      
+		      
+		      If chordP > 0 Then
+		        pos = (pos + chordP) - 1
+		        FoundChord = chords(KeyIndex) + forms(FormIndex)
+		        
+		        Return pos
+		      End If
+		      
+		    End If
+		    
+		    pos = pos + lyricArray(i).Len + 1
+		    
+		    'move to next line
+		    i = i + 1
+		  Wend
+		  
+		  'didn't find anything
+		  FoundChord = ""
+		  Return 0
+		  
+		End Function
+	#tag EndMethod
+
 	#tag Method, Flags = &h21
 		Private Function FullHeading(heading As String, fullVerses As Boolean = False) As String
 		  If Uppercase(Left(heading, 1)) = "V" Then   ' -- VERSE --
@@ -1326,8 +1465,8 @@ Module SongML
 		End Sub
 	#tag EndMethod
 
-	#tag Method, Flags = &h0
-		Sub LyricsToSections(songElement As XmlNode, ByRef dict As Dictionary, ByRef order As String)
+	#tag Method, Flags = &h1
+		Protected Sub LyricsToSections(songElement As XmlNode, ByRef dict As Dictionary, ByRef order As String)
 		  Dim st, x, strlen As Integer
 		  Dim lyrics, line, section, subsection As String
 		  Dim len As integer
@@ -2035,42 +2174,12 @@ Module SongML
 		  Dim ChorusNr, PresentationIndex as integer 'GP
 		  ChorusNr = 0 'GP
 		  
-		  Dim xbacks As XmlNode = SmartML.GetNode(songElement, "backgrounds", True)
-		  Dim xbackground As XmlNode = Nil
-		  
 		  For Each section In sections
 		    PresentationIndex = PresentationIndex + 1
 		    If dict.HasKey(section) Then
 		      If Lowercase(Left(section, 1)) = "c" Then
 		        ChorusNr = ChorusNr+ 1 'GP
 		      end if
-		      
-		      'Check if a background is available for this verse
-		      xbackground = Nil
-		      If (xbacks.ChildCount() > 0) Then
-		        Dim xlist As XmlNodeList = xbacks.Xql("background[@verse='" + section + "']")
-		        If xlist.Length()>0 Then
-		          xbackground = xlist.Item(0)
-		          
-		          'Check if the image file exists
-		          Dim sfile As String = SmartML.GetValue(xbackground, "filename")
-		          If SmartML.GetValueB(xbacks, "@link", False) = True And sfile<>"" Then
-		            If Not (sfile.StartsWith("/") or sfile.StartsWith("\\") or sfile.Mid(2, 1)=":") Then
-		              sfile = App.DocsFolder.Child("Backgrounds").AbsolutePath + sfile
-		            End If
-		            
-		            Dim file As FolderItem = GetFolderItem(sfile)
-		            If Not file.Exists() Then
-		              InputBox.Message App.T.Translate("errors/fileutils/filenotfound", SmartML.GetValue(xbackground, "filename"))
-		              
-		              xbacks.RemoveChild(xbackground)
-		              xbackground = Nil
-		            End If
-		          End If
-		          
-		        End If
-		      End If
-		      
 		      sub_sections = Split(dict.Value(section), "||")
 		      For Each sub_section In sub_sections
 		        slide = SmartML.InsertChild(slides, "slide", slides.ChildCount)
@@ -2085,23 +2194,9 @@ Module SongML
 		          SmartML.SetValueN(slide, "@ChorusNr", ChorusNr) 'GP
 		        End If
 		        SmartML.SetValueN(slide, "@PresentationIndex", PresentationIndex) 'GP
-		        
-		        'Assign the background to the verse slide
-		        If Not IsNull(xbackground) Then
-		          SmartML.CloneChildren(xbackground, slide)
-		        End If
 		      Next
 		    End If
 		  Next
-		  
-		  If (xbacks.ChildCount() > 0) Then
-		    'Assign background image handling attribute to the song
-		    SmartML.CloneAttributes(xbacks, songElement)
-		    SmartML.SetValue(songElement, "@subtype", "image")
-		  End If
-		  
-		  'Remove the backgrounds section from the song
-		  songElement.RemoveChild(xbacks)
 		  
 		End Sub
 	#tag EndMethod

@@ -7,7 +7,7 @@ Begin Window MainWindow Implements ScriptureReceiver
    Frame           =   0
    FullScreen      =   False
    HasBackColor    =   False
-   Height          =   570
+   Height          =   5.9e+2
    ImplicitInstance=   True
    LiveResize      =   False
    MacProcID       =   0
@@ -23,7 +23,7 @@ Begin Window MainWindow Implements ScriptureReceiver
    Resizeable      =   True
    Title           =   "OpenSong"
    Visible         =   False
-   Width           =   750
+   Width           =   8.46e+2
    Begin SButton btn_mode_songs_mode
       AcceptFocus     =   True
       AcceptTabs      =   False
@@ -116,12 +116,12 @@ Begin Window MainWindow Implements ScriptureReceiver
       Transparent     =   False
       Underline       =   False
       Visible         =   True
-      Width           =   320
+      Width           =   416
    End
    Begin PagePanel pge_controls
       AutoDeactivate  =   True
       Enabled         =   True
-      Height          =   535
+      Height          =   555
       HelpTag         =   ""
       Index           =   -2147483648
       InitialParent   =   ""
@@ -148,7 +148,7 @@ Begin Window MainWindow Implements ScriptureReceiver
          DoubleBuffer    =   False
          Enabled         =   True
          EraseBackground =   True
-         Height          =   526
+         Height          =   546
          HelpTag         =   ""
          Index           =   -2147483648
          InitialParent   =   "pge_controls"
@@ -823,7 +823,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextFont        =   "Arial"
             TextSize        =   10
             TextUnit        =   0
-            Top             =   515
+            Top             =   535
             Transparent     =   False
             Underline       =   False
             Visible         =   True
@@ -877,7 +877,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             GridLinesVertical=   0
             HasHeading      =   False
             HeadingIndex    =   -1
-            Height          =   172
+            Height          =   192
             HelpTag         =   ""
             Hierarchical    =   False
             Index           =   -2147483648
@@ -948,7 +948,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextFont        =   "Arial"
             TextSize        =   10
             TextUnit        =   0
-            Top             =   534
+            Top             =   554
             Underline       =   False
             UseFocusRing    =   True
             Visible         =   True
@@ -963,7 +963,7 @@ Begin Window MainWindow Implements ScriptureReceiver
          DoubleBuffer    =   False
          Enabled         =   True
          EraseBackground =   True
-         Height          =   525
+         Height          =   545
          HelpTag         =   ""
          Index           =   -2147483648
          InitialParent   =   "pge_controls"
@@ -1831,7 +1831,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             GridLinesVertical=   0
             HasHeading      =   False
             HeadingIndex    =   -1
-            Height          =   131
+            Height          =   151
             HelpTag         =   ""
             Hierarchical    =   False
             Index           =   -2147483648
@@ -1868,7 +1868,7 @@ Begin Window MainWindow Implements ScriptureReceiver
    Begin PagePanel pge_contents
       AutoDeactivate  =   True
       Enabled         =   True
-      Height          =   535
+      Height          =   555
       HelpTag         =   ""
       Index           =   -2147483648
       InitialParent   =   ""
@@ -1886,7 +1886,7 @@ Begin Window MainWindow Implements ScriptureReceiver
       Top             =   34
       Value           =   1
       Visible         =   True
-      Width           =   495
+      Width           =   591
       Begin Canvas cnv_editor_style_change
          AcceptFocus     =   False
          AcceptTabs      =   False
@@ -1895,7 +1895,7 @@ Begin Window MainWindow Implements ScriptureReceiver
          DoubleBuffer    =   False
          Enabled         =   True
          EraseBackground =   True
-         Height          =   525
+         Height          =   545
          HelpTag         =   ""
          Index           =   -2147483648
          InitialParent   =   "pge_contents"
@@ -1912,7 +1912,7 @@ Begin Window MainWindow Implements ScriptureReceiver
          Top             =   40
          UseFocusRing    =   True
          Visible         =   True
-         Width           =   485
+         Width           =   581
          Begin Label hdr_style_header
             AutoDeactivate  =   True
             Bold            =   True
@@ -2042,7 +2042,7 @@ Begin Window MainWindow Implements ScriptureReceiver
          DoubleBuffer    =   False
          Enabled         =   True
          EraseBackground =   True
-         Height          =   527
+         Height          =   547
          HelpTag         =   ""
          Index           =   -2147483648
          InitialParent   =   "pge_contents"
@@ -2059,7 +2059,7 @@ Begin Window MainWindow Implements ScriptureReceiver
          Top             =   40
          UseFocusRing    =   True
          Visible         =   True
-         Width           =   485
+         Width           =   581
          Begin Label lbl_song_aka
             AutoDeactivate  =   True
             Bold            =   False
@@ -2092,7 +2092,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Transparent     =   False
             Underline       =   False
             Visible         =   True
-            Width           =   130
+            Width           =   226
          End
          Begin Label lbl_song_themes
             AutoDeactivate  =   True
@@ -2194,7 +2194,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Transparent     =   False
             Underline       =   False
             Visible         =   True
-            Width           =   270
+            Width           =   366
          End
          Begin Listbox lst_song_themes
             AutoDeactivate  =   True
@@ -2260,7 +2260,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Index           =   -2147483648
             InitialParent   =   "can_editor_advanced_song_editor"
             LabelAlign      =   1
-            Left            =   475
+            Left            =   571
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   False
@@ -2407,7 +2407,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Transparent     =   False
             Underline       =   False
             Visible         =   True
-            Width           =   270
+            Width           =   366
          End
          Begin Label lbl_song_tempo
             AutoDeactivate  =   True
@@ -2475,7 +2475,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Transparent     =   False
             Underline       =   False
             Visible         =   True
-            Width           =   270
+            Width           =   366
          End
          Begin CheckBox chk_song_style
             AutoDeactivate  =   True
@@ -2489,7 +2489,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Index           =   -2147483648
             InitialParent   =   "can_editor_advanced_song_editor"
             Italic          =   False
-            Left            =   628
+            Left            =   724
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   False
@@ -2555,7 +2555,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Index           =   -2147483648
             InitialParent   =   "can_editor_advanced_song_editor"
             LabelAlign      =   1
-            Left            =   605
+            Left            =   701
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   False
@@ -2614,7 +2614,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "can_editor_advanced_song_editor"
-            Left            =   628
+            Left            =   724
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   False
@@ -2718,7 +2718,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Underline       =   False
             UseFocusRing    =   True
             Visible         =   True
-            Width           =   130
+            Width           =   226
          End
          Begin PopupMenu pop_song_capo
             AutoDeactivate  =   True
@@ -2794,7 +2794,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Underline       =   False
             UseFocusRing    =   True
             Visible         =   True
-            Width           =   270
+            Width           =   366
          End
          Begin Label lbl_song_user1
             AutoDeactivate  =   True
@@ -2828,7 +2828,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Transparent     =   False
             Underline       =   False
             Visible         =   True
-            Width           =   270
+            Width           =   366
          End
          Begin Label hdr_song_header_2
             AutoDeactivate  =   True
@@ -2862,7 +2862,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Transparent     =   False
             Underline       =   False
             Visible         =   True
-            Width           =   200
+            Width           =   296
          End
          Begin SEditField edt_song_user1
             AcceptTabs      =   False
@@ -2907,7 +2907,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Underline       =   False
             UseFocusRing    =   True
             Visible         =   True
-            Width           =   270
+            Width           =   366
          End
          Begin SEditField edt_song_user2
             AcceptTabs      =   False
@@ -2952,7 +2952,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Underline       =   False
             UseFocusRing    =   True
             Visible         =   True
-            Width           =   270
+            Width           =   366
          End
          Begin SEditField edt_song_user3
             AcceptTabs      =   False
@@ -2997,7 +2997,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Underline       =   False
             UseFocusRing    =   True
             Visible         =   True
-            Width           =   270
+            Width           =   366
          End
          Begin Label lbl_song_backgrounds
             AutoDeactivate  =   True
@@ -3015,7 +3015,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   True
             LockRight       =   False
-            LockTop         =   True
+            LockTop         =   False
             Multiline       =   False
             Scope           =   0
             Selectable      =   False
@@ -3051,7 +3051,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             GridLinesVertical=   0
             HasHeading      =   True
             HeadingIndex    =   -1
-            Height          =   112
+            Height          =   132
             HelpTag         =   ""
             Hierarchical    =   ""
             ImageColumn     =   ""
@@ -3064,8 +3064,8 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockBottom      =   True
             LockedInPosition=   False
             LockLeft        =   True
-            LockRight       =   True
-            LockTop         =   True
+            LockRight       =   False
+            LockTop         =   False
             RequiresSelection=   ""
             Scope           =   0
             ScrollbarHorizontal=   False
@@ -3081,7 +3081,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Underline       =   ""
             UseFocusRing    =   True
             Visible         =   True
-            Width           =   138
+            Width           =   234
             _ScrollOffset   =   0
             _ScrollWidth    =   -1
          End
@@ -3099,18 +3099,18 @@ Begin Window MainWindow Implements ScriptureReceiver
             Index           =   -2147483648
             InitialParent   =   "can_editor_advanced_song_editor"
             LabelAlign      =   0
-            Left            =   558
+            Left            =   654
             LockBottom      =   True
             LockedInPosition=   False
             LockLeft        =   False
-            LockRight       =   True
+            LockRight       =   False
             LockTop         =   False
             Scope           =   0
             StickyBevel     =   0
             TabIndex        =   28
             TabPanelIndex   =   2
             TabStop         =   True
-            Top             =   539
+            Top             =   559
             UseFocusRing    =   True
             Visible         =   True
             Width           =   115
@@ -3129,18 +3129,18 @@ Begin Window MainWindow Implements ScriptureReceiver
             Index           =   -2147483648
             InitialParent   =   "can_editor_advanced_song_editor"
             LabelAlign      =   0
-            Left            =   431
+            Left            =   527
             LockBottom      =   True
             LockedInPosition=   False
             LockLeft        =   False
-            LockRight       =   True
+            LockRight       =   False
             LockTop         =   False
             Scope           =   0
             StickyBevel     =   0
             TabIndex        =   29
             TabPanelIndex   =   2
             TabStop         =   True
-            Top             =   539
+            Top             =   559
             UseFocusRing    =   True
             Visible         =   True
             Width           =   115
@@ -3157,11 +3157,11 @@ Begin Window MainWindow Implements ScriptureReceiver
             Index           =   -2147483648
             InitialParent   =   "can_editor_advanced_song_editor"
             Italic          =   ""
-            Left            =   428
+            Left            =   524
             LockBottom      =   True
             LockedInPosition=   False
             LockLeft        =   False
-            LockRight       =   True
+            LockRight       =   False
             LockTop         =   False
             Scope           =   0
             State           =   0
@@ -3171,7 +3171,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextFont        =   "Arial"
             TextSize        =   10
             TextUnit        =   0
-            Top             =   436
+            Top             =   456
             Underline       =   ""
             Value           =   False
             Visible         =   True
@@ -3189,11 +3189,11 @@ Begin Window MainWindow Implements ScriptureReceiver
             Index           =   -2147483648
             InitialParent   =   "can_editor_advanced_song_editor"
             Italic          =   ""
-            Left            =   428
+            Left            =   524
             LockBottom      =   True
             LockedInPosition=   False
             LockLeft        =   False
-            LockRight       =   True
+            LockRight       =   False
             LockTop         =   False
             Scope           =   0
             State           =   0
@@ -3203,7 +3203,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextFont        =   "Arial"
             TextSize        =   10
             TextUnit        =   0
-            Top             =   456
+            Top             =   476
             Underline       =   ""
             Value           =   False
             Visible         =   True
@@ -3221,11 +3221,11 @@ Begin Window MainWindow Implements ScriptureReceiver
             Index           =   -2147483648
             InitialParent   =   "can_editor_advanced_song_editor"
             Italic          =   ""
-            Left            =   428
+            Left            =   524
             LockBottom      =   True
             LockedInPosition=   False
             LockLeft        =   False
-            LockRight       =   True
+            LockRight       =   False
             LockTop         =   False
             Scope           =   0
             State           =   0
@@ -3235,7 +3235,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextFont        =   "Arial"
             TextSize        =   10
             TextUnit        =   0
-            Top             =   476
+            Top             =   496
             Underline       =   ""
             Value           =   False
             Visible         =   True
@@ -3253,11 +3253,11 @@ Begin Window MainWindow Implements ScriptureReceiver
             Index           =   -2147483648
             InitialParent   =   "can_editor_advanced_song_editor"
             Italic          =   ""
-            Left            =   428
+            Left            =   524
             LockBottom      =   True
             LockedInPosition=   False
             LockLeft        =   False
-            LockRight       =   True
+            LockRight       =   False
             LockTop         =   False
             Scope           =   0
             State           =   0
@@ -3267,7 +3267,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextFont        =   "Arial"
             TextSize        =   10
             TextUnit        =   0
-            Top             =   496
+            Top             =   516
             Underline       =   ""
             Value           =   False
             Visible         =   True
@@ -3285,11 +3285,11 @@ Begin Window MainWindow Implements ScriptureReceiver
             Index           =   -2147483648
             InitialParent   =   "can_editor_advanced_song_editor"
             Italic          =   ""
-            Left            =   428
+            Left            =   524
             LockBottom      =   True
             LockedInPosition=   False
             LockLeft        =   False
-            LockRight       =   True
+            LockRight       =   False
             LockTop         =   False
             Scope           =   0
             State           =   0
@@ -3299,7 +3299,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextFont        =   "Arial"
             TextSize        =   10
             TextUnit        =   0
-            Top             =   516
+            Top             =   536
             Underline       =   ""
             Value           =   False
             Visible         =   True
@@ -3314,7 +3314,7 @@ Begin Window MainWindow Implements ScriptureReceiver
          DoubleBuffer    =   False
          Enabled         =   True
          EraseBackground =   True
-         Height          =   526
+         Height          =   546
          HelpTag         =   ""
          Index           =   -2147483648
          InitialParent   =   "pge_contents"
@@ -3331,7 +3331,7 @@ Begin Window MainWindow Implements ScriptureReceiver
          Top             =   40
          UseFocusRing    =   True
          Visible         =   True
-         Width           =   485
+         Width           =   581
          Begin Label hdr_song_header
             AutoDeactivate  =   True
             Bold            =   True
@@ -3364,7 +3364,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Transparent     =   False
             Underline       =   False
             Visible         =   True
-            Width           =   200
+            Width           =   296
          End
          Begin Label lbl_song_ccli
             AutoDeactivate  =   True
@@ -3428,7 +3428,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextFont        =   "Arial"
             TextSize        =   10
             TextUnit        =   0
-            Top             =   91
+            Top             =   90
             Transparent     =   False
             Underline       =   False
             Visible         =   True
@@ -3534,7 +3534,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Transparent     =   False
             Underline       =   False
             Visible         =   True
-            Width           =   350
+            Width           =   446
          End
          Begin Label lbl_song_hymn_number
             AutoDeactivate  =   True
@@ -3547,7 +3547,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Index           =   -2147483648
             InitialParent   =   "can_editor_general_song_editor"
             Italic          =   False
-            Left            =   625
+            Left            =   708
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   False
@@ -3564,7 +3564,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextFont        =   "Arial"
             TextSize        =   10
             TextUnit        =   0
-            Top             =   175
+            Top             =   171
             Transparent     =   False
             Underline       =   False
             Visible         =   True
@@ -3581,11 +3581,11 @@ Begin Window MainWindow Implements ScriptureReceiver
             Index           =   -2147483648
             InitialParent   =   "can_editor_general_song_editor"
             Italic          =   False
-            Left            =   615
+            Left            =   701
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   False
-            LockRight       =   True
+            LockRight       =   False
             LockTop         =   True
             Multiline       =   False
             Scope           =   0
@@ -3648,7 +3648,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Index           =   -2147483648
             InitialParent   =   "can_editor_general_song_editor"
             Italic          =   False
-            Left            =   622
+            Left            =   708
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   False
@@ -3676,7 +3676,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                InitialParent   =   "grp_song_transpose"
                InitialValue    =   ""
                Italic          =   False
-               Left            =   632
+               Left            =   718
                ListIndex       =   0
                LockBottom      =   False
                LockedInPosition=   False
@@ -3706,7 +3706,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                Index           =   -2147483648
                InitialParent   =   "grp_song_transpose"
                Italic          =   ""
-               Left            =   634
+               Left            =   720
                LockBottom      =   ""
                LockedInPosition=   False
                LockLeft        =   True
@@ -3741,7 +3741,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                InitialParent   =   "grp_song_transpose"
                InitialValue    =   "-6\r\n-5\r\n-4\r\n-3\r\n-2\r\n-1\r\n0\r\n+1\r\n+2\r\n+3\r\n+4\r\n+5\r\n+6\r\n"
                Italic          =   ""
-               Left            =   632
+               Left            =   718
                ListIndex       =   6
                LockBottom      =   ""
                LockedInPosition=   False
@@ -3817,7 +3817,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             DataSource      =   ""
             Enabled         =   True
             Format          =   ""
-            Height          =   380
+            Height          =   400
             HelpTag         =   ""
             HideSelection   =   True
             Index           =   -2147483648
@@ -3828,7 +3828,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockBottom      =   True
             LockedInPosition=   False
             LockLeft        =   True
-            LockRight       =   True
+            LockRight       =   False
             LockTop         =   True
             Mask            =   ""
             Multiline       =   True
@@ -3849,7 +3849,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Underline       =   False
             UseFocusRing    =   True
             Visible         =   True
-            Width           =   340
+            Width           =   409
          End
          Begin SEditField edt_song_hymn_number
             AcceptTabs      =   False
@@ -3868,7 +3868,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Index           =   -2147483648
             InitialParent   =   "can_editor_general_song_editor"
             Italic          =   False
-            Left            =   625
+            Left            =   703
             LimitText       =   0
             LockBottom      =   False
             LockedInPosition=   False
@@ -3910,11 +3910,11 @@ Begin Window MainWindow Implements ScriptureReceiver
             Index           =   -2147483648
             InitialParent   =   "can_editor_general_song_editor"
             LabelAlign      =   0
-            Left            =   615
+            Left            =   701
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   False
-            LockRight       =   True
+            LockRight       =   False
             LockTop         =   True
             Scope           =   0
             StickyBevel     =   0
@@ -3940,11 +3940,11 @@ Begin Window MainWindow Implements ScriptureReceiver
             Index           =   -2147483648
             InitialParent   =   "can_editor_general_song_editor"
             LabelAlign      =   0
-            Left            =   615
+            Left            =   701
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   False
-            LockRight       =   True
+            LockRight       =   False
             LockTop         =   True
             Scope           =   0
             StickyBevel     =   0
@@ -3970,11 +3970,11 @@ Begin Window MainWindow Implements ScriptureReceiver
             Index           =   -2147483648
             InitialParent   =   "can_editor_general_song_editor"
             LabelAlign      =   0
-            Left            =   615
+            Left            =   701
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   False
-            LockRight       =   True
+            LockRight       =   False
             LockTop         =   True
             Scope           =   0
             StickyBevel     =   0
@@ -4000,11 +4000,11 @@ Begin Window MainWindow Implements ScriptureReceiver
             Index           =   -2147483648
             InitialParent   =   "can_editor_general_song_editor"
             LabelAlign      =   0
-            Left            =   615
+            Left            =   701
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   False
-            LockRight       =   True
+            LockRight       =   False
             LockTop         =   True
             Scope           =   0
             StickyBevel     =   0
@@ -4030,11 +4030,11 @@ Begin Window MainWindow Implements ScriptureReceiver
             Index           =   -2147483648
             InitialParent   =   "can_editor_general_song_editor"
             LabelAlign      =   0
-            Left            =   615
+            Left            =   701
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   False
-            LockRight       =   True
+            LockRight       =   False
             LockTop         =   True
             Scope           =   0
             StickyBevel     =   0
@@ -4060,11 +4060,11 @@ Begin Window MainWindow Implements ScriptureReceiver
             Index           =   -2147483648
             InitialParent   =   "can_editor_general_song_editor"
             LabelAlign      =   0
-            Left            =   615
+            Left            =   701
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   False
-            LockRight       =   True
+            LockRight       =   False
             LockTop         =   True
             Scope           =   0
             StickyBevel     =   0
@@ -4090,7 +4090,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Index           =   -2147483648
             InitialParent   =   "can_editor_general_song_editor"
             LabelAlign      =   1
-            Left            =   475
+            Left            =   571
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   False
@@ -4120,7 +4120,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Index           =   -2147483648
             InitialParent   =   "can_editor_general_song_editor"
             LabelAlign      =   1
-            Left            =   605
+            Left            =   701
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   False
@@ -4269,7 +4269,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Underline       =   False
             UseFocusRing    =   True
             Visible         =   True
-            Width           =   225
+            Width           =   321
          End
          Begin SEditField edt_song_title
             AcceptTabs      =   False
@@ -4316,6 +4316,131 @@ Begin Window MainWindow Implements ScriptureReceiver
             Visible         =   True
             Width           =   220
          End
+         Begin SButton btn_song_add_link
+            AcceptFocus     =   True
+            AcceptTabs      =   False
+            AutoDeactivate  =   True
+            Backdrop        =   0
+            DoubleBuffer    =   False
+            Enabled         =   False
+            EraseBackground =   True
+            HasFocus        =   0
+            Height          =   24
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "can_editor_general_song_editor"
+            LabelAlign      =   0
+            Left            =   701
+            LockBottom      =   False
+            LockedInPosition=   False
+            LockLeft        =   True
+            LockRight       =   False
+            LockTop         =   True
+            Scope           =   0
+            StickyBevel     =   0
+            TabIndex        =   23
+            TabPanelIndex   =   1
+            TabStop         =   True
+            Top             =   551
+            UseFocusRing    =   True
+            Visible         =   True
+            Width           =   43
+         End
+         Begin PopupMenu pop_song_linked
+            AutoDeactivate  =   True
+            Bold            =   ""
+            DataField       =   ""
+            DataSource      =   ""
+            Enabled         =   True
+            Height          =   21
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "can_editor_general_song_editor"
+            InitialValue    =   ""
+            Italic          =   ""
+            Left            =   683
+            ListIndex       =   0
+            LockBottom      =   ""
+            LockedInPosition=   False
+            LockLeft        =   True
+            LockRight       =   False
+            LockTop         =   True
+            Scope           =   0
+            TabIndex        =   24
+            TabPanelIndex   =   1
+            TabStop         =   True
+            TextFont        =   "System"
+            TextSize        =   0
+            TextUnit        =   0
+            Top             =   518
+            Underline       =   ""
+            Visible         =   True
+            Width           =   143
+         End
+         Begin SButton btn_song_remove_link
+            AcceptFocus     =   True
+            AcceptTabs      =   False
+            AutoDeactivate  =   True
+            Backdrop        =   0
+            DoubleBuffer    =   False
+            Enabled         =   False
+            EraseBackground =   True
+            HasFocus        =   0
+            Height          =   24
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "can_editor_general_song_editor"
+            LabelAlign      =   0
+            Left            =   753
+            LockBottom      =   False
+            LockedInPosition=   False
+            LockLeft        =   True
+            LockRight       =   False
+            LockTop         =   True
+            Scope           =   0
+            StickyBevel     =   0
+            TabIndex        =   25
+            TabPanelIndex   =   1
+            TabStop         =   True
+            Top             =   551
+            UseFocusRing    =   True
+            Visible         =   True
+            Width           =   45
+         End
+         Begin Label lbl_song_linked
+            AutoDeactivate  =   True
+            Bold            =   ""
+            DataField       =   ""
+            DataSource      =   ""
+            Enabled         =   True
+            Height          =   20
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "can_editor_general_song_editor"
+            Italic          =   ""
+            Left            =   691
+            LockBottom      =   ""
+            LockedInPosition=   False
+            LockLeft        =   True
+            LockRight       =   False
+            LockTop         =   True
+            Multiline       =   ""
+            Scope           =   0
+            Selectable      =   False
+            TabIndex        =   26
+            TabPanelIndex   =   1
+            Text            =   "Linked Songs:"
+            TextAlign       =   0
+            TextColor       =   &h000000
+            TextFont        =   "Arial"
+            TextSize        =   10
+            TextUnit        =   0
+            Top             =   493
+            Transparent     =   False
+            Underline       =   ""
+            Visible         =   True
+            Width           =   118
+         End
       End
       Begin Canvas can_editor_slide_editor
          AcceptFocus     =   False
@@ -4325,7 +4450,7 @@ Begin Window MainWindow Implements ScriptureReceiver
          DoubleBuffer    =   False
          Enabled         =   True
          EraseBackground =   True
-         Height          =   526
+         Height          =   546
          HelpTag         =   ""
          Index           =   -2147483648
          InitialParent   =   "pge_contents"
@@ -4342,7 +4467,7 @@ Begin Window MainWindow Implements ScriptureReceiver
          Top             =   40
          UseFocusRing    =   True
          Visible         =   True
-         Width           =   485
+         Width           =   581
          Begin Label lbl_slide_auto_advance
             AutoDeactivate  =   True
             Bold            =   False
@@ -4354,7 +4479,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Index           =   -2147483648
             InitialParent   =   "can_editor_slide_editor"
             Italic          =   False
-            Left            =   615
+            Left            =   711
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   False
@@ -4388,7 +4513,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Index           =   -2147483648
             InitialParent   =   "can_editor_slide_editor"
             Italic          =   False
-            Left            =   630
+            Left            =   726
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   False
@@ -4422,7 +4547,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Index           =   -2147483648
             InitialParent   =   "can_editor_slide_editor"
             Italic          =   False
-            Left            =   615
+            Left            =   711
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   False
@@ -4457,7 +4582,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Index           =   -2147483648
             InitialParent   =   "can_editor_slide_editor"
             Italic          =   False
-            Left            =   628
+            Left            =   724
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   False
@@ -4494,7 +4619,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Index           =   -2147483648
             InitialParent   =   "can_editor_slide_editor"
             Italic          =   False
-            Left            =   660
+            Left            =   756
             LimitText       =   0
             LockBottom      =   False
             LockedInPosition=   False
@@ -4534,7 +4659,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Index           =   -2147483648
             InitialParent   =   "can_editor_slide_editor"
             Italic          =   False
-            Left            =   628
+            Left            =   724
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   False
@@ -4566,7 +4691,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Index           =   -2147483648
             InitialParent   =   "can_editor_slide_editor"
             Italic          =   False
-            Left            =   630
+            Left            =   726
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   False
@@ -4598,7 +4723,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             InitialParent   =   "can_editor_slide_editor"
             InitialValue    =   ""
             Italic          =   ""
-            Left            =   624
+            Left            =   720
             ListIndex       =   0
             LockBottom      =   ""
             LockedInPosition=   False
@@ -4656,7 +4781,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextFont        =   "Arial"
             TextSize        =   10
             TextUnit        =   0
-            Top             =   385
+            Top             =   405
             Underline       =   False
             UseFocusRing    =   True
             Visible         =   True
@@ -4690,7 +4815,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextFont        =   "Arial"
             TextSize        =   10
             TextUnit        =   0
-            Top             =   407
+            Top             =   427
             Transparent     =   False
             Underline       =   False
             Visible         =   True
@@ -4758,7 +4883,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextFont        =   "Arial"
             TextSize        =   10
             TextUnit        =   0
-            Top             =   369
+            Top             =   389
             Transparent     =   False
             Underline       =   False
             Visible         =   True
@@ -4792,7 +4917,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextFont        =   "Arial"
             TextSize        =   10
             TextUnit        =   0
-            Top             =   369
+            Top             =   389
             Transparent     =   False
             Underline       =   False
             Visible         =   True
@@ -4837,7 +4962,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextFont        =   "Arial"
             TextSize        =   10
             TextUnit        =   0
-            Top             =   385
+            Top             =   405
             Underline       =   False
             UseFocusRing    =   True
             Visible         =   True
@@ -4977,7 +5102,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Transparent     =   False
             Underline       =   False
             Visible         =   True
-            Width           =   340
+            Width           =   436
          End
          Begin Label lbl_slide_transition
             AutoDeactivate  =   True
@@ -4990,7 +5115,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Index           =   -2147483648
             InitialParent   =   "can_editor_slide_editor"
             Italic          =   ""
-            Left            =   628
+            Left            =   724
             LockBottom      =   ""
             LockedInPosition=   False
             LockLeft        =   ""
@@ -5041,11 +5166,11 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextFont        =   "Arial"
             TextSize        =   10
             TextUnit        =   0
-            Top             =   442
+            Top             =   462
             Transparent     =   False
             Underline       =   False
             Visible         =   True
-            Width           =   340
+            Width           =   436
          End
          Begin SEditField edt_slide_subtitle
             AcceptTabs      =   False
@@ -5193,7 +5318,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             DataSource      =   ""
             Enabled         =   True
             Format          =   ""
-            Height          =   222
+            Height          =   242
             HelpTag         =   ""
             HideSelection   =   True
             Index           =   -2147483648
@@ -5225,7 +5350,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Underline       =   False
             UseFocusRing    =   True
             Visible         =   True
-            Width           =   340
+            Width           =   436
          End
          Begin SEditField edt_slide_folder
             AcceptTabs      =   False
@@ -5266,7 +5391,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextFont        =   "Arial"
             TextSize        =   10
             TextUnit        =   0
-            Top             =   422
+            Top             =   442
             Underline       =   False
             UseFocusRing    =   True
             Visible         =   True
@@ -5286,7 +5411,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Index           =   -2147483648
             InitialParent   =   "can_editor_slide_editor"
             LabelAlign      =   0
-            Left            =   615
+            Left            =   711
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   False
@@ -5341,11 +5466,11 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextFont        =   "Arial"
             TextSize        =   10
             TextUnit        =   0
-            Top             =   456
+            Top             =   476
             Underline       =   False
             UseFocusRing    =   True
             Visible         =   True
-            Width           =   340
+            Width           =   436
          End
          Begin SStyleCanvas can_slide_style
             AcceptFocus     =   True
@@ -5359,7 +5484,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "can_editor_slide_editor"
-            Left            =   628
+            Left            =   724
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   False
@@ -5384,7 +5509,7 @@ Begin Window MainWindow Implements ScriptureReceiver
          DoubleBuffer    =   False
          Enabled         =   True
          EraseBackground =   True
-         Height          =   526
+         Height          =   546
          HelpTag         =   ""
          Index           =   -2147483648
          InitialParent   =   "pge_contents"
@@ -5401,7 +5526,7 @@ Begin Window MainWindow Implements ScriptureReceiver
          Top             =   40
          UseFocusRing    =   True
          Visible         =   True
-         Width           =   485
+         Width           =   581
          Begin Label txt_image_seconds
             AutoDeactivate  =   True
             Bold            =   False
@@ -5413,7 +5538,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Index           =   -2147483648
             InitialParent   =   "can_editor_image_slide"
             Italic          =   False
-            Left            =   630
+            Left            =   726
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   False
@@ -5447,7 +5572,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Index           =   -2147483648
             InitialParent   =   "can_editor_image_slide"
             Italic          =   False
-            Left            =   615
+            Left            =   711
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   False
@@ -5481,7 +5606,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Index           =   -2147483648
             InitialParent   =   "can_editor_image_slide"
             Italic          =   ""
-            Left            =   628
+            Left            =   724
             LockBottom      =   ""
             LockedInPosition=   False
             LockLeft        =   ""
@@ -5516,7 +5641,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Index           =   -2147483648
             InitialParent   =   "can_editor_image_slide"
             Italic          =   False
-            Left            =   630
+            Left            =   726
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   False
@@ -5582,7 +5707,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             InitialParent   =   "can_editor_image_slide"
             InitialValue    =   ""
             Italic          =   ""
-            Left            =   624
+            Left            =   720
             ListIndex       =   0
             LockBottom      =   ""
             LockedInPosition=   False
@@ -5661,11 +5786,11 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextFont        =   "Arial"
             TextSize        =   10
             TextUnit        =   0
-            Top             =   371
+            Top             =   391
             Underline       =   ""
             Value           =   False
             Visible         =   True
-            Width           =   340
+            Width           =   436
          End
          Begin CheckBox chk_image_fit_to_body
             AutoDeactivate  =   True
@@ -5693,11 +5818,11 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextFont        =   "Arial"
             TextSize        =   10
             TextUnit        =   0
-            Top             =   391
+            Top             =   411
             Underline       =   ""
             Value           =   False
             Visible         =   True
-            Width           =   340
+            Width           =   436
          End
          Begin CheckBox chk_image_store_as_link
             AutoDeactivate  =   True
@@ -5725,11 +5850,11 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextFont        =   "Arial"
             TextSize        =   10
             TextUnit        =   0
-            Top             =   431
+            Top             =   451
             Underline       =   ""
             Value           =   False
             Visible         =   True
-            Width           =   340
+            Width           =   436
          End
          Begin CheckBox chk_image_keepaspect
             AutoDeactivate  =   True
@@ -5757,11 +5882,11 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextFont        =   "Arial"
             TextSize        =   10
             TextUnit        =   0
-            Top             =   411
+            Top             =   431
             Underline       =   ""
             Value           =   False
             Visible         =   True
-            Width           =   340
+            Width           =   436
          End
          Begin Label lbl_image_notes
             AutoDeactivate  =   True
@@ -5791,11 +5916,11 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextFont        =   "Arial"
             TextSize        =   10
             TextUnit        =   0
-            Top             =   454
+            Top             =   474
             Transparent     =   False
             Underline       =   False
             Visible         =   True
-            Width           =   340
+            Width           =   436
          End
          Begin Label lbl_image_title
             AutoDeactivate  =   True
@@ -5842,7 +5967,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Index           =   -2147483648
             InitialParent   =   "can_editor_image_slide"
             Italic          =   False
-            Left            =   615
+            Left            =   711
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   False
@@ -5877,7 +6002,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Index           =   -2147483648
             InitialParent   =   "can_editor_image_slide"
             Italic          =   False
-            Left            =   628
+            Left            =   724
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   False
@@ -5909,7 +6034,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Index           =   -2147483648
             InitialParent   =   "can_editor_image_slide"
             Italic          =   False
-            Left            =   628
+            Left            =   724
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   False
@@ -5946,7 +6071,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Index           =   -2147483648
             InitialParent   =   "can_editor_image_slide"
             Italic          =   False
-            Left            =   660
+            Left            =   756
             LimitText       =   0
             LockBottom      =   False
             LockedInPosition=   False
@@ -6131,7 +6256,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "can_editor_image_slide"
-            Left            =   628
+            Left            =   724
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   False
@@ -6255,7 +6380,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             GridLinesVertical=   0
             HasHeading      =   True
             HeadingIndex    =   -1
-            Height          =   206
+            Height          =   226
             HelpTag         =   ""
             Hierarchical    =   ""
             ImageColumn     =   ""
@@ -6285,7 +6410,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Underline       =   ""
             UseFocusRing    =   True
             Visible         =   True
-            Width           =   340
+            Width           =   436
             _ScrollOffset   =   0
             _ScrollWidth    =   -1
          End
@@ -6328,11 +6453,11 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextFont        =   "Arial"
             TextSize        =   10
             TextUnit        =   0
-            Top             =   468
+            Top             =   488
             Underline       =   False
             UseFocusRing    =   True
             Visible         =   True
-            Width           =   340
+            Width           =   436
          End
          Begin SButton btn_image_ins_image
             AcceptFocus     =   True
@@ -6348,7 +6473,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Index           =   -2147483648
             InitialParent   =   "can_editor_image_slide"
             LabelAlign      =   0
-            Left            =   615
+            Left            =   711
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   False
@@ -6378,7 +6503,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Index           =   -2147483648
             InitialParent   =   "can_editor_image_slide"
             LabelAlign      =   0
-            Left            =   615
+            Left            =   711
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   False
@@ -6408,7 +6533,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Index           =   -2147483648
             InitialParent   =   "can_editor_image_slide"
             LabelAlign      =   0
-            Left            =   615
+            Left            =   711
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   False
@@ -6438,7 +6563,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Index           =   -2147483648
             InitialParent   =   "can_editor_image_slide"
             LabelAlign      =   0
-            Left            =   615
+            Left            =   711
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   False
@@ -6468,7 +6593,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Index           =   -2147483648
             InitialParent   =   "can_editor_image_slide"
             LabelAlign      =   0
-            Left            =   615
+            Left            =   711
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   False
@@ -6493,7 +6618,7 @@ Begin Window MainWindow Implements ScriptureReceiver
          DoubleBuffer    =   False
          Enabled         =   True
          EraseBackground =   True
-         Height          =   526
+         Height          =   546
          HelpTag         =   ""
          Index           =   -2147483648
          InitialParent   =   "pge_contents"
@@ -6510,7 +6635,7 @@ Begin Window MainWindow Implements ScriptureReceiver
          Top             =   40
          UseFocusRing    =   True
          Visible         =   True
-         Width           =   485
+         Width           =   581
          Begin Label hdr_external_header
             AutoDeactivate  =   True
             Bold            =   True
@@ -6577,7 +6702,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Transparent     =   False
             Underline       =   False
             Visible         =   True
-            Width           =   460
+            Width           =   556
          End
          Begin Label lbl_external_notes
             AutoDeactivate  =   True
@@ -6607,11 +6732,11 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextFont        =   "Arial"
             TextSize        =   10
             TextUnit        =   0
-            Top             =   454
+            Top             =   474
             Transparent     =   False
             Underline       =   False
             Visible         =   True
-            Width           =   340
+            Width           =   436
          End
          Begin Label lbl_external_application
             AutoDeactivate  =   True
@@ -6624,7 +6749,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Index           =   -2147483648
             InitialParent   =   "can_editor_external_slide"
             Italic          =   False
-            Left            =   615
+            Left            =   711
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   False
@@ -6659,7 +6784,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Index           =   -2147483648
             InitialParent   =   "can_editor_external_slide"
             Italic          =   False
-            Left            =   628
+            Left            =   724
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   False
@@ -6722,7 +6847,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Underline       =   False
             UseFocusRing    =   True
             Visible         =   True
-            Width           =   460
+            Width           =   556
          End
          Begin SEditField edt_external_notes
             AcceptTabs      =   False
@@ -6763,11 +6888,11 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextFont        =   "Arial"
             TextSize        =   10
             TextUnit        =   0
-            Top             =   468
+            Top             =   488
             Underline       =   False
             UseFocusRing    =   True
             Visible         =   True
-            Width           =   340
+            Width           =   436
          End
          Begin SButton btn_external_presentation
             AcceptFocus     =   True
@@ -6783,7 +6908,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Index           =   -2147483648
             InitialParent   =   "can_editor_external_slide"
             LabelAlign      =   0
-            Left            =   615
+            Left            =   711
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   False
@@ -6813,7 +6938,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Index           =   -2147483648
             InitialParent   =   "can_editor_external_slide"
             LabelAlign      =   0
-            Left            =   615
+            Left            =   711
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   False
@@ -6843,7 +6968,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Index           =   -2147483648
             InitialParent   =   "can_editor_external_slide"
             LabelAlign      =   0
-            Left            =   615
+            Left            =   711
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   False
@@ -6862,7 +6987,7 @@ Begin Window MainWindow Implements ScriptureReceiver
          Begin PagePanel pge_externals
             AutoDeactivate  =   True
             Enabled         =   True
-            Height          =   296
+            Height          =   316
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "can_editor_external_slide"
@@ -6880,13 +7005,13 @@ Begin Window MainWindow Implements ScriptureReceiver
             Top             =   146
             Value           =   2
             Visible         =   True
-            Width           =   340
+            Width           =   436
             Begin GroupBox grp_external_presentation_settings
                AutoDeactivate  =   True
                Bold            =   ""
                Caption         =   "Presentation settings"
                Enabled         =   True
-               Height          =   280
+               Height          =   300
                HelpTag         =   ""
                Index           =   -2147483648
                InitialParent   =   "pge_externals"
@@ -6906,7 +7031,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                Top             =   150
                Underline       =   ""
                Visible         =   True
-               Width           =   330
+               Width           =   426
                Begin CheckBox chk_external_loop_presentation
                   AutoDeactivate  =   True
                   Bold            =   ""
@@ -6952,7 +7077,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   HelpTag         =   ""
                   Index           =   -2147483648
                   InitialParent   =   "grp_external_presentation_settings"
-                  Left            =   575
+                  Left            =   671
                   LockBottom      =   ""
                   LockedInPosition=   False
                   LockLeft        =   ""
@@ -7000,7 +7125,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Transparent     =   False
                   Underline       =   ""
                   Visible         =   True
-                  Width           =   278
+                  Width           =   374
                End
                Begin RadioButton rad_external_host_impress
                   AutoDeactivate  =   True
@@ -7029,7 +7154,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Underline       =   ""
                   Value           =   ""
                   Visible         =   True
-                  Width           =   310
+                  Width           =   406
                End
                Begin RadioButton rad_external_host_pptview
                   AutoDeactivate  =   True
@@ -7058,7 +7183,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Underline       =   ""
                   Value           =   ""
                   Visible         =   True
-                  Width           =   310
+                  Width           =   406
                End
                Begin RadioButton rad_external_host_powerpoint
                   AutoDeactivate  =   True
@@ -7087,7 +7212,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Underline       =   ""
                   Value           =   ""
                   Visible         =   True
-                  Width           =   310
+                  Width           =   406
                End
                Begin Label lbl_external_presentation_host
                   AutoDeactivate  =   True
@@ -7121,7 +7246,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Transparent     =   False
                   Underline       =   ""
                   Visible         =   True
-                  Width           =   310
+                  Width           =   406
                End
                Begin SEditField edt_external_presentation_file
                   AcceptTabs      =   ""
@@ -7166,7 +7291,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Underline       =   ""
                   UseFocusRing    =   True
                   Visible         =   True
-                  Width           =   310
+                  Width           =   406
                End
                Begin CheckBox chk_external_embed_presentation
                   AutoDeactivate  =   True
@@ -7198,7 +7323,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Underline       =   ""
                   Value           =   False
                   Visible         =   True
-                  Width           =   310
+                  Width           =   406
                End
                Begin Label nte_external_host_powerpoint_info
                   AutoDeactivate  =   True
@@ -7232,7 +7357,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Transparent     =   False
                   Underline       =   ""
                   Visible         =   True
-                  Width           =   290
+                  Width           =   386
                End
                Begin Label nte_external_host_pptview_info
                   AutoDeactivate  =   True
@@ -7266,7 +7391,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Transparent     =   False
                   Underline       =   ""
                   Visible         =   True
-                  Width           =   290
+                  Width           =   386
                End
                Begin Label nte_external_host_impress_info
                   AutoDeactivate  =   True
@@ -7300,7 +7425,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Transparent     =   False
                   Underline       =   ""
                   Visible         =   True
-                  Width           =   290
+                  Width           =   386
                End
             End
             Begin GroupBox grp_external_no_application
@@ -7308,7 +7433,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                Bold            =   ""
                Caption         =   "No application"
                Enabled         =   True
-               Height          =   280
+               Height          =   300
                HelpTag         =   ""
                Index           =   -2147483648
                InitialParent   =   "pge_externals"
@@ -7328,14 +7453,14 @@ Begin Window MainWindow Implements ScriptureReceiver
                Top             =   150
                Underline       =   ""
                Visible         =   True
-               Width           =   330
+               Width           =   426
                Begin Label txt_external_no_application
                   AutoDeactivate  =   True
                   Bold            =   ""
                   DataField       =   ""
                   DataSource      =   ""
                   Enabled         =   True
-                  Height          =   50
+                  Height          =   70
                   HelpTag         =   ""
                   Index           =   -2147483648
                   InitialParent   =   "grp_external_no_application"
@@ -7361,7 +7486,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Transparent     =   False
                   Underline       =   ""
                   Visible         =   True
-                  Width           =   310
+                  Width           =   406
                End
             End
             Begin GroupBox grp_external_application_settings
@@ -7369,7 +7494,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                Bold            =   ""
                Caption         =   "Application launcher settings"
                Enabled         =   True
-               Height          =   280
+               Height          =   300
                HelpTag         =   ""
                Index           =   -2147483648
                InitialParent   =   "pge_externals"
@@ -7389,7 +7514,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                Top             =   150
                Underline       =   ""
                Visible         =   True
-               Width           =   330
+               Width           =   426
                Begin Label lbl_external_application_parameters
                   AutoDeactivate  =   True
                   Bold            =   ""
@@ -7422,7 +7547,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Transparent     =   False
                   Underline       =   ""
                   Visible         =   True
-                  Width           =   290
+                  Width           =   386
                End
                Begin Label lbl_external_application_filename
                   AutoDeactivate  =   True
@@ -7456,7 +7581,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Transparent     =   False
                   Underline       =   ""
                   Visible         =   True
-                  Width           =   258
+                  Width           =   354
                End
                Begin SButton btn_external_application_filename
                   AcceptFocus     =   ""
@@ -7471,7 +7596,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   HelpTag         =   ""
                   Index           =   -2147483648
                   InitialParent   =   "grp_external_application_settings"
-                  Left            =   575
+                  Left            =   671
                   LockBottom      =   ""
                   LockedInPosition=   False
                   LockLeft        =   ""
@@ -7530,7 +7655,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Underline       =   ""
                   UseFocusRing    =   True
                   Visible         =   True
-                  Width           =   290
+                  Width           =   386
                End
                Begin SEditField edt_external_application_parameters
                   AcceptTabs      =   ""
@@ -7575,7 +7700,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Underline       =   ""
                   UseFocusRing    =   True
                   Visible         =   True
-                  Width           =   290
+                  Width           =   386
                End
                Begin CheckBox chk_external_wait_for_application
                   AutoDeactivate  =   True
@@ -7607,7 +7732,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Underline       =   ""
                   Value           =   False
                   Visible         =   True
-                  Width           =   290
+                  Width           =   386
                End
                Begin RadioButton rad_external_application_start
                   AutoDeactivate  =   True
@@ -7673,7 +7798,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                Bold            =   ""
                Caption         =   "Videolan settings"
                Enabled         =   True
-               Height          =   280
+               Height          =   300
                HelpTag         =   ""
                Index           =   -2147483648
                InitialParent   =   "pge_externals"
@@ -7693,7 +7818,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                Top             =   150
                Underline       =   ""
                Visible         =   True
-               Width           =   330
+               Width           =   426
                Begin Listbox lst_external_videolan_preset
                   AutoDeactivate  =   True
                   AutoHideScrollbars=   True
@@ -7712,7 +7837,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   GridLinesVertical=   0
                   HasHeading      =   ""
                   HeadingIndex    =   -1
-                  Height          =   68
+                  Height          =   88
                   HelpTag         =   ""
                   Hierarchical    =   ""
                   Index           =   -2147483648
@@ -7740,7 +7865,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Underline       =   ""
                   UseFocusRing    =   True
                   Visible         =   True
-                  Width           =   290
+                  Width           =   386
                   _ScrollWidth    =   -1
                End
                Begin RadioButton rad_external_videolan_start
@@ -7785,7 +7910,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   HelpTag         =   ""
                   Index           =   -2147483648
                   InitialParent   =   "grp_external_videolan_settings"
-                  Left            =   575
+                  Left            =   671
                   LockBottom      =   ""
                   LockedInPosition=   False
                   LockLeft        =   ""
@@ -7844,7 +7969,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Underline       =   ""
                   UseFocusRing    =   True
                   Visible         =   True
-                  Width           =   290
+                  Width           =   386
                End
                Begin RadioButton rad_external_videolan_stop
                   AutoDeactivate  =   True
@@ -7869,11 +7994,11 @@ Begin Window MainWindow Implements ScriptureReceiver
                   TextFont        =   "Arial"
                   TextSize        =   10
                   TextUnit        =   0
-                  Top             =   405
+                  Top             =   425
                   Underline       =   ""
                   Value           =   ""
                   Visible         =   True
-                  Width           =   310
+                  Width           =   406
                End
                Begin Label lbl_external_videolan_mediafilename
                   AutoDeactivate  =   True
@@ -7907,7 +8032,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Transparent     =   False
                   Underline       =   ""
                   Visible         =   True
-                  Width           =   258
+                  Width           =   354
                End
                Begin Label lbl_external_videolan_preset
                   AutoDeactivate  =   True
@@ -7941,7 +8066,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Transparent     =   False
                   Underline       =   ""
                   Visible         =   True
-                  Width           =   290
+                  Width           =   386
                End
                Begin Label lbl_external_videolan_manual
                   AutoDeactivate  =   True
@@ -7971,11 +8096,11 @@ Begin Window MainWindow Implements ScriptureReceiver
                   TextFont        =   "Arial"
                   TextSize        =   10
                   TextUnit        =   0
-                  Top             =   343
+                  Top             =   363
                   Transparent     =   False
                   Underline       =   ""
                   Visible         =   True
-                  Width           =   290
+                  Width           =   386
                End
                Begin SEditField edt_external_videolan_manual
                   AcceptTabs      =   ""
@@ -8016,11 +8141,11 @@ Begin Window MainWindow Implements ScriptureReceiver
                   TextFont        =   "System"
                   TextSize        =   0
                   TextUnit        =   0
-                  Top             =   362
+                  Top             =   382
                   Underline       =   ""
                   UseFocusRing    =   True
                   Visible         =   True
-                  Width           =   290
+                  Width           =   386
                End
                Begin CheckBox chk_external_wait_for_videolan
                   AutoDeactivate  =   True
@@ -8048,11 +8173,11 @@ Begin Window MainWindow Implements ScriptureReceiver
                   TextFont        =   "Arial"
                   TextSize        =   10
                   TextUnit        =   0
-                  Top             =   385
+                  Top             =   405
                   Underline       =   ""
                   Value           =   False
                   Visible         =   True
-                  Width           =   290
+                  Width           =   386
                End
                Begin CheckBox chk_external_embed_mediafile
                   AutoDeactivate  =   True
@@ -8084,7 +8209,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Underline       =   ""
                   Value           =   False
                   Visible         =   True
-                  Width           =   290
+                  Width           =   386
                End
             End
          End
@@ -8093,7 +8218,7 @@ Begin Window MainWindow Implements ScriptureReceiver
    Begin Separator sep_vertical
       AutoDeactivate  =   True
       Enabled         =   True
-      Height          =   534
+      Height          =   554
       HelpTag         =   ""
       Index           =   -2147483648
       InitialParent   =   ""
@@ -8130,7 +8255,7 @@ Begin Window MainWindow Implements ScriptureReceiver
       TabStop         =   True
       Top             =   32
       Visible         =   True
-      Width           =   750
+      Width           =   846
    End
    Begin Timer tmr_lookup
       Height          =   32
@@ -8265,8 +8390,12 @@ End
 		      edt_song_user1.Enabled = True
 		      edt_song_user2.Enabled = True
 		      edt_song_user3.Enabled = True
-		      'Josh
+		      '++JRC
 		      edt_song_hymn_number.Enabled = True
+		      btn_song_add_link.Enabled = True
+		      btn_song_remove_link.Enabled = True
+		      pop_song_linked.Enabled = True
+		      '--
 		      
 		      chk_song_style.Enabled = True
 		      If chk_song_style.Value Then
@@ -8334,8 +8463,12 @@ End
 		      edt_song_user2.Enabled = False
 		      edt_song_user3.Enabled = False
 		      
-		      'Josh
+		      '++JRC
 		      edt_song_hymn_number.Enabled = False
+		      btn_song_add_link.Enabled = False
+		      btn_song_remove_link.Enabled = False
+		      pop_song_linked.Enabled = False
+		      '--
 		      
 		      chk_song_style.Enabled = False
 		      If can_song_style.Enabled <> False Then
@@ -8936,6 +9069,10 @@ End
 		  
 		  HSizer = New HalfSizer(Me)
 		  
+		  '++JRC
+		  HSizer.AddWidth edf_song_lyrics, .8
+		  '--
+		  
 		  HSizer.AddWidth lbl_song_title
 		  HSizer.AddWidth edt_song_title
 		  HSizer.AddWidth lbl_song_author
@@ -8944,38 +9081,63 @@ End
 		  HSizer.AddLeftWidth edt_song_copyright
 		  HSizer.AddLeft lbl_song_ccli
 		  HSizer.AddLeft edt_song_ccli
-		  'Josh
-		  HSizer.AddLeftWidth lbl_song_hymn_number , 1, 0'.8, .25
-		  HSizer.AddLeftWidth edt_song_hymn_number, 1, 0' .8, .25
+		  '++JRC
+		  HSizer.AddLeftWidth lbl_song_hymn_number , .78, .2
+		  HSizer.AddLeftWidth edt_song_hymn_number, .78, .2
+		  '--
+		  HSizer.AddLeftWidth lbl_song_presentation, .5, .75
+		  HSizer.AddLeftWidth edt_song_presentation, .5, .75
 		  
-		  HSizer.AddLeftWidth lbl_song_presentation
-		  HSizer.AddLeftWidth edt_song_presentation
+		  '++JRC
+		  HSizer.AddLeft lbl_song_insert, .8
+		  HSizer.AddLeft btn_song_ins_column, .8
+		  HSizer.AddLeft btn_song_ins_comment, .8
+		  HSizer.AddLeft btn_song_ins_lyrics, .8
+		  HSizer.AddLeft btn_song_ins_multi_verse, .8
+		  HSizer.AddLeft btn_song_ins_page, .8
+		  HSizer.AddLeft btn_song_ins_section, .8
 		  
-		  HSizer.AddLeftTopWidthHeight can_song_style, .75, 0, .25, .25
-		  HSizer.AddLeftTop chk_song_style, .75, .25
+		  HSizer.AddLeftTop grp_song_transpose, .85, .1
 		  
-		  HSizer.AddHeight lst_song_themes, 0.7
-		  HSizer.AddTop lbl_song_capo, .25
-		  HSizer.AddTop pop_song_capo, .25
-		  HSizer.AddTop chk_song_capo_print, .25
-		  HSizer.AddTop lbl_song_time_sig, .25
-		  HSizer.AddTop pop_song_time_sig, .25
-		  HSizer.AddTop lbl_song_tempo, .25
-		  HSizer.AddTop pop_song_tempo, .25
-		  HSizer.AddTop lbl_song_key, .25
-		  HSizer.AddTop edt_song_key, .25
-		  HSizer.AddTop lbl_song_aka, .25
-		  HSizer.AddTop edt_song_aka, .25
-		  HSizer.AddTop lbl_song_key_line, .25
-		  HSizer.AddTop edt_song_key_line, .25
-		  HSizer.AddTopHeight lbl_song_user1, .25, 0
-		  HSizer.AddTopHeight edt_song_user1, .25, .15
-		  HSizer.AddTopHeight lbl_song_user2, .4, 0
-		  HSizer.AddTopHeight edt_song_user2, .4, .15
-		  HSizer.AddTopHeight lbl_song_user3, .55, 0
-		  HSizer.AddTopHeight edt_song_user3, .55, .15
-		  HSizer.AddTopHeight lbl_song_backgrounds, .7, 0
-		  HSizer.AddTopHeight lst_song_backgrounds, .7, .3
+		  HSizer.AddTop lbl_song_backgrounds, 1
+		  HSizer.AddHeight lst_song_themes, 1
+		  
+		  '--
+		  
+		  HSizer.AddLeftTopWidthHeight can_song_style, .6, 0, .4, .4
+		  HSizer.AddLeftTop chk_song_style, .6, .4
+		  
+		  HSizer.AddTop lbl_song_capo, .4
+		  HSizer.AddTop pop_song_capo, .4
+		  HSizer.AddTop chk_song_capo_print, .4
+		  HSizer.AddTop lbl_song_time_sig, .4
+		  HSizer.AddTop pop_song_time_sig, .4
+		  HSizer.AddTop lbl_song_tempo, .4
+		  HSizer.AddTop pop_song_tempo, .4
+		  HSizer.AddTop lbl_song_key, .4
+		  HSizer.AddTop edt_song_key, .4
+		  HSizer.AddTop lbl_song_aka, .4
+		  HSizer.AddTop edt_song_aka, .4
+		  HSizer.AddTop lbl_song_key_line, .4
+		  HSizer.AddTop edt_song_key_line, .4
+		  HSizer.AddTopHeight lbl_song_user1, .4, 0
+		  HSizer.AddTopHeight edt_song_user1, .4, .2
+		  HSizer.AddTopHeight lbl_song_user2, .6, 0
+		  HSizer.AddTopHeight edt_song_user2, .6, .2
+		  HSizer.AddTopHeight lbl_song_user3, .8, 0
+		  HSizer.AddTopHeight edt_song_user3, .8, .2
+		  '++JRC
+		  HSizer.AddTopHeight lbl_song_linked, 1, 0
+		  HSizer.AddTopHeight pop_song_linked, 1
+		  HSizer.AddTopHeight btn_song_add_link, 1, 0
+		  HSizer.AddTopHeight btn_song_remove_link, 1, 0
+		  
+		  HSizer.AddLeftWidth lbl_song_linked, .82, .3
+		  HSizer.AddLeftWidth pop_song_linked, .82, .2
+		  HSizer.AddLeftWidth btn_song_add_link, .8, .1
+		  HSizer.AddLeftWidth btn_song_remove_link, .9, .1
+		  
+		  '--
 		  
 		  HSizer.AddLeftWidth lbl_slide_title, 0, .4
 		  HSizer.AddLeftWidth edt_slide_title, 0, .4
@@ -9891,6 +10053,13 @@ End
 		  Dim presentation As String
 		  Dim xgroups, newGroup As XmlNode
 		  
+		  '++JRC
+		  Dim sDoc As XmlDocument
+		  Dim songFiles() As FolderItem
+		  Dim i As Integer = 0
+		  Dim CheckLinked As Boolean = True
+		  '--
+		  
 		  '++JRC Check if we have a songs folder if not try to create one
 		  If App.CheckDocumentFolders(App.SONGS_FOLDER) = App.NO_FOLDER Then
 		    If  App.DocsFolder <> Nil Then
@@ -9963,7 +10132,42 @@ End
 		    End If
 		    
 		    lst_set_items.ListIndex = Where
+		    
+		    '++JRC
+		    If CheckLinked Then
+		      sDoc = SmartML.XDocFromFile(f)
+		      If sDoc = Nil Then
+		        'SmartML.DisplayError
+		        ReDim songFiles(-1)
+		        i = 0
+		      Else
+		        songFiles = AddLinkedSongsFolderItem(sDoc.DocumentElement, False)
+		        If Ubound(songFiles) >= 0 And  SmartML.GetValueB(App.MyMainSettings.DocumentElement, "linked_songs/@prompt", True) Then
+		          If InputBox.AskYN(App.T.Translate("questions/linked_songs/@caption")) Then
+		            i = 0
+		          Else
+		            i = UBound(songFiles) + 1
+		          End If
+		        Else
+		          i = 0
+		        End If
+		        
+		      End If
+		      
+		      CheckLinked = False
+		    End If
+		    
+		    If i <= UBound(songFiles) Then
+		      f = songFiles(i)
+		      i = i + 1
+		      Continue
+		    End If
+		    '--
+		    
 		    f = SongPickerWindow.Popup(presentation)
+		    '++JRC
+		    CheckLinked = True
+		    '--
 		  Wend
 		  lst_set_items.ListIndex = Where
 		  lst_set_items.SetFocus
@@ -10677,6 +10881,53 @@ End
 		End Sub
 	#tag EndMethod
 
+	#tag Method, Flags = &h0
+		Sub ActionSongAddLinked()
+		  '++JRC
+		  Dim s As String
+		  Dim folder As String
+		  Dim i As Integer
+		  Dim songlist() As String
+		  Dim f As FolderItem
+		  Dim fullpath As String
+		  
+		  folder = Globals.CurrentSongFolder
+		  songlist = Songs.GetFiles(folder)
+		  songlist.Insert(0, "")
+		  f = SongPickerWindow.Popup(s, False)
+		  
+		  If f = Nil Then Return
+		  
+		  If f.Name = "" Or NOT f.Exists Then
+		    Return
+		  End If
+		  
+		  'selected song cannot be current song
+		  'TODO maybe allow this?
+		  If f.Name = lst_songs_songs.Text Then
+		    InputBox.Message(App.T.Translate("errors/linked_song/current"))
+		    Return
+		  End If
+		  
+		  'check if song is already in the list, if it is return
+		  For i  = 0 To pop_song_linked.ListCount - 1
+		    If f.AbsolutePath().Mid(Songs.GetRootFolder().AbsolutePath().Len + 1) = pop_song_linked.List(i) Then
+		      InputBox.Message(App.T.Translate("errors/linked_song/exists"))
+		      Return
+		    End If
+		  Next i
+		  
+		  fullpath = f.AbsolutePath().Mid(Songs.GetRootFolder().AbsolutePath().Len + 1)
+		  
+		  pop_song_linked.AddRow(fullpath)
+		  
+		  
+		  Status_SongChanged = True
+		  UpdateMenuItems
+		  '--
+		End Sub
+	#tag EndMethod
+
 	#tag Method, Flags = &h1
 		Protected Function ActionSongAskSave() As Boolean
 		  //
@@ -11243,13 +11494,20 @@ End
 		  If NOT ActionSongAskSave Then Return 'User Canceled, Don't Present
 		  
 		  Dim setDoc As XmlDocument
+		  Dim sDoc() As XmlDocument
 		  Dim song As XmlNode
+		  Dim slideGroups As XmlNode
 		  Dim StyleNode As XmlNode
+		  Dim i As Integer
 		  
 		  App.MouseCursor = System.Cursors.Wait
 		  setDoc = New XmlDocument
 		  song = setDoc.AppendChild(setDoc.CreateElement("set"))
 		  song = song.AppendChild(setDoc.CreateElement("slide_groups"))
+		  '++JRC
+		  Dim Answer As Boolean
+		  slideGroups = song
+		  '--
 		  song = song.AppendChild(setDoc.CreateElement("TEMP"))
 		  song = SmartML.ReplaceWithImportNode(song, CurrentSong.DocumentElement)
 		  StyleNode = SmartML.GetNode(song, "style")
@@ -11271,7 +11529,6 @@ End
 		  Globals.Status_Presentation = True
 		  
 		  '++JRC Log song presentation
-		  Dim Answer As Boolean
 		  
 		  'Don't log in preview mode
 		  If App.MainPreferences.GetValueB(App.kActivityLog, True) And Globals.SongActivityLog <> Nil And Mode <> PresentWindow.MODE_PREVIEW Then
@@ -11305,6 +11562,29 @@ End
 		  End If
 		  '--
 		  Globals.AddToLog = Answer
+		  
+		  '++JRC
+		  
+		  sDoc = AddLinkedSongs(song, Answer)
+		  
+		  If UBound(sDoc) >= 0 And SmartML.GetValueB(App.MyMainSettings.DocumentElement, "linked_songs/@prompt", True) Then
+		    Answer = InputBox.AskYN(App.T.Translate("questions/linked_songs/@caption"))
+		  End If
+		  
+		  If Answer Then
+		    
+		    For i = 0 To UBound(sDoc)
+		      
+		      song = slideGroups
+		      song = slideGroups.AppendChild(setDoc.CreateElement("TEMP"))
+		      song = SmartML.ReplaceWithImportNode(song, sDoc(i).DocumentElement)
+		      StyleNode = SmartML.GetNode(song, "style")
+		      If StyleNode <> Nil Then StyleNode = StyleNode.Parent
+		      SongML.ToSetML song, StyleNode
+		    Next i
+		    
+		  End If
+		  '--
 		  
 		  PreparePresentation
 		  
@@ -11457,6 +11737,21 @@ End
 		      EnableMenuItems
 		    End If
 		  End If
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub ActionSongRemoveLinked()
+		  '++JRC
+		  
+		  If pop_song_linked.ListIndex  < 0 Then
+		    Return
+		  End If
+		  
+		  pop_song_linked.RemoveRow(pop_song_linked.ListIndex)
+		  Status_SongChanged = True
+		  UpdateMenuItems
+		  '--
 		End Sub
 	#tag EndMethod
 
@@ -11661,6 +11956,142 @@ End
 		End Sub
 	#tag EndMethod
 
+	#tag Method, Flags = &h0
+		Function AddLinkedSongs(song As XmlNode, AddToLog As Boolean) As XmlDocument()
+		  '++JRC
+		  Dim LinkedSongs() As String
+		  Dim s As String
+		  Dim i, j As Integer
+		  Dim f As FolderItem
+		  Dim sDoc As XmlDocument
+		  Dim nodes() As XmlDocument
+		  Dim nodesSub() As XmlDocument
+		  Dim d As New Date
+		  
+		  'sanity check
+		  If song = Nil Then
+		    Return Nil
+		  End If
+		  
+		  s = SmartML.GetValue(song, "linked_songs", True)
+		  
+		  LinkedSongs = Split(s, ";")
+		  
+		  
+		  For i = 0 To UBound(LinkedSongs) -1
+		    
+		    f = Songs.GetFile(LinkedSongs(i))
+		    If f = Nil Then
+		      InputBox.Message App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", LinkedSongs(i) )
+		      Continue
+		    End If
+		    
+		    sDoc = SmartML.XDocFromFile(f)
+		    If sDoc = Nil Then
+		      SmartML.DisplayError
+		      Continue
+		    End If
+		    
+		    nodes.Append(sDoc)
+		    
+		    If AddToLog Then
+		      
+		      
+		      ActLog.Append(New LogEntry(Globals.SongActivityLog))
+		      ActLog(i+1).Title = SmartML.GetValue(sDoc.DocumentElement, "title", True)
+		      ActLog(i+1).Author = SmartML.GetValue(sDoc.DocumentElement, "author", True)
+		      ActLog(i+1).CCLISongNumber = edt_song_ccli.Text
+		      ActLog(i+1).SongFileName =  f.Parent.Name + "\" + f.Name
+		      ActLog(i+1).DateAndTime = d
+		      ActLog(i+1).HasChords = ActLog(1).CheckLyricsForChords(edf_song_lyrics.Text)
+		      ActLog(i+1).Presented = True
+		      ActLog(i+1).SetItemNumber = i+1 'Assign an  index to this song
+		      ActLog(i+1).Displayed = false 'Set this to true if user displays this song
+		      
+		    End If
+		    
+		    'recurse
+		    nodesSub = AddLinkedSongs(sDoc.DocumentElement, AddToLog)
+		    For j = 0 To UBound(nodesSub)
+		      nodes.Append(nodesSub(j))
+		    Next j
+		    
+		  Next i
+		  
+		  Return nodes
+		  '--
+		  
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function AddLinkedSongsFolderItem(song As XmlNode, AddToLog As Boolean) As FolderItem()
+		  '++JRC
+		  Dim LinkedSongs() As String
+		  Dim s As String
+		  Dim i, j As Integer
+		  Dim f As FolderItem
+		  Dim sDoc As XmlDocument
+		  Dim nodes() As FolderItem
+		  Dim nodesSub() As FolderItem
+		  Dim d As New Date
+		  
+		  'sanity check
+		  If song = Nil Then
+		    Return Nil
+		  End If
+		  
+		  s = SmartML.GetValue(song, "linked_songs", True)
+		  
+		  LinkedSongs = Split(s, ";")
+		  
+		  
+		  For i = 0 To UBound(LinkedSongs) -1
+		    
+		    f = Songs.GetFile(LinkedSongs(i))
+		    If f = Nil Then
+		      InputBox.Message App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", LinkedSongs(i) )
+		      Continue
+		    End If
+		    
+		    sDoc = SmartML.XDocFromFile(f)
+		    If sDoc = Nil Then
+		      SmartML.DisplayError
+		      Continue
+		    End If
+		    
+		    nodes.Append(f)
+		    
+		    If AddToLog Then
+		      
+		      
+		      ActLog.Append(New LogEntry(Globals.SongActivityLog))
+		      ActLog(i+1).Title = SmartML.GetValue(sDoc.DocumentElement, "title", True)
+		      ActLog(i+1).Author = SmartML.GetValue(sDoc.DocumentElement, "author", True)
+		      ActLog(i+1).CCLISongNumber = edt_song_ccli.Text
+		      ActLog(i+1).SongFileName =  f.Parent.Name + "\" + f.Name
+		      ActLog(i+1).DateAndTime = d
+		      ActLog(i+1).HasChords = ActLog(1).CheckLyricsForChords(edf_song_lyrics.Text)
+		      ActLog(i+1).Presented = True
+		      ActLog(i+1).SetItemNumber = i+1 'Assign an  index to this song
+		      ActLog(i+1).Displayed = false 'Set this to true if user displays this song
+		      
+		    End If
+		    
+		    'recurse
+		    nodesSub = AddLinkedSongsFolderItem(sDoc.DocumentElement, AddToLog)
+		    For j = 0 To UBound(nodesSub)
+		      nodes.Append(nodesSub(j))
+		    Next j
+		    
+		  Next i
+		  
+		  Return nodes
+		  '--
+		  
+		End Function
+	#tag EndMethod
+
 	#tag Method, Flags = &h1
 		Protected Sub AddPresentedSongsToLog()
 		  '++JRC This function as the name implies checks which songs were presented
@@ -11843,13 +12274,25 @@ End
 		  Dim found As RectControl = Nil
 		  Dim edtFound As TextEdit
 		  
+		  '++JRC
+		  Dim ChordKey As String
+		  Dim ChordForm As String
+		  Dim c As String
+		  Dim chords() As String
+		  Dim pos As Integer
+		  
+		  ChordKey = find.ChordKey
+		  ChordForm = find.ChordForm
+		  '--
+		  
 		  App.MouseCursor = System.Cursors.Wait
 		  
 		  If Status_SongChanged Then ActionSongSave True ' updates CurrentSong but doesn't write it to file
 		  If pge_controls.Value <> 0 Then SetMode 0
 		  
 		  t = Lowercase(find.FindString)
-		  If Len(t) = 0 Then Return
+		  '++JRC Redundant
+		  'If Len(t) = 0  Then Return
 		  
 		  If lst_songs_songs.ListCount() > 0 Then
 		    i = lst_songs_songs.ListIndex
@@ -11923,11 +12366,25 @@ End
 		        '++JRC
 		      ElseIf find.FindHymnNumber And InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "hymn_number")), t) > 0 And (i <> lst_songs_songs.ListIndex Or FindFocus < 17 Or (FindFocus = 17 And (edt_song_hymn_number.SelStart+edt_song_hymn_number.SelLength = 0 Or InStr(edt_song_hymn_number.SelStart+edt_song_hymn_number.SelLength+1, Lowercase(edt_song_hymn_number.Text), t) > 0))) Then
 		        found = edt_song_hymn_number
+		      ElseIf find.FindChord  Then 'And InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "lyrics")), chord) > 0 And (i <> lst_songs_songs.ListIndex Or FindFocus < 6 Or (FindFocus = 6 And (edf_song_lyrics.SelStart+edf_song_lyrics.SelLength = 0 ) )) Then ' Or InStr(edf_song_lyrics.SelStart+edf_song_lyrics.SelLength+1, Lowercase(edf_song_lyrics.Text), chord) > 0) ) ) Then
+		        pos = SongML.FindChord(s.DocumentElement, ChordKey, ChordForm, (edf_song_lyrics.SelStart + edf_song_lyrics.SelLength + 1), c)
+		        If pos > 0 Then
+		          found = edf_song_lyrics
+		          If lst_songs_songs.ListIndex <> i Then lst_songs_songs.ListIndex = i
+		          edf_song_lyrics.SelStart = (pos - c.Len - 1)
+		          edf_song_lyrics.SelLength = c.Len
+		          
+		          t = c
+		        Else
+		          found = Nil
+		        End If
+		        
 		        '--
 		      End If
 		      
 		      If found <> Nil Then
 		        If lst_songs_songs.ListIndex <> i Then lst_songs_songs.ListIndex = i
+		        
 		        found.SetFocus
 		        If found IsA TextEdit Then
 		          edtFound = TextEdit(found)
@@ -11936,7 +12393,7 @@ End
 		          Else
 		            edtFound.SelStart = InStr(edtFound.SelStart+edtFound.SelLength+1, Lowercase(edtFound.Text), t) - 1
 		          End If
-		          edtFound.SelLength = find.FindString.Len
+		          edtFound.SelLength = t.Len 'find.FindString.Len
 		        End If
 		        
 		        //++
@@ -11984,6 +12441,11 @@ End
 		            End If
 		          End If
 		        Loop Until s <> Nil
+		        '++JRC
+		        If find.FindChord Then
+		          edf_song_lyrics.SelStart = 0
+		        End If
+		        '--
 		      End If
 		      //++
 		      // See if we left the loop because we are at the end.  If so, leave the While loop
@@ -12665,6 +13127,21 @@ End
 		    End if
 		  Next i
 		  
+		  '++JRC
+		  Dim LinkedSongs() As String
+		  Dim s As String
+		  
+		  pop_song_linked.DeleteAllRows
+		  
+		  s = SmartML.GetValue(CurrentSong.DocumentElement, "linked_songs", True)
+		  
+		  LinkedSongs = Split(s, ";")
+		  
+		  For i = 0 To UBound(LinkedSongs) -1
+		    pop_song_linked.AddRow(LinkedSongs(i))
+		  Next i
+		  '--
+		  
 		  Dim capo As Integer
 		  capo = SmartML.GetValueN(CurrentSong.DocumentElement, "capo", True)
 		  'capo = CurrentSongObj.Capo
@@ -12733,7 +13210,7 @@ End
 		    
 		    For i = 0 To xbacks.ChildCount - 1
 		      Dim image As StyleImage = new StyleImage()
-		      Dim s As String = SmartML.GetValue(xbacks.Child(i), "filename")
+		      s = SmartML.GetValue(xbacks.Child(i), "filename")
 		      
 		      If imageLink And s<>"" Then
 		        If s.StartsWith("/") or s.StartsWith("\\") or s.Mid(2, 1)=":" Then
@@ -12995,6 +13472,7 @@ End
 		  
 		  Dim f As FolderItem
 		  Dim theme As String
+		  Dim LinkedList As String
 		  Dim i As Integer
 		  Dim FullName As String
 		  
@@ -13013,6 +13491,14 @@ End
 		  Next i
 		  SmartML.SetValue CurrentSong.DocumentElement, "theme", theme
 		  SmartML.RemoveSelf SmartML.GetNode(CurrentSong.DocumentElement, "alttheme")
+		  
+		  '++JRC
+		  For i = 0 To pop_song_linked.ListCount -1
+		    LinkedList = LinkedList + pop_song_linked.List(i) + ";"
+		  Next i
+		  SmartML.SetValue CurrentSong.DocumentElement, "linked_songs", LinkedList
+		  
+		  '--
 		  
 		  SmartML.SetValue CurrentSong.DocumentElement, "capo", pop_song_capo.List(pop_song_capo.ListIndex)
 		  '++JRC Comatibilty with RB 2009
@@ -16364,6 +16850,62 @@ End
 		    Status_SongChanged = True
 		    EnableMenuItems
 		  End If
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events btn_song_add_link
+	#tag Event
+		Sub MouseExit()
+		  SetHelp ""
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub Open()
+		  Me.SetIcon addpic, addmask
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub MouseEnter()
+		  SetHelp "advanced_song_editor/add_link"
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub Action()
+		  ActionSongAddLinked
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events pop_song_linked
+	#tag Event
+		Sub MouseEnter()
+		  SetHelp "advanced_song_editor/linked"
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub MouseExit()
+		  SetHelp ""
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events btn_song_remove_link
+	#tag Event
+		Sub MouseEnter()
+		  SetHelp "advanced_song_editor/remove_link"
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub MouseExit()
+		  SetHelp ""
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub Open()
+		  Me.SetIcon removepic, removemask
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub Action()
+		  ActionSongRemoveLinked
 		End Sub
 	#tag EndEvent
 #tag EndEvents

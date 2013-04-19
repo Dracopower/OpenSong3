@@ -7,7 +7,7 @@ Begin Window FindWindow
    Frame           =   1
    FullScreen      =   False
    HasBackColor    =   False
-   Height          =   293
+   Height          =   3.3e+2
    ImplicitInstance=   True
    LiveResize      =   False
    MacProcID       =   0
@@ -23,11 +23,10 @@ Begin Window FindWindow
    Resizeable      =   False
    Title           =   "Song Search"
    Visible         =   True
-   Width           =   300
+   Width           =   4.6e+2
    Begin Label txt_song_search
       AutoDeactivate  =   True
       Bold            =   False
-      ControlOrder    =   0
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
@@ -43,15 +42,18 @@ Begin Window FindWindow
       LockRight       =   False
       LockTop         =   False
       Multiline       =   False
+      Scope           =   0
+      Selectable      =   False
       TabIndex        =   0
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "Enter search string:"
       TextAlign       =   0
       TextColor       =   0
       TextFont        =   "Arial"
       TextSize        =   10
+      TextUnit        =   0
       Top             =   10
+      Transparent     =   False
       Underline       =   False
       Visible         =   True
       Width           =   200
@@ -63,13 +65,13 @@ Begin Window FindWindow
       BackColor       =   16777215
       Bold            =   False
       Border          =   True
-      ControlOrder    =   1
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
       Format          =   ""
       Height          =   22
       HelpTag         =   ""
+      HideSelection   =   True
       Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
@@ -82,8 +84,8 @@ Begin Window FindWindow
       LockTop         =   False
       Mask            =   ""
       Multiline       =   False
-      Password        =   False
       ReadOnly        =   False
+      Scope           =   0
       ScrollbarHorizontal=   False
       ScrollbarVertical=   True
       Styled          =   False
@@ -94,18 +96,19 @@ Begin Window FindWindow
       TextColor       =   0
       TextFont        =   "System"
       TextSize        =   12
+      TextUnit        =   0
       Top             =   25
       Underline       =   False
       UseFocusRing    =   True
       Visible         =   True
-      Width           =   195
+      Width           =   242
    End
    Begin SButton btn_ok
       AcceptFocus     =   True
       AcceptTabs      =   False
       AutoDeactivate  =   True
       Backdrop        =   0
-      ControlOrder    =   2
+      DoubleBuffer    =   False
       Enabled         =   True
       EraseBackground =   True
       HasFocus        =   0
@@ -114,18 +117,17 @@ Begin Window FindWindow
       Index           =   -2147483648
       InitialParent   =   ""
       LabelAlign      =   0
-      Left            =   210
+      Left            =   333
       LockBottom      =   False
       LockedInPosition=   False
       LockLeft        =   False
       LockRight       =   False
       LockTop         =   False
+      Scope           =   0
       StickyBevel     =   False
       TabIndex        =   2
       TabPanelIndex   =   0
       TabStop         =   True
-      TextFont        =   "System"
-      TextSize        =   0
       Top             =   25
       UseFocusRing    =   True
       Visible         =   True
@@ -136,7 +138,7 @@ Begin Window FindWindow
       AcceptTabs      =   False
       AutoDeactivate  =   True
       Backdrop        =   0
-      ControlOrder    =   3
+      DoubleBuffer    =   False
       Enabled         =   True
       EraseBackground =   True
       HasFocus        =   0
@@ -145,18 +147,17 @@ Begin Window FindWindow
       Index           =   -2147483648
       InitialParent   =   ""
       LabelAlign      =   0
-      Left            =   210
+      Left            =   333
       LockBottom      =   False
       LockedInPosition=   False
       LockLeft        =   False
       LockRight       =   False
       LockTop         =   False
+      Scope           =   0
       StickyBevel     =   False
       TabIndex        =   3
       TabPanelIndex   =   0
       TabStop         =   True
-      TextFont        =   "System"
-      TextSize        =   0
       Top             =   50
       UseFocusRing    =   True
       Visible         =   True
@@ -166,9 +167,8 @@ Begin Window FindWindow
       AutoDeactivate  =   True
       Bold            =   False
       Caption         =   "Search Fields"
-      ControlOrder    =   4
       Enabled         =   True
-      Height          =   205
+      Height          =   236
       HelpTag         =   ""
       Index           =   -2147483648
       InitialParent   =   ""
@@ -179,20 +179,20 @@ Begin Window FindWindow
       LockLeft        =   False
       LockRight       =   False
       LockTop         =   False
+      Scope           =   0
       TabIndex        =   4
       TabPanelIndex   =   0
-      TabStop         =   True
       TextFont        =   "Arial"
       TextSize        =   10
+      TextUnit        =   0
       Top             =   80
       Underline       =   False
       Visible         =   True
-      Width           =   280
+      Width           =   440
       Begin CheckBox chk_search_title
          AutoDeactivate  =   True
          Bold            =   False
          Caption         =   "Title"
-         ControlOrder    =   5
          DataField       =   ""
          DataSource      =   ""
          Enabled         =   True
@@ -207,12 +207,14 @@ Begin Window FindWindow
          LockLeft        =   False
          LockRight       =   False
          LockTop         =   False
+         Scope           =   0
          State           =   1
          TabIndex        =   0
          TabPanelIndex   =   0
          TabStop         =   True
          TextFont        =   "Arial"
          TextSize        =   10
+         TextUnit        =   0
          Top             =   100
          Underline       =   False
          Value           =   True
@@ -223,7 +225,6 @@ Begin Window FindWindow
          AutoDeactivate  =   True
          Bold            =   False
          Caption         =   "Author"
-         ControlOrder    =   6
          DataField       =   ""
          DataSource      =   ""
          Enabled         =   True
@@ -238,12 +239,14 @@ Begin Window FindWindow
          LockLeft        =   False
          LockRight       =   False
          LockTop         =   False
+         Scope           =   0
          State           =   1
          TabIndex        =   1
          TabPanelIndex   =   0
          TabStop         =   True
          TextFont        =   "Arial"
          TextSize        =   10
+         TextUnit        =   0
          Top             =   120
          Underline       =   False
          Value           =   True
@@ -254,7 +257,6 @@ Begin Window FindWindow
          AutoDeactivate  =   True
          Bold            =   False
          Caption         =   "Copyright"
-         ControlOrder    =   7
          DataField       =   ""
          DataSource      =   ""
          Enabled         =   True
@@ -269,11 +271,14 @@ Begin Window FindWindow
          LockLeft        =   False
          LockRight       =   False
          LockTop         =   False
+         Scope           =   0
+         State           =   0
          TabIndex        =   2
          TabPanelIndex   =   0
          TabStop         =   True
          TextFont        =   "Arial"
          TextSize        =   10
+         TextUnit        =   0
          Top             =   140
          Underline       =   False
          Value           =   False
@@ -284,7 +289,6 @@ Begin Window FindWindow
          AutoDeactivate  =   True
          Bold            =   False
          Caption         =   "CCLI #"
-         ControlOrder    =   8
          DataField       =   ""
          DataSource      =   ""
          Enabled         =   True
@@ -299,11 +303,14 @@ Begin Window FindWindow
          LockLeft        =   False
          LockRight       =   False
          LockTop         =   False
+         Scope           =   0
+         State           =   0
          TabIndex        =   3
          TabPanelIndex   =   0
          TabStop         =   True
          TextFont        =   "Arial"
          TextSize        =   10
+         TextUnit        =   0
          Top             =   160
          Underline       =   False
          Value           =   False
@@ -314,7 +321,6 @@ Begin Window FindWindow
          AutoDeactivate  =   True
          Bold            =   False
          Caption         =   "Presentation"
-         ControlOrder    =   9
          DataField       =   ""
          DataSource      =   ""
          Enabled         =   True
@@ -329,11 +335,14 @@ Begin Window FindWindow
          LockLeft        =   False
          LockRight       =   False
          LockTop         =   False
+         Scope           =   0
+         State           =   0
          TabIndex        =   4
          TabPanelIndex   =   0
          TabStop         =   True
          TextFont        =   "Arial"
          TextSize        =   10
+         TextUnit        =   0
          Top             =   180
          Underline       =   False
          Value           =   False
@@ -344,7 +353,6 @@ Begin Window FindWindow
          AutoDeactivate  =   True
          Bold            =   False
          Caption         =   "Chords/Lyrics"
-         ControlOrder    =   10
          DataField       =   ""
          DataSource      =   ""
          Enabled         =   True
@@ -359,12 +367,14 @@ Begin Window FindWindow
          LockLeft        =   False
          LockRight       =   False
          LockTop         =   False
+         Scope           =   0
          State           =   1
          TabIndex        =   5
          TabPanelIndex   =   0
          TabStop         =   True
          TextFont        =   "Arial"
          TextSize        =   10
+         TextUnit        =   0
          Top             =   200
          Underline       =   False
          Value           =   True
@@ -375,7 +385,6 @@ Begin Window FindWindow
          AutoDeactivate  =   True
          Bold            =   False
          Caption         =   "Hymn Number"
-         ControlOrder    =   11
          DataField       =   ""
          DataSource      =   ""
          Enabled         =   True
@@ -390,11 +399,14 @@ Begin Window FindWindow
          LockLeft        =   False
          LockRight       =   False
          LockTop         =   False
+         Scope           =   0
+         State           =   0
          TabIndex        =   6
          TabPanelIndex   =   0
          TabStop         =   True
          TextFont        =   "Arial"
          TextSize        =   10
+         TextUnit        =   0
          Top             =   219
          Underline       =   False
          Value           =   False
@@ -405,7 +417,6 @@ Begin Window FindWindow
          AutoDeactivate  =   True
          Bold            =   False
          Caption         =   "Themes"
-         ControlOrder    =   12
          DataField       =   ""
          DataSource      =   ""
          Enabled         =   True
@@ -420,12 +431,14 @@ Begin Window FindWindow
          LockLeft        =   False
          LockRight       =   False
          LockTop         =   False
+         Scope           =   0
          State           =   1
          TabIndex        =   7
          TabPanelIndex   =   0
          TabStop         =   True
          TextFont        =   "Arial"
          TextSize        =   10
+         TextUnit        =   0
          Top             =   238
          Underline       =   False
          Value           =   True
@@ -436,7 +449,6 @@ Begin Window FindWindow
          AutoDeactivate  =   True
          Bold            =   False
          Caption         =   "Capo"
-         ControlOrder    =   13
          DataField       =   ""
          DataSource      =   ""
          Enabled         =   True
@@ -451,11 +463,14 @@ Begin Window FindWindow
          LockLeft        =   False
          LockRight       =   False
          LockTop         =   False
+         Scope           =   0
+         State           =   0
          TabIndex        =   8
          TabPanelIndex   =   0
          TabStop         =   True
          TextFont        =   "Arial"
          TextSize        =   10
+         TextUnit        =   0
          Top             =   258
          Underline       =   False
          Value           =   False
@@ -466,7 +481,6 @@ Begin Window FindWindow
          AutoDeactivate  =   True
          Bold            =   False
          Caption         =   "Time Signature"
-         ControlOrder    =   14
          DataField       =   ""
          DataSource      =   ""
          Enabled         =   True
@@ -481,11 +495,14 @@ Begin Window FindWindow
          LockLeft        =   False
          LockRight       =   False
          LockTop         =   False
+         Scope           =   0
+         State           =   0
          TabIndex        =   9
          TabPanelIndex   =   0
          TabStop         =   True
          TextFont        =   "Arial"
          TextSize        =   10
+         TextUnit        =   0
          Top             =   100
          Underline       =   False
          Value           =   False
@@ -496,7 +513,6 @@ Begin Window FindWindow
          AutoDeactivate  =   True
          Bold            =   False
          Caption         =   "Tempo"
-         ControlOrder    =   15
          DataField       =   ""
          DataSource      =   ""
          Enabled         =   True
@@ -511,11 +527,14 @@ Begin Window FindWindow
          LockLeft        =   False
          LockRight       =   False
          LockTop         =   False
+         Scope           =   0
+         State           =   0
          TabIndex        =   10
          TabPanelIndex   =   0
          TabStop         =   True
          TextFont        =   "Arial"
          TextSize        =   10
+         TextUnit        =   0
          Top             =   120
          Underline       =   False
          Value           =   False
@@ -526,7 +545,6 @@ Begin Window FindWindow
          AutoDeactivate  =   True
          Bold            =   False
          Caption         =   "Key"
-         ControlOrder    =   16
          DataField       =   ""
          DataSource      =   ""
          Enabled         =   True
@@ -541,11 +559,14 @@ Begin Window FindWindow
          LockLeft        =   False
          LockRight       =   False
          LockTop         =   False
+         Scope           =   0
+         State           =   0
          TabIndex        =   11
          TabPanelIndex   =   0
          TabStop         =   True
          TextFont        =   "Arial"
          TextSize        =   10
+         TextUnit        =   0
          Top             =   140
          Underline       =   False
          Value           =   False
@@ -556,7 +577,6 @@ Begin Window FindWindow
          AutoDeactivate  =   True
          Bold            =   False
          Caption         =   "AKA"
-         ControlOrder    =   17
          DataField       =   ""
          DataSource      =   ""
          Enabled         =   True
@@ -571,11 +591,14 @@ Begin Window FindWindow
          LockLeft        =   False
          LockRight       =   False
          LockTop         =   False
+         Scope           =   0
+         State           =   0
          TabIndex        =   12
          TabPanelIndex   =   0
          TabStop         =   True
          TextFont        =   "Arial"
          TextSize        =   10
+         TextUnit        =   0
          Top             =   160
          Underline       =   False
          Value           =   False
@@ -586,7 +609,6 @@ Begin Window FindWindow
          AutoDeactivate  =   True
          Bold            =   False
          Caption         =   "Key Line"
-         ControlOrder    =   18
          DataField       =   ""
          DataSource      =   ""
          Enabled         =   True
@@ -601,11 +623,14 @@ Begin Window FindWindow
          LockLeft        =   False
          LockRight       =   False
          LockTop         =   False
+         Scope           =   0
+         State           =   0
          TabIndex        =   13
          TabPanelIndex   =   0
          TabStop         =   True
          TextFont        =   "Arial"
          TextSize        =   10
+         TextUnit        =   0
          Top             =   180
          Underline       =   False
          Value           =   False
@@ -616,7 +641,6 @@ Begin Window FindWindow
          AutoDeactivate  =   True
          Bold            =   False
          Caption         =   "User Defined 1"
-         ControlOrder    =   19
          DataField       =   ""
          DataSource      =   ""
          Enabled         =   True
@@ -631,11 +655,14 @@ Begin Window FindWindow
          LockLeft        =   False
          LockRight       =   False
          LockTop         =   False
+         Scope           =   0
+         State           =   0
          TabIndex        =   14
          TabPanelIndex   =   0
          TabStop         =   True
          TextFont        =   "Arial"
          TextSize        =   10
+         TextUnit        =   0
          Top             =   200
          Underline       =   False
          Value           =   False
@@ -646,7 +673,6 @@ Begin Window FindWindow
          AutoDeactivate  =   True
          Bold            =   False
          Caption         =   "User Defined 2"
-         ControlOrder    =   20
          DataField       =   ""
          DataSource      =   ""
          Enabled         =   True
@@ -661,11 +687,14 @@ Begin Window FindWindow
          LockLeft        =   False
          LockRight       =   False
          LockTop         =   False
+         Scope           =   0
+         State           =   0
          TabIndex        =   15
          TabPanelIndex   =   0
          TabStop         =   True
          TextFont        =   "Arial"
          TextSize        =   10
+         TextUnit        =   0
          Top             =   220
          Underline       =   False
          Value           =   False
@@ -676,7 +705,6 @@ Begin Window FindWindow
          AutoDeactivate  =   True
          Bold            =   False
          Caption         =   "User Defined 3"
-         ControlOrder    =   21
          DataField       =   ""
          DataSource      =   ""
          Enabled         =   True
@@ -691,27 +719,267 @@ Begin Window FindWindow
          LockLeft        =   False
          LockRight       =   False
          LockTop         =   False
+         Scope           =   0
+         State           =   0
          TabIndex        =   16
          TabPanelIndex   =   0
          TabStop         =   True
          TextFont        =   "Arial"
          TextSize        =   10
+         TextUnit        =   0
          Top             =   240
          Underline       =   False
          Value           =   False
          Visible         =   True
          Width           =   125
       End
+      Begin CheckBox chk_seach_chord
+         AutoDeactivate  =   True
+         Bold            =   ""
+         Caption         =   "Chord"
+         DataField       =   ""
+         DataSource      =   ""
+         Enabled         =   True
+         Height          =   20
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "grp_search_fields"
+         Italic          =   ""
+         Left            =   155
+         LockBottom      =   ""
+         LockedInPosition=   False
+         LockLeft        =   True
+         LockRight       =   ""
+         LockTop         =   True
+         Scope           =   0
+         State           =   0
+         TabIndex        =   17
+         TabPanelIndex   =   0
+         TabStop         =   True
+         TextFont        =   "Arial"
+         TextSize        =   10
+         TextUnit        =   0
+         Top             =   281
+         Underline       =   ""
+         Value           =   False
+         Visible         =   True
+         Width           =   86
+      End
+      Begin PopupMenu pop_search_chord
+         AutoDeactivate  =   True
+         Bold            =   ""
+         DataField       =   ""
+         DataSource      =   ""
+         Enabled         =   True
+         Height          =   20
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "grp_search_fields"
+         InitialValue    =   ""
+         Italic          =   ""
+         Left            =   251
+         ListIndex       =   0
+         LockBottom      =   ""
+         LockedInPosition=   False
+         LockLeft        =   True
+         LockRight       =   ""
+         LockTop         =   True
+         Scope           =   0
+         TabIndex        =   18
+         TabPanelIndex   =   0
+         TabStop         =   True
+         TextFont        =   "System"
+         TextSize        =   0
+         TextUnit        =   0
+         Top             =   279
+         Underline       =   ""
+         Visible         =   True
+         Width           =   50
+      End
+      Begin PopupMenu pop_search_form
+         AutoDeactivate  =   True
+         Bold            =   ""
+         DataField       =   ""
+         DataSource      =   ""
+         Enabled         =   True
+         Height          =   20
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "grp_search_fields"
+         InitialValue    =   ""
+         Italic          =   ""
+         Left            =   314
+         ListIndex       =   0
+         LockBottom      =   ""
+         LockedInPosition=   False
+         LockLeft        =   True
+         LockRight       =   ""
+         LockTop         =   True
+         Scope           =   0
+         TabIndex        =   19
+         TabPanelIndex   =   0
+         TabStop         =   True
+         TextFont        =   "System"
+         TextSize        =   0
+         TextUnit        =   0
+         Top             =   279
+         Underline       =   ""
+         Visible         =   True
+         Width           =   126
+      End
+      Begin Label txt_song_key
+         AutoDeactivate  =   True
+         Bold            =   ""
+         DataField       =   ""
+         DataSource      =   ""
+         Enabled         =   True
+         Height          =   20
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "grp_search_fields"
+         Italic          =   ""
+         Left            =   253
+         LockBottom      =   ""
+         LockedInPosition=   False
+         LockLeft        =   True
+         LockRight       =   ""
+         LockTop         =   True
+         Multiline       =   ""
+         Scope           =   0
+         Selectable      =   False
+         TabIndex        =   20
+         TabPanelIndex   =   0
+         Text            =   "Key"
+         TextAlign       =   0
+         TextColor       =   &h000000
+         TextFont        =   "Arial"
+         TextSize        =   10
+         TextUnit        =   0
+         Top             =   258
+         Transparent     =   False
+         Underline       =   ""
+         Visible         =   True
+         Width           =   50
+      End
+      Begin Label txt_song_form
+         AutoDeactivate  =   True
+         Bold            =   ""
+         DataField       =   ""
+         DataSource      =   ""
+         Enabled         =   True
+         Height          =   20
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "grp_search_fields"
+         Italic          =   ""
+         Left            =   315
+         LockBottom      =   ""
+         LockedInPosition=   False
+         LockLeft        =   True
+         LockRight       =   ""
+         LockTop         =   True
+         Multiline       =   ""
+         Scope           =   0
+         Selectable      =   False
+         TabIndex        =   21
+         TabPanelIndex   =   0
+         Text            =   "Form"
+         TextAlign       =   0
+         TextColor       =   &h000000
+         TextFont        =   "Arial"
+         TextSize        =   10
+         TextUnit        =   0
+         Top             =   258
+         Transparent     =   False
+         Underline       =   ""
+         Visible         =   True
+         Width           =   100
+      End
+   End
+   Begin PushButton btn_hidden_hidok
+      AutoDeactivate  =   True
+      Bold            =   False
+      ButtonStyle     =   0
+      Cancel          =   False
+      Caption         =   "OK"
+      Default         =   True
+      Enabled         =   True
+      Height          =   22
+      HelpTag         =   ""
+      Index           =   -2147483648
+      InitialParent   =   ""
+      Italic          =   False
+      Left            =   165
+      LockBottom      =   False
+      LockedInPosition=   False
+      LockLeft        =   True
+      LockRight       =   False
+      LockTop         =   True
+      Scope           =   0
+      TabIndex        =   5
+      TabPanelIndex   =   0
+      TabStop         =   True
+      TextFont        =   "System"
+      TextSize        =   12
+      TextUnit        =   0
+      Top             =   365
+      Underline       =   False
+      Visible         =   True
+      Width           =   22
+   End
+   Begin PushButton btn_hidden_hidcancel
+      AutoDeactivate  =   True
+      Bold            =   False
+      ButtonStyle     =   0
+      Cancel          =   True
+      Caption         =   "Cancel"
+      Default         =   False
+      Enabled         =   True
+      Height          =   22
+      HelpTag         =   ""
+      Index           =   -2147483648
+      InitialParent   =   ""
+      Italic          =   False
+      Left            =   250
+      LockBottom      =   False
+      LockedInPosition=   False
+      LockLeft        =   True
+      LockRight       =   False
+      LockTop         =   True
+      Scope           =   0
+      TabIndex        =   6
+      TabPanelIndex   =   0
+      TabStop         =   True
+      TextFont        =   "System"
+      TextSize        =   12
+      TextUnit        =   0
+      Top             =   365
+      Underline       =   False
+      Visible         =   True
+      Width           =   22
    End
 End
 #tag EndWindow
 
 #tag WindowCode
 	#tag Event
+		Sub Activate()
+		  Me.SetFocus
+		  edt_input.SetFocus
+		End Sub
+	#tag EndEvent
+
+	#tag Event
 		Sub Open()
 		  App.T.TranslateWindow Me, "song_search", App.TranslationFonts
 		  
 		  Dim s As String
+		  '++JRC
+		  Dim chords() As String
+		  Dim forms() As String
+		  Dim i As Integer
+		  '--
+		  
 		  s = SmartML.GetValue(App.MyMainSettings.DocumentElement, "user_defined/@user1")
 		  If s.Len = 0 Then s = App.T.Translate("advanced_editor/user1/@caption")
 		  chk_search_user1.Caption = s
@@ -721,6 +989,19 @@ End
 		  s = SmartML.GetValue(App.MyMainSettings.DocumentElement, "user_defined/@user3")
 		  If s.Len = 0 Then s = App.T.Translate("advanced_editor/user3/@caption")
 		  chk_search_user3.Caption = s
+		  
+		  '++JRC
+		  chords = Split(App.T.Translate("songml/chordkeys"), ",")
+		  forms = Split(App.T.Translate("songml/formsdescriptive"), ",")
+		  
+		  For i = 0 To UBound(chords)
+		    pop_search_chord.AddRow(chords(i))
+		  Next i
+		  
+		  For i = 0 To UBound(forms)
+		    pop_search_form.AddRow(forms(i))
+		  Next i
+		  '--
 		  
 		  App.CenterInControlScreen Me
 		End Sub
@@ -754,6 +1035,22 @@ End
 		  chk_search_lyrics.Value = find.FindLyrics
 		  '++JRC
 		  chk_search_hymn_number.Value = find.FindHymnNumber
+		  chk_seach_chord.Value = find.FindChord
+		  
+		  pop_search_chord.ListIndex = 0
+		  pop_search_form.ListIndex = 0
+		  
+		  If chk_seach_chord.Value Then
+		    pop_search_chord.Enabled = True
+		    pop_search_form.Enabled = True
+		    find.ChordKey = "."
+		    find.ChordForm = "."
+		  Else
+		    pop_search_chord.Enabled = False
+		    pop_search_form.Enabled = False
+		    find.ChordKey = ""
+		    find.ChordForm = ""
+		  End If
 		  '--
 		  chk_search_themes.Value = find.FindThemes
 		  chk_search_capo.Value = find.FindCapo
@@ -791,14 +1088,17 @@ End
 		Function KeyDown(Key As String) As Boolean
 		  dim c As New Clipboard
 		  
-		  if strComp(Key, Chr(CTRL_V), 0) = 0 then 'ctrl-v
+		  If strComp(Key, Chr(CTRL_V), 0) = 0 then 'ctrl-v
 		    
-		    if c.TextAvailable then
+		    If c.TextAvailable then
 		      edt_input.Text  = c.Text
 		      return true
-		    end if
+		    End If
 		    
-		  end if
+		  ElseIf strComp(Key, Chr(ENTER), 0) = 0 Then
+		    Okay
+		  End If
+		  
 		  c.close
 		End Function
 	#tag EndEvent
@@ -948,6 +1248,74 @@ End
 	#tag Event
 		Sub Action()
 		  find.FindUser3 = Me.Value
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events chk_seach_chord
+	#tag Event
+		Sub Action()
+		  If chk_seach_chord.Value Then
+		    pop_search_chord.Enabled = True
+		    pop_search_form.Enabled = True
+		    pop_search_chord.ListIndex = 0
+		    pop_search_form.ListIndex = 0
+		    find.ChordKey = "."
+		    find.ChordForm = "."
+		  Else
+		    pop_search_chord.Enabled = False
+		    pop_search_form.Enabled = False
+		    find.ChordKey = ""
+		    find.ChordForm = ""
+		  End If
+		  
+		  find.FindChord = Me.Value
+		  
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events pop_search_chord
+	#tag Event
+		Sub Change()
+		  If Me.ListIndex = 0 Then
+		    'set "any" chord to a period internally to make it easier for us ;)
+		    find.ChordKey = "."
+		  Else
+		    find.ChordKey = pop_search_chord.Text
+		  End If
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events pop_search_form
+	#tag Event
+		Sub Change()
+		  Dim forms() As String
+		  
+		  If Me.ListIndex = 0 Then
+		    'set "any" chord form to a period internally to make it easier for us ;)
+		    find.ChordForm = "."
+		  Else
+		    'Load in the SYMBOLIC chord forms
+		    'Note that "Major" has no symbol associated with it
+		    'so just leave it blank
+		    forms = Split(App.T.Translate("songml/chordforms"), ",")
+		    
+		    find.ChordForm = forms(Me.ListIndex)
+		  End If
+		  
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events btn_hidden_hidok
+	#tag Event
+		Sub Action()
+		  Okay
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events btn_hidden_hidcancel
+	#tag Event
+		Sub Action()
+		  Cancel
 		End Sub
 	#tag EndEvent
 #tag EndEvents

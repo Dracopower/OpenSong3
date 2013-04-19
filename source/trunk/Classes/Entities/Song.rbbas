@@ -98,6 +98,12 @@ Protected Class Song
 		        s = Left(s, Len(s) - 1)
 		      End If
 		      If Len(s) > 0 Then SongThemes = Split(s, ";")
+		      '++JRC
+		      // Linked Songs
+		    Case E_LINKED_SONGS
+		      s = TextNode(node)
+		      If Len(s) > 0 Then LinkedSongs = Split(s, ";")
+		      '--
 		      
 		      // Time Signature
 		      // ("timesig" node is deprecated)
@@ -141,6 +147,49 @@ Protected Class Song
 		  
 		  s = StringUtils.Repeat(" ", Level * 2)
 		  xNode.AppendChild xnode.OwnerDocument.CreateTextNode(EndOfLine + s)
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function LinkedSongs() As String()
+		  //++
+		  // Return a copy of the LinkedSongs array
+		  // It's done this way since arrays are always passed by reference, so returning
+		  // the LinkedSongs array directly would result in a modifiable reference
+		  //--
+		  
+		  Dim i As Integer
+		  Dim numSongs As Integer
+		  Dim SongsList() As String
+		  
+		  numSongs = UBound(LinkedSongs)
+		  
+		  ReDim SongsList(numSongs)
+		  
+		  i = 0
+		  Do Until i > numSongs
+		    SongsList(i) = LinkedSongs(i)
+		    i = i + 1
+		  Loop
+		  
+		  Return SongsList
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub LinkedSongs(Assigns newSongs() as String)
+		  Dim i As Integer
+		  Dim numThemes As Integer
+		  
+		  numThemes = UBound(newSongs)
+		  
+		  ReDim SongThemes(numThemes)
+		  
+		  i = 0
+		  Do Until i > numThemes
+		    LinkedSongs(i) = newSongs(i)
+		    i = i + 1
+		  Loop
 		End Sub
 	#tag EndMethod
 
@@ -437,6 +486,13 @@ Protected Class Song
 		  If Len(User3) > 0 Then node.AppendChild(xDoc.CreateTextNode(User3))
 		  IndentXml(head)
 		  
+		  '++JRC
+		  // Linked Songs
+		  node = head.AppendChild(xDoc.CreateElement(E_LINKED_SONGS))
+		  If UBound(LinkedSongs) > 0 Then node.AppendChild(xDoc.CreateTextNode(LinkedSongList))
+		  IndentXml(head)
+		  '--
+		  
 		  // Theme
 		  node = head.AppendChild(xDoc.CreateElement(E_THEME))
 		  If UBound(SongThemes) > 0 Then node.AppendChild(xDoc.CreateTextNode(ThemeList))
@@ -650,6 +706,48 @@ Protected Class Song
 	#tag ComputedProperty, Flags = &h0
 		#tag Getter
 			Get
+			  //++
+			  // Return a semi-colon separated list of  songs
+			  //--
+			  
+			  Dim s As String
+			  
+			  s = Join(LinkedSongs, ";")
+			  
+			  Return s
+			  
+			End Get
+		#tag EndGetter
+		#tag Setter
+			Set
+			  //++
+			  // Take a semi-colon separated list of songs and replace the LinkedSongs array
+			  //--
+			  Dim newThemes() As String
+			  Dim i As Integer
+			  Dim numThemes As Integer
+			  
+			  newThemes = Split(value, ";")
+			  
+			  numThemes = UBound(newThemes)
+			  
+			  ReDim LinkedSongs(numThemes)
+			  
+			  For i = 0 to numThemes - 1
+			    LinkedSongs(i) = newThemes(i)
+			  Next
+			End Set
+		#tag EndSetter
+		LinkedSongList As String
+	#tag EndComputedProperty
+
+	#tag Property, Flags = &h1
+		Protected LinkedSongs() As String
+	#tag EndProperty
+
+	#tag ComputedProperty, Flags = &h0
+		#tag Getter
+			Get
 			  Return SongLyrics
 			End Get
 		#tag EndGetter
@@ -663,6 +761,10 @@ Protected Class Song
 		#tag EndSetter
 		Lyrics As String
 	#tag EndComputedProperty
+
+	#tag Property, Flags = &h21
+		Private mLinkedSongList As String
+	#tag EndProperty
 
 	#tag ComputedProperty, Flags = &h0
 		#tag Getter
@@ -1024,6 +1126,9 @@ Protected Class Song
 	#tag Constant, Name = E_KEYLINE, Type = String, Dynamic = False, Default = \"key_line", Scope = Protected
 	#tag EndConstant
 
+	#tag Constant, Name = E_LINKED_SONGS, Type = String, Dynamic = False, Default = \"Linked Songs", Scope = Protected
+	#tag EndConstant
+
 	#tag Constant, Name = E_LYRICS, Type = String, Dynamic = False, Default = \"lyrics", Scope = Protected
 	#tag EndConstant
 
@@ -1066,11 +1171,13 @@ Protected Class Song
 			Name="AKA"
 			Group="Behavior"
 			Type="String"
+			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Author"
 			Group="Behavior"
 			Type="String"
+			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Capo"
@@ -1081,6 +1188,7 @@ Protected Class Song
 			Name="CCLISongNumber"
 			Group="Behavior"
 			Type="String"
+			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Changed"
@@ -1091,16 +1199,19 @@ Protected Class Song
 			Name="Copyright"
 			Group="Behavior"
 			Type="String"
+			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="CustomPresentation"
 			Group="Behavior"
 			Type="String"
+			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="HymnNumber"
 			Group="Behavior"
 			Type="String"
+			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Index"
@@ -1113,11 +1224,13 @@ Protected Class Song
 			Name="Key"
 			Group="Behavior"
 			Type="String"
+			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="KeyLine"
 			Group="Behavior"
 			Type="String"
+			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Left"
@@ -1130,6 +1243,7 @@ Protected Class Song
 			Name="Lyrics"
 			Group="Behavior"
 			Type="String"
+			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Name"
@@ -1141,6 +1255,7 @@ Protected Class Song
 			Name="Presentation"
 			Group="Behavior"
 			Type="String"
+			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="PrintCapoChords"
@@ -1157,16 +1272,24 @@ Protected Class Song
 			Name="Tempo"
 			Group="Behavior"
 			Type="String"
+			EditorType="MultiLineEditor"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="ThemeList"
+			Group="Behavior"
+			Type="String"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="TimeSignature"
 			Group="Behavior"
 			Type="String"
+			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Title"
 			Group="Behavior"
 			Type="String"
+			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Top"
@@ -1179,16 +1302,19 @@ Protected Class Song
 			Name="User1"
 			Group="Behavior"
 			Type="String"
+			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="User2"
 			Group="Behavior"
 			Type="String"
+			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="User3"
 			Group="Behavior"
 			Type="String"
+			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 	#tag EndViewBehavior
 End Class

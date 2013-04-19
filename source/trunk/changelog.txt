@@ -1,15 +1,6 @@
-﻿* Add the ability to assign a (different) background for each verse of a song. (Feature request #207) (Vwout)
-This new feature can be found on the advanced screen in song mode. Any verse that is created within the song can be linked to a background image.
-It is possible to assign a background to only a subset of the verses. All options that are also available on the image slides with respect to image handling also are available here.
-Additionally, an extra option is added to hide the verse text. When checked, only the background image is shown, not the verse itself - only in case a background is linked with the verse, of course.
+﻿* Added ability to link songs together for presentations. (JRC)
 
-* Make context menu on edit fields more generic using the standard RealBasic approach so that OpenSong now also compiles on RealStudio 2012 (Vwout)
-
-* Fix for issue with VLC; background VLC session is always closed, regardless of settings, when you try to step to the next slide, rendering the feature useless. (Bug #387) (Vwout)
-
-* Fix to reduce artifacts when changing slides during a transition (Vwout)
-
-* New Logo! Many thanks to Daniel Ma for creating it.
+* Enable searching of songs in SongPickerWindow. (JRC)
 
 * Fix user defined fields not updating when returning from MainSettings. (JRC)
 

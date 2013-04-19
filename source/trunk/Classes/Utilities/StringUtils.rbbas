@@ -745,6 +745,39 @@ Module StringUtils
 	#tag EndMethod
 
 	#tag Method, Flags = &h1
+		Protected Function InStrList(startPos As Integer = - 1, source As String, substr() As String, ByRef Index As Integer) As Integer
+		  '++JRC Similar to InStr but takes an array of substrings
+		  'to compare against source string
+		  Dim i As Integer
+		  Dim pos As Integer
+		  Dim p As Integer
+		  
+		  'run through list of strings to compare
+		  i = 0
+		  pos = source.Len
+		  Index = -1
+		  
+		  While i <= UBound(substr)
+		    p =  InStr(startPos, source, substr(i) )
+		    'found one, see if it's the first occurance in the string
+		    If p > 0 And p  <= pos Then
+		      pos = p
+		      Index = i
+		    End If
+		    
+		    i = i + 1
+		  Wend
+		  
+		  If Index = -1 Then
+		    pos = 0
+		  End If
+		  
+		  Return pos
+		  
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h1
 		Protected Function InStrReverse(startPos As Integer = - 1, source As String, substr As String) As Integer
 		  // Similar to InStr, but searches backwards from the given position
 		  // (or if startPos = -1, then from the end of the string).

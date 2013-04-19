@@ -101,6 +101,10 @@
         <flats caption="Flats"/>
       </using>
     </transpose>
+    <linked caption="Linked Songs">Linked songs will be automatically added to your presentation when you add this song.</linked>
+    <add_link caption="Add">Adds song to the list.</add_link>
+    <remove_link caption="Remove">Removes selected song from the list.</remove_link>
+
   </general_song_editor>
 
   <advanced_song_editor caption="Advanced">Accesses the current song's theme, capo, time signature, style, etc.
@@ -324,6 +328,9 @@
       <user1 caption="link(advanced_song_editor/user1/@caption)"/>
       <user2 caption="link(advanced_song_editor/user2/@caption)"/>
       <user3 caption="link(advanced_song_editor/user3/@caption)"/>
+      <chord caption="Chord"/>
+      <key caption="Key"/>
+      <form caption="Form"/>
     </fields>
   </song_search>
 
@@ -398,6 +405,9 @@
       <version_check caption="Check for latest version at startup"/>
       <language caption="Language"/>
     </general>
+    <linked caption="Linked Songs">
+      <prompt caption="Prompt when adding linked songs"/>
+    </linked>
     <proxy caption="Proxy">
       <host caption="Host"/>
       <port caption="Port"/>
@@ -845,6 +855,9 @@ If the presentation field is empty, then the Presenter will order the slides bas
      <altsharpchords>,B#,C#,D,D#,E,E#,F#,G,G#,A,A#,B</altsharpchords>
      <flatchords>,C,Db,D,Eb,E,F,Gb,G,Ab,A,Bb,B</flatchords>
      <altflatchords>,C,Db,D,Eb,Fb,F,Gb,G,Ab,A,Bb,Cb</altflatchords>
+     <chordkeys>Any,A,A#,Ab,B,B#,Bb,C,C#,Cb,D,D#,Db,E,E#,Eb,F,F#,Fb,G,G#,Gb</chordkeys>
+     <chordforms>Any,,m,2,M7,m7,7,dim7,dim,+,sus,sus2,6,6/9,M9,add9,7b5,7#5,9,7b9,7#9,13th,m7b5,m7#5,m7b9,11</chordforms>
+     <formsdescriptive>Any,Major,Minor(m),2nd(2),Major 7th(M7),Minor 7th(m7),Dominant 7th(7),Diminished 7th(dim7),Diminished(dim),Augmented(+),Suspended(sus),Suspended 2nd(sus2),Sixth(6),Six Nine(6/9),Major 9th(M9),Add9(add9),Seven Flat Five(7b5),Seven Sharp Five(7#5),9th(9),Seven Flat Nine(7b9),Seven Sharp Nine(7#9),13th(13),Minor 7th Flat Five(m7b5),Minor 7th Sharp Five(m7#5),Minor 7th Flat Nine(m7b9),11th(11)</formsdescriptive>
   </songml>
   
   <smartml>
@@ -918,10 +931,11 @@ If the presentation field is empty, then the Presenter will order the slides bas
   </style_tabs>
   
   <song_lookup title="Song Lookup">
-    <header caption="To add a song, click the song title below and click 'Add'. If you know the name of the song you can type it in the Quick Lookup field and click 'Add'. You can also double-click on the song name or press ENTER to add the song."/>
+    <header caption="To add a song, click the song title below and click 'Add'. If you know the name of the song you can type it in the Quick Lookup field and click 'Add'. Or you can click Search(Ctrl+F) to search song, Ctrl+G to repeat search . You can also double-click on the song name or press ENTER to add the song."/>
     <no_selection>You have not selected a song.</no_selection>
     <folder caption="Select Folder"/>
     <preview caption="Song Preview"/>
+    <text caption="Found text in:"/>
     <lookup caption="Quick Lookup"/>
     <songs head1="Song Name" head2="Folder"/>
     <presentation caption="link(slide_editor/presentation/@caption)"/>
@@ -1206,8 +1220,27 @@ Click on this slide to edit its style.</body>
     <select caption="Select"/>
     <exit_program caption="Exit Program"/>
     <export_to caption="Select a folder to export to."/>
-		<style_file caption="Select a style file"/>
-	</shared>
+    <style_file caption="Select a style file"/>
+    <title caption="Title"/>  
+    <author caption="Author"/>
+    <copyright caption="Copyright"/>  
+    <ccli caption="CCLI #"/>  
+    <presentation caption="Presentation"/>
+    <lyrics caption="Lyrics"/>  
+    <theme caption="Theme"/>
+    <capo caption="Capo"/>
+    <chord caption="Chords"/>
+    <time_sig caption="Time-Signature"/>
+    <tempo caption="Tempo"/>  
+    <key caption="Key"/>
+    <aka caption="AKA"/>  
+    <key_line caption="Key Line"/>
+    <user1 caption="User1"/>  
+    <user2 caption="User2"/>
+    <user3 caption="User3"/>  
+    <hymn_number caption="Hymn #"/>
+
+  </shared>
 
   <questions>
     <new_name caption="Please enter a name:"/>
@@ -1233,6 +1266,7 @@ Click on this slide to edit its style.</body>
     <no_sets_folder caption="Could not find Sets folder, would you like to create this folder?"/>
     <no_folder caption="Could not find folder '%1', would you like to create this folder?"/>
     <destination_exists caption="File exists in the destination folder. Would you like to rename this file?"/>
+    <linked_songs caption="Selected song contains one or more linked songs, do you want to add these songs?"/>
   </questions>
 
   <about>
@@ -1334,6 +1368,12 @@ The OpenSong development team members regret any inconvenience.
       <load_failed>The presentation '%1' could not be opened.</load_failed>
     </presentations>
 	<videolan_app_missing>The videolan application is not correctly set. Please specify the videolan client in the General settings dialog on the File locations tab.</videolan_app_missing>
+    <linked_song>
+       <current>Selected Song is the current song.</current>
+       <exists>Selected song is already in the list.</exists>
+       <load_error>Error loading linked song: %1</load_error>
+    </linked_song>
+
   </errors>
 
   <xml_errors>
