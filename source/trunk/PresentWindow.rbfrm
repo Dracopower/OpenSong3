@@ -2049,7 +2049,7 @@ End
 		    _IsSlidechangeExternal = False
 		  Else
 		    
-		    If slideType = "song" Then
+		    If SmartML.GetValue(slide.Parent.Parent, "@type", False) = "song" Then
 		      '++JRC
 		      SongSetDisplayed(slide)
 		    End If

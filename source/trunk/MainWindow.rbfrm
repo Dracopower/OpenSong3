@@ -11727,7 +11727,8 @@ End
 		  SongML.ToSetML song, StyleNode
 		  
 		  '++JRC Assign an index for this set item
-		  SmartML.SetValueN(song, "@ItemNumber", 1)
+		  Dim item As Integer = 1
+		  SmartML.SetValueN(song, "@ItemNumber", item)
 		  
 		  App.MouseCursor = Nil
 		  
@@ -11782,12 +11783,16 @@ End
 		    
 		    For i = 0 To UBound(sDoc)
 		      
+		      item = item + 1
 		      song = slideGroups
 		      song = slideGroups.AppendChild(setDoc.CreateElement("TEMP"))
 		      song = SmartML.ReplaceWithImportNode(song, sDoc(i).DocumentElement)
+		      '++JRC Assign an index for this set item
+		      SmartML.SetValueN(song, "@ItemNumber", item)
 		      StyleNode = SmartML.GetNode(song, "style")
 		      If StyleNode <> Nil Then StyleNode = StyleNode.Parent
 		      SongML.ToSetML song, StyleNode
+		      
 		    Next i
 		    
 		  End If
@@ -12174,6 +12179,7 @@ End
 		  Dim nodes() As XmlDocument
 		  Dim nodesSub() As XmlDocument
 		  Dim d As New Date
+		  Dim index As Integer
 		  
 		  'sanity check
 		  If song = Nil Then
@@ -12208,15 +12214,16 @@ End
 		      
 		      
 		      ActLog.Append(New LogEntry(Globals.SongActivityLog))
-		      ActLog(i+1).Title = SmartML.GetValue(sDoc.DocumentElement, "title", True)
-		      ActLog(i+1).Author = SmartML.GetValue(sDoc.DocumentElement, "author", True)
-		      ActLog(i+1).CCLISongNumber = edt_song_ccli.Text
-		      ActLog(i+1).SongFileName =  f.Parent.Name + "\" + f.Name
-		      ActLog(i+1).DateAndTime = d
-		      ActLog(i+1).HasChords = ActLog(1).CheckLyricsForChords(edf_song_lyrics.Text)
-		      ActLog(i+1).Presented = True
-		      ActLog(i+1).SetItemNumber = i+1 'Assign an  index to this song
-		      ActLog(i+1).Displayed = false 'Set this to true if user displays this song
+		      index = Ubound(ActLog)
+		      ActLog(index).Title = SmartML.GetValue(sDoc.DocumentElement, "title", True)
+		      ActLog(index).Author = SmartML.GetValue(sDoc.DocumentElement, "author", True)
+		      ActLog(index).CCLISongNumber = edt_song_ccli.Text
+		      ActLog(index).SongFileName =  f.Parent.Name + "\" + f.Name
+		      ActLog(index).DateAndTime = d
+		      ActLog(index).HasChords = ActLog(index).CheckLyricsForChords(edf_song_lyrics.Text)
+		      ActLog(index).Presented = True
+		      ActLog(index).SetItemNumber = index 'Assign an  index to this song
+		      ActLog(index).Displayed = false 'Set this to true if user displays this song
 		      
 		    End If
 		    
@@ -12245,6 +12252,7 @@ End
 		  Dim nodes() As FolderItem
 		  Dim nodesSub() As FolderItem
 		  Dim d As New Date
+		  Dim index As Integer
 		  
 		  'sanity check
 		  If song = Nil Then
@@ -12278,15 +12286,16 @@ End
 		      
 		      
 		      ActLog.Append(New LogEntry(Globals.SongActivityLog))
-		      ActLog(i+1).Title = SmartML.GetValue(sDoc.DocumentElement, "title", True)
-		      ActLog(i+1).Author = SmartML.GetValue(sDoc.DocumentElement, "author", True)
-		      ActLog(i+1).CCLISongNumber = edt_song_ccli.Text
-		      ActLog(i+1).SongFileName =  f.Parent.Name + "\" + f.Name
-		      ActLog(i+1).DateAndTime = d
-		      ActLog(i+1).HasChords = ActLog(1).CheckLyricsForChords(edf_song_lyrics.Text)
-		      ActLog(i+1).Presented = True
-		      ActLog(i+1).SetItemNumber = i+1 'Assign an  index to this song
-		      ActLog(i+1).Displayed = false 'Set this to true if user displays this song
+		      index = Ubound(ActLog)
+		      ActLog(index).Title = SmartML.GetValue(sDoc.DocumentElement, "title", True)
+		      ActLog(index).Author = SmartML.GetValue(sDoc.DocumentElement, "author", True)
+		      ActLog(index).CCLISongNumber = edt_song_ccli.Text
+		      ActLog(index).SongFileName =  f.Parent.Name + "\" + f.Name
+		      ActLog(index).DateAndTime = d
+		      ActLog(index).HasChords = ActLog(1).CheckLyricsForChords(edf_song_lyrics.Text)
+		      ActLog(index).Presented = True
+		      ActLog(index).SetItemNumber = i+1 'Assign an  index to this song
+		      ActLog(index).Displayed = false 'Set this to true if user displays this song
 		      
 		    End If
 		    
