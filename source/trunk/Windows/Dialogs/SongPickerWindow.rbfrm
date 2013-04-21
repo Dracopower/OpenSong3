@@ -161,6 +161,7 @@ Begin Window SongPickerWindow
       AcceptTabs      =   False
       Alignment       =   0
       AutoDeactivate  =   True
+      AutomaticallyCheckSpelling=   True
       BackColor       =   16777215
       Bold            =   False
       Border          =   True
@@ -176,6 +177,8 @@ Begin Window SongPickerWindow
       Italic          =   False
       Left            =   228
       LimitText       =   0
+      LineHeight      =   0
+      LineSpacing     =   1
       LockBottom      =   False
       LockedInPosition=   False
       LockLeft        =   True
@@ -329,6 +332,7 @@ Begin Window SongPickerWindow
       AcceptTabs      =   False
       Alignment       =   0
       AutoDeactivate  =   True
+      AutomaticallyCheckSpelling=   True
       BackColor       =   16777215
       Bold            =   False
       Border          =   True
@@ -344,6 +348,8 @@ Begin Window SongPickerWindow
       Italic          =   False
       Left            =   12
       LimitText       =   0
+      LineHeight      =   0
+      LineSpacing     =   1
       LockBottom      =   True
       LockedInPosition=   False
       LockLeft        =   True
@@ -408,6 +414,7 @@ Begin Window SongPickerWindow
       AcceptTabs      =   False
       Alignment       =   0
       AutoDeactivate  =   True
+      AutomaticallyCheckSpelling=   False
       BackColor       =   16777215
       Bold            =   False
       Border          =   True
@@ -428,7 +435,7 @@ Begin Window SongPickerWindow
       LockLeft        =   True
       LockRight       =   True
       LockTop         =   False
-      Mask            =   "CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC"
+      Mask            =   "CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC"
       Password        =   False
       ReadOnly        =   False
       Scope           =   0
@@ -484,6 +491,7 @@ Begin Window SongPickerWindow
       AcceptTabs      =   False
       Alignment       =   0
       AutoDeactivate  =   True
+      AutomaticallyCheckSpelling=   False
       BackColor       =   16777215
       Bold            =   False
       Border          =   True
@@ -1046,15 +1054,15 @@ End
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Function Popup(ByRef presentation As String, ShowPresentaion As Boolean = True) As FolderItem
-		  '++JRC 
+		Function Popup(ByRef presentation As String, ShowPresentationOrder As Boolean = True) As FolderItem
+		  '++JRC
 		  Globals.Status_SongPickerOpen = True
 		  
-		  If NOT ShowPresentaion Then
-		    lbl_presentation.Visible = False
-		    edt_order.Visible = False
-		  End If
+		  lbl_presentation.Enabled = ShowPresentationOrder
+		  edt_order.Enabled = ShowPresentationOrder
+		  edt_order.ReadOnly = Not ShowPresentationOrder
 		  '--
+		  
 		  PresentationOrder = ""
 		  ShowModalWithin(MainWindow)
 		  presentation = PresentationOrder

@@ -101,6 +101,9 @@
         <flats caption="Mollen"/>
       </using>
     </transpose>
+    <linked caption="Gekoppelde liederen">Gekoppelde liederen worden automatisch toegevoegd aan de presentatie wanneer dit lied wordt toegevoegd.</linked>
+    <add_link caption="Toevoegen">Voegt een lied toe aan de lijst met gekoppelde liederen.</add_link>
+    <remove_link caption="Verwijderen">Verwijdert een lied van de lijst met gekoppelde liederen.</remove_link>
   </general_song_editor>
 
   <advanced_song_editor caption="Uitgebreid">Uitgebreid wijzigen, thema, capo, maat, stijl, etc.
@@ -324,6 +327,9 @@
       <user1 caption="link(advanced_song_editor/user1/@caption)"/>
       <user2 caption="link(advanced_song_editor/user2/@caption)"/>
       <user3 caption="link(advanced_song_editor/user3/@caption)"/>
+      <chord caption="Chord"/>
+      <key caption="Key"/>
+      <form caption="Vorm"/>
     </fields>
   </song_search>
 
@@ -398,6 +404,9 @@
       <version_check caption="Controleer op nieuwere versies bij het opstarten."/>
       <language caption="Taal"/>
     </general>
+    <linked caption="Gekoppelde liederen">
+      <prompt caption="Bevestig het toevoegen van gekoppelde liederen"/>
+    </linked>
     <proxy caption="Proxy">
       <host caption="Host"/>
       <port caption="Poort"/>
@@ -873,6 +882,9 @@ Als het Presentatie veld leeg is, ordend de Presentatie de dia's gebaseerd op de
      <altsharpchords>,B#,C#,D,D#,E,E#,F#,G,G#,A,A#,B</altsharpchords>
      <flatchords>,C,Db,D,Eb,E,F,Gb,G,Ab,A,Bb,B</flatchords>
      <altflatchords>,C,Db,D,Eb,Fb,F,Gb,G,Ab,A,Bb,Cb</altflatchords>
+     <chordkeys>Any,A,A#,Ab,B,B#,Bb,C,C#,Cb,D,D#,Db,E,E#,Eb,F,F#,Fb,G,G#,Gb</chordkeys>
+     <chordforms>Any,,m,2,M7,m7,7,dim7,dim,+,sus,sus2,6,6/9,M9,add9,7b5,7#5,9,7b9,7#9,13th,m7b5,m7#5,m7b9,11</chordforms>
+     <formsdescriptive>Any,Major,Minor(m),2nd(2),Major 7th(M7),Minor 7th(m7),Dominant 7th(7),Diminished 7th(dim7),Diminished(dim),Augmented(+),Suspended(sus),Suspended 2nd(sus2),Sixth(6),Six Nine(6/9),Major 9th(M9),Add9(add9),Seven Flat Five(7b5),Seven Sharp Five(7#5),9th(9),Seven Flat Nine(7b9),Seven Sharp Nine(7#9),13th(13),Minor 7th Flat Five(m7b5),Minor 7th Sharp Five(m7#5),Minor 7th Flat Nine(m7b9),11th(11)</formsdescriptive>
   </songml>
   
   <smartml>
@@ -950,6 +962,7 @@ Als het Presentatie veld leeg is, ordend de Presentatie de dia's gebaseerd op de
     <no_selection>U heeft geen lied geselecteerd.</no_selection>
     <folder caption="Kies map"/>
     <preview caption="Lied voorbeeldweergave"/>
+    <text caption="Zoektekst gevonden in:"/>
     <lookup caption="Snel zoeken"/>
     <songs head1="Lied naam" head2="Map"/>
     <presentation caption="link(slide_editor/presentation/@caption)"/>
@@ -1238,6 +1251,24 @@ Klik op de dia om de stijl te wijzigen.</body>
     <exit_program caption="Programma afsluiten"/>
     <export_to caption="Selecteer de map waar de export van het logboek moet worden geplaatst."/>
     <style_file caption="Selecteer een opmaak definitie (XSL)"/>
+    <title caption="Titel"/>  
+    <author caption="Auteur"/>
+    <copyright caption="Copyright"/>  
+    <ccli caption="CCLI #"/>  
+    <presentation caption="Presentatie"/>
+    <lyrics caption="Noten/Muziek"/>  
+    <theme caption="Thema"/>
+    <capo caption="Capo"/>
+    <chord caption="Akkoorden"/>
+    <time_sig caption="Maat"/>
+    <tempo caption="Tempo"/>  
+    <key caption="Key"/>
+    <aka caption="Alt"/>  
+    <key_line caption="Key Line"/>
+    <user1 caption="Vrij definiëerbaar veld "/>  
+    <user2 caption="Vrij definiëerbaar veld 2"/>
+    <user3 caption="Vrij definiëerbaar veld 3"/>  
+    <hymn_number caption="Lied #"/>
   </shared>
 
   <questions>
@@ -1264,6 +1295,7 @@ Klik op de dia om de stijl te wijzigen.</body>
     <no_sets_folder caption="De map met projecten kan niet gevonden worden, moet deze map worden gemaakt?"/>
     <no_folder caption="De map '%1' kan niet gevonden worden, moet deze map worden gemaakt?"/>
     <destination_exists caption="Het bestand bestaat al in de doelmap. Moet het bestand worden hernoemd?"/>
+    <linked_songs caption="Het geselecteede lied heeft een of meer gekoppelde liederen, moeten die ook worden toegevoegd?"/>
   </questions>
 
   <about>
@@ -1366,6 +1398,11 @@ De logging van lied gebruik is uitgeschakeld.</activity_disabled>
       <load_failed>The presentatie '%1' kon niet worden geopend.</load_failed>
     </presentations>
 	<videolan_app_missing>De videolan toepassing is niet correct ingesteld. Geef het pad naar de videolan client op in het scherm Algemene instellingen op de tab Bestandslocaties.</videolan_app_missing>
+    <linked_song>
+       <current>Het gekozen lied is gelijk aan het huidige lied.</current>
+       <exists>Het gekozen lied staat al in de lijst.</exists>
+       <load_error>Er is een fout opgetreden bij het laden van lied: %1</load_error>
+    </linked_song>
   </errors>
 
   <xml_errors>

@@ -1,6 +1,11 @@
+general_settings/linked
+general_song_editor/linked, add_link, remove_link
 shared/* (added several)
-song_lookup/header (modified)
+song_search/header (modified)
+song_search/text
 song_lookup/text
+questions/linked_songs
+errors/linked_song
 advanced_song_editor/fit_to_screen
 advanced_song_editor/fit_to_body
 advanced_song_editor/keepaspect
