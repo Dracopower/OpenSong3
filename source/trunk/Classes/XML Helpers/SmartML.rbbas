@@ -143,12 +143,16 @@ Protected Module SmartML
 		Protected Function GetValueB(xnode As XmlNode, childPath As String, create As Boolean = True, default As Boolean = False) As Boolean
 		  Dim s As String
 		  s = GetValue(xnode, childPath, create)
-		  If create And Len(s) = 0 Then
-		    SetValueB(xnode, childPath, default)
+		  If Len(s) = 0 Then
+		    If create Then
+		      SetValueB(xnode, childPath, default)
+		    End If
 		    Return default
+		  ElseIf Lowercase(s) = "true" Or s = "1" Then
+		    Return True
+		  Else
+		    Return False
 		  End If
-		  If Lowercase(s) = "true" Then Return True
-		  Return False
 		End Function
 	#tag EndMethod
 

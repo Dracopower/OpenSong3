@@ -104,7 +104,7 @@ Begin Window MainSettingsWindow
       Panels          =   ""
       Scope           =   0
       SmallTabs       =   ""
-      TabDefinition   =   "Basic configuration\rFile locations\rSpecial\rAppearance"
+      TabDefinition   =   "Basic configuration\rFile locations\rImage handling\rSystem\rAppearance"
       TabIndex        =   2
       TabPanelIndex   =   0
       TabStop         =   True
@@ -113,7 +113,7 @@ Begin Window MainSettingsWindow
       TextUnit        =   0
       Top             =   7
       Underline       =   ""
-      Value           =   0
+      Value           =   2
       Visible         =   True
       Width           =   579
       Begin GroupBox grp_settings_general
@@ -180,6 +180,7 @@ Begin Window MainSettingsWindow
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
+            AutomaticallyCheckSpelling=   False
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -380,6 +381,7 @@ Begin Window MainSettingsWindow
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
+            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -395,6 +397,8 @@ Begin Window MainSettingsWindow
             Italic          =   False
             Left            =   330
             LimitText       =   0
+            LineHeight      =   0
+            LineSpacing     =   1
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   False
@@ -459,6 +463,7 @@ Begin Window MainSettingsWindow
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
+            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -474,6 +479,8 @@ Begin Window MainSettingsWindow
             Italic          =   False
             Left            =   330
             LimitText       =   0
+            LineHeight      =   0
+            LineSpacing     =   1
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   False
@@ -538,6 +545,7 @@ Begin Window MainSettingsWindow
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
+            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -553,6 +561,8 @@ Begin Window MainSettingsWindow
             Italic          =   False
             Left            =   330
             LimitText       =   0
+            LineHeight      =   0
+            LineSpacing     =   1
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   False
@@ -714,7 +724,7 @@ Begin Window MainSettingsWindow
          LockTop         =   ""
          Scope           =   0
          TabIndex        =   4
-         TabPanelIndex   =   3
+         TabPanelIndex   =   4
          TextFont        =   "Arial"
          TextSize        =   11
          TextUnit        =   0
@@ -743,7 +753,7 @@ Begin Window MainSettingsWindow
             Scope           =   0
             Selectable      =   False
             TabIndex        =   0
-            TabPanelIndex   =   3
+            TabPanelIndex   =   4
             Text            =   "Log level (0-10)"
             TextAlign       =   0
             TextColor       =   0
@@ -777,7 +787,7 @@ Begin Window MainSettingsWindow
             Scope           =   0
             State           =   0
             TabIndex        =   1
-            TabPanelIndex   =   3
+            TabPanelIndex   =   4
             TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   10
@@ -809,7 +819,7 @@ Begin Window MainSettingsWindow
             LockTop         =   ""
             Scope           =   0
             TabIndex        =   2
-            TabPanelIndex   =   3
+            TabPanelIndex   =   4
             TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   10
@@ -840,7 +850,7 @@ Begin Window MainSettingsWindow
             Scope           =   0
             State           =   0
             TabIndex        =   3
-            TabPanelIndex   =   3
+            TabPanelIndex   =   4
             TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   10
@@ -850,133 +860,6 @@ Begin Window MainSettingsWindow
             Value           =   False
             Visible         =   True
             Width           =   206
-         End
-      End
-      Begin GroupBox grp_settings_imagequality
-         AutoDeactivate  =   True
-         Bold            =   ""
-         Caption         =   "Set Image Quality"
-         Enabled         =   True
-         Height          =   373
-         HelpTag         =   ""
-         Index           =   -2147483648
-         InitialParent   =   "tab_general_general"
-         Italic          =   ""
-         Left            =   315
-         LockBottom      =   ""
-         LockedInPosition=   False
-         LockLeft        =   ""
-         LockRight       =   ""
-         LockTop         =   ""
-         Scope           =   0
-         TabIndex        =   6
-         TabPanelIndex   =   3
-         TextFont        =   "Arial"
-         TextSize        =   11
-         TextUnit        =   0
-         Top             =   44
-         Underline       =   ""
-         Visible         =   True
-         Width           =   250
-         Begin Label txt_imagequality_note
-            AutoDeactivate  =   True
-            Bold            =   ""
-            DataField       =   ""
-            DataSource      =   ""
-            Enabled         =   True
-            Height          =   249
-            HelpTag         =   ""
-            Index           =   -2147483648
-            InitialParent   =   "grp_settings_imagequality"
-            Italic          =   ""
-            Left            =   330
-            LockBottom      =   ""
-            LockedInPosition=   False
-            LockLeft        =   ""
-            LockRight       =   ""
-            LockTop         =   ""
-            Multiline       =   True
-            Scope           =   0
-            Selectable      =   False
-            TabIndex        =   2
-            TabPanelIndex   =   3
-            Text            =   "OpenSong tries to store the images that are used in a set in JPEG format. The items below control the quality and behaviour of image storage. The quality slider below will be disabled if QuickTime is not installed as OpenSong depends on that for storing JPEG images in user selectable quality."
-            TextAlign       =   0
-            TextColor       =   0
-            TextFont        =   "Arial"
-            TextSize        =   10
-            TextUnit        =   0
-            Top             =   65
-            Transparent     =   False
-            Underline       =   ""
-            Visible         =   True
-            Width           =   220
-         End
-         Begin CheckBox chk_imagequality_extern
-            AutoDeactivate  =   True
-            Bold            =   ""
-            Caption         =   "Do not include images from backgrounds"
-            DataField       =   ""
-            DataSource      =   ""
-            Enabled         =   True
-            Height          =   20
-            HelpTag         =   ""
-            Index           =   -2147483648
-            InitialParent   =   "grp_settings_imagequality"
-            Italic          =   ""
-            Left            =   330
-            LockBottom      =   ""
-            LockedInPosition=   False
-            LockLeft        =   ""
-            LockRight       =   ""
-            LockTop         =   ""
-            Scope           =   0
-            State           =   0
-            TabIndex        =   3
-            TabPanelIndex   =   3
-            TabStop         =   True
-            TextFont        =   "Arial"
-            TextSize        =   10
-            TextUnit        =   0
-            Top             =   380
-            Underline       =   ""
-            Value           =   False
-            Visible         =   True
-            Width           =   226
-         End
-         Begin Label lbl_imagequality_compression
-            AutoDeactivate  =   True
-            Bold            =   ""
-            DataField       =   ""
-            DataSource      =   ""
-            Enabled         =   True
-            Height          =   20
-            HelpTag         =   ""
-            Index           =   -2147483648
-            InitialParent   =   "grp_settings_imagequality"
-            Italic          =   ""
-            Left            =   330
-            LockBottom      =   ""
-            LockedInPosition=   False
-            LockLeft        =   ""
-            LockRight       =   ""
-            LockTop         =   ""
-            Multiline       =   ""
-            Scope           =   0
-            Selectable      =   False
-            TabIndex        =   4
-            TabPanelIndex   =   3
-            Text            =   "Image compression:"
-            TextAlign       =   0
-            TextColor       =   0
-            TextFont        =   "Arial"
-            TextSize        =   10
-            TextUnit        =   0
-            Top             =   326
-            Transparent     =   False
-            Underline       =   ""
-            Visible         =   True
-            Width           =   226
          End
       End
       Begin GroupBox grp_settings_proxy
@@ -989,7 +872,7 @@ Begin Window MainSettingsWindow
          Index           =   -2147483648
          InitialParent   =   "tab_general_general"
          Italic          =   False
-         Left            =   35
+         Left            =   315
          LockBottom      =   False
          LockedInPosition=   False
          LockLeft        =   False
@@ -997,11 +880,11 @@ Begin Window MainSettingsWindow
          LockTop         =   False
          Scope           =   0
          TabIndex        =   7
-         TabPanelIndex   =   3
+         TabPanelIndex   =   4
          TextFont        =   "Arial"
          TextSize        =   11
          TextUnit        =   0
-         Top             =   244
+         Top             =   44
          Underline       =   False
          Visible         =   True
          Width           =   250
@@ -1016,7 +899,7 @@ Begin Window MainSettingsWindow
             Index           =   -2147483648
             InitialParent   =   "grp_settings_proxy"
             Italic          =   False
-            Left            =   50
+            Left            =   330
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   False
@@ -1026,14 +909,14 @@ Begin Window MainSettingsWindow
             Scope           =   0
             Selectable      =   False
             TabIndex        =   0
-            TabPanelIndex   =   3
+            TabPanelIndex   =   4
             Text            =   "Server:"
             TextAlign       =   0
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
             TextUnit        =   0
-            Top             =   265
+            Top             =   65
             Transparent     =   False
             Underline       =   False
             Visible         =   True
@@ -1050,7 +933,7 @@ Begin Window MainSettingsWindow
             Index           =   -2147483648
             InitialParent   =   "grp_settings_proxy"
             Italic          =   False
-            Left            =   205
+            Left            =   485
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   False
@@ -1060,14 +943,14 @@ Begin Window MainSettingsWindow
             Scope           =   0
             Selectable      =   False
             TabIndex        =   1
-            TabPanelIndex   =   3
+            TabPanelIndex   =   4
             Text            =   "Port:"
             TextAlign       =   0
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
             TextUnit        =   0
-            Top             =   265
+            Top             =   65
             Transparent     =   False
             Underline       =   False
             Visible         =   True
@@ -1077,6 +960,7 @@ Begin Window MainSettingsWindow
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
+            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -1090,8 +974,10 @@ Begin Window MainSettingsWindow
             Index           =   -2147483648
             InitialParent   =   "grp_settings_proxy"
             Italic          =   False
-            Left            =   49
+            Left            =   329
             LimitText       =   0
+            LineHeight      =   0
+            LineSpacing     =   1
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   False
@@ -1105,14 +991,14 @@ Begin Window MainSettingsWindow
             ScrollbarVertical=   True
             Styled          =   False
             TabIndex        =   2
-            TabPanelIndex   =   3
+            TabPanelIndex   =   4
             TabStop         =   True
             Text            =   ""
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
             TextUnit        =   0
-            Top             =   280
+            Top             =   80
             Underline       =   False
             UseFocusRing    =   True
             Visible         =   True
@@ -1122,6 +1008,7 @@ Begin Window MainSettingsWindow
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
+            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -1135,8 +1022,10 @@ Begin Window MainSettingsWindow
             Index           =   -2147483648
             InitialParent   =   "grp_settings_proxy"
             Italic          =   False
-            Left            =   205
+            Left            =   485
             LimitText       =   0
+            LineHeight      =   0
+            LineSpacing     =   1
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   False
@@ -1150,14 +1039,14 @@ Begin Window MainSettingsWindow
             ScrollbarVertical=   True
             Styled          =   False
             TabIndex        =   3
-            TabPanelIndex   =   3
+            TabPanelIndex   =   4
             TabStop         =   True
             Text            =   ""
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
             TextUnit        =   0
-            Top             =   280
+            Top             =   80
             Underline       =   False
             UseFocusRing    =   True
             Visible         =   True
@@ -1182,7 +1071,7 @@ Begin Window MainSettingsWindow
          LockTop         =   ""
          Scope           =   0
          TabIndex        =   8
-         TabPanelIndex   =   3
+         TabPanelIndex   =   4
          TextFont        =   "Arial"
          TextSize        =   11
          TextUnit        =   0
@@ -1211,7 +1100,7 @@ Begin Window MainSettingsWindow
             Scope           =   0
             State           =   0
             TabIndex        =   0
-            TabPanelIndex   =   3
+            TabPanelIndex   =   4
             TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   10
@@ -1243,7 +1132,7 @@ Begin Window MainSettingsWindow
             Scope           =   0
             State           =   0
             TabIndex        =   1
-            TabPanelIndex   =   3
+            TabPanelIndex   =   4
             TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   10
@@ -1535,6 +1424,7 @@ Begin Window MainSettingsWindow
             AcceptTabs      =   ""
             Alignment       =   0
             AutoDeactivate  =   True
+            AutomaticallyCheckSpelling=   False
             BackColor       =   &hFFFFFF
             Bold            =   ""
             Border          =   True
@@ -1673,6 +1563,7 @@ Begin Window MainSettingsWindow
             AcceptTabs      =   ""
             Alignment       =   0
             AutoDeactivate  =   True
+            AutomaticallyCheckSpelling=   False
             BackColor       =   &hFFFFFF
             Bold            =   ""
             Border          =   True
@@ -1730,7 +1621,7 @@ Begin Window MainSettingsWindow
          LockTop         =   False
          Scope           =   0
          TabIndex        =   0
-         TabPanelIndex   =   4
+         TabPanelIndex   =   5
          TextFont        =   "Arial"
          TextSize        =   11
          TextUnit        =   0
@@ -1759,7 +1650,7 @@ Begin Window MainSettingsWindow
             Scope           =   0
             Selectable      =   False
             TabIndex        =   0
-            TabPanelIndex   =   4
+            TabPanelIndex   =   5
             Text            =   "Headings:"
             TextAlign       =   0
             TextColor       =   0
@@ -1793,7 +1684,7 @@ Begin Window MainSettingsWindow
             Scope           =   0
             Selectable      =   False
             TabIndex        =   1
-            TabPanelIndex   =   4
+            TabPanelIndex   =   5
             Text            =   "Labels:"
             TextAlign       =   0
             TextColor       =   0
@@ -1827,7 +1718,7 @@ Begin Window MainSettingsWindow
             Scope           =   0
             Selectable      =   False
             TabIndex        =   2
-            TabPanelIndex   =   4
+            TabPanelIndex   =   5
             Text            =   "Text Fields:"
             TextAlign       =   0
             TextColor       =   0
@@ -1861,7 +1752,7 @@ Begin Window MainSettingsWindow
             Scope           =   0
             Selectable      =   False
             TabIndex        =   3
-            TabPanelIndex   =   4
+            TabPanelIndex   =   5
             Text            =   "Fixed-width Text:"
             TextAlign       =   0
             TextColor       =   0
@@ -1896,7 +1787,7 @@ Begin Window MainSettingsWindow
             LockTop         =   False
             Scope           =   0
             TabIndex        =   4
-            TabPanelIndex   =   4
+            TabPanelIndex   =   5
             TabStop         =   True
             Top             =   77
             UseFocusRing    =   True
@@ -1924,7 +1815,7 @@ Begin Window MainSettingsWindow
             Scope           =   0
             Selectable      =   False
             TabIndex        =   5
-            TabPanelIndex   =   4
+            TabPanelIndex   =   5
             Text            =   "Buttons:"
             TextAlign       =   0
             TextColor       =   0
@@ -1959,7 +1850,7 @@ Begin Window MainSettingsWindow
             LockTop         =   False
             Scope           =   0
             TabIndex        =   6
-            TabPanelIndex   =   4
+            TabPanelIndex   =   5
             TabStop         =   True
             Top             =   127
             UseFocusRing    =   True
@@ -1987,7 +1878,7 @@ Begin Window MainSettingsWindow
             Scope           =   0
             Selectable      =   False
             TabIndex        =   7
-            TabPanelIndex   =   4
+            TabPanelIndex   =   5
             Text            =   "Large Headings:"
             TextAlign       =   0
             TextColor       =   0
@@ -2022,7 +1913,7 @@ Begin Window MainSettingsWindow
             LockTop         =   False
             Scope           =   0
             TabIndex        =   8
-            TabPanelIndex   =   4
+            TabPanelIndex   =   5
             TabStop         =   True
             Top             =   177
             UseFocusRing    =   True
@@ -2050,7 +1941,7 @@ Begin Window MainSettingsWindow
             Scope           =   0
             State           =   0
             TabIndex        =   9
-            TabPanelIndex   =   4
+            TabPanelIndex   =   5
             TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   10
@@ -2083,7 +1974,7 @@ Begin Window MainSettingsWindow
             LockTop         =   False
             Scope           =   0
             TabIndex        =   10
-            TabPanelIndex   =   4
+            TabPanelIndex   =   5
             TabStop         =   True
             Top             =   227
             UseFocusRing    =   True
@@ -2112,7 +2003,7 @@ Begin Window MainSettingsWindow
             LockTop         =   False
             Scope           =   0
             TabIndex        =   11
-            TabPanelIndex   =   4
+            TabPanelIndex   =   5
             TabStop         =   True
             Top             =   277
             UseFocusRing    =   True
@@ -2141,44 +2032,13 @@ Begin Window MainSettingsWindow
             LockTop         =   False
             Scope           =   0
             TabIndex        =   12
-            TabPanelIndex   =   4
+            TabPanelIndex   =   5
             TabStop         =   True
             Top             =   327
             UseFocusRing    =   True
             Visible         =   True
             Width           =   220
          End
-      End
-      Begin PopupMenu pop_imagequality_compression
-         AutoDeactivate  =   True
-         Bold            =   ""
-         DataField       =   ""
-         DataSource      =   ""
-         Enabled         =   True
-         Height          =   20
-         HelpTag         =   ""
-         Index           =   -2147483648
-         InitialParent   =   "tab_general_general"
-         InitialValue    =   "Full, minimum quality\r\nHigh, low quality\r\nMedium, normal quality\r\nLittle, high quality\r\nLow, maximum quality\r\nNone, lossless"
-         Italic          =   ""
-         Left            =   330
-         ListIndex       =   0
-         LockBottom      =   ""
-         LockedInPosition=   False
-         LockLeft        =   ""
-         LockRight       =   ""
-         LockTop         =   ""
-         Scope           =   0
-         TabIndex        =   9
-         TabPanelIndex   =   3
-         TabStop         =   True
-         TextFont        =   "Arial"
-         TextSize        =   10
-         TextUnit        =   0
-         Top             =   348
-         Underline       =   ""
-         Visible         =   True
-         Width           =   220
       End
       Begin GroupBox grp_settings_slidetype_coloring
          AutoDeactivate  =   True
@@ -2198,7 +2058,7 @@ Begin Window MainSettingsWindow
          LockTop         =   True
          Scope           =   0
          TabIndex        =   1
-         TabPanelIndex   =   4
+         TabPanelIndex   =   5
          TextFont        =   "Arial"
          TextSize        =   11
          TextUnit        =   0
@@ -2227,7 +2087,7 @@ Begin Window MainSettingsWindow
             Scope           =   0
             State           =   0
             TabIndex        =   0
-            TabPanelIndex   =   4
+            TabPanelIndex   =   5
             TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   11
@@ -2260,7 +2120,7 @@ Begin Window MainSettingsWindow
             MyColor         =   &h000000
             Scope           =   0
             TabIndex        =   1
-            TabPanelIndex   =   4
+            TabPanelIndex   =   5
             TabStop         =   True
             Top             =   85
             UseFocusRing    =   True
@@ -2288,7 +2148,7 @@ Begin Window MainSettingsWindow
             Scope           =   0
             Selectable      =   False
             TabIndex        =   2
-            TabPanelIndex   =   4
+            TabPanelIndex   =   5
             Text            =   "Song, verse"
             TextAlign       =   0
             TextColor       =   &h000000
@@ -2322,7 +2182,7 @@ Begin Window MainSettingsWindow
             Scope           =   0
             Selectable      =   False
             TabIndex        =   3
-            TabPanelIndex   =   4
+            TabPanelIndex   =   5
             Text            =   "Song, bridge"
             TextAlign       =   0
             TextColor       =   &h000000
@@ -2357,7 +2217,7 @@ Begin Window MainSettingsWindow
             MyColor         =   &h000000
             Scope           =   0
             TabIndex        =   4
-            TabPanelIndex   =   4
+            TabPanelIndex   =   5
             TabStop         =   True
             Top             =   115
             UseFocusRing    =   True
@@ -2385,7 +2245,7 @@ Begin Window MainSettingsWindow
             Scope           =   0
             Selectable      =   False
             TabIndex        =   5
-            TabPanelIndex   =   4
+            TabPanelIndex   =   5
             Text            =   "Song, pre-chorus"
             TextAlign       =   0
             TextColor       =   &h000000
@@ -2420,7 +2280,7 @@ Begin Window MainSettingsWindow
             MyColor         =   &h000000
             Scope           =   0
             TabIndex        =   6
-            TabPanelIndex   =   4
+            TabPanelIndex   =   5
             TabStop         =   True
             Top             =   145
             UseFocusRing    =   True
@@ -2448,7 +2308,7 @@ Begin Window MainSettingsWindow
             Scope           =   0
             Selectable      =   False
             TabIndex        =   7
-            TabPanelIndex   =   4
+            TabPanelIndex   =   5
             Text            =   "Song, chorus"
             TextAlign       =   0
             TextColor       =   &h000000
@@ -2483,7 +2343,7 @@ Begin Window MainSettingsWindow
             MyColor         =   &h000000
             Scope           =   0
             TabIndex        =   8
-            TabPanelIndex   =   4
+            TabPanelIndex   =   5
             TabStop         =   True
             Top             =   175
             UseFocusRing    =   True
@@ -2511,7 +2371,7 @@ Begin Window MainSettingsWindow
             Scope           =   0
             Selectable      =   False
             TabIndex        =   9
-            TabPanelIndex   =   4
+            TabPanelIndex   =   5
             Text            =   "Song, tag"
             TextAlign       =   0
             TextColor       =   &h000000
@@ -2546,7 +2406,7 @@ Begin Window MainSettingsWindow
             MyColor         =   &h000000
             Scope           =   0
             TabIndex        =   10
-            TabPanelIndex   =   4
+            TabPanelIndex   =   5
             TabStop         =   True
             Top             =   205
             UseFocusRing    =   True
@@ -2574,7 +2434,7 @@ Begin Window MainSettingsWindow
             Scope           =   0
             Selectable      =   False
             TabIndex        =   11
-            TabPanelIndex   =   4
+            TabPanelIndex   =   5
             Text            =   "Scripture"
             TextAlign       =   0
             TextColor       =   &h000000
@@ -2609,7 +2469,7 @@ Begin Window MainSettingsWindow
             MyColor         =   &h000000
             Scope           =   0
             TabIndex        =   12
-            TabPanelIndex   =   4
+            TabPanelIndex   =   5
             TabStop         =   True
             Top             =   235
             UseFocusRing    =   True
@@ -2637,7 +2497,7 @@ Begin Window MainSettingsWindow
             Scope           =   0
             Selectable      =   False
             TabIndex        =   13
-            TabPanelIndex   =   4
+            TabPanelIndex   =   5
             Text            =   "Custom slide"
             TextAlign       =   0
             TextColor       =   &h000000
@@ -2672,7 +2532,7 @@ Begin Window MainSettingsWindow
             MyColor         =   &h000000
             Scope           =   0
             TabIndex        =   14
-            TabPanelIndex   =   4
+            TabPanelIndex   =   5
             TabStop         =   True
             Top             =   265
             UseFocusRing    =   True
@@ -2700,7 +2560,7 @@ Begin Window MainSettingsWindow
             Scope           =   0
             Selectable      =   False
             TabIndex        =   15
-            TabPanelIndex   =   4
+            TabPanelIndex   =   5
             Text            =   "Style change"
             TextAlign       =   0
             TextColor       =   &h000000
@@ -2735,7 +2595,7 @@ Begin Window MainSettingsWindow
             MyColor         =   &h000000
             Scope           =   0
             TabIndex        =   16
-            TabPanelIndex   =   4
+            TabPanelIndex   =   5
             TabStop         =   True
             Top             =   295
             UseFocusRing    =   True
@@ -2763,7 +2623,7 @@ Begin Window MainSettingsWindow
             Scope           =   0
             Selectable      =   False
             TabIndex        =   17
-            TabPanelIndex   =   4
+            TabPanelIndex   =   5
             Text            =   "Image"
             TextAlign       =   0
             TextColor       =   &h000000
@@ -2798,7 +2658,7 @@ Begin Window MainSettingsWindow
             MyColor         =   &h000000
             Scope           =   0
             TabIndex        =   18
-            TabPanelIndex   =   4
+            TabPanelIndex   =   5
             TabStop         =   True
             Top             =   325
             UseFocusRing    =   True
@@ -2826,7 +2686,7 @@ Begin Window MainSettingsWindow
             Scope           =   0
             Selectable      =   False
             TabIndex        =   19
-            TabPanelIndex   =   4
+            TabPanelIndex   =   5
             Text            =   "External application"
             TextAlign       =   0
             TextColor       =   &h000000
@@ -2861,7 +2721,7 @@ Begin Window MainSettingsWindow
             MyColor         =   &h000000
             Scope           =   0
             TabIndex        =   20
-            TabPanelIndex   =   4
+            TabPanelIndex   =   5
             TabStop         =   True
             Top             =   355
             UseFocusRing    =   True
@@ -2889,7 +2749,7 @@ Begin Window MainSettingsWindow
             Scope           =   0
             Selectable      =   False
             TabIndex        =   21
-            TabPanelIndex   =   4
+            TabPanelIndex   =   5
             Text            =   "Blank (inserted)"
             TextAlign       =   0
             TextColor       =   &h000000
@@ -2924,7 +2784,7 @@ Begin Window MainSettingsWindow
             MyColor         =   &h000000
             Scope           =   0
             TabIndex        =   22
-            TabPanelIndex   =   4
+            TabPanelIndex   =   5
             TabStop         =   True
             Top             =   385
             UseFocusRing    =   True
@@ -2937,12 +2797,12 @@ Begin Window MainSettingsWindow
          Bold            =   False
          Caption         =   "Remote Control"
          Enabled         =   True
-         Height          =   95
+         Height          =   103
          HelpTag         =   ""
          Index           =   -2147483648
          InitialParent   =   "tab_general_general"
          Italic          =   False
-         Left            =   35
+         Left            =   315
          LockBottom      =   False
          LockedInPosition=   False
          LockLeft        =   False
@@ -2950,11 +2810,11 @@ Begin Window MainSettingsWindow
          LockTop         =   False
          Scope           =   0
          TabIndex        =   10
-         TabPanelIndex   =   3
+         TabPanelIndex   =   4
          TextFont        =   "Arial"
          TextSize        =   11
          TextUnit        =   0
-         Top             =   322
+         Top             =   136
          Underline       =   False
          Visible         =   True
          Width           =   250
@@ -2969,7 +2829,7 @@ Begin Window MainSettingsWindow
             Index           =   -2147483648
             InitialParent   =   "grp_settings_rcserver"
             Italic          =   False
-            Left            =   50
+            Left            =   330
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   False
@@ -2979,14 +2839,14 @@ Begin Window MainSettingsWindow
             Scope           =   0
             Selectable      =   False
             TabIndex        =   0
-            TabPanelIndex   =   3
+            TabPanelIndex   =   4
             Text            =   "Authentication key:"
             TextAlign       =   0
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
             TextUnit        =   0
-            Top             =   367
+            Top             =   181
             Transparent     =   False
             Underline       =   False
             Visible         =   True
@@ -3003,7 +2863,7 @@ Begin Window MainSettingsWindow
             Index           =   -2147483648
             InitialParent   =   "grp_settings_rcserver"
             Italic          =   False
-            Left            =   205
+            Left            =   485
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   False
@@ -3013,14 +2873,14 @@ Begin Window MainSettingsWindow
             Scope           =   0
             Selectable      =   False
             TabIndex        =   1
-            TabPanelIndex   =   3
+            TabPanelIndex   =   4
             Text            =   "Port:"
             TextAlign       =   0
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
             TextUnit        =   0
-            Top             =   367
+            Top             =   181
             Transparent     =   False
             Underline       =   False
             Visible         =   True
@@ -3030,6 +2890,7 @@ Begin Window MainSettingsWindow
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
+            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -3043,8 +2904,10 @@ Begin Window MainSettingsWindow
             Index           =   -2147483648
             InitialParent   =   "grp_settings_rcserver"
             Italic          =   False
-            Left            =   49
+            Left            =   329
             LimitText       =   0
+            LineHeight      =   0
+            LineSpacing     =   1
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   False
@@ -3058,14 +2921,14 @@ Begin Window MainSettingsWindow
             ScrollbarVertical=   True
             Styled          =   False
             TabIndex        =   2
-            TabPanelIndex   =   3
+            TabPanelIndex   =   4
             TabStop         =   True
             Text            =   ""
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
             TextUnit        =   0
-            Top             =   384
+            Top             =   198
             Underline       =   False
             UseFocusRing    =   True
             Visible         =   True
@@ -3075,6 +2938,7 @@ Begin Window MainSettingsWindow
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
+            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -3088,8 +2952,10 @@ Begin Window MainSettingsWindow
             Index           =   -2147483648
             InitialParent   =   "grp_settings_rcserver"
             Italic          =   False
-            Left            =   205
+            Left            =   485
             LimitText       =   0
+            LineHeight      =   0
+            LineSpacing     =   1
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   False
@@ -3103,14 +2969,14 @@ Begin Window MainSettingsWindow
             ScrollbarVertical=   True
             Styled          =   False
             TabIndex        =   3
-            TabPanelIndex   =   3
+            TabPanelIndex   =   4
             TabStop         =   True
             Text            =   ""
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
             TextUnit        =   0
-            Top             =   383
+            Top             =   197
             Underline       =   False
             UseFocusRing    =   True
             Visible         =   True
@@ -3128,7 +2994,7 @@ Begin Window MainSettingsWindow
             Index           =   -2147483648
             InitialParent   =   "grp_settings_rcserver"
             Italic          =   ""
-            Left            =   49
+            Left            =   329
             LockBottom      =   ""
             LockedInPosition=   False
             LockLeft        =   True
@@ -3137,16 +3003,329 @@ Begin Window MainSettingsWindow
             Scope           =   0
             State           =   0
             TabIndex        =   4
+            TabPanelIndex   =   4
+            TabStop         =   True
+            TextFont        =   "Arial"
+            TextSize        =   10
+            TextUnit        =   0
+            Top             =   155
+            Underline       =   ""
+            Value           =   False
+            Visible         =   True
+            Width           =   206
+         End
+      End
+      Begin GroupBox grp_settings_imagequality
+         AutoDeactivate  =   True
+         Bold            =   ""
+         Caption         =   "Set Image Quality"
+         Enabled         =   True
+         Height          =   183
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "tab_general_general"
+         Italic          =   ""
+         Left            =   35
+         LockBottom      =   ""
+         LockedInPosition=   False
+         LockLeft        =   ""
+         LockRight       =   ""
+         LockTop         =   ""
+         Scope           =   0
+         TabIndex        =   0
+         TabPanelIndex   =   3
+         TextFont        =   "Arial"
+         TextSize        =   11
+         TextUnit        =   0
+         Top             =   234
+         Underline       =   ""
+         Visible         =   True
+         Width           =   530
+         Begin Label txt_imagequality_note
+            AutoDeactivate  =   True
+            Bold            =   ""
+            DataField       =   ""
+            DataSource      =   ""
+            Enabled         =   True
+            Height          =   91
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "grp_settings_imagequality"
+            Italic          =   ""
+            Left            =   50
+            LockBottom      =   ""
+            LockedInPosition=   False
+            LockLeft        =   ""
+            LockRight       =   ""
+            LockTop         =   ""
+            Multiline       =   True
+            Scope           =   0
+            Selectable      =   False
+            TabIndex        =   0
+            TabPanelIndex   =   3
+            Text            =   "OpenSong tries to store the images that are used in a set in JPEG format. The items below control the quality and behaviour of image storage. The quality slider below will be disabled if QuickTime is not installed as OpenSong depends on that for storing JPEG images in user selectable quality."
+            TextAlign       =   0
+            TextColor       =   0
+            TextFont        =   "Arial"
+            TextSize        =   10
+            TextUnit        =   0
+            Top             =   255
+            Transparent     =   False
+            Underline       =   ""
+            Visible         =   True
+            Width           =   497
+         End
+         Begin Label lbl_imagequality_compression
+            AutoDeactivate  =   True
+            Bold            =   ""
+            DataField       =   ""
+            DataSource      =   ""
+            Enabled         =   True
+            Height          =   20
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "grp_settings_imagequality"
+            Italic          =   ""
+            Left            =   50
+            LockBottom      =   ""
+            LockedInPosition=   False
+            LockLeft        =   ""
+            LockRight       =   ""
+            LockTop         =   ""
+            Multiline       =   ""
+            Scope           =   0
+            Selectable      =   False
+            TabIndex        =   2
+            TabPanelIndex   =   3
+            Text            =   "Image compression:"
+            TextAlign       =   0
+            TextColor       =   0
+            TextFont        =   "Arial"
+            TextSize        =   10
+            TextUnit        =   0
+            Top             =   358
+            Transparent     =   False
+            Underline       =   ""
+            Visible         =   True
+            Width           =   497
+         End
+         Begin PopupMenu pop_imagequality_compression
+            AutoDeactivate  =   True
+            Bold            =   ""
+            DataField       =   ""
+            DataSource      =   ""
+            Enabled         =   True
+            Height          =   20
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "grp_settings_imagequality"
+            InitialValue    =   "Full, minimum quality\r\nHigh, low quality\r\nMedium, normal quality\r\nLittle, high quality\r\nLow, maximum quality\r\nNone, lossless"
+            Italic          =   ""
+            Left            =   50
+            ListIndex       =   0
+            LockBottom      =   ""
+            LockedInPosition=   False
+            LockLeft        =   ""
+            LockRight       =   ""
+            LockTop         =   ""
+            Scope           =   0
+            TabIndex        =   3
             TabPanelIndex   =   3
             TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   10
             TextUnit        =   0
-            Top             =   341
+            Top             =   384
+            Underline       =   ""
+            Visible         =   True
+            Width           =   497
+         End
+      End
+      Begin GroupBox grp_settings_imagedefaults
+         AutoDeactivate  =   True
+         Bold            =   ""
+         Caption         =   "Image Processing Defaults"
+         Enabled         =   True
+         Height          =   178
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "tab_general_general"
+         Italic          =   ""
+         Left            =   35
+         LockBottom      =   ""
+         LockedInPosition=   False
+         LockLeft        =   True
+         LockRight       =   ""
+         LockTop         =   True
+         Scope           =   0
+         TabIndex        =   1
+         TabPanelIndex   =   3
+         TextFont        =   "Arial"
+         TextSize        =   11
+         TextUnit        =   0
+         Top             =   44
+         Underline       =   ""
+         Visible         =   True
+         Width           =   530
+         Begin CheckBox chk_imagedefaults_fit_to_screen
+            AutoDeactivate  =   True
+            Bold            =   ""
+            Caption         =   "Resize images to fit the screen"
+            DataField       =   ""
+            DataSource      =   ""
+            Enabled         =   True
+            Height          =   20
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "grp_settings_imagedefaults"
+            Italic          =   ""
+            Left            =   50
+            LockBottom      =   True
+            LockedInPosition=   False
+            LockLeft        =   False
+            LockRight       =   True
+            LockTop         =   False
+            Scope           =   0
+            State           =   0
+            TabIndex        =   1
+            TabPanelIndex   =   3
+            TabStop         =   True
+            TextFont        =   "Arial"
+            TextSize        =   10
+            TextUnit        =   0
+            Top             =   67
             Underline       =   ""
             Value           =   False
             Visible         =   True
-            Width           =   206
+            Width           =   497
+         End
+         Begin CheckBox chk_imagedefaults_fit_to_body
+            AutoDeactivate  =   True
+            Bold            =   ""
+            Caption         =   "Resize images to fit the body area"
+            DataField       =   ""
+            DataSource      =   ""
+            Enabled         =   True
+            Height          =   20
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "grp_settings_imagedefaults"
+            Italic          =   ""
+            Left            =   50
+            LockBottom      =   True
+            LockedInPosition=   False
+            LockLeft        =   False
+            LockRight       =   True
+            LockTop         =   False
+            Scope           =   0
+            State           =   0
+            TabIndex        =   2
+            TabPanelIndex   =   3
+            TabStop         =   True
+            TextFont        =   "Arial"
+            TextSize        =   10
+            TextUnit        =   0
+            Top             =   91
+            Underline       =   ""
+            Value           =   False
+            Visible         =   True
+            Width           =   497
+         End
+         Begin CheckBox chk_imagedefaults_keepaspect
+            AutoDeactivate  =   True
+            Bold            =   ""
+            Caption         =   "Keep aspect ratio when resizing images"
+            DataField       =   ""
+            DataSource      =   ""
+            Enabled         =   True
+            Height          =   20
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "grp_settings_imagedefaults"
+            Italic          =   ""
+            Left            =   50
+            LockBottom      =   True
+            LockedInPosition=   False
+            LockLeft        =   False
+            LockRight       =   True
+            LockTop         =   False
+            Scope           =   0
+            State           =   0
+            TabIndex        =   3
+            TabPanelIndex   =   3
+            TabStop         =   True
+            TextFont        =   "Arial"
+            TextSize        =   10
+            TextUnit        =   0
+            Top             =   115
+            Underline       =   ""
+            Value           =   False
+            Visible         =   True
+            Width           =   497
+         End
+         Begin CheckBox chk_imagedefaults_store_as_link
+            AutoDeactivate  =   True
+            Bold            =   ""
+            Caption         =   "Do not embed images from backgrounds, use a link"
+            DataField       =   ""
+            DataSource      =   ""
+            Enabled         =   True
+            Height          =   20
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "grp_settings_imagedefaults"
+            Italic          =   ""
+            Left            =   50
+            LockBottom      =   True
+            LockedInPosition=   False
+            LockLeft        =   False
+            LockRight       =   True
+            LockTop         =   False
+            Scope           =   0
+            State           =   0
+            TabIndex        =   4
+            TabPanelIndex   =   3
+            TabStop         =   True
+            TextFont        =   "Arial"
+            TextSize        =   10
+            TextUnit        =   0
+            Top             =   139
+            Underline       =   ""
+            Value           =   False
+            Visible         =   True
+            Width           =   497
+         End
+         Begin CheckBox chk_imagedefaults_background_as_text
+            AutoDeactivate  =   True
+            Bold            =   ""
+            Caption         =   "Show the background instead of the body text"
+            DataField       =   ""
+            DataSource      =   ""
+            Enabled         =   True
+            Height          =   20
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "grp_settings_imagedefaults"
+            Italic          =   ""
+            Left            =   50
+            LockBottom      =   True
+            LockedInPosition=   False
+            LockLeft        =   False
+            LockRight       =   True
+            LockTop         =   False
+            Scope           =   0
+            State           =   0
+            TabIndex        =   5
+            TabPanelIndex   =   3
+            TabStop         =   True
+            TextFont        =   "Arial"
+            TextSize        =   10
+            TextUnit        =   0
+            Top             =   163
+            Underline       =   ""
+            Value           =   False
+            Visible         =   True
+            Width           =   497
          End
       End
       Begin GroupBox grp_settings_linked
@@ -3228,9 +3407,11 @@ End
 		  chk_general_version_check.Value = SmartML.GetValueB(App.MyMainSettings.DocumentElement, "version/@check", False)
 		  edt_proxy_host.Text = SmartML.GetValue(App.MyMainSettings.DocumentElement, "proxy/@host")
 		  edt_proxy_port.Text = SmartML.GetValue(App.MyMainSettings.DocumentElement, "proxy/@port")
+		  
 		  '++JRC
 		  chk_linked_prompt.Value = SmartML.GetValueB(App.MyMainSettings.DocumentElement, "linked_songs/@prompt", False)
 		  '--
+		  
 		  chk_rcserver_enable.Value = SmartML.GetValueB(App.MyMainSettings.DocumentElement, "rcserver/@enable", False, False)
 		  edt_rcserver_key.Text = SmartML.GetValue(App.MyMainSettings.DocumentElement, "rcserver/key", False)
 		  edt_rcserver_port.Text = SmartML.GetValue(App.MyMainSettings.DocumentElement, "rcserver/@port", False)
@@ -3322,34 +3503,18 @@ End
 		  // Add FolderDB flag
 		  chk_documents_oldfolderdb.Value = App.MainPreferences.GetValueB(Prefs.kUseOldFolderDB)
 		  
-		  Dim QualityValue As Integer
-		  Dim QualitySetting As ImageQualityEnum
+		  chk_imagedefaults_fit_to_screen.Value = ImageDefaults.ResizeToScreenArea()
+		  chk_imagedefaults_fit_to_body.Value = ImageDefaults.ResizeToBodyArea()
+		  chk_imagedefaults_keepaspect.Value = ImageDefaults.KeepAspectRatio()
+		  chk_imagedefaults_store_as_link.Value = ImageDefaults.ExcludeBackgroundsImages()
+		  chk_imagedefaults_background_as_text.Value = ImageDefaults.UseBackgroundsAsText()
 		  
+		  pop_imagequality_compression.Enabled = True
 		  pop_imagequality_compression.DeleteAllRows
 		  For i = 0 To UBound(App.ImageQualityList)
 		    pop_imagequality_compression.AddRow App.ImageQualityList(i)
 		  Next i
-		  
-		  pop_imagequality_compression.Enabled = True
-		  QualityValue = SmartML.GetValueN(App.MyMainSettings.DocumentElement, "image_quality/@compression", False)
-		  QualitySetting = ImageQualityEnum(QualityValue)
-		  
-		  Select Case QualitySetting
-		  Case ImageQualityEnum.FullCompression
-		    pop_imagequality_compression.ListIndex = 0
-		  Case ImageQualityEnum.HighCompression
-		    pop_imagequality_compression.ListIndex = 1
-		  Case ImageQualityEnum.LittleCompression
-		    pop_imagequality_compression.ListIndex = 3
-		  Case ImageQualityEnum.LowCompression
-		    pop_imagequality_compression.ListIndex = 4
-		  Case ImageQualityEnum.NoCompression
-		    pop_imagequality_compression.ListIndex = 5
-		  Else
-		    pop_imagequality_compression.ListIndex = 2
-		  End Select
-		  
-		  chk_imagequality_extern.Value = SmartML.GetValueB(App.MyMainSettings.DocumentElement, "image_quality/@exclude_backgrounds", False)
+		  pop_imagequality_compression.ListIndex = Int32(ImageDefaults.ImageQuality())-1
 		  
 		  chk_slidetype_coloring.Value = App.SlideStyleColorEnabled()
 		  can_style_color_verse.SetColor App.SlideStyleColor("verse")
@@ -3647,8 +3812,12 @@ End
 		  SmartML.SetValueB Settings, "paint/@new", chk_general_newpaint.Value
 		  //--
 		  
-		  SmartML.SetValueN(App.MyMainSettings.DocumentElement, "image_quality/@compression", pop_imagequality_compression.ListIndex+1)
-		  SmartML.SetValueB(App.MyMainSettings.DocumentElement, "image_quality/@exclude_backgrounds", chk_imagequality_extern.Value)
+		  ImageDefaults.ResizeToScreenArea = chk_imagedefaults_fit_to_screen.Value
+		  ImageDefaults.ResizeToBodyArea = chk_imagedefaults_fit_to_body.Value
+		  ImageDefaults.KeepAspectRatio = chk_imagedefaults_keepaspect.Value
+		  ImageDefaults.ExcludeBackgroundsImages = chk_imagedefaults_store_as_link.Value
+		  ImageDefaults.UseBackgroundsAsText = chk_imagedefaults_background_as_text.Value
+		  ImageDefaults.ImageQuality = ImageDefaults.ImageQualityEnum(pop_imagequality_compression.ListIndex+1)
 		  
 		  SaveLogfileSettings
 		  App.MainPreferences.SetValueFI(Prefs.kPPTViewLocation, PPTViewLocation)
@@ -4041,5 +4210,35 @@ End
 		  end if
 		  c.close
 		End Function
+	#tag EndEvent
+#tag EndEvents
+#tag Events chk_imagedefaults_fit_to_screen
+	#tag Event
+		Sub Action()
+		  If Me.Value Then
+		    chk_imagedefaults_fit_to_body.Value = False
+		  End If
+		  
+		  If Not Me.Value And Not chk_imagedefaults_fit_to_body.Value Then
+		    chk_imagedefaults_keepaspect.Enabled = False
+		  Else
+		    chk_imagedefaults_keepaspect.Enabled = True
+		  End If
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events chk_imagedefaults_fit_to_body
+	#tag Event
+		Sub Action()
+		  If Me.Value Then
+		    chk_imagedefaults_fit_to_screen.Value = False
+		  End If
+		  
+		  If Not Me.Value And Not chk_imagedefaults_fit_to_screen.Value Then
+		    chk_imagedefaults_keepaspect.Enabled = False
+		  Else
+		    chk_imagedefaults_keepaspect.Enabled = True
+		  End If
+		End Sub
 	#tag EndEvent
 #tag EndEvents

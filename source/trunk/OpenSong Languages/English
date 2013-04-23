@@ -104,7 +104,6 @@
     <linked caption="Linked Songs">Linked songs will be automatically added to your presentation when you add this song.</linked>
     <add_link caption="Add">Adds song to the list.</add_link>
     <remove_link caption="Remove">Removes selected song from the list.</remove_link>
-
   </general_song_editor>
 
   <advanced_song_editor caption="Advanced">Accesses the current song's theme, capo, time signature, style, etc.
@@ -126,11 +125,11 @@
     <backgrounds caption="Verse specific backgrounds" head1="Verse" head2="Background image">Shows the optional verse specific song backgrounds.</backgrounds>
     <add_background caption="Add">Links an image to the selected verse.</add_background>
     <del_background caption="Remove">Removes the currently selected verse image.</del_background>
-    <fit_to_screen caption="link(image_slide/fit_to_screen/@caption)">link(image_slide/fit_to_screen)</fit_to_screen>
-    <fit_to_body caption="link(image_slide/fit_to_body/@caption)">link(image_slide/fit_to_body)</fit_to_body>
-    <keepaspect caption="link(image_slide/keepaspect/@caption)">link(image_slide/keepaspect)</keepaspect>
-    <store_as_link caption="Do not store the image in the song, use a link">Storing images in the song rapidly increases the size of it on disk and might degrade the quality of the image. Using a link avoids this. Images from the 'Backgrounds' folder are stored as relative link, which makes the switch to the presentation computer easier. Use with care if the presentation is created on a machine different from the presentation device!</store_as_link>
-    <background_as_text caption="Hide verse body text">Use the background image only and do not disaply the verse text. Usefull when the text is pre-rendered or when scores are displayed using the background image.</background_as_text>
+    <fit_to_screen caption="link(general_settings/imagedefaults/fit_to_screen/@caption)">link(general_settings/imagedefaults/fit_to_screen)</fit_to_screen>
+    <fit_to_body caption="link(general_settings/imagedefaults/fit_to_body/@caption)">link(general_settings/imagedefaults/fit_to_body)</fit_to_body>
+    <keepaspect caption="link(general_settings/imagedefaults/keepaspect/@caption)">link(general_settings/imagedefaults/keepaspect)</keepaspect>
+    <store_as_link caption="Do not store the image in the song, use a link">link(general_settings/imagedefaults/store_as_link)</store_as_link>
+    <background_as_text caption="link(general_settings/imagedefaults/background_as_text/@caption)">link(general_settings/imagedefaults/background_as_text)</background_as_text>
   </advanced_song_editor>
 
   <sets_mode caption="Set Mode">Use this mode to enter and edit your sets. Sets are used to project a series of songs, slides, or whatever.  If currently in song mode and you have unsaved changes, you will be prompted to save.
@@ -225,10 +224,10 @@
     <descriptions caption="Image description in subtitle">Add the description of the showing image to the subtitle.</descriptions>
     <name caption="link(slide_editor/name/@caption)">link(slide_editor/name)</name>
     <images caption="Images" head1="Preview" head2="Description">Contains the images that are shown in this slide. Hint: Drag one or more images to this list for easy adding.</images>
-    <fit_to_screen caption="Resize images to fit the screen">Images that are too large for the projector screen are resized to show the entire image. This also happens for images that are smaller than the screen size.</fit_to_screen>
-    <fit_to_body caption="Resize images to fit the body area">Images are made to always fit in the area that is bounded by the body style settings. This goes for both images that are larger and smaller than the body area.</fit_to_body>
-    <keepaspect caption="Keep aspect ratio when resizing images">In case of a resizing activity for either one of the above, the horizontal and vertical aspect will be maintained.</keepaspect>
-    <store_as_link caption="Do not store the image in the set, use a link">Storing images in the set rapidly increases the size of it on disk and might degrade the quality of the image. Using a link avoids this. Images from the 'Backgrounds' folder are stored as relative link, which makes the switch to the presentation computer easier. Use with care if the presentation is created on a machine different from the presentation device!</store_as_link>
+    <fit_to_screen caption="link(general_settings/imagedefaults/fit_to_screen/@caption)">link(general_settings/imagedefaults/fit_to_screen)</fit_to_screen>
+    <fit_to_body caption="link(general_settings/imagedefaults/fit_to_body/@caption)">link(general_settings/imagedefaults/fit_to_body)</fit_to_body>
+    <keepaspect caption="link(general_settings/imagedefaults/keepaspect/@caption)">link(general_settings/imagedefaults/keepaspect)</keepaspect>
+    <store_as_link caption="Do not store the image in the set, use a link">link(general_settings/imagedefaults/store_as_link)</store_as_link>
     <notes caption="link(slide_editor/notes/@caption)">link(slide_editor/notes)</notes>
     <action caption="Action" />
       <ins_image caption="Add">Adds an image to this slide to allow for a slideshow that shares a common title, subtitle, style, and/or auto-advance setting. Slides created this way can also be set to automatically loop.</ins_image>
@@ -400,7 +399,7 @@
   </main_menu>
 
   <general_settings title="General configuration">
-    <general caption="General" head1="Basic" head2="File locations" head3="System" head4="Appearance">
+    <general caption="General" head1="Basic" head2="File locations" head3="Image handling" head4="System" head5="Appearance">
       <ccli caption="Church CCLI License #"/>
       <version_check caption="Check for latest version at startup"/>
       <language caption="Language"/>
@@ -441,10 +440,16 @@
       <change caption="Change"/>
       <oldfolderdb caption="Use pre-V1.1 file cache"/>
     </documents_folder>
+    <imagedefaults caption="Image Processing Defaults">
+      <fit_to_screen caption="Resize images to fit the screen">Images that are too large for the projector screen are resized to show the entire image. This also happens for images that are smaller than the screen size.</fit_to_screen>
+      <fit_to_body caption="Resize images to fit the body area">Images are made to always fit in the area that is bounded by the body style settings. This goes for both images that are larger and smaller than the body area.</fit_to_body>
+      <keepaspect caption="Keep aspect ratio when resizing images">In case of a resizing activity for either one of the above, the horizontal and vertical aspect will be maintained.</keepaspect>
+      <store_as_link caption="Do not embed images from backgrounds, use a link">Storing images in the set or song rapidly increases the size of it on disk and might degrade the quality of the image. Using a link avoids this. Images from the 'Backgrounds' folder are stored as relative link, which makes the switch to the presentation computer easier. Use with care if the presentation is created on a machine different from the presentation device!</store_as_link>
+      <background_as_text caption="Show the background instead of the verse text">Use the background image only and do not disaply the verse text. Usefull when the text is pre-rendered or when scores are displayed using the background image.</background_as_text>
+    </imagedefaults>
     <imagequality caption="Set Image Quality">
       <note caption="OpenSong tries to store the images that are used in a set in JPEG format. The items below control the quality and behaviour of image storage. The quality slider below will be disabled if QuickTime is not installed as OpenSong depends on that for storing JPEG images in user selectable quality."/>
       <compression caption="Image compression" />
-      <extern caption="Do not include images from backgrounds." />
     </imagequality>
     <logging caption="Debug Log Settings">
       <append caption="Append to log file"/>

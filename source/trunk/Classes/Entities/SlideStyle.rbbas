@@ -593,7 +593,7 @@ Protected Class SlideStyle
 		  SmartML.SetValueN(CurrChild, "@strip_footer", StripFooter)
 		  SmartML.SetValueC(CurrChild, "@color", BGColor)
 		  SmartML.SetValueN(CurrChild, "@position", Position)
-		  If background.GetImageFilename().StartsWith(App.DocsFolder.Child("Backgrounds").AbsolutePath) And App.ExcludeBackgroundsImages() Then
+		  If background.GetImageFilename().StartsWith(App.DocsFolder.Child("Backgrounds").AbsolutePath) And ImageDefaults.ExcludeBackgroundsImages() Then
 		    SmartML.SetValue(CurrChild, "@filename", background.GetImageFilename().Mid(App.DocsFolder.Child("Backgrounds").AbsolutePath().Len()+1))
 		  Else
 		    SmartML.SetValue(root, thisNode, Background.GetImageAsString())
