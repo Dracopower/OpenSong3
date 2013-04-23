@@ -1887,7 +1887,7 @@ Begin Window MainWindow Implements ScriptureReceiver
       TabIndex        =   5
       TabPanelIndex   =   0
       Top             =   34
-      Value           =   1
+      Value           =   0
       Visible         =   True
       Width           =   591
       Begin Canvas cnv_editor_style_change
@@ -3861,7 +3861,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Multiline       =   True
             ReadOnly        =   False
             Scope           =   0
-            ScrollbarHorizontal=   ""
+            ScrollbarHorizontal=   True
             ScrollbarVertical=   True
             Styled          =   False
             TabIndex        =   14
