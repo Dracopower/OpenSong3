@@ -322,7 +322,7 @@ Protected Module FileUtils
 		  // Ed Palmer, November 2006
 		  //--
 		  
-		  #if TargetCarbon
+		  #if TargetMacOS
 		    Dim sysx As Integer
 		    Dim fp as FolderItem
 		    Dim ts as TextInputStream
@@ -331,7 +331,7 @@ Protected Module FileUtils
 		  
 		  If f.Visible Then
 		    
-		    #if TargetCarbon
+		    #if TargetMacOS
 		      If System.Gestalt("sysv", sysx) And sysx > &h1000 Then
 		        If Left(f.Name, 1) = "." Then Return False
 		        fp = f.Parent

@@ -680,7 +680,7 @@ Inherits Canvas
 		  doNotAttachEmbeddedControls = false
 		  if not minLimitPropSet then minLimit = 9999
 		  
-		  if targetCarbon then
+		  if TargetMacOS then
 		    backgroundDark = (window.frame = 9 and not parent isA tabPanel)   ' metal window but not inside tab panel
 		  else
 		    backgroundDark = true   ' PPC, Win32, & Linux windows are darker

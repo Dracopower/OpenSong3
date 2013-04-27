@@ -341,7 +341,7 @@ End
 		    styleFlags = SetWindowPos( self.Handle, HWND_TOP, 0, 0, 0, 0, _
 		    SWP_NOSIZE + SWP_NOMOVE + SWP_NOOWNERZORDER)
 		    
-		  #ElseIf TargetCarbon Then
+		  #ElseIf TargetMacOS Then
 		    
 		    Dim Status As Integer
 		    #if TargetMachO

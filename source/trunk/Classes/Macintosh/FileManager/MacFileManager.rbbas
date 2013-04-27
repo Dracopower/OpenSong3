@@ -2,7 +2,7 @@
 Protected Module MacFileManager
 	#tag Method, Flags = &h0
 		Function Iterate(Extends startPoint As FSRef, recurse As Boolean = False, displayPath As String = "") As Dictionary()
-		  #If Not TargetCarbon
+		  #If Not TargetMacOS
 		    Return Nil
 		  #endif
 		  

@@ -1074,7 +1074,7 @@ Inherits Application
 		    
 		    Return
 		    
-		  #ElseIf TargetCarbon
+		  #ElseIf TargetMacOS
 		    Const COLLAPSEWIN = 1
 		    Const RESTOREWIN = 0
 		    #If TargetMachO
@@ -1216,7 +1216,7 @@ Inherits Application
 		    
 		    Return
 		    
-		  #ElseIf TargetCarbon
+		  #ElseIf TargetMacOS
 		    Const COLLAPSEWIN = 1
 		    Const RESTOREWIN = 0
 		    #If TargetMachO
@@ -1265,7 +1265,7 @@ Inherits Application
 		    Declare Sub SetForegroundWindow Lib "user32" (ByVal hwnd as Integer)
 		    
 		    SetForegroundWindow(wnd.Handle)
-		  #ElseIf TargetCarbon Then
+		  #ElseIf TargetMacOS Then
 		    Dim Status As Integer
 		    #If TargetMachO
 		      Declare Function SelectWindow Lib "Carbon" (window As Integer) As Integer
