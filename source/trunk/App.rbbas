@@ -57,6 +57,12 @@ Inherits Application
 		  'Profiler.EnableProfiler
 		  Profiler.BeginProfilerEntry "App::Open"
 		  
+		  '++JRC Set ReleaseCandidate Level
+		  'IMPORTANT this value will need to be set to 0
+		  'for a FINAL relase
+		  ReleaseCandidate = 1
+		  '--
+		  
 		  DebugWriter = New DebugOutput
 		  '++JRC For compatibilty with RB 2008 debugger
 		  'RB insists on outputing the executable in a subfolder (sigh)
@@ -1074,7 +1080,7 @@ Inherits Application
 		    
 		    Return
 		    
-		  #ElseIf TargetMacOS
+		  #ElseIf TargetCarbon
 		    Const COLLAPSEWIN = 1
 		    Const RESTOREWIN = 0
 		    #If TargetMachO
@@ -1216,7 +1222,7 @@ Inherits Application
 		    
 		    Return
 		    
-		  #ElseIf TargetMacOS
+		  #ElseIf TargetCarbon
 		    Const COLLAPSEWIN = 1
 		    Const RESTOREWIN = 0
 		    #If TargetMachO
@@ -1265,7 +1271,7 @@ Inherits Application
 		    Declare Sub SetForegroundWindow Lib "user32" (ByVal hwnd as Integer)
 		    
 		    SetForegroundWindow(wnd.Handle)
-		  #ElseIf TargetMacOS Then
+		  #ElseIf TargetCarbon Then
 		    Dim Status As Integer
 		    #If TargetMachO
 		      Declare Function SelectWindow Lib "Carbon" (window As Integer) As Integer
@@ -1354,6 +1360,10 @@ Inherits Application
 		    case 2
 		      t = t + "Beta"
 		    End Select
+		  Else
+		    If ReleaseCandidate > 0 Then
+		      t= t + "-RC" + Str(App.ReleaseCandidate)
+		    End If
 		  End If
 		  '--
 		  #If TargetMacOS
@@ -1643,6 +1653,26 @@ Inherits Application
 		DocsFolder As FolderItem
 	#tag EndProperty
 
+	#tag ComputedProperty, Flags = &h0
+		#tag Getter
+			Get
+			  If Not IsNull(App.MyMainSettings) Then
+			    Return SmartML.GetValueB(App.MyMainSettings.DocumentElement, "image_quality/@exclude_backgrounds", False)
+			  Else
+			    Return False
+			  End If
+			End Get
+		#tag EndGetter
+		#tag Setter
+			Set
+			  If Not IsNull(App.MyMainSettings) Then
+			    SmartML.SetValueB(App.MyMainSettings.DocumentElement, "image_quality/@exclude_backgrounds", value)
+			  End If
+			End Set
+		#tag EndSetter
+		ExcludeBackgroundsImages As Boolean
+	#tag EndComputedProperty
+
 	#tag Property, Flags = &h0
 		FontList(0) As String
 	#tag EndProperty
@@ -1701,6 +1731,10 @@ Inherits Application
 
 	#tag Property, Flags = &h21
 		Private m_ControlServer As REST.RESTServer
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
+		ReleaseCandidate As Integer
 	#tag EndProperty
 
 	#tag Property, Flags = &h0

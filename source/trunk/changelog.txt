@@ -1,9 +1,4 @@
-﻿* Miscellaneous housekeeping for Macintosh Cocoa support (swampcat)
-
-* Enable horizontal scrollbar in song editor for easier editing on small screens. (Feature Request #325) (Vwout)
-
-* Make image processing defaults configurable (new options in main settings). (Feature Request #334) (Vwout)
-
+﻿-= 2.1 RC1 =-
 * Added ability to link songs together for presentations. (JRC)
 
 * Enable searching of songs in SongPickerWindow. (JRC)
