@@ -798,13 +798,10 @@ Inherits Application
 	#tag Method, Flags = &h0
 		Function GetImageAsString(img As Picture) As String
 		  Dim strBase64 As String
-		  Dim QualityValue As Integer
-		  Dim QualitySetting As ImageQualityEnum
-		  Dim data As MemoryBlock = Nil
 		  
 		  If img <> Nil Then
-		    QualityValue = SmartML.GetValueN(App.MyMainSettings.DocumentElement, "image_quality/@compression", False)
-		    QualitySetting = ImageQualityEnum(QualityValue)
+		    Dim QualitySetting As ImageQualityEnum = ImageDefaults.ImageQuality()
+		    Dim data As MemoryBlock = Nil
 		    
 		    Try
 		      //Try to use GDI+ (fallback to QuickTime) (Windows) or Linux, MacOS native
@@ -1653,26 +1650,6 @@ Inherits Application
 		DocsFolder As FolderItem
 	#tag EndProperty
 
-	#tag ComputedProperty, Flags = &h0
-		#tag Getter
-			Get
-			  If Not IsNull(App.MyMainSettings) Then
-			    Return SmartML.GetValueB(App.MyMainSettings.DocumentElement, "image_quality/@exclude_backgrounds", False)
-			  Else
-			    Return False
-			  End If
-			End Get
-		#tag EndGetter
-		#tag Setter
-			Set
-			  If Not IsNull(App.MyMainSettings) Then
-			    SmartML.SetValueB(App.MyMainSettings.DocumentElement, "image_quality/@exclude_backgrounds", value)
-			  End If
-			End Set
-		#tag EndSetter
-		ExcludeBackgroundsImages As Boolean
-	#tag EndComputedProperty
-
 	#tag Property, Flags = &h0
 		FontList(0) As String
 	#tag EndProperty
@@ -1864,16 +1841,15 @@ Inherits Application
 
 	#tag ViewBehavior
 		#tag ViewProperty
-			Name="ExcludeBackgroundsImages"
+			Name="IsPortable"
 			Group="Behavior"
 			InitialValue="0"
 			Type="Boolean"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="IsPortable"
+			Name="ReleaseCandidate"
 			Group="Behavior"
-			InitialValue="0"
-			Type="Boolean"
+			Type="Integer"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="SplashShowing"

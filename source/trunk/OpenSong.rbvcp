@@ -141,6 +141,7 @@ Folder=Interfaces;Classes/Interfaces;&h227B4962;&hBC8F0540;false
 Folder=Macintosh;Classes/Macintosh;&h47B334AA;&hBC8F0540;false
 Class=CheckVerThread;Classes/Helpers/CheckVerThread.rbbas;&hBCCA3E6D;&h46BFDB60;false
 Folder=Preferences;Classes/Preferences;&hC1D635E0;&hBC8F0540;false
+Module=ImageDefaults;Classes/Preferences/ImageDefaults.rbbas;&h2AC75FFF;&hC1D635E0;false
 Folder=Reports;Classes/Reports;&hC0156347;&hBC8F0540;false
 Folder=Utilities;Classes/Utilities;&hBD47E01A;&hBC8F0540;false
 Class=SHA1;Classes/Utilities/SHA1.rbbas;&hA42C7FF;&hBD47E01A;false
