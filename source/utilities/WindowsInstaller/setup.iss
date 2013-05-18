@@ -11,8 +11,8 @@
 
 ; The ISPP eliminates redundant typing and prevents errors. Changing these values changes all other values that refer back to here.
 #define MyAppName "OpenSong"
-#define MyAppVersion "2.0.1"
-#define MyAppVerName "OpenSong Version 2.0 Beta 2"
+#define MyAppVersion "2.1.0"
+#define MyAppVerName "OpenSong Version 2.1 RC1"
 #define MyAppPublisher "OpenSong Development Team"
 #define MyAppURL "http://opensong.org/"
 #define MyAppExeName "OpenSong.exe"
@@ -243,12 +243,12 @@ deutsch.ResetPrefs=Dutch Translation Here
 magyar.Installops=Hungarian Translation Here
 magyar.Portable=Hungarian Translation Here
 magyar.ResetPrefs=Hungarian Translation Here
-svenska.Installops=Svenska Translation Here
-svenska.Portable=Svenska Translation Here
-svenska.ResetPrefs=Svenska Translation Here
-italiano.Installops=Italian Translation Here
-italiano.Portable=Italian Translation Here
-italiano.ResetPrefs=Italian Translation Here
+svenska.Installops=Installationsinställningar
+svenska.Portable=Flyttbar Installation
+svenska.ResetPrefs=Återställ inställningarna i OpenSong
+italiano.InstallOps=Opzioni di Installazione
+italiano.Portable=Installazione Portatile
+italiano.ResetPrefs=Ripristina le Preferenze di Opensong
 norwegian.Installops=Norwegian Translation Here
 norwegian.Portable=Norwegian Translation Here
 norwegian.ResetPrefs=Norwegian Translation Here
@@ -276,6 +276,7 @@ slovenian.ResetPrefs=Slovenian Translation Here
 turkish.ResetPrefs=Turkish Translation Here
 turkish.Portable=Turkish Translation Here
 turkish.ResetPrefs=Turkish Translation Here
+
 
 [Tasks]
 Name: Portable; Description: "{cm:Portable}"; GroupDescription:"{cm:Installops}"; Flags: unchecked 
