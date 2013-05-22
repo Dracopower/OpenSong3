@@ -263,7 +263,7 @@ portuguesbrazil.Portable=Portugues (Brasil) Translation Here
 portuguesbrazil.ResetPrefs=Portugues (Brasil) Translation Here
 espanol.Installops=Spanish Translation Here
 espanol.Portable=Spanish Translation Here
-espanolResetPrefs=Spanish Translation Here
+espanol.ResetPrefs=Spanish Translation Here
 russian.Installops=Russian Translation Here
 russian.Portable=Russian Translation Here
 russian.ResetPrefs=Russian Translation Here
@@ -273,7 +273,7 @@ slovak.ResetPrefs=Obnoviť predvoľby OpenSong-u
 slovenian.Installops=Slovenian Translation Here
 slovenian.Portable=Slovenian Translation Here
 slovenian.ResetPrefs=Slovenian Translation Here
-turkish.ResetPrefs=Turkish Translation Here
+turkish.Installops=Turkish Translation Here
 turkish.Portable=Turkish Translation Here
 turkish.ResetPrefs=Turkish Translation Here
 
