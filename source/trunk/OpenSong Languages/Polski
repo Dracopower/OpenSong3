@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<language name="Polski" author="Mariusz Mycielski" version="2.0.1">
+<language name="Polski" author="Mariusz Mycielski" version="2.1">
 
   <load_settings>
     <checking_folders>Tworzę/Sprawdzam foldery dokumentów</checking_folders>
@@ -101,6 +101,9 @@
         <flats caption="Bemole"/>
       </using>
     </transpose>
+    <linked caption="Powiązane piosenki">Powiązane piosenki zostaną automatycznie dodane do prezentacji, gdy dodasz tę piosenkę.</linked>
+    <add_link caption="Dodaj">Dodaje piosenkę do listy.</add_link>
+    <remove_link caption="Usuń">Usuwa wybraną piosenkę z listy.</remove_link>
   </general_song_editor>
 
   <advanced_song_editor caption="Zaawansowane">Pozwala na edycję tematu, capo, metrum, stylu itp. bieżącej piosenki
@@ -119,6 +122,14 @@
     <user1 caption="Pole użytkownika 1">Możesz tu wpisać, co chcesz. Zawartość tego pola może być wykorzystana przez inne programy.</user1>
     <user2 caption="Pole użytkownika 2">Możesz tu wpisać, co chcesz. Zawartość tego pola może być wykorzystana przez inne programy.</user2>
     <user3 caption="Pole użytkownika 3">Możesz tu wpisać, co chcesz. Zawartość tego pola może być wykorzystana przez inne programy.</user3>
+    <backgrounds caption="Specjalne tło wersu" head1="Wers" head2="Obraz tła">Wyświetla opcjonalne tło wersu piosenki.</backgrounds>
+    <add_background caption="Dodaj">Łączy obraz z wybranym wersem.</add_background>
+    <del_background caption="Usuń">Usuwa obraz z wybranego wersu.</del_background>
+    <fit_to_screen caption="link(image_slide/fit_to_screen/@caption)">link(image_slide/fit_to_screen)</fit_to_screen>
+    <fit_to_body caption="link(image_slide/fit_to_body/@caption)">link(image_slide/fit_to_body)</fit_to_body>
+    <keepaspect caption="link(image_slide/keepaspect/@caption)">link(image_slide/keepaspect)</keepaspect>
+    <store_as_link caption="Nie przechowuj obrazu w piosence, użyj linku">Przechowywanie obrazków w zestawie znacząco zwiększa rozmiar pliku zestawu na dysku i może wpłynąć na jakość obrazka. Zapobiega temu użycie linka. Ścieżki do obrazków z folderu 'Backgrounds'(Tła) są przechowywane jako względne, co ułatwia przenoszenie zestawów między komputerami. Zachowaj ostrożność podczas przygotowywania prezentacji na innym komputerze niż ten, na którym wyświetlasz prezentację!</store_as_link>
+    <background_as_text caption="Ukryj tekst wersu">Użyj obrazu tła i nie wyświetlaj tekstu wersu. Użyteczne gdy tekst jest prerenderowany lub gdy nuty są wyświetlane przy użyciu obrazu tła.</background_as_text>
   </advanced_song_editor>
 
   <sets_mode caption="Tryb zestawu">Wybierz ten tryb, aby przejść do edycji zestawu. Zestawy służą do grupowania wielu piosenek, slajdów itp. Jeśli znajdujesz się w trybie edycji piosenki i nie zapisałeś zmian, zostaniesz o to zapytany.
@@ -315,6 +326,9 @@
       <user1 caption="link(advanced_song_editor/user1/@caption)"/>
       <user2 caption="link(advanced_song_editor/user2/@caption)"/>
       <user3 caption="link(advanced_song_editor/user3/@caption)"/>
+      <chord caption="Akordy"/>
+      <key caption="Tonacja"/>
+      <form caption="Forma"/>
     </fields>
   </song_search>
 
@@ -389,6 +403,9 @@
       <version_check caption="Przy uruchamianiu szukaj nowej wersji"/>
       <language caption="Język"/>
     </general>
+    <linked caption="Piosenki powiązane">
+      <prompt caption="Pytaj przed dodaniem powiązanej piosenki"/>
+    </linked>
     <proxy caption="Proxy">
       <host caption="Host"/>
       <port caption="Port"/>
@@ -918,6 +935,7 @@ Jeżeli pole 'Kolejność prezentacji' jest puste, to sekcje będą wyświetlone
     <no_selection>Nie wybrałeś piosenki.</no_selection>
     <folder caption="Wybierz folder"/>
     <preview caption="Podgląd piosenki"/>
+    <text caption="Znaleziono tekst w:"/>
     <lookup caption="Szybkie wyszukiwanie"/>
     <songs head1="Tytuł piosenki" head2="Folder"/>
 		<presentation caption="link(slide_editor/presentation/@caption)"/>
@@ -1206,10 +1224,30 @@ Kliknij na slajd, by edytować jego styl.</body>
     <cut caption="Wytnij"/>
     <copy caption="Kopiuj"/>
     <paste caption="Wklej"/>
+    <clear caption="Wyczyść"/>
+    <selectall caption="Zaznaczy wszystko"/>
     <select caption="Zaznacz"/>
     <exit_program caption="Wyjdź z programu"/>
     <export_to caption="Wybierz folder docelowy eksportu."/>
     <style_file caption="Wybierz plik stylu"/>
+    <title caption="Tytuł"/>  
+    <author caption="Autor"/>
+    <copyright caption="Prawa autorskie"/>  
+    <ccli caption="CCLI #"/>  
+    <presentation caption="Prezentacja"/>
+    <lyrics caption="Tekst"/>  
+    <theme caption="Temat"/>
+    <capo caption="Capo"/>
+    <chord caption="Akordy"/>
+    <time_sig caption="Metrum"/>
+    <tempo caption="Tempo"/>  
+    <key caption="Tonacja"/>
+    <aka caption="Znana jako"/>  
+    <key_line caption="Opis pomocniczy"/>
+    <user1 caption="Pole użytkownika 1"/>  
+    <user2 caption="Pole użytkownika 2"/>
+    <user3 caption="Pole użytkownika 3"/>  
+    <hymn_number caption="Nr #"/>
   </shared>
 
   <questions>
@@ -1235,6 +1273,8 @@ Kliknij na slajd, by edytować jego styl.</body>
     <no_songs_folder caption="Nie można odnaleźć folderu piosenek, czy chcesz go utworzyć?"/>
     <no_sets_folder caption="Nie można odnaleźć folderu zestawów, czy chcesz go utworzyć?"/>
     <no_folder caption="Nie można odnaleźć folderu '%1', czy chcesz go utworzyć?"/>
+    <destination_exists caption="Plik już istnieje w folderze docelowym. Czy chcesz zmienić jego nazwę?"/>
+    <linked_songs caption="Wybierz piosenkę zawierającą jedną lub więcej piosenek powiązanych. Czy chcesz je dodać?"/>
   </questions>
 
   <about>
@@ -1285,6 +1325,7 @@ Obrazek PuffyClouds1.jpg zawarty w katalogu Backgrounds jest własnością FreeS
     <number_range>Wprowadź numer pomiędzy %1 a %2.</number_range>
     <no_path_allowed>Prawdopodobnie nazwa pliku nie zawiera ściezki.</no_path_allowed>
     <rename_error>Nie można zmienić nazwy pliku.</rename_error>
+    <same_filename>Plik docelowy jest identyczny ze źródłowym.</same_filename>
     <general1>In '%1': Nieznany błąd</general1>
     <general2>In '%1': '%2'</general2>
     <folder_error>Wewnętrzny błąd folderu. Skontaktuj się z pomocą techniczną.</folder_error>
@@ -1333,6 +1374,11 @@ Przepraszamy za wszelkie niedogodności.
       <load_failed>Nie można otworzyć prezentacji '%1'.</load_failed>
     </presentations>
 	  <videolan_app_missing>Niepoprawne ustawienia aplikacji VLC. Podaj ścieżkę do programu VLC w oknie ustawień programu w zakładce Pliki.</videolan_app_missing>
+    <linked_song>
+       <current>Wybrana piosenka jest bieżącą piosenką.</current>
+       <exists>Wybrana piosenka jest już na liście.</exists>
+       <load_error>Błąd ładowania powiązanej piosenki: %1</load_error>
+    </linked_song>
   </errors>
 
   <xml_errors>
