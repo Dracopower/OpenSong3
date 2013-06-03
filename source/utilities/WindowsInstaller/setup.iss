@@ -1,4 +1,4 @@
-;; Project Risen (Luke 24:1-12)
+﻿;; Project Risen (Luke 24:1-12)
 ;; Created on: April 6-9, 11, May 6, 26, July 1-4, 15, 20, 24, 26, 28, August 3, 4, 24, 28, 30, September 20, 24, 27, October 17-19, 21, 29-30, November 19 (:D), 21-22, 25-28, December 19, 2012, 
 ;; January 1, 3, 11-12, 17, March 16, April 10, April 23, 2013
 ;; OpenSong Version 2.0 Installer Script
@@ -125,7 +125,7 @@ Source: "..\OpenSong Languages\Magyar"; DestDir: "{app}\OpenSong Languages"; Com
 Source: "..\OpenSong Languages\Italiano"; DestDir: "{app}\OpenSong Languages"; Components: Languages\italian
 Source: "..\OpenSong Languages\Svenska"; DestDir: "{app}\OpenSong Languages"; Components: Languages\swedish
 Source: "..\OpenSong Languages\Norwegian"; DestDir: "{app}\OpenSong Languages"; Components: Languages\norwegian
-Source: "..\OpenSong Languages\Espa�ol"; DestDir: "{app}\OpenSong Languages"; Components: Languages\spanish
+Source: "..\OpenSong Languages\Español"; DestDir: "{app}\OpenSong Languages"; Components: Languages\spanish
 Source: "..\OpenSong Languages\Polski"; DestDir: "{app}\OpenSong Languages"; Components: Languages\polish
 Source: "..\OpenSong Languages\Portugues"; DestDir: "{app}\OpenSong Languages"; Components: Languages\portugues
 Source: "..\OpenSong Languages\Portugues(Brasil)"; DestDir: "{app}\OpenSong Languages"; Components: Languages\portuguesbrasil
@@ -198,7 +198,7 @@ Name: "Languages\spanish"; Description: "Espanol"; Types: Full; Flags: checkable
 Name: "Languages\french"; Description: "Francais"; Types: Full; Flags: checkablealone
 Name: "Languages\norwegian"; Description: "Norwegian"; Types: Full; Flags: checkablealone
 Name: "Languages\portugues"; Description: "Portugues"; Types: Full; Flags: checkablealone
-Name: "Languages\portuguesbrasil"; Description: "Português (Brasil)"; Types: Full; Flags: checkablealone
+Name: "Languages\portuguesbrasil"; Description: "Portugues (Brasil)"; Types: Full; Flags: checkablealone
 Name: "Languages\swedish"; Description: "Svenska"; Types: Full; Flags: checkablealone
 Name: "Languages\dutch"; Description: "Nederlands"; Types: Full; Flags: checkablealone
 Name: "Languages\polish"; Description: "Polski"; Types: Full; Flags: checkablealone
@@ -222,60 +222,60 @@ Type: files; Name: "{app}\preferences.plist"; Check:IsTaskSelected('Portable')
 english.BeveledLabel={#MyAppVerName}
 
 [CustomMessages]
-english.Installops=Installation Options:
+english.Installops=Installation Options
 english.Portable=Portable Installation
 english.ResetPrefs=Reset {#MyAppName} Preferences
-czech.Installops=Možnosti instalace:
+czech.Installops=Možnosti instalace
 czech.Portable=Přenosná instalace
-czech.ResetPrefs=Obnoviť předvolby OpenSong-u
-nederlands.Installops=Norwegian Translation Here
-nederlands.Portable=Norwegian Translation Here
-nederlands.ResetPrefs=Norwegian Translation Here
-estonian.Installops=Estonian Translation Here
-estonian.Portable=Estonian Translation Here
-estonian.ResetPrefs=Estonian Translation Here
-francais.Installops=French Translation Here
-francais.Portable=French Translation Here
-francais.ResetPrefs=French Translation Here
-deutsch.Installops=Dutch Translation Here
-deutsch.Portable=Dutch Translation Here
-deutsch.ResetPrefs=Dutch Translation Here
-magyar.Installops=Hungarian Translation Here
-magyar.Portable=Hungarian Translation Here
-magyar.ResetPrefs=Hungarian Translation Here
-svenska.Installops=Installationsinst�llningar
+czech.ResetPrefs=Obnoviť předvolby {#MyAppName}
+nederlands.InstallOps=Installatie-opties
+nederlands.Portable=Draagbare installatie
+nederlands.ResetPrefs=Standaard {#MyAppName} voorkeuren resetten
+estonian.Installops=Installisuvandid
+estonian.Portable=Portable paigaldamine
+estonian.ResetPrefs=Taasta {#MyAppName} Preferences
+francais.Installops=Options d'installation
+francais.Portable=Installation Portable
+francais.ResetPrefs=Réinitialiser {#MyAppName} Préférences
+deutsch.Installops=Installation Options
+deutsch.Portable=Tragbar Installation
+deutsch.ResetPrefs=Zurücksetzen {#MyAppName} Preferences
+magyar.Installops=Telepítési beállítások
+magyar.Portable=Hordozható telepítése
+magyar.ResetPrefs=Visszaállítása {#MyAppName} Preferences
+svenska.Installops=Installationsinställningar
 svenska.Portable=Flyttbar Installation
-svenska.ResetPrefs=�terst�ll inst�llningarna i OpenSong
+svenska.ResetPrefs=Återställ inställningarna i {#MyAppName}
 italiano.InstallOps=Opzioni di Installazione
 italiano.Portable=Installazione Portatile
-italiano.ResetPrefs=Ripristina le Preferenze di Opensong
-norwegian.Installops=Norwegian Translation Here
-norwegian.Portable=Norwegian Translation Here
-norwegian.ResetPrefs=Norwegian Translation Here
-polski.Installops=Polish Translation Here
-polski.Portable=Polish Translation Here
-polski.ResetPrefs=Polish Translation Here
-portugues.Installops=Opções de Instalação;
-portugues.Portable=Instalação Portátil.
-portugues.ResetPrefs=Re-iniciar Preferências {#MyAppName} 
-portuguesbrazil.Installops=Portugues (Brasil) Translation Here
-portuguesbrazil.Portable=Portugues (Brasil) Translation Here
-portuguesbrazil.ResetPrefs=Portugues (Brasil) Translation Here
-espanol.Installops=Spanish Translation Here
-espanol.Portable=Spanish Translation Here
-espanol.ResetPrefs=Spanish Translation Here
-russian.Installops=Russian Translation Here
-russian.Portable=Russian Translation Here
-russian.ResetPrefs=Russian Translation Here
-slovak.Installops=Možnosti inštalácie:
+italiano.ResetPrefs=Ripristina le Preferenze di {#MyAppName}
+norwegian.Installops=Installasjon alternativer
+norwegian.Portable=Portable Installasjon
+norwegian.ResetPrefs=Tilbakestille {#MyAppName} Innstillinger
+polski.Installops=Opcje instalacji
+polski.Portable=przenośne Instalacja
+polski.ResetPrefs=Resetowanie {#MyAppName} Preferencje
+portugues.Installops=Opções de Instalação
+portugues.Portable=Instalação Portátil
+portugues.ResetPrefs=Re-iniciar Preferências {#MyAppName}
+portuguesbrazil.Installops=Opções de Instalação
+portuguesbrazil.Portable=Instalação portátil
+portuguesbrazil.ResetPrefs=Redefinir {#MyAppName} Preferências
+espanol.Installops=Opciones de instalación
+espanol.Portable=Instalación Portable
+espanol.ResetPrefs=Restablecer {#MyAppName} Preferencias
+russian.Installops=Параметры установки
+russian.Portable=Портативная установка
+russian.ResetPrefs=Сброс {#MyAppName} Предпочтения
+slovak.Installops=Možnosti inštalácie
 slovak.Portable=Prenosná inštalácia
-slovak.ResetPrefs=Obnoviť predvoľby OpenSong-u
-slovenian.Installops=Slovenian Translation Here
-slovenian.Portable=Slovenian Translation Here
-slovenian.ResetPrefs=Slovenian Translation Here
-turkish.Installops=Turkish Translation Here
-turkish.Portable=Turkish Translation Here
-turkish.ResetPrefs=Turkish Translation Here
+slovak.ResetPrefs=Obnoviť predvoľby {#MyAppName}
+slovenian.Installops=Možnosti namestitve
+slovenian.Portable=Prenosni Namestitev
+slovenian.ResetPrefs=Reset {#MyAppName} Nastavitve
+turkish.Installops=Yükleme Seçenekleri
+turkish.Portable=taşınabilir Kurulum
+turkish.ResetPrefs={#MyAppName} Tercihleri ​​Sıfırla
 
 
 [Tasks]
