@@ -66,7 +66,7 @@ Inherits Application
 		  DebugWriter = New DebugOutput
 		  '++JRC For compatibilty with RB 2008 debugger
 		  'RB insists on outputing the executable in a subfolder (sigh)
-		  #If DebugBuild And Not TargetMacOS
+		  #If DebugBuild And Not TargetMacOS And RBVersion<=2012.51
 		    AppFolder = GetFolderItem("").Parent
 		  #Else
 		    AppFolder = GetFolderItem("")

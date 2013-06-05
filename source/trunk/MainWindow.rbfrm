@@ -13190,6 +13190,35 @@ End
 
 	#tag Method, Flags = &h0
 		Sub LoadSongFields()
+		  Dim i As Integer
+		  Dim verseDict As New Dictionary
+		  Dim order As String
+		  SongML.LyricsToSections CurrentSong.DocumentElement, verseDict, order
+		  
+		  Dim imageLink As Boolean = ImageDefaults.ExcludeBackgroundsImages()
+		  Dim xbacks As XmlNode = SmartML.GetNode(CurrentSong.DocumentElement, "backgrounds", False)
+		  
+		  If Not IsNull(xbacks) Then
+		    imageLink = SmartML.GetValueB(xbacks, "@link", False, imageLink)
+		    
+		    For i = 0 To xbacks.ChildCount - 1
+		      Dim image As StyleImage = new StyleImage()
+		      Dim s As String = SmartML.GetValue(xbacks.Child(i), "filename")
+		      
+		      If imageLink And s<>"" Then
+		        If s.StartsWith("/") or s.StartsWith("\\") or s.Mid(2, 1)=":" Then
+		          Call image.SetImageFromFileName( s )
+		        Else
+		          Call image.SetImageFromFileName( App.DocsFolder.Child("Backgrounds").AbsolutePath + s )
+		        End If
+		      Else
+		        Call image.SetImageAsString( SmartML.GetValue(xbacks.Child(i), "image") )
+		      End If
+		      
+		      verseDict.Value( SmartML.GetValue(xbacks.Child(i), "@verse") ) = image
+		    Next i
+		  End If
+		  
 		  
 		  btn_song_move.SetEnabled True
 		  btn_song_delete.SetEnabled True
@@ -13229,7 +13258,7 @@ End
 		  edt_song_user2.Text = SmartML.GetValue(CurrentSong.DocumentElement, "user2", True)
 		  edt_song_user3.Text = SmartML.GetValue(CurrentSong.DocumentElement, "user3", True)
 		  
-		  Dim found, foundAlt, i As Integer
+		  Dim found, foundAlt As Integer
 		  found = 0
 		  
 		  Dim theme, alttheme As String
@@ -13326,35 +13355,6 @@ End
 		    'can_song_style.SetStyleNode CurrentSongObj.SongStyle.ToXML.DocumentElement
 		  End If
 		  
-		  
-		  Dim dict As New Dictionary
-		  Dim order As String
-		  SongML.LyricsToSections CurrentSong.DocumentElement, dict, order
-		  
-		  Dim imageLink As Boolean = ImageDefaults.ExcludeBackgroundsImages()
-		  Dim xbacks As XmlNode = SmartML.GetNode(CurrentSong.DocumentElement, "backgrounds", False)
-		  
-		  If Not IsNull(xbacks) Then
-		    imageLink = SmartML.GetValueB(xbacks, "@link", False, imageLink)
-		    
-		    For i = 0 To xbacks.ChildCount - 1
-		      Dim image As StyleImage = new StyleImage()
-		      Dim s As String = SmartML.GetValue(xbacks.Child(i), "filename")
-		      
-		      If imageLink And s<>"" Then
-		        If s.StartsWith("/") or s.StartsWith("\\") or s.Mid(2, 1)=":" Then
-		          Call image.SetImageFromFileName( s )
-		        Else
-		          Call image.SetImageFromFileName( App.DocsFolder.Child("Backgrounds").AbsolutePath + s )
-		        End If
-		      Else
-		        Call image.SetImageAsString( SmartML.GetValue(xbacks.Child(i), "image") )
-		      End If
-		      
-		      dict.Value( SmartML.GetValue(xbacks.Child(i), "@verse") ) = image
-		    Next i
-		  End If
-		  
 		  lst_song_backgrounds.DeleteAllRows()
 		  lst_song_backgrounds.ImageColumn = 1
 		  btn_song_add_background.Enabled = False
@@ -13368,7 +13368,7 @@ End
 		  chk_song_store_as_link.Value = imageLink
 		  chk_song_background_as_text.Value = SmartML.GetValueB(xbacks, "@background_as_text", False, ImageDefaults.UseBackgroundsAsText())
 		  
-		  For Each key As Variant in dict.Keys
+		  For Each key As Variant in verseDict.Keys
 		    lst_song_backgrounds.AddRow( key.StringValue() )
 		    If dict.Value(key) IsA StyleImage Then
 		      lst_song_backgrounds.SetImage( lst_song_backgrounds.ListCount()-1, dict.Value(key) )
