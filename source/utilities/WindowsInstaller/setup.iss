@@ -109,75 +109,75 @@ Name: {app}\OpenSong Libs
 
 [Files]
 ; Change logs, EXE
-Source: changelog.txt; DestDir: {app}
-Source: Language-Changelog.txt; DestDir: {app}
-Source: OpenSong.exe; DestDir: {app}
+Source: "changelog.txt"; DestDir: "{app}"
+Source: "Language-Changelog.txt"; DestDir: "{app}"
+Source: "OpenSong.exe"; DestDir: "{app}"
 
 ; OpenSong Defaults
-Source: OpenSong Defaults\Settings\*; DestDir: {app}\OpenSong Defaults\Settings
-Source: OpenSong Defaults\Backgrounds\*; DestDir: {app}\OpenSong Defaults\Backgrounds; Components: Extras\Backgrounds
-Source: OpenSong Defaults\Sets\*; DestDir: {app}\OpenSong Defaults\Sets; Components: Extras\Example_Sets
-Source: OpenSong Defaults\Songs\*; DestDir: {app}\OpenSong Defaults\Songs; Components: Extras\Songs
+Source: "OpenSong Defaults\Settings\*"; DestDir: "{app}\OpenSong Defaults\Settings"
+Source: "OpenSong Defaults\Backgrounds\*"; DestDir: "{app}\OpenSong Defaults\Backgrounds"; Components: Extras\Backgrounds
+Source: "OpenSong Defaults\Sets\*"; DestDir: "{app}\OpenSong Defaults\Sets"; Components: Extras\Example_Sets
+Source: "OpenSong Defaults\Songs\*"; DestDir: "{app}\OpenSong Defaults\Songs"; Components: Extras\Songs
 
-Source: OpenSong Scripture\*; DestDir: {app}\OpenSong Scripture; Components: Bibles\KJV
-Source: OpenSong Settings\*; DestDir: {app}\OpenSong Settings
-Source: OpenSong Libs\*; DestDir: {app}\OpenSong Libs
+Source: "OpenSong Scripture\*"; DestDir: "{app}\OpenSong Scripture"; Components: Bibles\KJV
+Source: "OpenSong Settings\*"; DestDir: "{app}\OpenSong Settings"
+Source: "OpenSong Libs\*"; DestDir: "{app}\OpenSong Libs"
 
 ; OpenSong Languages Files
 ; Arranged in alphabetical order (according to native name)
-Source: OpenSong Languages\English; DestDir: {app}\OpenSong Languages
-Source: OpenSong Languages\Czech; DestDir: {app}\OpenSong Languages; Components: Languages\czech
-Source: OpenSong Languages\Deutsch; DestDir: {app}\OpenSong Languages; Components: Languages\german
-Source: OpenSong Languages\Español; DestDir: {app}\OpenSong Languages; Components: Languages\spanish
-Source: OpenSong Languages\Estonian; DestDir: {app}\OpenSong Languages; Components: Languages\estonian
-Source: OpenSong Languages\Francais; DestDir: {app}\OpenSong Languages; Components: Languages\french
-Source: OpenSong Languages\Italiano; DestDir: {app}\OpenSong Languages; Components: Languages\italian
-Source: OpenSong Languages\Nederlands; DestDir: {app}\OpenSong Languages; Components: Languages\dutch 
-Source: OpenSong Languages\Magyar; DestDir: {app}\OpenSong Languages; Components: Languages\hungarian
-Source: OpenSong Languages\Norwegian; DestDir: {app}\OpenSong Languages; Components: Languages\norwegian
-Source: OpenSong Languages\Polski; DestDir: {app}\OpenSong Languages; Components: Languages\polish
-Source: OpenSong Languages\Portugues; DestDir: {app}\OpenSong Languages; Components: Languages\portugues
-Source: OpenSong Languages\Portugues(Brasil); DestDir: {app}\OpenSong Languages; Components: Languages\portuguesbrasil
-Source: OpenSong Languages\Russian; DestDir: {app}\OpenSong Languages; Components: Languages\russian
-Source: OpenSong Languages\Slovak; DestDir: {app}\OpenSong Languages; Components: Languages\slovak
-Source: OpenSong Languages\Slovenian; DestDir: {app}\OpenSong Languages; Components: Languages\slovenian
-Source: OpenSong Languages\Svenska; DestDir: {app}\OpenSong Languages; Components: Languages\swedish  
-Source: OpenSong Languages\Türkçe; DestDir: {app}\OpenSong Languages; Components: Languages\turkish
+Source: "OpenSong Languages\English"; DestDir: "{app}\OpenSong Languages"
+Source: "OpenSong Languages\Czech"; DestDir: "{app}\OpenSong Languages"; Components: Languages\czech
+Source: "OpenSong Languages\Deutsch"; DestDir: "{app}\OpenSong Languages"; Components: Languages\german
+Source: "OpenSong Languages\Español"; DestDir: "{app}\OpenSong Languages"; Components: Languages\spanish
+Source: "OpenSong Languages\Estonian"; DestDir: "{app}\OpenSong Languages"; Components: Languages\estonian
+Source: "OpenSong Languages\Francais"; DestDir: "{app}\OpenSong Languages"; Components: Languages\french
+Source: "OpenSong Languages\Italiano"; DestDir: "{app}\OpenSong Languages"; Components: Languages\italian
+Source: "OpenSong Languages\Nederlands"; DestDir: "{app}\OpenSong Languages"; Components: Languages\dutch
+Source: "OpenSong Languages\Magyar"; DestDir: "{app}\OpenSong Languages"; Components: Languages\hungarian
+Source: "OpenSong Languages\Norwegian"; DestDir: "{app}\OpenSong Languages"; Components: Languages\norwegian
+Source: "OpenSong Languages\Polski"; DestDir: "{app}\OpenSong Languages"; Components: Languages\polish
+Source: "OpenSong Languages\Portugues"; DestDir: "{app}\OpenSong Languages"; Components: Languages\portugues
+Source: "OpenSong Languages\Portugues(Brasil)"; DestDir: "{app}\OpenSong Languages"; Components: Languages\portuguesbrasil
+Source: "OpenSong Languages\Russian"; DestDir: "{app}\OpenSong Languages"; Components: Languages\russian
+Source: "OpenSong Languages\Slovak"; DestDir: "{app}\OpenSong Languages"; Components: Languages\slovak
+Source: "OpenSong Languages\Slovenian"; DestDir: "{app}\OpenSong Languages"; Components: Languages\slovenian
+Source: "OpenSong Languages\Svenska"; DestDir: "{app}\OpenSong Languages"; Components: Languages\swedish
+Source: "OpenSong Languages\Türkçe"; DestDir: "{app}\OpenSong Languages"; Components: Languages\turkish
 
 ; GNU GPL V2 License Files
-Source: OpenSong License\gpl-cs.pdf; DestDir: {app}\OpenSong License; Components: Languages\czech
-Source: OpenSong License\gpl-nl.txt; DestDir: {app}\OpenSong License; Components: Languages\dutch
-Source: OpenSong License\gpl-es.txt; DestDir: {app}\OpenSong License
-Source: OpenSong License\gpl-fr.txt; DestDir: {app}\OpenSong License; Components: Languages\french
-Source: OpenSong License\gpl-de.txt; DestDir: {app}\OpenSong License; Components: Languages\german
-Source: OpenSong License\gpl-hu.txt; DestDir: {app}\OpenSong License; Components: Languages\hungarian
-Source: OpenSong License\gpl-it.txt; DestDir: {app}\OpenSong License; Components: Languages\italian
-Source: OpenSong License\gpl-no.txt; DestDir: {app}\OpenSong License; Components: Languages\norwegian
-Source: OpenSong License\gpl-pl.pdf; DestDir: {app}\OpenSong License; Components: Languages\polish
-Source: OpenSong License\gpl-ru.txt; DestDir: {app}\OpenSong License; Components: Languages\russian
-Source: OpenSong License\gpl-es.txt; DestDir: {app}\OpenSong License; Components: Languages\spanish
-Source: OpenSong License\gpl-sv.txt; DestDir: {app}\OpenSong License; Components: Languages\swedish
-Source: OpenSong License\gpl-pt.txt; DestDir: {app}\OpenSong License; Components: Languages\portugues
-Source: OpenSong License\gpl-pt_BR.txt; DestDir: {app}\OpenSong License; Components: Languages\portuguesbrasil
+Source: "OpenSong License\gpl-cs.pdf"; DestDir: "{app}\OpenSong License"; Components: Languages\czech
+Source: "OpenSong License\gpl-nl.txt"; DestDir: "{app}\OpenSong License"; Components: Languages\dutch
+Source: "OpenSong License\gpl-es.txt"; DestDir: "{app}\OpenSong License"
+Source: "OpenSong License\gpl-fr.txt"; DestDir: "{app}\OpenSong License"; Components: Languages\french
+Source: "OpenSong License\gpl-de.txt"; DestDir: "{app}\OpenSong License"; Components: Languages\german
+Source: "OpenSong License\gpl-hu.txt"; DestDir: "{app}\OpenSong License"; Components: Languages\hungarian
+Source: "OpenSong License\gpl-it.txt"; DestDir: "{app}\OpenSong License"; Components: Languages\italian
+Source: "OpenSong License\gpl-no.txt"; DestDir: "{app}\OpenSong License"; Components: Languages\norwegian
+Source: "OpenSong License\gpl-pl.pdf"; DestDir: "{app}\OpenSong License"; Components: Languages\polish
+Source: "OpenSong License\gpl-ru.txt"; DestDir: "{app}\OpenSong License"; Components: Languages\russian
+Source: "OpenSong License\gpl-es.txt"; DestDir: "{app}\OpenSong License"; Components: Languages\spanish
+Source: "OpenSong License\gpl-sv.txt"; DestDir: "{app}\OpenSong License"; Components: Languages\swedish
+Source: "OpenSong License\gpl-pt.txt"; DestDir: "{app}\OpenSong License"; Components: Languages\portugues
+Source: "OpenSong License\gpl-pt_BR.txt"; DestDir: "{app}\OpenSong License"; Components: Languages\portuguesbrasil
 
 ; OpenSong 2.0 Icons
-Source: OpenSong2.ico; DestDir: {app}
-Source: OpenSong2Uninstall.ico; DestDir: {app}
+Source: "OpenSong2.ico"; DestDir: "{app}"
+Source: "OpenSong2Uninstall.ico"; DestDir: "{app}"
 
 ; Portable Switch at work.
-Source: OpenSong Portable\GlobalsInstall; DestDir: {app}\OpenSong Settings; DestName: Globals; Check: not IsTaskSelected('Portable')
-Source: OpenSong Portable\GlobalsPortable; DestDir: {app}\OpenSong Settings; DestName: Globals; Check: IsTaskSelected('Portable')
+Source: "OpenSong Portable\GlobalsInstall"; DestDir: "{app}\OpenSong Settings"; DestName: "Globals"; Check: not IsTaskSelected('Portable')
+Source: "OpenSong Portable\GlobalsPortable"; DestDir: "{app}\OpenSong Settings"; DestName: "Globals"; Check: IsTaskSelected('Portable')
 
 ; Allows the user to reset the OpenSong preferences if desired.
-Source: OpenSong Settings\preferences.plist; DestDir: {userappdata}\OpenSong; Permissions: users-modify; Tasks: ResetPrefs; Check: not IsTaskSelected('Portable'); Flags: uninsneveruninstall
-Source: OpenSong Settings\preferences.plist; DestDir: {app}\OpenSong Settings; Permissions: users-modify; Tasks: ResetPrefs; Check: IsTaskSelected('Portable'); Flags: uninsneveruninstall   
+Source: "OpenSong Settings\preferences.plist"; DestDir: "{userappdata}\OpenSong"; Flags: uninsneveruninstall; Tasks: ResetPrefs; Permissions: users-modify; Check: not IsTaskSelected('Portable')
+Source: "OpenSong Settings\preferences.plist"; DestDir: "{app}\OpenSong Settings"; Flags: uninsneveruninstall; Tasks: ResetPrefs; Permissions: users-modify; Check: IsTaskSelected('Portable')
 
 ; Creates the OpenSong default files when Portable is selected, depending if they are selected in the first place.
-Source: OpenSong Defaults\Backgrounds\*; DestDir: {app}\OpenSong Data\Backgrounds; Components: Extras\Backgrounds; Check: IsTaskSelected('Portable')
-Source: OpenSong Defaults\Songs\*; DestDir: {app}\OpenSong Data\Songs; Components: Extras\Songs; Check: IsTaskSelected('Portable')
-Source: OpenSong Defaults\Sets\*; DestDir: {app}\OpenSong Data\Sets; Components: Extras\Example_Sets; Check: IsTaskSelected('Portable')
-Source: OpenSong Scripture\*; DestDir: {app}\OpenSong Data\Scripture; Components: Bibles\KJV; Check: IsTaskSelected('Portable')
-Source: OpenSong Defaults\Settings\*; DestDir: {app}\OpenSong Data\Settings; Check: IsTaskSelected('Portable')
+Source: "OpenSong Defaults\Backgrounds\*"; DestDir: "{app}\OpenSong Data\Backgrounds"; Components: Extras\Backgrounds; Check: IsTaskSelected('Portable')
+Source: "OpenSong Defaults\Songs\*"; DestDir: "{app}\OpenSong Data\Songs"; Components: Extras\Songs; Check: IsTaskSelected('Portable')
+Source: "OpenSong Defaults\Sets\*"; DestDir: "{app}\OpenSong Data\Sets"; Components: Extras\Example_Sets; Check: IsTaskSelected('Portable')
+Source: "OpenSong Scripture\*"; DestDir: "{app}\OpenSong Data\Scripture"; Components: Bibles\KJV; Check: IsTaskSelected('Portable')
+Source: "OpenSong Defaults\Settings\*"; DestDir: "{app}\OpenSong Data\Settings"; Check: IsTaskSelected('Portable')
 
 [Types]
 ; Installation types
