@@ -1,4 +1,4 @@
-﻿;; OpenSong Version 2.0 Installer Script
+﻿;; OpenSong Version 2.1 Installer Script
 
 ; If any version below the specified version is used for compiling, this error will be shown.
 #if VER < EncodeVer(5,5,2)
