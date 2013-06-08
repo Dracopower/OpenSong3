@@ -2174,12 +2174,42 @@ Module SongML
 		  Dim ChorusNr, PresentationIndex as integer 'GP
 		  ChorusNr = 0 'GP
 		  
+		  Dim xbacks As XmlNode = SmartML.GetNode(songElement, "backgrounds", True)
+		  Dim xbackground As XmlNode = Nil          
+          
 		  For Each section In sections
 		    PresentationIndex = PresentationIndex + 1
 		    If dict.HasKey(section) Then
 		      If Lowercase(Left(section, 1)) = "c" Then
 		        ChorusNr = ChorusNr+ 1 'GP
-		      end if
+		      End If
+		      
+		      'Check if a background is available for this verse
+		      xbackground = Nil
+		      If (xbacks.ChildCount() > 0) Then
+		        Dim xlist As XmlNodeList = xbacks.Xql("background[@verse='" + section + "']")
+		        If xlist.Length()>0 Then
+		          xbackground = xlist.Item(0)
+		          
+		          'Check if the image file exists
+		          Dim sfile As String = SmartML.GetValue(xbackground, "filename")
+		          If SmartML.GetValueB(xbacks, "@link", False) = True And sfile<>"" Then
+		            If Not (sfile.StartsWith("/") or sfile.StartsWith("\\") or sfile.Mid(2, 1)=":") Then
+		              sfile = App.DocsFolder.Child("Backgrounds").AbsolutePath + sfile
+		            End If
+		            
+		            Dim file As FolderItem = GetFolderItem(sfile)
+		            If Not file.Exists() Then
+		              InputBox.Message App.T.Translate("errors/fileutils/filenotfound", SmartML.GetValue(xbackground, "filename"))
+		              
+		              xbacks.RemoveChild(xbackground)
+		              xbackground = Nil
+		            End If
+		          End If
+		          
+		        End If
+		      End If
+		      
 		      sub_sections = Split(dict.Value(section), "||")
 		      For Each sub_section In sub_sections
 		        slide = SmartML.InsertChild(slides, "slide", slides.ChildCount)
@@ -2194,10 +2224,23 @@ Module SongML
 		          SmartML.SetValueN(slide, "@ChorusNr", ChorusNr) 'GP
 		        End If
 		        SmartML.SetValueN(slide, "@PresentationIndex", PresentationIndex) 'GP
+		        
+		        'Assign the background to the verse slide
+		        If Not IsNull(xbackground) Then
+		          SmartML.CloneChildren(xbackground, slide)
+		        End If
 		      Next
 		    End If
 		  Next
 		  
+		  If (xbacks.ChildCount() > 0) Then
+		    'Assign background image handling attribute to the song
+		    SmartML.CloneAttributes(xbacks, songElement)
+		    SmartML.SetValue(songElement, "@subtype", "image")
+		  End If
+		  
+		  'Remove the backgrounds section from the song
+		  songElement.RemoveChild(xbacks)
 		End Sub
 	#tag EndMethod
 

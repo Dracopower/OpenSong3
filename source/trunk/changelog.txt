@@ -4,7 +4,7 @@
 
 * Fix in loading of song background images. If images are included using a link, a broken link could lead to the inability to fix the image binding and finally crash OpenSong (Vwout)
 
-* Minor change to make OpenSong run using Xojo 2013 (Windows) (Vwout)
+* Minor change to make OpenSong run using Xojo 2013 (Vwout)
 
 -= 2.1 RC1 =-
 * Miscellaneous housekeeping for Macintosh Cocoa support (swampcat)

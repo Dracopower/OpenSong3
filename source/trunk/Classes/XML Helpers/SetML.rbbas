@@ -115,7 +115,6 @@ Protected Module SetML
 		  
 		  If xslide = Nil Then Return
 		  
-		  Profiler.BeginProfilerEntry "DrawSlide>ImageSlide-Fullscreen" ' --------------------------------------------------
 		  Dim slideType As String
 		  Dim pic As Picture = Nil
 		  Dim resize As String
@@ -123,8 +122,11 @@ Protected Module SetML
 		  
 		  slideType = SmartML.GetValue(xslide.Parent.Parent, "@type")
 		  
-		  Select Case slideType
-		  Case "image"
+		  Dim hasImage As Boolean = (slideType = "image") Or _
+		  (slideType = "song" And SmartML.GetValue(xslide.Parent.Parent, "@subtype", False) = "image")
+		  
+		  If hasImage Then
+		    Profiler.BeginProfilerEntry "DrawSlide>ImageSlide-Fullscreen" ' --------------------------------------------------
 		    Dim img As StyleImage
 		    Dim sImageFile As String
 		    Dim scale as Double
@@ -133,10 +135,15 @@ Protected Module SetML
 		    img = new StyleImage()
 		    sImageFile = SmartML.GetValue(xslide, "filename")
 		    If SmartML.GetValueB(xslide.Parent.Parent, "@link", False) = True And sImageFile<>"" Then
-		      Call img.SetImageFromFileName( sImageFile )
+		      If sImageFile.StartsWith("/") or sImageFile.StartsWith("\\") or sImageFile.Mid(2, 1)=":" Then
+		        Call img.SetImageFromFileName( sImageFile )
+		      Else
+		        Call img.SetImageFromFileName( App.DocsFolder.Child("Backgrounds").AbsolutePath + sImageFile )
+		      End If
 		    Else
 		      Call img.SetImageAsString( SmartML.GetValue(xslide, "image") )
 		    End If
+		    
 		    pic = img.GetImage()
 		    If pic IsA Picture Then
 		      resize = SmartML.GetValue(xslide.Parent.Parent, "@resize", False)
@@ -158,8 +165,8 @@ Protected Module SetML
 		        'Other variants are drawn after the (sub)titles
 		      End If
 		    End If
-		  End Select
-		  Profiler.EndProfilerEntry
+		    Profiler.EndProfilerEntry
+		  End If
 		  
 		  Profiler.BeginProfilerEntry "DrawSlide>Declare 2" ' --------------------------------------------------
 		  Dim RealSize, RealBorder, HeaderSize, FooterSize As Integer
@@ -176,17 +183,7 @@ Protected Module SetML
 		  Profiler.EndProfilerEntry
 		  Profiler.BeginProfilerEntry "DrawSlide>Title/Subtitle" ' --------------------------------------------------
 		  
-		  'Dim bodyvalign, bodyalign, titlevalign, titlealign, subtitlevalign, subtitlealign, title, subtitle As String
-		  //++EMP 09/05
-		  // Get the body a little earlier than originally done.
-		  //
 		  Dim subtitle As String 'EMP 09/05
-		  '++JRC Don't appear to be used
-		  'Dim BodyString As String 'EMP 09/05
-		  'BodyString = SmartML.GetValue(xslide, "body", True).FormatUnixEndOfLine
-		  'title = SmartML.GetValue(xslide.Parent.Parent, "title")
-		  '--
-		  
 		  If Style.SubtitleEnable Then
 		    subtitle = SmartML.GetValue(xslide.Parent.Parent, "subtitle")
 		    
@@ -247,8 +244,7 @@ Protected Module SetML
 		  
 		  bodyStyle.OntoGraphics g
 		  
-		  Select Case slideType
-		  Case "image"
+		  If hasImage Then
 		    Dim scale as Double
 		    Dim Left, Top As Integer
 		    
@@ -302,7 +298,9 @@ Protected Module SetML
 		      End If
 		      
 		    End If
-		  Else
+		  End If
+		  
+		  If slideType <> "image" Then
 		    If SmartML.GetValueB(xslide, "@emphasize", False) And Style.HighlightChorus Then
 		      bodyStyle.Italic = Not bodyStyle.Italic
 		    End If
@@ -324,7 +322,14 @@ Protected Module SetML
 		    
 		    '++JRC:
 		    Dim s As string
-		    If Style.BodyEnable Then
+		    Dim drawBody As Boolean = Style.BodyEnable
+		    If slideType = "song" And _
+		      SmartML.GetValueB(xslide.Parent.Parent, "@background_as_text", False, False) And _
+		      pic IsA Picture Then
+		      drawBody = fALSE
+		    End If
+		    
+		    If drawBody Then
 		      s = SmartML.GetValue(xslide, "body", True).FormatUnixEndOfLine
 		      SplitToArray(StringUtils.Trim(s, StringUtils.WhiteSpaces), lines, Chr(10))
 		      
@@ -336,7 +341,6 @@ Protected Module SetML
 		          MaxLineIndex = i
 		        End If
 		      Next i
-		      
 		    End If
 		    '--
 		    
@@ -377,7 +381,6 @@ Protected Module SetML
 		    Profiler.BeginProfilerEntry "DrawSlide>Pre-shrink 2 / Wrap" ' --------------------------------------------------
 		    
 		    '++JRC:
-		    'SplitToArray(Trim(SmartML.GetValue(xslide, "body", True)).FormatUnixEndOfLine, lines, Chr(10))
 		    SplitToArray(StringUtils.Trim(s, StringUtils.WhiteSpaces), lines, Chr(10))
 		    '--
 		    
@@ -480,7 +483,7 @@ Protected Module SetML
 		    line = RTrim(line)
 		    
 		    Call DrawFontString(g, line, 0, HeaderSize, bodyStyle, RealBorder, 0, 0, bodyMargins, g.Width, Style.BodyAlign, MainHeight, Style.BodyVAlign, bodyTabs, insertafterbreak) 'EMP 09/05
-		  End Select
+		  End If
 		  
 		  Profiler.EndProfilerEntry
 		  
@@ -1060,6 +1063,35 @@ Protected Module SetML
 		End Function
 	#tag EndMethod
 
+	#tag Method, Flags = &h0
+		Function IsExternal(slide As XmlNode) As Boolean
+		  Dim slideType As String
+		  Dim external As Boolean = False
+		  
+		  Try
+		    If slide <> Nil Then
+		      If Not IsNull(slide) Then
+		        
+		        'Handle both the situation that the slide XmlNode is passend (PresentWindow.XCurrentSlide) and that the slideGroup XmlNode is passed (PresentWindow.PreviousSlide)
+		        If slide.Name = "slide" Then
+		          slideType = SmartML.GetValue(slide.Parent.Parent, "@type", False)
+		        ElseIf slide.Name = "slide_group" Then
+		          slideType = SmartML.GetValue(slide, "@type", False)
+		        End If
+		        
+		        If slideType = "external" Then
+		          external = True
+		        End If
+		      End If
+		    End If
+		  Catch e as NilObjectException
+		    '... no idea why this Nil and Null checks have no effect
+		  End Try
+		  
+		  Return external
+		End Function
+	#tag EndMethod
+
 	#tag Method, Flags = &h1
 		Protected Function SetItemCount(xSet As XmlDocument) As Integer
 		  Dim slide_groups As XmlNode
@@ -1198,34 +1230,6 @@ Protected Module SetML
 	#tag EndMethod
 
 
-	#tag Method, Flags = &h0
-		Function IsExternal(slide As XmlNode) As Boolean
-		  Dim slideType As String
-		  Dim external As Boolean = False
-		  
-		  Try
-		    If slide <> Nil Then
-		      If Not IsNull(slide) Then
-		        
-		        'Handle both the situation that the slide XmlNode is passend (PresentWindow.XCurrentSlide) and that the slideGroup XmlNode is passed (PresentWindow.PreviousSlide)
-		        If slide.Name = "slide" Then
-		          slideType = SmartML.GetValue(slide.Parent.Parent, "@type", False)
-		        ElseIf slide.Name = "slide_group" Then
-		          slideType = SmartML.GetValue(slide, "@type", False)
-		        End If
-		        
-		        If slideType = "external" Then
-		          external = True
-		        End If
-		      End If
-		    End If
-		  Catch e as NilObjectException
-		    '... no idea why this Nil and Null checks have no effect
-		  End Try
-		  
-		  Return external
-		End Function
-	#tag EndMethod
 	#tag Property, Flags = &h0
 		SlideType As String
 	#tag EndProperty
