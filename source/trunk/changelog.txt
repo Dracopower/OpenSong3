@@ -1,6 +1,8 @@
-﻿* Fixed issue with Windows installer not loading default Bible
+﻿* Fixed issue in WebSocket API implementation: server must not mask frames (Vwout)
 
-* Update Windows Inno Setup added in 2.1 RC1 to newest version
+* Fixed issue with Windows installer not loading default Bible (le717)
+
+* Update Windows Inno Setup added in 2.1 RC1 to newest version (le717)
 
 * Fix in loading of song background images. If images are included using a link, a broken link could lead to the inability to fix the image binding and finally crash OpenSong (Vwout)
 

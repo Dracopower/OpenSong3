@@ -127,7 +127,7 @@ Implements REST.RESTProtocolHandler,iStatusNotifier
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
-		Private Function EncodeRFC6455(payload As String, mode As OpCode = OpCode.Text, masked As Boolean = True) As String
+		Private Function EncodeRFC6455(payload As String, mode As OpCode = OpCode.Text, masked As Boolean = False) As String
 		  Dim rawPayload As MemoryBlock
 		  rawPayload = payload.ConvertEncoding(Encodings.UTF8)
 		  Dim dataLength As UInt64 = rawPayload.Size 'LenB(payload)
