@@ -12484,7 +12484,7 @@ End
 	#tag Method, Flags = &h1
 		Protected Sub FindNext()
 		  App.DebugWriter.Write "MainWindow.FindNext: Enter"
-		  If Find.FindString.Len = 0 Then
+		  If Find.FindString.Len = 0 And Find.FindChord = False Then
 		    Find
 		    Return
 		  End If
