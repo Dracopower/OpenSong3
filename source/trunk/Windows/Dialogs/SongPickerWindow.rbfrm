@@ -161,7 +161,6 @@ Begin Window SongPickerWindow
       AcceptTabs      =   False
       Alignment       =   0
       AutoDeactivate  =   True
-      AutomaticallyCheckSpelling=   True
       BackColor       =   16777215
       Bold            =   False
       Border          =   True
@@ -177,8 +176,6 @@ Begin Window SongPickerWindow
       Italic          =   False
       Left            =   228
       LimitText       =   0
-      LineHeight      =   0
-      LineSpacing     =   1
       LockBottom      =   False
       LockedInPosition=   False
       LockLeft        =   True
@@ -332,7 +329,6 @@ Begin Window SongPickerWindow
       AcceptTabs      =   False
       Alignment       =   0
       AutoDeactivate  =   True
-      AutomaticallyCheckSpelling=   True
       BackColor       =   16777215
       Bold            =   False
       Border          =   True
@@ -348,8 +344,6 @@ Begin Window SongPickerWindow
       Italic          =   False
       Left            =   12
       LimitText       =   0
-      LineHeight      =   0
-      LineSpacing     =   1
       LockBottom      =   True
       LockedInPosition=   False
       LockLeft        =   True
@@ -414,7 +408,6 @@ Begin Window SongPickerWindow
       AcceptTabs      =   False
       Alignment       =   0
       AutoDeactivate  =   True
-      AutomaticallyCheckSpelling=   False
       BackColor       =   16777215
       Bold            =   False
       Border          =   True
@@ -491,7 +484,6 @@ Begin Window SongPickerWindow
       AcceptTabs      =   False
       Alignment       =   0
       AutoDeactivate  =   True
-      AutomaticallyCheckSpelling=   False
       BackColor       =   16777215
       Bold            =   False
       Border          =   True
@@ -1572,6 +1564,11 @@ End
 		  Me.attach(lst_all_songs)
 		  Me.attach(lbl_song_preview)
 		  Me.attach(edt_preview)
+		  '++JRC
+		  Me.attach(lbl_found_text)
+		  Me.setAttachedControlShouldMove(lbl_found_text, True)
+		  Me.setAttachedControlShouldResize(lbl_found_text, False)
+		  '--
 		  Me.setAttachedControlShouldMove(lbl_song_preview, True)
 		  Me.setAttachedControlShouldResize(lbl_song_preview, False)
 		  Me.setAttachedControlShouldResize(lst_all_songs, True)
