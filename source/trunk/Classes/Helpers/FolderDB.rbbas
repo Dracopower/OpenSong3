@@ -323,7 +323,7 @@ Protected Class FolderDB
 		    pathFilter = ""
 		  ElseIf InStr(pathFilter, FilterMain) = 1 Or pathFilter = "." Then
 		    pathFilter = ""
-		  Else
+		  ElseIf Right(pathFilter, 1) <> "/" Then
 		    pathFilter = pathFilter + "/"
 		  End If
 		  If filebox <> Nil Then filebox.DeleteAllRows
