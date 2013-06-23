@@ -1,4 +1,6 @@
-﻿* Fixed incorrect button state when no verse is selected for setting verse specific backgrounds (bug #399) (Vwout)
+﻿* Added explanatory labels to spacing-editboxes in the print settings dialog (feature request #99) (Vwout)
+
+* Fixed incorrect button state when no verse is selected for setting verse specific backgrounds (bug #399) (Vwout)
 
 * Cosmetic fixes when switching languages (bug #402) (Vwout)
 The list of themes is reloaded, a restart of the program or a reload of the song is no longer needed.

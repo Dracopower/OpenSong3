@@ -141,9 +141,8 @@ Begin Window PrintSettingsWindow
          Top             =   35
          UseFocusRing    =   True
          Visible         =   True
-         Width           =   641
+         Width           =   635
          Begin Label lbl_font_title
-            Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
             DataField       =   ""
@@ -165,19 +164,17 @@ Begin Window PrintSettingsWindow
             Selectable      =   False
             TabIndex        =   0
             TabPanelIndex   =   1
-            TabStop         =   True
             Text            =   "Title:"
             TextAlign       =   2
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   92
             Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   60
-            Window          =   0
-            _mWindow        =   0
          End
          Begin SFontCanvas can_font_title
             AcceptFocus     =   False
@@ -209,7 +206,6 @@ Begin Window PrintSettingsWindow
             Width           =   160
          End
          Begin Label lbl_font_author
-            Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
             DataField       =   ""
@@ -231,19 +227,17 @@ Begin Window PrintSettingsWindow
             Selectable      =   False
             TabIndex        =   2
             TabPanelIndex   =   1
-            TabStop         =   True
             Text            =   "Author:"
             TextAlign       =   2
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   147
             Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   60
-            Window          =   0
-            _mWindow        =   0
          End
          Begin SFontCanvas can_font_author
             AcceptFocus     =   False
@@ -275,7 +269,6 @@ Begin Window PrintSettingsWindow
             Width           =   160
          End
          Begin Label lbl_font_sections
-            Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
             DataField       =   ""
@@ -286,7 +279,7 @@ Begin Window PrintSettingsWindow
             Index           =   -2147483648
             InitialParent   =   "can_print_fonts"
             Italic          =   False
-            Left            =   265
+            Left            =   254
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   False
@@ -297,19 +290,17 @@ Begin Window PrintSettingsWindow
             Selectable      =   False
             TabIndex        =   6
             TabPanelIndex   =   1
-            TabStop         =   True
             Text            =   "Sections:"
             TextAlign       =   2
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   92
             Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   95
-            Window          =   0
-            _mWindow        =   0
          End
          Begin SFontCanvas can_font_sections
             AcceptFocus     =   False
@@ -325,7 +316,7 @@ Begin Window PrintSettingsWindow
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "can_print_fonts"
-            Left            =   365
+            Left            =   354
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   False
@@ -341,7 +332,6 @@ Begin Window PrintSettingsWindow
             Width           =   160
          End
          Begin Label lbl_font_lyrics
-            Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
             DataField       =   ""
@@ -352,7 +342,7 @@ Begin Window PrintSettingsWindow
             Index           =   -2147483648
             InitialParent   =   "can_print_fonts"
             Italic          =   False
-            Left            =   265
+            Left            =   254
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   False
@@ -363,19 +353,17 @@ Begin Window PrintSettingsWindow
             Selectable      =   False
             TabIndex        =   18
             TabPanelIndex   =   1
-            TabStop         =   True
             Text            =   "Lyrics:"
             TextAlign       =   2
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   255
             Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   95
-            Window          =   0
-            _mWindow        =   0
          End
          Begin SFontCanvas can_font_lyrics
             AcceptFocus     =   False
@@ -391,7 +379,7 @@ Begin Window PrintSettingsWindow
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "can_print_fonts"
-            Left            =   365
+            Left            =   354
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   False
@@ -407,7 +395,6 @@ Begin Window PrintSettingsWindow
             Width           =   160
          End
          Begin Label lbl_font_chords
-            Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
             DataField       =   ""
@@ -418,7 +405,7 @@ Begin Window PrintSettingsWindow
             Index           =   -2147483648
             InitialParent   =   "can_print_fonts"
             Italic          =   False
-            Left            =   265
+            Left            =   254
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   False
@@ -429,19 +416,17 @@ Begin Window PrintSettingsWindow
             Selectable      =   False
             TabIndex        =   10
             TabPanelIndex   =   1
-            TabStop         =   True
             Text            =   "Chords:"
             TextAlign       =   2
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   145
             Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   95
-            Window          =   0
-            _mWindow        =   0
          End
          Begin SFontCanvas can_font_chords
             AcceptFocus     =   False
@@ -457,7 +442,7 @@ Begin Window PrintSettingsWindow
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "can_print_fonts"
-            Left            =   365
+            Left            =   354
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   False
@@ -473,7 +458,6 @@ Begin Window PrintSettingsWindow
             Width           =   160
          End
          Begin Label lbl_font_capo
-            Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
             DataField       =   ""
@@ -484,7 +468,7 @@ Begin Window PrintSettingsWindow
             Index           =   -2147483648
             InitialParent   =   "can_print_fonts"
             Italic          =   False
-            Left            =   265
+            Left            =   254
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   False
@@ -495,19 +479,17 @@ Begin Window PrintSettingsWindow
             Selectable      =   False
             TabIndex        =   14
             TabPanelIndex   =   1
-            TabStop         =   True
             Text            =   "Capo Chords:"
             TextAlign       =   2
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   200
             Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   95
-            Window          =   0
-            _mWindow        =   0
          End
          Begin SFontCanvas can_font_capo
             AcceptFocus     =   False
@@ -523,7 +505,7 @@ Begin Window PrintSettingsWindow
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "can_print_fonts"
-            Left            =   365
+            Left            =   354
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   False
@@ -568,7 +550,6 @@ Begin Window PrintSettingsWindow
             Width           =   160
          End
          Begin Label lbl_font_copyright
-            Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
             DataField       =   ""
@@ -590,25 +571,22 @@ Begin Window PrintSettingsWindow
             Selectable      =   False
             TabIndex        =   4
             TabPanelIndex   =   1
-            TabStop         =   True
             Text            =   "Copyright:"
             TextAlign       =   2
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   193
             Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   60
-            Window          =   0
-            _mWindow        =   0
          End
          Begin TextField edt_font_chords_before
             AcceptTabs      =   ""
             Alignment       =   3
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   False
             BackColor       =   &hFFFFFF
             Bold            =   ""
             Border          =   True
@@ -622,7 +600,7 @@ Begin Window PrintSettingsWindow
             Index           =   -2147483648
             InitialParent   =   "can_print_fonts"
             Italic          =   ""
-            Left            =   532
+            Left            =   598
             LimitText       =   0
             LockBottom      =   ""
             LockedInPosition=   False
@@ -651,7 +629,6 @@ Begin Window PrintSettingsWindow
             AcceptTabs      =   ""
             Alignment       =   3
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   False
             BackColor       =   &hFFFFFF
             Bold            =   ""
             Border          =   True
@@ -665,7 +642,7 @@ Begin Window PrintSettingsWindow
             Index           =   -2147483648
             InitialParent   =   "can_print_fonts"
             Italic          =   ""
-            Left            =   532
+            Left            =   598
             LimitText       =   0
             LockBottom      =   ""
             LockedInPosition=   False
@@ -694,7 +671,6 @@ Begin Window PrintSettingsWindow
             AcceptTabs      =   ""
             Alignment       =   3
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   False
             BackColor       =   &hFFFFFF
             Bold            =   ""
             Border          =   True
@@ -708,7 +684,7 @@ Begin Window PrintSettingsWindow
             Index           =   -2147483648
             InitialParent   =   "can_print_fonts"
             Italic          =   ""
-            Left            =   532
+            Left            =   598
             LimitText       =   0
             LockBottom      =   ""
             LockedInPosition=   False
@@ -737,7 +713,6 @@ Begin Window PrintSettingsWindow
             AcceptTabs      =   ""
             Alignment       =   3
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   False
             BackColor       =   &hFFFFFF
             Bold            =   ""
             Border          =   True
@@ -751,7 +726,7 @@ Begin Window PrintSettingsWindow
             Index           =   -2147483648
             InitialParent   =   "can_print_fonts"
             Italic          =   ""
-            Left            =   532
+            Left            =   598
             LimitText       =   0
             LockBottom      =   ""
             LockedInPosition=   False
@@ -780,7 +755,6 @@ Begin Window PrintSettingsWindow
             AcceptTabs      =   ""
             Alignment       =   3
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   False
             BackColor       =   &hFFFFFF
             Bold            =   ""
             Border          =   True
@@ -794,7 +768,7 @@ Begin Window PrintSettingsWindow
             Index           =   -2147483648
             InitialParent   =   "can_print_fonts"
             Italic          =   ""
-            Left            =   532
+            Left            =   598
             LimitText       =   0
             LockBottom      =   ""
             LockedInPosition=   False
@@ -823,7 +797,6 @@ Begin Window PrintSettingsWindow
             AcceptTabs      =   ""
             Alignment       =   3
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   False
             BackColor       =   &hFFFFFF
             Bold            =   ""
             Border          =   True
@@ -837,7 +810,7 @@ Begin Window PrintSettingsWindow
             Index           =   -2147483648
             InitialParent   =   "can_print_fonts"
             Italic          =   ""
-            Left            =   532
+            Left            =   598
             LimitText       =   0
             LockBottom      =   ""
             LockedInPosition=   False
@@ -866,7 +839,6 @@ Begin Window PrintSettingsWindow
             AcceptTabs      =   ""
             Alignment       =   3
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   False
             BackColor       =   &hFFFFFF
             Bold            =   ""
             Border          =   True
@@ -880,7 +852,7 @@ Begin Window PrintSettingsWindow
             Index           =   -2147483648
             InitialParent   =   "can_print_fonts"
             Italic          =   ""
-            Left            =   532
+            Left            =   598
             LimitText       =   0
             LockBottom      =   ""
             LockedInPosition=   False
@@ -909,7 +881,6 @@ Begin Window PrintSettingsWindow
             AcceptTabs      =   ""
             Alignment       =   3
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   False
             BackColor       =   &hFFFFFF
             Bold            =   ""
             Border          =   True
@@ -923,7 +894,7 @@ Begin Window PrintSettingsWindow
             Index           =   -2147483648
             InitialParent   =   "can_print_fonts"
             Italic          =   ""
-            Left            =   532
+            Left            =   598
             LimitText       =   0
             LockBottom      =   ""
             LockedInPosition=   False
@@ -947,6 +918,312 @@ Begin Window PrintSettingsWindow
             UseFocusRing    =   True
             Visible         =   True
             Width           =   35
+         End
+         Begin Label lbl_font_spacing
+            AutoDeactivate  =   True
+            Bold            =   False
+            DataField       =   ""
+            DataSource      =   ""
+            Enabled         =   True
+            Height          =   15
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "can_print_fonts"
+            Italic          =   False
+            Left            =   521
+            LockBottom      =   False
+            LockedInPosition=   False
+            LockLeft        =   False
+            LockRight       =   False
+            LockTop         =   False
+            Multiline       =   False
+            Scope           =   0
+            Selectable      =   False
+            TabIndex        =   22
+            TabPanelIndex   =   1
+            Text            =   "Spacing:"
+            TextAlign       =   0
+            TextColor       =   0
+            TextFont        =   "Arial"
+            TextSize        =   10
+            TextUnit        =   0
+            Top             =   58
+            Transparent     =   False
+            Underline       =   False
+            Visible         =   True
+            Width           =   112
+         End
+         Begin Label lbl_font_sections_before
+            AutoDeactivate  =   True
+            Bold            =   False
+            DataField       =   ""
+            DataSource      =   ""
+            Enabled         =   True
+            Height          =   15
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "can_print_fonts"
+            Italic          =   False
+            Left            =   521
+            LockBottom      =   False
+            LockedInPosition=   False
+            LockLeft        =   False
+            LockRight       =   False
+            LockTop         =   False
+            Multiline       =   False
+            Scope           =   0
+            Selectable      =   False
+            TabIndex        =   23
+            TabPanelIndex   =   1
+            Text            =   "before:"
+            TextAlign       =   2
+            TextColor       =   0
+            TextFont        =   "Arial"
+            TextSize        =   10
+            TextUnit        =   0
+            Top             =   80
+            Transparent     =   False
+            Underline       =   False
+            Visible         =   True
+            Width           =   70
+         End
+         Begin Label lbl_font_chords_before
+            AutoDeactivate  =   True
+            Bold            =   False
+            DataField       =   ""
+            DataSource      =   ""
+            Enabled         =   True
+            Height          =   15
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "can_print_fonts"
+            Italic          =   False
+            Left            =   521
+            LockBottom      =   False
+            LockedInPosition=   False
+            LockLeft        =   False
+            LockRight       =   False
+            LockTop         =   False
+            Multiline       =   False
+            Scope           =   0
+            Selectable      =   False
+            TabIndex        =   24
+            TabPanelIndex   =   1
+            Text            =   "before:"
+            TextAlign       =   2
+            TextColor       =   0
+            TextFont        =   "Arial"
+            TextSize        =   10
+            TextUnit        =   0
+            Top             =   132
+            Transparent     =   False
+            Underline       =   False
+            Visible         =   True
+            Width           =   70
+         End
+         Begin Label lbl_font_capo_before
+            AutoDeactivate  =   True
+            Bold            =   False
+            DataField       =   ""
+            DataSource      =   ""
+            Enabled         =   True
+            Height          =   15
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "can_print_fonts"
+            Italic          =   False
+            Left            =   521
+            LockBottom      =   False
+            LockedInPosition=   False
+            LockLeft        =   False
+            LockRight       =   False
+            LockTop         =   False
+            Multiline       =   False
+            Scope           =   0
+            Selectable      =   False
+            TabIndex        =   25
+            TabPanelIndex   =   1
+            Text            =   "before:"
+            TextAlign       =   2
+            TextColor       =   0
+            TextFont        =   "Arial"
+            TextSize        =   10
+            TextUnit        =   0
+            Top             =   187
+            Transparent     =   False
+            Underline       =   False
+            Visible         =   True
+            Width           =   70
+         End
+         Begin Label lbl_font_lyrics_before
+            AutoDeactivate  =   True
+            Bold            =   False
+            DataField       =   ""
+            DataSource      =   ""
+            Enabled         =   True
+            Height          =   15
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "can_print_fonts"
+            Italic          =   False
+            Left            =   521
+            LockBottom      =   False
+            LockedInPosition=   False
+            LockLeft        =   False
+            LockRight       =   False
+            LockTop         =   False
+            Multiline       =   False
+            Scope           =   0
+            Selectable      =   False
+            TabIndex        =   26
+            TabPanelIndex   =   1
+            Text            =   "before:"
+            TextAlign       =   2
+            TextColor       =   0
+            TextFont        =   "Arial"
+            TextSize        =   10
+            TextUnit        =   0
+            Top             =   243
+            Transparent     =   False
+            Underline       =   False
+            Visible         =   True
+            Width           =   70
+         End
+         Begin Label lbl_font_sections_after
+            AutoDeactivate  =   True
+            Bold            =   False
+            DataField       =   ""
+            DataSource      =   ""
+            Enabled         =   True
+            Height          =   15
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "can_print_fonts"
+            Italic          =   False
+            Left            =   521
+            LockBottom      =   False
+            LockedInPosition=   False
+            LockLeft        =   False
+            LockRight       =   False
+            LockTop         =   False
+            Multiline       =   False
+            Scope           =   0
+            Selectable      =   False
+            TabIndex        =   27
+            TabPanelIndex   =   1
+            Text            =   "after:"
+            TextAlign       =   2
+            TextColor       =   0
+            TextFont        =   "Arial"
+            TextSize        =   10
+            TextUnit        =   0
+            Top             =   106
+            Transparent     =   False
+            Underline       =   False
+            Visible         =   True
+            Width           =   70
+         End
+         Begin Label lbl_font_chords_after
+            AutoDeactivate  =   True
+            Bold            =   False
+            DataField       =   ""
+            DataSource      =   ""
+            Enabled         =   True
+            Height          =   15
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "can_print_fonts"
+            Italic          =   False
+            Left            =   521
+            LockBottom      =   False
+            LockedInPosition=   False
+            LockLeft        =   False
+            LockRight       =   False
+            LockTop         =   False
+            Multiline       =   False
+            Scope           =   0
+            Selectable      =   False
+            TabIndex        =   28
+            TabPanelIndex   =   1
+            Text            =   "after:"
+            TextAlign       =   2
+            TextColor       =   0
+            TextFont        =   "Arial"
+            TextSize        =   10
+            TextUnit        =   0
+            Top             =   158
+            Transparent     =   False
+            Underline       =   False
+            Visible         =   True
+            Width           =   70
+         End
+         Begin Label lbl_font_capo_after
+            AutoDeactivate  =   True
+            Bold            =   False
+            DataField       =   ""
+            DataSource      =   ""
+            Enabled         =   True
+            Height          =   15
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "can_print_fonts"
+            Italic          =   False
+            Left            =   521
+            LockBottom      =   False
+            LockedInPosition=   False
+            LockLeft        =   False
+            LockRight       =   False
+            LockTop         =   False
+            Multiline       =   False
+            Scope           =   0
+            Selectable      =   False
+            TabIndex        =   29
+            TabPanelIndex   =   1
+            Text            =   "after:"
+            TextAlign       =   2
+            TextColor       =   0
+            TextFont        =   "Arial"
+            TextSize        =   10
+            TextUnit        =   0
+            Top             =   213
+            Transparent     =   False
+            Underline       =   False
+            Visible         =   True
+            Width           =   70
+         End
+         Begin Label lbl_font_lyrics_after
+            AutoDeactivate  =   True
+            Bold            =   False
+            DataField       =   ""
+            DataSource      =   ""
+            Enabled         =   True
+            Height          =   15
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "can_print_fonts"
+            Italic          =   False
+            Left            =   521
+            LockBottom      =   False
+            LockedInPosition=   False
+            LockLeft        =   False
+            LockRight       =   False
+            LockTop         =   False
+            Multiline       =   False
+            Scope           =   0
+            Selectable      =   False
+            TabIndex        =   30
+            TabPanelIndex   =   1
+            Text            =   "after:"
+            TextAlign       =   2
+            TextColor       =   0
+            TextFont        =   "Arial"
+            TextSize        =   10
+            TextUnit        =   0
+            Top             =   269
+            Transparent     =   False
+            Underline       =   False
+            Visible         =   True
+            Width           =   70
          End
       End
       Begin Canvas can_print_layout
@@ -974,9 +1251,8 @@ Begin Window PrintSettingsWindow
          Top             =   35
          UseFocusRing    =   True
          Visible         =   True
-         Width           =   634
+         Width           =   635
          Begin Label lbl_layout_heading_border_thickness
-            Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
             DataField       =   ""
@@ -998,25 +1274,22 @@ Begin Window PrintSettingsWindow
             Selectable      =   False
             TabIndex        =   0
             TabPanelIndex   =   2
-            TabStop         =   True
             Text            =   "Heading Border Thickness:"
             TextAlign       =   0
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   55
             Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   300
-            Window          =   0
-            _mWindow        =   0
          End
          Begin TextField edt_layout_heading_border_thickness
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   False
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -1147,7 +1420,6 @@ Begin Window PrintSettingsWindow
          Visible         =   True
          Width           =   635
          Begin Label lbl_page_top
-            Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
             DataField       =   ""
@@ -1169,25 +1441,22 @@ Begin Window PrintSettingsWindow
             Selectable      =   False
             TabIndex        =   0
             TabPanelIndex   =   3
-            TabStop         =   True
             Text            =   "Top:"
             TextAlign       =   1
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   46
             Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   105
-            Window          =   0
-            _mWindow        =   0
          End
          Begin SEditFieldNumeric edt_page_top
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -1234,7 +1503,6 @@ Begin Window PrintSettingsWindow
             Width           =   45
          End
          Begin Label lbl_page_left
-            Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
             DataField       =   ""
@@ -1256,25 +1524,22 @@ Begin Window PrintSettingsWindow
             Selectable      =   False
             TabIndex        =   2
             TabPanelIndex   =   3
-            TabStop         =   True
             Text            =   "Left:"
             TextAlign       =   1
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   136
             Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   95
-            Window          =   0
-            _mWindow        =   0
          End
          Begin SEditFieldNumeric edt_page_left
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -1321,7 +1586,6 @@ Begin Window PrintSettingsWindow
             Width           =   45
          End
          Begin Label lbl_page_bottom
-            Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
             DataField       =   ""
@@ -1343,25 +1607,22 @@ Begin Window PrintSettingsWindow
             Selectable      =   False
             TabIndex        =   4
             TabPanelIndex   =   3
-            TabStop         =   True
             Text            =   "Bottom:"
             TextAlign       =   1
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   241
             Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   105
-            Window          =   0
-            _mWindow        =   0
          End
          Begin SEditFieldNumeric edt_page_bottom
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -1408,7 +1669,6 @@ Begin Window PrintSettingsWindow
             Width           =   45
          End
          Begin Label lbl_page_right
-            Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
             DataField       =   ""
@@ -1430,25 +1690,22 @@ Begin Window PrintSettingsWindow
             Selectable      =   False
             TabIndex        =   6
             TabPanelIndex   =   3
-            TabStop         =   True
             Text            =   "Right:"
             TextAlign       =   1
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   138
             Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   95
-            Window          =   0
-            _mWindow        =   0
          End
          Begin SEditFieldNumeric edt_page_right
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -1513,13 +1770,11 @@ Begin Window PrintSettingsWindow
             Scope           =   0
             TabIndex        =   8
             TabPanelIndex   =   3
-            TabStop         =   True
             Top             =   86
             TopLeftColor    =   0
             Visible         =   True
             Width           =   115
             Begin Label lbl_page_width
-               Active          =   ""
                AutoDeactivate  =   True
                Bold            =   False
                DataField       =   ""
@@ -1541,25 +1796,22 @@ Begin Window PrintSettingsWindow
                Selectable      =   False
                TabIndex        =   0
                TabPanelIndex   =   3
-               TabStop         =   True
                Text            =   "Width:"
                TextAlign       =   1
                TextColor       =   0
                TextFont        =   "Arial"
                TextSize        =   10
+               TextUnit        =   0
                Top             =   121
                Transparent     =   False
                Underline       =   False
                Visible         =   True
                Width           =   105
-               Window          =   0
-               _mWindow        =   0
             End
             Begin SEditFieldNumeric edt_page_width
                AcceptTabs      =   False
                Alignment       =   0
                AutoDeactivate  =   True
-               AutomaticallyCheckSpelling=   True
                BackColor       =   16777215
                Bold            =   False
                Border          =   True
@@ -1606,7 +1858,6 @@ Begin Window PrintSettingsWindow
                Width           =   45
             End
             Begin Label lbl_page_height
-               Active          =   ""
                AutoDeactivate  =   True
                Bold            =   False
                DataField       =   ""
@@ -1628,25 +1879,22 @@ Begin Window PrintSettingsWindow
                Selectable      =   False
                TabIndex        =   2
                TabPanelIndex   =   3
-               TabStop         =   True
                Text            =   "Height:"
                TextAlign       =   1
                TextColor       =   0
                TextFont        =   "Arial"
                TextSize        =   10
+               TextUnit        =   0
                Top             =   166
                Transparent     =   False
                Underline       =   False
                Visible         =   True
                Width           =   105
-               Window          =   0
-               _mWindow        =   0
             End
             Begin SEditFieldNumeric edt_page_height
                AcceptTabs      =   False
                Alignment       =   0
                AutoDeactivate  =   True
-               AutomaticallyCheckSpelling=   True
                BackColor       =   16777215
                Bold            =   False
                Border          =   True
@@ -1713,7 +1961,6 @@ Begin Window PrintSettingsWindow
          Scope           =   0
          TabIndex        =   3
          TabPanelIndex   =   3
-         TabStop         =   True
          TextFont        =   "System"
          TextSize        =   12
          TextUnit        =   0

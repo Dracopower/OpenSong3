@@ -507,6 +507,15 @@
       <chords caption="Chords"/>
       <capo caption="Capo"/>
       <copyright caption="Copyright"/>
+      <spacing caption="Spacing"/>
+      <sections_before caption="before"/>
+      <sections_after caption="after"/>
+      <chords_before caption="link(/print_settings/fonts/sections_before/@caption)"/>
+      <chords_after caption="link(/print_settings/fonts/sections_after/@caption)"/>
+      <capo_before caption="link(/print_settings/fonts/sections_before/@caption)"/>
+      <capo_after caption="link(/print_settings/fonts/sections_after/@caption)"/>
+      <lyrics_before caption="link(/print_settings/fonts/sections_before/@caption)"/>
+      <lyrics_after caption="link(/print_settings/fonts/sections_after/@caption)"/>
     </fonts>
     <layout>
       <heading_border_thickness caption="Heading Border Thickness"/>

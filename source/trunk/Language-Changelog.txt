@@ -1,3 +1,13 @@
+print_settings/fonts/spacing
+print_settings/fonts/sections_before
+print_settings/fonts/sections_after
+print_settings/fonts/chords_before
+print_settings/fonts/chords_after
+print_settings/fonts/capo_before
+print_settings/fonts/capo_after
+print_settings/fonts/lyrics_before
+print_settings/fonts/lyrics_after
+
 -= Version 2.1 RC1 =-
 general_settings/imagedefaults/* (partial content move from image_slide)
 general_settings/imagequality/extern (deleted)
