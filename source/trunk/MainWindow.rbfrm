@@ -8434,8 +8434,8 @@ End
 		      chk_song_keepaspect.Enabled = True
 		      chk_song_store_as_link.Enabled = True
 		      chk_song_background_as_text.Enabled = True
-		      btn_song_add_background.Enabled = True
-		      btn_song_del_background.Enabled = True
+		      btn_song_add_background.Enabled = False
+		      btn_song_del_background.Enabled = False
 		      
 		      ' SHORTCUTS
 		      
@@ -16277,6 +16277,9 @@ End
 		  If (Me.ListIndex() > -1) Then
 		    btn_song_add_background.Enabled = True
 		    btn_song_del_background.Enabled = True
+		  Else
+		    btn_song_add_background.Enabled = False
+		    btn_song_del_background.Enabled = False
 		  End If
 		End Sub
 	#tag EndEvent
@@ -16299,12 +16302,12 @@ End
 	#tag EndEvent
 	#tag Event
 		Sub Action()
-		  If lst_song_backgrounds.ListIndex > -1 Then
+		  If (lst_song_backgrounds.ListIndex() > -1) Then
 		    lst_song_backgrounds.ClearImage( lst_song_backgrounds.ListIndex )
 		    
 		    Status_SongChanged = True
 		    EnableMenuItems
-		  end if
+		  End If
 		  
 		End Sub
 	#tag EndEvent
@@ -16330,14 +16333,16 @@ End
 		  Dim f As FolderItem
 		  Dim img As StyleImage
 		  
-		  f = ImageChooserWindow.Lookup()
-		  If f <> Nil Then
-		    img = new StyleImage
-		    If img.SetImageFromFile( f ) Then
-		      lst_song_backgrounds.SetImage( lst_song_backgrounds.ListIndex, img )
-		      
-		      Status_SongChanged = True
-		      EnableMenuItems
+		  If (lst_song_backgrounds.ListIndex() > -1) Then
+		    f = ImageChooserWindow.Lookup()
+		    If f <> Nil Then
+		      img = new StyleImage
+		      If img.SetImageFromFile( f ) Then
+		        lst_song_backgrounds.SetImage( lst_song_backgrounds.ListIndex, img )
+		        
+		        Status_SongChanged = True
+		        EnableMenuItems
+		      End If
 		    End If
 		  End If
 		End Sub
