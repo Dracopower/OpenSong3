@@ -1,4 +1,8 @@
-﻿* Fixed folders selection in Song Mode (bug #394) (Vwout)
+﻿* Cosmetic fixes when switching languages (bug #402) (Vwout)
+The list of themes is reloaded, a restart of the program or a reload of the song is no longer needed.
+The themes list has a wider listbox.
+
+* Fixed folders selection in Song Mode (bug #394) (Vwout)
 When the songs folder is 'All', the behavior is back what is was before: the song is loaded and the folder selection does not change.
 A new feature is added, a double click on a song when the selected folder is 'All' will show the song, and change the selected folder to the folder that the song is in. The song list will be updated to the contents of the folder.
 
