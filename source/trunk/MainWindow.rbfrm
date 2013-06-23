@@ -9386,7 +9386,7 @@ End
 	#tag EndEvent
 
 	#tag Event
-		Sub Paint(g As Graphics)
+		Sub Paint(g As Graphics, areas() As REALbasic.Rect)
 		  ' left side
 		  g.ForeColor = DarkBevelColor
 		  g.FillOval 3, 9, 2, 2
@@ -12170,6 +12170,85 @@ End
 		End Sub
 	#tag EndMethod
 
+	#tag Method, Flags = &h21
+		Private Sub ActionSongTryChange(updateFolderSelection As Boolean)
+		  If Status_InSongLoading Then
+		    Return
+		  End If
+		  
+		  //++EMP 18 Feb 2006
+		  // If Globals.OldSongSel < 0, then immediately return.
+		  // This is a flag that some manipulation of items is going on
+		  // (See ActionSongNew, for example)
+		  If Globals.OldSongSel < 0 Then Return
+		  
+		  If lst_songs_songs.ListIndex >= -1 Then '++JRC Fix corner case where user would click in an empty row of the list
+		    'and has unsaved changes,those changes would be lost
+		    if lst_songs_songs.ListIndex <> Globals.OldSongSel Or lst_songs_songs.CellTag(lst_songs_songs.ListIndex, 0) + lst_songs_songs.Text <> Globals.OldSongFileName then
+		      if CurrentSong <> Nil And Status_SongChanged = True And Globals.OldSongFileName <> "" Then
+		        '++JRC
+		        'Ask if user wants to save
+		        If NOT ActionSongAskSave Then
+		          'user canceled, go back to old selection
+		          'this works except the FocusRing doesn't change back
+		          'along with the selection box grrr
+		          lst_songs_songs.ListIndex = Globals.OldSongSel
+		          return
+		        End if
+		        '--
+		      End if
+		    Else
+		      if CurrentSong <> Nil And Status_SongChanged = True And Globals.OldSongFileName <> "" Then
+		        return
+		      End if
+		    End if
+		    
+		    If lst_songs_songs.ListIndex >= 0 Then
+		      Globals.OldSongSel = lst_songs_songs.ListIndex
+		    End If
+		    '--
+		  End if
+		  
+		  If lst_songs_songs.ListIndex >= 0 Then
+		    '++JRC Check if we have a songs folder if not try to create one
+		    If App.CheckDocumentFolders(App.SONGS_FOLDER) = App.NO_FOLDER Then
+		      If  App.DocsFolder <> Nil Then
+		        InputBox.Message App.T.Translate("errors/create_songs_folder", App.DocsFolder.AbsolutePath + App.STR_SONGS)
+		      Else
+		        InputBox.Message App.T.Translate("errors/no_docs_folder", "")
+		      End If
+		      lst_songs_songs.ListIndex = -1
+		      Return
+		    End If
+		    
+		    '++JRC If Songs is Nil, try to generate FolderDB
+		    If Songs = Nil Then
+		      If App.DocsFolder <> Nil Then
+		        Songs = New FolderDB(App.DocsFolder.Child(App.STR_SONGS))
+		      Else
+		        InputBox.Message App.T.Translate("errors/no_docs_folder", "")
+		        lst_songs_songs.ListIndex = -1
+		        Return
+		      End If
+		      If Songs = Nil Then
+		        'Songs is still Nil, return (should never get here but we probably should
+		        'give some error message anyway ;)
+		        lst_songs_songs.ListIndex = -1
+		        Return
+		      End If
+		    End If
+		    
+		    Dim fullpath As String = lst_songs_songs.CellTag(lst_songs_songs.ListIndex, 0).StringValue + lst_songs_songs.Text
+		    Call LoadSong(Songs.GetFile(fullpath), updateFolderSelection)
+		    
+		  Else
+		    Status_SongOpen = False
+		    Status_SongChanged = False
+		    EnableMenuItems
+		  End If
+		End Sub
+	#tag EndMethod
+
 	#tag Method, Flags = &h0
 		Function AddLinkedSongs(song As XmlNode, AddToLog As Boolean) As XmlDocument()
 		  '++JRC
@@ -13158,7 +13237,7 @@ End
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Function LoadSong(f As FolderItem) As Boolean
+		Function LoadSong(f As FolderItem, updateFolderSelection As Boolean = False) As Boolean
 		  Dim result As Boolean = False
 		  
 		  If Status_InSongLoading Then
@@ -13205,13 +13284,15 @@ End
 		    End If
 		    
 		    If index > -1 Then
-		      If pop_songs_song_folders.ListIndex <> index Then
-		        pop_songs_song_folders.ListIndex = index
-		        
-		        Globals.OldFolderSel = index
-		        Globals.CurrentSongFolder = folderPath
-		        
-		        Call Songs.GetFiles(folderPath, lst_songs_songs)
+		      If updateFolderSelection  Then
+		        If pop_songs_song_folders.ListIndex <> index Then
+		          pop_songs_song_folders.ListIndex = index
+		          
+		          Globals.OldFolderSel = index
+		          Globals.CurrentSongFolder = folderPath
+		          
+		          Call Songs.GetFiles(folderPath, lst_songs_songs)
+		        End If
 		      End If
 		      
 		      index = -1
@@ -14609,84 +14690,7 @@ End
 #tag Events lst_songs_songs
 	#tag Event
 		Sub Change()
-		  Dim f As FolderItem
-		  Dim fullpath As String
-		  
-		  If Status_InSongLoading Then
-		    Return
-		  End If
-		  
-		  //++EMP 18 Feb 2006
-		  // If Globals.OldSongSel < 0, then immediately return.
-		  // This is a flag that some manipulation of items is going on
-		  // (See ActionSongNew, for example)
-		  If Globals.OldSongSel < 0 Then Return
-		  
-		  If lst_songs_songs.ListIndex >= -1 Then '++JRC Fix corner case where user would click in an empty row of the list
-		    'and has unsaved changes,those changes would be lost
-		    if lst_songs_songs.ListIndex <> Globals.OldSongSel Or lst_songs_songs.CellTag(Me.ListIndex, 0) + lst_songs_songs.Text <> Globals.OldSongFileName then
-		      if CurrentSong <> Nil And Status_SongChanged = True And Globals.OldSongFileName <> "" Then
-		        '++JRC
-		        'Ask if user wants to save
-		        If NOT ActionSongAskSave Then
-		          'user canceled, go back to old selection
-		          'this works except the FocusRing doesn't change back
-		          'along with the selection box grrr
-		          lst_songs_songs.ListIndex = Globals.OldSongSel
-		          return
-		        End if
-		        '--
-		      End if
-		    Else
-		      if CurrentSong <> Nil And Status_SongChanged = True And Globals.OldSongFileName <> "" Then
-		        return
-		      End if
-		    End if
-		    
-		    If lst_songs_songs.ListIndex >= 0 Then
-		      Globals.OldSongSel = lst_songs_songs.ListIndex
-		    End If
-		    '--
-		  End if
-		  
-		  If lst_songs_songs.ListIndex >= 0 Then
-		    '++JRC Check if we have a songs folder if not try to create one
-		    If App.CheckDocumentFolders(App.SONGS_FOLDER) = App.NO_FOLDER Then
-		      If  App.DocsFolder <> Nil Then
-		        InputBox.Message App.T.Translate("errors/create_songs_folder", App.DocsFolder.AbsolutePath + App.STR_SONGS)
-		      Else
-		        InputBox.Message App.T.Translate("errors/no_docs_folder", "")
-		      End If
-		      lst_songs_songs.ListIndex = -1
-		      Return
-		    End If
-		    
-		    '++JRC If Songs is Nil, try to generate FolderDB
-		    If Songs = Nil Then
-		      If App.DocsFolder <> Nil Then
-		        Songs = New FolderDB(App.DocsFolder.Child(App.STR_SONGS))
-		      Else
-		        InputBox.Message App.T.Translate("errors/no_docs_folder", "")
-		        lst_songs_songs.ListIndex = -1
-		        Return
-		      End If
-		      If Songs = Nil Then
-		        'Songs is still Nil, return (should never get here but we probably should
-		        'give some error message anyway ;)
-		        lst_songs_songs.ListIndex = -1
-		        Return
-		      End If
-		    End If
-		    
-		    'f = Songs.GetFile(pop_songs_song_folders.Text + "/" + lst_songs_songs.Text)
-		    fullpath = lst_songs_songs.CellTag(Me.ListIndex, 0).StringValue + lst_songs_songs.Text
-		    Call LoadSong(Songs.GetFile(fullpath))
-		    
-		  Else
-		    Status_SongOpen = False
-		    Status_SongChanged = False
-		    EnableMenuItems
-		  End If
+		  ActionSongTryChange(False)
 		End Sub
 	#tag EndEvent
 	#tag Event
@@ -14751,6 +14755,11 @@ End
 	#tag Event
 		Sub MouseExit()
 		  SetHelp ""
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub DoubleClick()
+		  ActionSongTryChange(True)
 		End Sub
 	#tag EndEvent
 #tag EndEvents
@@ -17120,7 +17129,7 @@ End
 		    Dim path As String = Me.Cell(Me.ListIndex(), 0)
 		    Dim f As FolderItem = GetFolderItem(Songs.GetRootFolder().AbsolutePath()).Child(path)
 		    
-		    Call LoadSong(f)
+		    Call LoadSong(f, True)
 		  End If
 		  
 		End Sub
