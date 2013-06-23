@@ -328,8 +328,8 @@
 			<user2 caption="link(advanced_song_editor/user2/@caption)"/>
 			<user3 caption="link(advanced_song_editor/user3/@caption)"/>
 			<chord caption="Аккорды"/>
-			<key caption="Ключ"/>
-			<form caption="Форма"/>
+			<chord_key caption="Ключ"/>
+			<chord_form caption="Форма"/>
 		</fields>
 	</song_search>
 

@@ -16,7 +16,7 @@ general_settings/general (modified)
 general_song_editor/linked, add_link, remove_link
 shared/* (added several)
 song_search/header (modified)
-song_search/chord
+song_search/chord*
 song_search/text
 song_lookup/text
 questions/linked_songs

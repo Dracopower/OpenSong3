@@ -131,7 +131,7 @@ Begin Window FindWindow
       Top             =   25
       UseFocusRing    =   True
       Visible         =   True
-      Width           =   80
+      Width           =   117
    End
    Begin SButton btn_cancel
       AcceptFocus     =   True
@@ -161,7 +161,7 @@ Begin Window FindWindow
       Top             =   50
       UseFocusRing    =   True
       Visible         =   True
-      Width           =   80
+      Width           =   117
    End
    Begin GroupBox grp_search_fields
       AutoDeactivate  =   True
@@ -827,7 +827,7 @@ Begin Window FindWindow
          Visible         =   True
          Width           =   126
       End
-      Begin Label txt_song_key
+      Begin Label lbl_search_chord_key
          AutoDeactivate  =   True
          Bold            =   ""
          DataField       =   ""
@@ -861,7 +861,7 @@ Begin Window FindWindow
          Visible         =   True
          Width           =   50
       End
-      Begin Label txt_song_form
+      Begin Label lbl_search_chord_form
          AutoDeactivate  =   True
          Bold            =   ""
          DataField       =   ""
@@ -1298,8 +1298,9 @@ End
 		    'Note that "Major" has no symbol associated with it
 		    'so just leave it blank
 		    forms = Split(App.T.Translate("songml/chordforms"), ",")
-		    
-		    find.ChordForm = forms(Me.ListIndex)
+		    If UBound(forms)>0 Then
+		      find.ChordForm = forms(Me.ListIndex)
+		    End If
 		  End If
 		  
 		End Sub

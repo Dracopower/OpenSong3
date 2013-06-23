@@ -115,9 +115,9 @@
     <capo_print caption="Afdrukken"> Als deze optie is aangegeven, zal OpenSong de capo akoorden toevoegen aan de niet-capo akkoorden.</capo_print>
     <time_sig caption="Maat">Geeft de maat weer van het geselecteerde lied.</time_sig>
     <tempo caption="Tempo">Geeft het tempo weer van het geselecteerde lied.</tempo>
-    <key caption="Key">Geeft de sleutel weer van het geselecteerde lied.</key>
+    <key caption="Sleutel">Geeft de sleutel weer van het geselecteerde lied.</key>
     <aka caption="Alt">Geeft de alternatieve titel weer van het geselecteerde lied.</aka>
-    <key_line caption="Key Line">Geef een regel op waarmee het lied makkelijker is te zoeken.</key_line>
+    <key_line caption="Zoekregel">Geef een regel op waarmee het lied makkelijker is te zoeken.</key_line>
     <style caption="Aangepaste stijl">Klik hier om de stijl voor dit lied aan te passen. Aangepaste stijlen vervangen de standaard stijl voor liederen.</style>
     <user1 caption="Vrij definiëerbaar veld 1">Hier kun je alles gebruiken wat je wilt m.b.t. tot liederen. Kan ook worden gebruikt door andere applicaties.</user1>
     <user2 caption="Vrij definiëerbaar veld 2">Hier kun je alles gebruiken wat je wilt m.b.t. tot liederen. Kan ook worden gebruikt door andere applicaties.</user2>
@@ -328,8 +328,8 @@
       <user2 caption="link(advanced_song_editor/user2/@caption)"/>
       <user3 caption="link(advanced_song_editor/user3/@caption)"/>
       <chord caption="Akkoord"/>
-      <key caption="Key"/>
-      <form caption="Vorm"/>
+      <chord_key caption="link(advanced_song_editor/key/@caption)"/>
+      <chord_form caption="Vorm"/>
     </fields>
   </song_search>
 
@@ -897,9 +897,9 @@ Als het Presentatie veld leeg is, ordend de Presentatie de dia's gebaseerd op de
      <altsharpchords>,B#,C#,D,D#,E,E#,F#,G,G#,A,A#,B</altsharpchords>
      <flatchords>,C,Db,D,Eb,E,F,Gb,G,Ab,A,Bb,B</flatchords>
      <altflatchords>,C,Db,D,Eb,Fb,F,Gb,G,Ab,A,Bb,Cb</altflatchords>
-     <chordkeys>Any,A,A#,Ab,B,B#,Bb,C,C#,Cb,D,D#,Db,E,E#,Eb,F,F#,Fb,G,G#,Gb</chordkeys>
-     <chordforms>Any,,m,2,M7,m7,7,dim7,dim,+,sus,sus2,6,6/9,M9,add9,7b5,7#5,9,7b9,7#9,13th,m7b5,m7#5,m7b9,11</chordforms>
-     <formsdescriptive>Any,Major,Minor(m),2nd(2),Major 7th(M7),Minor 7th(m7),Dominant 7th(7),Diminished 7th(dim7),Diminished(dim),Augmented(+),Suspended(sus),Suspended 2nd(sus2),Sixth(6),Six Nine(6/9),Major 9th(M9),Add9(add9),Seven Flat Five(7b5),Seven Sharp Five(7#5),9th(9),Seven Flat Nine(7b9),Seven Sharp Nine(7#9),13th(13),Minor 7th Flat Five(m7b5),Minor 7th Sharp Five(m7#5),Minor 7th Flat Nine(m7b9),11th(11)</formsdescriptive>
+     <chordkeys>Elke,A,A#,Ab,B,B#,Bb,C,C#,Cb,D,D#,Db,E,E#,Eb,F,F#,Fb,G,G#,Gb</chordkeys>
+     <chordforms>Elke,,m,2,M7,m7,7,dim7,dim,+,sus,sus2,6,6/9,M9,add9,7b5,7#5,9,7b9,7#9,13th,m7b5,m7#5,m7b9,11</chordforms>
+     <formsdescriptive>Elke,Majeur,Mineur(m),Secunde(2),Majeur septiem(M7),Mineur septiem(m7),Dominant septiem(7),Verminderd septiem(dim7),Verminderd(dim),Overmatig(+),Sus(sus),Sus twee(sus2),Sext(6),Sext en none(6/9),Majeur none(M9),none(add9),Septiem verlaagde kwint(7b5),Septiem overmatige kwint(7#5),None(9),Septiem verlaagde none(7b9),Septiem verhoogde none(7#9),Met 9 en 13(13),Mineur septiem verlaagde kwint(m7b5),Mineur septiem vermatige kwint(m7#5),Mineur septiem verlaagde none(m7b59),Met 11(11)</formsdescriptive>
   </songml>
   
   <smartml>

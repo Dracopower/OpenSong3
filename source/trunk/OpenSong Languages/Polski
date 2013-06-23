@@ -327,8 +327,8 @@
       <user2 caption="link(advanced_song_editor/user2/@caption)"/>
       <user3 caption="link(advanced_song_editor/user3/@caption)"/>
       <chord caption="Akordy"/>
-      <key caption="Tonacja"/>
-      <form caption="Forma"/>
+      <chord_key caption="link(advanced_song_editor/key/@caption)"/>
+      <chord_form caption="Forma"/>
     </fields>
   </song_search>
 
