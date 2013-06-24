@@ -46,7 +46,7 @@ WizardSmallImageFile=Installer Icon.bmp
 WizardImageBackColor=clWhite
 ; Location of the compiled Installer 
 OutputDir=Output
-OutputBaseFilename={#MyAppVerName}-Setup
+OutputBaseFilename={#MyAppVerName} Setup
 ; Show Language selection dialog
 ShowLanguageDialog=yes
 ; Uninstallation items
@@ -160,7 +160,7 @@ Source: "OpenSong License\gpl-sv.txt"; DestDir: "{app}\OpenSong License"; Compon
 Source: "OpenSong License\gpl-pt.txt"; DestDir: "{app}\OpenSong License"; Components: Languages\portugues
 Source: "OpenSong License\gpl-pt_BR.txt"; DestDir: "{app}\OpenSong License"; Components: Languages\portuguesbrasil
 
-; OpenSong 2.0 Icons
+; OpenSong 2.1 Icons
 Source: "OpenSong2.ico"; DestDir: "{app}"
 Source: "OpenSong2Uninstall.ico"; DestDir: "{app}"
 
