@@ -8431,7 +8431,7 @@ End
 		      lst_song_backgrounds.Enabled = True
 		      chk_song_fit_to_screen.Enabled = True
 		      chk_song_fit_to_body.Enabled = True
-		      chk_song_keepaspect.Enabled = True
+		      chk_song_keepaspect.Enabled = chk_song_fit_to_screen.Value Or chk_song_fit_to_body.Value
 		      chk_song_store_as_link.Enabled = True
 		      chk_song_background_as_text.Enabled = True
 		      btn_song_add_background.Enabled = False

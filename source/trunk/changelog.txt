@@ -1,4 +1,6 @@
-﻿* Added explanatory labels to spacing-editboxes in the print settings dialog (feature request #99) (Vwout)
+﻿* Cosmetic fix in song editor (inconsistent behavior of 'keep aspect ratio' checkbox) (bug #406) (Vwout)
+
+* Added explanatory labels to spacing-editboxes in the print settings dialog (feature request #99) (Vwout)
 
 * Fixed incorrect button state when no verse is selected for setting verse specific backgrounds (bug #399) (Vwout)
 
