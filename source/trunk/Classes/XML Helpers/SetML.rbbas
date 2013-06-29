@@ -146,7 +146,14 @@ Protected Module SetML
 		    
 		    pic = img.GetImage()
 		    If pic IsA Picture Then
-		      resize = SmartML.GetValue(xslide.Parent.Parent, "@resize", False)
+		      resize = SmartML.GetValue(xslide.Parent.Parent, "@resize", False, "default")
+		      If resize = "default" Then
+		        If ImageDefaults.ResizeToScreenArea() Then
+		          resize = "screen"
+		        ElseIf ImageDefaults.ResizeToBodyArea() Then
+		          resize = "body"
+		        End If
+		      End If
 		      keepaspect = SmartML.GetValueB(xslide.Parent.Parent, "@keep_aspect", False)
 		      
 		      If resize = "screen" Then

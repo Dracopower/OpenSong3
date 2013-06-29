@@ -33,11 +33,11 @@ Protected Module SmartML
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
-		Private Function GetAttribute(xnode As XmlNode, attribName As String) As String
+		Private Function GetAttribute(xnode As XmlNode, attribName As String, default As String = "") As String
 		  Dim attribute As XmlNode
 		  Dim s As String
 		  Dim i As Integer
-		  if xnode = Nil Then Return "" 'EMP 09/05
+		  if xnode = Nil Then Return default  'EMP 09/05
 		  s = attribName
 		  i = 0
 		  //++EMP
@@ -48,7 +48,7 @@ Protected Module SmartML
 		    '++JRC Translated
 		    MsgBox(TranslateMessage("smartml/attrib_except", "Exception with attribute %s, %s", attribName, xnode.ToString))
 		    '--
-		    Return ""
+		    Return default 
 		  End Try
 		  
 		  //--
@@ -63,7 +63,7 @@ Protected Module SmartML
 		    End If
 		  Next i
 		  
-		  Return ""
+		  Return default
 		End Function
 	#tag EndMethod
 
@@ -115,14 +115,14 @@ Protected Module SmartML
 	#tag EndMethod
 
 	#tag Method, Flags = &h1
-		Protected Function GetValue(xnode As XmlNode, childPath As String, create As Boolean = True) As String
-		  If xnode = Nil Then Return ""
+		Protected Function GetValue(xnode As XmlNode, childPath As String, create As Boolean = True, default As String = "") As String
+		  If xnode = Nil Then Return default 
 		  
 		  Dim atPos As Integer
 		  atPos = InStr(childPath, "@")
 		  If atPos > 0 Then
 		    If atPos > 1 Then xnode = GetNode(xnode, Left(childPath, atPos-2), create)
-		    Return GetAttribute(xnode, Mid(childPath, atPos+1))
+		    Return GetAttribute(xnode, Mid(childPath, atPos+1), default)
 		  End If
 		  
 		  xnode = GetNode(xnode, childPath, create)
@@ -130,10 +130,10 @@ Protected Module SmartML
 		    If xnode.ChildCount > 0 Then
 		      Return xnode.Child(0).Value
 		    Else
-		      Return ""
+		      Return default 
 		    End If
 		  Else
-		    Return ""
+		    Return default 
 		  End If
 		  
 		End Function

@@ -13313,9 +13313,9 @@ End
 		  btn_song_add_background.Enabled = False
 		  btn_song_del_background.Enabled = False
 		  
-		  Dim resize As String = SmartML.GetValue(xbacks, "@resize", False)
-		  chk_song_fit_to_screen.Value = (resize = "screen") Or (resize = "" And ImageDefaults.ResizeToScreenArea())
-		  chk_song_fit_to_body.Value = (resize = "body") Or (resize = "" And ImageDefaults.ResizeToBodyArea())
+		  Dim resize As String = SmartML.GetValue(xbacks, "@resize", False, "default")
+		  chk_song_fit_to_screen.Value = (resize = "screen") Or (resize = "default" And ImageDefaults.ResizeToScreenArea())
+		  chk_song_fit_to_body.Value = (resize = "body") Or (resize = "default" And ImageDefaults.ResizeToBodyArea())
 		  chk_song_keepaspect.Value = SmartML.GetValueB(xbacks, "@keep_aspect", False, ImageDefaults.KeepAspectRatio())
 		  chk_song_keepaspect.Enabled = chk_song_fit_to_screen.Value Or chk_song_fit_to_body.Value
 		  chk_song_store_as_link.Value = imageLink
@@ -15560,9 +15560,9 @@ End
 		      can_image_style.SetStyleNode SmartML.GetNode(xgroup, "style")
 		    End If
 		    
-		    resize = SmartML.GetValue(xgroup, "@resize", False)
-		    chk_image_fit_to_screen.Value = (resize = "screen") Or (resize = "" And ImageDefaults.ResizeToScreenArea())
-		    chk_image_fit_to_body.Value = (resize = "body") Or (resize = "" And ImageDefaults.ResizeToBodyArea())
+		    resize = SmartML.GetValue(xgroup, "@resize", False, "default")
+		    chk_image_fit_to_screen.Value = (resize = "screen") Or (resize = "default" And ImageDefaults.ResizeToScreenArea())
+		    chk_image_fit_to_body.Value = (resize = "body") Or (resize = "default" And ImageDefaults.ResizeToBodyArea())
 		    chk_image_keepaspect.Value = SmartML.GetValueB(xgroup, "@keep_aspect", False, ImageDefaults.KeepAspectRatio())
 		    chk_image_keepaspect.Enabled = chk_image_fit_to_screen.Value Or chk_image_fit_to_body.Value
 		    chk_image_store_as_link.Value = imageLink
