@@ -1,8 +1,9 @@
 #tag Window
 Begin Window PresentHelperWindow
-   BackColor       =   16777215
+   BackColor       =   &cFFFFFF00
    Backdrop        =   0
    CloseButton     =   False
+   Compatibility   =   ""
    Composite       =   False
    Frame           =   0
    FullScreen      =   False
@@ -55,7 +56,7 @@ Begin Window PresentHelperWindow
       LockLeft        =   True
       LockRight       =   True
       LockTop         =   True
-      RequiresSelection=   ""
+      RequiresSelection=   False
       Scope           =   0
       ScrollbarHorizontal=   False
       ScrollBarVertical=   True
@@ -64,7 +65,7 @@ Begin Window PresentHelperWindow
       TabPanelIndex   =   0
       TabStop         =   True
       TextFont        =   "Arial"
-      TextSize        =   10
+      TextSize        =   10.0
       TextUnit        =   0
       Top             =   10
       Underline       =   False
@@ -95,7 +96,7 @@ Begin Window PresentHelperWindow
       TabPanelIndex   =   0
       TabStop         =   True
       TextFont        =   "Arial"
-      TextSize        =   11
+      TextSize        =   11.0
       TextUnit        =   0
       Top             =   5
       Underline       =   False
@@ -109,7 +110,7 @@ Begin Window PresentHelperWindow
          DoubleBuffer    =   False
          Enabled         =   True
          EraseBackground =   True
-         HasFocus        =   0
+         HasFocus        =   False
          Height          =   24
          HelpTag         =   ""
          Index           =   -2147483648
@@ -127,6 +128,7 @@ Begin Window PresentHelperWindow
          TabPanelIndex   =   0
          TabStop         =   True
          Top             =   25
+         Transparent     =   True
          UseFocusRing    =   True
          Visible         =   True
          Width           =   130
@@ -139,7 +141,7 @@ Begin Window PresentHelperWindow
          DoubleBuffer    =   False
          Enabled         =   True
          EraseBackground =   True
-         HasFocus        =   0
+         HasFocus        =   False
          Height          =   24
          HelpTag         =   ""
          Index           =   -2147483648
@@ -157,6 +159,7 @@ Begin Window PresentHelperWindow
          TabPanelIndex   =   0
          TabStop         =   True
          Top             =   50
+         Transparent     =   True
          UseFocusRing    =   True
          Visible         =   True
          Width           =   130
@@ -169,7 +172,7 @@ Begin Window PresentHelperWindow
          DoubleBuffer    =   False
          Enabled         =   True
          EraseBackground =   True
-         HasFocus        =   0
+         HasFocus        =   False
          Height          =   24
          HelpTag         =   ""
          Index           =   -2147483648
@@ -187,6 +190,7 @@ Begin Window PresentHelperWindow
          TabPanelIndex   =   0
          TabStop         =   True
          Top             =   75
+         Transparent     =   True
          UseFocusRing    =   True
          Visible         =   True
          Width           =   130
@@ -199,7 +203,7 @@ Begin Window PresentHelperWindow
          DoubleBuffer    =   False
          Enabled         =   True
          EraseBackground =   True
-         HasFocus        =   0
+         HasFocus        =   False
          Height          =   24
          HelpTag         =   ""
          Index           =   -2147483648
@@ -217,6 +221,7 @@ Begin Window PresentHelperWindow
          TabPanelIndex   =   0
          TabStop         =   True
          Top             =   100
+         Transparent     =   True
          UseFocusRing    =   True
          Visible         =   True
          Width           =   130
@@ -229,7 +234,7 @@ Begin Window PresentHelperWindow
          DoubleBuffer    =   False
          Enabled         =   True
          EraseBackground =   True
-         HasFocus        =   0
+         HasFocus        =   False
          Height          =   24
          HelpTag         =   ""
          Index           =   -2147483648
@@ -247,6 +252,7 @@ Begin Window PresentHelperWindow
          TabPanelIndex   =   0
          TabStop         =   True
          Top             =   125
+         Transparent     =   True
          UseFocusRing    =   True
          Visible         =   True
          Width           =   130
@@ -259,7 +265,7 @@ Begin Window PresentHelperWindow
          DoubleBuffer    =   False
          Enabled         =   True
          EraseBackground =   True
-         HasFocus        =   0
+         HasFocus        =   False
          Height          =   24
          HelpTag         =   ""
          Index           =   -2147483648
@@ -277,6 +283,7 @@ Begin Window PresentHelperWindow
          TabPanelIndex   =   0
          TabStop         =   True
          Top             =   150
+         Transparent     =   True
          UseFocusRing    =   True
          Visible         =   True
          Width           =   130
@@ -305,6 +312,7 @@ Begin Window PresentHelperWindow
       TabPanelIndex   =   0
       TabStop         =   True
       Top             =   224
+      Transparent     =   True
       UseFocusRing    =   True
       Visible         =   True
       Width           =   332
@@ -331,12 +339,11 @@ Begin Window PresentHelperWindow
       Selectable      =   False
       TabIndex        =   3
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "- Arrows: -\r\nDown: Next Slide\r\nUp: Previous Slide\r\nRight: Next Section\r\nLeft: Previous Section\r\n- Jump To: -\r\n1-9: Verse\r\nC: Chorus\r\nP: Pre-chorus\r\nB: Bridge\r\nT: Tag"
       TextAlign       =   0
-      TextColor       =   0
+      TextColor       =   &c00000000
       TextFont        =   "Arial"
-      TextSize        =   9
+      TextSize        =   9.0
       TextUnit        =   0
       Top             =   212
       Transparent     =   False
@@ -365,7 +372,7 @@ Begin Window PresentHelperWindow
       TabPanelIndex   =   0
       TabStop         =   True
       TextFont        =   "Arial"
-      TextSize        =   11
+      TextSize        =   11.0
       TextUnit        =   0
       Top             =   190
       Underline       =   False
@@ -379,7 +386,7 @@ Begin Window PresentHelperWindow
          DoubleBuffer    =   False
          Enabled         =   True
          EraseBackground =   True
-         HasFocus        =   0
+         HasFocus        =   False
          Height          =   24
          HelpTag         =   ""
          Index           =   -2147483648
@@ -397,6 +404,7 @@ Begin Window PresentHelperWindow
          TabPanelIndex   =   0
          TabStop         =   True
          Top             =   210
+         Transparent     =   True
          UseFocusRing    =   True
          Visible         =   True
          Width           =   130
@@ -409,7 +417,7 @@ Begin Window PresentHelperWindow
          DoubleBuffer    =   False
          Enabled         =   True
          EraseBackground =   True
-         HasFocus        =   0
+         HasFocus        =   False
          Height          =   24
          HelpTag         =   ""
          Index           =   -2147483648
@@ -427,6 +435,7 @@ Begin Window PresentHelperWindow
          TabPanelIndex   =   0
          TabStop         =   True
          Top             =   235
+         Transparent     =   True
          UseFocusRing    =   True
          Visible         =   True
          Width           =   130
@@ -439,7 +448,7 @@ Begin Window PresentHelperWindow
          DoubleBuffer    =   False
          Enabled         =   True
          EraseBackground =   True
-         HasFocus        =   0
+         HasFocus        =   False
          Height          =   24
          HelpTag         =   ""
          Index           =   -2147483648
@@ -457,6 +466,7 @@ Begin Window PresentHelperWindow
          TabPanelIndex   =   0
          TabStop         =   True
          Top             =   260
+         Transparent     =   True
          UseFocusRing    =   True
          Visible         =   True
          Width           =   130
@@ -469,7 +479,7 @@ Begin Window PresentHelperWindow
          DoubleBuffer    =   False
          Enabled         =   True
          EraseBackground =   True
-         HasFocus        =   0
+         HasFocus        =   False
          Height          =   24
          HelpTag         =   ""
          Index           =   -2147483648
@@ -487,6 +497,7 @@ Begin Window PresentHelperWindow
          TabPanelIndex   =   0
          TabStop         =   True
          Top             =   285
+         Transparent     =   True
          UseFocusRing    =   True
          Visible         =   True
          Width           =   130
@@ -499,7 +510,7 @@ Begin Window PresentHelperWindow
          DoubleBuffer    =   False
          Enabled         =   True
          EraseBackground =   True
-         HasFocus        =   0
+         HasFocus        =   False
          Height          =   24
          HelpTag         =   ""
          Index           =   -2147483648
@@ -517,6 +528,7 @@ Begin Window PresentHelperWindow
          TabPanelIndex   =   0
          TabStop         =   True
          Top             =   310
+         Transparent     =   True
          UseFocusRing    =   True
          Visible         =   True
          Width           =   130
@@ -526,7 +538,8 @@ Begin Window PresentHelperWindow
       AcceptTabs      =   False
       Alignment       =   0
       AutoDeactivate  =   True
-      BackColor       =   16777215
+      AutomaticallyCheckSpelling=   True
+      BackColor       =   &cFFFFFF00
       Bold            =   True
       Border          =   True
       DataField       =   ""
@@ -541,6 +554,8 @@ Begin Window PresentHelperWindow
       Italic          =   False
       Left            =   354
       LimitText       =   0
+      LineHeight      =   0.0
+      LineSpacing     =   1.0
       LockBottom      =   True
       LockedInPosition=   False
       LockLeft        =   True
@@ -557,9 +572,9 @@ Begin Window PresentHelperWindow
       TabPanelIndex   =   0
       TabStop         =   True
       Text            =   ""
-      TextColor       =   0
+      TextColor       =   &c00000000
       TextFont        =   "Arial"
-      TextSize        =   16
+      TextSize        =   16.0
       TextUnit        =   0
       Top             =   358
       Underline       =   False
@@ -568,10 +583,10 @@ Begin Window PresentHelperWindow
       Width           =   435
    End
    Begin Canvas cnv_preview_next
-      AcceptFocus     =   ""
-      AcceptTabs      =   ""
+      AcceptFocus     =   False
+      AcceptTabs      =   False
       AutoDeactivate  =   True
-      Backdrop        =   ""
+      Backdrop        =   0
       DoubleBuffer    =   True
       Enabled         =   True
       EraseBackground =   True
@@ -583,20 +598,21 @@ Begin Window PresentHelperWindow
       LockBottom      =   True
       LockedInPosition=   False
       LockLeft        =   True
-      LockRight       =   ""
+      LockRight       =   False
       LockTop         =   False
       Scope           =   0
       TabIndex        =   6
       TabPanelIndex   =   0
       TabStop         =   True
       Top             =   224
+      Transparent     =   True
       UseFocusRing    =   True
       Visible         =   True
       Width           =   160
    End
    Begin Label lbl_preview
       AutoDeactivate  =   True
-      Bold            =   ""
+      Bold            =   False
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
@@ -604,34 +620,33 @@ Begin Window PresentHelperWindow
       HelpTag         =   ""
       Index           =   -2147483648
       InitialParent   =   ""
-      Italic          =   ""
+      Italic          =   False
       Left            =   10
       LockBottom      =   True
       LockedInPosition=   False
       LockLeft        =   True
-      LockRight       =   ""
+      LockRight       =   False
       LockTop         =   False
-      Multiline       =   ""
+      Multiline       =   False
       Scope           =   0
       Selectable      =   False
       TabIndex        =   7
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "Current slide preview"
       TextAlign       =   0
-      TextColor       =   &h000000
+      TextColor       =   &c00000000
       TextFont        =   "System"
-      TextSize        =   0
+      TextSize        =   0.0
       TextUnit        =   0
       Top             =   204
       Transparent     =   False
-      Underline       =   ""
+      Underline       =   False
       Visible         =   True
       Width           =   332
    End
    Begin Label lbl_preview_next
       AutoDeactivate  =   True
-      Bold            =   ""
+      Bold            =   False
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
@@ -639,28 +654,27 @@ Begin Window PresentHelperWindow
       HelpTag         =   ""
       Index           =   -2147483648
       InitialParent   =   ""
-      Italic          =   ""
+      Italic          =   False
       Left            =   354
       LockBottom      =   True
       LockedInPosition=   False
       LockLeft        =   True
-      LockRight       =   ""
+      LockRight       =   False
       LockTop         =   False
-      Multiline       =   ""
+      Multiline       =   False
       Scope           =   0
       Selectable      =   False
       TabIndex        =   8
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "Next slide preview"
       TextAlign       =   0
-      TextColor       =   &h000000
+      TextColor       =   &c00000000
       TextFont        =   "System"
-      TextSize        =   0
+      TextSize        =   0.0
       TextUnit        =   0
       Top             =   204
       Transparent     =   False
-      Underline       =   ""
+      Underline       =   False
       Visible         =   True
       Width           =   160
    End
@@ -1067,6 +1081,10 @@ End
 		Protected IsMaximized As Boolean
 	#tag EndProperty
 
+	#tag Property, Flags = &h1
+		Protected IsRightClick As Boolean = False
+	#tag EndProperty
+
 	#tag Property, Flags = &h21
 		Private m_screenRatio As Double
 	#tag EndProperty
@@ -1255,7 +1273,7 @@ End
 		End Sub
 	#tag EndEvent
 	#tag Event
-		Sub Paint(g As Graphics)
+		Sub Paint(g As Graphics, areas() As REALbasic.Rect)
 		  If Not Globals.Status_Presentation Then Return
 		  If IsNull(PresentWindow.XCurrentSlide) Then Return
 		  edt_slide_notes.Text = SmartML.GetValue(PresentWindow.XCurrentSlide.Parent.Parent, "notes", True)
@@ -1343,6 +1361,28 @@ End
 		  System.DebugLog "PresentHelperWindow.cnv_preview.Paint: Exception caught"
 		End Sub
 	#tag EndEvent
+	#tag Event
+		Sub MouseUp(X As Integer, Y As Integer)
+		  // Verify within the control...
+		  
+		  If (X >= 0) And (X <= cnv_preview.Width) And _
+		    (Y >= 0) And (Y <= cnv_preview.Height) Then
+		    If IsRightClick Then
+		      Call PresentWindow.PerformAction(PresentWindow.ACTION_PREV_SLIDE)
+		    Else
+		      Call PresentWindow.PerformAction(PresentWindow.ACTION_NEXT_SLIDE)
+		    End If
+		  End If
+		  
+		  IsRightClick = False
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Function MouseDown(X As Integer, Y As Integer) As Boolean
+		  IsRightClick = IsContextualClick
+		  Return True
+		End Function
+	#tag EndEvent
 #tag EndEvents
 #tag Events btn_action_alert
 	#tag Event
@@ -1423,7 +1463,7 @@ End
 		End Sub
 	#tag EndEvent
 	#tag Event
-		Sub Paint(g As Graphics)
+		Sub Paint(g As Graphics, areas() As REALbasic.Rect)
 		  Dim nextSlide As XmlNode
 		  
 		  If Not Globals.Status_Presentation Then Return
@@ -1453,3 +1493,250 @@ End
 		End Sub
 	#tag EndEvent
 #tag EndEvents
+#tag ViewBehavior
+	#tag ViewProperty
+		Name="BackColor"
+		Visible=true
+		Group="Appearance"
+		InitialValue="&hFFFFFF"
+		Type="Color"
+		InheritedFrom="Window"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="Backdrop"
+		Visible=true
+		Group="Appearance"
+		Type="Picture"
+		EditorType="Picture"
+		InheritedFrom="Window"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="CloseButton"
+		Visible=true
+		Group="Appearance"
+		InitialValue="True"
+		Type="Boolean"
+		EditorType="Boolean"
+		InheritedFrom="Window"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="Composite"
+		Visible=true
+		Group="Appearance"
+		InitialValue="False"
+		Type="Boolean"
+		InheritedFrom="Window"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="Frame"
+		Visible=true
+		Group="Appearance"
+		InitialValue="0"
+		Type="Integer"
+		EditorType="Enum"
+		InheritedFrom="Window"
+		#tag EnumValues
+			"0 - Document"
+			"1 - Movable Modal"
+			"2 - Modal Dialog"
+			"3 - Floating Window"
+			"4 - Plain Box"
+			"5 - Shadowed Box"
+			"6 - Rounded Window"
+			"7 - Global Floating Window"
+			"8 - Sheet Window"
+			"9 - Metal Window"
+			"10 - Drawer Window"
+			"11 - Modeless Dialog"
+		#tag EndEnumValues
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="FullScreen"
+		Visible=true
+		Group="Appearance"
+		InitialValue="False"
+		Type="Boolean"
+		EditorType="Boolean"
+		InheritedFrom="Window"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="HasBackColor"
+		Visible=true
+		Group="Appearance"
+		InitialValue="False"
+		Type="Boolean"
+		InheritedFrom="Window"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="Height"
+		Visible=true
+		Group="Position"
+		InitialValue="400"
+		Type="Integer"
+		InheritedFrom="Window"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="ImplicitInstance"
+		Visible=true
+		Group="Appearance"
+		InitialValue="True"
+		Type="Boolean"
+		EditorType="Boolean"
+		InheritedFrom="Window"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="Interfaces"
+		Visible=true
+		Group="ID"
+		Type="String"
+		InheritedFrom="Window"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="LiveResize"
+		Visible=true
+		Group="Appearance"
+		InitialValue="True"
+		Type="Boolean"
+		EditorType="Boolean"
+		InheritedFrom="Window"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="MacProcID"
+		Visible=true
+		Group="Appearance"
+		InitialValue="0"
+		Type="Integer"
+		InheritedFrom="Window"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="MaxHeight"
+		Visible=true
+		Group="Position"
+		InitialValue="32000"
+		Type="Integer"
+		InheritedFrom="Window"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="MaximizeButton"
+		Visible=true
+		Group="Appearance"
+		InitialValue="False"
+		Type="Boolean"
+		EditorType="Boolean"
+		InheritedFrom="Window"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="MaxWidth"
+		Visible=true
+		Group="Position"
+		InitialValue="32000"
+		Type="Integer"
+		InheritedFrom="Window"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="MenuBar"
+		Visible=true
+		Group="Appearance"
+		Type="MenuBar"
+		EditorType="MenuBar"
+		InheritedFrom="Window"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="MenuBarVisible"
+		Visible=true
+		Group="Appearance"
+		InitialValue="True"
+		Type="Boolean"
+		EditorType="Boolean"
+		InheritedFrom="Window"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="MinHeight"
+		Visible=true
+		Group="Position"
+		InitialValue="64"
+		Type="Integer"
+		InheritedFrom="Window"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="MinimizeButton"
+		Visible=true
+		Group="Appearance"
+		InitialValue="True"
+		Type="Boolean"
+		EditorType="Boolean"
+		InheritedFrom="Window"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="MinWidth"
+		Visible=true
+		Group="Position"
+		InitialValue="64"
+		Type="Integer"
+		InheritedFrom="Window"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="Name"
+		Visible=true
+		Group="ID"
+		Type="String"
+		InheritedFrom="Window"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="Placement"
+		Visible=true
+		Group="Position"
+		InitialValue="0"
+		Type="Integer"
+		EditorType="Enum"
+		InheritedFrom="Window"
+		#tag EnumValues
+			"0 - Default"
+			"1 - Parent Window"
+			"2 - Main Screen"
+			"3 - Parent Window Screen"
+			"4 - Stagger"
+		#tag EndEnumValues
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="Resizeable"
+		Visible=true
+		Group="Appearance"
+		InitialValue="True"
+		Type="Boolean"
+		EditorType="Boolean"
+		InheritedFrom="Window"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="Super"
+		Visible=true
+		Group="ID"
+		Type="String"
+		InheritedFrom="Window"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="Title"
+		Visible=true
+		Group="Appearance"
+		InitialValue="Untitled"
+		Type="String"
+		InheritedFrom="Window"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="Visible"
+		Visible=true
+		Group="Appearance"
+		InitialValue="True"
+		Type="Boolean"
+		EditorType="Boolean"
+		InheritedFrom="Window"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="Width"
+		Visible=true
+		Group="Position"
+		InitialValue="600"
+		Type="Integer"
+		InheritedFrom="Window"
+	#tag EndViewProperty
+#tag EndViewBehavior

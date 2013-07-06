@@ -1,4 +1,6 @@
-﻿* Cosmetic fix in song editor (inconsistent behavior of 'keep aspect ratio' checkbox) (bug #406) (Vwout)
+﻿* Allow mouse click over slide preview on PresentHelperWindow to move forward and backward one slide. (Feature request #347) (swampcat)
+
+* Cosmetic fix in song editor (inconsistent behavior of 'keep aspect ratio' checkbox) (bug #406) (Vwout)
 
 * Added explanatory labels to spacing-editboxes in the print settings dialog (feature request #99) (Vwout)
 
