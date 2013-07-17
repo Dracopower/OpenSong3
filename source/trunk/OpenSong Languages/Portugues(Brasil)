@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<language name="Português (Brasil)" author="Paulo Neto (layoutbr@lexxa.com.br)" version="2.0.1">
+<language name="Português (Brasil)" author="Paulo Neto (layoutbr@lexxa.com.br)" version="2.1">
 
   <load_settings>
     <checking_folders>Criando/Verificando pasta de documentos</checking_folders>
@@ -101,6 +101,9 @@
         <flats caption="Bemol"/>
       </using>
     </transpose>
+    <linked caption="Músicas Vinculadas">As Músicas Vinculadas serão automaticamente adicionadas à sua apresentação quando você adicionar esta música.</linked>
+    <add_link caption="Adicionar">Adicionar a música para a lista.</add_link>
+    <remove_link caption="Remover">Remover a música selecionada da lista.</remove_link>
   </general_song_editor>
 
   <advanced_song_editor caption="Avançado">Acesso a temas, capos, intervalos, estilos e etc. da música atual.
@@ -119,6 +122,14 @@
     <user1 caption="Personalizado 1">Defina como desejar. Este campo pode ser usado para outros aplicativos, etc.</user1>
     <user2 caption="Personalizado 2">Defina como desejar. Este campo pode ser usado para outros aplicativos, etc.</user2>
     <user3 caption="Personalizado 3">Defina como desejar. Este campo pode ser usado para outros aplicativos, etc.</user3>
+    <backgrounds caption="Fundo de versos específicos" head1="Verso" head2="Imagem de fundo">Exibe um fundo opcional para um verso específico da música.</backgrounds>
+    <add_background caption="Adicionar">Vincula uma imagem para o verso selecionado.</add_background>
+    <del_background caption="Remover">Remove a imagem atualmente selecionada do verso.</del_background>
+    <fit_to_screen caption="link(general_settings/imagedefaults/fit_to_screen/@caption)">link(general_settings/imagedefaults/fit_to_screen)</fit_to_screen>
+    <fit_to_body caption="link(general_settings/imagedefaults/fit_to_body/@caption)">link(general_settings/imagedefaults/fit_to_body)</fit_to_body>
+    <keepaspect caption="link(general_settings/imagedefaults/keepaspect/@caption)">link(general_settings/imagedefaults/keepaspect)</keepaspect>
+    <store_as_link caption="Do not store the image in the song, use a link">link(general_settings/imagedefaults/store_as_link)</store_as_link>
+    <background_as_text caption="link(general_settings/imagedefaults/background_as_text/@caption)">link(general_settings/imagedefaults/background_as_text)</background_as_text>
   </advanced_song_editor>
 
   <sets_mode caption="Configurações">Use este modo para acrescentar e editar suas configurações. Estas configurações são usadas para projetar uma série de músicas, slides, passagens bíblicas e etc.  Se você estiver atualmente em modo de músicas e você não salvar as modificações, você será informado à salvar tais alterações.
@@ -174,7 +185,7 @@
       <revert caption="(estilo)">-- Reverter Estilo --</revert>
       <defaultstyle caption="(estilo)">-- Exportar Estilo --</defaultstyle>
     </items>
-    <untitled caption="Sem titulo"/>
+    <untitled caption="Sem título"/>
     <errors>
       <revert caption="Erro ao recarregar a configuração &quot;%1&quot; do arquivo."/>
       <insert caption="Falha na inserção do slide copiado:&#10;%1"/>
@@ -232,9 +243,51 @@
     <style caption="link(slide_editor/style/@caption)">link(slide_editor/style)</style>
   </image_slide>
 
+  <external_slide>
+    <header caption="Editor Externo de Slides"/>
+    <name caption="link(slide_editor/name/@caption)">link(slide_editor/name)</name>
+    <application caption="Aplicativo"/>
+    <presentation caption="Apresentação">Utilize este slide para exibir uma apresentação usando o Microsoft PowerPoint ou o gratuito OpenOffice.org Impress.</presentation>
+    <videolan caption="Videolan">Utilize este slide para executar um arquivo de mídia usando o versátil e gratuito reprodutor de mídias Videolan (VLC).</videolan>
+    <application caption="Aplicativo">Utilize este slide para executar um programa externo, usando uma linha de comando.</application>
+    <no_application caption="Nenhum aplicativo">
+    <no_application caption="Selecione um aplicativo para utilizar como fonte para este slide."/>
+    </no_application>
+    <presentation_settings caption="Configurações da apresentação">
+      <presentation_host caption="Qual aplicativo deve ser usado para executar a apresentação?"/>
+      <host_powerpoint caption="Microsoft PowerPoint"/>
+      <host_powerpoint_info caption="Para um controle total sobre a sua apresentação em PowerPoint é necessária a instalação do Microsoft Office."/>
+      <host_pptview caption="Microsoft PowerPoint Viewer"/>
+      <host_pptview_info caption="Para exibir sua apresentação do PowerPoint sem interação, você pode usar o gratuito Microsoft PowerPoint Viewer. O OpenSong tenta detectá-lo. Você pode definir um visualizador específico nas configurações gerais."/>
+      <host_impress caption="OpenOffice.org Impress"/>
+      <host_impress_info caption="Para controle total de uma apresentação do Impress ou PowerPoint a suite gratuita OpenOffice.org é necessária."/>
+      <presentation_file caption="Nome da apresentação">Escolha o nome do arquivo da apresentação usando o diálogo de seleção de arquivos.</presentation_file>
+      <loop_presentation caption="Apresentação intermitente"/>
+      <embed_presentation caption="Incluir a apresentação nas definições do OpenSong"/>
+    </presentation_settings>
+    <videolan_settings caption="Configurações do Videolan">
+      <videolan_start caption="Carregar o Videolan"/>
+	  <videolan_mediafilename caption="Caminho para reprodução do arquivo de mídia">Escolha o nome do arquivo de áudio ou vídeo para reprodução.</videolan_mediafilename>
+	  <embed_mediafile caption="Incluir o arquivo de mídia nas definições do OpenSong"/>
+	  <videolan_preset caption="Use a seguinte predefinição com parâmetros"/>
+	  <videolan_manual caption="Parâmetros ajustados manualmente (use %d para o número de exibição, %s para arquivos de mídia)"/>
+      <wait_for_videolan caption="Aguarde a reprodução concluir antes de continuar para o próximo slide"/>
+      <videolan_stop caption="Pare qualquer instância carregada do Videolan"/>
+    </videolan_settings>
+    <application_settings caption="Configurações do lançador de aplicativos">
+      <application_start caption="Iniciar um aplicativo externo"/>
+      <application_filename caption="Caminho para o executável do aplicativo">Escolha o principal arquivo executável do programa que deverá ser carregado.</application_filename>
+      <application_parameters caption="Parâmetros do aplicativo"/>
+      <wait_for_application caption="Aguarde o aplicativo externo concluir antes de continuar"/>
+      <application_stop caption="Parar qualquer aplicativo em execução carregado atualmente"/>
+    </application_settings>
+    <notes caption="link(slide_editor/notes/@caption)">link(slide_editor/notes)</notes>
+    <loop caption="link(slide_editor/loop/@caption)">link(slide_editor/loop)</loop>
+  </external_slide>
+
   <style_change>
     <header caption="Modificar Estilo"/>
-    <revert caption="Reverter para o estilo anterior">Esta opção faz com que o estilo da confguração volte ao estilo anterior a partir deste ponto.</revert>
+    <revert caption="Reverter para o estilo anterior">Esta opção faz com que o estilo da configuração volte ao estilo anterior a partir deste ponto.</revert>
     <change caption="Mudar o estilo para este">Esta opção permite o programa mudar o estilo em qualquer ponto da configuração. A alteração do estilo pode afetar todos os slides a partir daqui até a próxima mudança de estilo.</change>
     <style>Clique aqui para editar o novo estilo.</style>
   </style_change>
@@ -274,6 +327,9 @@
       <user1 caption="link(advanced_song_editor/user1/@caption)"/>
       <user2 caption="link(advanced_song_editor/user2/@caption)"/>
       <user3 caption="link(advanced_song_editor/user3/@caption)"/>
+      <chord caption="Acorde"/>
+      <key caption="Chave"/>
+      <form caption="Forma"/>
     </fields>
   </song_search>
 
@@ -348,6 +404,9 @@
       <version_check caption="Verificar nova versão ao iniciar"/>
       <language caption="Idiomas"/>
     </general>
+    <linked caption="Músicas Vinculadas">
+      <prompt caption="Perguntar ao adicionar músicas vinculadas"/>
+    </linked>
     <proxy caption="Proxy">
       <host caption="Domínio"/>
       <port caption="Porta"/>
@@ -381,10 +440,16 @@
       <change caption="Alterar"/>
       <oldfolderdb caption="Usar arquivo de cache V1.1"/>
     </documents_folder>
+    <imagedefaults caption="Image Processing Defaults">
+      <fit_to_screen caption="Redimensionar imagens para ajustar à tela">Imagens que são grandes demais para a tela do projetor são redimensionadas para exibir a imagem inteira. Isso também ocorre para as imagens que são menores do que o tamanho da tela.</fit_to_screen>
+      <fit_to_body caption="Redimensionar imagens para ajustar na área do corpo">As imagens são geradas para sempre se ajustarem na área que é delimitada pelas configurações de estilo de corpo. Isso vale para ambas as imagens, maiores e menores do que a área do corpo.</fit_to_body>
+      <keepaspect caption="Manter a proporção ao redimensionar imagens">No caso de uma atividade de redimensionamento de quaisquer uma das mencionadas acima, o aspecto horizontal e vertical será mantido.</keepaspect>
+      <store_as_link caption="Não incorporar imagens de fundos, usar um vínculo">Armazenar imagens no conjunto ou música rapidamente aumenta o tamanho em disco e que pode degradar a qualidade da imagem. Utilizando um vínculo evita isto. Imagens da pasta 'Backgrounds' são armazenadas como vínculo relativo, o que torna a alternação da apresentação para o computador mais fácil. Use com cuidado se a apresentação foi criada em uma máquina diferente do dispositivo de apresentação!</store_as_link>
+      <background_as_text caption="Exibir o fundo em vez do texto do verso">Use apenas a imagem de fundo e não exibe o texto do verso. Útil quando o texto é pré-renderizados, ou quando resultados são exibidos utilizando a imagem de fundo.</background_as_text>
+    </imagedefaults>
     <imagequality caption="Configurar Qualidade da Imagem">
       <note caption="O OpenSong tenta armazenar as imagens utilizadas em um formato JPEG. Os itens abaixo controlam a qualidade e comportamento de armazenamento da imagem. A qualidade mais baixa disponível abaixo será escolhida caso o QuickTime não esteja instalado já que o OpenSong depende dele para armazenar imagens JPEG em alta qualidade."/>
       <compression caption="Compressão da imagem" />
-      <extern caption="Não incluir imagens de fundo." />
     </imagequality>
     <logging caption="Configurações do Registro">
       <append caption="Anexar ao arquivo de registro"/>
@@ -455,14 +520,14 @@
   </print_settings>
 
   <presentation_settings title="Configurações da Apresentação">
-    <settings head1="Estilo" head2="Opções">
+    <settings head1="Estilo" head2="Opções" head3="Telas">
         <default_slides caption="Estilo Padrão do Slide"/>
         <scripture_slides caption="Estilo Padrão da Bíblia"/>
         <click_to_change caption="link(shared/click_to_change/@caption)"/>
         <right_click_to_clear caption="link(shared/right_click_to_clear/@caption)"/>
         
         <export_snapshot caption="Exportar uma tela de cada slide da apresentação para o seguinte arquivo"/>
-        <snapshot_file caption="Nome da tela">Choose the snapshot filename using a file selection dialog.</snapshot_file>
+        <snapshot_file caption="Nome da tela">Escolha o nome do arquivo da tela usando um diálogo de seleção de arquivos.</snapshot_file>
         <export_preview caption="Exportar as telas durante configuração de visualização"/>
         <export_live_insertions caption="Exportar telas dos slides inseridos durante uma apresentação ao vivo"/>
         <export_metadata caption="Exportar detalhes do slide em um arquivo xml de nome similar"/>
@@ -544,7 +609,7 @@
     </misc>
 
     <errors>
-        <snapshot_file>Erro: a criação de telas está habilitado, mas nenhum nome de arquivo foi digitado.</snapshot_file>
+        <snapshot_file>Erro: a criação de telas está habilitada, mas nenhum nome de arquivo foi digitado.</snapshot_file>
     </errors>
   </presentation_settings>
 
@@ -795,6 +860,9 @@ Se o campo de apresentação estiver vazio, então a Exibição pedirá os slides base
      <altsharpchords>,B#,C#,D,D#,E,E#,F#,G,G#,A,A#,B</altsharpchords>
      <flatchords>,C,Db,D,Eb,E,F,Gb,G,Ab,A,Bb,B</flatchords>
      <altflatchords>,C,Db,D,Eb,Fb,F,Gb,G,Ab,A,Bb,Cb</altflatchords>
+     <chordkeys>Qualquer,A,A#,Ab,B,B#,Bb,C,C#,Cb,D,D#,Db,E,E#,Eb,F,F#,Fb,G,G#,Gb</chordkeys>
+     <chordforms>Qualquer,,m,2,M7,m7,7,dim7,dim,+,sus,sus2,6,6/9,M9,add9,7b5,7#5,9,7b9,7#9,13th,m7b5,m7#5,m7b9,11</chordforms>
+     <formsdescriptive>Qualquer,Maior,Menor(m),2nd(2),Maior 7th(M7),Menor 7th(m7),Dominant 7th(7),Diminished 7th(dim7),Diminished(dim),Augmented(+),Suspended(sus),Suspended 2nd(sus2),Sixth(6),Six Nine(6/9),Major 9th(M9),Add9(add9),Seven Flat Five(7b5),Seven Sharp Five(7#5),9th(9),Seven Flat Nine(7b9),Seven Sharp Nine(7#9),13th(13),Minor 7th Flat Five(m7b5),Minor 7th Sharp Five(m7#5),Minor 7th Flat Nine(m7b9),11th(11)</formsdescriptive>
   </songml>
   
   <smartml>
@@ -872,6 +940,7 @@ Se o campo de apresentação estiver vazio, então a Exibição pedirá os slides base
     <no_selection>Você não selecionou uma música.</no_selection>
     <folder caption="Selecionar Pasta"/>
     <preview caption="Visualizar Música"/>
+    <text caption="Encontrar texto em:"/>
     <lookup caption="Pesquisa Rápida"/>
     <songs head1="Nome da Música" head2="Pasta"/>
     <presentation caption="link(slide_editor/presentation/@caption)"/>
@@ -1151,10 +1220,30 @@ Clique aqui para editar o estilo.</body>
     <cut caption="Recortar"/>
     <copy caption="Copiar"/>
     <paste caption="Colar"/>
+    <clear caption="Limpar"/>
+    <selectall caption="Selecionar Tudo"/>
     <select caption="Selecionar"/>
     <exit_program caption="Sair do Programa"/>
     <export_to caption="Selecione a pasta para importação."/>
 	<style_file caption="Selcione o arquivo de estilo"/>
+    <title caption="Título"/>  
+    <author caption="Autor"/>
+    <copyright caption="Copyright"/>  
+    <ccli caption="CCLI #"/>  
+    <presentation caption="Apresentação"/>
+    <lyrics caption="Letras"/>  
+    <theme caption="Tema"/>
+    <capo caption="Capo"/>
+    <chord caption="Acordes"/>
+    <time_sig caption="Tempo de Assinatura"/>
+    <tempo caption="Tempo"/>  
+    <key caption="Chave"/>
+    <aka caption="AKA"/>  
+    <key_line caption="Linha da Chave"/>
+    <user1 caption="Usuário1"/>  
+    <user2 caption="Usuário2"/>
+    <user3 caption="Usuário3"/>  
+    <hymn_number caption="Hino Nº"/>
   </shared>
 
   <questions>
@@ -1180,6 +1269,8 @@ Clique aqui para editar o estilo.</body>
     <no_songs_folder caption="Não foi possível encontrar a pasta Songs, você gostaria de criar esta pasta?"/>
     <no_sets_folder caption="Não foi possível encontrar a pasta Sets, você gostaria de criar esta pasta?"/>
     <no_folder caption="Não foi possível encontrar a pasta '%1', você gostaria de criar esta pasta?"/>
+    <destination_exists caption="O arquivo já existe na pasta de destino. Gostaria de mudar o nome deste arquivo?"/>
+    <linked_songs caption="A música selecionada contém uma ou mais músicas vinculadas, você gostaria de adicionar essas músicas?"/>
   </questions>
 
   <about>
@@ -1195,7 +1286,8 @@ HTMLEntityEncode (http://sourceforge.jp/project/php-i18n/)
 REALbasic Examples (http://www.declaresub.com/Articles/HowDoI.html)
 iDeclare (http://www.declaresub.com/iDeclare
 SmartSplitter por Harry Hooie (http://www.harryhooie.com/source/)
-O arquivo de imagem PuffyClouds1.jpg incluído na pasta Backgrounds está sob Copyright de FreeStockPhotos.com</sources>
+O arquivo de imagem PuffyClouds1.jpg incluído na pasta Backgrounds está sob Copyright de FreeStockPhotos.com
+A tela de abertura contem imagens da stock.xchng criadas por ba1969 e em qualquer lugar</sources>
   </about>
 
   <folderdb_errors>
@@ -1230,6 +1322,7 @@ O arquivo de imagem PuffyClouds1.jpg incluído na pasta Backgrounds está sob Copy
     <number_range>Por favor digite um número entre %1 e %2.</number_range>
     <no_path_allowed>O nome de arquivo não pode incluir um caminho.</no_path_allowed>
     <rename_error>Não foi possível renomear o arquivo.</rename_error>
+    <same_filename>O arquivo de destino é o mesmo que o de origem.</same_filename>
     <general1>Erro desconhecido: Em '%1'</general1>
     <general2>'%2': Em '%1'</general2>
     <folder_error>Erro de pasta interno. Contacte o suporte técnico.</folder_error>
@@ -1279,6 +1372,11 @@ Os membros da equipe de desenvolvimento do OpenSong lamenta qualquer inconvenien
       <load_failed>A apresentação '%1' não pode ser aberta.</load_failed>
     </presentations>
 	<videolan_app_missing>O aplicativo videolan não está corretamente configurado. Por favor, especifique o cliente videolan na caixa de diálogo Configurações Gerais na guia Localização de Arquivos.</videolan_app_missing>
+    <linked_song>
+       <current>A música escolhida é a música atual.</current>
+       <exists>A música selecionada já está na lista.</exists>
+       <load_error>Erro ao carregar a música vinculada: %1</load_error>
+    </linked_song>
   </errors>
 
   <xml_errors>
