@@ -41,8 +41,8 @@ DefaultGroupName={#MyAppName}
 AllowNoIcons=True
 ; Installer Graphics
 SetupIconFile=OpenSong2.ico
-WizardImageFile=Installer Sidebar.bmp
-WizardSmallImageFile=Installer Icon.bmp
+WizardImageFile=Installer-Sidebar.bmp
+WizardSmallImageFile=Installer-Icon.bmp
 WizardImageBackColor=clWhite
 ; Location of the compiled Installer 
 OutputDir=Output
@@ -52,7 +52,7 @@ ShowLanguageDialog=yes
 ; Uninstallation items
 UninstallFilesDir={app}
 UninstallDisplayIcon={app}\OpenSong2Uninstall.ico
-;An uninstall string or uninstall exe won't be created if it was installed portably. Else it will. 
+; An uninstall string or exe won't be created if it was installed portably, else it will. 
 Uninstallable=not IsTaskSelected('Portable')
 CreateUninstallRegKey=not IsTaskSelected('Portable')
 UninstallDisplayName={#MyAppVerName}
@@ -96,6 +96,7 @@ Name: slovenian; MessagesFile: compiler:Languages\Slovenian.isl; LicenseFile: Op
 Name: turkish; MessagesFile: IS Languages\Turkish.isl; LicenseFile: OpenSong License\gpl-en.txt
 
 [Dirs]
+; Create all the directories
 Name: {app}\OpenSong Data; Tasks: Portable
 Name: {app}\OpenSong Defaults
 Name: {app}\OpenSong Scripture
