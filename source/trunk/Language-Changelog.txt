@@ -19,6 +19,9 @@ song_search/header (modified)
 song_search/chord*
 song_search/text
 song_lookup/text
+songml/chordkeys
+songml/chordforms
+songml/formsdescriptive
 questions/linked_songs
 errors/linked_song
 advanced_song_editor/fit_to_screen
