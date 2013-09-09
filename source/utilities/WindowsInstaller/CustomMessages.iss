@@ -1,59 +1,59 @@
-﻿;; Project Risen (Luke 24:1-12)
-;; OpenSong Version 2.1 Installer Script
-;; Custom Messages
+﻿; Project Risen (Luke 24:1-12)
+; OpenSong Version 2.1 Installer Script
+; Custom Messages
 
 [CustomMessages]
-english.Installops=Installation Options
+english.InstallOps=Installation Options
 english.Portable=Portable Installation
 english.ResetPrefs=Reset OpenSong Preferences
-czech.Installops=Možnosti instalace
+czech.InstallOps=Možnosti instalace
 czech.Portable=Přenosná instalace
-czech.ResetPrefs=Obnoviť předvolby OpenSong
-nederlands.InstallOps=Installatie-opties
-nederlands.Portable=Draagbare installatie
-nederlands.ResetPrefs=Standaard OpenSong voorkeuren resetten
-estonian.Installops=Installisuvandid
+czech.ResetPrefs=Obnoviť předvolby OpenSong-u
+nederlands.InstallOps=Installatie opties
+nederlands.Portable=Portable installatie
+nederlands.ResetPrefs=Standaard OpenSong voorkeuren resetten 
+estonian.InstallOps=Installisuvandid
 estonian.Portable=Portable paigaldamine
 estonian.ResetPrefs=Taasta OpenSong Preferences
-francais.Installops=Options d'installation
-francais.Portable=Installation Portable
-francais.ResetPrefs=Réinitialiser OpenSong Préférences
-deutsch.Installops=Installation Options
-deutsch.Portable=Tragbar Installation
-deutsch.ResetPrefs=Zurücksetzen OpenSong Preferences
-magyar.Installops=Telepítési beállítások
+francais.InstallOps=Options d'installation
+francais.Portable=Installation portable
+francais.ResetPrefs=Réinitialiser les préférences d'OpenSong 
+deutsch.InstallOps=Installationseinstellungen
+deutsch.Portable=Portable Installatie
+deutsch.ResetPrefs=OpenSong-Einstellungen zurücksetzen 
+magyar.InstallOps=Telepítési beállítások
 magyar.Portable=Hordozható telepítése
 magyar.ResetPrefs=Visszaállítása OpenSong Preferences
-svenska.Installops=Installationsinställningar
+svenska.InstallOps=Installationsinställningar
 svenska.Portable=Flyttbar Installation
-svenska.ResetPrefs=Återställ inställningarna i OpenSong
+svenska.ResetPrefs=Återställ inställningarna i OpenSong 
 italiano.InstallOps=Opzioni di Installazione
 italiano.Portable=Installazione Portatile
-italiano.ResetPrefs=Ripristina le Preferenze di OpenSong
-norwegian.Installops=Installasjon alternativer
+italiano.ResetPrefs=Ripristina le Preferenze di Opensong 
+norwegian.InstallOps=Installasjon alternativer
 norwegian.Portable=Portable Installasjon
 norwegian.ResetPrefs=Tilbakestille OpenSong Innstillinger
-polski.Installops=Opcje instalacji
+polski.InstallOps=Opcje instalacji
 polski.Portable=przenośne Instalacja
 polski.ResetPrefs=Resetowanie OpenSong Preferencje
-portugues.Installops=Opções de Instalação
+portugues.InstallOps=Opções de Instalação
 portugues.Portable=Instalação Portátil
 portugues.ResetPrefs=Re-iniciar Preferências OpenSong
-portuguesbrazil.Installops=Opções de Instalação
+portuguesbrazil.InstallOps=Opções de Instalação
 portuguesbrazil.Portable=Instalação portátil
 portuguesbrazil.ResetPrefs=Redefinir OpenSong Preferências
-espanol.Installops=Opciones de instalación
+espanol.InstallOps=Opciones de instalación
 espanol.Portable=Instalación Portable
 espanol.ResetPrefs=Restablecer OpenSong Preferencias
-russian.Installops=Параметры установки
+russian.InstallOps=Параметры установки
 russian.Portable=Портативная установка
-russian.ResetPrefs=Сброс OpenSong Предпочтения
-slovak.Installops=Možnosti inštalácie
+russian.ResetPrefs=Сброс текущих настроек OpenSong 
+slovak.InstallOps=Možnosti inštalácie
 slovak.Portable=Prenosná inštalácia
-slovak.ResetPrefs=Obnoviť predvoľby OpenSong
-slovenian.Installops=Možnosti namestitve
+slovak.ResetPrefs=Obnoviť predvoľby OpenSong-u
+slovenian.InstallOps=Možnosti namestitve
 slovenian.Portable=Prenosni Namestitev
 slovenian.ResetPrefs=Reset OpenSong Nastavitve
-turkish.Installops=Yükleme Seçenekleri
+turkish.InstallOps=Yükleme Seçenekleri
 turkish.Portable=taşınabilir Kurulum
 turkish.ResetPrefs=OpenSong Tercihleri ​​Sıfırla
