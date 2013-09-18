@@ -2609,7 +2609,7 @@ End
 	#tag EndProperty
 
 
-	#tag Constant, Name = ACTION_ALERT, Type = Double, Dynamic = False, Default = \"1021", Scope = Public
+	#tag Constant, Name = ACTION_ALERT, Type = Integer, Dynamic = False, Default = \"1022", Scope = Public
 	#tag EndConstant
 
 	#tag Constant, Name = ACTION_BLACK, Type = Integer, Dynamic = False, Default = \"1013", Scope = Public
@@ -2636,7 +2636,7 @@ End
 	#tag Constant, Name = ACTION_FIRST_SLIDE_OF_SECTION, Type = Integer, Dynamic = False, Default = \"126", Scope = Protected
 	#tag EndConstant
 
-	#tag Constant, Name = ACTION_FREEZE, Type = Integer, Dynamic = False, Default = \"1014", Scope = Public
+	#tag Constant, Name = ACTION_FREEZE, Type = Integer, Dynamic = False, Default = \"1015", Scope = Public
 	#tag EndConstant
 
 	#tag Constant, Name = ACTION_HIDE, Type = Integer, Dynamic = False, Default = \"1017", Scope = Public
@@ -2666,7 +2666,7 @@ End
 	#tag Constant, Name = ACTION_PREV_SLIDE, Type = Integer, Dynamic = False, Default = \"1002", Scope = Public
 	#tag EndConstant
 
-	#tag Constant, Name = ACTION_SONG, Type = Double, Dynamic = False, Default = \"1021", Scope = Public
+	#tag Constant, Name = ACTION_SONG, Type = Integer, Dynamic = False, Default = \"1021", Scope = Public
 	#tag EndConstant
 
 	#tag Constant, Name = ACTION_TAG, Type = Integer, Dynamic = False, Default = \"1011", Scope = Public
@@ -2742,9 +2742,6 @@ End
 	#tag EndConstant
 
 	#tag Constant, Name = ShiftKey, Type = Integer, Dynamic = False, Default = \"&h100", Scope = Protected
-	#tag EndConstant
-
-	#tag Constant, Name = Untitled, Type = Double, Dynamic = False, Default = \"&h62", Scope = Protected
 	#tag EndConstant
 
 

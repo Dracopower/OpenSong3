@@ -206,9 +206,9 @@ Implements REST.RESTResource
 		    success = False
 		    
 		    Select Case protocolHandler.Identifier()
-		    Case"next_section"
+		    Case"next"
 		      success = PresentWindow.PerformAction(PresentWindow.ACTION_NEXT_SECTION)
-		    Case"previous_section"
+		    Case"previous"
 		      success = PresentWindow.PerformAction(PresentWindow.ACTION_PREV_SECTION)
 		    Else
 		      supported = False
@@ -236,13 +236,27 @@ Implements REST.RESTResource
 	#tag Method, Flags = &h21
 		Private Function HandleSlide(protocolHandler As REST.RESTProtocolHandler) As REST.RESTresponse
 		  Dim result As REST.RESTResponse = Nil
+		  Dim isPostAction As Boolean = False
+		  
+		  Select Case protocolHandler.Identifier()
+		  Case "next", _
+		    "previous", _
+		    "first" ,_
+		    "last", _
+		    "song", _
+		    "scripture"
+		    isPostAction = True
+		  Else
+		    isPostAction = False
+		  End Select
 		  
 		  If protocolHandler.Identifier() = "" Or _
 		    protocolHandler.Identifier() = "list" Then
 		    
 		    result = ListSlides()
 		    
-		  ElseIf protocolHandler.Identifier() <> "" Then
+		  ElseIf protocolHandler.Identifier() <> "" And _
+		    Not isPostAction Then
 		    
 		    If protocolHandler.Parameter("preview", false) Then
 		      result = GetSlideImage(protocolHandler.Identifier(), true, _
@@ -448,6 +462,10 @@ Implements REST.RESTResource
 		      Case "slide", _
 		        "slides"
 		        result =HandleSlide(protocolHandler)
+		        
+		      Case "section", _
+		        "sections"
+		        result =HandleSection(protocolHandler)
 		        
 		      Case "screen"
 		        result =HandleScreen(protocolHandler)

@@ -1,4 +1,9 @@
-﻿* Allow mouse click over slide preview on PresentHelperWindow to move forward and backward one slide. (Feature request #347) (swampcat)
+﻿* Fix for REST implementation regarding the presentation action that did not work (Vwout)
+- all /presentation/section actions
+- all slide actions that modify the presentation state (/presentation/slide/previous, next, ...)
+- /presentation/screen/freeze action
+
+* Allow mouse click over slide preview on PresentHelperWindow to move forward and backward one slide. (Feature request #347) (swampcat)
 
 * Cosmetic fix in song editor (inconsistent behavior of 'keep aspect ratio' checkbox) (bug #406) (Vwout)
 
