@@ -864,6 +864,7 @@ End
 		  If xNewSlide <> Nil Then
 		    currentSlide = currentSlide + 1
 		    XCurrentSlide = xNewSlide
+		    
 		    If HelperActive Then
 		      PresentHelperWindow.ScrollTo currentSlide
 		    Else
@@ -1066,11 +1067,20 @@ End
 
 	#tag Method, Flags = &h0
 		Function GoSlide(slideIndex As Integer) As Boolean
-		  me.CurrentSlide = slideIndex
-		  me.XCurrentSlide = SetML.GetSlide(me.CurrentSet, slideIndex)
-		  me.ResetPaint me.XCurrentSlide
+		  Dim slide As XmlNode = SetML.GetSlide(Me.CurrentSet, slideIndex)
 		  
-		  Return Not IsNull(me.XCurrentSlide)
+		  If Not IsNull(slide) Then
+		    Me.CurrentSlide = slideIndex
+		    Me.XCurrentSlide = slide
+		    
+		    If HelperActive Then
+		      PresentHelperWindow.ScrollTo Me.CurrentSlide
+		    End If
+		    
+		    ResetPaint Me.XCurrentSlide
+		  End If
+		  
+		  Return Not IsNull(slide)
 		End Function
 	#tag EndMethod
 
@@ -1379,6 +1389,13 @@ End
 		    Action = ACTION_PRECHORUS Then ' p = Pre-chorus
 		    Return GoPreChorus
 		    '
+		    ' Jump to slide
+		    '
+		  ElseIf (Lowercase(Key) = "i" Or _
+		    Action = ACTION_SLIDE) And _
+		    Not IsNull(param) And param.IsNumeric Then ' i = Slide
+		    Return Not IsNull(GoSlide(param.IntegerValue))
+		    '
 		    ' Jump to tag
 		    '
 		  ElseIf Lowercase(Key) = "t" Or _
@@ -1387,7 +1404,7 @@ End
 		    '
 		    ' Jump to Verse "N"
 		    '
-		  ElseIf lowercase(key) = "v" or isNumeric(key) Then ' n = Verse
+		  ElseIf lowercase(key) = "v" or isNumeric(key) Then ' v = Verse
 		    Return GoVerse(key)
 		  ElseIf Action = ACTION_VERSE And _
 		    Not IsNull(param) And param.IsNumeric Then
@@ -2609,7 +2626,7 @@ End
 	#tag EndProperty
 
 
-	#tag Constant, Name = ACTION_ALERT, Type = Integer, Dynamic = False, Default = \"1022", Scope = Public
+	#tag Constant, Name = ACTION_ALERT, Type = Double, Dynamic = False, Default = \"1023", Scope = Public
 	#tag EndConstant
 
 	#tag Constant, Name = ACTION_BLACK, Type = Integer, Dynamic = False, Default = \"1013", Scope = Public
@@ -2664,6 +2681,9 @@ End
 	#tag EndConstant
 
 	#tag Constant, Name = ACTION_PREV_SLIDE, Type = Integer, Dynamic = False, Default = \"1002", Scope = Public
+	#tag EndConstant
+
+	#tag Constant, Name = ACTION_SLIDE, Type = Double, Dynamic = False, Default = \"1022", Scope = Public
 	#tag EndConstant
 
 	#tag Constant, Name = ACTION_SONG, Type = Integer, Dynamic = False, Default = \"1021", Scope = Public
@@ -2765,7 +2785,7 @@ End
 		End Function
 	#tag EndEvent
 	#tag Event
-		Sub Paint(g As Graphics)
+		Sub Paint(g As Graphics, areas() As REALbasic.Rect)
 		  If Not Globals.Status_Presentation Then Return
 		  
 		  '#if DebugBuild then

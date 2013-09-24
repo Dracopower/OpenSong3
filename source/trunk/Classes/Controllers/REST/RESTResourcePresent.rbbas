@@ -26,6 +26,12 @@ Implements REST.RESTResource
 		      SmartML.CloneChildren slide_group, slide
 		      SmartML.CloneAttributes slide_group, slide
 		      
+		      Dim slide_slides As XmlNode = SmartML.GetNode(slide, "slides", True)
+		      SmartML.RemoveChildren(slide_slides)
+		      Dim slides_slide As XmlNode = slide_slides.AppendChild(xml.CreateElement("slide"))
+		      SmartML.CloneChildren xslide, slides_slide
+		      SmartML.CloneAttributes xslide, slides_slide
+		      
 		    End If
 		    
 		    result.response = xml.ToString
@@ -263,13 +269,23 @@ Implements REST.RESTResource
 		      protocolHandler.Parameter("width", 0), _
 		      protocolHandler.Parameter("height", 0), _
 		      protocolHandler.Parameter("quality", 50))
+		      
 		    ElseIf protocolHandler.Parameter("image", false) Then
 		      result = GetSlideImage(protocolHandler.Identifier(), false, _
 		      protocolHandler.Parameter("width", 0), _
 		      protocolHandler.Parameter("height", 0), _
 		      protocolHandler.Parameter("quality", 85))
-		    Else
-		      result = GetSlide(protocolHandler.Identifier())
+		      
+		    ElseIf IsNumeric(protocolHandler.Identifier()) Then
+		      If protocolHandler.Method() = "GET" Then
+		        result = GetSlide(protocolHandler.Identifier())
+		      Else
+		        If PresentWindow.PerformAction(PresentWindow.ACTION_SLIDE, protocolHandler.Identifier()) Then
+		          result = New REST.RESTResponse("OK")
+		        Else
+		          result = New REST.RESTResponse("The requested action failed.", "500 Internal Server Error")
+		        End If
+		      End If
 		    End If
 		    
 		  Else
@@ -340,6 +356,8 @@ Implements REST.RESTResource
 		        success = PresentWindow.PerformAction(PresentWindow.ACTION_PRECHORUS)
 		      ElseIf protocolHandler.Parameter("tag", false) Then
 		        success = PresentWindow.PerformAction(PresentWindow.ACTION_TAG)
+		      ElseIf protocolHandler.Parameter("verse", "") <> "" Then
+		        success = PresentWindow.PerformAction(PresentWindow.ACTION_VERSE, protocolHandler.Parameter("verse", "V1"))
 		      Else
 		        supported = False
 		      End If
@@ -348,13 +366,9 @@ Implements REST.RESTResource
 		      
 		      Dim index As Integer = Val(protocolHandler.Identifier())
 		      If index > 0 Then
-		        If protocolHandler.Parameter("verse", false) Then
-		          success = PresentWindow.PerformAction(PresentWindow.ACTION_VERSE, index)
-		        Else
-		          success = PresentWindow.PerformAction(PresentWindow.ACTION_SONG, index)
-		        End If
+		        success = PresentWindow.PerformAction(PresentWindow.ACTION_SONG, index)
 		      Else
-		        result = New REST.RESTResponse("The requested song or verse is not available.", "404 Not Found")
+		        result = New REST.RESTResponse("The requested song is not available.", "404 Not Found")
 		      End If
 		      
 		    End Select
@@ -384,6 +398,7 @@ Implements REST.RESTResource
 		  Dim xml As XmlDocument
 		  Dim root, slide As XmlNode
 		  Dim slide_group, xslide As XmlNode
+		  Dim index As Integer = 1
 		  
 		  If IsNull(PresentWindow.CurrentSet) Then
 		    result = New REST.RESTresponse("The requested set is not available, no active presentation.", "404 Not Found")
@@ -393,7 +408,7 @@ Implements REST.RESTResource
 		    xml = result.CreateXmlResponse(Name(), "slide")
 		    root = xml.DocumentElement()
 		    
-		    xslide = SetML.GetSlide(PresentWindow.CurrentSet, 1)
+		    xslide = SetML.GetSlide(PresentWindow.CurrentSet, index)
 		    While Not IsNull(xslide)
 		      
 		      If xslide.PreviousSibling Is Nil Then
@@ -411,7 +426,7 @@ Implements REST.RESTResource
 		      
 		      slide_group = xslide.Parent.Parent
 		      slide = root.AppendChild(xml.CreateElement("slide"))
-		      SmartML.SetValueN(slide, "@id", SmartML.GetValueN(slide_group, "@ItemNumber"))
+		      SmartML.SetValueN(slide, "@identifier", index) 'SmartML.GetValueN(slide_group, "@ItemNumber"))
 		      SmartML.SetValue(slide, "@name", SmartML.GetValue(slide_group, "@name"))
 		      SmartML.SetValue(slide, "@type", SmartML.GetValue(slide_group, "@type"))
 		      
@@ -423,6 +438,7 @@ Implements REST.RESTResource
 		      SmartML.SetValue(slide, "subtitle", SmartML.GetValue(slide_group, "subtitle"))
 		      
 		      xslide = SetML.GetNextSlide(xslide)
+		      index = index + 1
 		    Wend
 		    
 		    result.response = xml.ToString
