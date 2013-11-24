@@ -11,8 +11,8 @@
     <themes>Načítám seznam témat</themes>
     <time_signatures>Načítám seznam časových značek</time_signatures>
     <imagequality>Načítám přehled kvality obrázků</imagequality>
-    <videolan_preset>Načítám přednastavené parametry VideoLAN</videolan_preset>
-    <fonts>Načítám seznam písem</fonts>
+ 	<videolan_preset>Načítám přednastavené parametry VideoLAN</videolan_preset>
+   <fonts>Načítám seznam písem</fonts>
     <latest_version>Kontroluji dostupnost nové verze
       <newer_available>Je dostupná nová verze (%1). Pro stáhnutí navštivte www.opensong.org.</newer_available>
     </latest_version>   
@@ -267,10 +267,10 @@
     </presentation_settings>
     <videolan_settings caption="Nastavení multimédií">
       <videolan_start caption="Spustit"/>
-      <videolan_mediafilename caption="Umístění souboru">Najít v adresáři audio nebo video soubor.</videolan_mediafilename>
-      <embed_mediafile caption="Zahrnout do playlistu"/>
-      <videolan_preset caption="Použít následující předvolbu s parametry"/>
-      <videolan_manual caption="Jednotlivé předepsané parametry (použijte %d pro zobrazení čísla a %s pro mediální soubor)"/>
+	  <videolan_mediafilename caption="Umístění souboru">Najít v adresáři audio nebo video soubor.</videolan_mediafilename>
+	  <embed_mediafile caption="Zahrnout do playlistu"/>
+	  <videolan_preset caption="Použít následující předvolbu s parametry"/>
+	  <videolan_manual caption="Jednotlivé předepsané parametry (použijte %d pro zobrazení čísla a %s pro mediální soubor)"/>
       <wait_for_videolan caption="Před přechodem na další snímek počkat, než se soubor přehraje"/>
       <videolan_stop caption="Ukončit spuštěnou relaci přehrávače VLC Media Player"/>
     </videolan_settings>
@@ -994,8 +994,8 @@ Pokud je políčko Prezentace prázdné, pak při promítání bude pořadí sn�
     </lookup>
     <search caption="Vyhledat úplný text"/>
     <books caption="Biblické knihy">         
-      <ot caption="Starý zákon"/>
-      <nt caption="Nový zákon"/>
+	  <ot caption="Starý zákon"/>
+	  <nt caption="Nový zákon"/>
     </books>
     <paragraph caption="Kapitola"/>
     <colon caption=","/>
@@ -1166,11 +1166,11 @@ Pokud je políčko Prezentace prázdné, pak při promítání bude pořadí sn�
   </imagequality_list>
 
   <videolan_preset_list>
-    <preset name="Video jako pozadí plochy ve Windows (použijte barvu pozadí plochy RGB = 0,0,1)" parameters="--no-video-deco --no-video-title-show --no-osd --video-wallpaper --direct3d-desktop --one-instance --directx-device=\\.\DISPLAY%d %s"/>
-    <preset name="Maximalizované video na promítací obrazovce" parameters="--no-video-deco --no-video-title-show --no-osd --one-instance %s"/>
-    <preset name="Maximalizované video z výchozího video vstupu DirectShow (kamera, atd.)" parameters="--no-video-deco --no-video-title-show --no-osd --one-instance dshow://"/>
-    <!-- The line below is mandatory. Translators: only modify the value for 'name' -->
-    <preset name="Vlastní video s parametry níže" parameters=""/>
+	<preset name="Video jako pozadí plochy ve Windows (použijte barvu pozadí plochy RGB = 0,0,1)" parameters="--no-video-deco --no-video-title-show --no-osd --video-wallpaper --direct3d-desktop --one-instance --directx-device=\\.\DISPLAY%d %s"/>
+	<preset name="Maximalizované video na promítací obrazovce" parameters="--no-video-deco --no-video-title-show --no-osd --one-instance %s"/>
+	<preset name="Maximalizované video z výchozího video vstupu DirectShow (kamera, atd.)" parameters="--no-video-deco --no-video-title-show --no-osd --one-instance dshow://"/>
+	<!-- The line below is mandatory. Translators: only modify the value for 'name' -->
+	<preset name="Vlastní video s parametry níže" parameters=""/>
   </videolan_preset_list>
 
   <style_preview>
@@ -1355,7 +1355,7 @@ Restartujete OpenSong a zkuste znovu.</notenoughmemory>
        <unknownerror>Neznámá chyba při přístupu k %1.</unknownerror>
        <notaregularfile>Očekávám, že %1 bude soubor, nikoli složka.</notaregularfile>
        <notafolder>Očekávám, že %1 bude  složka, nikoli soubor.</notafolder>
-       <temporaryfailed>Vytvoření dočasného souboru %1 selhalo.</temporaryfailed>
+	   <temporaryfailed>Vytvoření dočasného souboru %1 selhalo.</temporaryfailed>
     </fileutils>
     <cclinotavailable>CCLI stránky se výrazně změnily.
 To poškodilo Import, než budeme schopni se přizpůsobit.
@@ -1370,7 +1370,7 @@ OpenSong tým se omlouvá za problémy.
       <unsupported_feature>Aplikace '% 1' nepodporuje tuto funkci.</unsupported_feature>
       <load_failed>Prezentaci '%1' nelze otevřít.</load_failed>
     </presentations>
-    <videolan_app_missing>Aplikace VideoLAN není správně nastavena. Prosím specifikujte VideoLAN klienta v políčku Umístění. Aplikace '% 1' nepodporuje tuto funkci.</videolan_app_missing>
+	<videolan_app_missing>Aplikace VideoLAN není správně nastavena. Prosím specifikujte VideoLAN klienta v políčku Umístění. Aplikace '% 1' nepodporuje tuto funkci.</videolan_app_missing>
     <linked_song>
        <current>Zvolili jste tuto píseň.</current>
        <exists>Vybraná píseň už je v seznamu.</exists>
@@ -1422,28 +1422,28 @@ OpenSong tým se omlouvá za problémy.
   </open_titles>  
   
   <hotkeys>
-    <ACTION_FIRST_SLIDE_OF_SECTION>Jít na první snímek ve výběru.</ACTION_FIRST_SLIDE_OF_SECTION>
-    <ACTION_NEXT_SLIDE>Jít na další snímek v playlistu.</ACTION_NEXT_SLIDE>
-    <ACTION_PREV_SLIDE>Jít na předchozí snímek v playlistu.</ACTION_PREV_SLIDE>
-    <ACTION_FIRST_SLIDE>Jít na první snímek v playlistu.</ACTION_FIRST_SLIDE>
-    <ACTION_LAST_SLIDE>Jít na poslední snímek v playlistu.</ACTION_LAST_SLIDE>
-    <ACTION_NEXT_SECTION>Jít na další oddíl v playlistu.</ACTION_NEXT_SECTION>
-    <ACTION_PREV_SECTION>Jít na začátek aktuálního nebo předchozího playlistu.</ACTION_PREV_SECTION>
-    <ACTION_VERSE>Jít na další sloku.</ACTION_VERSE> 	
-    <ACTION_BRIDGE>Jít na přechod.</ACTION_BRIDGE>
-    <ACTION_CHORUS>Jít na refrén.</ACTION_CHORUS>
-    <ACTION_PRECHORUS>Jít na před-refrén.</ACTION_PRECHORUS>
-    <ACTION_TAG>Jít na další tag (značku).</ACTION_TAG>
-    <ACTION_NORMAL>Zobrazit aktuální snímek.</ACTION_NORMAL>
-    <ACTION_BLACK>Zobrazit černou obrazovku.</ACTION_BLACK>
-    <ACTION_WHITE>Zobrazit bílou obrazovku.</ACTION_WHITE>
-    <ACTION_FREEZE>Zmrazit obrazovku na aktuálním snímku.</ACTION_FREEZE>
-    <ACTION_LOGO>Zobrazit logo.</ACTION_LOGO>
-    <ACTION_HIDE>Skrýt aktuální snímek (pozadí je stále vidět).</ACTION_HIDE>
-    <ACTION_EXIT>Ukončit promítací mód.</ACTION_EXIT>
-    <ACTION_EXIT_PROMPT>Ukončit promítací mód, vyžaduje potvrzení.</ACTION_EXIT_PROMPT>
-    <ACTION_EXIT_NOPROMPT>Ukončit okamžitě promítací mód.</ACTION_EXIT_NOPROMPT>
-  </hotkeys>
+  	<ACTION_FIRST_SLIDE_OF_SECTION>Jít na první snímek ve výběru.</ACTION_FIRST_SLIDE_OF_SECTION>
+  	<ACTION_NEXT_SLIDE>Jít na další snímek v playlistu.</ACTION_NEXT_SLIDE>
+  	<ACTION_PREV_SLIDE>Jít na předchozí snímek v playlistu.</ACTION_PREV_SLIDE>
+  	<ACTION_FIRST_SLIDE>Jít na první snímek v playlistu.</ACTION_FIRST_SLIDE>
+  	<ACTION_LAST_SLIDE>Jít na poslední snímek v playlistu.</ACTION_LAST_SLIDE>
+  	<ACTION_NEXT_SECTION>Jít na další oddíl v playlistu.</ACTION_NEXT_SECTION>
+  	<ACTION_PREV_SECTION>Jít na začátek aktuálního nebo předchozího playlistu.</ACTION_PREV_SECTION>
+ 	<ACTION_VERSE>Jít na další sloku.</ACTION_VERSE> 	
+ 	<ACTION_BRIDGE>Jít na přechod.</ACTION_BRIDGE>
+ 	<ACTION_CHORUS>Jít na refrén.</ACTION_CHORUS>
+ 	<ACTION_PRECHORUS>Jít na před-refrén.</ACTION_PRECHORUS>
+ 	<ACTION_TAG>Jít na další tag (značku).</ACTION_TAG>
+ 	<ACTION_NORMAL>Zobrazit aktuální snímek.</ACTION_NORMAL>
+ 	<ACTION_BLACK>Zobrazit černou obrazovku.</ACTION_BLACK>
+ 	<ACTION_WHITE>Zobrazit bílou obrazovku.</ACTION_WHITE>
+ 	<ACTION_FREEZE>Zmrazit obrazovku na aktuálním snímku.</ACTION_FREEZE>
+ 	<ACTION_LOGO>Zobrazit logo.</ACTION_LOGO>
+ 	<ACTION_HIDE>Skrýt aktuální snímek (pozadí je stále vidět).</ACTION_HIDE>
+ 	<ACTION_EXIT>Ukončit promítací mód.</ACTION_EXIT>
+ 	<ACTION_EXIT_PROMPT>Ukončit promítací mód, vyžaduje potvrzení.</ACTION_EXIT_PROMPT>
+ 	<ACTION_EXIT_NOPROMPT>Ukončit okamžitě promítací mód.</ACTION_EXIT_NOPROMPT>
+ </hotkeys>
 
   <progress_status>
     <folder>Ukládám složky do mezipaměti %1</folder>
@@ -1458,25 +1458,25 @@ OpenSong tým se omlouvá za problémy.
     <pass2>Řadím, 2. průchod</pass2>
     <detect_presentation_hosts>Zjišťování dostupných prezentačních programů</detect_presentation_hosts>
   </progress_status>
-    <export_options title="Nastavení exportu do HTML">
-        <handling caption="Umístění CSS stylů">
-            <link caption="Externí soubor stylů a odkaz na něj"/>
-            <embed caption="soubor stylů součástí HTML souboru"/>
-        </handling>
-        <options caption="Nastavení CSS stylů">
-            <default caption="Použití specifických stylů"/>
-            <print caption="Použití stylů na základě 'Nastavení tisku'"/>
-        </options>
-        <export caption="Vícenásobný export">
-            <single caption="Jeden soubor pro všechny písně"/>
-            <unique caption="Specifický soubor pro každou písně"/>
-        </export>
-        <cssfile caption="Soubor stylů">link(shared/style_file/@caption)</cssfile>
-        <outdir caption="Výstupní složka">link(shared/export_to/@caption)</outdir>
-        <outfile>Output file</outfile>
-        <cancel caption="link(shared/cancel/@caption)"/>
-        <ok caption="link(shared/ok/@caption)"/>
-        <nofile>(None)</nofile>
-        <filter_css>Cascading Style Sheet</filter_css>
-    </export_options>
+	<export_options title="Nastavení exportu do HTML">
+		<handling caption="Umístění CSS stylů">
+			<link caption="Externí soubor stylů a odkaz na něj"/>
+			<embed caption="soubor stylů součástí HTML souboru"/>
+		</handling>
+		<options caption="Nastavení CSS stylů">
+			<default caption="Použití specifických stylů"/>
+			<print caption="Použití stylů na základě 'Nastavení tisku'"/>
+		</options>
+		<export caption="Vícenásobný export">
+			<single caption="Jeden soubor pro všechny písně"/>
+			<unique caption="Specifický soubor pro každou písně"/>
+		</export>
+		<cssfile caption="Soubor stylů">link(shared/style_file/@caption)</cssfile>
+		<outdir caption="Výstupní složka">link(shared/export_to/@caption)</outdir>
+		<outfile>Output file</outfile>
+		<cancel caption="link(shared/cancel/@caption)"/>
+		<ok caption="link(shared/ok/@caption)"/>
+		<nofile>(None)</nofile>
+		<filter_css>Cascading Style Sheet</filter_css>
+	</export_options>
 </language>
