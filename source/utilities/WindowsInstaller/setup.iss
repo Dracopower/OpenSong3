@@ -127,7 +127,7 @@ Source: "OpenSong Libs\*"; DestDir: "{app}\OpenSong Libs"
 ; OpenSong Languages Files
 ; Arranged in alphabetical order (according to native name)
 Source: "OpenSong Languages\English"; DestDir: "{app}\OpenSong Languages"
-Source: "OpenSong Languages\Czech"; DestDir: "{app}\OpenSong Languages"; Components: Languages\czech
+Source: "OpenSong Languages\Čeština"; DestDir: "{app}\OpenSong Languages"; Components: Languages\czech
 Source: "OpenSong Languages\Deutsch"; DestDir: "{app}\OpenSong Languages"; Components: Languages\german
 Source: "OpenSong Languages\Español"; DestDir: "{app}\OpenSong Languages"; Components: Languages\spanish
 Source: "OpenSong Languages\Estonian"; DestDir: "{app}\OpenSong Languages"; Components: Languages\estonian
