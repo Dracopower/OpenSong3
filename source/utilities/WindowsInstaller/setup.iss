@@ -201,7 +201,7 @@ Name: Bibles\KJV; Description: King James Version; Types: Full Normal
 ; OpenSong Languages
 ; Arranged in alphabetical order (according to native name), displayed when user is asked what components to install
 Name: Languages; Description: Languages; Types: Full; Flags: checkablealone
-Name: Languages\czech; Description: Czech; Types: Full; Flags: checkablealone
+Name: Languages\czech; Description: Čeština; Types: Full; Flags: checkablealone
 Name: Languages\german; Description: Deutsch; Types: Full; Flags: checkablealone
 Name: Languages\spanish; Description: Español; Types: Full; Flags: checkablealone
 Name: Languages\estonian; Description: Estonian; Types: Full; Flags: checkablealone
