@@ -1,6 +1,8 @@
-﻿;; OpenSong Version 2.1 Installer Script
+;; OpenSong Version 2.1 Installer Script
 
-; If any version below the specified version is used for compiling, this error will be shown.
+; If any version below the specified version is used for compiling,
+; this error will be shown.
+; Periods are automatically added at the end of the message.
 #if VER < EncodeVer(5,5,2)
   #error You must use Inno Setup 5.5.2 or newer to compile this script
 #endif
@@ -10,9 +12,10 @@
 #else
   ; If non-Unicode (AKA ANSI) Inno Setup is used
   #error You must use Unicode Inno Setup to compile this script
-#endif   
+#endif
 
-; The ISPP eliminates redundant typing and prevents errors. Changing these values changes all other values that refer back to here.
+; The ISPP eliminates redundant typing and prevents errors.
+; Changing these values changes all other values that refer back to here.
 #define MyAppName "OpenSong"
 #define MyAppVersion "2.1.0"
 #define MyAppVerName "OpenSong Version 2.1 RC1"
@@ -21,9 +24,10 @@
 #define MyAppExeName "OpenSong.exe"
 
 [Setup]
-; Always generate a new GUID before compiling, as they uniquely identify this application.
-; Never use the same AppId value in installers for other applications, even different versions of the same program.
-; Not having or changing the GUID will cause the Uninstallation String in Windows to be overwritten with each new installation.
+; Always generate a new GUID before compiling,
+; as it uniquely identifies the release. Never use the same AppId value
+; or other versions or leave it blank so the Add/Remove Programs entry
+; will not be overwritten with each new release.
 AppID={#MyAppName}, {#MyAppVersion}
 AppName={#MyAppName}
 AppVersion={#MyAppVersion}
@@ -44,7 +48,7 @@ SetupIconFile=OpenSong2.ico
 WizardImageFile=Installer-Sidebar.bmp
 WizardSmallImageFile=Installer-Icon.bmp
 WizardImageBackColor=clWhite
-; Location of the compiled Installer 
+; Location of the compiled Installer
 OutputDir=Output
 OutputBaseFilename={#MyAppVerName} Setup
 ; Show Language selection dialog
@@ -52,7 +56,8 @@ ShowLanguageDialog=yes
 ; Uninstallation items
 UninstallFilesDir={app}
 UninstallDisplayIcon={app}\OpenSong2Uninstall.ico
-; An uninstall string or exe won't be created if it was installed portably, else it will. 
+; An uninstall string and Exe won't be created if it was installed
+; in portable mode, otherwise they will.
 Uninstallable=not IsTaskSelected('Portable')
 CreateUninstallRegKey=not IsTaskSelected('Portable')
 UninstallDisplayName={#MyAppVerName}
@@ -65,18 +70,19 @@ LZMAUseSeparateProcess=yes
 UsePreviousTasks=no
 
 [Languages]
-; Arranged in alphabetical order (according to native name), but with English on top
+; Arranged in alphabetical order (according to native name),
+; but with English on top
 Name: english; MessagesFile: compiler:Default.isl; LicenseFile: OpenSong License\gpl-en.txt
 Name: czech; MessagesFile: compiler:Languages\Czech.isl; LicenseFile: OpenSong License\gpl-cs.pdf
 Name: nederlands; MessagesFile: compiler:Languages\Dutch.isl; LicenseFile: OpenSong License\gpl-nl.txt
 
-; Unofficial Inno Setup Translation
+; Unofficial Inno Setup Translation (required)
 Name: estonian; MessagesFile: IS Languages\Estonian.isl; LicenseFile: OpenSong License\gpl-en.txt
 Name: francais; MessagesFile: compiler:Languages\French.isl; LicenseFile: OpenSong License\gpl-fr.txt
-Name: deutsch; MessagesFile: compiler:Languages\German.isl; LicenseFile: OpenSong License\gpl-de.txt      
+Name: deutsch; MessagesFile: compiler:Languages\German.isl; LicenseFile: OpenSong License\gpl-de.txt
 Name: magyar; MessagesFile: compiler:Languages\Hungarian.isl; LicenseFile: OpenSong License\gpl-hu.txt
 
-; Unofficial Inno Setup Translation
+; Unofficial Inno Setup Translation (required)
 Name: svenska; MessagesFile: IS Languages\Swedish.isl; LicenseFile: OpenSong License\gpl-sv.txt
 
 Name: italiano; MessagesFile: compiler:Languages\Italian.isl; LicenseFile: OpenSong License\gpl-it.txt
@@ -87,12 +93,12 @@ Name: portuguesbrazil; MessagesFile: compiler:Languages\BrazilianPortuguese.isl;
 Name: espanol; MessagesFile: compiler:Languages\Spanish.isl; LicenseFile: OpenSong License\gpl-es.txt
 Name: russian; MessagesFile: compiler:Languages\Russian.isl; LicenseFile: OpenSong License\gpl-ru.txt
 
-; Unofficial Inno Setup Translation
+; Unofficial Inno Setup Translation (required)
 Name: slovak; MessagesFile: IS Languages\Slovak.isl; LicenseFile: OpenSong License\gpl-en.txt
 
 Name: slovenian; MessagesFile: compiler:Languages\Slovenian.isl; LicenseFile: OpenSong License\gpl-sv.txt
 
-; Unofficial Inno Setup Translation
+; Unofficial Inno Setup Translation (required)
 Name: turkish; MessagesFile: IS Languages\Turkish.isl; LicenseFile: OpenSong License\gpl-en.txt
 
 [Dirs]
@@ -109,22 +115,23 @@ Name: {app}\OpenSong Defaults\Songs; Components: Extras\Songs
 Name: {app}\OpenSong Libs
 
 [Files]
-; Change logs, EXE
+; Change logs, Exe
 Source: "changelog.txt"; DestDir: "{app}"
 Source: "Language-Changelog.txt"; DestDir: "{app}"
 Source: "OpenSong.exe"; DestDir: "{app}"
 
-; OpenSong Defaults
+; OpenSong Defaults folder
 Source: "OpenSong Defaults\Settings\*"; DestDir: "{app}\OpenSong Defaults\Settings"
 Source: "OpenSong Defaults\Backgrounds\*"; DestDir: "{app}\OpenSong Defaults\Backgrounds"; Components: Extras\Backgrounds
 Source: "OpenSong Defaults\Sets\*"; DestDir: "{app}\OpenSong Defaults\Sets"; Components: Extras\Example_Sets
 Source: "OpenSong Defaults\Songs\*"; DestDir: "{app}\OpenSong Defaults\Songs"; Components: Extras\Songs
 
+; OpenSong Scripture, Settings, and Libs folders
 Source: "OpenSong Scripture\*"; DestDir: "{app}\OpenSong Scripture"; Components: Bibles\KJV
 Source: "OpenSong Settings\*"; DestDir: "{app}\OpenSong Settings"
 Source: "OpenSong Libs\*"; DestDir: "{app}\OpenSong Libs"
 
-; OpenSong Languages Files
+; OpenSong Languages files
 ; Arranged in alphabetical order (according to native name)
 Source: "OpenSong Languages\English"; DestDir: "{app}\OpenSong Languages"
 Source: "OpenSong Languages\Čeština"; DestDir: "{app}\OpenSong Languages"; Components: Languages\czech
@@ -145,7 +152,7 @@ Source: "OpenSong Languages\Slovenian"; DestDir: "{app}\OpenSong Languages"; Com
 Source: "OpenSong Languages\Svenska"; DestDir: "{app}\OpenSong Languages"; Components: Languages\swedish
 Source: "OpenSong Languages\Türkçe"; DestDir: "{app}\OpenSong Languages"; Components: Languages\turkish
 
-; GNU GPL V2 License Files
+; GPL V2 License files
 Source: "OpenSong License\gpl-cs.pdf"; DestDir: "{app}\OpenSong License"; Components: Languages\czech
 Source: "OpenSong License\gpl-nl.txt"; DestDir: "{app}\OpenSong License"; Components: Languages\dutch
 Source: "OpenSong License\gpl-es.txt"; DestDir: "{app}\OpenSong License"
@@ -165,15 +172,15 @@ Source: "OpenSong License\gpl-pt_BR.txt"; DestDir: "{app}\OpenSong License"; Com
 Source: "OpenSong2.ico"; DestDir: "{app}"
 Source: "OpenSong2Uninstall.ico"; DestDir: "{app}"
 
-; Portable Switch at work.
+; Portable Switch
 Source: "OpenSong Portable\GlobalsInstall"; DestDir: "{app}\OpenSong Settings"; DestName: "Globals"; Check: not IsTaskSelected('Portable')
 Source: "OpenSong Portable\GlobalsPortable"; DestDir: "{app}\OpenSong Settings"; DestName: "Globals"; Check: IsTaskSelected('Portable')
 
-; Allows the user to reset the OpenSong preferences if desired.
+; Allow the user to reset the OpenSong preferences if desired.
 Source: "OpenSong Settings\preferences.plist"; DestDir: "{userappdata}\OpenSong"; Flags: uninsneveruninstall; Tasks: ResetPrefs; Permissions: users-modify; Check: not IsTaskSelected('Portable')
 Source: "OpenSong Settings\preferences.plist"; DestDir: "{app}\OpenSong Settings"; Flags: uninsneveruninstall; Tasks: ResetPrefs; Permissions: users-modify; Check: IsTaskSelected('Portable')
 
-; Creates the OpenSong default files when Portable is selected, depending if they are selected in the first place.
+; Create the OpenSong Data files when Portable is selected, depending if they are selected in the first place.
 Source: "OpenSong Defaults\Backgrounds\*"; DestDir: "{app}\OpenSong Data\Backgrounds"; Components: Extras\Backgrounds; Check: IsTaskSelected('Portable')
 Source: "OpenSong Defaults\Songs\*"; DestDir: "{app}\OpenSong Data\Songs"; Components: Extras\Songs; Check: IsTaskSelected('Portable')
 Source: "OpenSong Defaults\Sets\*"; DestDir: "{app}\OpenSong Data\Sets"; Components: Extras\Example_Sets; Check: IsTaskSelected('Portable')
@@ -187,7 +194,7 @@ Name: Full; Description: Full installation
 Name: Custom; Description: Custom installation; Flags: iscustom
 
 [Components]
-; OpenSong itself
+; OpenSong itself, cannot be deselected
 Name: {#MyAppName}; Description: {#MyAppVerName}; Types: Custom Normal Full; Flags: fixed
 
 ; OpenSong Extras
@@ -199,7 +206,8 @@ Name: Bibles; Description: Bibles; Types: Full Normal
 Name: Bibles\KJV; Description: King James Version; Types: Full Normal
 
 ; OpenSong Languages
-; Arranged in alphabetical order (according to native name), displayed when user is asked what components to install
+; Arranged in alphabetical order (according to native name),
+; displayed when user is asked what components to install.
 Name: Languages; Description: Languages; Types: Full; Flags: checkablealone
 Name: Languages\czech; Description: Čeština; Types: Full; Flags: checkablealone
 Name: Languages\german; Description: Deutsch; Types: Full; Flags: checkablealone
@@ -208,48 +216,49 @@ Name: Languages\estonian; Description: Estonian; Types: Full; Flags: checkableal
 Name: Languages\french; Description: Francais; Types: Full; Flags: checkablealone
 Name: Languages\italian; Description: Italiano; Types: Full; Flags: checkablealone
 Name: Languages\hungarian; Description: Magyar; Types: Full; Flags: checkablealone
-Name: Languages\dutch; Description: Nederlands; Types: Full; Flags: checkablealone   
+Name: Languages\dutch; Description: Nederlands; Types: Full; Flags: checkablealone
 Name: Languages\norwegian; Description: Norwegian; Types: Full; Flags: checkablealone
 Name: Languages\polish; Description: Polski; Types: Full; Flags: checkablealone
 Name: Languages\portugues; Description: Português; Types: Full; Flags: checkablealone
-Name: Languages\portuguesbrasil; Description: Português (Brasil); Types: Full; Flags: checkablealone 
+Name: Languages\portuguesbrasil; Description: Português (Brasil); Types: Full; Flags: checkablealone
 Name: Languages\russian; Description: Russian; Types: Full; Flags: checkablealone
 Name: Languages\slovak; Description: Slovak; Types: Full; Flags: checkablealone
-Name: Languages\slovenian; Description: Slovenian; Types: Full; Flags: checkablealone 
-Name: Languages\swedish; Description: Svenska; Types: Full; Flags: checkablealone 
+Name: Languages\slovenian; Description: Slovenian; Types: Full; Flags: checkablealone
+Name: Languages\swedish; Description: Svenska; Types: Full; Flags: checkablealone
 Name: Languages\turkish; Description: Turkish; Types: Full; Flags: checkablealone
 
 [InstallDelete]
-; Deletes the current OpenSong preferences if the task is selected, portable or installed
+; Delete the current OpenSong preferences if the task is selected.
+; first line standard installation, second portable installation.
 Type: files; Name: "{userappdata}\OpenSong\preferences.plist"; Tasks: ResetPrefs; Check: not IsTaskSelected('Portable')
 Type: files; Name: "{app}\preferences.plist"; Tasks: ResetPrefs; Check: IsTaskSelected('Portable')
 
 [Messages]
 ; Small line of text shown throughout the installer
-; By not appending a specific language (english.BeveledLabel), 
-; it is used in all languages with no compile warnings
+; By not appending a specific language (english.BeveledLabel),
+; it is used in all languages with no compile warnings.
+BeveledLabel={#MyAppVerName}
 
-BeveledLabel={#MyAppVerName}  
-
-; Keeping the the [CustomMessages] section in a separate script helps 
-; prevent character corruption when updating the main script
+; Keeping the the [CustomMessages] section in a separate script helps
+; prevent character corruption when updating the main script.
 
 #include "CustomMessages.iss"
 
 [Tasks]
-; From top to bottom: Reset Preferences switch, Portable switch, Desktop Icon
-; Will not be created if it was installed portable, else it will.
+; From top to bottom: Reset Preferences switch, Portable switch, Desktop Icon.
+; Will not be created if OpenSong was installed portable, else it will.
 Name: desktopicon; Description: {cm:CreateDesktopIcon}; GroupDescription: {cm:InstallOps}; Flags: unchecked; Check: not IsTaskSelected('Portable')
-Name: Portable; Description: {cm:Portable}; GroupDescription: {cm:InstallOps}; Flags: unchecked 
-Name: ResetPrefs; Description: {cm:ResetPrefs}; GroupDescription: {cm:InstallOps}; Flags: unchecked   
+Name: Portable; Description: {cm:Portable}; GroupDescription: {cm:InstallOps}; Flags: unchecked
+Name: ResetPrefs; Description: {cm:ResetPrefs}; GroupDescription: {cm:InstallOps}; Flags: unchecked
 
 [Icons]
-; None of this will be created if the portable switch was selected
+; None of this will be created if the portable switch was selected.
 Name: {commondesktop}\{#MyAppName}; Filename: {app}\{#MyAppExeName}; Tasks: desktopicon; Check: not IsTaskSelected('Portable')
 Name: {commonstartmenu}\Programs\{#MyAppName}\{#MyAppName}; Filename: {app}\{#MyAppName}; Check: not IsTaskSelected('Portable')
 Name: {commonstartmenu}\Programs\{#MyAppName}\OpenSong.org; Filename: {#MyAppURL}; Check: not IsTaskSelected('Portable')
 Name: {commonstartmenu}\Programs\{#MyAppName}\{cm:UninstallProgram,{#MyAppName}}; Filename: {uninstallexe}; IconFilename: {app}\OpenSong2Uninstall.ico; Check: not IsTaskSelected('Portable')
 
 [Run]
-; Option to run OpenSong after installation is complete, valid for both installed and portable.
+; Option to run OpenSong after installation is complete,
+; valid for both installed and portable versions.
 Filename: "{app}\{#MyAppExeName}"; Flags: nowait postinstall skipifsilent; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"

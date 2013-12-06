@@ -1,4 +1,4 @@
-﻿; Project Risen (Luke 24:1-12)
+; Project Risen (Luke 24:1-12)
 ; OpenSong Version 2.1 Installer Script
 ; Custom Messages
 
@@ -11,25 +11,25 @@ czech.Portable=Přenosná instalace
 czech.ResetPrefs=Obnoviť předvolby OpenSong-u
 nederlands.InstallOps=Installatie opties
 nederlands.Portable=Portable installatie
-nederlands.ResetPrefs=Standaard OpenSong voorkeuren resetten 
+nederlands.ResetPrefs=Standaard OpenSong voorkeuren resetten
 estonian.InstallOps=Installisuvandid
 estonian.Portable=Portable paigaldamine
 estonian.ResetPrefs=Taasta OpenSong Preferences
 francais.InstallOps=Options d'installation
 francais.Portable=Installation portable
-francais.ResetPrefs=Réinitialiser les préférences d'OpenSong 
+francais.ResetPrefs=Réinitialiser les préférences d'OpenSong
 deutsch.InstallOps=Installationseinstellungen
 deutsch.Portable=Portable Installatie
-deutsch.ResetPrefs=OpenSong-Einstellungen zurücksetzen 
+deutsch.ResetPrefs=OpenSong-Einstellungen zurücksetzen
 magyar.InstallOps=Telepítési beállítások
 magyar.Portable=Hordozható telepítése
 magyar.ResetPrefs=Visszaállítása OpenSong Preferences
 svenska.InstallOps=Installationsinställningar
 svenska.Portable=Flyttbar Installation
-svenska.ResetPrefs=Återställ inställningarna i OpenSong 
+svenska.ResetPrefs=Återställ inställningarna i OpenSong
 italiano.InstallOps=Opzioni di Installazione
 italiano.Portable=Installazione Portatile
-italiano.ResetPrefs=Ripristina le Preferenze di Opensong 
+italiano.ResetPrefs=Ripristina le Preferenze di Opensong
 norwegian.InstallOps=Installasjon alternativer
 norwegian.Portable=Portable Installasjon
 norwegian.ResetPrefs=Tilbakestille OpenSong Innstillinger
@@ -47,7 +47,7 @@ espanol.Portable=Instalación portátil
 espanol.ResetPrefs=Reiniciar las preferencias de Opensong
 russian.InstallOps=Параметры установки
 russian.Portable=Портативная установка
-russian.ResetPrefs=Сброс текущих настроек OpenSong 
+russian.ResetPrefs=Сброс текущих настроек OpenSong
 slovak.InstallOps=Možnosti inštalácie
 slovak.Portable=Prenosná inštalácia
 slovak.ResetPrefs=Obnoviť predvoľby OpenSong-u
