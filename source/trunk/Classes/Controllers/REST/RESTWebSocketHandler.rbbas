@@ -13,8 +13,8 @@ Implements REST.RESTProtocolHandler,iStatusNotifier
 		Function AuthenticationKey() As Variant
 		  // Part of the REST.RESTProtocolHandler interface.
 		  
-		  //An authentication key is not applicable; the authentication has taken place
-		  //at initialisation of the WebSocket, before the upgrade from HTTP to WebSocket
+		  //An authentication key is not applicable; the websocket connection is treated
+		  //as untrusted and therefore only handles 'readonly' actions
 		  Return Nil
 		End Function
 	#tag EndMethod
@@ -240,8 +240,8 @@ Implements REST.RESTProtocolHandler,iStatusNotifier
 		  // Part of the REST.RESTProtocolHandler interface.
 		  
 		  'Methods are not applicable when using WebSockets.
-		  'All requests can be considered POST
-		  Return "POST"
+		  'All requests are considered GET
+		  Return "GET"
 		End Function
 	#tag EndMethod
 

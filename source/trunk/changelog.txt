@@ -1,4 +1,8 @@
-﻿* Fix for REST implementation regarding the presentation action that did not work (Vwout)
+﻿* Change in WebSocket implementation, POST authentication is removed from handshake (Vwout)
+The websocket initialisation now uses a GET request to upgrade the HTTP connection in accordance with the RFC6455.
+As the websocket connection is now not authenticated, actions that modify the state of OpenSong are no longer allowed. This means that the websocket allows all GET actions, plus the ws resource actions.
+
+* Fix for REST implementation regarding the presentation action that did not work (Vwout)
 - all /presentation/section actions
 - all slide actions that modify the presentation state (/presentation/slide/previous, next, ...)
 - /presentation/screen/freeze action
@@ -60,7 +64,7 @@ A new feature is added, a double click on a song when the selected folder is 'Al
 
 -= 2.0 Beta 2 =-
 * Introduced an Automation API for remote control purposes using REST over HTTP and/or WebSocket. (Vwout)
-For a full description of the API see http://opensong.org/d/api. The current implementation supports all information retrieval operations (GET).
+For a full description of the API see http://www.opensong.org/pages/api.html. The current implementation supports all information retrieval operations (GET).
 
 * Improved snapshotting behavior to be less intrusive to the presentation interaction. At slow storage systems, the response on slide changes degraded. This is improved by moving the snapshot storage to a seperate thread with less priority. (Vwout)
 
