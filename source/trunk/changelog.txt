@@ -1,3 +1,5 @@
+* Added a Readme with basic information and instructions how to build OpenSong
+
 ﻿* Change in WebSocket implementation, POST authentication is removed from handshake (Vwout)
 The websocket initialisation now uses a GET request to upgrade the HTTP connection in accordance with the RFC6455.
 As the websocket connection is now not authenticated, actions that modify the state of OpenSong are no longer allowed. This means that the websocket allows all GET actions, plus the ws resource actions.
