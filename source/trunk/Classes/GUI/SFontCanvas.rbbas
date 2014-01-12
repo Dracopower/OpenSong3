@@ -51,12 +51,7 @@ Inherits SBufferedCanvas
 		      g.FillRect 0, 0, Width, Height
 		    End If
 		    
-		    g.TextFont = MyFont.Name
-		    g.TextSize = MyFont.Size
-		    g.Bold = MyFont.Bold
-		    g.Italic = MyFont.Italic
-		    g.Underline = MyFont.Underline
-		    g.ForeColor = MyFont.ForeColor
+		    MyFont.OntoGraphics g
 		    
 		    Call DrawFontString(g, MyFont.Name + " " + Str(MyFont.Size), 0, 0, MyFont, g.Width, "center", g.Height, "middle")
 		    

@@ -43,7 +43,6 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Scope           =   0
       TabIndex        =   0
       TabPanelIndex   =   0
-      TabStop         =   True
       TextFont        =   "Arial"
       TextSize        =   11
       TextUnit        =   0
@@ -55,6 +54,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          AcceptTabs      =   False
          Alignment       =   0
          AutoDeactivate  =   True
+         AutomaticallyCheckSpelling=   True
          BackColor       =   16777215
          Bold            =   False
          Border          =   True
@@ -70,6 +70,8 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          Italic          =   False
          Left            =   20
          LimitText       =   0
+         LineHeight      =   0
+         LineSpacing     =   1
          LockBottom      =   False
          LockedInPosition=   False
          LockLeft        =   True
@@ -149,7 +151,6 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          Selectable      =   False
          TabIndex        =   2
          TabPanelIndex   =   0
-         TabStop         =   True
          Text            =   "Reference:"
          TextAlign       =   0
          TextColor       =   0
@@ -184,7 +185,6 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          Selectable      =   False
          TabIndex        =   3
          TabPanelIndex   =   0
-         TabStop         =   True
          Text            =   "Ex: ""2Pet 1:1-2"" or ""2Pet 1:1-2 (KJV)"""
          TextAlign       =   0
          TextColor       =   0
@@ -341,7 +341,6 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Scope           =   0
       TabIndex        =   5
       TabPanelIndex   =   0
-      TabStop         =   True
       TextFont        =   "Arial"
       TextSize        =   11
       TextUnit        =   0
@@ -471,7 +470,6 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          Selectable      =   False
          TabIndex        =   2
          TabPanelIndex   =   0
-         TabStop         =   True
          Text            =   "Old testament"
          TextAlign       =   0
          TextColor       =   0
@@ -506,7 +504,6 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          Selectable      =   False
          TabIndex        =   3
          TabPanelIndex   =   0
-         TabStop         =   True
          Text            =   "New testament"
          TextAlign       =   0
          TextColor       =   0
@@ -589,7 +586,6 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Scope           =   0
       TabIndex        =   7
       TabPanelIndex   =   0
-      TabStop         =   True
       TextFont        =   "Arial"
       TextSize        =   11
       TextUnit        =   0
@@ -603,7 +599,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          DataField       =   ""
          DataSource      =   ""
          Enabled         =   True
-         Height          =   20
+         Height          =   25
          HelpTag         =   ""
          Index           =   -2147483648
          InitialParent   =   "grp_options_version"
@@ -634,7 +630,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Bold            =   False
       Caption         =   "Verses per slide"
       Enabled         =   True
-      Height          =   50
+      Height          =   55
       HelpTag         =   ""
       Index           =   -2147483648
       InitialParent   =   ""
@@ -648,7 +644,6 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Scope           =   0
       TabIndex        =   8
       TabPanelIndex   =   0
-      TabStop         =   True
       TextFont        =   "Arial"
       TextSize        =   11
       TextUnit        =   0
@@ -662,7 +657,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          DataField       =   ""
          DataSource      =   ""
          Enabled         =   True
-         Height          =   20
+         Height          =   25
          HelpTag         =   ""
          Index           =   -2147483648
          InitialParent   =   "grp_options_verses_per_slide"
@@ -707,7 +702,6 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Scope           =   0
       TabIndex        =   9
       TabPanelIndex   =   0
-      TabStop         =   True
       TextFont        =   "Arial"
       TextSize        =   11
       TextUnit        =   0
@@ -910,6 +904,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       AcceptTabs      =   False
       Alignment       =   0
       AutoDeactivate  =   True
+      AutomaticallyCheckSpelling=   True
       BackColor       =   16777215
       Bold            =   False
       Border          =   True
@@ -925,6 +920,8 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Italic          =   False
       Left            =   10
       LimitText       =   0
+      LineHeight      =   0
+      LineSpacing     =   1
       LockBottom      =   True
       LockedInPosition=   False
       LockLeft        =   True
@@ -970,7 +967,6 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Scope           =   0
       TabIndex        =   19
       TabPanelIndex   =   0
-      TabStop         =   True
       TextFont        =   "Arial"
       TextSize        =   11
       TextUnit        =   0
@@ -982,6 +978,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          AcceptTabs      =   ""
          Alignment       =   0
          AutoDeactivate  =   True
+         AutomaticallyCheckSpelling=   True
          BackColor       =   16777215
          Bold            =   ""
          Border          =   True
@@ -998,6 +995,8 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          Italic          =   ""
          Left            =   435
          LimitText       =   0
+         LineHeight      =   0
+         LineSpacing     =   1
          LockBottom      =   ""
          LockedInPosition=   False
          LockLeft        =   True
@@ -1050,7 +1049,6 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Selectable      =   False
       TabIndex        =   20
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "To verse"
       TextAlign       =   0
       TextColor       =   0
@@ -1116,7 +1114,6 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Selectable      =   False
       TabIndex        =   18
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "Preview of scripture passage"
       TextAlign       =   0
       TextColor       =   0
@@ -1151,7 +1148,6 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Selectable      =   False
       TabIndex        =   22
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "-"
       TextAlign       =   1
       TextColor       =   0
@@ -1186,7 +1182,6 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Selectable      =   False
       TabIndex        =   23
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   ":"
       TextAlign       =   1
       TextColor       =   0
@@ -1221,7 +1216,6 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Selectable      =   False
       TabIndex        =   24
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "From verse"
       TextAlign       =   0
       TextColor       =   0
@@ -1256,7 +1250,6 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Selectable      =   False
       TabIndex        =   25
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "Paragraph"
       TextAlign       =   0
       TextColor       =   0

@@ -28,10 +28,11 @@ Protected Class FontFace
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub OntoGraphics(g As Graphics)
+		Sub OntoGraphics(g As Graphics, zoom As Double = 1.0)
 		  g.ForeColor = ForeColor
 		  g.TextFont = Name
-		  g.TextSize = Size
+		  g.TextSize = Round(Size * zoom)
+		  g.TextUnit = FontUnits.Pixel
 		  g.Bold = Bold
 		  g.Italic = Italic
 		  g.Underline = Underline
@@ -48,6 +49,7 @@ Protected Class FontFace
 		  
 		  s.TextFont = Name
 		  s.TextSize = Round(Size * Zoom)
+		  s.TextUnit = FontUnits.Pixel
 		  s.Bold = Bold
 		  s.FillColor = ForeColor
 		  s.Italic = Italic

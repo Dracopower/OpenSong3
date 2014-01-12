@@ -121,7 +121,7 @@ Begin Window MainSettingsWindow
          Bold            =   False
          Caption         =   "General"
          Enabled         =   True
-         Height          =   135
+         Height          =   145
          HelpTag         =   ""
          Index           =   -2147483648
          InitialParent   =   "tab_general_general"
@@ -291,7 +291,7 @@ Begin Window MainSettingsWindow
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   20
+            Height          =   25
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "grp_settings_general"
@@ -643,7 +643,7 @@ Begin Window MainSettingsWindow
          TextFont        =   "Arial"
          TextSize        =   11
          TextUnit        =   0
-         Top             =   191
+         Top             =   200
          Underline       =   False
          Visible         =   True
          Width           =   250
@@ -670,7 +670,7 @@ Begin Window MainSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10
             TextUnit        =   0
-            Top             =   211
+            Top             =   220
             Underline       =   False
             Value           =   False
             Visible         =   True
@@ -699,7 +699,7 @@ Begin Window MainSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10
             TextUnit        =   0
-            Top             =   211
+            Top             =   220
             Underline       =   False
             Value           =   False
             Visible         =   True
@@ -804,7 +804,7 @@ Begin Window MainSettingsWindow
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   20
+            Height          =   25
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "grp_settings_logging"
@@ -3115,7 +3115,7 @@ Begin Window MainSettingsWindow
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   20
+            Height          =   25
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "grp_settings_imagequality"
@@ -3135,7 +3135,7 @@ Begin Window MainSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10
             TextUnit        =   0
-            Top             =   384
+            Top             =   382
             Underline       =   ""
             Visible         =   True
             Width           =   497

@@ -29,13 +29,12 @@ Begin Window CCLIWindow
       AcceptTabs      =   False
       AutoDeactivate  =   True
       Backdrop        =   0
-      BehaviorIndex   =   0
-      ControlOrder    =   0
+      DoubleBuffer    =   False
       Enabled         =   True
       EraseBackground =   True
       Height          =   51
       HelpTag         =   ""
-      Index           =   2147483648
+      Index           =   -2147483648
       InitialParent   =   ""
       Left            =   5
       LockBottom      =   False
@@ -43,11 +42,10 @@ Begin Window CCLIWindow
       LockLeft        =   True
       LockRight       =   False
       LockTop         =   True
+      Scope           =   0
       TabIndex        =   0
       TabPanelIndex   =   0
       TabStop         =   True
-      TextFont        =   "System"
-      TextSize        =   0
       Top             =   5
       UseFocusRing    =   True
       Visible         =   True
@@ -55,15 +53,13 @@ Begin Window CCLIWindow
    End
    Begin Label lbl_ccli_user_id
       AutoDeactivate  =   True
-      BehaviorIndex   =   1
       Bold            =   False
-      ControlOrder    =   1
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
       Height          =   20
       HelpTag         =   ""
-      Index           =   2147483648
+      Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
       Left            =   260
@@ -73,15 +69,18 @@ Begin Window CCLIWindow
       LockRight       =   True
       LockTop         =   True
       Multiline       =   False
+      Scope           =   0
+      Selectable      =   False
       TabIndex        =   1
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "CCLI User ID:"
       TextAlign       =   2
       TextColor       =   0
       TextFont        =   "Arial"
       TextSize        =   10
+      TextUnit        =   0
       Top             =   7
+      Transparent     =   False
       Underline       =   False
       Visible         =   True
       Width           =   130
@@ -90,22 +89,24 @@ Begin Window CCLIWindow
       AcceptTabs      =   False
       Alignment       =   0
       AutoDeactivate  =   True
+      AutomaticallyCheckSpelling=   True
       BackColor       =   16777215
-      BehaviorIndex   =   2
       Bold            =   False
       Border          =   True
-      ControlOrder    =   2
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
       Format          =   ""
       Height          =   22
       HelpTag         =   ""
-      Index           =   2147483648
+      HideSelection   =   True
+      Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
       Left            =   395
       LimitText       =   0
+      LineHeight      =   0
+      LineSpacing     =   1
       LockBottom      =   False
       LockedInPosition=   False
       LockLeft        =   False
@@ -113,8 +114,8 @@ Begin Window CCLIWindow
       LockTop         =   True
       Mask            =   ""
       Multiline       =   False
-      Password        =   False
       ReadOnly        =   False
+      Scope           =   0
       ScrollbarHorizontal=   False
       ScrollbarVertical=   True
       Styled          =   False
@@ -125,6 +126,7 @@ Begin Window CCLIWindow
       TextColor       =   0
       TextFont        =   "System"
       TextSize        =   12
+      TextUnit        =   0
       Top             =   5
       Underline       =   False
       UseFocusRing    =   True
@@ -133,15 +135,13 @@ Begin Window CCLIWindow
    End
    Begin Label lbl_ccli_password
       AutoDeactivate  =   True
-      BehaviorIndex   =   3
       Bold            =   False
-      ControlOrder    =   3
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
       Height          =   20
       HelpTag         =   ""
-      Index           =   2147483648
+      Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
       Left            =   260
@@ -151,15 +151,18 @@ Begin Window CCLIWindow
       LockRight       =   True
       LockTop         =   True
       Multiline       =   False
+      Scope           =   0
+      Selectable      =   False
       TabIndex        =   3
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "CCLI Password:"
       TextAlign       =   2
       TextColor       =   0
       TextFont        =   "Arial"
       TextSize        =   10
+      TextUnit        =   0
       Top             =   32
+      Transparent     =   False
       Underline       =   False
       Visible         =   True
       Width           =   130
@@ -168,22 +171,24 @@ Begin Window CCLIWindow
       AcceptTabs      =   False
       Alignment       =   0
       AutoDeactivate  =   True
+      AutomaticallyCheckSpelling=   True
       BackColor       =   16777215
-      BehaviorIndex   =   4
       Bold            =   False
       Border          =   True
-      ControlOrder    =   4
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
       Format          =   ""
       Height          =   22
       HelpTag         =   ""
-      Index           =   2147483648
+      HideSelection   =   True
+      Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
       Left            =   395
       LimitText       =   0
+      LineHeight      =   0
+      LineSpacing     =   1
       LockBottom      =   False
       LockedInPosition=   False
       LockLeft        =   False
@@ -191,8 +196,8 @@ Begin Window CCLIWindow
       LockTop         =   True
       Mask            =   ""
       Multiline       =   False
-      Password        =   True
       ReadOnly        =   False
+      Scope           =   0
       ScrollbarHorizontal=   False
       ScrollbarVertical=   True
       Styled          =   False
@@ -203,6 +208,7 @@ Begin Window CCLIWindow
       TextColor       =   0
       TextFont        =   "System"
       TextSize        =   12
+      TextUnit        =   0
       Top             =   30
       Underline       =   False
       UseFocusRing    =   True
@@ -211,15 +217,13 @@ Begin Window CCLIWindow
    End
    Begin Label lbl_search_for
       AutoDeactivate  =   True
-      BehaviorIndex   =   5
       Bold            =   False
-      ControlOrder    =   5
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
       Height          =   20
       HelpTag         =   ""
-      Index           =   2147483648
+      Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
       Left            =   5
@@ -229,15 +233,18 @@ Begin Window CCLIWindow
       LockRight       =   False
       LockTop         =   True
       Multiline       =   False
+      Scope           =   0
+      Selectable      =   False
       TabIndex        =   5
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "Search for:"
       TextAlign       =   0
       TextColor       =   0
       TextFont        =   "Arial"
       TextSize        =   10
-      Top             =   76
+      TextUnit        =   0
+      Top             =   73
+      Transparent     =   False
       Underline       =   False
       Visible         =   True
       Width           =   65
@@ -246,22 +253,24 @@ Begin Window CCLIWindow
       AcceptTabs      =   False
       Alignment       =   0
       AutoDeactivate  =   True
+      AutomaticallyCheckSpelling=   True
       BackColor       =   16777215
-      BehaviorIndex   =   6
       Bold            =   False
       Border          =   True
-      ControlOrder    =   6
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
       Format          =   ""
       Height          =   22
       HelpTag         =   ""
-      Index           =   2147483648
+      HideSelection   =   True
+      Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
       Left            =   70
       LimitText       =   0
+      LineHeight      =   0
+      LineSpacing     =   1
       LockBottom      =   False
       LockedInPosition=   False
       LockLeft        =   True
@@ -269,8 +278,8 @@ Begin Window CCLIWindow
       LockTop         =   True
       Mask            =   ""
       Multiline       =   False
-      Password        =   False
       ReadOnly        =   False
+      Scope           =   0
       ScrollbarHorizontal=   False
       ScrollbarVertical=   True
       Styled          =   False
@@ -281,7 +290,8 @@ Begin Window CCLIWindow
       TextColor       =   0
       TextFont        =   "Arial"
       TextSize        =   10
-      Top             =   75
+      TextUnit        =   0
+      Top             =   70
       Underline       =   False
       UseFocusRing    =   True
       Visible         =   True
@@ -289,15 +299,13 @@ Begin Window CCLIWindow
    End
    Begin Label txt_search_by
       AutoDeactivate  =   True
-      BehaviorIndex   =   7
       Bold            =   False
-      ControlOrder    =   7
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
       Height          =   20
       HelpTag         =   ""
-      Index           =   2147483648
+      Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
       Left            =   222
@@ -307,30 +315,31 @@ Begin Window CCLIWindow
       LockRight       =   False
       LockTop         =   True
       Multiline       =   False
+      Scope           =   0
+      Selectable      =   False
       TabIndex        =   7
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "by"
       TextAlign       =   1
       TextColor       =   0
       TextFont        =   "Arial"
       TextSize        =   10
-      Top             =   75
+      TextUnit        =   0
+      Top             =   73
+      Transparent     =   False
       Underline       =   False
       Visible         =   True
       Width           =   25
    End
    Begin PopupMenu pop_by
       AutoDeactivate  =   True
-      BehaviorIndex   =   8
       Bold            =   False
-      ControlOrder    =   8
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
-      Height          =   20
+      Height          =   25
       HelpTag         =   ""
-      Index           =   2147483648
+      Index           =   -2147483648
       InitialParent   =   ""
       InitialValue    =   ""
       Italic          =   False
@@ -341,27 +350,27 @@ Begin Window CCLIWindow
       LockLeft        =   True
       LockRight       =   False
       LockTop         =   True
+      Scope           =   0
       TabIndex        =   8
       TabPanelIndex   =   0
       TabStop         =   True
       TextFont        =   "Arial"
       TextSize        =   10
-      Top             =   75
+      TextUnit        =   0
+      Top             =   72
       Underline       =   False
       Visible         =   True
       Width           =   100
    End
    Begin Label txt_search_filter
       AutoDeactivate  =   True
-      BehaviorIndex   =   9
       Bold            =   False
-      ControlOrder    =   9
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
       Height          =   20
       HelpTag         =   ""
-      Index           =   2147483648
+      Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
       Left            =   350
@@ -371,30 +380,31 @@ Begin Window CCLIWindow
       LockRight       =   False
       LockTop         =   True
       Multiline       =   False
+      Scope           =   0
+      Selectable      =   False
       TabIndex        =   9
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "filter"
       TextAlign       =   1
       TextColor       =   0
       TextFont        =   "Arial"
       TextSize        =   10
-      Top             =   76
+      TextUnit        =   0
+      Top             =   73
+      Transparent     =   False
       Underline       =   False
       Visible         =   True
       Width           =   35
    End
    Begin PopupMenu pop_filter
       AutoDeactivate  =   True
-      BehaviorIndex   =   10
       Bold            =   False
-      ControlOrder    =   10
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
-      Height          =   20
+      Height          =   25
       HelpTag         =   ""
-      Index           =   2147483648
+      Index           =   -2147483648
       InitialParent   =   ""
       InitialValue    =   ""
       Italic          =   False
@@ -405,28 +415,29 @@ Begin Window CCLIWindow
       LockLeft        =   True
       LockRight       =   False
       LockTop         =   True
+      Scope           =   0
       TabIndex        =   10
       TabPanelIndex   =   0
       TabStop         =   True
       TextFont        =   "Arial"
       TextSize        =   10
-      Top             =   75
+      TextUnit        =   0
+      Top             =   72
       Underline       =   False
       Visible         =   True
       Width           =   100
    End
    Begin PushButton btn_song_find
       AutoDeactivate  =   True
-      BehaviorIndex   =   11
       Bold            =   False
+      ButtonStyle     =   0
       Cancel          =   False
       Caption         =   "Find"
-      ControlOrder    =   11
       Default         =   True
       Enabled         =   False
       Height          =   22
       HelpTag         =   ""
-      Index           =   2147483648
+      Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
       Left            =   490
@@ -435,12 +446,14 @@ Begin Window CCLIWindow
       LockLeft        =   True
       LockRight       =   False
       LockTop         =   True
+      Scope           =   0
       TabIndex        =   11
       TabPanelIndex   =   0
       TabStop         =   True
       TextFont        =   "Arial"
       TextSize        =   10
-      Top             =   75
+      TextUnit        =   0
+      Top             =   72
       Underline       =   False
       Visible         =   True
       Width           =   55
@@ -448,12 +461,11 @@ Begin Window CCLIWindow
    Begin ListBox lst_found_songs
       AutoDeactivate  =   True
       AutoHideScrollbars=   True
-      BehaviorIndex   =   12
       Bold            =   False
+      Border          =   True
       ColumnCount     =   10
       ColumnsResizable=   True
       ColumnWidths    =   "*, *, *, 5*, 5*, 3*, 3*, 3*, 2*, 3*"
-      ControlOrder    =   12
       DataField       =   ""
       DataSource      =   ""
       DefaultRowHeight=   -1
@@ -467,7 +479,7 @@ Begin Window CCLIWindow
       Height          =   205
       HelpTag         =   ""
       Hierarchical    =   False
-      Index           =   2147483648
+      Index           =   -2147483648
       InitialParent   =   ""
       InitialValue    =   ""
       Italic          =   False
@@ -478,6 +490,7 @@ Begin Window CCLIWindow
       LockRight       =   True
       LockTop         =   True
       RequiresSelection=   ""
+      Scope           =   0
       ScrollbarHorizontal=   True
       ScrollBarVertical=   True
       SelectionType   =   0
@@ -486,6 +499,7 @@ Begin Window CCLIWindow
       TabStop         =   True
       TextFont        =   "Arial"
       TextSize        =   10
+      TextUnit        =   0
       Top             =   105
       Underline       =   False
       UseFocusRing    =   True
@@ -496,16 +510,15 @@ Begin Window CCLIWindow
    End
    Begin PushButton btn_page_previous_page
       AutoDeactivate  =   True
-      BehaviorIndex   =   13
       Bold            =   False
+      ButtonStyle     =   0
       Cancel          =   False
       Caption         =   "< Previous Page"
-      ControlOrder    =   13
       Default         =   False
       Enabled         =   False
       Height          =   22
       HelpTag         =   ""
-      Index           =   2147483648
+      Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
       Left            =   5
@@ -514,11 +527,13 @@ Begin Window CCLIWindow
       LockLeft        =   True
       LockRight       =   False
       LockTop         =   False
+      Scope           =   0
       TabIndex        =   13
       TabPanelIndex   =   0
       TabStop         =   True
       TextFont        =   "Arial"
       TextSize        =   10
+      TextUnit        =   0
       Top             =   324
       Underline       =   False
       Visible         =   True
@@ -526,16 +541,15 @@ Begin Window CCLIWindow
    End
    Begin PushButton btn_page_next_page
       AutoDeactivate  =   True
-      BehaviorIndex   =   14
       Bold            =   False
+      ButtonStyle     =   0
       Cancel          =   False
       Caption         =   "Next Page >"
-      ControlOrder    =   14
       Default         =   False
       Enabled         =   False
       Height          =   22
       HelpTag         =   ""
-      Index           =   2147483648
+      Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
       Left            =   245
@@ -544,11 +558,13 @@ Begin Window CCLIWindow
       LockLeft        =   True
       LockRight       =   False
       LockTop         =   False
+      Scope           =   0
       TabIndex        =   14
       TabPanelIndex   =   0
       TabStop         =   True
       TextFont        =   "Arial"
       TextSize        =   10
+      TextUnit        =   0
       Top             =   324
       Underline       =   False
       Visible         =   True
@@ -556,63 +572,64 @@ Begin Window CCLIWindow
    End
    Begin Label txt_prefix_page
       AutoDeactivate  =   True
-      BehaviorIndex   =   15
       Bold            =   False
-      ControlOrder    =   15
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
       Height          =   20
       HelpTag         =   ""
-      Index           =   2147483648
+      Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
-      Left            =   105
+      Left            =   118
       LockBottom      =   True
       LockedInPosition=   False
       LockLeft        =   True
       LockRight       =   False
       LockTop         =   False
       Multiline       =   False
+      Scope           =   0
+      Selectable      =   False
       TabIndex        =   15
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "Page"
       TextAlign       =   2
       TextColor       =   0
       TextFont        =   "Arial"
       TextSize        =   10
+      TextUnit        =   0
       Top             =   325
+      Transparent     =   False
       Underline       =   False
       Visible         =   True
-      Width           =   50
+      Width           =   37
    End
    Begin PopupMenu pop_current_page
       AutoDeactivate  =   True
-      BehaviorIndex   =   16
       Bold            =   False
-      ControlOrder    =   16
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
-      Height          =   20
+      Height          =   25
       HelpTag         =   ""
-      Index           =   2147483648
+      Index           =   -2147483648
       InitialParent   =   ""
       InitialValue    =   ""
       Italic          =   False
-      Left            =   160
+      Left            =   158
       ListIndex       =   0
       LockBottom      =   True
       LockedInPosition=   False
       LockLeft        =   True
       LockRight       =   False
       LockTop         =   False
+      Scope           =   0
       TabIndex        =   16
       TabPanelIndex   =   0
       TabStop         =   True
       TextFont        =   "Arial"
       TextSize        =   10
+      TextUnit        =   0
       Top             =   324
       Underline       =   False
       Visible         =   True
@@ -620,15 +637,13 @@ Begin Window CCLIWindow
    End
    Begin Label txt_number_of_pages
       AutoDeactivate  =   True
-      BehaviorIndex   =   17
       Bold            =   False
-      ControlOrder    =   17
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
       Height          =   20
       HelpTag         =   ""
-      Index           =   2147483648
+      Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
       Left            =   213
@@ -638,31 +653,33 @@ Begin Window CCLIWindow
       LockRight       =   False
       LockTop         =   False
       Multiline       =   False
+      Scope           =   0
+      Selectable      =   False
       TabIndex        =   17
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "of 0"
       TextAlign       =   0
       TextColor       =   0
       TextFont        =   "Arial"
       TextSize        =   10
+      TextUnit        =   0
       Top             =   325
+      Transparent     =   False
       Underline       =   False
       Visible         =   True
       Width           =   30
    End
    Begin PushButton btn_song_import
       AutoDeactivate  =   True
-      BehaviorIndex   =   18
       Bold            =   False
+      ButtonStyle     =   0
       Cancel          =   False
       Caption         =   "Import"
-      ControlOrder    =   18
       Default         =   False
       Enabled         =   False
       Height          =   22
       HelpTag         =   ""
-      Index           =   2147483648
+      Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
       Left            =   380
@@ -671,11 +688,13 @@ Begin Window CCLIWindow
       LockLeft        =   False
       LockRight       =   True
       LockTop         =   False
+      Scope           =   0
       TabIndex        =   18
       TabPanelIndex   =   0
       TabStop         =   True
       TextFont        =   "Arial"
       TextSize        =   10
+      TextUnit        =   0
       Top             =   324
       Underline       =   False
       Visible         =   True
@@ -683,16 +702,15 @@ Begin Window CCLIWindow
    End
    Begin PushButton btn_cancel
       AutoDeactivate  =   True
-      BehaviorIndex   =   19
       Bold            =   False
+      ButtonStyle     =   0
       Cancel          =   True
       Caption         =   "Cancel"
-      ControlOrder    =   19
       Default         =   False
       Enabled         =   True
       Height          =   22
       HelpTag         =   ""
-      Index           =   2147483648
+      Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
       Left            =   467
@@ -701,11 +719,13 @@ Begin Window CCLIWindow
       LockLeft        =   False
       LockRight       =   True
       LockTop         =   False
+      Scope           =   0
       TabIndex        =   19
       TabPanelIndex   =   0
       TabStop         =   True
       TextFont        =   "Arial"
       TextSize        =   10
+      TextUnit        =   0
       Top             =   324
       Underline       =   False
       Visible         =   True
@@ -713,12 +733,10 @@ Begin Window CCLIWindow
    End
    Begin Separator sep_1
       AutoDeactivate  =   True
-      BehaviorIndex   =   20
-      ControlOrder    =   20
       Enabled         =   True
       Height          =   4
       HelpTag         =   ""
-      Index           =   2147483648
+      Index           =   -2147483648
       InitialParent   =   ""
       Left            =   5
       LockBottom      =   False
@@ -726,26 +744,23 @@ Begin Window CCLIWindow
       LockLeft        =   True
       LockRight       =   True
       LockTop         =   True
+      Scope           =   0
       TabIndex        =   20
       TabPanelIndex   =   0
       TabStop         =   True
-      TextFont        =   "System"
-      TextSize        =   0
       Top             =   60
       Visible         =   True
       Width           =   540
    End
    Begin PopupMenu pop_by_values
       AutoDeactivate  =   True
-      BehaviorIndex   =   21
       Bold            =   False
-      ControlOrder    =   21
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
-      Height          =   20
+      Height          =   25
       HelpTag         =   ""
-      Index           =   2147483648
+      Index           =   -2147483648
       InitialParent   =   ""
       InitialValue    =   "Title\r\nTitleOnly\r\nLyrics\r\nAuthor\r\nCatalog\r\nTheme\r\nCCLI Number"
       Italic          =   False
@@ -756,27 +771,27 @@ Begin Window CCLIWindow
       LockLeft        =   True
       LockRight       =   False
       LockTop         =   True
+      Scope           =   0
       TabIndex        =   21
       TabPanelIndex   =   0
       TabStop         =   True
       TextFont        =   "System"
       TextSize        =   12
-      Top             =   36
+      TextUnit        =   0
+      Top             =   30
       Underline       =   False
       Visible         =   False
       Width           =   10
    End
    Begin PopupMenu pop_filter_values
       AutoDeactivate  =   True
-      BehaviorIndex   =   22
       Bold            =   False
-      ControlOrder    =   22
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
-      Height          =   20
+      Height          =   25
       HelpTag         =   ""
-      Index           =   2147483648
+      Index           =   -2147483648
       InitialParent   =   ""
       InitialValue    =   "\r\nLeadSheets\r\nsamples"
       Italic          =   False
@@ -787,12 +802,14 @@ Begin Window CCLIWindow
       LockLeft        =   True
       LockRight       =   False
       LockTop         =   True
+      Scope           =   0
       TabIndex        =   22
       TabPanelIndex   =   0
       TabStop         =   True
       TextFont        =   "System"
       TextSize        =   12
-      Top             =   36
+      TextUnit        =   0
+      Top             =   30
       Underline       =   False
       Visible         =   False
       Width           =   10
@@ -1134,7 +1151,7 @@ End
 
 #tag Events can_ccli
 	#tag Event
-		Sub Paint(g As Graphics)
+		Sub Paint(g As Graphics, areas() As REALbasic.Rect)
 		  g.DrawPicture ccli, 0, 0
 		End Sub
 	#tag EndEvent

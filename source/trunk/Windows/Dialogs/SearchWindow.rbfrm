@@ -28,22 +28,24 @@ Begin Window SearchWindow
       AcceptTabs      =   False
       Alignment       =   0
       AutoDeactivate  =   True
+      AutomaticallyCheckSpelling=   True
       BackColor       =   16777215
-      BehaviorIndex   =   0
       Bold            =   False
       Border          =   True
-      ControlOrder    =   0
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
       Format          =   ""
       Height          =   22
       HelpTag         =   ""
-      Index           =   2147483648
+      HideSelection   =   True
+      Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
       Left            =   12
       LimitText       =   0
+      LineHeight      =   0
+      LineSpacing     =   1
       LockBottom      =   False
       LockedInPosition=   False
       LockLeft        =   True
@@ -51,7 +53,6 @@ Begin Window SearchWindow
       LockTop         =   True
       Mask            =   ""
       Multiline       =   False
-      Password        =   False
       ReadOnly        =   False
       Scope           =   0
       ScrollbarHorizontal=   False
@@ -64,6 +65,7 @@ Begin Window SearchWindow
       TextColor       =   0
       TextFont        =   "System"
       TextSize        =   0
+      TextUnit        =   0
       Top             =   29
       Underline       =   False
       UseFocusRing    =   True
@@ -72,14 +74,12 @@ Begin Window SearchWindow
    End
    Begin GroupBox grp_search_match
       AutoDeactivate  =   True
-      BehaviorIndex   =   1
       Bold            =   False
       Caption         =   "Match:"
-      ControlOrder    =   1
       Enabled         =   True
       Height          =   62
       HelpTag         =   ""
-      Index           =   2147483648
+      Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
       Left            =   12
@@ -91,23 +91,21 @@ Begin Window SearchWindow
       Scope           =   0
       TabIndex        =   1
       TabPanelIndex   =   0
-      TabStop         =   True
       TextFont        =   "Arial"
       TextSize        =   10
+      TextUnit        =   0
       Top             =   85
       Underline       =   False
       Visible         =   True
       Width           =   130
       Begin RadioButton rad_match_exact
          AutoDeactivate  =   True
-         BehaviorIndex   =   2
          Bold            =   False
          Caption         =   "Exact word"
-         ControlOrder    =   2
          Enabled         =   True
          Height          =   20
          HelpTag         =   ""
-         Index           =   2147483648
+         Index           =   -2147483648
          InitialParent   =   "grp_search_match"
          Italic          =   False
          Left            =   23
@@ -122,6 +120,7 @@ Begin Window SearchWindow
          TabStop         =   True
          TextFont        =   "Arial"
          TextSize        =   10
+         TextUnit        =   0
          Top             =   100
          Underline       =   False
          Value           =   True
@@ -130,14 +129,12 @@ Begin Window SearchWindow
       End
       Begin RadioButton rad_match_begin
          AutoDeactivate  =   True
-         BehaviorIndex   =   3
          Bold            =   False
          Caption         =   "Begins with"
-         ControlOrder    =   3
          Enabled         =   True
          Height          =   20
          HelpTag         =   ""
-         Index           =   2147483648
+         Index           =   -2147483648
          InitialParent   =   "grp_search_match"
          Italic          =   False
          Left            =   23
@@ -152,6 +149,7 @@ Begin Window SearchWindow
          TabStop         =   True
          TextFont        =   "Arial"
          TextSize        =   10
+         TextUnit        =   0
          Top             =   120
          Underline       =   False
          Value           =   False
@@ -161,14 +159,12 @@ Begin Window SearchWindow
    End
    Begin GroupBox grp_search_words
       AutoDeactivate  =   True
-      BehaviorIndex   =   4
       Bold            =   False
       Caption         =   "Verse must have:"
-      ControlOrder    =   4
       Enabled         =   True
       Height          =   62
       HelpTag         =   ""
-      Index           =   2147483648
+      Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
       Left            =   160
@@ -180,23 +176,21 @@ Begin Window SearchWindow
       Scope           =   0
       TabIndex        =   2
       TabPanelIndex   =   0
-      TabStop         =   True
       TextFont        =   "Arial"
       TextSize        =   10
+      TextUnit        =   0
       Top             =   85
       Underline       =   False
       Visible         =   True
       Width           =   130
       Begin RadioButton rad_words_any
          AutoDeactivate  =   True
-         BehaviorIndex   =   5
          Bold            =   False
          Caption         =   "Any word"
-         ControlOrder    =   5
          Enabled         =   True
          Height          =   20
          HelpTag         =   ""
-         Index           =   2147483648
+         Index           =   -2147483648
          InitialParent   =   "grp_search_words"
          Italic          =   False
          Left            =   176
@@ -211,6 +205,7 @@ Begin Window SearchWindow
          TabStop         =   True
          TextFont        =   "Arial"
          TextSize        =   10
+         TextUnit        =   0
          Top             =   100
          Underline       =   False
          Value           =   False
@@ -219,14 +214,12 @@ Begin Window SearchWindow
       End
       Begin RadioButton rad_words_all
          AutoDeactivate  =   True
-         BehaviorIndex   =   6
          Bold            =   False
          Caption         =   "All words"
-         ControlOrder    =   6
          Enabled         =   True
          Height          =   19
          HelpTag         =   ""
-         Index           =   2147483648
+         Index           =   -2147483648
          InitialParent   =   "grp_search_words"
          Italic          =   False
          Left            =   176
@@ -241,6 +234,7 @@ Begin Window SearchWindow
          TabStop         =   True
          TextFont        =   "Arial"
          TextSize        =   10
+         TextUnit        =   0
          Top             =   120
          Underline       =   False
          Value           =   False
@@ -250,16 +244,15 @@ Begin Window SearchWindow
    End
    Begin PushButton btn_search_search
       AutoDeactivate  =   True
-      BehaviorIndex   =   7
       Bold            =   False
+      ButtonStyle     =   0
       Cancel          =   False
       Caption         =   "Search"
-      ControlOrder    =   7
       Default         =   True
       Enabled         =   True
       Height          =   22
       HelpTag         =   ""
-      Index           =   2147483648
+      Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
       Left            =   317
@@ -274,6 +267,7 @@ Begin Window SearchWindow
       TabStop         =   True
       TextFont        =   "Arial"
       TextSize        =   10
+      TextUnit        =   0
       Top             =   125
       Underline       =   False
       Visible         =   True
@@ -282,12 +276,11 @@ Begin Window SearchWindow
    Begin ListBox lst_result
       AutoDeactivate  =   True
       AutoHideScrollbars=   True
-      BehaviorIndex   =   8
       Bold            =   False
+      Border          =   True
       ColumnCount     =   2
       ColumnsResizable=   False
       ColumnWidths    =   "100, 350%"
-      ControlOrder    =   8
       DataField       =   ""
       DataSource      =   ""
       DefaultRowHeight=   -1
@@ -301,7 +294,7 @@ Begin Window SearchWindow
       Height          =   183
       HelpTag         =   ""
       Hierarchical    =   False
-      Index           =   2147483648
+      Index           =   -2147483648
       InitialParent   =   ""
       InitialValue    =   ""
       Italic          =   False
@@ -321,6 +314,7 @@ Begin Window SearchWindow
       TabStop         =   True
       TextFont        =   "System"
       TextSize        =   0
+      TextUnit        =   0
       Top             =   174
       Underline       =   False
       UseFocusRing    =   True
@@ -331,16 +325,15 @@ Begin Window SearchWindow
    End
    Begin PushButton btn_search_ok
       AutoDeactivate  =   True
-      BehaviorIndex   =   9
       Bold            =   False
+      ButtonStyle     =   0
       Cancel          =   False
       Caption         =   "Ok"
-      ControlOrder    =   9
       Default         =   False
       Enabled         =   False
       Height          =   22
       HelpTag         =   ""
-      Index           =   2147483648
+      Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
       Left            =   238
@@ -355,6 +348,7 @@ Begin Window SearchWindow
       TabStop         =   True
       TextFont        =   "Arial"
       TextSize        =   10
+      TextUnit        =   0
       Top             =   369
       Underline       =   False
       Visible         =   True
@@ -362,16 +356,15 @@ Begin Window SearchWindow
    End
    Begin PushButton btn_search_cancel
       AutoDeactivate  =   True
-      BehaviorIndex   =   10
       Bold            =   False
+      ButtonStyle     =   0
       Cancel          =   True
       Caption         =   "Cancel"
-      ControlOrder    =   10
       Default         =   False
       Enabled         =   True
       Height          =   22
       HelpTag         =   ""
-      Index           =   2147483648
+      Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
       Left            =   317
@@ -386,6 +379,7 @@ Begin Window SearchWindow
       TabStop         =   True
       TextFont        =   "Arial"
       TextSize        =   10
+      TextUnit        =   0
       Top             =   369
       Underline       =   False
       Visible         =   True
@@ -393,15 +387,13 @@ Begin Window SearchWindow
    End
    Begin Label lbl_search_example
       AutoDeactivate  =   True
-      BehaviorIndex   =   11
       Bold            =   False
-      ControlOrder    =   11
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
       Height          =   23
       HelpTag         =   ""
-      Index           =   2147483648
+      Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
       Left            =   12
@@ -412,30 +404,30 @@ Begin Window SearchWindow
       LockTop         =   True
       Multiline       =   True
       Scope           =   0
+      Selectable      =   False
       TabIndex        =   7
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "To search for an exact phrase enclose it in double quotes, like ""Simon Peter"""
       TextAlign       =   0
       TextColor       =   0
       TextFont        =   "Arial"
       TextSize        =   10
+      TextUnit        =   0
       Top             =   51
+      Transparent     =   False
       Underline       =   False
       Visible         =   True
       Width           =   373
    End
    Begin Label lbl_search_caption
       AutoDeactivate  =   True
-      BehaviorIndex   =   12
       Bold            =   ""
-      ControlOrder    =   12
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
       Height          =   20
       HelpTag         =   ""
-      Index           =   2147483648
+      Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   ""
       Left            =   12
@@ -446,30 +438,30 @@ Begin Window SearchWindow
       LockTop         =   ""
       Multiline       =   ""
       Scope           =   0
+      Selectable      =   False
       TabIndex        =   8
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "Search in bible using keyword:"
       TextAlign       =   0
       TextColor       =   &h000000
       TextFont        =   "System"
       TextSize        =   10
+      TextUnit        =   0
       Top             =   6
+      Transparent     =   False
       Underline       =   ""
       Visible         =   True
       Width           =   285
    End
    Begin Label lbl_search_result
       AutoDeactivate  =   True
-      BehaviorIndex   =   13
       Bold            =   ""
-      ControlOrder    =   13
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
       Height          =   20
       HelpTag         =   ""
-      Index           =   2147483648
+      Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   ""
       Left            =   12
@@ -480,15 +472,17 @@ Begin Window SearchWindow
       LockTop         =   ""
       Multiline       =   ""
       Scope           =   0
+      Selectable      =   False
       TabIndex        =   9
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "%1 matches were found using the specified keyword(s)."
       TextAlign       =   0
       TextColor       =   &h000000
       TextFont        =   "System"
       TextSize        =   10
+      TextUnit        =   0
       Top             =   152
+      Transparent     =   False
       Underline       =   ""
       Visible         =   True
       Width           =   368

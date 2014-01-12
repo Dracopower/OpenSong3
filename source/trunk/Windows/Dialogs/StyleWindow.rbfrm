@@ -27,6 +27,7 @@ Begin Window StyleWindow
    Begin PushButton btn_ok
       AutoDeactivate  =   True
       Bold            =   False
+      ButtonStyle     =   0
       Cancel          =   False
       Caption         =   "OK"
       Default         =   True
@@ -57,6 +58,7 @@ Begin Window StyleWindow
    Begin PushButton btn_cancel
       AutoDeactivate  =   True
       Bold            =   False
+      ButtonStyle     =   0
       Cancel          =   True
       Caption         =   "Cancel"
       Default         =   False
@@ -103,7 +105,6 @@ Begin Window StyleWindow
       Scope           =   0
       TabIndex        =   2
       TabPanelIndex   =   0
-      TabStop         =   True
       TextFont        =   "System"
       TextSize        =   0
       TextUnit        =   0
@@ -188,9 +189,9 @@ Begin Window StyleWindow
          LockTop         =   True
          Multiline       =   False
          Scope           =   0
+         Selectable      =   False
          TabIndex        =   2
          TabPanelIndex   =   0
-         TabStop         =   True
          Text            =   "Align:"
          TextAlign       =   1
          TextColor       =   0
@@ -198,6 +199,7 @@ Begin Window StyleWindow
          TextSize        =   0
          TextUnit        =   0
          Top             =   30
+         Transparent     =   False
          Underline       =   False
          Visible         =   True
          Width           =   122
@@ -232,6 +234,7 @@ Begin Window StyleWindow
       Begin PushButton btn_title_margin
          AutoDeactivate  =   True
          Bold            =   ""
+         ButtonStyle     =   0
          Cancel          =   ""
          Caption         =   "Margins"
          Default         =   ""
@@ -262,6 +265,7 @@ Begin Window StyleWindow
       Begin PushButton btn_subtitle_margin
          AutoDeactivate  =   True
          Bold            =   ""
+         ButtonStyle     =   0
          Cancel          =   ""
          Caption         =   "Margins"
          Default         =   ""
@@ -383,6 +387,7 @@ Begin Window StyleWindow
       Begin PushButton btn_body_tabs
          AutoDeactivate  =   True
          Bold            =   ""
+         ButtonStyle     =   0
          Cancel          =   ""
          Caption         =   "Tabulators"
          Default         =   ""
@@ -413,6 +418,7 @@ Begin Window StyleWindow
       Begin PushButton btn_body_margin
          AutoDeactivate  =   True
          Bold            =   ""
+         ButtonStyle     =   0
          Cancel          =   ""
          Caption         =   "Margins"
          Default         =   ""
@@ -566,7 +572,7 @@ Begin Window StyleWindow
       Bold            =   False
       Caption         =   "Background"
       Enabled         =   True
-      Height          =   279
+      Height          =   290
       HelpTag         =   ""
       Index           =   -2147483648
       InitialParent   =   ""
@@ -580,7 +586,6 @@ Begin Window StyleWindow
       Scope           =   0
       TabIndex        =   3
       TabPanelIndex   =   0
-      TabStop         =   True
       TextFont        =   "System"
       TextSize        =   0
       TextUnit        =   0
@@ -607,9 +612,9 @@ Begin Window StyleWindow
          LockTop         =   True
          Multiline       =   False
          Scope           =   0
+         Selectable      =   False
          TabIndex        =   0
          TabPanelIndex   =   0
-         TabStop         =   True
          Text            =   "Color:"
          TextAlign       =   2
          TextColor       =   0
@@ -617,6 +622,7 @@ Begin Window StyleWindow
          TextSize        =   0
          TextUnit        =   0
          Top             =   55
+         Transparent     =   False
          Underline       =   False
          Visible         =   True
          Width           =   55
@@ -640,9 +646,9 @@ Begin Window StyleWindow
          LockTop         =   True
          Multiline       =   False
          Scope           =   0
+         Selectable      =   False
          TabIndex        =   1
          TabPanelIndex   =   0
-         TabStop         =   True
          Text            =   "Image:"
          TextAlign       =   1
          TextColor       =   0
@@ -650,6 +656,7 @@ Begin Window StyleWindow
          TextSize        =   0
          TextUnit        =   0
          Top             =   90
+         Transparent     =   False
          Underline       =   False
          Visible         =   True
          Width           =   80
@@ -673,9 +680,9 @@ Begin Window StyleWindow
          LockTop         =   True
          Multiline       =   True
          Scope           =   0
+         Selectable      =   False
          TabIndex        =   2
          TabPanelIndex   =   0
-         TabStop         =   True
          Text            =   "(left-click to change)"
          TextAlign       =   1
          TextColor       =   0
@@ -683,6 +690,7 @@ Begin Window StyleWindow
          TextSize        =   0
          TextUnit        =   0
          Top             =   170
+         Transparent     =   False
          Underline       =   False
          Visible         =   True
          Width           =   140
@@ -706,9 +714,9 @@ Begin Window StyleWindow
          LockTop         =   True
          Multiline       =   True
          Scope           =   0
+         Selectable      =   False
          TabIndex        =   3
          TabPanelIndex   =   0
-         TabStop         =   True
          Text            =   "(right-click to clear)"
          TextAlign       =   1
          TextColor       =   0
@@ -716,6 +724,7 @@ Begin Window StyleWindow
          TextSize        =   0
          TextUnit        =   0
          Top             =   185
+         Transparent     =   False
          Underline       =   False
          Visible         =   True
          Width           =   140
@@ -739,9 +748,9 @@ Begin Window StyleWindow
          LockTop         =   True
          Multiline       =   False
          Scope           =   0
+         Selectable      =   False
          TabIndex        =   4
          TabPanelIndex   =   0
-         TabStop         =   True
          Text            =   "Position:"
          TextAlign       =   1
          TextColor       =   0
@@ -749,6 +758,7 @@ Begin Window StyleWindow
          TextSize        =   0
          TextUnit        =   0
          Top             =   206
+         Transparent     =   False
          Underline       =   False
          Visible         =   True
          Width           =   108
@@ -772,16 +782,17 @@ Begin Window StyleWindow
          LockTop         =   True
          Multiline       =   False
          Scope           =   0
+         Selectable      =   False
          TabIndex        =   5
          TabPanelIndex   =   0
-         TabStop         =   True
          Text            =   "Trim Bottom*:"
          TextAlign       =   1
          TextColor       =   0
          TextFont        =   "System"
          TextSize        =   0
          TextUnit        =   0
-         Top             =   244
+         Top             =   256
+         Transparent     =   False
          Underline       =   False
          Visible         =   True
          Width           =   120
@@ -792,7 +803,7 @@ Begin Window StyleWindow
          DataField       =   ""
          DataSource      =   ""
          Enabled         =   True
-         Height          =   20
+         Height          =   25
          HelpTag         =   ""
          Index           =   -2147483648
          InitialParent   =   "grp_style_background"
@@ -812,7 +823,7 @@ Begin Window StyleWindow
          TextFont        =   "System"
          TextSize        =   12
          TextUnit        =   0
-         Top             =   221
+         Top             =   223
          Underline       =   False
          Visible         =   True
          Width           =   80
@@ -828,7 +839,7 @@ Begin Window StyleWindow
          Index           =   -2147483648
          InitialParent   =   "grp_style_background"
          Italic          =   False
-         Left            =   515
+         Left            =   508
          LockBottom      =   False
          LockedInPosition=   False
          LockLeft        =   True
@@ -836,16 +847,17 @@ Begin Window StyleWindow
          LockTop         =   True
          Multiline       =   False
          Scope           =   0
+         Selectable      =   False
          TabIndex        =   7
          TabPanelIndex   =   0
-         TabStop         =   True
          Text            =   "px"
          TextAlign       =   0
          TextColor       =   0
          TextFont        =   "System"
          TextSize        =   0
          TextUnit        =   0
-         Top             =   259
+         Top             =   271
+         Transparent     =   False
          Underline       =   False
          Visible         =   True
          Width           =   20
@@ -911,6 +923,7 @@ Begin Window StyleWindow
          AcceptTabs      =   False
          Alignment       =   0
          AutoDeactivate  =   True
+         AutomaticallyCheckSpelling=   True
          BackColor       =   16777215
          Bold            =   False
          Border          =   True
@@ -925,8 +938,10 @@ Begin Window StyleWindow
          Index           =   -2147483648
          InitialParent   =   "grp_style_background"
          Italic          =   False
-         Left            =   480
+         Left            =   473
          LimitText       =   4
+         LineHeight      =   0
+         LineSpacing     =   1
          LockBottom      =   False
          LockedInPosition=   False
          LockLeft        =   True
@@ -950,7 +965,7 @@ Begin Window StyleWindow
          TextFont        =   "Arial"
          TextSize        =   11
          TextUnit        =   0
-         Top             =   259
+         Top             =   271
          Underline       =   False
          UseFocusRing    =   True
          Visible         =   True
@@ -963,7 +978,7 @@ Begin Window StyleWindow
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
-      Height          =   80
+      Height          =   120
       HelpTag         =   ""
       Index           =   -2147483648
       InitialParent   =   ""
@@ -976,16 +991,17 @@ Begin Window StyleWindow
       LockTop         =   True
       Multiline       =   True
       Scope           =   0
+      Selectable      =   False
       TabIndex        =   4
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "*Cuts the bottom of the background to hide watermarks, web site urls, etc. (To avoid distortion, this also trims from the sides to compensate.)"
       TextAlign       =   0
       TextColor       =   0
       TextFont        =   "System"
       TextSize        =   0
       TextUnit        =   0
-      Top             =   301
+      Top             =   310
+      Transparent     =   False
       Underline       =   False
       Visible         =   True
       Width           =   140
@@ -1009,7 +1025,6 @@ Begin Window StyleWindow
       Scope           =   0
       TabIndex        =   5
       TabPanelIndex   =   0
-      TabStop         =   True
       TextFont        =   "System"
       TextSize        =   0
       TextUnit        =   0
@@ -1036,9 +1051,9 @@ Begin Window StyleWindow
          LockTop         =   True
          Multiline       =   False
          Scope           =   0
+         Selectable      =   False
          TabIndex        =   0
          TabPanelIndex   =   0
-         TabStop         =   True
          Text            =   "Song Subtitles:"
          TextAlign       =   0
          TextColor       =   0
@@ -1046,6 +1061,7 @@ Begin Window StyleWindow
          TextSize        =   0
          TextUnit        =   0
          Top             =   371
+         Transparent     =   False
          Underline       =   False
          Visible         =   True
          Width           =   155

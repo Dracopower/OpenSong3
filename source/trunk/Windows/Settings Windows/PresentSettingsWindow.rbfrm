@@ -113,7 +113,7 @@ Begin Window PresentSettingsWindow
       TextUnit        =   0
       Top             =   14
       Underline       =   False
-      Value           =   2
+      Value           =   0
       Visible         =   True
       Width           =   600
       Begin Label lbl_style_default_slides
@@ -836,6 +836,7 @@ Begin Window PresentSettingsWindow
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
+            AutomaticallyCheckSpelling=   False
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -940,6 +941,7 @@ Begin Window PresentSettingsWindow
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
+            AutomaticallyCheckSpelling=   False
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -1077,6 +1079,7 @@ Begin Window PresentSettingsWindow
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
+            AutomaticallyCheckSpelling=   False
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -1155,7 +1158,7 @@ Begin Window PresentSettingsWindow
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   20
+            Height          =   25
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "grp_settings_style"
@@ -1252,7 +1255,7 @@ Begin Window PresentSettingsWindow
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   20
+            Height          =   25
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "grp_settings_style"
@@ -1661,7 +1664,7 @@ Begin Window PresentSettingsWindow
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   20
+            Height          =   25
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "grp_settings_monitor"
@@ -1968,6 +1971,7 @@ Begin Window PresentSettingsWindow
          AcceptTabs      =   ""
          Alignment       =   0
          AutoDeactivate  =   True
+         AutomaticallyCheckSpelling=   False
          BackColor       =   &hFFFFFF
          Bold            =   ""
          Border          =   True

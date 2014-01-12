@@ -171,6 +171,7 @@ Begin Window SongActivity
       AcceptTabs      =   ""
       Alignment       =   0
       AutoDeactivate  =   True
+      AutomaticallyCheckSpelling=   False
       BackColor       =   &hFFFFFF
       Bold            =   ""
       Border          =   True
@@ -249,7 +250,7 @@ Begin Window SongActivity
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
-      Height          =   20
+      Height          =   25
       HelpTag         =   ""
       Index           =   -2147483648
       InitialParent   =   ""
@@ -269,7 +270,7 @@ Begin Window SongActivity
       TextFont        =   "Arial"
       TextSize        =   11
       TextUnit        =   0
-      Top             =   14
+      Top             =   12
       Underline       =   ""
       Visible         =   True
       Width           =   202
@@ -312,6 +313,7 @@ Begin Window SongActivity
       AcceptTabs      =   ""
       Alignment       =   0
       AutoDeactivate  =   True
+      AutomaticallyCheckSpelling=   False
       BackColor       =   &hFFFFFF
       Bold            =   ""
       Border          =   True
@@ -354,6 +356,7 @@ Begin Window SongActivity
       AcceptTabs      =   ""
       Alignment       =   0
       AutoDeactivate  =   True
+      AutomaticallyCheckSpelling=   False
       BackColor       =   &hFFFFFF
       Bold            =   ""
       Border          =   True

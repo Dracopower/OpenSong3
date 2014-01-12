@@ -204,8 +204,7 @@ Module SongML
 		  For l = 0 to UBound(lines)
 		    If Left(lines(l), 3) = "---" Then 'Multicolumn, flag and calculate
 		      Multicolumn = True
-		      LyricFont.OntoGraphics g
-		      g.TextSize = Round(g.TextSize * zoom) // Adjust for zoom factor
+		      LyricFont.OntoGraphics g, zoom
 		      Gutter = g.StringWidth("MM") // Two M gutter -- TODO: Part of page setup
 		      ColumnWidth = (Width - gutter) / 2
 		      ColumnLeft = Width - ColumnWidth
@@ -387,12 +386,8 @@ Module SongML
 		      If i = 0 Then slices(i*lineCount+j) = Mid(slices(i*lineCount+j), 2)
 		      If j = 1 Then ' Chord line
 		        tempFont = SmartML.GetValueF(App.MyPrintSettings.DocumentElement, "chords")
-		        g.TextFont = tempFont.Name
-		        g.TextSize = Round(tempFont.Size * zoom)
-		        g.Bold = tempFont.Bold
-		        g.Italic = tempFont.Italic
-		        g.Underline = tempFont.Underline
-		        g.ForeColor = tempFont.ForeColor
+		        tempFont.OntoGraphics g, zoom
+		        
 		        slices(i*lineCount+j) = RTrim(slices(i*lineCount+j))
 		        //lineWidths(j) = g.StringWidth(slices(i*lineCount+j)) + (g.TextAscent/2)
 		        lineWidths(j) = g.StringWidth(slices(i*lineCount+j) + "M")
@@ -419,12 +414,8 @@ Module SongML
 		            capoChord = SingleTranspose(slices(i*lineCount+j), 12-SmartML.GetValueN(songDoc.DocumentElement, "capo"), False)
 		          End If
 		          tempFont = SmartML.GetValueF(App.MyPrintSettings.DocumentElement, "capo_chords")
-		          g.TextFont = tempFont.Name
-		          g.TextSize = Round(tempFont.Size * zoom)
-		          g.Bold = tempFont.Bold
-		          g.Italic = tempFont.Italic
-		          g.Underline = tempFont.Underline
-		          g.ForeColor = tempFont.ForeColor
+		          tempFont.OntoGraphics g, zoom
+		          
 		          lineWidths(lineCount+1) = g.StringWidth(capoChord + "M")
 		          
 		          If lineLeft + lineWidths(lineCount+1) > nextLeft Then nextLeft = lineLeft + lineWidths(lineCount+1)
@@ -441,12 +432,8 @@ Module SongML
 		        End If
 		      Else ' Lyric line
 		        tempFont = SmartML.GetValueF(App.MyPrintSettings.DocumentElement, "lyrics")
-		        g.TextFont = tempFont.Name
-		        g.TextSize = Round(tempFont.Size * zoom)
-		        g.Bold = tempFont.Bold
-		        g.Italic = tempFont.Italic
-		        g.Underline = tempFont.Underline
-		        g.ForeColor = tempFont.ForeColor
+		        tempFont.OntoGraphics g, zoom
+		        
 		        If Left(section,1) = "C" Then
 		          If SmartML.GetValueB(App.MyPrintSettings.DocumentElement, "style/@highlight_chorus", True, True) Then
 		            g.Bold = Not tempFont.Bold
@@ -518,11 +505,10 @@ Module SongML
 		  //--
 		  
 		  tempFont = SmartML.GetValueF(App.MyPrintSettings.DocumentElement, "copyright")
-		  tempFont.Size = Round(tempFont.size * zoom)
 		  Comment = Mid(line, 2)
 		  
-		  tempfont.OntoGraphics g
-		  tempfont.OntoStringShape s
+		  tempfont.OntoGraphics g, zoom
+		  tempfont.OntoStringShape s, zoom
 		  s.X = x + (g.StringWidth(Comment) / 2)
 		  s.Y = y + g.TextAscent
 		  s.Text = Comment
@@ -557,13 +543,8 @@ Module SongML
 		  height = 0
 		  
 		  tempFont = SmartML.GetValueF(App.MyPrintSettings.DocumentElement, "copyright")
-		  g.TextFont = tempFont.Name
-		  g.TextSize = Round(tempFont.Size * zoom)
 		  tempFont.Size = Round(tempFont.Size * zoom)
-		  g.Bold = tempFont.Bold
-		  g.Italic = tempFont.Italic
-		  g.Underline = tempFont.Underline
-		  g.ForeColor = tempFont.ForeColor
+		  tempFont.OntoGraphics g
 		  
 		  // Compute the width of the page number first so we can avoid a collision with longer copyright strings
 		  If PageNum > 1 Then
@@ -838,8 +819,7 @@ Module SongML
 		  g.PenWidth = SmartML.GetValueN(App.MyPrintSettings.DocumentElement, "style/@border_thickness")
 		  g.PenHeight = g.PenWidth
 		  
-		  tempFont.OntoGraphics g
-		  g.TextSize = Round(g.TextSize * zoom) //Adjust relative to 72dpi
+		  tempFont.OntoGraphics g, zoom //Adjust relative to 72dpi
 		  
 		  y =  y + (SmartML.GetValueN(App.MyPrintSettings.DocumentElement, "layout/sections/@space_before") * zoom)
 		  
@@ -979,8 +959,8 @@ Module SongML
 		  
 		  ' Skip the chord line
 		  tempFont = SmartML.GetValueF(App.MyPrintSettings.DocumentElement, "chords")
-		  tempFont.OntoGraphics g
-		  g.TextSize = Round(g.TextSize * zoom)
+		  tempFont.OntoGraphics g, zoom
+		  
 		  y = y + g.TextHeight ' Skip past the chord line
 		  y = y + (SmartML.GetValueN(App.MyPrintSettings.DocumentElement, "layout/chords/@space_before") * zoom)
 		  y = y + (SmartML.GetValueN(App.MyPrintSettings.DocumentElement, "layout/chords/@space_after") * zoom)
@@ -988,16 +968,15 @@ Module SongML
 		  ' Skip the capo line if needed
 		  If SmartML.GetValueB(songDoc.DocumentElement, "capo/@print") Then
 		    tempFont = SmartML.GetValueF(App.MyPrintSettings.DocumentElement, "capo_chords")
-		    tempFont.OntoGraphics g
-		    g.TextSize = Round(g.TextSize * zoom)
+		    tempFont.OntoGraphics g, zoom
+		    
 		    y = y + g.TextHeight ' Skip past the chord line
 		    y = y + (SmartML.GetValueN(App.MyPrintSettings.DocumentElement, "layout/capo/@space_before") * zoom)
 		    y = y + (SmartML.GetValueN(App.MyPrintSettings.DocumentElement, "layout/capo/@space_after") * zoom)
 		  End If
 		  
 		  tempFont = SmartML.GetValueF(App.MyPrintSettings.DocumentElement, "lyrics")
-		  tempfont.Size = Round(tempfont.Size * zoom)
-		  tempFont.OntoGraphics g
+		  tempFont.OntoGraphics g, zoom
 		  
 		  Dim lineLeft, nextLeft As Integer
 		  
@@ -1007,7 +986,7 @@ Module SongML
 		    prefix = Left(slices(j),1)
 		    lineLeft = x + g.StringWidth(prefix)
 		    ts = New StringShape
-		    tempFont.OntoStringShape ts
+		    tempFont.OntoStringShape ts, zoom
 		    g.Bold = Not tempFont.Bold ' Inverse
 		    ts.Bold = Not tempFont.Bold 'EMP 09/05
 		    ts.Text = prefix
@@ -1044,8 +1023,7 @@ Module SongML
 
 	#tag Method, Flags = &h21
 		Private Function Draw_Separator(g As Graphics, x As Integer, y As Integer, w As Integer, zoom As Double, LyricFont As FontFace, ByRef Page As Group2D) As Integer
-		  LyricFont.OntoGraphics g
-		  g.TextSize = g.TextSize * zoom
+		  LyricFont.OntoGraphics g, zoom
 		  
 		  Page.Append GraphicsX.DrawLineV(x, y + (g.textheight / 2), x + w, y + (g.TextHeight / 2), RGB(127, 127, 127), 1)
 		  Return g.TextHeight
@@ -1249,7 +1227,7 @@ Module SongML
 		        formP = StringUtils.InStrList(chordP+chords(KeyIndex).Len,  lyricArray(i), forms, FormIndex)
 		        If formP = 0 Then
 		          'Since "Major" chord has no symbol associated with it
-		          'a zero return value here may still be valid 
+		          'a zero return value here may still be valid
 		          If ChordForm = "." Or ChordForm = "" Then
 		            'set formP to end of chordP
 		            formP  = chordP + chords(KeyIndex).Len
@@ -2175,8 +2153,8 @@ Module SongML
 		  ChorusNr = 0 'GP
 		  
 		  Dim xbacks As XmlNode = SmartML.GetNode(songElement, "backgrounds", True)
-		  Dim xbackground As XmlNode = Nil          
-          
+		  Dim xbackground As XmlNode = Nil
+		  
 		  For Each section In sections
 		    PresentationIndex = PresentationIndex + 1
 		    If dict.HasKey(section) Then

@@ -605,12 +605,7 @@ Protected Module GraphicsX
 	#tag Method, Flags = &h0
 		Sub xSetFace(g As Graphics, f As FontFace)
 		  If f <> Nil Then
-		    g.ForeColor = f.ForeColor
-		    g.TextFont = f.Name
-		    g.TextSize = f.Size
-		    g.Bold = f.Bold
-		    g.Italic = f.Italic
-		    g.Underline = f.Underline
+		    f.OntoGraphics g
 		  End If
 		End Sub
 	#tag EndMethod

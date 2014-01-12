@@ -168,7 +168,6 @@ Begin Window InputBox
       Selectable      =   False
       TabIndex        =   4
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "Label"
       TextAlign       =   0
       TextColor       =   0
@@ -181,58 +180,13 @@ Begin Window InputBox
       Visible         =   True
       Width           =   297
    End
-   Begin SEditField edt_the_input
-      AcceptTabs      =   False
-      Alignment       =   0
-      AutoDeactivate  =   True
-      BackColor       =   16777215
-      Bold            =   False
-      Border          =   True
-      DataField       =   ""
-      DataSource      =   ""
-      Enabled         =   True
-      Format          =   ""
-      Height          =   21
-      HelpTag         =   ""
-      HideSelection   =   True
-      Index           =   -2147483648
-      InitialParent   =   ""
-      Italic          =   False
-      Left            =   8
-      LimitText       =   255
-      LockBottom      =   True
-      LockedInPosition=   False
-      LockLeft        =   True
-      LockRight       =   True
-      LockTop         =   False
-      Mask            =   ""
-      Multiline       =   False
-      ReadOnly        =   False
-      Scope           =   0
-      ScrollbarHorizontal=   False
-      ScrollbarVertical=   True
-      Styled          =   False
-      TabIndex        =   5
-      TabPanelIndex   =   0
-      TabStop         =   True
-      Text            =   ""
-      TextColor       =   0
-      TextFont        =   "Arial"
-      TextSize        =   11
-      TextUnit        =   0
-      Top             =   97
-      Underline       =   False
-      UseFocusRing    =   True
-      Visible         =   True
-      Width           =   300
-   End
    Begin PopupMenu pop_the_input
       AutoDeactivate  =   True
       Bold            =   False
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
-      Height          =   19
+      Height          =   25
       HelpTag         =   ""
       Index           =   -2147483648
       InitialParent   =   ""
@@ -252,10 +206,58 @@ Begin Window InputBox
       TextFont        =   "System"
       TextSize        =   12
       TextUnit        =   0
-      Top             =   97
+      Top             =   90
       Underline       =   False
       Visible         =   True
       Width           =   300
+      Begin SEditField edt_the_input
+         AcceptTabs      =   False
+         Alignment       =   0
+         AutoDeactivate  =   True
+         AutomaticallyCheckSpelling=   True
+         BackColor       =   16777215
+         Bold            =   False
+         Border          =   True
+         DataField       =   ""
+         DataSource      =   ""
+         Enabled         =   True
+         Format          =   ""
+         Height          =   25
+         HelpTag         =   ""
+         HideSelection   =   True
+         Index           =   -2147483648
+         InitialParent   =   "pop_the_input"
+         Italic          =   False
+         Left            =   8
+         LimitText       =   255
+         LineHeight      =   0
+         LineSpacing     =   1
+         LockBottom      =   True
+         LockedInPosition=   False
+         LockLeft        =   True
+         LockRight       =   True
+         LockTop         =   False
+         Mask            =   ""
+         Multiline       =   False
+         ReadOnly        =   False
+         Scope           =   0
+         ScrollbarHorizontal=   False
+         ScrollbarVertical=   True
+         Styled          =   False
+         TabIndex        =   0
+         TabPanelIndex   =   0
+         TabStop         =   True
+         Text            =   ""
+         TextColor       =   0
+         TextFont        =   "Arial"
+         TextSize        =   11
+         TextUnit        =   0
+         Top             =   90
+         Underline       =   False
+         UseFocusRing    =   True
+         Visible         =   True
+         Width           =   300
+      End
    End
 End
 #tag EndWindow

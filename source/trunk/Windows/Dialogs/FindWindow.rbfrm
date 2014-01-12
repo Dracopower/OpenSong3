@@ -62,6 +62,7 @@ Begin Window FindWindow
       AcceptTabs      =   False
       Alignment       =   0
       AutoDeactivate  =   True
+      AutomaticallyCheckSpelling=   True
       BackColor       =   16777215
       Bold            =   False
       Border          =   True
@@ -77,6 +78,8 @@ Begin Window FindWindow
       Italic          =   False
       Left            =   10
       LimitText       =   0
+      LineHeight      =   0
+      LineSpacing     =   1
       LockBottom      =   False
       LockedInPosition=   False
       LockLeft        =   False
@@ -771,7 +774,7 @@ Begin Window FindWindow
          DataField       =   ""
          DataSource      =   ""
          Enabled         =   True
-         Height          =   20
+         Height          =   25
          HelpTag         =   ""
          Index           =   -2147483648
          InitialParent   =   "grp_search_fields"
@@ -791,7 +794,7 @@ Begin Window FindWindow
          TextFont        =   "System"
          TextSize        =   0
          TextUnit        =   0
-         Top             =   279
+         Top             =   277
          Underline       =   ""
          Visible         =   True
          Width           =   50
@@ -802,7 +805,7 @@ Begin Window FindWindow
          DataField       =   ""
          DataSource      =   ""
          Enabled         =   True
-         Height          =   20
+         Height          =   25
          HelpTag         =   ""
          Index           =   -2147483648
          InitialParent   =   "grp_search_fields"
@@ -822,7 +825,7 @@ Begin Window FindWindow
          TextFont        =   "System"
          TextSize        =   0
          TextUnit        =   0
-         Top             =   279
+         Top             =   277
          Underline       =   ""
          Visible         =   True
          Width           =   126

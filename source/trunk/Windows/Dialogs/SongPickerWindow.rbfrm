@@ -98,7 +98,7 @@ Begin Window SongPickerWindow
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
-      Height          =   20
+      Height          =   25
       HelpTag         =   ""
       Index           =   -2147483648
       InitialParent   =   ""
@@ -161,6 +161,7 @@ Begin Window SongPickerWindow
       AcceptTabs      =   False
       Alignment       =   0
       AutoDeactivate  =   True
+      AutomaticallyCheckSpelling=   True
       BackColor       =   16777215
       Bold            =   False
       Border          =   True
@@ -176,6 +177,8 @@ Begin Window SongPickerWindow
       Italic          =   False
       Left            =   228
       LimitText       =   0
+      LineHeight      =   0
+      LineSpacing     =   1
       LockBottom      =   False
       LockedInPosition=   False
       LockLeft        =   True
@@ -329,6 +332,7 @@ Begin Window SongPickerWindow
       AcceptTabs      =   False
       Alignment       =   0
       AutoDeactivate  =   True
+      AutomaticallyCheckSpelling=   True
       BackColor       =   16777215
       Bold            =   False
       Border          =   True
@@ -344,6 +348,8 @@ Begin Window SongPickerWindow
       Italic          =   False
       Left            =   12
       LimitText       =   0
+      LineHeight      =   0
+      LineSpacing     =   1
       LockBottom      =   True
       LockedInPosition=   False
       LockLeft        =   True
@@ -408,6 +414,7 @@ Begin Window SongPickerWindow
       AcceptTabs      =   False
       Alignment       =   0
       AutoDeactivate  =   True
+      AutomaticallyCheckSpelling=   False
       BackColor       =   16777215
       Bold            =   False
       Border          =   True
@@ -484,6 +491,7 @@ Begin Window SongPickerWindow
       AcceptTabs      =   False
       Alignment       =   0
       AutoDeactivate  =   True
+      AutomaticallyCheckSpelling=   False
       BackColor       =   16777215
       Bold            =   False
       Border          =   True

@@ -26,14 +26,12 @@ Begin Window StyleTabsWindow
    Width           =   615
    Begin GroupBox grp_tabs
       AutoDeactivate  =   True
-      BehaviorIndex   =   0
       Bold            =   ""
       Caption         =   "Tabulators"
-      ControlOrder    =   0
       Enabled         =   True
       Height          =   264
       HelpTag         =   ""
-      Index           =   2147483648
+      Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   ""
       Left            =   10
@@ -45,9 +43,9 @@ Begin Window StyleTabsWindow
       Scope           =   0
       TabIndex        =   0
       TabPanelIndex   =   0
-      TabStop         =   True
       TextFont        =   "System"
       TextSize        =   0
+      TextUnit        =   0
       Top             =   14
       Underline       =   ""
       Visible         =   True
@@ -55,12 +53,11 @@ Begin Window StyleTabsWindow
       Begin HighlightList lst_tabs
          AutoDeactivate  =   True
          AutoHideScrollbars=   True
-         BehaviorIndex   =   1
          Bold            =   ""
+         Border          =   True
          ColumnCount     =   3
          ColumnsResizable=   ""
          ColumnWidths    =   "25, 85, 0"
-         ControlOrder    =   1
          DataField       =   ""
          DataSource      =   ""
          DefaultRowHeight=   -1
@@ -74,7 +71,7 @@ Begin Window StyleTabsWindow
          Height          =   192
          HelpTag         =   ""
          Hierarchical    =   ""
-         Index           =   2147483648
+         Index           =   -2147483648
          InitialParent   =   "grp_tabs"
          InitialValue    =   ""
          Italic          =   ""
@@ -94,6 +91,7 @@ Begin Window StyleTabsWindow
          TabStop         =   True
          TextFont        =   "System"
          TextSize        =   0
+         TextUnit        =   0
          Top             =   39
          Underline       =   ""
          UseFocusRing    =   True
@@ -104,14 +102,12 @@ Begin Window StyleTabsWindow
       End
       Begin GroupBox grp_tabs_properties
          AutoDeactivate  =   True
-         BehaviorIndex   =   2
          Bold            =   ""
          Caption         =   "Properties"
-         ControlOrder    =   2
          Enabled         =   True
          Height          =   192
          HelpTag         =   ""
-         Index           =   2147483648
+         Index           =   -2147483648
          InitialParent   =   "grp_tabs"
          Italic          =   ""
          Left            =   146
@@ -123,24 +119,22 @@ Begin Window StyleTabsWindow
          Scope           =   0
          TabIndex        =   1
          TabPanelIndex   =   0
-         TabStop         =   True
          TextFont        =   "System"
          TextSize        =   0
+         TextUnit        =   0
          Top             =   39
          Underline       =   ""
          Visible         =   True
          Width           =   144
          Begin Label lbl_position
             AutoDeactivate  =   True
-            BehaviorIndex   =   3
             Bold            =   ""
-            ControlOrder    =   3
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
             Height          =   20
             HelpTag         =   ""
-            Index           =   2147483648
+            Index           =   -2147483648
             InitialParent   =   "grp_tabs_properties"
             Italic          =   ""
             Left            =   154
@@ -151,15 +145,17 @@ Begin Window StyleTabsWindow
             LockTop         =   True
             Multiline       =   ""
             Scope           =   0
+            Selectable      =   False
             TabIndex        =   0
             TabPanelIndex   =   0
-            TabStop         =   True
             Text            =   "Position"
             TextAlign       =   0
             TextColor       =   &h000000
             TextFont        =   "System"
             TextSize        =   0
+            TextUnit        =   0
             Top             =   58
+            Transparent     =   False
             Underline       =   ""
             Visible         =   True
             Width           =   51
@@ -168,11 +164,10 @@ Begin Window StyleTabsWindow
             AcceptTabs      =   ""
             Alignment       =   3
             AutoDeactivate  =   True
+            AutomaticallyCheckSpelling=   True
             BackColor       =   &hFFFFFF
-            BehaviorIndex   =   4
             Bold            =   ""
             Border          =   True
-            ControlOrder    =   4
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
@@ -180,11 +175,14 @@ Begin Window StyleTabsWindow
             Format          =   ""
             Height          =   22
             HelpTag         =   ""
-            Index           =   2147483648
+            HideSelection   =   True
+            Index           =   -2147483648
             InitialParent   =   "grp_tabs_properties"
             Italic          =   ""
             Left            =   209
             LimitText       =   0
+            LineHeight      =   0
+            LineSpacing     =   1
             LockBottom      =   ""
             LockedInPosition=   False
             LockLeft        =   True
@@ -194,7 +192,6 @@ Begin Window StyleTabsWindow
             Maximum         =   0
             Minimum         =   0
             Multiline       =   ""
-            Password        =   ""
             ReadOnly        =   ""
             Scope           =   0
             ScrollbarHorizontal=   ""
@@ -208,6 +205,7 @@ Begin Window StyleTabsWindow
             TextColor       =   &h000000
             TextFont        =   "System"
             TextSize        =   0
+            TextUnit        =   0
             Top             =   58
             Underline       =   ""
             UseFocusRing    =   True
@@ -217,12 +215,10 @@ Begin Window StyleTabsWindow
          Begin UpDownArrows ud_tabs_position
             AcceptFocus     =   False
             AutoDeactivate  =   True
-            BehaviorIndex   =   5
-            ControlOrder    =   5
             Enabled         =   True
             Height          =   23
             HelpTag         =   ""
-            Index           =   2147483648
+            Index           =   -2147483648
             InitialParent   =   "grp_tabs_properties"
             Left            =   247
             LockBottom      =   ""
@@ -240,15 +236,13 @@ Begin Window StyleTabsWindow
          End
          Begin Label txt_props_pixels
             AutoDeactivate  =   True
-            BehaviorIndex   =   6
             Bold            =   False
-            ControlOrder    =   6
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
             Height          =   20
             HelpTag         =   ""
-            Index           =   2147483648
+            Index           =   -2147483648
             InitialParent   =   "grp_tabs_properties"
             Italic          =   False
             Left            =   264
@@ -259,30 +253,30 @@ Begin Window StyleTabsWindow
             LockTop         =   True
             Multiline       =   False
             Scope           =   0
+            Selectable      =   False
             TabIndex        =   3
             TabPanelIndex   =   0
-            TabStop         =   True
             Text            =   "px"
             TextAlign       =   0
             TextColor       =   0
             TextFont        =   "System"
             TextSize        =   0
+            TextUnit        =   0
             Top             =   58
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   20
          End
          Begin Label lbl_align
             AutoDeactivate  =   True
-            BehaviorIndex   =   7
             Bold            =   ""
-            ControlOrder    =   7
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
             Height          =   20
             HelpTag         =   ""
-            Index           =   2147483648
+            Index           =   -2147483648
             InitialParent   =   "grp_tabs_properties"
             Italic          =   ""
             Left            =   154
@@ -293,29 +287,29 @@ Begin Window StyleTabsWindow
             LockTop         =   True
             Multiline       =   ""
             Scope           =   0
+            Selectable      =   False
             TabIndex        =   4
             TabPanelIndex   =   0
-            TabStop         =   True
             Text            =   "Alignment"
             TextAlign       =   0
             TextColor       =   &h000000
             TextFont        =   "System"
             TextSize        =   0
+            TextUnit        =   0
             Top             =   78
+            Transparent     =   False
             Underline       =   ""
             Visible         =   True
             Width           =   51
          End
          Begin RadioButton edt_left
             AutoDeactivate  =   True
-            BehaviorIndex   =   8
             Bold            =   ""
             Caption         =   "Left"
-            ControlOrder    =   8
             Enabled         =   True
             Height          =   20
             HelpTag         =   ""
-            Index           =   2147483648
+            Index           =   -2147483648
             InitialParent   =   "grp_tabs_properties"
             Italic          =   ""
             Left            =   154
@@ -330,6 +324,7 @@ Begin Window StyleTabsWindow
             TabStop         =   True
             TextFont        =   "System"
             TextSize        =   0
+            TextUnit        =   0
             Top             =   97
             Underline       =   ""
             Value           =   False
@@ -338,14 +333,12 @@ Begin Window StyleTabsWindow
          End
          Begin RadioButton edt_middle
             AutoDeactivate  =   True
-            BehaviorIndex   =   9
             Bold            =   ""
             Caption         =   "Middle"
-            ControlOrder    =   9
             Enabled         =   True
             Height          =   20
             HelpTag         =   ""
-            Index           =   2147483648
+            Index           =   -2147483648
             InitialParent   =   "grp_tabs_properties"
             Italic          =   ""
             Left            =   154
@@ -360,6 +353,7 @@ Begin Window StyleTabsWindow
             TabStop         =   True
             TextFont        =   "System"
             TextSize        =   0
+            TextUnit        =   0
             Top             =   117
             Underline       =   ""
             Value           =   ""
@@ -368,14 +362,12 @@ Begin Window StyleTabsWindow
          End
          Begin RadioButton edt_right
             AutoDeactivate  =   True
-            BehaviorIndex   =   10
             Bold            =   ""
             Caption         =   "Right"
-            ControlOrder    =   10
             Enabled         =   True
             Height          =   20
             HelpTag         =   ""
-            Index           =   2147483648
+            Index           =   -2147483648
             InitialParent   =   "grp_tabs_properties"
             Italic          =   ""
             Left            =   154
@@ -390,6 +382,7 @@ Begin Window StyleTabsWindow
             TabStop         =   True
             TextFont        =   "System"
             TextSize        =   0
+            TextUnit        =   0
             Top             =   137
             Underline       =   ""
             Value           =   ""
@@ -398,14 +391,12 @@ Begin Window StyleTabsWindow
          End
          Begin RadioButton edt_char
             AutoDeactivate  =   True
-            BehaviorIndex   =   11
             Bold            =   ""
             Caption         =   "At character"
-            ControlOrder    =   11
             Enabled         =   True
             Height          =   20
             HelpTag         =   ""
-            Index           =   2147483648
+            Index           =   -2147483648
             InitialParent   =   "grp_tabs_properties"
             Italic          =   ""
             Left            =   154
@@ -420,6 +411,7 @@ Begin Window StyleTabsWindow
             TabStop         =   True
             TextFont        =   "System"
             TextSize        =   0
+            TextUnit        =   0
             Top             =   158
             Underline       =   ""
             Value           =   ""
@@ -430,22 +422,24 @@ Begin Window StyleTabsWindow
             AcceptTabs      =   ""
             Alignment       =   2
             AutoDeactivate  =   True
+            AutomaticallyCheckSpelling=   True
             BackColor       =   &hFFFFFF
-            BehaviorIndex   =   12
             Bold            =   ""
             Border          =   True
-            ControlOrder    =   12
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
             Format          =   ""
             Height          =   22
             HelpTag         =   ""
-            Index           =   2147483648
+            HideSelection   =   True
+            Index           =   -2147483648
             InitialParent   =   "grp_tabs_properties"
             Italic          =   ""
             Left            =   247
             LimitText       =   1
+            LineHeight      =   0
+            LineSpacing     =   1
             LockBottom      =   ""
             LockedInPosition=   False
             LockLeft        =   True
@@ -453,7 +447,6 @@ Begin Window StyleTabsWindow
             LockTop         =   True
             Mask            =   ""
             Multiline       =   ""
-            Password        =   ""
             ReadOnly        =   ""
             Scope           =   0
             ScrollbarHorizontal=   ""
@@ -466,6 +459,7 @@ Begin Window StyleTabsWindow
             TextColor       =   &h000000
             TextFont        =   "System"
             TextSize        =   0
+            TextUnit        =   0
             Top             =   156
             Underline       =   ""
             UseFocusRing    =   True
@@ -474,16 +468,15 @@ Begin Window StyleTabsWindow
          End
          Begin PushButton btn_apply
             AutoDeactivate  =   True
-            BehaviorIndex   =   13
             Bold            =   ""
+            ButtonStyle     =   0
             Cancel          =   ""
             Caption         =   "Appl&y"
-            ControlOrder    =   20
             Default         =   ""
             Enabled         =   True
             Height          =   22
             HelpTag         =   ""
-            Index           =   2147483648
+            Index           =   -2147483648
             InitialParent   =   "grp_tabs_properties"
             Italic          =   ""
             Left            =   197
@@ -498,6 +491,7 @@ Begin Window StyleTabsWindow
             TabStop         =   True
             TextFont        =   "System"
             TextSize        =   0
+            TextUnit        =   0
             Top             =   197
             Underline       =   ""
             Visible         =   True
@@ -506,16 +500,15 @@ Begin Window StyleTabsWindow
       End
       Begin PushButton btn_new
          AutoDeactivate  =   True
-         BehaviorIndex   =   14
          Bold            =   ""
+         ButtonStyle     =   0
          Cancel          =   ""
          Caption         =   "&New"
-         ControlOrder    =   13
          Default         =   ""
          Enabled         =   True
          Height          =   22
          HelpTag         =   ""
-         Index           =   2147483648
+         Index           =   -2147483648
          InitialParent   =   "grp_tabs"
          Italic          =   ""
          Left            =   24
@@ -530,6 +523,7 @@ Begin Window StyleTabsWindow
          TabStop         =   True
          TextFont        =   "System"
          TextSize        =   0
+         TextUnit        =   0
          Top             =   243
          Underline       =   ""
          Visible         =   True
@@ -537,16 +531,15 @@ Begin Window StyleTabsWindow
       End
       Begin PushButton btn_remove
          AutoDeactivate  =   True
-         BehaviorIndex   =   15
          Bold            =   ""
+         ButtonStyle     =   0
          Cancel          =   ""
          Caption         =   "&Remove"
-         ControlOrder    =   14
          Default         =   ""
          Enabled         =   True
          Height          =   22
          HelpTag         =   ""
-         Index           =   2147483648
+         Index           =   -2147483648
          InitialParent   =   "grp_tabs"
          Italic          =   ""
          Left            =   87
@@ -561,6 +554,7 @@ Begin Window StyleTabsWindow
          TabStop         =   True
          TextFont        =   "System"
          TextSize        =   0
+         TextUnit        =   0
          Top             =   243
          Underline       =   ""
          Visible         =   True
@@ -568,16 +562,15 @@ Begin Window StyleTabsWindow
       End
       Begin PushButton btn_removeall
          AutoDeactivate  =   True
-         BehaviorIndex   =   16
          Bold            =   ""
+         ButtonStyle     =   0
          Cancel          =   ""
          Caption         =   "Remove &All"
-         ControlOrder    =   15
          Default         =   ""
          Enabled         =   True
          Height          =   22
          HelpTag         =   ""
-         Index           =   2147483648
+         Index           =   -2147483648
          InitialParent   =   "grp_tabs"
          Italic          =   ""
          Left            =   197
@@ -592,6 +585,7 @@ Begin Window StyleTabsWindow
          TabStop         =   True
          TextFont        =   "System"
          TextSize        =   0
+         TextUnit        =   0
          Top             =   243
          Underline       =   ""
          Visible         =   True
@@ -600,15 +594,13 @@ Begin Window StyleTabsWindow
    End
    Begin Label lbl_style_preview
       AutoDeactivate  =   True
-      BehaviorIndex   =   17
       Bold            =   ""
-      ControlOrder    =   16
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
       Height          =   20
       HelpTag         =   ""
-      Index           =   2147483648
+      Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   ""
       Left            =   315
@@ -619,15 +611,17 @@ Begin Window StyleTabsWindow
       LockTop         =   True
       Multiline       =   ""
       Scope           =   0
+      Selectable      =   False
       TabIndex        =   1
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "Preview:"
       TextAlign       =   0
       TextColor       =   &h000000
       TextFont        =   "System"
       TextSize        =   0
+      TextUnit        =   0
       Top             =   4
+      Transparent     =   False
       Underline       =   ""
       Visible         =   True
       Width           =   280
@@ -637,13 +631,12 @@ Begin Window StyleTabsWindow
       AcceptTabs      =   ""
       AutoDeactivate  =   True
       Backdrop        =   ""
-      BehaviorIndex   =   18
-      ControlOrder    =   17
+      DoubleBuffer    =   False
       Enabled         =   True
       EraseBackground =   True
       Height          =   210
       HelpTag         =   ""
-      Index           =   2147483648
+      Index           =   -2147483648
       InitialParent   =   ""
       Left            =   315
       LockBottom      =   ""
@@ -662,16 +655,15 @@ Begin Window StyleTabsWindow
    End
    Begin PushButton btn_ok
       AutoDeactivate  =   True
-      BehaviorIndex   =   19
       Bold            =   False
+      ButtonStyle     =   0
       Cancel          =   False
       Caption         =   "OK"
-      ControlOrder    =   18
       Default         =   True
       Enabled         =   True
       Height          =   22
       HelpTag         =   ""
-      Index           =   2147483648
+      Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
       Left            =   380
@@ -686,6 +678,7 @@ Begin Window StyleTabsWindow
       TabStop         =   True
       TextFont        =   "Arial"
       TextSize        =   10
+      TextUnit        =   0
       Top             =   243
       Underline       =   False
       Visible         =   True
@@ -693,16 +686,15 @@ Begin Window StyleTabsWindow
    End
    Begin PushButton btn_cancel
       AutoDeactivate  =   True
-      BehaviorIndex   =   20
       Bold            =   False
+      ButtonStyle     =   0
       Cancel          =   True
       Caption         =   "Cancel"
-      ControlOrder    =   19
       Default         =   False
       Enabled         =   True
       Height          =   22
       HelpTag         =   ""
-      Index           =   2147483648
+      Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
       Left            =   460
@@ -717,6 +709,7 @@ Begin Window StyleTabsWindow
       TabStop         =   True
       TextFont        =   "Arial"
       TextSize        =   10
+      TextUnit        =   0
       Top             =   243
       Underline       =   False
       Visible         =   True

@@ -58,6 +58,7 @@ Begin Window HelpWindow
          AcceptTabs      =   False
          Alignment       =   0
          AutoDeactivate  =   True
+         AutomaticallyCheckSpelling=   True
          BackColor       =   16777215
          Bold            =   False
          Border          =   True
@@ -73,6 +74,8 @@ Begin Window HelpWindow
          Italic          =   False
          Left            =   29
          LimitText       =   0
+         LineHeight      =   0
+         LineSpacing     =   1
          LockBottom      =   True
          LockedInPosition=   False
          LockLeft        =   True
@@ -103,6 +106,7 @@ Begin Window HelpWindow
          AcceptTabs      =   False
          Alignment       =   0
          AutoDeactivate  =   True
+         AutomaticallyCheckSpelling=   True
          BackColor       =   16777215
          Bold            =   False
          Border          =   True
@@ -118,6 +122,8 @@ Begin Window HelpWindow
          Italic          =   False
          Left            =   29
          LimitText       =   0
+         LineHeight      =   0
+         LineSpacing     =   1
          LockBottom      =   True
          LockedInPosition=   False
          LockLeft        =   True
@@ -148,6 +154,7 @@ Begin Window HelpWindow
          AcceptTabs      =   False
          Alignment       =   0
          AutoDeactivate  =   True
+         AutomaticallyCheckSpelling=   True
          BackColor       =   16777215
          Bold            =   False
          Border          =   True
@@ -163,6 +170,8 @@ Begin Window HelpWindow
          Italic          =   False
          Left            =   29
          LimitText       =   0
+         LineHeight      =   0
+         LineSpacing     =   1
          LockBottom      =   True
          LockedInPosition=   False
          LockLeft        =   True
