@@ -17,6 +17,11 @@ To make your own OpenSong:
 - Compile the source code, placing it in a suitable location.
 - The first time you run OpenSong it will create the necessary folders and settings files. However, you will need to manually add song files and backgrounds to their proper folders.
 
+OpenSong on MacOS
+With the release of OS X 10.8 Mountain Lion, the new GateKeeper functionality is now in effect.  
+This means that new apps like OpenSong that are downloaded or copied to a Mac with Mountain Lion, but that are not digitally signed, display a 'Mountain Lion Error for Unsigned Applications' error.
+This error can be overridden in System Preferences, by changing the "Allow applications downloaded from" setting to "Anywhere".
+
 OpenSong on Linux
 Running OpenSong on Linux works, but on some distributions you might need to tune things.
 See the Wiki on http://www.opensong.org/pages/opensong-linux.html for more information.
