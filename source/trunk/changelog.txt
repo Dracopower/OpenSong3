@@ -1,4 +1,6 @@
-﻿* Improvements for Linux (Vwout)
+﻿* Fix for selecting (movie) files on MacOS for use with Videolan (bug #362) (Vwout)
+
+* Improvements for Linux (Vwout)
 - Fix in rendering; the font size interpretation is now equal as on Windows and Mac
 - Many small changes in the UI to make the text in dropdown boxes fit
 When sharing the sets between Windows and Linux, using Microsoft fonts, it is recommended to install the package ttf-mscorefonts-installer.

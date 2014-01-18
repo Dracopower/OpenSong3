@@ -18580,7 +18580,7 @@ End
 		  Dim dlg As New OpenDialog
 		  Dim f As FolderItem
 		  
-		  dlg.Filter = "*.*"
+		  dlg.Filter = FileTypes.AllFiles
 		  dlg.ActionButtonCaption = App.T.Translate("shared/select/@caption")
 		  dlg.CancelButtonCaption = App.T.Translate("shared/cancel/@caption")
 		  dlg.Title = App.T.Translate("external_slide/videolan_settings/videolan_mediafilename/@caption")
