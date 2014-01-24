@@ -1,5 +1,4 @@
-; Project Risen (Luke 24:1-12)
-; OpenSong Version 2.1 Installer Script
+﻿; OpenSong Version 2.1 Installer Script
 ; Custom Messages
 
 [CustomMessages]

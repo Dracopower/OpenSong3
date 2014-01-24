@@ -1,9 +1,9 @@
-;; OpenSong Version 2.1 Installer Script
+﻿;; OpenSong Version 2.1 Installer Script
 
 ; If any version below the specified version is used for compiling,
 ; this error will be shown.
 ; Periods are automatically added at the end of the message.
-#if VER < EncodeVer(5,5,2)
+#if VER < EncodeVer(5, 5, 2)
   #error You must use Inno Setup 5.5.2 or newer to compile this script
 #endif
 
