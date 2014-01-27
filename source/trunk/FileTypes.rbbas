@@ -41,7 +41,7 @@
 
 	#tag FileType
 		CodeName=WAVFilesWav
-		DocIcon=OpenSong.rbres;&h3C
+		DocIcon=OpenSong.rbres;&h30
 		Extension=.wav
 		Flags=&h0
 		MacCreator=
@@ -60,7 +60,7 @@
 
 	#tag FileType
 		CodeName=OpenSongModule
-		DocIcon=OpenSong.rbres;&h30
+		DocIcon=OpenSong.rbres;&h3C
 		Extension=.xmm
 		Flags=&h0
 		MacCreator=OSng

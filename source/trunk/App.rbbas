@@ -60,7 +60,7 @@ Inherits Application
 		  '++JRC Set ReleaseCandidate Level
 		  'IMPORTANT this value will need to be set to 0
 		  'for a FINAL relase
-		  ReleaseCandidate = 1
+		  ReleaseCandidate = 0
 		  '--
 		  
 		  DebugWriter = New DebugOutput

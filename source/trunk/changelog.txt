@@ -1,4 +1,6 @@
-﻿* Fix for selecting (movie) files on MacOS for use with Videolan (bug #362) (Vwout)
+﻿-= 2.1.0 =-
+
+* Fix for selecting (movie) files on MacOS for use with Videolan (bug #362) (Vwout)
 
 * Improvements for Linux (Vwout)
 - Fix in rendering; the font size interpretation is now equal as on Windows and Mac

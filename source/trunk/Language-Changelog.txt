@@ -1,3 +1,5 @@
+-= Version 2.1.0 =-
+
 print_settings/fonts/spacing
 print_settings/fonts/sections_before
 print_settings/fonts/sections_after
