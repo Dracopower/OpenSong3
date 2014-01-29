@@ -1,4 +1,6 @@
-﻿* Fix for cosmetic bug that causes the input field to be hidden in the inputbox. This prevents creating a new song (bug #416) (Vwout)
+﻿* Make handling of verse, chorus, bridge, .. names more tolerant for case changes to prevent verse image backgrounds from not showing (Vwout)
+
+* Fix for cosmetic bug that causes the input field to be hidden in the inputbox. This prevents creating a new song (bug #416) (Vwout)
 
 -= 2.1.0 =-
 

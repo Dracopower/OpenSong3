@@ -2165,7 +2165,7 @@ Module SongML
 		      'Check if a background is available for this verse
 		      xbackground = Nil
 		      If (xbacks.ChildCount() > 0) Then
-		        Dim xlist As XmlNodeList = xbacks.Xql("background[@verse='" + section + "']")
+		        Dim xlist As XmlNodeList = xbacks.Xql("background[@verse='" + Lowercase(section) + "' or @verse='" + Uppercase(section) + "']")
 		        If xlist.Length()>0 Then
 		          xbackground = xlist.Item(0)
 		          
