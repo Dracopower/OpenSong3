@@ -1,4 +1,6 @@
-﻿-= 2.1.0 =-
+﻿* Fix for cosmetic bug that causes the input field to be hidden in the inputbox. This prevents creating a new song (bug #416) (Vwout)
+
+-= 2.1.0 =-
 
 * Fix for selecting (movie) files on MacOS for use with Videolan (bug #362) (Vwout)
 

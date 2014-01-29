@@ -152,7 +152,7 @@ Begin Window InputBox
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
-      Height          =   111
+      Height          =   70
       HelpTag         =   ""
       Index           =   -2147483648
       InitialParent   =   ""
@@ -175,7 +175,7 @@ Begin Window InputBox
       TextSize        =   11
       TextUnit        =   0
       Top             =   7
-      Transparent     =   False
+      Transparent     =   True
       Underline       =   False
       Visible         =   True
       Width           =   297
@@ -192,7 +192,7 @@ Begin Window InputBox
       InitialParent   =   ""
       InitialValue    =   ""
       Italic          =   False
-      Left            =   8
+      Left            =   9
       ListIndex       =   0
       LockBottom      =   True
       LockedInPosition=   False
@@ -210,54 +210,54 @@ Begin Window InputBox
       Underline       =   False
       Visible         =   True
       Width           =   300
-      Begin SEditField edt_the_input
-         AcceptTabs      =   False
-         Alignment       =   0
-         AutoDeactivate  =   True
-         AutomaticallyCheckSpelling=   True
-         BackColor       =   16777215
-         Bold            =   False
-         Border          =   True
-         DataField       =   ""
-         DataSource      =   ""
-         Enabled         =   True
-         Format          =   ""
-         Height          =   25
-         HelpTag         =   ""
-         HideSelection   =   True
-         Index           =   -2147483648
-         InitialParent   =   "pop_the_input"
-         Italic          =   False
-         Left            =   8
-         LimitText       =   255
-         LineHeight      =   0
-         LineSpacing     =   1
-         LockBottom      =   True
-         LockedInPosition=   False
-         LockLeft        =   True
-         LockRight       =   True
-         LockTop         =   False
-         Mask            =   ""
-         Multiline       =   False
-         ReadOnly        =   False
-         Scope           =   0
-         ScrollbarHorizontal=   False
-         ScrollbarVertical=   True
-         Styled          =   False
-         TabIndex        =   0
-         TabPanelIndex   =   0
-         TabStop         =   True
-         Text            =   ""
-         TextColor       =   0
-         TextFont        =   "Arial"
-         TextSize        =   11
-         TextUnit        =   0
-         Top             =   90
-         Underline       =   False
-         UseFocusRing    =   True
-         Visible         =   True
-         Width           =   300
-      End
+   End
+   Begin SEditField edt_the_input
+      AcceptTabs      =   False
+      Alignment       =   0
+      AutoDeactivate  =   True
+      AutomaticallyCheckSpelling=   True
+      BackColor       =   16777215
+      Bold            =   False
+      Border          =   True
+      DataField       =   ""
+      DataSource      =   ""
+      Enabled         =   True
+      Format          =   ""
+      Height          =   25
+      HelpTag         =   ""
+      HideSelection   =   True
+      Index           =   -2147483648
+      InitialParent   =   ""
+      Italic          =   False
+      Left            =   8
+      LimitText       =   255
+      LineHeight      =   0
+      LineSpacing     =   1
+      LockBottom      =   True
+      LockedInPosition=   False
+      LockLeft        =   True
+      LockRight       =   True
+      LockTop         =   False
+      Mask            =   ""
+      Multiline       =   False
+      ReadOnly        =   False
+      Scope           =   0
+      ScrollbarHorizontal=   False
+      ScrollbarVertical=   True
+      Styled          =   False
+      TabIndex        =   7
+      TabPanelIndex   =   0
+      TabStop         =   True
+      Text            =   ""
+      TextColor       =   0
+      TextFont        =   "Arial"
+      TextSize        =   11
+      TextUnit        =   0
+      Top             =   89
+      Underline       =   False
+      UseFocusRing    =   True
+      Visible         =   True
+      Width           =   300
    End
 End
 #tag EndWindow
@@ -367,14 +367,14 @@ End
 
 	#tag Method, Flags = &h0
 		Function Input(question As String, default As String) As String
+		  pop_the_input.Visible = False
 		  lbl_the_question.Text = question
-		  edt_the_input.Text = default
+		  lbl_the_question.Height = 40
 		  edt_the_input.Visible = True
+		  edt_the_input.Text = default
 		  edt_the_input.SelStart = 0
 		  edt_the_input.SelLength = Len(default)
-		  pop_the_input.Visible = False
 		  
-		  lbl_the_question.Height = 40
 		  btn_cancel.Visible = True
 		  PositionPushButtons
 		  ShowModal
@@ -416,13 +416,13 @@ End
 		  lbl_the_question.Text = question
 		  edt_the_input.Visible = False
 		  
+		  pop_the_input.Visible = True
 		  pop_the_input.DeleteAllRows
 		  Dim i As Integer
 		  For i = 1 To UBound(choices)
 		    pop_the_input.AddRow choices(i)
 		    If choices(i) = default Then pop_the_input.ListIndex = i - 1
 		  Next i
-		  pop_the_input.Visible = True
 		  pop_the_input.ListIndex = 0
 		  
 		  lbl_the_question.Height = 40
