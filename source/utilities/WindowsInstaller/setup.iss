@@ -1,4 +1,4 @@
-﻿;; OpenSong Version 2.1 Installer Script
+;; OpenSong Version 2 Installer Script
 
 ; If any version below the specified version is used for compiling,
 ; this error will be shown.
@@ -17,8 +17,8 @@
 ; The ISPP eliminates redundant typing and prevents errors.
 ; Changing these values changes all other values that refer back to here.
 #define MyAppName "OpenSong"
-#define MyAppVersion "2.1.0"
-#define MyAppVerName "OpenSong Version 2.1"
+#define MyAppVersion "2.1.1"
+#define MyAppVerName "OpenSong Version 2.1.1"
 #define MyAppPublisher "OpenSong Development Team"
 #define MyAppURL "http://opensong.org/"
 #define MyAppExeName "OpenSong.exe"
@@ -36,8 +36,8 @@ VersionInfoVersion={#MyAppVersion}
 AppPublisher={#MyAppPublisher}
 AppPublisherURL={#MyAppURL}
 VersionInfoDescription=OpenSong is a free, open-source software application created to manage lyrics, chords, lead sheets, overheads, computer projection, and more.
-VersionInfoCopyright=2012
-AppCopyright=2012
+VersionInfoCopyright=2014
+AppCopyright=2014
 LicenseFile=OpenSong License\gpl-en.txt
 ; Start menu\screen and Desktop shortcuts
 DefaultDirName={pf}\{#MyAppName}
@@ -168,7 +168,7 @@ Source: "OpenSong License\gpl-sv.txt"; DestDir: "{app}\OpenSong License"; Compon
 Source: "OpenSong License\gpl-pt.txt"; DestDir: "{app}\OpenSong License"; Components: Languages\portugues
 Source: "OpenSong License\gpl-pt_BR.txt"; DestDir: "{app}\OpenSong License"; Components: Languages\portuguesbrasil
 
-; OpenSong 2.1 Icons
+; OpenSong 2 Icons
 Source: "OpenSong2.ico"; DestDir: "{app}"
 Source: "OpenSong2Uninstall.ico"; DestDir: "{app}"
 
