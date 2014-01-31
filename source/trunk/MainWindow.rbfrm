@@ -8673,7 +8673,7 @@ End
 		  HSizer = New HalfSizer(Me)
 		  
 		  '++JRC
-		  HSizer.AddWidth edf_song_lyrics, .8
+		  HSizer.AddWidth edf_song_lyrics, .85
 		  '--
 		  
 		  HSizer.AddWidth lbl_song_title
@@ -8685,22 +8685,22 @@ End
 		  HSizer.AddLeft lbl_song_ccli
 		  HSizer.AddLeft edt_song_ccli
 		  '++JRC
-		  HSizer.AddLeftWidth lbl_song_hymn_number , .8, .2
-		  HSizer.AddLeft edt_song_hymn_number, .8
+		  HSizer.AddLeftWidth lbl_song_hymn_number , .85, .15
+		  HSizer.AddLeft edt_song_hymn_number, .85
 		  '--
 		  HSizer.AddLeftWidth lbl_song_presentation, .5, .5
 		  HSizer.AddLeftWidth edt_song_presentation, .5, .5
 		  
 		  '++JRC
-		  HSizer.AddLeftWidth lbl_song_insert, .8, .2
-		  HSizer.AddLeft btn_song_ins_column, .8
-		  HSizer.AddLeft btn_song_ins_comment, .8
-		  HSizer.AddLeft btn_song_ins_lyrics, .8
-		  HSizer.AddLeft btn_song_ins_multi_verse, .8
-		  HSizer.AddLeft btn_song_ins_page, .8
-		  HSizer.AddLeft btn_song_ins_section, .8
+		  HSizer.AddLeftWidth lbl_song_insert, .85, .15
+		  HSizer.AddLeft btn_song_ins_column, .85
+		  HSizer.AddLeft btn_song_ins_comment, .85
+		  HSizer.AddLeft btn_song_ins_lyrics, .85
+		  HSizer.AddLeft btn_song_ins_multi_verse, .85
+		  HSizer.AddLeft btn_song_ins_page, .85
+		  HSizer.AddLeft btn_song_ins_section, .85
 		  
-		  HSizer.AddLeftTop grp_song_transpose, .8, .1
+		  HSizer.AddLeftTop grp_song_transpose, .85, .1
 		  
 		  HSizer.AddTop lbl_song_backgrounds, 1
 		  HSizer.AddHeight lst_song_themes, 1
@@ -8711,10 +8711,10 @@ End
 		  HSizer.AddTop btn_song_add_link, 1
 		  HSizer.AddTop btn_song_remove_link, 1
 		  
-		  HSizer.AddLeftWidth lbl_song_linked, .8, .2
-		  HSizer.AddLeftWidth lst_song_linked, .8, .2
-		  HSizer.AddLeftWidth btn_song_add_link, .8, .1
-		  HSizer.AddLeftWidth btn_song_remove_link, .9, .1
+		  HSizer.AddLeftWidth lbl_song_linked, .85, .15
+		  HSizer.AddLeftWidth lst_song_linked, .85, .15
+		  HSizer.AddLeftWidth btn_song_add_link, .85, .075
+		  HSizer.AddLeftWidth btn_song_remove_link, .925, .075
 		  '--
 		  
 		  HSizer.AddLeftTopWidthHeight can_song_style, .6, 0, .4, .4
