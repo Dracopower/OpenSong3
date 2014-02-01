@@ -1,4 +1,4 @@
-;; OpenSong Version 2 Installer Script
+﻿;; OpenSong Version 2 Installer Script
 
 ; If any version below the specified version is used for compiling,
 ; this error will be shown.
