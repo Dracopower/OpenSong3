@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<language name="Polski" author="Mariusz Mycielski" version="2.1">
+<language name="Polski" author="Mariusz Mycielski" version="2.1.0">
 
   <load_settings>
     <checking_folders>Tworzę/Sprawdzam foldery dokumentów</checking_folders>
@@ -122,14 +122,14 @@
     <user1 caption="Pole użytkownika 1">Możesz tu wpisać, co chcesz. Zawartość tego pola może być wykorzystana przez inne programy.</user1>
     <user2 caption="Pole użytkownika 2">Możesz tu wpisać, co chcesz. Zawartość tego pola może być wykorzystana przez inne programy.</user2>
     <user3 caption="Pole użytkownika 3">Możesz tu wpisać, co chcesz. Zawartość tego pola może być wykorzystana przez inne programy.</user3>
-    <backgrounds caption="Specjalne tło wersu" head1="Wers" head2="Obraz tła">Wyświetla opcjonalne tło wersu piosenki.</backgrounds>
+    <backgrounds caption="Specjalne tło zwrotki" head1="Zwrotka" head2="Obraz tła">Wyświetla opcjonalne tło zwrotki piosenki.</backgrounds>
     <add_background caption="Dodaj">Łączy obraz z wybranym wersem.</add_background>
     <del_background caption="Usuń">Usuwa obraz z wybranego wersu.</del_background>
     <fit_to_screen caption="link(image_slide/fit_to_screen/@caption)">link(image_slide/fit_to_screen)</fit_to_screen>
     <fit_to_body caption="link(image_slide/fit_to_body/@caption)">link(image_slide/fit_to_body)</fit_to_body>
     <keepaspect caption="link(image_slide/keepaspect/@caption)">link(image_slide/keepaspect)</keepaspect>
     <store_as_link caption="Nie przechowuj obrazu w piosence, użyj linku">Przechowywanie obrazków w zestawie znacząco zwiększa rozmiar pliku zestawu na dysku i może wpłynąć na jakość obrazka. Zapobiega temu użycie linka. Ścieżki do obrazków z folderu 'Backgrounds'(Tła) są przechowywane jako względne, co ułatwia przenoszenie zestawów między komputerami. Zachowaj ostrożność podczas przygotowywania prezentacji na innym komputerze niż ten, na którym wyświetlasz prezentację!</store_as_link>
-    <background_as_text caption="Ukryj tekst wersu">Użyj obrazu tła i nie wyświetlaj tekstu wersu. Użyteczne gdy tekst jest prerenderowany lub gdy nuty są wyświetlane przy użyciu obrazu tła.</background_as_text>
+    <background_as_text caption="Ukryj tekst zwrotki">Użyj obrazu tła i nie wyświetlaj tekstu zwrotki. Użyteczne gdy tekst jest prerenderowany lub gdy nuty są wyświetlane przy użyciu obrazu tła.</background_as_text>
   </advanced_song_editor>
 
   <sets_mode caption="Tryb zestawu">Wybierz ten tryb, aby przejść do edycji zestawu. Zestawy służą do grupowania wielu piosenek, slajdów itp. Jeśli znajdujesz się w trybie edycji piosenki i nie zapisałeś zmian, zostaniesz o to zapytany.
@@ -223,10 +223,10 @@
     <descriptions caption="Opis obrazka w podtytule">Dodaj opis wyświetlanego obrazka do podtytułu.</descriptions>
     <name caption="link(slide_editor/name/@caption)">link(slide_editor/name)</name>
     <images caption="Obrazki" head1="Podgląd" head2="Opis">Zawiera obrazki wyświetlane na tym slajdzie.</images>
-    <fit_to_screen caption="Skaluj obrazki do rozmiaru ekranu">Obrazki zbyt duże względem rozmiaru ekranu są przeskalowywane. Podobnie dzieje się dla obrazków zbyt małych względem ekranu.</fit_to_screen>
-    <fit_to_body caption="Skaluj obrazy do obszaru roboczego">Obrazki są przygotowywane, by zawsze wpasowywały się do obszaru roboczego zdefiniowanego w ustawieniach stylu. Dotyczy to obrazków zbyt dużych i zbyt małych względem tego obszaru.</fit_to_body>
-    <keepaspect caption="Zachowaj współczynnik proporcji podczas skalowania obrazków">Podczas zmiany rozmiarów obrazków stosunek szerokości i wysokości zostanie zachowany.</keepaspect>
-    <store_as_link caption="Nie przechowuj obrazka w zestawie, użyj linka do obrazka">Przechowywanie obrazków w zestawie znacząco zwiększa rozmiar pliku zestawu na dysku i może wpłynąć na jakość obrazka. Zapobiega temu użycie linka. Ścieżki do obrazków z folderu 'Backgrounds'(Tła) są przechowywane jako względne, co ułatwia przenoszenie zestawów między komputerami. Zachowaj ostrożność podczas przygotowywania prezentacji na innym komputerze niż ten, na którym wyświetlasz prezentację!</store_as_link>
+    <fit_to_screen caption="link(general_settings/imagedefaults/fit_to_screen/@caption)">link(general_settings/imagedefaults/fit_to_screen)</fit_to_screen>
+    <fit_to_body caption="link(general_settings/imagedefaults/fit_to_body/@caption)">link(general_settings/imagedefaults/fit_to_body)</fit_to_body>
+    <keepaspect caption="link(general_settings/imagedefaults/keepaspect/@caption)">link(general_settings/imagedefaults/keepaspect)</keepaspect>
+    <store_as_link caption="Nie zapisuj obrazka w zestawie, użyj linka">link(general_settings/imagedefaults/store_as_link)</store_as_link>
     <notes caption="link(slide_editor/notes/@caption)">link(slide_editor/notes)</notes>
     <action caption="Czynności" />
       <ins_image caption="Dodaj">Dodaje obrazek do tego slajdu, by podczas prezentacji dzielić wspólny tytuł, podtytuł, styl i/lub ustawienia zaawansowane. Utworzone w ten sposób slajdy mogą być również wyświetlane w pętli.</ins_image>
@@ -398,7 +398,7 @@
   </main_menu>
 
   <general_settings title="Ustawienia programu">
-    <general caption="Główne" head1="Podstawowe" head2="Pliki" head3="System" head4="Wyświetlanie">
+    <general caption="Główne" head1="Podstawowe" head2="Pliki" head3="Obrazki" head4="System" head5="Wyświetlanie">
       <ccli caption="Numer licencji CCLI"/>
       <version_check caption="Przy uruchamianiu szukaj nowej wersji"/>
       <language caption="Język"/>
@@ -439,10 +439,16 @@
       <change caption="Zmień"/>
       <oldfolderdb caption="Buforowanie plików wersji przed 1.1"/>
     </documents_folder>
+    <imagedefaults caption="Ustawienia domyślne przetwarzania obrazków">
+      <fit_to_screen caption="Skaluj obrazki do rozmiaru ekranu">Obrazki zbyt duże względem rozmiaru ekranu są przeskalowywane. Podobnie dzieje się dla obrazków zbyt małych względem ekranu.</fit_to_screen>
+      <fit_to_body caption="Skaluj obrazy do obszaru roboczego">Obrazki są przygotowywane, by zawsze wpasowywały się do obszaru roboczego zdefiniowanego w ustawieniach stylu. Dotyczy to obrazków zbyt dużych i zbyt małych względem tego obszaru.</fit_to_body>
+      <keepaspect caption="Zachowaj współczynnik proporcji podczas skalowania obrazków">Podczas zmiany rozmiarów obrazków stosunek szerokości i wysokości zostanie zachowany.</keepaspect>
+      <store_as_link caption="Nie przechowuj obrazka w zestawie, użyj linka do obrazka">Przechowywanie obrazków w zestawie znacząco zwiększa rozmiar pliku zestawu na dysku i może wpłynąć na jakość obrazka. Zapobiega temu użycie linka. Ścieżki do obrazków z folderu 'Backgrounds'(Tła) są przechowywane jako względne, co ułatwia przenoszenie zestawów między komputerami. Zachowaj ostrożność podczas przygotowywania prezentacji na innym komputerze niż ten, na którym wyświetlasz prezentację!</store_as_link>
+      <background_as_text caption="Pokaż tło zamiast tekstu wersetu">Wyświetla tylko obrazek tła bez tekstu wersetu. Użyteczne gdy tekst jest renderowany albo wyświetlamy nuty używając obrazka.</background_as_text>
+    </imagedefaults>
     <imagequality caption="Ustaw jakość obrazka">
       <note caption="OpenSong próbuje zapisać w formacie JPEG obrazki użyte w zestawie. Poniżej możesz wybrać jakość oraz wielkość pliku. Lista wyboru jest nieaktywna, jeśli na komputerze nie jest zainstalowany QuickTime, ponieważ OpenSong bazuje na tym programie przy zapisie obrazków o zadanej jakości do JPEG."/>
       <compression caption="Kompresja obrazka" />
-      <extern caption="Nie zapisuj w zestawie obrazków tła" />
     </imagequality>
     <logging caption="Ustawienia debugowania">
       <append caption="Dopisuj do pliku log"/>
@@ -491,6 +497,15 @@
       <width caption="Szerokość"/>
       <height caption="Wysokość"/>
       <message caption="Zobacz ustawienia pliku/strony, by ustawić marginesy"/>
+      <spacing caption="Rozstaw"/>
+      <sections_before caption="przed"/>
+      <sections_after caption="po"/>
+      <chords_before caption="link(/print_settings/fonts/sections_before/@caption)"/>
+      <chords_after caption="link(/print_settings/fonts/sections_after/@caption)"/>
+      <capo_before caption="link(/print_settings/fonts/sections_before/@caption)"/>
+      <capo_after caption="link(/print_settings/fonts/sections_after/@caption)"/>
+      <lyrics_before caption="link(/print_settings/fonts/sections_before/@caption)"/>
+      <lyrics_after caption="link(/print_settings/fonts/sections_after/@caption)"/>
     </margins>
     <fonts>
       <title caption="Tytuł"/>
@@ -858,6 +873,9 @@ Jeżeli pole 'Kolejność prezentacji' jest puste, to sekcje będą wyświetlone
      <altsharpchords>,B#,C#,D,D#,E,E#,F#,G,G#,A,A#,B</altsharpchords>
      <flatchords>,C,Db,D,Eb,E,F,Gb,G,Ab,A,Bb,B</flatchords>
      <altflatchords>,C,Db,D,Eb,Fb,F,Gb,G,Ab,A,Bb,Cb</altflatchords>
+     <chordkeys>Dowolny,A,A#,Ab,B,B#,Bb,C,C#,Cb,D,D#,Db,E,E#,Eb,F,F#,Fb,G,G#,Gb</chordkeys>
+     <chordforms>Dowolna,,m,2,M7,m7,7,dim7,dim,+,sus,sus2,6,6/9,M9,add9,7b5,7#5,9,7b9,7#9,13th,m7b5,m7#5,m7b9,11</chordforms>
+     <formsdescriptive>Dowolny,Major,Minor(m),2nd(2),Major 7th(M7),Minor 7th(m7),Dominant 7th(7),Diminished 7th(dim7),Diminished(dim),Augmented(+),Suspended(sus),Suspended 2nd(sus2),Sixth(6),Six Nine(6/9),Major 9th(M9),Add9(add9),Seven Flat Five(7b5),Seven Sharp Five(7#5),9th(9),Seven Flat Nine(7b9),Seven Sharp Nine(7#9),13th(13),Minor 7th Flat Five(m7b5),Minor 7th Sharp Five(m7#5),Minor 7th Flat Nine(m7b9),11th(11)</formsdescriptive>
   </songml>
   
   <smartml>
