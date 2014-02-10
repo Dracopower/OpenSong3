@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<language name="Português (Brasil)" author="Paulo Neto (layoutbr@lexxa.com.br)" version="2.1">
+<language name="Português (Brasil)" author="Paulo Neto (www.layout.com.br)" version="2.1.1">
 
   <load_settings>
     <checking_folders>Criando/Verificando pasta de documentos</checking_folders>
@@ -328,8 +328,8 @@
       <user2 caption="link(advanced_song_editor/user2/@caption)"/>
       <user3 caption="link(advanced_song_editor/user3/@caption)"/>
       <chord caption="Acorde"/>
-      <key caption="Chave"/>
-      <form caption="Forma"/>
+      <chord_key caption="link(advanced_song_editor/key/@caption)"/>
+      <chord_form caption="Forma"/>
     </fields>
   </song_search>
 
@@ -507,6 +507,15 @@
       <chords caption="Acordes"/>
       <capo caption="Capo"/>
       <copyright caption="Copyright"/>
+      <spacing caption="Espaçamento"/>
+      <sections_before caption="antes"/>
+      <sections_after caption="depois"/>
+      <chords_before caption="link(/print_settings/fonts/sections_before/@caption)"/>
+      <chords_after caption="link(/print_settings/fonts/sections_after/@caption)"/>
+      <capo_before caption="link(/print_settings/fonts/sections_before/@caption)"/>
+      <capo_after caption="link(/print_settings/fonts/sections_after/@caption)"/>
+      <lyrics_before caption="link(/print_settings/fonts/sections_before/@caption)"/>
+      <lyrics_after caption="link(/print_settings/fonts/sections_after/@caption)"/>
     </fonts>
     <layout>
       <heading_border_thickness caption="Espessura da Borda do cabeçalho"/>
@@ -525,7 +534,6 @@
         <scripture_slides caption="Estilo Padrão da Bíblia"/>
         <click_to_change caption="link(shared/click_to_change/@caption)"/>
         <right_click_to_clear caption="link(shared/right_click_to_clear/@caption)"/>
-        
         <export_snapshot caption="Exportar uma tela de cada slide da apresentação para o seguinte arquivo"/>
         <snapshot_file caption="Nome da tela">Escolha o nome do arquivo da tela usando um diálogo de seleção de arquivos.</snapshot_file>
         <export_preview caption="Exportar as telas durante configuração de visualização"/>
@@ -1244,6 +1252,7 @@ Clique aqui para editar o estilo.</body>
     <user2 caption="Usuário2"/>
     <user3 caption="Usuário3"/>  
     <hymn_number caption="Hino Nº"/>
+    
   </shared>
 
   <questions>
@@ -1277,7 +1286,7 @@ Clique aqui para editar o estilo.</body>
     <additional>Desenvolvimento adicional por:</additional>
     <copyright>Copyright</copyright>
     <gpl>Este software foi liberado sob as condições GPL.</gpl>
-    <web>Visite http://www.opensong.org/ para mais informações.</web>
+    <web>Para mais informações visite: http://www.opensong.org/</web>
     <translating>Para traduzir o OpenSong, copie o arquivo 'English' da pasta 'OpenSong Languages' e renomeie para o nome do seu idioma. Traduza tudo no arquivo com exceção dos nomes das tags e atributos. Então, envie o novo arquivo para o e-mail opensong-translate@lists.sourceforge.net ou adicione-o no Tópico 'Patches' na página do projeto do OpenSong em Source Forge e nós o incluiremos na próxima versão oficial.</translating>
     <created_with_opensong>Criado com o OpenSong</created_with_opensong>
     <sources>O OpenSong inclui códigos e recursos de:
@@ -1377,6 +1386,7 @@ Os membros da equipe de desenvolvimento do OpenSong lamenta qualquer inconvenien
        <exists>A música selecionada já está na lista.</exists>
        <load_error>Erro ao carregar a música vinculada: %1</load_error>
     </linked_song>
+    
   </errors>
 
   <xml_errors>
