@@ -9257,6 +9257,40 @@ End
 	#tag EndMenuHandler
 
 
+	#tag Method, Flags = &h0
+		Sub ActionInSetAddSlide(xslide As XmlNode)
+		  If Status_SetOpen Then
+		    Status_SetChanged = True
+		    ' No need to EnableMenuItems, since the following selection change will call it
+		    
+		    Dim set_item_index As Integer = 0
+		    Dim set_item_name As String = SmartML.GetValue(xslide, "@name", True)
+		    Dim set_item_type As String = SmartML.GetValue(xslide, "@type", True)
+		    If set_item_type = "style" Then
+		      set_item_type = SmartML.GetValue(xslide, "@action", True)
+		    End If
+		    
+		    Dim set_item_caption As String = App.T.Translate("sets_mode/items/"+set_item_type+"/@caption")
+		    If set_item_type = "" or set_item_caption = "" Then // unknown slide type
+		      App.DebugWriter.Write "MainWindow.ActionInSetAddSlide.Change: Unknown slide type '" + set_item_type + "/@caption" + "'", 1
+		      set_item_caption = "*ERROR*"
+		    End If
+		    
+		    If lst_set_items.ListIndex >= 0 Then
+		      lst_set_items.InsertRow lst_set_items.ListIndex + 1, set_item_name + " " + set_item_caption
+		      set_item_index = lst_set_items.ListIndex + 1
+		    Else
+		      lst_set_items.AddRow set_item_name + " " + set_item_caption
+		      set_item_index = lst_set_items.ListCount - 1
+		    End If
+		    
+		    lst_set_items.CellTag(set_item_index, 0) = SmartML.GetValue(xslide, "@type", True)
+		    lst_set_items.ListIndex = set_item_index
+		    
+		  End If
+		End Sub
+	#tag EndMethod
+
 	#tag Method, Flags = &h1
 		Protected Function ActionInSetAskSave() As Boolean
 		  //
@@ -9347,22 +9381,13 @@ End
 		        
 		        newGroup = SmartML.InsertChild(xgroups, "slide_group", lst_set_items.ListIndex + 1)
 		        
-		        '++JRC Show slidetype on pasted set item
-		        Dim SlideType As String
-		        slideType = App.T.Translate("sets_mode/items/" + SmartML.GetValue(oldgroup , "@type", True) + "/@caption")
-		        If slideType = "" Then // unknown slide type
-		          App.DebugWriter.Write "MainWindow.pop_sets_sets.Change: Unknown slide type '" + SmartML.GetValue(oldgroup , "@type", True) + "/@caption" + "'", 1
-		          slideType = "*ERROR*"
-		        End If
-		        lst_set_items.InsertRow lst_set_items.ListIndex + 1, SmartML.GetValue(oldgroup , "@name", True) + " " + slideType
-		        
+		        ActionInSetAddSlide oldGroup
 		        
 		        SmartML.CloneChildren oldGroup, newGroup
 		        SmartML.CloneAttributes oldGroup, newGroup
 		        
 		        Status_SetChanged = True
 		        
-		        lst_set_items.ListIndex = lst_set_items.ListIndex + 1
 		      End If
 		    End If
 		  End If
@@ -9704,6 +9729,7 @@ End
 		    Else
 		      Where = lst_set_items.ListCount
 		    End If
+		    
 		    newGroup = SmartML.InsertChild(xgroups, "slide_group", Where)
 		    SmartML.SetValue newGroup, "@name", f.Name
 		    SmartML.SetValue newGroup, "@type", "song"
@@ -9727,13 +9753,8 @@ End
 		    #EndIf
 		    SmartML.SetValue newGroup, "@path", SongPath
 		    //--
-		    If lst_set_items.ListIndex >= 0 Then
-		      lst_set_items.InsertRow Where, f.Name + " "  + App.T.Translate("sets_mode/items/song/@caption")
-		    Else
-		      lst_set_items.AddRow f.Name + " " + App.T.Translate("sets_mode/items/song/@caption")
-		    End If
 		    
-		    lst_set_items.ListIndex = Where
+		    ActionInSetAddSlide newGroup
 		    
 		    '++JRC
 		    If CheckLinked Then
@@ -13025,10 +13046,8 @@ End
 		  
 		  If CurrentSet Is Nil Then Return
 		  
-		  Dim newGroup, newSetItem As XmlNode
-		  Dim xGroups As XmlNode
-		  
-		  xGroups = SmartML.GetNode(CurrentSet.DocumentElement, "slide_groups", True)
+		  Dim newGroup As XmlNode
+		  Dim xGroups As XmlNode = SmartML.GetNode(CurrentSet.DocumentElement, "slide_groups", True)
 		  
 		  If lst_set_items.ListIndex >= 0 Then
 		    newGroup = SmartML.InsertChild(xgroups, "slide_group", lst_set_items.ListIndex + 1)
@@ -13036,18 +13055,9 @@ End
 		    newGroup = SmartML.InsertChild(xgroups, "slide_group", lst_set_items.ListCount)
 		  End If
 		  
-		  newSetItem = SmartML.ReplaceWithImportNode(newGroup, scripture)
+		  Dim newSetItem As XmlNode = SmartML.ReplaceWithImportNode(newGroup, scripture)
 		  
-		  ' No need to EnableMenuItems, since the following selection change will call it
-		  
-		  If lst_set_items.ListIndex >= 0 Then
-		    lst_set_items.InsertRow lst_set_items.ListIndex + 1, SmartML.GetValue(newSetItem, "@name", True) + " " + App.T.Translate("sets_mode/items/scripture/@caption")
-		  Else
-		    lst_set_items.AddRow SmartML.GetValue(newSetItem, "@name", True) + " " + App.T.Translate("sets_mode/items/scripture/@caption")
-		  End If
-		  
-		  lst_set_items.ListIndex = lst_set_items.LastIndex
-		  
+		  ActionInSetAddSlide newSetItem
 		  
 		  Status_SetChanged = True
 		  Status_InSetChanged = False
@@ -14856,18 +14866,19 @@ End
 #tag Events btn_set_move_down
 	#tag Event
 		Sub Action()
-		  Dim index As Integer
-		  index = lst_set_items.ListIndex
+		  Dim index As Integer = lst_set_items.ListIndex
 		  
-		  Dim slide_groups As XmlNode
-		  slide_groups = SmartML.GetNode(CurrentSet.DocumentElement, "slide_groups", True)
+		  Dim slide_groups As XmlNode = SmartML.GetNode(CurrentSet.DocumentElement, "slide_groups", True)
 		  SmartML.SwapChildren slide_groups, index+1, index
 		  
-		  Dim temp As String
-		  temp = lst_set_items.List(lst_set_items.ListIndex)
+		  Dim tempCaption As String = lst_set_items.List(lst_set_items.ListIndex)
+		  Dim tempType As String = lst_set_items.CellTag(lst_set_items.ListIndex, 0)
 		  
 		  lst_set_items.List(lst_set_items.ListIndex) = lst_set_items.List(lst_set_items.ListIndex+1)
-		  lst_set_items.List(lst_set_items.ListIndex+1) = temp
+		  lst_set_items.CellTag(lst_set_items.ListIndex, 0) = lst_set_items.CellTag(lst_set_items.ListIndex+1, 0)
+		  lst_set_items.List(lst_set_items.ListIndex+1) = tempCaption
+		  lst_set_items.CellTag(lst_set_items.ListIndex+1, 0) = tempType
+		  
 		  lst_set_items.ListIndex = lst_set_items.ListIndex + 1
 		  
 		  Status_SetChanged = True
@@ -14915,23 +14926,24 @@ End
 #tag Events btn_set_move_up
 	#tag Event
 		Sub Action()
-		  Dim index As Integer
-		  index = lst_set_items.ListIndex
+		  Dim index As Integer = lst_set_items.ListIndex
 		  
-		  Dim slide_groups As XmlNode
-		  slide_groups = SmartML.GetNode(CurrentSet.DocumentElement, "slide_groups", True)
+		  Dim slide_groups As XmlNode = SmartML.GetNode(CurrentSet.DocumentElement, "slide_groups", True)
 		  SmartML.SwapChildren slide_groups, index, index-1
 		  
-		  Dim temp As String
+		  Dim tempCaption As String = lst_set_items.List(index-1)
+		  Dim tempType As String = lst_set_items.CellTag(index-1, 0)
 		  
-		  temp = lst_set_items.List(index-1)
 		  lst_set_items.List(index-1) = lst_set_items.List(index)
-		  lst_set_items.List(index) = temp
+		  lst_set_items.CellTag(index-1, 0) = lst_set_items.CellTag(index, 0)
+		  lst_set_items.List(index) = tempCaption
+		  lst_set_items.CellTag(index, 0) = tempType
 		  
 		  lst_set_items.ListIndex = lst_set_items.ListIndex - 1
 		  
 		  Status_SetChanged = True
 		  EnableMenuItems
+		  
 		End Sub
 	#tag EndEvent
 	#tag Event
@@ -15309,16 +15321,8 @@ End
 		  SmartML.SetValue newGroup, "@name", App.T.Translate("sets_mode/untitled/@caption")
 		  SmartML.SetValue newGroup, "@type", "custom"
 		  
-		  Status_SetChanged = True
-		  ' No need to EnableMenuItems, since the following selection change will call it
+		  ActionInSetAddSlide newGroup
 		  
-		  If lst_set_items.ListIndex >= 0 Then
-		    lst_set_items.InsertRow lst_set_items.ListIndex + 1, SmartML.GetValue(newGroup, "@name", True) + " " + App.T.Translate("sets_mode/items/custom/@caption")
-		    lst_set_items.ListIndex = lst_set_items.ListIndex + 1
-		  Else
-		    lst_set_items.AddRow SmartML.GetValue(newGroup, "@name", True) + " " + App.T.Translate("sets_mode/items/custom/@caption")
-		    lst_set_items.ListIndex = lst_set_items.ListCount - 1
-		  End If
 		End Sub
 	#tag EndEvent
 	#tag Event
@@ -15354,16 +15358,8 @@ End
 		  SmartML.SetValue newGroup, "@type", "style"
 		  SmartML.SetValue newGroup, "@action", "revert"
 		  
-		  Status_SetChanged = True
-		  ' No need to EnableMenuItems, since the following selection change will call it
+		  ActionInSetAddSlide newGroup
 		  
-		  If lst_set_items.ListIndex >= 0 Then
-		    lst_set_items.InsertRow Where, SmartML.GetValue(newGroup, "@name", True) + " " + App.T.Translate("sets_mode/items/revert/@caption")
-		  Else
-		    lst_set_items.AddRow SmartML.GetValue(newGroup, "@name", True) + " " + App.T.Translate("sets_mode/items/revert/@caption")
-		  End If
-		  
-		  lst_set_items.ListIndex = Where
 		End Sub
 	#tag EndEvent
 	#tag Event
@@ -15434,16 +15430,8 @@ End
 		  SmartML.SetValue newGroup, "@name", App.T.Translate("sets_mode/untitled/@caption")
 		  SmartML.SetValue newGroup, "@type", "image"
 		  
-		  Status_SetChanged = True
-		  ' No need to EnableMenuItems, since the following selection change will call it
+		  ActionInSetAddSlide newGroup
 		  
-		  If lst_set_items.ListIndex >= 0 Then
-		    lst_set_items.InsertRow lst_set_items.ListIndex + 1, SmartML.GetValue(newGroup, "@name", True) + " " + App.T.Translate("sets_mode/items/image/@caption")
-		    lst_set_items.ListIndex = lst_set_items.ListIndex + 1
-		  Else
-		    lst_set_items.AddRow SmartML.GetValue(newGroup, "@name", True) + " " + App.T.Translate("sets_mode/items/image/@caption")
-		    lst_set_items.ListIndex = lst_set_items.ListCount - 1
-		  End If
 		End Sub
 	#tag EndEvent
 #tag EndEvents
@@ -15467,16 +15455,7 @@ End
 		  SmartML.SetValue newGroup, "@name", App.T.Translate("sets_mode/untitled/@caption")
 		  SmartML.SetValue newGroup, "@type", "external"
 		  
-		  Status_SetChanged = True
-		  ' No need to EnableMenuItems, since the following selection change will call it
-		  
-		  If lst_set_items.ListIndex >= 0 Then
-		    lst_set_items.InsertRow lst_set_items.ListIndex + 1, SmartML.GetValue(newGroup, "@name", True) + " " + App.T.Translate("sets_mode/items/external/@caption")
-		    lst_set_items.ListIndex = lst_set_items.ListIndex + 1
-		  Else
-		    lst_set_items.AddRow SmartML.GetValue(newGroup, "@name", True) + " " + App.T.Translate("sets_mode/items/external/@caption")
-		    lst_set_items.ListIndex = lst_set_items.ListCount - 1
-		  End If
+		  ActionInSetAddSlide newGroup
 		  
 		End Sub
 	#tag EndEvent

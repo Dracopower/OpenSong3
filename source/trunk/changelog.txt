@@ -1,4 +1,6 @@
-﻿-= 2.1.1 =-
+﻿* Bug fix for No slide type coloring on new items, until refresh (bug #424) (Vwout)
+
+-= 2.1.1 =-
 
 * Make handling of verse, chorus, bridge, .. names more tolerant for case changes to prevent verse image backgrounds from not showing (Vwout)
 
