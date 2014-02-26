@@ -1,4 +1,6 @@
-﻿* Bug fix for No slide type coloring on new items, until refresh (bug #424) (Vwout)
+﻿* Fix issue where newly created song could not be selected in song list, if (All) or (Main) was in CelTag. (JRC)
+
+* Bug fix for No slide type coloring on new items, until refresh (bug #424) (Vwout)
 
 -= 2.1.1 =-
 

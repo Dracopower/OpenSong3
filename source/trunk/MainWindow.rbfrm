@@ -913,8 +913,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   True
-            BackColor       =   "&cFFFFFF00"
+            BackColor       =   &hFFFFFF
             Bold            =   False
             Border          =   True
             DataField       =   ""
@@ -929,8 +928,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Italic          =   False
             Left            =   10
             LimitText       =   0
-            LineHeight      =   0.0
-            LineSpacing     =   1.0
             LockBottom      =   True
             LockedInPosition=   False
             LockLeft        =   True
@@ -2637,8 +2634,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   True
-            BackColor       =   "&cFFFFFF00"
+            BackColor       =   &hFFFFFF
             Bold            =   False
             Border          =   True
             DataField       =   ""
@@ -2653,8 +2649,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Italic          =   False
             Left            =   535
             LimitText       =   0
-            LineHeight      =   0.0
-            LineSpacing     =   1.0
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   True
@@ -2685,8 +2679,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   True
-            BackColor       =   "&cFFFFFF00"
+            BackColor       =   &hFFFFFF
             Bold            =   False
             Border          =   True
             DataField       =   ""
@@ -2701,8 +2694,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Italic          =   False
             Left            =   675
             LimitText       =   0
-            LineHeight      =   0.0
-            LineSpacing     =   1.0
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   True
@@ -2764,8 +2755,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   True
-            BackColor       =   "&cFFFFFF00"
+            BackColor       =   &hFFFFFF
             Bold            =   False
             Border          =   True
             DataField       =   ""
@@ -2780,8 +2770,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Italic          =   False
             Left            =   535
             LimitText       =   0
-            LineHeight      =   0.0
-            LineSpacing     =   1.0
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   True
@@ -2880,8 +2868,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   True
-            BackColor       =   "&cFFFFFF00"
+            BackColor       =   &hFFFFFF
             Bold            =   False
             Border          =   True
             DataField       =   ""
@@ -2896,8 +2883,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Italic          =   False
             Left            =   535
             LimitText       =   0
-            LineHeight      =   0.0
-            LineSpacing     =   1.0
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   True
@@ -2928,8 +2913,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   True
-            BackColor       =   "&cFFFFFF00"
+            BackColor       =   &hFFFFFF
             Bold            =   False
             Border          =   True
             DataField       =   ""
@@ -2944,8 +2928,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Italic          =   False
             Left            =   535
             LimitText       =   0
-            LineHeight      =   0.0
-            LineSpacing     =   1.0
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   True
@@ -2976,8 +2958,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   True
-            BackColor       =   "&cFFFFFF00"
+            BackColor       =   &hFFFFFF
             Bold            =   False
             Border          =   True
             DataField       =   ""
@@ -2992,8 +2973,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Italic          =   False
             Left            =   535
             LimitText       =   0
-            LineHeight      =   0.0
-            LineSpacing     =   1.0
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   True
@@ -3786,8 +3765,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   True
-            BackColor       =   "&cFFFFFF00"
+            BackColor       =   &hFFFFFF
             Bold            =   False
             Border          =   True
             DataField       =   ""
@@ -3802,8 +3780,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Italic          =   False
             Left            =   270
             LimitText       =   0
-            LineHeight      =   0.0
-            LineSpacing     =   1.0
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   True
@@ -3834,7 +3810,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   True
             BackColor       =   &h00FFFFFF
             Bold            =   False
             Border          =   True
@@ -3850,8 +3825,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Italic          =   False
             Left            =   270
             LimitText       =   0
-            LineHeight      =   0.0
-            LineSpacing     =   1.0
             LockBottom      =   True
             LockedInPosition=   False
             LockLeft        =   True
@@ -4122,8 +4095,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   True
-            BackColor       =   "&cFFFFFF00"
+            BackColor       =   &hFFFFFF
             Bold            =   False
             Border          =   True
             DataField       =   ""
@@ -4138,8 +4110,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Italic          =   False
             Left            =   505
             LimitText       =   0
-            LineHeight      =   0.0
-            LineSpacing     =   1.0
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   True
@@ -4170,8 +4140,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   True
-            BackColor       =   "&cFFFFFF00"
+            BackColor       =   &hFFFFFF
             Bold            =   False
             Border          =   True
             DataField       =   ""
@@ -4186,8 +4155,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Italic          =   False
             Left            =   625
             LimitText       =   0
-            LineHeight      =   0.0
-            LineSpacing     =   1.0
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   True
@@ -4218,8 +4185,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   True
-            BackColor       =   "&cFFFFFF00"
+            BackColor       =   &hFFFFFF
             Bold            =   False
             Border          =   True
             DataField       =   ""
@@ -4234,8 +4200,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Italic          =   False
             Left            =   505
             LimitText       =   0
-            LineHeight      =   0.0
-            LineSpacing     =   1.0
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   True
@@ -4266,8 +4230,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   True
-            BackColor       =   "&cFFFFFF00"
+            BackColor       =   &hFFFFFF
             Bold            =   False
             Border          =   True
             DataField       =   ""
@@ -4282,8 +4245,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Italic          =   False
             Left            =   270
             LimitText       =   0
-            LineHeight      =   0.0
-            LineSpacing     =   1.0
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   True
@@ -4457,8 +4418,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   True
-            BackColor       =   "&cFFFFFF00"
+            BackColor       =   &hFFFFFF
             Bold            =   False
             Border          =   True
             DataField       =   ""
@@ -4473,8 +4433,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Italic          =   False
             Left            =   590
             LimitText       =   0
-            LineHeight      =   0.0
-            LineSpacing     =   1.0
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   False
@@ -4666,8 +4624,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   True
-            BackColor       =   "&cFFFFFF00"
+            BackColor       =   &hFFFFFF
             Bold            =   False
             Border          =   True
             DataField       =   ""
@@ -4682,8 +4639,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Italic          =   False
             Left            =   756
             LimitText       =   0
-            LineHeight      =   0.0
-            LineSpacing     =   1.0
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   False
@@ -4809,8 +4764,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   True
-            BackColor       =   "&cFFFFFF00"
+            BackColor       =   &hFFFFFF
             Bold            =   False
             Border          =   True
             DataField       =   ""
@@ -4825,8 +4779,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Italic          =   False
             Left            =   453
             LimitText       =   0
-            LineHeight      =   0.0
-            LineSpacing     =   1.0
             LockBottom      =   True
             LockedInPosition=   False
             LockLeft        =   True
@@ -4993,8 +4945,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   True
-            BackColor       =   "&cFFFFFF00"
+            BackColor       =   &hFFFFFF
             Bold            =   False
             Border          =   True
             DataField       =   ""
@@ -5009,8 +4960,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Italic          =   False
             Left            =   270
             LimitText       =   0
-            LineHeight      =   0.0
-            LineSpacing     =   1.0
             LockBottom      =   True
             LockedInPosition=   False
             LockLeft        =   True
@@ -5245,8 +5194,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   True
-            BackColor       =   "&cFFFFFF00"
+            BackColor       =   &hFFFFFF
             Bold            =   False
             Border          =   True
             DataField       =   ""
@@ -5261,8 +5209,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Italic          =   False
             Left            =   430
             LimitText       =   0
-            LineHeight      =   0.0
-            LineSpacing     =   1.0
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   True
@@ -5293,8 +5239,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   True
-            BackColor       =   "&cFFFFFF00"
+            BackColor       =   &hFFFFFF
             Bold            =   False
             Border          =   True
             DataField       =   ""
@@ -5309,8 +5254,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Italic          =   False
             Left            =   270
             LimitText       =   0
-            LineHeight      =   0.0
-            LineSpacing     =   1.0
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   True
@@ -5341,8 +5284,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   True
-            BackColor       =   "&cFFFFFF00"
+            BackColor       =   &hFFFFFF
             Bold            =   False
             Border          =   True
             DataField       =   ""
@@ -5357,8 +5299,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Italic          =   False
             Left            =   590
             LimitText       =   0
-            LineHeight      =   0.0
-            LineSpacing     =   1.0
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   True
@@ -5389,8 +5329,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   True
-            BackColor       =   "&cFFFFFF00"
+            BackColor       =   &hFFFFFF
             Bold            =   False
             Border          =   True
             DataField       =   ""
@@ -5405,8 +5344,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Italic          =   False
             Left            =   270
             LimitText       =   0
-            LineHeight      =   0.0
-            LineSpacing     =   1.0
             LockBottom      =   True
             LockedInPosition=   False
             LockLeft        =   True
@@ -5437,8 +5374,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   True
-            BackColor       =   "&cFFFFFF00"
+            BackColor       =   &hFFFFFF
             Bold            =   False
             Border          =   True
             DataField       =   ""
@@ -5453,8 +5389,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Italic          =   False
             Left            =   270
             LimitText       =   0
-            LineHeight      =   0.0
-            LineSpacing     =   1.0
             LockBottom      =   True
             LockedInPosition=   False
             LockLeft        =   True
@@ -5515,8 +5449,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   True
-            BackColor       =   "&cFFFFFF00"
+            BackColor       =   &hFFFFFF
             Bold            =   False
             Border          =   True
             DataField       =   ""
@@ -5531,8 +5464,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Italic          =   False
             Left            =   270
             LimitText       =   0
-            LineHeight      =   0.0
-            LineSpacing     =   1.0
             LockBottom      =   True
             LockedInPosition=   False
             LockLeft        =   True
@@ -6145,8 +6076,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   True
-            BackColor       =   "&cFFFFFF00"
+            BackColor       =   &hFFFFFF
             Bold            =   False
             Border          =   True
             DataField       =   ""
@@ -6161,8 +6091,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Italic          =   False
             Left            =   756
             LimitText       =   0
-            LineHeight      =   0.0
-            LineSpacing     =   1.0
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   False
@@ -6293,8 +6221,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   True
-            BackColor       =   "&cFFFFFF00"
+            BackColor       =   &hFFFFFF
             Bold            =   False
             Border          =   True
             DataField       =   ""
@@ -6309,8 +6236,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Italic          =   False
             Left            =   270
             LimitText       =   0
-            LineHeight      =   0.0
-            LineSpacing     =   1.0
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   True
@@ -6369,8 +6294,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   True
-            BackColor       =   "&cFFFFFF00"
+            BackColor       =   &hFFFFFF
             Bold            =   False
             Border          =   True
             DataField       =   ""
@@ -6385,8 +6309,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Italic          =   False
             Left            =   430
             LimitText       =   0
-            LineHeight      =   0.0
-            LineSpacing     =   1.0
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   True
@@ -6417,8 +6339,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   True
-            BackColor       =   "&cFFFFFF00"
+            BackColor       =   &hFFFFFF
             Bold            =   False
             Border          =   True
             DataField       =   ""
@@ -6433,8 +6354,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Italic          =   False
             Left            =   590
             LimitText       =   0
-            LineHeight      =   0.0
-            LineSpacing     =   1.0
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   True
@@ -6517,8 +6436,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   True
-            BackColor       =   "&cFFFFFF00"
+            BackColor       =   &hFFFFFF
             Bold            =   False
             Border          =   True
             DataField       =   ""
@@ -6533,8 +6451,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Italic          =   False
             Left            =   270
             LimitText       =   0
-            LineHeight      =   0.0
-            LineSpacing     =   1.0
             LockBottom      =   True
             LockedInPosition=   False
             LockLeft        =   True
@@ -6910,8 +6826,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   True
-            BackColor       =   "&cFFFFFF00"
+            BackColor       =   &hFFFFFF
             Bold            =   False
             Border          =   True
             DataField       =   ""
@@ -6926,8 +6841,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Italic          =   False
             Left            =   270
             LimitText       =   0
-            LineHeight      =   0.0
-            LineSpacing     =   1.0
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   True
@@ -6958,8 +6871,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   True
-            BackColor       =   "&cFFFFFF00"
+            BackColor       =   &hFFFFFF
             Bold            =   False
             Border          =   True
             DataField       =   ""
@@ -6974,8 +6886,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Italic          =   False
             Left            =   270
             LimitText       =   0
-            LineHeight      =   0.0
-            LineSpacing     =   1.0
             LockBottom      =   True
             LockedInPosition=   False
             LockLeft        =   True
@@ -7360,7 +7270,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                   AcceptTabs      =   False
                   Alignment       =   0
                   AutoDeactivate  =   True
-                  AutomaticallyCheckSpelling=   True
                   BackColor       =   "&cFFFFFF00"
                   Bold            =   False
                   Border          =   True
@@ -7376,8 +7285,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Italic          =   False
                   Left            =   285
                   LimitText       =   0
-                  LineHeight      =   0.0
-                  LineSpacing     =   1.0
                   LockBottom      =   False
                   LockedInPosition=   False
                   LockLeft        =   True
@@ -7727,7 +7634,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                   AcceptTabs      =   False
                   Alignment       =   0
                   AutoDeactivate  =   True
-                  AutomaticallyCheckSpelling=   True
                   BackColor       =   "&cFFFFFF00"
                   Bold            =   False
                   Border          =   True
@@ -7743,8 +7649,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Italic          =   False
                   Left            =   305
                   LimitText       =   0
-                  LineHeight      =   0.0
-                  LineSpacing     =   1.0
                   LockBottom      =   False
                   LockedInPosition=   False
                   LockLeft        =   True
@@ -7775,7 +7679,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                   AcceptTabs      =   False
                   Alignment       =   0
                   AutoDeactivate  =   True
-                  AutomaticallyCheckSpelling=   True
                   BackColor       =   "&cFFFFFF00"
                   Bold            =   False
                   Border          =   True
@@ -7791,8 +7694,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Italic          =   False
                   Left            =   305
                   LimitText       =   0
-                  LineHeight      =   0.0
-                  LineSpacing     =   1.0
                   LockBottom      =   False
                   LockedInPosition=   False
                   LockLeft        =   True
@@ -8047,8 +7948,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   AcceptTabs      =   False
                   Alignment       =   0
                   AutoDeactivate  =   True
-                  AutomaticallyCheckSpelling=   True
-                  BackColor       =   "&cFFFFFF00"
+                  BackColor       =   &hFFFFFF
                   Bold            =   False
                   Border          =   True
                   DataField       =   ""
@@ -8063,8 +7963,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Italic          =   False
                   Left            =   305
                   LimitText       =   0
-                  LineHeight      =   0.0
-                  LineSpacing     =   1.0
                   LockBottom      =   False
                   LockedInPosition=   False
                   LockLeft        =   True
@@ -8226,8 +8124,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   AcceptTabs      =   False
                   Alignment       =   0
                   AutoDeactivate  =   True
-                  AutomaticallyCheckSpelling=   True
-                  BackColor       =   "&cFFFFFF00"
+                  BackColor       =   &hFFFFFF
                   Bold            =   False
                   Border          =   True
                   DataField       =   ""
@@ -8242,8 +8139,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Italic          =   False
                   Left            =   305
                   LimitText       =   0
-                  LineHeight      =   0.0
-                  LineSpacing     =   1.0
                   LockBottom      =   True
                   LockedInPosition=   False
                   LockLeft        =   True
@@ -8778,7 +8673,7 @@ End
 	#tag EndEvent
 
 	#tag Event
-		Sub Paint(g As Graphics, areas() As REALbasic.Rect)
+		Sub Paint(g As Graphics)
 		  ' left side
 		  g.ForeColor = DarkBevelColor
 		  g.FillOval 3, 9, 2, 2
@@ -12654,6 +12549,8 @@ End
 	#tag Method, Flags = &h0
 		Function LoadSong(f As FolderItem, updateFolderSelection As Boolean = False) As Boolean
 		  Dim result As Boolean = False
+		  Dim CelTag As String
+		  
 		  
 		  If Status_InSongLoading Then
 		    Return result
@@ -12713,7 +12610,9 @@ End
 		      index = -1
 		      
 		      For i As Integer = 0 To lst_songs_songs.ListCount-1
-		        If lst_songs_songs.CellTag(i, 0).StringValue = folderPath And _
+		        CelTag = lst_songs_songs.CellTag(i, 0).StringValue
+		        CelTag = Songs.CleanPath(CelTag)
+		        If CelTag  = folderPath And _
 		          lst_songs_songs.List(i) = f.Name Then
 		          index = i
 		          Exit

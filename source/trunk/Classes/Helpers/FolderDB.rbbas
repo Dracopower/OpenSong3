@@ -126,8 +126,8 @@ Protected Class FolderDB
 		End Function
 	#tag EndMethod
 
-	#tag Method, Flags = &h1
-		Protected Function CleanPath(path As String) As String
+	#tag Method, Flags = &h0
+		Function CleanPath(path As String) As String
 		  path = ReplaceAll(path, FilterAll + "/", "")
 		  path = ReplaceAll(path, FilterMain, "")
 		  Return path
