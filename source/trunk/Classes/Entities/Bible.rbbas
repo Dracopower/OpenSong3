@@ -608,8 +608,12 @@ Implements iBible
 		    end try
 		    Return
 		  Else
-		    out = TextOutputStream.Create(newFile)
-		    If Not newFile.Exists Then
+		    Try
+		      out = TextOutputStream.Create(newFile)
+		    Catch e as IOException
+		      out = Nil
+		    End Try
+		    If Not newFile.Exists Or out = Nil Then
 		      ShouldGenerateIndex = False
 		      App.DebugWriter.Write "Bible.genindex: Exit (can't create index file), errorcode is " + CStr(newFile.LastErrorCode)
 		      Return

@@ -188,12 +188,17 @@ Class plist
 
 	#tag Method, Flags = &h0
 		Sub Save(clean as boolean)
-		  dim o As TextOutputStream
+		  dim o As TextOutputStream = Nil
 		  dim count As integer
 		  dim path As string
 		  dim sh As shell
 		  
-		  o=TextOutputStream.Create(savePath)
+		  Try
+		    o=TextOutputStream.Create(savePath)
+		  Catch e as IOException
+		    o = Nil
+		  End Try
+		  
 		  if o<>nil then
 		    for count=1 to ubound(headers)
 		      o.WriteLine headers(count)
@@ -204,8 +209,13 @@ Class plist
 		    o.close
 		  else
 		    error=true
-		    errorMessage="Could not open file for saving"
+		    If App.T Is Nil Then
+		      errorMessage = "Could not open preferences file for saving"
+		    Else
+		      errorMessage = App.T.Translate("smartml/cant_create", "Could not open preferences file for saving: %s", savePath.AbsolutePath)
+		    End If
 		  end
+		  
 		  if isBinary then
 		    path=savePath.ShellPath
 		    sh=new shell

@@ -48,7 +48,7 @@ Protected Module SmartML
 		    '++JRC Translated
 		    MsgBox(TranslateMessage("smartml/attrib_except", "Exception with attribute %s, %s", attribName, xnode.ToString))
 		    '--
-		    Return default 
+		    Return default
 		  End Try
 		  
 		  //--
@@ -116,7 +116,7 @@ Protected Module SmartML
 
 	#tag Method, Flags = &h1
 		Protected Function GetValue(xnode As XmlNode, childPath As String, create As Boolean = True, default As String = "") As String
-		  If xnode = Nil Then Return default 
+		  If xnode = Nil Then Return default
 		  
 		  Dim atPos As Integer
 		  atPos = InStr(childPath, "@")
@@ -130,10 +130,10 @@ Protected Module SmartML
 		    If xnode.ChildCount > 0 Then
 		      Return xnode.Child(0).Value
 		    Else
-		      Return default 
+		      Return default
 		    End If
 		  Else
-		    Return default 
+		    Return default
 		  End If
 		  
 		End Function
@@ -661,9 +661,13 @@ Protected Module SmartML
 		    Return False
 		  End If
 		  
-		  Dim output As TextOutputStream
+		  Dim output As TextOutputStream = Nil
 		  'xdoc.Encoding = "ISO-8859-1"
-		  output = TextOutputStream.Create(f)
+		  Try
+		    output = TextOutputStream.Create(f)
+		  Catch e as IOException
+		    output = Nil
+		  End Try
 		  If output <> Nil Then
 		    output.Write XDocToString(xdoc).FormatLocalEndOfLine
 		    output.Close
