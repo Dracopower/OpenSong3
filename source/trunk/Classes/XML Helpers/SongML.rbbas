@@ -1452,44 +1452,46 @@ Module SongML
 		  section = "default"
 		  
 		  lyrics = SmartML.GetValue(songElement, "lyrics", True)
-		  lyrics = lyrics + Chr(10)
 		  lyrics = RemoveSpecialChars(lyrics)
 		  strlen = Len(lyrics)
-		  If strlen <= 0 Then Exit
 		  
-		  st = 1
-		  For x = 1 To strlen
-		    If Mid(lyrics, x, 1) = Chr(10) Then
-		      '++JRC: Fixed, RTrim thinks "à" is a whitespace character?
-		      line = StringUtils.RTrim(Mid(lyrics, st, x-st), StringUtils.WhiteSpaces)
-		      '--
-		      If Left(line, 1) = "[" Then
-		        section = Mid(line, 2, Instr(2, line, "]") - 2)
-		      ElseIf Left(line, 1) = "." Then // Chord
-		      ElseIf Left(line, 1) = ";" Then // Comment
-		      ElseIf Left(line, 1) = "-" Then // Page layout command [Bug 1515605]
-		      Else
-		        subsection = Trim(Left(line, 1))
-		        If Len(subsection) > 0 And section = "default" Then
-		        Else
-		          subsection = section + subsection
-		        End If
-		        '++JRC: Same Here
-		        line = StringUtils.Trim(Mid(line, 2), StringUtils.WhiteSpaces)
+		  If strlen > 0 Then
+		    lyrics = lyrics + Chr(10)
+		    
+		    st = 1
+		    For x = 1 To strlen
+		      If Mid(lyrics, x, 1) = Chr(10) Then
+		        '++JRC: Fixed, RTrim thinks "à" is a whitespace character?
+		        line = StringUtils.RTrim(Mid(lyrics, st, x-st), StringUtils.WhiteSpaces)
 		        '--
-		        If Len(line) > 0 Then
-		          If dict.HasKey(subsection) Then
-		            dict.Value(subsection) = dict.Value(subsection) + Chr(10) + line
+		        If Left(line, 1) = "[" Then
+		          section = Mid(line, 2, Instr(2, line, "]") - 2)
+		        ElseIf Left(line, 1) = "." Then // Chord
+		        ElseIf Left(line, 1) = ";" Then // Comment
+		        ElseIf Left(line, 1) = "-" Then // Page layout command [Bug 1515605]
+		        Else
+		          subsection = Trim(Left(line, 1))
+		          If Len(subsection) > 0 And section = "default" Then
 		          Else
-		            dict.Value(subsection) = line
-		            order = order + subsection + "|"
+		            subsection = section + subsection
+		          End If
+		          '++JRC: Same Here
+		          line = StringUtils.Trim(Mid(line, 2), StringUtils.WhiteSpaces)
+		          '--
+		          If Len(line) > 0 Then
+		            If dict.HasKey(subsection) Then
+		              dict.Value(subsection) = dict.Value(subsection) + Chr(10) + line
+		            Else
+		              dict.Value(subsection) = line
+		              order = order + subsection + "|"
+		            End If
 		          End If
 		        End If
+		        st = x + 1
 		      End If
-		      st = x + 1
-		    End If
-		  Next x
-		  order = Left(order, Len(order)-1) //This deletes the trailing vertical bar
+		    Next x
+		    order = Left(order, Len(order)-1) //This deletes the trailing vertical bar
+		  End If
 		End Sub
 	#tag EndMethod
 
@@ -1521,19 +1523,16 @@ Module SongML
 
 	#tag Method, Flags = &h1
 		Protected Function RemoveSpecialChars(lyrics As String) As String
-		  Dim replaceChars As String
-		  Dim i As Integer
-		  Dim cLen As Integer
-		  Dim charToReplace As String
 		  Const kLowerMacron = &H02CD
 		  Const kUndertie = &H203F
 		  
-		  replaceChars = App.MainPreferences.GetValue(prefs.kLyricsReplaceWithSpace, _
+		  Dim replaceChars As String = App.MainPreferences.GetValue(prefs.kLyricsReplaceWithSpace, _
 		  Encodings.UTF8.Chr(kLowerMacron) + Encodings.UTF8.Chr(kUndertie))
+		  Dim cLen As Integer = replaceChars.Len
 		  
-		  cLen = replaceChars.Len
+		  lyrics = ConvertEncoding(lyrics, Encodings.UTF8)
 		  
-		  For i = 1 To cLen
+		  For i As Integer = 1 To cLen
 		    Lyrics = ReplaceAll(lyrics, replaceChars.Mid(i, 1), " ")
 		  Next
 		  
@@ -2311,33 +2310,33 @@ Module SongML
 			Visible=true
 			Group="ID"
 			InitialValue="-2147483648"
-			InheritedFrom="Object"
+			Type="Integer"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Left"
 			Visible=true
 			Group="Position"
 			InitialValue="0"
-			InheritedFrom="Object"
+			Type="Integer"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Name"
 			Visible=true
 			Group="ID"
-			InheritedFrom="Object"
+			Type="String"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Super"
 			Visible=true
 			Group="ID"
-			InheritedFrom="Object"
+			Type="String"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Top"
 			Visible=true
 			Group="Position"
 			InitialValue="0"
-			InheritedFrom="Object"
+			Type="Integer"
 		#tag EndViewProperty
 	#tag EndViewBehavior
 End Module

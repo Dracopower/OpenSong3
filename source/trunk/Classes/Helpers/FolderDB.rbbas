@@ -128,8 +128,18 @@ Protected Class FolderDB
 
 	#tag Method, Flags = &h0
 		Function CleanPath(path As String) As String
-		  path = ReplaceAll(path, FilterAll + "/", "")
-		  path = ReplaceAll(path, FilterMain, "")
+		  If path.InStr(FilterAll + "/") > 0 Then
+		    path = ReplaceAll(path, FilterAll + "/", "")
+		  Else
+		    path = ReplaceAll(path, FilterAll, "")
+		  End If
+		  
+		  If path.InStr(FilterMain + "/") > 0 Then
+		    path = ReplaceAll(path, FilterMain + "/", "")
+		  Else
+		    path = ReplaceAll(path, FilterMain, "")
+		  End If
+		  
 		  Return path
 		End Function
 	#tag EndMethod
@@ -1095,20 +1105,20 @@ Protected Class FolderDB
 			Visible=true
 			Group="ID"
 			InitialValue="2147483648"
-			InheritedFrom="Object"
+			Type="Integer"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Left"
 			Visible=true
 			Group="Position"
 			InitialValue="0"
-			InheritedFrom="Object"
+			Type="Integer"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Name"
 			Visible=true
 			Group="ID"
-			InheritedFrom="Object"
+			Type="String"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="NumFiles"
@@ -1120,14 +1130,14 @@ Protected Class FolderDB
 			Name="Super"
 			Visible=true
 			Group="ID"
-			InheritedFrom="Object"
+			Type="String"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Top"
 			Visible=true
 			Group="Position"
 			InitialValue="0"
-			InheritedFrom="Object"
+			Type="Integer"
 		#tag EndViewProperty
 	#tag EndViewBehavior
 End Class
