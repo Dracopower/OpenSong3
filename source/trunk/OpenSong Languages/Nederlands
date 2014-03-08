@@ -1121,7 +1121,7 @@ Als het Presentatie veld leeg is, ordend de Presentatie de dia's gebaseerd op de
   </import_from_ccli>
 
   <find_image title="Zoek afbeelding">
-    <parent caption="(Parent)"/>
+    <parent caption="(Hoger)"/>
   </find_image>
   <input_box title="OpenSong"/>
 

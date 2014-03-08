@@ -1,33 +1,35 @@
 #tag Window
 Begin Window ImageChooserWindow
-   BackColor       =   16777215
+   BackColor       =   &cFFFFFF00
    Backdrop        =   0
    CloseButton     =   True
+   Compatibility   =   ""
    Composite       =   False
    Frame           =   1
    FullScreen      =   False
+   FullScreenButton=   False
    HasBackColor    =   False
    Height          =   390
    ImplicitInstance=   True
    LiveResize      =   False
    MacProcID       =   0
    MaxHeight       =   32000
-   MaximizeButton  =   True
+   MaximizeButton  =   False
    MaxWidth        =   32000
    MenuBar         =   0
    MenuBarVisible  =   True
    MinHeight       =   64
-   MinimizeButton  =   True
+   MinimizeButton  =   False
    MinWidth        =   64
    Placement       =   0
-   Resizeable      =   True
+   Resizeable      =   False
    Title           =   "Find Image"
    Visible         =   True
    Width           =   475
    Begin PushButton btn_browse
       AutoDeactivate  =   True
       Bold            =   False
-      ButtonStyle     =   0
+      ButtonStyle     =   "0"
       Cancel          =   False
       Caption         =   "Browse..."
       Default         =   False
@@ -48,7 +50,7 @@ Begin Window ImageChooserWindow
       TabPanelIndex   =   0
       TabStop         =   True
       TextFont        =   "Arial"
-      TextSize        =   10
+      TextSize        =   10.0
       TextUnit        =   0
       Top             =   340
       Underline       =   False
@@ -58,7 +60,7 @@ Begin Window ImageChooserWindow
    Begin PushButton btn_cancel
       AutoDeactivate  =   True
       Bold            =   False
-      ButtonStyle     =   0
+      ButtonStyle     =   "0"
       Cancel          =   True
       Caption         =   "Cancel"
       Default         =   False
@@ -79,7 +81,7 @@ Begin Window ImageChooserWindow
       TabPanelIndex   =   0
       TabStop         =   True
       TextFont        =   "Arial"
-      TextSize        =   10
+      TextSize        =   10.0
       TextUnit        =   0
       Top             =   340
       Underline       =   False
@@ -98,22 +100,21 @@ Begin Window ImageChooserWindow
       InitialParent   =   ""
       Italic          =   True
       Left            =   10
-      LockBottom      =   False
+      LockBottom      =   True
       LockedInPosition=   False
       LockLeft        =   True
-      LockRight       =   False
-      LockTop         =   True
+      LockRight       =   True
+      LockTop         =   False
       Multiline       =   False
       Scope           =   0
       Selectable      =   False
       TabIndex        =   2
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   ""
       TextAlign       =   1
-      TextColor       =   0
+      TextColor       =   &c00000000
       TextFont        =   "Arial"
-      TextSize        =   10
+      TextSize        =   10.0
       TextUnit        =   0
       Top             =   365
       Transparent     =   False
@@ -143,7 +144,7 @@ Begin Window ImageChooserWindow
       Width           =   475
    End
    Begin ScrollBar scr_vertical
-      AcceptFocus     =   true
+      AcceptFocus     =   True
       AutoDeactivate  =   True
       Enabled         =   True
       Height          =   328
@@ -193,6 +194,7 @@ Begin Window ImageChooserWindow
       TabPanelIndex   =   0
       TabStop         =   True
       Top             =   10
+      Transparent     =   True
       UseFocusRing    =   True
       Visible         =   True
       Width           =   80
@@ -220,6 +222,7 @@ Begin Window ImageChooserWindow
       TabPanelIndex   =   0
       TabStop         =   True
       Top             =   10
+      Transparent     =   True
       UseFocusRing    =   True
       Visible         =   True
       Width           =   80
@@ -247,6 +250,7 @@ Begin Window ImageChooserWindow
       TabPanelIndex   =   0
       TabStop         =   True
       Top             =   10
+      Transparent     =   True
       UseFocusRing    =   True
       Visible         =   True
       Width           =   80
@@ -274,6 +278,7 @@ Begin Window ImageChooserWindow
       TabPanelIndex   =   0
       TabStop         =   True
       Top             =   10
+      Transparent     =   True
       UseFocusRing    =   True
       Visible         =   True
       Width           =   80
@@ -301,6 +306,7 @@ Begin Window ImageChooserWindow
       TabPanelIndex   =   0
       TabStop         =   True
       Top             =   10
+      Transparent     =   True
       UseFocusRing    =   True
       Visible         =   True
       Width           =   80
@@ -328,6 +334,7 @@ Begin Window ImageChooserWindow
       TabPanelIndex   =   0
       TabStop         =   True
       Top             =   90
+      Transparent     =   True
       UseFocusRing    =   True
       Visible         =   True
       Width           =   80
@@ -355,6 +362,7 @@ Begin Window ImageChooserWindow
       TabPanelIndex   =   0
       TabStop         =   True
       Top             =   90
+      Transparent     =   True
       UseFocusRing    =   True
       Visible         =   True
       Width           =   80
@@ -382,6 +390,7 @@ Begin Window ImageChooserWindow
       TabPanelIndex   =   0
       TabStop         =   True
       Top             =   90
+      Transparent     =   True
       UseFocusRing    =   True
       Visible         =   True
       Width           =   80
@@ -409,6 +418,7 @@ Begin Window ImageChooserWindow
       TabPanelIndex   =   0
       TabStop         =   True
       Top             =   90
+      Transparent     =   True
       UseFocusRing    =   True
       Visible         =   True
       Width           =   80
@@ -436,6 +446,7 @@ Begin Window ImageChooserWindow
       TabPanelIndex   =   0
       TabStop         =   True
       Top             =   90
+      Transparent     =   True
       UseFocusRing    =   True
       Visible         =   True
       Width           =   80
@@ -463,6 +474,7 @@ Begin Window ImageChooserWindow
       TabPanelIndex   =   0
       TabStop         =   True
       Top             =   170
+      Transparent     =   True
       UseFocusRing    =   True
       Visible         =   True
       Width           =   80
@@ -490,6 +502,7 @@ Begin Window ImageChooserWindow
       TabPanelIndex   =   0
       TabStop         =   True
       Top             =   170
+      Transparent     =   True
       UseFocusRing    =   True
       Visible         =   True
       Width           =   80
@@ -517,6 +530,7 @@ Begin Window ImageChooserWindow
       TabPanelIndex   =   0
       TabStop         =   True
       Top             =   170
+      Transparent     =   True
       UseFocusRing    =   True
       Visible         =   True
       Width           =   80
@@ -544,6 +558,7 @@ Begin Window ImageChooserWindow
       TabPanelIndex   =   0
       TabStop         =   True
       Top             =   170
+      Transparent     =   True
       UseFocusRing    =   True
       Visible         =   True
       Width           =   80
@@ -571,6 +586,7 @@ Begin Window ImageChooserWindow
       TabPanelIndex   =   0
       TabStop         =   True
       Top             =   170
+      Transparent     =   True
       UseFocusRing    =   True
       Visible         =   True
       Width           =   80
@@ -598,6 +614,7 @@ Begin Window ImageChooserWindow
       TabPanelIndex   =   0
       TabStop         =   True
       Top             =   250
+      Transparent     =   True
       UseFocusRing    =   True
       Visible         =   True
       Width           =   80
@@ -625,6 +642,7 @@ Begin Window ImageChooserWindow
       TabPanelIndex   =   0
       TabStop         =   True
       Top             =   250
+      Transparent     =   True
       UseFocusRing    =   True
       Visible         =   True
       Width           =   80
@@ -652,6 +670,7 @@ Begin Window ImageChooserWindow
       TabPanelIndex   =   0
       TabStop         =   True
       Top             =   250
+      Transparent     =   True
       UseFocusRing    =   True
       Visible         =   True
       Width           =   80
@@ -679,6 +698,7 @@ Begin Window ImageChooserWindow
       TabPanelIndex   =   0
       TabStop         =   True
       Top             =   250
+      Transparent     =   True
       UseFocusRing    =   True
       Visible         =   True
       Width           =   80
@@ -706,6 +726,7 @@ Begin Window ImageChooserWindow
       TabPanelIndex   =   0
       TabStop         =   True
       Top             =   250
+      Transparent     =   True
       UseFocusRing    =   True
       Visible         =   True
       Width           =   80
@@ -732,12 +753,11 @@ Begin Window ImageChooserWindow
       Selectable      =   False
       TabIndex        =   25
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "file name"
       TextAlign       =   0
-      TextColor       =   0
+      TextColor       =   &c00000000
       TextFont        =   "Arial"
-      TextSize        =   10
+      TextSize        =   10.0
       TextUnit        =   0
       Top             =   70
       Transparent     =   False
@@ -767,12 +787,11 @@ Begin Window ImageChooserWindow
       Selectable      =   False
       TabIndex        =   26
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "file name"
       TextAlign       =   0
-      TextColor       =   0
+      TextColor       =   &c00000000
       TextFont        =   "Arial"
-      TextSize        =   10
+      TextSize        =   10.0
       TextUnit        =   0
       Top             =   70
       Transparent     =   False
@@ -802,12 +821,11 @@ Begin Window ImageChooserWindow
       Selectable      =   False
       TabIndex        =   27
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "file name"
       TextAlign       =   0
-      TextColor       =   0
+      TextColor       =   &c00000000
       TextFont        =   "Arial"
-      TextSize        =   10
+      TextSize        =   10.0
       TextUnit        =   0
       Top             =   70
       Transparent     =   False
@@ -837,12 +855,11 @@ Begin Window ImageChooserWindow
       Selectable      =   False
       TabIndex        =   28
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "file name"
       TextAlign       =   0
-      TextColor       =   0
+      TextColor       =   &c00000000
       TextFont        =   "Arial"
-      TextSize        =   10
+      TextSize        =   10.0
       TextUnit        =   0
       Top             =   70
       Transparent     =   False
@@ -872,12 +889,11 @@ Begin Window ImageChooserWindow
       Selectable      =   False
       TabIndex        =   29
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "file name"
       TextAlign       =   0
-      TextColor       =   0
+      TextColor       =   &c00000000
       TextFont        =   "Arial"
-      TextSize        =   10
+      TextSize        =   10.0
       TextUnit        =   0
       Top             =   70
       Transparent     =   False
@@ -907,12 +923,11 @@ Begin Window ImageChooserWindow
       Selectable      =   False
       TabIndex        =   30
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "file name"
       TextAlign       =   0
-      TextColor       =   0
+      TextColor       =   &c00000000
       TextFont        =   "Arial"
-      TextSize        =   10
+      TextSize        =   10.0
       TextUnit        =   0
       Top             =   150
       Transparent     =   False
@@ -942,12 +957,11 @@ Begin Window ImageChooserWindow
       Selectable      =   False
       TabIndex        =   31
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "file name"
       TextAlign       =   0
-      TextColor       =   0
+      TextColor       =   &c00000000
       TextFont        =   "Arial"
-      TextSize        =   10
+      TextSize        =   10.0
       TextUnit        =   0
       Top             =   150
       Transparent     =   False
@@ -977,12 +991,11 @@ Begin Window ImageChooserWindow
       Selectable      =   False
       TabIndex        =   32
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "file name"
       TextAlign       =   0
-      TextColor       =   0
+      TextColor       =   &c00000000
       TextFont        =   "Arial"
-      TextSize        =   10
+      TextSize        =   10.0
       TextUnit        =   0
       Top             =   150
       Transparent     =   False
@@ -1012,12 +1025,11 @@ Begin Window ImageChooserWindow
       Selectable      =   False
       TabIndex        =   33
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "file name"
       TextAlign       =   0
-      TextColor       =   0
+      TextColor       =   &c00000000
       TextFont        =   "Arial"
-      TextSize        =   10
+      TextSize        =   10.0
       TextUnit        =   0
       Top             =   150
       Transparent     =   False
@@ -1047,12 +1059,11 @@ Begin Window ImageChooserWindow
       Selectable      =   False
       TabIndex        =   34
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "file name"
       TextAlign       =   0
-      TextColor       =   0
+      TextColor       =   &c00000000
       TextFont        =   "Arial"
-      TextSize        =   10
+      TextSize        =   10.0
       TextUnit        =   0
       Top             =   150
       Transparent     =   False
@@ -1082,12 +1093,11 @@ Begin Window ImageChooserWindow
       Selectable      =   False
       TabIndex        =   35
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "file name"
       TextAlign       =   0
-      TextColor       =   0
+      TextColor       =   &c00000000
       TextFont        =   "Arial"
-      TextSize        =   10
+      TextSize        =   10.0
       TextUnit        =   0
       Top             =   230
       Transparent     =   False
@@ -1117,12 +1127,11 @@ Begin Window ImageChooserWindow
       Selectable      =   False
       TabIndex        =   36
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "file name"
       TextAlign       =   0
-      TextColor       =   0
+      TextColor       =   &c00000000
       TextFont        =   "Arial"
-      TextSize        =   10
+      TextSize        =   10.0
       TextUnit        =   0
       Top             =   230
       Transparent     =   False
@@ -1152,12 +1161,11 @@ Begin Window ImageChooserWindow
       Selectable      =   False
       TabIndex        =   37
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "file name"
       TextAlign       =   0
-      TextColor       =   0
+      TextColor       =   &c00000000
       TextFont        =   "Arial"
-      TextSize        =   10
+      TextSize        =   10.0
       TextUnit        =   0
       Top             =   230
       Transparent     =   False
@@ -1187,12 +1195,11 @@ Begin Window ImageChooserWindow
       Selectable      =   False
       TabIndex        =   38
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "file name"
       TextAlign       =   0
-      TextColor       =   0
+      TextColor       =   &c00000000
       TextFont        =   "Arial"
-      TextSize        =   10
+      TextSize        =   10.0
       TextUnit        =   0
       Top             =   230
       Transparent     =   False
@@ -1222,12 +1229,11 @@ Begin Window ImageChooserWindow
       Selectable      =   False
       TabIndex        =   39
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "file name"
       TextAlign       =   0
-      TextColor       =   0
+      TextColor       =   &c00000000
       TextFont        =   "Arial"
-      TextSize        =   10
+      TextSize        =   10.0
       TextUnit        =   0
       Top             =   230
       Transparent     =   False
@@ -1257,12 +1263,11 @@ Begin Window ImageChooserWindow
       Selectable      =   False
       TabIndex        =   40
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "file name"
       TextAlign       =   0
-      TextColor       =   0
+      TextColor       =   &c00000000
       TextFont        =   "Arial"
-      TextSize        =   10
+      TextSize        =   10.0
       TextUnit        =   0
       Top             =   310
       Transparent     =   False
@@ -1292,12 +1297,11 @@ Begin Window ImageChooserWindow
       Selectable      =   False
       TabIndex        =   41
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "file name"
       TextAlign       =   0
-      TextColor       =   0
+      TextColor       =   &c00000000
       TextFont        =   "Arial"
-      TextSize        =   10
+      TextSize        =   10.0
       TextUnit        =   0
       Top             =   310
       Transparent     =   False
@@ -1327,12 +1331,11 @@ Begin Window ImageChooserWindow
       Selectable      =   False
       TabIndex        =   42
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "file name"
       TextAlign       =   0
-      TextColor       =   0
+      TextColor       =   &c00000000
       TextFont        =   "Arial"
-      TextSize        =   10
+      TextSize        =   10.0
       TextUnit        =   0
       Top             =   310
       Transparent     =   False
@@ -1362,12 +1365,11 @@ Begin Window ImageChooserWindow
       Selectable      =   False
       TabIndex        =   43
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "file name"
       TextAlign       =   0
-      TextColor       =   0
+      TextColor       =   &c00000000
       TextFont        =   "Arial"
-      TextSize        =   10
+      TextSize        =   10.0
       TextUnit        =   0
       Top             =   310
       Transparent     =   False
@@ -1397,12 +1399,11 @@ Begin Window ImageChooserWindow
       Selectable      =   False
       TabIndex        =   44
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "file name"
       TextAlign       =   0
-      TextColor       =   0
+      TextColor       =   &c00000000
       TextFont        =   "Arial"
-      TextSize        =   10
+      TextSize        =   10.0
       TextUnit        =   0
       Top             =   310
       Transparent     =   False
@@ -1424,7 +1425,7 @@ End
 
 	#tag Event
 		Sub Open()
-		  Dim pic As Picture
+		  ImageThumbs = New Dictionary
 		  
 		  '++JRC Added check here for backgrounds folder
 		  'if it doesn't exist then switch to the Op System documents folder
@@ -1441,6 +1442,8 @@ End
 		  End If
 		  '--
 		  App.T.TranslateWindow Me, "find_image", App.TranslationFonts
+		  m_parentName = App.T.Translate("find_image/parent/@caption")
+		  
 		  ReloadDirectory
 		  App.CenterInControlScreen Me
 		  
@@ -1475,9 +1478,11 @@ End
 		  
 		  txt_path.Caption = path
 		  
+		  ImageThumbs.Clear()
 		  ReDim ImageFiles(0)
+		  
 		  If BackgroundFolder.AbsolutePath <> App.DocsFolder.Child("Backgrounds").AbsolutePath Then
-		    ImageFiles.Append New FolderItem("(parent)")
+		    ImageFiles.Append New FolderItem(m_parentName)
 		    folderIndex = 1
 		  End If
 		  
@@ -1518,8 +1523,16 @@ End
 		Protected f As FolderItem
 	#tag EndProperty
 
-	#tag Property, Flags = &h0
-		ImageFiles(0) As FolderItem
+	#tag Property, Flags = &h21
+		Private ImageFiles(0) As FolderItem
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
+		Private ImageThumbs As Dictionary
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
+		Private m_parentName As String
 	#tag EndProperty
 
 
@@ -1559,20 +1572,20 @@ End
 #tag Events scr_vertical
 	#tag Event
 		Sub ValueChanged()
-		  Refresh
+		  Refresh False
 		End Sub
 	#tag EndEvent
 #tag EndEvents
 #tag Events can
 	#tag Event
-		Function MouseDown(X As Integer, Y As Integer) As Boolean
+		Function MouseDown(index as Integer, X As Integer, Y As Integer) As Boolean
 		  // JDL 2/01/2006  Created ImgNdx to use as index in the ImageFiles array.
 		  // JDL 2/01/2006  Also replaced (and modified) hard coded argument with variable.
 		  Dim ImgNdx as Integer
 		  ImgNdx = scr_vertical.Value * COLS + Index + 1
 		  ' If scr_vertical.Value + Index + 1 <= UBound(ImageFiles) Then     // JDL 2/01/2006
 		  If ImgNdx <= UBound(ImageFiles) Then                 // JDL 2/01/2006
-		    If ImageFiles(ImgNdx).Name = "(parent)" Then    // JDL 2/01/2006
+		    If ImageFiles(ImgNdx).Name = m_parentName Then    // JDL 2/01/2006
 		      If BackgroundFolder.Parent <> Nil Then BackgroundFolder = BackgroundFolder.Parent
 		      ReloadDirectory
 		      Refresh False
@@ -1592,103 +1605,352 @@ End
 		End Function
 	#tag EndEvent
 	#tag Event
-		Sub Paint(g As Graphics)
+		Sub Paint(index as Integer, g As Graphics, areas() As REALbasic.Rect)
 		  // JDL 2/01/2006  Created ImgNdx to use as index in the ImageFiles array.
 		  // JDL 2/01/2006  Replaced (and modified) hard coded argument with variable.
 		  // JDL 2/01/2006  Replaced pic.Depth with variable picDepth
 		  // EMP 2 December 2006 Fixed attempt to access pic before validating as non-Nil
 		  // EMP 2 December 2006 Added code to ignore non-picture files
-		  Dim pic, thumb As Picture
-		  Dim name As String
-		  Dim c As Color
-		  Dim cache As FolderItem
-		  Dim ImgNdx, picDepth as Integer                                            // JDL 2/01/2006
-		  ImgNdx = scr_vertical.Value * COLS + Index + 1                    // JDL 2/01/2006
+		  Dim ImgNdx As Integer = scr_vertical.Value * COLS + Index + 1                    // JDL 2/01/2006
 		  
 		  App.MouseCursor = System.Cursors.Wait
 		  
-		  If ImgNdx <= UBound(ImageFiles) Then                                  // JDL 2/01/2006
+		  If ImgNdx <= UBound(ImageFiles) Then
 		    g.TextSize = 8
-		    name = ImageFiles(ImgNdx).Name                                      // JDL 2/01/2006
-		    If name = "(parent)" Then
+		    
+		    Dim name As String = ImageFiles(ImgNdx).Name
+		    Dim cacheName As String = name + ".bmp"
+		    
+		    If name = m_parentName Then
 		      g.DrawPicture fileopen, 0, 0, g.Width, g.Height, 0, 0, fileopen.Width, fileopen.Height
-		    ElseIf ImageFiles(ImgNdx).Directory Then                             // JDL 2/01/2006
+		    ElseIf ImageFiles(ImgNdx).Directory Then
 		      g.DrawPicture fileopen, 0, 0, g.Width, g.Height, 0, 0, fileopen.Width, fileopen.Height
 		    Else
-		      cache = ImageFiles(ImgNdx).Parent.Child("_cache")            // JDL 2/01/2006
-		      If cache <> Nil And cache.Exists And cache.Child(name).Exists And _
-		        ImageFiles(ImgNdx).ModificationDate <= cache.Child(name).ModificationDate _
-		        Then ' read from the cache                                         // JDL 2/01/2006
-		        pic = Picture.Open(cache.Child(name))
-		        picDepth = pic.Depth                                                       // JDL 2/01/2006
-		        If picDepth = 0 then                                                         // JDL 2/01/2006
-		          picDepth = 24                                                               // JDL 2/01/2006
-		        End If                                                                                // JDL 2/01/2006
-		        If pic <> Nil Then
-		          thumb = New Picture(80, 60, picDepth)                          // JDL 2/01/2006
-		          thumb.Graphics.DrawPicture pic, 0, 0, thumb.Width, thumb.Height, 0, 0, pic.Width, pic.Height
-		        End If
-		        '++JRC Fix issue where two files with the same name but different Extensions would get
-		        'the same thumbnail image. We'll add an extra Extension for the thumbnail's filename
-		        'e.g. 1.jpg.bmp .
-		      ElseIf cache <> Nil And cache.Exists And cache.Child(name +".bmp").Exists And _
-		        ImageFiles(ImgNdx).ModificationDate <= cache.Child(name + ".bmp").ModificationDate Then ' read from the cache   // JDL 2/01/2006
-		        'ElseIf cache <> Nil And cache.Exists And cache.Child(Left(name, InStr(name, "."))+"bmp").Exists And _
-		        'ImageFiles(ImgNdx).ModificationDate <= cache.Child(Left(name, InStr(name, "."))+"bmp").ModificationDate Then ' read from the cache   // JDL 2/01/2006
+		      Dim cacheFolder As FolderItem = ImageFiles(ImgNdx).Parent.Child("_cache")
+		      Dim thumb As Picture = Nil
+		      
+		      If ImageThumbs.HasKey(ImageFiles(ImgNdx).AbsolutePath) Then
+		        thumb = ImageThumbs.Value(ImageFiles(ImgNdx).AbsolutePath)
+		      End If
+		      
+		      If IsNull(thumb) And _
+		        cacheFolder <> Nil And cacheFolder.Exists And cacheFolder.Child(name).Exists And _
+		        ImageFiles(ImgNdx).ModificationDate <= cacheFolder.Child(name).ModificationDate Then
 		        
-		        pic = Picture.Open(cache.Child(name +".bmp"))
-		        'pic = cache.Child(Left(name, InStr(name, "."))+"bmp").OpenAsPicture
-		        '
+		        Try
+		          thumb = Picture.Open(cacheFolder.Child(name))
+		        Catch
+		          thumb = Nil
+		        End Try
+		      End If
+		      
+		      '++JRC Fix issue where two files with the same name but different Extensions would get
+		      'the same thumbnail image. We'll add an extra Extension for the thumbnail's filename
+		      'e.g. 1.jpg.bmp .
+		      If IsNull(thumb) And _
+		        cacheFolder <> Nil And cacheFolder.Exists And cacheFolder.Child(cacheName).Exists And _
+		        ImageFiles(ImgNdx).ModificationDate <= cacheFolder.Child(cacheName).ModificationDate Then
+		        
+		        Try
+		          thumb = Picture.Open(cacheFolder.Child(cacheName))
+		        Catch
+		          thumb = Nil
+		        End Try
+		      End If
+		      
+		      If IsNull(thumb) Then
+		        Dim pic As Picture = Picture.Open(ImageFiles(ImgNdx))
 		        If pic <> Nil Then
-		          picDepth = pic.Depth
-		          If picDepth = 0 Then picDepth = 32
-		          thumb = New Picture(80, 60, picDepth)
-		          thumb.Graphics.DrawPicture pic, 0, 0, thumb.Width, thumb.Height, 0, 0, pic.Width, pic.Height
-		        End If
-		      Else '  read from the file
-		        pic = Picture.Open(ImageFiles(ImgNdx))                         // JDL 2/01/2006
-		        If pic <> Nil Then
-		          picDepth = pic.Depth                                                       // JDL 2/01/2006
-		          If picDepth = 0 then                                                         // JDL 2/01/2006
-		            picDepth = 32                                                               // JDL 2/01/2006
-		          End If                                                                                // JDL 2/01/2006
-		          If cache <> Nil Then ' create the cache
-		            If Not cache.Exists Then cache.CreateAsFolder
-		            thumb = New Picture(80, 60, picDepth)                          // JDL 2/01/2006
+		          Dim picDepth As Integer = pic.Depth
+		          If picDepth = 0 then picDepth = 24
+		          
+		          If cacheFolder <> Nil Then ' create the cache
+		            If Not cacheFolder.Exists Then cacheFolder.CreateAsFolder
+		            
+		            thumb = New Picture(80, 60, picDepth)
 		            thumb.Graphics.DrawPicture pic, 0, 0, thumb.Width, thumb.Height, 0, 0, pic.Width, pic.Height
-		            '++JRC
-		            thumb.Save(cache.Child(name + ".bmp"), Picture.SaveAsDefault)
-		            '
-		          End If // cache <> Nil
+		            
+		            Dim stored As Boolean = False
+		            If Not stored Then
+		              Try
+		                thumb.Save(cacheFolder.Child(cacheName), Picture.SaveAsJPEG)
+		                stored = True
+		              Catch
+		                //JPEG not supported
+		              End Try
+		            End If
+		            
+		            If Not stored Then
+		              Try
+		                thumb.Save(cacheFolder.Child(cacheName), Picture.SaveAsDefault)
+		                stored = True
+		              Catch
+		                //That did not work ...
+		              End Try
+		            End If
+		            
+		          End If
 		        Else
 		          // Let's not display anything that isn't a picture or a folder.
 		          ImageFiles.Remove ImgNdx
 		          Can(Index).Refresh
 		          Return
-		        End If // pic <> Nil
+		        End If
 		      End If
-		      If thumb <> Nil Then
-		        g.DrawPicture thumb, 0, 0
+		      
+		      If Not IsNull(thumb) Then
+		        g.DrawPicture thumb, 0, 0, g.Width, g.Height, 0, 0, thumb.Width, thumb.Height
+		        
+		        If Not ImageThumbs.HasKey(ImageFiles(ImgNdx).AbsolutePath) Then
+		          ImageThumbs.Value(ImageFiles(ImgNdx).AbsolutePath) = thumb
+		        End If
 		      Else
 		        g.ForeColor = FillColor
 		        g.FillRect 0, 0, g.Width, g.Height
-		        g.ForeColor = DarkBevelColor
-		        g.DrawLine 0, 0, g.Width, g.Height
 		      End If
 		    End If
-		    nte_name(Index).Text = ImageFiles(ImgNdx).DisplayName    // JDL 2/01/2006
+		    
+		    nte_name(Index).Text = ImageFiles(ImgNdx).DisplayName
 		    g.ForeColor = DarkBevelColor
 		    g.DrawRect 0, 0, g.Width, g.Height
+		    
 		  Else
 		    nte_name(Index).Text = ""
-		    'g.ForeColor = FillColor
-		    'g.FillRect 0, 0, g.Width, g.Height
+		    g.ForeColor = FillColor
+		    g.FillRect 0, 0, g.Width, g.Height
 		  End If
 		  
 		  App.MouseCursor = Nil
+		  
 		Catch ex
 		  ex.Message = ex.Message + " Index = " + CStr(Index) + ", ImgNdx = " + CStr(ImgNdx)
 		  App.DebugWriter.Write("ImageChooserWindow.can().Paint: caught " + ex.ToString, 1)
 		End Sub
 	#tag EndEvent
 #tag EndEvents
+#tag ViewBehavior
+	#tag ViewProperty
+		Name="BackColor"
+		Visible=true
+		Group="Appearance"
+		InitialValue="&hFFFFFF"
+		Type="Color"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="Backdrop"
+		Visible=true
+		Group="Appearance"
+		Type="Picture"
+		EditorType="Picture"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="CloseButton"
+		Visible=true
+		Group="Appearance"
+		InitialValue="True"
+		Type="Boolean"
+		EditorType="Boolean"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="Composite"
+		Visible=true
+		Group="Appearance"
+		InitialValue="False"
+		Type="Boolean"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="Frame"
+		Visible=true
+		Group="Appearance"
+		InitialValue="0"
+		Type="Integer"
+		EditorType="Enum"
+		#tag EnumValues
+			"0 - Document"
+			"1 - Movable Modal"
+			"2 - Modal Dialog"
+			"3 - Floating Window"
+			"4 - Plain Box"
+			"5 - Shadowed Box"
+			"6 - Rounded Window"
+			"7 - Global Floating Window"
+			"8 - Sheet Window"
+			"9 - Metal Window"
+			"10 - Drawer Window"
+			"11 - Modeless Dialog"
+		#tag EndEnumValues
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="FullScreen"
+		Group="Appearance"
+		InitialValue="False"
+		Type="Boolean"
+		EditorType="Boolean"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="FullScreenButton"
+		Visible=true
+		Group="Appearance"
+		InitialValue="False"
+		Type="Boolean"
+		EditorType="Boolean"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="HasBackColor"
+		Visible=true
+		Group="Appearance"
+		InitialValue="False"
+		Type="Boolean"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="Height"
+		Visible=true
+		Group="Position"
+		InitialValue="400"
+		Type="Integer"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="ImplicitInstance"
+		Visible=true
+		Group="Appearance"
+		InitialValue="True"
+		Type="Boolean"
+		EditorType="Boolean"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="Interfaces"
+		Visible=true
+		Group="ID"
+		Type="String"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="LiveResize"
+		Visible=true
+		Group="Appearance"
+		InitialValue="True"
+		Type="Boolean"
+		EditorType="Boolean"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="MacProcID"
+		Visible=true
+		Group="Appearance"
+		InitialValue="0"
+		Type="Integer"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="MaxHeight"
+		Visible=true
+		Group="Position"
+		InitialValue="32000"
+		Type="Integer"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="MaximizeButton"
+		Visible=true
+		Group="Appearance"
+		InitialValue="True"
+		Type="Boolean"
+		EditorType="Boolean"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="MaxWidth"
+		Visible=true
+		Group="Position"
+		InitialValue="32000"
+		Type="Integer"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="MenuBar"
+		Visible=true
+		Group="Appearance"
+		Type="MenuBar"
+		EditorType="MenuBar"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="MenuBarVisible"
+		Group="Appearance"
+		InitialValue="True"
+		Type="Boolean"
+		EditorType="Boolean"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="MinHeight"
+		Visible=true
+		Group="Position"
+		InitialValue="64"
+		Type="Integer"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="MinimizeButton"
+		Visible=true
+		Group="Appearance"
+		InitialValue="True"
+		Type="Boolean"
+		EditorType="Boolean"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="MinWidth"
+		Visible=true
+		Group="Position"
+		InitialValue="64"
+		Type="Integer"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="Name"
+		Visible=true
+		Group="ID"
+		Type="String"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="Placement"
+		Visible=true
+		Group="Position"
+		InitialValue="0"
+		Type="Integer"
+		EditorType="Enum"
+		#tag EnumValues
+			"0 - Default"
+			"1 - Parent Window"
+			"2 - Main Screen"
+			"3 - Parent Window Screen"
+			"4 - Stagger"
+		#tag EndEnumValues
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="Resizeable"
+		Visible=true
+		Group="Appearance"
+		InitialValue="True"
+		Type="Boolean"
+		EditorType="Boolean"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="Super"
+		Visible=true
+		Group="ID"
+		Type="String"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="Title"
+		Visible=true
+		Group="Appearance"
+		InitialValue="Untitled"
+		Type="String"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="Visible"
+		Visible=true
+		Group="Appearance"
+		InitialValue="True"
+		Type="Boolean"
+		EditorType="Boolean"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="Width"
+		Visible=true
+		Group="Position"
+		InitialValue="600"
+		Type="Integer"
+	#tag EndViewProperty
+#tag EndViewBehavior

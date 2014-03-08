@@ -1,4 +1,6 @@
-﻿* Fix for problem with creating new songs on Linux (bug #422) (Vwout)
+﻿* Fix for issue with image chooser dialog where images in sub folders are not updated and cleared correctly (bug #425) (Vwout)
+
+* Fix for problem with creating new songs on Linux (bug #422) (Vwout)
 
 * Fix issue where newly created song could not be selected in song list, if (All) or (Main) was in CelTag. (support request #110, #120) (JRC)
 
