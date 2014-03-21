@@ -1,4 +1,6 @@
-﻿* Fix for issue with image chooser dialog where images in sub folders are not updated and cleared correctly (bug #425) (Vwout)
+﻿* Fix off-by-one error that was causing the last line of a song's lyrics to not be shown (JRC)
+
+* Fix for issue with image chooser dialog where images in sub folders are not updated and cleared correctly (bug #425) (Vwout)
 
 * Fix for problem with creating new songs on Linux (bug #422) (Vwout)
 
