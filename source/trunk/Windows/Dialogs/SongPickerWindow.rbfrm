@@ -1,13 +1,15 @@
 #tag Window
 Begin Window SongPickerWindow
-   BackColor       =   16777215
+   BackColor       =   &cFFFFFF00
    Backdrop        =   0
    CloseButton     =   True
+   Compatibility   =   ""
    Composite       =   False
    Frame           =   1
    FullScreen      =   False
+   FullScreenButton=   False
    HasBackColor    =   False
-   Height          =   5.55e+2
+   Height          =   555
    ImplicitInstance=   True
    LiveResize      =   False
    MacProcID       =   1046
@@ -23,7 +25,7 @@ Begin Window SongPickerWindow
    Resizeable      =   True
    Title           =   "Song Lookup"
    Visible         =   True
-   Width           =   4.36e+2
+   Width           =   436
    Begin Label txt_explanation_header
       AutoDeactivate  =   True
       Bold            =   False
@@ -48,15 +50,15 @@ Begin Window SongPickerWindow
       TabPanelIndex   =   0
       Text            =   "To add a song, click the song title below and click the ""Add"" button. If you know the name of the song you can type it into the Quick Lookup field, and click ""Add"" or press Enter. Or you can click Search(Ctrl+F) to search song, Ctrl+G to repeat search . You can also double-click on the song name to add it."
       TextAlign       =   0
-      TextColor       =   0
+      TextColor       =   &c00000000
       TextFont        =   "Arial"
-      TextSize        =   10
+      TextSize        =   10.0
       TextUnit        =   0
       Top             =   5
       Transparent     =   False
       Underline       =   False
       Visible         =   True
-      Width           =   378
+      Width           =   396
    End
    Begin Label lbl_select_folder
       AutoDeactivate  =   True
@@ -82,19 +84,20 @@ Begin Window SongPickerWindow
       TabPanelIndex   =   0
       Text            =   "Select Folder:"
       TextAlign       =   0
-      TextColor       =   0
+      TextColor       =   &c00000000
       TextFont        =   "Arial"
-      TextSize        =   10
+      TextSize        =   10.0
       TextUnit        =   0
-      Top             =   75
+      Top             =   72
       Transparent     =   False
       Underline       =   False
       Visible         =   True
       Width           =   197
    End
-   Begin PopupMenu pop_select_folder
+   Begin SPopupMenu pop_select_folder
       AutoDeactivate  =   True
       Bold            =   False
+      Changing        =   False
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
@@ -116,7 +119,7 @@ Begin Window SongPickerWindow
       TabPanelIndex   =   0
       TabStop         =   True
       TextFont        =   "Arial"
-      TextSize        =   10
+      TextSize        =   10.0
       TextUnit        =   0
       Top             =   89
       Underline       =   False
@@ -129,7 +132,7 @@ Begin Window SongPickerWindow
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
-      Height          =   20
+      Height          =   14
       HelpTag         =   ""
       Index           =   -2147483648
       InitialParent   =   ""
@@ -147,9 +150,9 @@ Begin Window SongPickerWindow
       TabPanelIndex   =   0
       Text            =   "Quick Lookup:"
       TextAlign       =   0
-      TextColor       =   0
+      TextColor       =   &c00000000
       TextFont        =   "Arial"
-      TextSize        =   10
+      TextSize        =   10.0
       TextUnit        =   0
       Top             =   72
       Transparent     =   False
@@ -162,14 +165,14 @@ Begin Window SongPickerWindow
       Alignment       =   0
       AutoDeactivate  =   True
       AutomaticallyCheckSpelling=   True
-      BackColor       =   16777215
+      BackColor       =   &cFFFFFF00
       Bold            =   False
       Border          =   True
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
       Format          =   ""
-      Height          =   20
+      Height          =   22
       HelpTag         =   ""
       HideSelection   =   True
       Index           =   -2147483648
@@ -177,8 +180,8 @@ Begin Window SongPickerWindow
       Italic          =   False
       Left            =   228
       LimitText       =   0
-      LineHeight      =   0
-      LineSpacing     =   1
+      LineHeight      =   0.0
+      LineSpacing     =   1.0
       LockBottom      =   False
       LockedInPosition=   False
       LockLeft        =   True
@@ -195,9 +198,9 @@ Begin Window SongPickerWindow
       TabPanelIndex   =   0
       TabStop         =   True
       Text            =   ""
-      TextColor       =   0
+      TextColor       =   &c00000000
       TextFont        =   "Arial"
-      TextSize        =   10
+      TextSize        =   10.0
       TextUnit        =   0
       Top             =   89
       Underline       =   False
@@ -236,7 +239,7 @@ Begin Window SongPickerWindow
       LockLeft        =   True
       LockRight       =   True
       LockTop         =   True
-      RequiresSelection=   ""
+      RequiresSelection=   False
       Scope           =   0
       ScrollbarHorizontal=   False
       ScrollBarVertical=   True
@@ -245,7 +248,7 @@ Begin Window SongPickerWindow
       TabPanelIndex   =   0
       TabStop         =   True
       TextFont        =   "Arial"
-      TextSize        =   11
+      TextSize        =   11.0
       TextUnit        =   0
       Top             =   121
       Underline       =   False
@@ -256,17 +259,18 @@ Begin Window SongPickerWindow
       _ScrollWidth    =   -1
    End
    Begin SmartSplitter SmartSplitter1
-      AcceptFocus     =   ""
-      AcceptTabs      =   ""
+      AcceptFocus     =   False
+      AcceptTabs      =   False
       AutoDeactivate  =   True
-      Backdrop        =   ""
-      DisableLiveDrag =   0
-      doNotAttachEmbeddedControls=   0
+      Backdrop        =   0
+      DisableLiveDrag =   False
+      doNotAttachEmbeddedControls=   False
       DoubleBuffer    =   False
       Enabled         =   True
       EraseBackground =   True
-      handleDimple    =   0
-      handleLarge     =   0
+      handleCount     =   0
+      handleDimple    =   False
+      handleLarge     =   False
       Height          =   9
       HelpTag         =   ""
       Index           =   -2147483648
@@ -282,14 +286,15 @@ Begin Window SongPickerWindow
       MinLimit        =   0
       MinLimitOffset  =   0
       Scope           =   0
-      showWarningsDialogs=   0
-      StayProportional=   0
-      StopAtMaxOffset =   0
-      StopAtMinOffset =   0
+      showWarningsDialogs=   False
+      StayProportional=   False
+      StopAtMaxOffset =   False
+      StopAtMinOffset =   False
       TabIndex        =   0
       TabPanelIndex   =   0
       TabStop         =   True
       Top             =   296
+      Transparent     =   True
       UseFocusRing    =   True
       Visible         =   True
       Width           =   406
@@ -318,9 +323,9 @@ Begin Window SongPickerWindow
       TabPanelIndex   =   0
       Text            =   "Preview:"
       TextAlign       =   0
-      TextColor       =   0
+      TextColor       =   &c00000000
       TextFont        =   "Arial"
-      TextSize        =   10
+      TextSize        =   10.0
       TextUnit        =   0
       Top             =   315
       Transparent     =   False
@@ -333,7 +338,7 @@ Begin Window SongPickerWindow
       Alignment       =   0
       AutoDeactivate  =   True
       AutomaticallyCheckSpelling=   True
-      BackColor       =   16777215
+      BackColor       =   &cFFFFFF00
       Bold            =   False
       Border          =   True
       DataField       =   ""
@@ -348,8 +353,8 @@ Begin Window SongPickerWindow
       Italic          =   False
       Left            =   12
       LimitText       =   0
-      LineHeight      =   0
-      LineSpacing     =   1
+      LineHeight      =   0.0
+      LineSpacing     =   1.0
       LockBottom      =   True
       LockedInPosition=   False
       LockLeft        =   True
@@ -366,9 +371,9 @@ Begin Window SongPickerWindow
       TabPanelIndex   =   0
       TabStop         =   True
       Text            =   ""
-      TextColor       =   0
+      TextColor       =   &c00000000
       TextFont        =   "Arial"
-      TextSize        =   10
+      TextSize        =   10.0
       TextUnit        =   0
       Top             =   339
       Underline       =   False
@@ -400,11 +405,11 @@ Begin Window SongPickerWindow
       TabPanelIndex   =   0
       Text            =   "Custom Presentation Order:"
       TextAlign       =   0
-      TextColor       =   0
+      TextColor       =   &c00000000
       TextFont        =   "Arial"
-      TextSize        =   10
+      TextSize        =   10.0
       TextUnit        =   0
-      Top             =   461
+      Top             =   458
       Transparent     =   False
       Underline       =   False
       Visible         =   True
@@ -415,7 +420,7 @@ Begin Window SongPickerWindow
       Alignment       =   0
       AutoDeactivate  =   True
       AutomaticallyCheckSpelling=   False
-      BackColor       =   16777215
+      BackColor       =   &cFFFFFF00
       Bold            =   False
       Border          =   True
       CueText         =   ""
@@ -423,7 +428,7 @@ Begin Window SongPickerWindow
       DataSource      =   ""
       Enabled         =   True
       Format          =   ""
-      Height          =   20
+      Height          =   22
       HelpTag         =   ""
       Index           =   -2147483648
       InitialParent   =   ""
@@ -443,9 +448,9 @@ Begin Window SongPickerWindow
       TabPanelIndex   =   0
       TabStop         =   True
       Text            =   ""
-      TextColor       =   0
+      TextColor       =   &c00000000
       TextFont        =   "Arial"
-      TextSize        =   10
+      TextSize        =   10.0
       TextUnit        =   0
       Top             =   475
       Underline       =   False
@@ -477,11 +482,11 @@ Begin Window SongPickerWindow
       TabPanelIndex   =   0
       Text            =   "Original Presentation Order:"
       TextAlign       =   0
-      TextColor       =   0
+      TextColor       =   &c00000000
       TextFont        =   "Arial"
-      TextSize        =   10
+      TextSize        =   10.0
       TextUnit        =   0
-      Top             =   461
+      Top             =   458
       Transparent     =   False
       Underline       =   False
       Visible         =   True
@@ -492,7 +497,7 @@ Begin Window SongPickerWindow
       Alignment       =   0
       AutoDeactivate  =   True
       AutomaticallyCheckSpelling=   False
-      BackColor       =   16777215
+      BackColor       =   &cFFFFFF00
       Bold            =   False
       Border          =   True
       CueText         =   ""
@@ -500,7 +505,7 @@ Begin Window SongPickerWindow
       DataSource      =   ""
       Enabled         =   False
       Format          =   ""
-      Height          =   20
+      Height          =   22
       HelpTag         =   ""
       Index           =   -2147483648
       InitialParent   =   ""
@@ -520,9 +525,9 @@ Begin Window SongPickerWindow
       TabPanelIndex   =   0
       TabStop         =   True
       Text            =   ""
-      TextColor       =   0
+      TextColor       =   &c00000000
       TextFont        =   "Arial"
-      TextSize        =   10
+      TextSize        =   10.0
       TextUnit        =   0
       Top             =   475
       Underline       =   False
@@ -533,7 +538,7 @@ Begin Window SongPickerWindow
    Begin PushButton btn_add
       AutoDeactivate  =   True
       Bold            =   False
-      ButtonStyle     =   0
+      ButtonStyle     =   "0"
       Cancel          =   False
       Caption         =   "Add"
       Default         =   False
@@ -554,7 +559,7 @@ Begin Window SongPickerWindow
       TabPanelIndex   =   0
       TabStop         =   True
       TextFont        =   "Arial"
-      TextSize        =   10
+      TextSize        =   10.0
       TextUnit        =   0
       Top             =   515
       Underline       =   False
@@ -564,7 +569,7 @@ Begin Window SongPickerWindow
    Begin PushButton btn_done
       AutoDeactivate  =   True
       Bold            =   False
-      ButtonStyle     =   0
+      ButtonStyle     =   "0"
       Cancel          =   True
       Caption         =   "Done"
       Default         =   False
@@ -585,7 +590,7 @@ Begin Window SongPickerWindow
       TabPanelIndex   =   0
       TabStop         =   True
       TextFont        =   "Arial"
-      TextSize        =   10
+      TextSize        =   10.0
       TextUnit        =   0
       Top             =   515
       Underline       =   False
@@ -605,68 +610,40 @@ Begin Window SongPickerWindow
       Top             =   0
       Width           =   32
    End
-   Begin CanvasSmartSplitterDebugger CanvasSmartSplitterDebugger1
-      AcceptFocus     =   ""
-      AcceptTabs      =   ""
-      AutoDeactivate  =   True
-      Backdrop        =   ""
-      debug           =   0
-      DoubleBuffer    =   False
-      Enabled         =   True
-      EraseBackground =   True
-      Height          =   100
-      HelpTag         =   ""
-      Index           =   -2147483648
-      InitialParent   =   ""
-      Left            =   -71
-      LockBottom      =   ""
-      LockedInPosition=   False
-      LockLeft        =   ""
-      LockRight       =   ""
-      LockTop         =   ""
-      Scope           =   0
-      TabIndex        =   16
-      TabPanelIndex   =   0
-      TabStop         =   True
-      Top             =   -24
-      UseFocusRing    =   True
-      Visible         =   True
-      Width           =   54
-   End
    Begin PushButton btn_search
       AutoDeactivate  =   True
-      Bold            =   ""
-      ButtonStyle     =   0
-      Cancel          =   ""
+      Bold            =   False
+      ButtonStyle     =   "0"
+      Cancel          =   False
       Caption         =   "Search"
-      Default         =   ""
+      Default         =   False
       Enabled         =   True
       Height          =   23
       HelpTag         =   ""
       Index           =   -2147483648
       InitialParent   =   ""
-      Italic          =   ""
+      Italic          =   False
       Left            =   12
       LockBottom      =   True
       LockedInPosition=   False
       LockLeft        =   True
-      LockRight       =   ""
+      LockRight       =   False
       LockTop         =   False
       Scope           =   0
       TabIndex        =   17
       TabPanelIndex   =   0
       TabStop         =   True
       TextFont        =   "System"
-      TextSize        =   0
+      TextSize        =   0.0
       TextUnit        =   0
       Top             =   513
-      Underline       =   ""
+      Underline       =   False
       Visible         =   True
       Width           =   80
    End
    Begin Label lbl_found_text
       AutoDeactivate  =   True
-      Bold            =   ""
+      Bold            =   False
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
@@ -674,27 +651,27 @@ Begin Window SongPickerWindow
       HelpTag         =   ""
       Index           =   -2147483648
       InitialParent   =   ""
-      Italic          =   ""
+      Italic          =   False
       Left            =   221
-      LockBottom      =   ""
+      LockBottom      =   False
       LockedInPosition=   False
       LockLeft        =   True
-      LockRight       =   ""
+      LockRight       =   False
       LockTop         =   True
-      Multiline       =   ""
+      Multiline       =   False
       Scope           =   0
       Selectable      =   False
       TabIndex        =   18
       TabPanelIndex   =   0
       Text            =   "Found text in:"
       TextAlign       =   0
-      TextColor       =   &h000000
+      TextColor       =   &c00000000
       TextFont        =   "Arial"
-      TextSize        =   10
+      TextSize        =   10.0
       TextUnit        =   0
       Top             =   315
       Transparent     =   False
-      Underline       =   ""
+      Underline       =   False
       Visible         =   True
       Width           =   197
    End
@@ -842,7 +819,6 @@ End
 		  'If Status_SongChanged Then ActionSongSave True ' updates CurrentSong but doesn't write it to file
 		  'If pge_controls.Value <> 0 Then SetMode 0
 		  
-		  t = Lowercase(find.FindString)
 		  '++JRC Redundant
 		  'If Len(t) = 0  Then Return
 		  
@@ -883,70 +859,70 @@ End
 		      ProgressWindow.SetProgress (i+1) / lst_all_songs.ListCount * 100
 		      ProgressWindow.SetStatus lst_all_songs.List(i)
 		      
-		      If find.FindTitle And InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "title")), t) > 0 And (i <> lst_all_songs.ListIndex Or find.FoundPos = 0  ) Then
+		      If find.FindTitle And find.IsMatch(SmartML.GetValue(s.DocumentElement, "title")) > 0 And (i <> lst_all_songs.ListIndex Or find.FoundPos = 0  ) Then
 		        found = True
 		        find.Found = find.kTitle
-		        find.FoundPos = InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "title")), t)
-		      ElseIf find.FindAuthor And InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "author")), t) > 0 And (i <> lst_all_songs.ListIndex Or find.FoundPos = 0  ) Then
+		        find.FoundPos = find.IsMatch(SmartML.GetValue(s.DocumentElement, "title"))
+		      ElseIf find.FindAuthor And find.IsMatch(SmartML.GetValue(s.DocumentElement, "author")) > 0 And (i <> lst_all_songs.ListIndex Or find.FoundPos = 0  ) Then
 		        found = True
 		        find.Found = find.kAuthor
-		        find.FoundPos = InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "author")), t)
-		      ElseIf find.FindCopyright And InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "copyright")), t) > 0 And (i <> lst_all_songs.ListIndex Or find.FoundPos = 0  ) Then
+		        find.FoundPos = find.IsMatch(SmartML.GetValue(s.DocumentElement, "author"))
+		      ElseIf find.FindCopyright And find.IsMatch(SmartML.GetValue(s.DocumentElement, "copyright")) > 0 And (i <> lst_all_songs.ListIndex Or find.FoundPos = 0  ) Then
 		        found = True
 		        find.Found = find.kCopyright
-		        find.FoundPos = InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "copyright")), t)
-		      ElseIf find.FindCCLI And InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "ccli")), t) > 0 And (i <> lst_all_songs.ListIndex Or find.FoundPos = 0  ) Then
+		        find.FoundPos = find.IsMatch(SmartML.GetValue(s.DocumentElement, "copyright"))
+		      ElseIf find.FindCCLI And find.IsMatch(SmartML.GetValue(s.DocumentElement, "ccli")) > 0 And (i <> lst_all_songs.ListIndex Or find.FoundPos = 0  ) Then
 		        found = True
 		        find.Found = find.kCCLI
-		        find.FoundPos = InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "ccli")), t)
-		      ElseIf find.FindPresentation And InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "presentation")), t) > 0 And (i <> lst_all_songs.ListIndex Or find.FoundPos = 0  ) Then
+		        find.FoundPos = find.IsMatch(SmartML.GetValue(s.DocumentElement, "ccli"))
+		      ElseIf find.FindPresentation And find.IsMatch(SmartML.GetValue(s.DocumentElement, "presentation")) > 0 And (i <> lst_all_songs.ListIndex Or find.FoundPos = 0  ) Then
 		        found = True
 		        find.Found = find.kPresentation
-		        find.FoundPos = InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "presentation")), t)
-		      ElseIf find.FindLyrics And InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "lyrics")), t) > 0 And (i <> lst_all_songs.ListIndex  Or ( (edt_preview.SelStart+edt_preview.SelLength = 0 Or InStr(edt_preview.SelStart+edt_preview.SelLength+1, Lowercase(edt_preview.Text), t) > 0) ) ) Then
+		        find.FoundPos = find.IsMatch(SmartML.GetValue(s.DocumentElement, "presentation"))
+		      ElseIf find.FindLyrics And find.IsMatch(SmartML.GetValue(s.DocumentElement, "lyrics")) > 0 And (i <> lst_all_songs.ListIndex  Or ( (edt_preview.SelStart+edt_preview.SelLength = 0 Or InStr(edt_preview.SelStart+edt_preview.SelLength+1, Lowercase(edt_preview.Text), t) > 0) ) ) Then
 		        found = True
 		        find.Found = find.kLyrics
-		        find.FoundPos = InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "lyrics")), t)
-		      ElseIf find.FindThemes And InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "theme")), t) > 0 And (i <> lst_all_songs.ListIndex Or find.FoundPos = 0  ) Then
+		        find.FoundPos = find.IsMatch(SmartML.GetValue(s.DocumentElement, "lyrics"))
+		      ElseIf find.FindThemes And find.IsMatch(SmartML.GetValue(s.DocumentElement, "theme")) > 0 And (i <> lst_all_songs.ListIndex Or find.FoundPos = 0  ) Then
 		        found = True
 		        find.Found = find.kThemes
-		        find.FoundPos = InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "theme")), t)
-		      ElseIf find.FindTimeSig And InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "time_sig")), t) > 0 And (i <> lst_all_songs.ListIndex Or find.FoundPos = 0  ) Then
+		        find.FoundPos = find.IsMatch(SmartML.GetValue(s.DocumentElement, "theme"))
+		      ElseIf find.FindTimeSig And find.IsMatch(SmartML.GetValue(s.DocumentElement, "time_sig")) > 0 And (i <> lst_all_songs.ListIndex Or find.FoundPos = 0  ) Then
 		        found = True
 		        find.Found = find.kTimeSig
-		        find.FoundPos = InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "time_sig")), t)
-		      ElseIf find.FindTempo And InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "tempo")), t) > 0 And (i <> lst_all_songs.ListIndex Or find.FoundPos = 0  ) Then
+		        find.FoundPos = find.IsMatch(SmartML.GetValue(s.DocumentElement, "time_sig"))
+		      ElseIf find.FindTempo And find.IsMatch(SmartML.GetValue(s.DocumentElement, "tempo")) > 0 And (i <> lst_all_songs.ListIndex Or find.FoundPos = 0  ) Then
 		        found = True
 		        find.Found = find.kTempo
-		        find.FoundPos = InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "tempo")), t)
-		      ElseIf find.FindKey And InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "key")), t) > 0 And (i <> lst_all_songs.ListIndex Or find.FoundPos = 0  ) Then
+		        find.FoundPos = find.IsMatch(SmartML.GetValue(s.DocumentElement, "tempo"))
+		      ElseIf find.FindKey And find.IsMatch(SmartML.GetValue(s.DocumentElement, "key")) > 0 And (i <> lst_all_songs.ListIndex Or find.FoundPos = 0  ) Then
 		        found = True
 		        find.Found = find.kKey
-		        find.FoundPos = InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "key")), t)
-		      ElseIf find.FindAKA And InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "aka")), t) > 0 And (i <> lst_all_songs.ListIndex Or find.FoundPos = 0  ) Then
+		        find.FoundPos = find.IsMatch(SmartML.GetValue(s.DocumentElement, "key"))
+		      ElseIf find.FindAKA And find.IsMatch(SmartML.GetValue(s.DocumentElement, "aka")) > 0 And (i <> lst_all_songs.ListIndex Or find.FoundPos = 0  ) Then
 		        found = True
 		        find.Found = find.kAKA
-		        find.FoundPos = InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "aka")), t)
-		      ElseIf find.FindKeyLine And InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "key_line")), t) > 0 And (i <> lst_all_songs.ListIndex Or find.FoundPos = 0  ) Then
+		        find.FoundPos = find.IsMatch(SmartML.GetValue(s.DocumentElement, "aka"))
+		      ElseIf find.FindKeyLine And find.IsMatch(SmartML.GetValue(s.DocumentElement, "key_line")) > 0 And (i <> lst_all_songs.ListIndex Or find.FoundPos = 0  ) Then
 		        found = True
 		        find.Found = find.kKeyLine
-		        find.FoundPos = InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "key_line")), t)
-		      ElseIf find.FindUser1 And InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "user1")), t) > 0 And (i <> lst_all_songs.ListIndex Or find.FoundPos = 0  ) Then
+		        find.FoundPos = find.IsMatch(SmartML.GetValue(s.DocumentElement, "key_line"))
+		      ElseIf find.FindUser1 And find.IsMatch(SmartML.GetValue(s.DocumentElement, "user1")) > 0 And (i <> lst_all_songs.ListIndex Or find.FoundPos = 0  ) Then
 		        found = True
 		        find.Found = find.kUser1
-		        find.FoundPos = InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "user1")), t)
-		      ElseIf find.FindUser2 And InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "user2")), t) > 0 And (i <> lst_all_songs.ListIndex Or find.FoundPos = 0  ) Then
+		        find.FoundPos = find.IsMatch(SmartML.GetValue(s.DocumentElement, "user1"))
+		      ElseIf find.FindUser2 And find.IsMatch(SmartML.GetValue(s.DocumentElement, "user2")) > 0 And (i <> lst_all_songs.ListIndex Or find.FoundPos = 0  ) Then
 		        found = True
 		        find.Found = find.kUser2
-		        find.FoundPos = InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "user2")), t)
-		      ElseIf find.FindUser3 And InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "user3")), t) > 0 And (i <> lst_all_songs.ListIndex Or find.FoundPos = 0  ) Then
+		        find.FoundPos = find.IsMatch(SmartML.GetValue(s.DocumentElement, "user2"))
+		      ElseIf find.FindUser3 And find.IsMatch(SmartML.GetValue(s.DocumentElement, "user3")) > 0 And (i <> lst_all_songs.ListIndex Or find.FoundPos = 0  ) Then
 		        found = True
 		        find.Found = find.kUser3
-		        find.FoundPos = InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "user3")), t)
-		      ElseIf find.FindHymnNumber And InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "hymn_number")), t) > 0 And (i <> lst_all_songs.ListIndex Or find.FoundPos = 0  ) Then
+		        find.FoundPos = find.IsMatch(SmartML.GetValue(s.DocumentElement, "user3"))
+		      ElseIf find.FindHymnNumber And find.IsMatch(SmartML.GetValue(s.DocumentElement, "hymn_number")) > 0 And (i <> lst_all_songs.ListIndex Or find.FoundPos = 0  ) Then
 		        found = True
 		        find.Found = find.kHymnNumber
-		        find.FoundPos = InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "hymn_number")), t)
+		        find.FoundPos = find.IsMatch(SmartML.GetValue(s.DocumentElement, "hymn_number"))
 		        
 		      ElseIf find.FindChord  Then
 		        
@@ -1639,3 +1615,234 @@ End
 		End Sub
 	#tag EndEvent
 #tag EndEvents
+#tag ViewBehavior
+	#tag ViewProperty
+		Name="BackColor"
+		Visible=true
+		Group="Appearance"
+		InitialValue="&hFFFFFF"
+		Type="Color"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="Backdrop"
+		Visible=true
+		Group="Appearance"
+		Type="Picture"
+		EditorType="Picture"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="CloseButton"
+		Visible=true
+		Group="Appearance"
+		InitialValue="True"
+		Type="Boolean"
+		EditorType="Boolean"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="Composite"
+		Visible=true
+		Group="Appearance"
+		InitialValue="False"
+		Type="Boolean"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="FindStartSong"
+		Group="Behavior"
+		Type="Integer"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="Frame"
+		Visible=true
+		Group="Appearance"
+		InitialValue="0"
+		Type="Integer"
+		EditorType="Enum"
+		#tag EnumValues
+			"0 - Document"
+			"1 - Movable Modal"
+			"2 - Modal Dialog"
+			"3 - Floating Window"
+			"4 - Plain Box"
+			"5 - Shadowed Box"
+			"6 - Rounded Window"
+			"7 - Global Floating Window"
+			"8 - Sheet Window"
+			"9 - Metal Window"
+			"10 - Drawer Window"
+			"11 - Modeless Dialog"
+		#tag EndEnumValues
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="FullScreen"
+		Group="Appearance"
+		InitialValue="False"
+		Type="Boolean"
+		EditorType="Boolean"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="FullScreenButton"
+		Visible=true
+		Group="Appearance"
+		InitialValue="False"
+		Type="Boolean"
+		EditorType="Boolean"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="HasBackColor"
+		Visible=true
+		Group="Appearance"
+		InitialValue="False"
+		Type="Boolean"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="Height"
+		Visible=true
+		Group="Position"
+		InitialValue="400"
+		Type="Integer"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="ImplicitInstance"
+		Visible=true
+		Group="Appearance"
+		InitialValue="True"
+		Type="Boolean"
+		EditorType="Boolean"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="Interfaces"
+		Visible=true
+		Group="ID"
+		Type="String"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="LiveResize"
+		Visible=true
+		Group="Appearance"
+		InitialValue="True"
+		Type="Boolean"
+		EditorType="Boolean"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="MacProcID"
+		Visible=true
+		Group="Appearance"
+		InitialValue="0"
+		Type="Integer"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="MaxHeight"
+		Visible=true
+		Group="Position"
+		InitialValue="32000"
+		Type="Integer"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="MaximizeButton"
+		Visible=true
+		Group="Appearance"
+		InitialValue="True"
+		Type="Boolean"
+		EditorType="Boolean"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="MaxWidth"
+		Visible=true
+		Group="Position"
+		InitialValue="32000"
+		Type="Integer"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="MenuBar"
+		Visible=true
+		Group="Appearance"
+		Type="MenuBar"
+		EditorType="MenuBar"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="MenuBarVisible"
+		Group="Appearance"
+		InitialValue="True"
+		Type="Boolean"
+		EditorType="Boolean"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="MinHeight"
+		Visible=true
+		Group="Position"
+		InitialValue="64"
+		Type="Integer"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="MinimizeButton"
+		Visible=true
+		Group="Appearance"
+		InitialValue="True"
+		Type="Boolean"
+		EditorType="Boolean"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="MinWidth"
+		Visible=true
+		Group="Position"
+		InitialValue="64"
+		Type="Integer"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="Name"
+		Visible=true
+		Group="ID"
+		Type="String"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="Placement"
+		Visible=true
+		Group="Position"
+		InitialValue="0"
+		Type="Integer"
+		EditorType="Enum"
+		#tag EnumValues
+			"0 - Default"
+			"1 - Parent Window"
+			"2 - Main Screen"
+			"3 - Parent Window Screen"
+			"4 - Stagger"
+		#tag EndEnumValues
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="Resizeable"
+		Visible=true
+		Group="Appearance"
+		InitialValue="True"
+		Type="Boolean"
+		EditorType="Boolean"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="Super"
+		Visible=true
+		Group="ID"
+		Type="String"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="Title"
+		Visible=true
+		Group="Appearance"
+		InitialValue="Untitled"
+		Type="String"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="Visible"
+		Visible=true
+		Group="Appearance"
+		InitialValue="True"
+		Type="Boolean"
+		EditorType="Boolean"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="Width"
+		Visible=true
+		Group="Position"
+		InitialValue="600"
+		Type="Integer"
+	#tag EndViewProperty
+#tag EndViewBehavior

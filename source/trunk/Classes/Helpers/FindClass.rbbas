@@ -12,6 +12,17 @@ Protected Class FindClass
 		End Sub
 	#tag EndMethod
 
+	#tag Method, Flags = &h0
+		Function IsMatch(s As String) As Integer
+		  Dim result As Integer = InStr(s, Me.FindString)
+		  If result = 0 Then
+		    result = InStr(Lowercase(s), Lowercase(Me.FindString))
+		  End If
+		  
+		  Return result
+		End Function
+	#tag EndMethod
+
 
 	#tag Property, Flags = &h0
 		ChordForm As String
