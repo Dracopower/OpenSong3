@@ -1,4 +1,6 @@
-﻿* Fix for strange behaviour of popup window for adding new songs to set on Linux (bug #421, support request #121) (Vwout)
+﻿-= 2.1.2 =-
+
+* Fix for strange behaviour of popup window for adding new songs to set on Linux (bug #421, support request #121) (Vwout)
 
 * Fix issue where PresentHelper was not updating properly, when presenting a single song & then
 adding song on the fly. (JRC)
