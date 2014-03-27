@@ -17,8 +17,8 @@
 ; The ISPP eliminates redundant typing and prevents errors.
 ; Changing these values changes all other values that refer back to here.
 #define MyAppName "OpenSong"
-#define MyAppVersion "2.1.1"
-#define MyAppVerName "OpenSong Version 2.1.1"
+#define MyAppVersion "2.1.2"
+#define MyAppVerName "OpenSong Version 2.1.2"
 #define MyAppPublisher "OpenSong Development Team"
 #define MyAppURL "http://opensong.org/"
 #define MyAppExeName "OpenSong.exe"
