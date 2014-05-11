@@ -1,4 +1,6 @@
-﻿-= 2.1.2 =-
+﻿* Fix for losing the background color that is identifying the slide type after using drag-and-drop for moving a slide set mode (bug #439) (Vwout)
+
+-= 2.1.2 =-
 
 * Fix for strange behaviour of popup window for adding new songs to set on Linux (bug #421, support request #121) (Vwout)
 

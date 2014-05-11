@@ -12979,11 +12979,9 @@ End
 	#tag Method, Flags = &h0
 		Sub ReorderSetItemList(CurrentPosition As Integer, newPosition As Integer)
 		  '++JRC Handle Set Item list reordering
-		  If  newPosition = CurrentPosition Then
-		    return
+		  If newPosition = CurrentPosition Then
+		    Return
 		  End If
-		  
-		  Dim xgroups As XmlNode
 		  
 		  'Ask if user wants to save
 		  If NOT ActionInSetAskSave Then
@@ -12994,24 +12992,30 @@ End
 		    DontUpdateSetItem = True 'reorder the list without changing any edit fields
 		  End If
 		  
-		  'Update set XML with the new order
-		  xgroups = SmartML.GetNode(CurrentSet.DocumentElement, "slide_groups", True)
 		  Status_SetChanged = True
+		  
+		  'Update set XML with the new order
+		  Dim xgroups As XmlNode = SmartML.GetNode(CurrentSet.DocumentElement, "slide_groups", True)
+		  
 		  If newPosition > CurrentPosition Then
 		    If newPosition = lst_set_items.ListCount - 1 Then
 		      xgroups.AppendChild xgroups.Child(CurrentPosition)
 		    Else
 		      xgroups.Insert xgroups.Child(CurrentPosition), xgroups.Child(newPosition+1)
 		    End If
+		    
 		    'reorder the list
 		    lst_set_items.InsertRow newPosition+1, lst_set_items.List(CurrentPosition)
+		    lst_set_items.CellTag(newPosition+1, 0) = lst_set_items.CellTag(CurrentPosition, 0)
 		    lst_set_items.RemoveRow(CurrentPosition)
 		    CurrentInSetItem = newPosition
 		    
 		  ElseIf newPosition < CurrentPosition Then
 		    xgroups.Insert xgroups.Child(CurrentPosition), xgroups.Child(newPosition)
+		    
 		    'reorder the list
 		    lst_set_items.InsertRow newPosition, lst_set_items.List(CurrentPosition)
+		    lst_set_items.CellTag(newPosition, 0) = lst_set_items.CellTag(CurrentPosition+1, 0)
 		    lst_set_items.RemoveRow(CurrentPosition+1)
 		    CurrentInSetItem = newPosition
 		  End If
@@ -13020,6 +13024,7 @@ End
 		  If NOT Status_InSetChanged Then
 		    CurrentInSetItem = -1
 		  End If
+		  
 		  DontUpdateSetItem = false
 		  'EnableMenuItems
 		  '--
