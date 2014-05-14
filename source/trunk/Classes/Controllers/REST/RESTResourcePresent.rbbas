@@ -10,7 +10,7 @@ Implements REST.RESTResource
 		  Dim slideIndex As Integer = Max(CDbl(identifier), 1)
 		  
 		  If IsNull(PresentWindow.CurrentSet) Then
-		    result = New REST.RESTresponse("The requested slide is not available, no active presentation.", "404 Not Found")
+		    result = New REST.RESTresponse("The requested slide is not available, no active presentation.", HttpStatus.NotFound)
 		  Else
 		    result = New REST.RESTresponse
 		    
@@ -35,7 +35,6 @@ Implements REST.RESTResource
 		    End If
 		    
 		    result.response = xml.ToString
-		    
 		  End If
 		  
 		  Return result
@@ -47,25 +46,28 @@ Implements REST.RESTResource
 		  Dim result As REST.RESTResponse
 		  Dim imageData As MemoryBlock = Nil
 		  
+		  Dim scaleW As Boolean = (width = 0 Or height <> 0)
+		  Dim scaleH As Boolean = (width <> 0 Or height = 0)
+		  Dim defaultW As Integer = 320
+		  Dim defaultH As Integer = 240
+		  
 		  If preview Then
-		    If width = 0 Or height = 0 Then
-		      If PresentWindow.HelperActive Then
-		        If width = 0 then width = PresentHelperWindow.cnv_preview_next.Width
-		        If height = 0 then height = PresentHelperWindow.cnv_preview_next.Height
-		      Else
-		        If width = 0 then width = 160
-		        If height = 0 then height = 120
-		      End If
+		    If PresentWindow.HelperActive Then
+		      defaultW = PresentHelperWindow.cnv_preview_next.Width
+		      defaultH = PresentHelperWindow.cnv_preview_next.Height
 		    End If
 		  Else
-		    If width = 0 Or height = 0 Then
-		      Dim presentScreen As Integer = SmartML.GetValueN(App.MyPresentSettings.DocumentElement, "monitors/@present") - 1
-		      If presentScreen < 0 Or presentScreen + 1 > OSScreenCount() Then presentScreen = 0
-		      
-		      If width = 0 then width = OSScreen(presentScreen).Width
-		      If height = 0 then height = OSScreen(presentScreen).Height
-		    End If
+		    Dim presentScreen As Integer = SmartML.GetValueN(App.MyPresentSettings.DocumentElement, "monitors/@present") - 1
+		    If presentScreen < 0 Or presentScreen + 1 > OSScreenCount() Then presentScreen = 0
+		    
+		    defaultW = OSScreen(presentScreen).Width
+		    defaultH = OSScreen(presentScreen).Height
 		  End If
+		  
+		  If width = 0 Then width = defaultW
+		  If height = 0 Then height = defaultH
+		  If scaleW Then width = width * height / defaultH
+		  If scaleH Then height = height * width / defaultW
 		  
 		  width = Min(Max(width, 0), 4096)
 		  height = Min(Max(height, 0), 4096)
@@ -87,15 +89,13 @@ Implements REST.RESTResource
 		  End If
 		  
 		  If Not IsNull(imageData) Then
-		    result = NEW REST.RESTResponse()
-		    
-		    result.response = imageData
+		    result = New REST.RESTResponse(imageData)
 		    result.headers.Value(REST.kContentType) = REST.kContentTypeJpeg
 		    result.headers.Value("Expires") = "Tue, 09 Feb 2011 14:02:00 GMT"    // a certain date in the past ...
 		    result.headers.Value("Cache-Control") = "no-cache, must-revalidate"  // HTTP/1.1
 		    result.headers.Value("Pragma") = "no-cache"
 		  Else
-		    result = New REST.RESTResponse("The current slide is not available.", "404 Not Found")
+		    result = New REST.RESTResponse("The requested slide is not available.", HttpStatus.NotFound)
 		  End If
 		  
 		  Return result
@@ -151,51 +151,106 @@ Implements REST.RESTResource
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
-		Private Function HandleScreen(protocolHandler As REST.RESTProtocolHandler) As REST.RESTresponse
-		  Dim result As REST.RESTResponse
+		Private Function HandleClose(protocolHandler As REST.RESTProtocolHandler) As REST.RESTResponse
+		  Dim result As REST.RESTResponse = Nil
 		  
-		  If protocolHandler.Method() = "POST" Then
-		    Dim supported, success As Boolean
-		    supported = True
-		    success = False
+		  If protocolHandler.Method() = HttpMethod.Options Then
+		    result = New REST.RESTResponse()
+		    If protocolHandler.Header(REST.kAccessControlRequestMethod, "") <> "POST" Then
+		      result.headers.Value(REST.kHeaderAllow) = "POST"
+		    End If
 		    
-		    Select Case protocolHandler.Identifier()
-		    Case"normal"
-		      success = PresentWindow.PerformAction(PresentWindow.ACTION_NORMAL)
-		    Case"toggle_black", _
-		      "black"
-		      success = PresentWindow.PerformAction(PresentWindow.ACTION_BLACK)
-		    Case"toggle_white", _
-		      "white"
-		      success = PresentWindow.PerformAction(PresentWindow.ACTION_WHITE)
-		    Case"toggle_hide", _
-		      "hide"
-		      success = PresentWindow.PerformAction(PresentWindow.ACTION_HIDE)
-		    Case"toggle_logo", _
-		      "logo"
-		      success = PresentWindow.PerformAction(PresentWindow.ACTION_LOGO)
-		    Case"toggle_freeze", _
-		      "freeze"
-		      success = PresentWindow.PerformAction(PresentWindow.ACTION_FREEZE)
-		    Case"alert"
-		      success = PresentWindow.PerformAction(PresentWindow.ACTION_ALERT, protocolHandler.Parameter("message", ""))
+		  ElseIf protocolHandler.Method() = HttpMethod.Post Then
+		    If PresentWindow.PerformAction(PresentWindow.ACTION_EXIT_NOPROMPT) Then
+		      result = New REST.RESTResponse("OK")
 		    Else
-		      supported = False
-		    End Select
-		    
-		    If supported Then
-		      If success Then
-		        result = New REST.RESTResponse("OK")
-		      Else
-		        result = New REST.RESTResponse("The requested action failed.", "500 Internal Server Error")
-		      End If
-		    Else
-		      result = New REST.RESTResponse("The requested action is not available.", "404 Not Found")
+		      result =  New REST.RESTresponse("The requested action failed.",  HttpStatus.InternalServerError)
 		    End If
 		    
 		  Else
-		    result = New REST.RESTresponse("The request method is not allowed, use POST.", "405 Method Not Allowed")
+		    result = New REST.RESTresponse("The request method is not allowed, use POST.", HttpStatus.MethodNotAllowed)
 		    result.headers.Value(REST.kHeaderAllow) = "POST"
+		  End If
+		  
+		  return result
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Private Function HandleScreen(protocolHandler As REST.RESTProtocolHandler) As REST.RESTresponse
+		  Dim result As REST.RESTResponse = Nil
+		  Dim supported As Boolean = False
+		  
+		  Select Case protocolHandler.Identifier()
+		  Case "normal", _
+		    "toggle_black", _
+		    "black", _
+		    "toggle_white", _
+		    "white", _
+		    "toggle_hide", _
+		    "hide", _
+		    "toggle_logo", _
+		    "logo", _
+		    "toggle_freeze", _
+		    "freeze", _
+		    "alert"
+		    supported = True
+		  Else
+		    supported = False
+		  End Select
+		  
+		  If supported Then
+		    If protocolHandler.Method() = HttpMethod.Options Then
+		      
+		      result = New REST.RESTResponse()
+		      If protocolHandler.Header(REST.kAccessControlRequestMethod, "") <> "POST" Then
+		        result.headers.Value(REST.kHeaderAllow) = "POST"
+		      End If
+		      
+		    ElseIf protocolHandler.Method() = HttpMethod.Post Then
+		      Dim success As Boolean = False
+		      
+		      Select Case protocolHandler.Identifier()
+		      Case"normal"
+		        success = PresentWindow.PerformAction(PresentWindow.ACTION_NORMAL)
+		      Case"toggle_black", _
+		        "black"
+		        success = PresentWindow.PerformAction(PresentWindow.ACTION_BLACK)
+		      Case"toggle_white", _
+		        "white"
+		        success = PresentWindow.PerformAction(PresentWindow.ACTION_WHITE)
+		      Case"toggle_hide", _
+		        "hide"
+		        success = PresentWindow.PerformAction(PresentWindow.ACTION_HIDE)
+		      Case"toggle_logo", _
+		        "logo"
+		        success = PresentWindow.PerformAction(PresentWindow.ACTION_LOGO)
+		      Case"toggle_freeze", _
+		        "freeze"
+		        success = PresentWindow.PerformAction(PresentWindow.ACTION_FREEZE)
+		      Case"alert"
+		        success = PresentWindow.PerformAction(PresentWindow.ACTION_ALERT, protocolHandler.Parameter("message", ""))
+		      Else
+		        'Just to be sure
+		        supported = False
+		      End Select
+		      
+		      If supported Then
+		        If success Then
+		          result = New REST.RESTResponse("OK")
+		        Else
+		          result = New REST.RESTResponse("The requested action failed.", HttpStatus.InternalServerError)
+		        End If
+		      Else
+		        result = New REST.RESTResponse("The requested action is not available.", HttpStatus.NotFound)
+		      End If
+		      
+		    Else
+		      result = New REST.RESTresponse("The request method is not allowed, use POST.", HttpStatus.MethodNotAllowed)
+		      result.headers.Value(REST.kHeaderAllow) = "POST"
+		    End If
+		  Else
+		    result = New REST.RESTResponse("The requested action is not available.", HttpStatus.NotFound)
 		  End If
 		  
 		  Return result
@@ -204,35 +259,53 @@ Implements REST.RESTResource
 
 	#tag Method, Flags = &h21
 		Private Function HandleSection(protocolHandler As REST.RESTProtocolHandler) As REST.RESTresponse
-		  Dim result As REST.RESTResponse
+		  Dim result As REST.RESTResponse = Nil
+		  Dim supported As Boolean = False
 		  
-		  If protocolHandler.Method() = "POST" Then
-		    Dim supported, success As Boolean
+		  Select Case protocolHandler.Identifier()
+		  Case"next", _
+		    "previous"
 		    supported = True
-		    success = False
-		    
-		    Select Case protocolHandler.Identifier()
-		    Case"next"
-		      success = PresentWindow.PerformAction(PresentWindow.ACTION_NEXT_SECTION)
-		    Case"previous"
-		      success = PresentWindow.PerformAction(PresentWindow.ACTION_PREV_SECTION)
-		    Else
-		      supported = False
-		    End Select
-		    
-		    If supported Then
-		      If success Then
-		        result = New REST.RESTResponse("OK")
-		      Else
-		        result = New REST.RESTResponse("The requested action failed.", "500 Internal Server Error")
-		      End If
-		    Else
-		      result = New REST.RESTResponse("The requested action is not available.", "404 Not Found")
-		    End If
-		    
 		  Else
-		    result = New REST.RESTresponse("The request method is not allowed, use POST.", "405 Method Not Allowed")
-		    result.headers.Value(REST.kHeaderAllow) = "POST"
+		    supported = False
+		  End Select
+		  
+		  If supported Then
+		    If protocolHandler.Method() = HttpMethod.Options Then
+		      result = New REST.RESTResponse()
+		      If protocolHandler.Header(REST.kAccessControlRequestMethod, "") <> "POST" Then
+		        result.headers.Value(REST.kHeaderAllow) = "POST"
+		      End If
+		      
+		    ElseIf protocolHandler.Method() = HttpMethod.Post Then
+		      Dim success As Boolean = False
+		      
+		      Select Case protocolHandler.Identifier()
+		      Case"next"
+		        success = PresentWindow.PerformAction(PresentWindow.ACTION_NEXT_SECTION)
+		      Case"previous"
+		        success = PresentWindow.PerformAction(PresentWindow.ACTION_PREV_SECTION)
+		      Else
+		        'Just to be sure
+		        supported = False
+		      End Select
+		      
+		      If supported Then
+		        If success Then
+		          result = New REST.RESTResponse("OK")
+		        Else
+		          result = New REST.RESTResponse("The requested action failed.", HttpStatus.InternalServerError)
+		        End If
+		      Else
+		        result = New REST.RESTResponse("The requested action is not available.", HttpStatus.NotFound)
+		      End If
+		      
+		    Else
+		      result = New REST.RESTresponse("The request method is not allowed, use POST.", HttpStatus.MethodNotAllowed)
+		      result.headers.Value(REST.kHeaderAllow) = "POST"
+		    End If
+		  Else
+		    result = New REST.RESTResponse("The requested action is not available.", HttpStatus.NotFound)
 		  End If
 		  
 		  Return result
@@ -256,81 +329,93 @@ Implements REST.RESTResource
 		    isPostAction = False
 		  End Select
 		  
-		  If protocolHandler.Identifier() = "" Or _
-		    protocolHandler.Identifier() = "list" Then
-		    
-		    result = ListSlides()
-		    
-		  ElseIf protocolHandler.Identifier() <> "" And _
-		    Not isPostAction Then
-		    
-		    If protocolHandler.Parameter("preview", false) Then
-		      result = GetSlideImage(protocolHandler.Identifier(), true, _
-		      protocolHandler.Parameter("width", 0), _
-		      protocolHandler.Parameter("height", 0), _
-		      protocolHandler.Parameter("quality", 50))
-		      
-		    ElseIf protocolHandler.Parameter("image", false) Then
-		      result = GetSlideImage(protocolHandler.Identifier(), false, _
-		      protocolHandler.Parameter("width", 0), _
-		      protocolHandler.Parameter("height", 0), _
-		      protocolHandler.Parameter("quality", 85))
-		      
-		    ElseIf IsNumeric(protocolHandler.Identifier()) Then
-		      If protocolHandler.Method() = "GET" Then
-		        result = GetSlide(protocolHandler.Identifier())
-		      Else
-		        If PresentWindow.PerformAction(PresentWindow.ACTION_SLIDE, protocolHandler.Identifier()) Then
-		          result = New REST.RESTResponse("OK")
-		        Else
-		          result = New REST.RESTResponse("The requested action failed.", "500 Internal Server Error")
-		        End If
+		  If protocolHandler.Method() = HttpMethod.Options Then
+		    result = New REST.RESTResponse()
+		    If isPostAction then
+		      If protocolHandler.Header(REST.kAccessControlRequestMethod, "") <> "POST" Then
+		        result.headers.Value(REST.kHeaderAllow) = "POST"
 		      End If
 		    End If
 		    
 		  Else
-		    If protocolHandler.Method() = "POST" Then
-		      Dim supported, success As Boolean
-		      supported = True
-		      success = False
+		    If protocolHandler.Identifier() = "" Or _
+		      protocolHandler.Identifier() = "list" Then
 		      
-		      Select Case protocolHandler.Identifier()
-		      Case "next"
-		        success = PresentWindow.PerformAction(PresentWindow.ACTION_NEXT_SLIDE)
-		      Case "previous"
-		        success = PresentWindow.PerformAction(PresentWindow.ACTION_PREV_SLIDE)
-		      Case "first"
-		        success = PresentWindow.PerformAction(PresentWindow.ACTION_FIRST_SLIDE)
-		      Case"last"
-		        success = PresentWindow.PerformAction(PresentWindow.ACTION_LAST_SLIDE)
-		        
-		      Case "song", _
-		        "scripture"
-		        
-		        Return New REST.RESTResponse("Todo.", "501 Not Implemented")
-		        
-		      Else
-		        supported = False
-		      End Select
+		      result = ListSlides()
 		      
-		      If supported Then
-		        If success Then
-		          result = New REST.RESTResponse("OK")
-		        Else
-		          If IsNull(result) Then
-		            result = New REST.RESTResponse("The requested action failed.", "500 Internal Server Error")
+		    ElseIf protocolHandler.Identifier() <> "" And _
+		      Not isPostAction Then
+		      
+		      If protocolHandler.Parameter("preview", false) Then
+		        result = GetSlideImage(protocolHandler.Identifier(), true, _
+		        protocolHandler.Parameter("width", 0), _
+		        protocolHandler.Parameter("height", 0), _
+		        protocolHandler.Parameter("quality", 50))
+		        
+		      ElseIf protocolHandler.Parameter("image", false) Then
+		        result = GetSlideImage(protocolHandler.Identifier(), false, _
+		        protocolHandler.Parameter("width", 0), _
+		        protocolHandler.Parameter("height", 0), _
+		        protocolHandler.Parameter("quality", 85))
+		        
+		      ElseIf IsNumeric(protocolHandler.Identifier()) Then
+		        If protocolHandler.Method() = HttpMethod.Post Then
+		          If PresentWindow.PerformAction(PresentWindow.ACTION_SLIDE, protocolHandler.Identifier()) Then
+		            result = New REST.RESTResponse("OK")
+		          Else
+		            result = New REST.RESTResponse("The requested action failed.", HttpStatus.InternalServerError)
 		          End If
+		        Else
+		          result = GetSlide(protocolHandler.Identifier())
 		        End If
+		        
 		      Else
-		        result = New REST.RESTResponse("The requested action is not available.", "404 Not Found")
+		        result = New REST.RESTResponse("The requested action is not available.", HttpStatus.NotFound)
 		      End If
 		      
 		    Else
-		      result = New REST.RESTresponse("The request method is not allowed, use POST.", "405 Method Not Allowed")
-		      result.headers.Value(REST.kHeaderAllow) = "POST"
+		      If protocolHandler.Method() = HttpMethod.Post Then
+		        Dim supported, success As Boolean
+		        supported = True
+		        success = False
+		        
+		        Select Case protocolHandler.Identifier()
+		        Case "next"
+		          success = PresentWindow.PerformAction(PresentWindow.ACTION_NEXT_SLIDE)
+		        Case "previous"
+		          success = PresentWindow.PerformAction(PresentWindow.ACTION_PREV_SLIDE)
+		        Case "first"
+		          success = PresentWindow.PerformAction(PresentWindow.ACTION_FIRST_SLIDE)
+		        Case"last"
+		          success = PresentWindow.PerformAction(PresentWindow.ACTION_LAST_SLIDE)
+		          
+		        Case "song", _
+		          "scripture"
+		          
+		          Return New REST.RESTResponse("Todo.", HttpStatus.NotImplemented)
+		          
+		        Else
+		          supported = False
+		        End Select
+		        
+		        If supported Then
+		          If success Then
+		            result = New REST.RESTResponse("OK")
+		          Else
+		            If IsNull(result) Then
+		              result = New REST.RESTResponse("The requested action failed.", HttpStatus.InternalServerError)
+		            End If
+		          End If
+		        Else
+		          result = New REST.RESTResponse("The requested action is not available.", HttpStatus.NotFound)
+		        End If
+		        
+		      Else
+		        result = New REST.RESTresponse("The request method is not allowed, use POST.", HttpStatus.MethodNotAllowed)
+		        result.headers.Value(REST.kHeaderAllow) = "POST"
+		      End If
 		    End If
 		  End If
-		  
 		  
 		  Return result
 		End Function
@@ -339,53 +424,71 @@ Implements REST.RESTResource
 	#tag Method, Flags = &h21
 		Private Function HandleSong(protocolHandler As REST.RESTProtocolHandler) As REST.RESTresponse
 		  Dim result As REST.RESTResponse
+		  Dim supported As Boolean = False
 		  
-		  If protocolHandler.Method() = "POST" Then
-		    Dim supported, success As Boolean
+		  Select Case protocolHandler.Identifier()
+		  Case"current"
 		    supported = True
-		    success = False
-		    
-		    Select Case protocolHandler.Identifier()
-		    Case"current"
-		      
-		      If protocolHandler.Parameter("chorus", false) Then
-		        success = PresentWindow.PerformAction(PresentWindow.ACTION_CHORUS)
-		      ElseIf protocolHandler.Parameter("bridge", false) Then
-		        success = PresentWindow.PerformAction(PresentWindow.ACTION_BRIDGE)
-		      ElseIf protocolHandler.Parameter("prechorus", false) Then
-		        success = PresentWindow.PerformAction(PresentWindow.ACTION_PRECHORUS)
-		      ElseIf protocolHandler.Parameter("tag", false) Then
-		        success = PresentWindow.PerformAction(PresentWindow.ACTION_TAG)
-		      ElseIf protocolHandler.Parameter("verse", "") <> "" Then
-		        success = PresentWindow.PerformAction(PresentWindow.ACTION_VERSE, protocolHandler.Parameter("verse", "V1"))
-		      Else
-		        supported = False
-		      End If
-		      
-		    Else
-		      
-		      Dim index As Integer = Val(protocolHandler.Identifier())
-		      If index > 0 Then
-		        success = PresentWindow.PerformAction(PresentWindow.ACTION_SONG, index)
-		      Else
-		        result = New REST.RESTResponse("The requested song is not available.", "404 Not Found")
-		      End If
-		      
-		    End Select
-		    
-		    If supported Then
-		      If success Then
-		        result = New REST.RESTResponse("OK")
-		      Else
-		        result = New REST.RESTResponse("The requested action failed.", "500 Internal Server Error")
-		      End If
-		    Else
-		      result = New REST.RESTResponse("The requested action is not available.", "404 Not Found")
-		    End If
-		    
 		  Else
-		    result = New REST.RESTresponse("The request method is not allowed, use POST.", "405 Method Not Allowed")
-		    result.headers.Value(REST.kHeaderAllow) = "POST"
+		    If Val(protocolHandler.Identifier()) > 0 Then
+		      supported = True
+		    End If
+		  End Select
+		  
+		  If supported Then
+		    If protocolHandler.Method() = HttpMethod.Options Then
+		      result = New REST.RESTResponse()
+		      If protocolHandler.Header(REST.kAccessControlRequestMethod, "") <> "POST" Then
+		        result.headers.Value(REST.kHeaderAllow) = "POST"
+		      End If
+		      
+		    ElseIf protocolHandler.Method() = HttpMethod.Post Then
+		      Dim success As Boolean = False
+		      
+		      Select Case protocolHandler.Identifier()
+		      Case"current"
+		        
+		        If protocolHandler.Parameter("chorus", false) Then
+		          success = PresentWindow.PerformAction(PresentWindow.ACTION_CHORUS)
+		        ElseIf protocolHandler.Parameter("bridge", false) Then
+		          success = PresentWindow.PerformAction(PresentWindow.ACTION_BRIDGE)
+		        ElseIf protocolHandler.Parameter("prechorus", false) Then
+		          success = PresentWindow.PerformAction(PresentWindow.ACTION_PRECHORUS)
+		        ElseIf protocolHandler.Parameter("tag", false) Then
+		          success = PresentWindow.PerformAction(PresentWindow.ACTION_TAG)
+		        ElseIf protocolHandler.Parameter("verse", "") <> "" Then
+		          success = PresentWindow.PerformAction(PresentWindow.ACTION_VERSE, protocolHandler.Parameter("verse", "V1"))
+		        Else
+		          supported = False
+		        End If
+		        
+		      Else
+		        
+		        Dim index As Integer = Val(protocolHandler.Identifier())
+		        If index > 0 Then
+		          success = PresentWindow.PerformAction(PresentWindow.ACTION_SONG, index)
+		        Else
+		          result = New REST.RESTResponse("The requested song is not available.", HttpStatus.NotFound)
+		        End If
+		        
+		      End Select
+		      
+		      If supported Then
+		        If success Then
+		          result = New REST.RESTResponse("OK")
+		        Else
+		          result = New REST.RESTResponse("The requested action failed.", HttpStatus.InternalServerError)
+		        End If
+		      Else
+		        result = New REST.RESTResponse("The requested action is not available.", HttpStatus.NotFound)
+		      End If
+		      
+		    Else
+		      result = New REST.RESTresponse("The request method is not allowed, use POST.", HttpStatus.MethodNotAllowed)
+		      result.headers.Value(REST.kHeaderAllow) = "POST"
+		    End If
+		  Else
+		    result = New REST.RESTResponse("The requested action is not available.", HttpStatus.NotFound)
 		  End If
 		  
 		  Return result
@@ -401,7 +504,7 @@ Implements REST.RESTResource
 		  Dim index As Integer = 1
 		  
 		  If IsNull(PresentWindow.CurrentSet) Then
-		    result = New REST.RESTresponse("The requested set is not available, no active presentation.", "404 Not Found")
+		    result = New REST.RESTresponse("The requested set is not available, no active presentation.", HttpStatus.NotFound)
 		  Else
 		    result = New REST.RESTresponse
 		    
@@ -487,22 +590,13 @@ Implements REST.RESTResource
 		        result =HandleScreen(protocolHandler)
 		        
 		      Case "close"
-		        If protocolHandler.Method() = "POST" Then
-		          If PresentWindow.PerformAction(PresentWindow.ACTION_EXIT_NOPROMPT) Then
-		            result = New REST.RESTresponse("OK")
-		          Else
-		            result = New REST.RESTresponse("The requested action failed.",  "500 Internal Server Error")
-		          End If
-		        Else
-		          result = New REST.RESTresponse("The request method is not allowed, use POST.", "405 Method Not Allowed")
-		          result.headers.Value(REST.kHeaderAllow) = "POST"
-		        End If
+		        result =HandleClose(protocolHandler)
 		        
 		      Else
-		        result = New REST.RESTresponse("The requested action is not available.", "404 Not Found")
+		        result = New REST.RESTresponse("The requested action is not available.", HttpStatus.NotFound)
 		      End Select
 		    Else
-		      result = New REST.RESTresponse("There is no running presentation, requested action cannot be executed.", "403 Forbidden")
+		      result = New REST.RESTresponse("There is no running presentation, requested action cannot be executed.", HttpStatus.Forbidden)
 		    End If
 		  End If
 		  
@@ -517,33 +611,33 @@ Implements REST.RESTResource
 			Visible=true
 			Group="ID"
 			InitialValue="-2147483648"
-			InheritedFrom="Object"
+			Type="Integer"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Left"
 			Visible=true
 			Group="Position"
 			InitialValue="0"
-			InheritedFrom="Object"
+			Type="Integer"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Name"
 			Visible=true
 			Group="ID"
-			InheritedFrom="Object"
+			Type="String"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Super"
 			Visible=true
 			Group="ID"
-			InheritedFrom="Object"
+			Type="String"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Top"
 			Visible=true
 			Group="Position"
 			InitialValue="0"
-			InheritedFrom="Object"
+			Type="Integer"
 		#tag EndViewProperty
 	#tag EndViewBehavior
 End Class

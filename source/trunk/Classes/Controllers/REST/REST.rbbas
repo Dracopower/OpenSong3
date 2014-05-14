@@ -113,7 +113,22 @@ Protected Module REST
 	#tag EndNote
 
 
+	#tag Constant, Name = kAccessControlAllowCredentials, Type = String, Dynamic = False, Default = \"Access-Control-Allow-Credentials", Scope = Public
+	#tag EndConstant
+
+	#tag Constant, Name = kAccessControlAllowHeaders, Type = String, Dynamic = False, Default = \"Access-Control-Allow-Headers", Scope = Public
+	#tag EndConstant
+
+	#tag Constant, Name = kAccessControlAllowMethods, Type = String, Dynamic = False, Default = \"Access-Control-Allow-Methods", Scope = Public
+	#tag EndConstant
+
 	#tag Constant, Name = kAccessControlAllowOrigin, Type = String, Dynamic = False, Default = \"Access-Control-Allow-Origin", Scope = Public
+	#tag EndConstant
+
+	#tag Constant, Name = kAccessControlRequestHeaders, Type = String, Dynamic = False, Default = \"Access-Control-Request-Headers", Scope = Public
+	#tag EndConstant
+
+	#tag Constant, Name = kAccessControlRequestMethod, Type = String, Dynamic = False, Default = \"Access-Control-Request-Method", Scope = Public
 	#tag EndConstant
 
 	#tag Constant, Name = kContentType, Type = String, Dynamic = False, Default = \"Content-Type", Scope = Public
@@ -140,8 +155,33 @@ Protected Module REST
 	#tag Constant, Name = kHeaderContentLength, Type = String, Dynamic = False, Default = \"Content-Length", Scope = Public
 	#tag EndConstant
 
+	#tag Constant, Name = kHeaderOrigin, Type = String, Dynamic = False, Default = \"Origin", Scope = Public
+	#tag EndConstant
+
 	#tag Constant, Name = kHeaderWWWAuthenticate, Type = String, Dynamic = False, Default = \"WWW-Authenticate", Scope = Public
 	#tag EndConstant
+
+
+	#tag Enum, Name = HttpMethod, Type = Integer, Flags = &h0
+		Get
+		  Post
+		  Options
+		  Head
+		  Put
+		Delete
+	#tag EndEnum
+
+	#tag Enum, Name = HttpStatus, Flags = &h0
+		OK=200
+		  SwitchingProtocols=101
+		  BadRequest=400
+		  Unauthorized=401
+		  Forbidden=403
+		  NotFound=404
+		  MethodNotAllowed=405
+		  InternalServerError=500
+		NotImplemented=501
+	#tag EndEnum
 
 
 	#tag ViewBehavior
@@ -150,33 +190,33 @@ Protected Module REST
 			Visible=true
 			Group="ID"
 			InitialValue="-2147483648"
-			InheritedFrom="Object"
+			Type="Integer"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Left"
 			Visible=true
 			Group="Position"
 			InitialValue="0"
-			InheritedFrom="Object"
+			Type="Integer"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Name"
 			Visible=true
 			Group="ID"
-			InheritedFrom="Object"
+			Type="String"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Super"
 			Visible=true
 			Group="ID"
-			InheritedFrom="Object"
+			Type="String"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Top"
 			Visible=true
 			Group="Position"
 			InitialValue="0"
-			InheritedFrom="Object"
+			Type="Integer"
 		#tag EndViewProperty
 	#tag EndViewBehavior
 End Module

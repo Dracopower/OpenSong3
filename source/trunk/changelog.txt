@@ -1,11 +1,16 @@
-﻿* Fix for losing the background color that is identifying the slide type after using drag-and-drop for moving a slide set mode (bug #439) (Vwout)
+﻿* Improvements and extensions to the OpenSong API (Vwout)
+- Added support for HTTP OPTIONS method to correctly handle CORS requests
+- Added support for HTTP HEAD method
+- Image width and height in API calls to /presentation/slide/identifier/preview and /presentation/slide/identifier/image now respect the aspect ration in case only one of the two is specified
+- Various small fixes to provide more accurate and descriptive response messages in case of bad requests
+
+* Fix for losing the background color that is identifying the slide type after using drag-and-drop for moving a slide set mode (bug #439) (Vwout)
 
 -= 2.1.2 =-
 
 * Fix for strange behaviour of popup window for adding new songs to set on Linux (bug #421, support request #121) (Vwout)
 
-* Fix issue where PresentHelper was not updating properly, when presenting a single song & then
-adding song on the fly. (JRC)
+* Fix issue where PresentHelper was not updating properly, when presenting a single song & then adding song on the fly. (JRC)
 
 * Fix off-by-one error that was causing the last line of a song's lyrics to not be shown (JRC)
 

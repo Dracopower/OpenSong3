@@ -11,7 +11,7 @@ Inherits TCPSocket
 		    If handler.ParseRequest(Me.readAll()) Then
 		      
 		      If Not IsNull(handler.AuthenticationKey()) Then
-		        If handler.Method() <> "GET" Then
+		        If handler.Method() = HttpMethod.Post Then
 		          authenticated = Authenticate(handler.AuthenticationKey())
 		        End If
 		      End If
@@ -23,20 +23,20 @@ Inherits TCPSocket
 		        If Not IsNull(resource) Then
 		          response = resource.Process(handler)
 		        Else
-		          response = New REST.RESTResponse("The requested resource could not be found", "404 Not Found")
+		          response = New REST.RESTResponse("The requested resource could not be found", HttpStatus.NotFound)
 		        End If
 		        
 		      Else
-		        response = New REST.RESTResponse("The requested method requires authorisation, please supply credentials.", "401 Unauthorized")
+		        response = New REST.RESTResponse("The requested method requires authorisation, please supply credentials.", HttpStatus.Unauthorized)
 		        response.headers.Value(REST.kHeaderWWWAuthenticate) = "Basic realm=""OpenSong REST"""
 		      End If
 		      
 		    Else
-		      response = New REST.RESTResponse("Unable to parse request", "400 Bad Request")
+		      response = New REST.RESTResponse("Unable to parse request", HttpStatus.BadRequest)
 		    End If
 		    
 		  Catch e As RuntimeException
-		    response = New REST.RESTResponse(e.Message, "500 Internal Server Error")
+		    response = New REST.RESTResponse(e.Message, HttpStatus.InternalServerError)
 		  End Try
 		  
 		  If Not IsNull(response) Then
@@ -117,26 +117,24 @@ Inherits TCPSocket
 			Visible=true
 			Group="Behavior"
 			Type="String"
-			InheritedFrom="TCPSocket"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Index"
 			Visible=true
 			Group="ID"
-			InheritedFrom="TCPSocket"
+			Type="Integer"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Left"
 			Visible=true
 			Group="Position"
 			Type="Integer"
-			InheritedFrom="TCPSocket"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Name"
 			Visible=true
 			Group="ID"
-			InheritedFrom="TCPSocket"
+			Type="String"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Port"
@@ -144,20 +142,18 @@ Inherits TCPSocket
 			Group="Behavior"
 			InitialValue="0"
 			Type="Integer"
-			InheritedFrom="TCPSocket"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Super"
 			Visible=true
 			Group="ID"
-			InheritedFrom="TCPSocket"
+			Type="String"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Top"
 			Visible=true
 			Group="Position"
 			Type="Integer"
-			InheritedFrom="TCPSocket"
 		#tag EndViewProperty
 	#tag EndViewBehavior
 End Class

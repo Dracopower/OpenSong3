@@ -8,7 +8,7 @@ Protected Class RESTResponse
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub Constructor(response As String, status as String = "", contentType As String = REST.kContentTypeText)
+		Sub Constructor(response As String, status as HttpStatus = HttpStatus.OK, contentType As String = REST.kContentTypeText)
 		  me.headers = new Dictionary()
 		  me.headers.Value(REST.kContentType) = contentType
 		  me.response = response
@@ -50,7 +50,7 @@ Protected Class RESTResponse
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
-		status As String
+		status As HttpStatus = HTTPStatus.OK
 	#tag EndProperty
 
 

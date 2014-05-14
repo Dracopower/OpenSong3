@@ -31,7 +31,7 @@ Implements REST.RESTResource
 		  
 		  setXml = GetSet(setName)
 		  If IsNull(setXml) Then
-		    result = New REST.RESTresponse("The requested set is not available.", "404 Not Found")
+		    result = New REST.RESTresponse("The requested set is not available.", HttpStatus.NotFound)
 		  Else
 		    result = New REST.RESTresponse
 		    xml = result.CreateXmlResponse(Name(), "slide", setName)
@@ -105,7 +105,7 @@ Implements REST.RESTResource
 		  
 		  setXml = GetSet(setName)
 		  If IsNull(setXml) Then
-		    result = New REST.RESTresponse("The requested set is not available.", "404 Not Found")
+		    result = New REST.RESTresponse("The requested set is not available.", HttpStatus.NotFound)
 		  Else
 		    result = New REST.RESTresponse
 		    xml = result.CreateXmlResponse(Name(), "slides", setName)
@@ -151,18 +151,18 @@ Implements REST.RESTResource
 		  Dim setXml As XmlDocument
 		  
 		  If MainWindow.Status_SetChanged Then
-		    result = New REST.RESTresponse("The currently loaded set has unsaved changes, requested action cannot be executed.", "403 Forbidden")
+		    result = New REST.RESTresponse("The currently loaded set has unsaved changes, requested action cannot be executed.", HttpStatus.Forbidden)
 		  Else
 		    
 		    setXml = GetSet(setName)
 		    If IsNull(setXml) Then
-		      result = New REST.RESTresponse("The requested set is not available.", "404 Not Found")
+		      result = New REST.RESTresponse("The requested set is not available.", HttpStatus.NotFound)
 		    Else
 		      
 		      If MainWindow.LoadSet(setName) Then
 		        result = New REST.RESTResponse("OK")
 		      Else
-		        result = New REST.RESTResponse("The requested action failed.", "500 Internal Server Error")
+		        result = New REST.RESTResponse("The requested action failed.", HttpStatus.InternalServerError)
 		      End If
 		      
 		    End If
@@ -193,19 +193,19 @@ Implements REST.RESTResource
 		  End If
 		  
 		  If MainWindow.Status_SetChanged Then
-		    result = New REST.RESTresponse("The currently loaded set has unsaved changes, requested action cannot be executed.", "403 Forbidden")
+		    result = New REST.RESTresponse("The currently loaded set has unsaved changes, requested action cannot be executed.", HttpStatus.Forbidden)
 		  Else
 		    
 		    setXml = GetSet(setName)
 		    If IsNull(setXml) Then
-		      result = New REST.RESTresponse("The requested set is not available.", "404 Not Found")
+		      result = New REST.RESTresponse("The requested set is not available.", HttpStatus.NotFound)
 		    Else
 		      
 		      If MainWindow.LoadSet(setName) Then
 		        Call MainWindow.ActionSetPresent(mode, slideIndex)
 		        result = New REST.RESTResponse("OK")
 		      Else
-		        result = New REST.RESTResponse("The requested action failed.", "500 Internal Server Error")
+		        result = New REST.RESTResponse("The requested action failed.", HttpStatus.InternalServerError)
 		      End If
 		      
 		    End If
@@ -218,7 +218,7 @@ Implements REST.RESTResource
 	#tag Method, Flags = &h0
 		Function Process(protocolHandler As REST.RESTProtocolHandler) As REST.RESTresponse
 		  // Part of the REST.RESTResource interface.
-		  Dim result As REST.RESTresponse
+		  Dim result As REST.RESTresponse = Nil
 		  
 		  Select Case protocolHandler.Action()
 		  Case "", _
@@ -239,10 +239,15 @@ Implements REST.RESTResource
 		    "present"
 		    
 		    Select Case protocolHandler.Method()
-		    Case "POST"
+		    Case HttpMethod.Options
+		      result = New REST.RESTResponse()
+		      If protocolHandler.Header(REST.kAccessControlRequestMethod, "") <> "POST" Then
+		        result.headers.Value(REST.kHeaderAllow) = "POST"
+		      End If
 		      
+		    Case HttpMethod.Post
 		      If Globals.Status_Presentation Then
-		        result = New REST.RESTresponse("There currently is a running presentation, requested action cannot be executed.", "403 Forbidden")
+		        result = New REST.RESTresponse("There currently is a running presentation, requested action cannot be executed.", HttpStatus.Forbidden)
 		      Else
 		        Select Case protocolHandler.Action()
 		          
@@ -256,13 +261,13 @@ Implements REST.RESTResource
 		      End If
 		      
 		    Else
-		      result = New REST.RESTresponse("The request method is not allowed, use POST.", "405 Method Not Allowed")
+		      result = New REST.RESTresponse("The request method is not allowed, use POST.", HttpStatus.MethodNotAllowed)
 		      result.headers.Value(REST.kHeaderAllow) = "POST"
 		      
 		    End Select
 		    
 		  Else
-		    result = New REST.RESTresponse("The requested action is not available.", "404 Not Found")
+		    result = New REST.RESTresponse("The requested action is not available.", HttpStatus.NotFound)
 		  End Select
 		  
 		  Return result
@@ -276,33 +281,33 @@ Implements REST.RESTResource
 			Visible=true
 			Group="ID"
 			InitialValue="-2147483648"
-			InheritedFrom="Object"
+			Type="Integer"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Left"
 			Visible=true
 			Group="Position"
 			InitialValue="0"
-			InheritedFrom="Object"
+			Type="Integer"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Name"
 			Visible=true
 			Group="ID"
-			InheritedFrom="Object"
+			Type="String"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Super"
 			Visible=true
 			Group="ID"
-			InheritedFrom="Object"
+			Type="String"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Top"
 			Visible=true
 			Group="Position"
 			InitialValue="0"
-			InheritedFrom="Object"
+			Type="Integer"
 		#tag EndViewProperty
 	#tag EndViewBehavior
 End Class

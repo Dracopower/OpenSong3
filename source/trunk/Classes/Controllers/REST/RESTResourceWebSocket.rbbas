@@ -27,7 +27,7 @@ Implements REST.RESTResource
 		        Dim clientKey As String = protocolHandler.Header("Sec-WebSocket-Key", "")
 		        Dim serverKey As String = EncodeBase64(SHA1.Hash(clientKey + kWebSocketGUID))
 		        
-		        response  = New REST.RESTResponse("", "101 Switching Protocols")
+		        response  = New REST.RESTResponse("", HttpStatus.SwitchingProtocols)
 		        response.headers.Value("Upgrade") = "websocket"
 		        response.headers.Value("Connection") = "Upgrade"
 		        response.headers.Value("Sec-WebSocket-Accept") = serverKey
@@ -35,12 +35,12 @@ Implements REST.RESTResource
 		        protocolHandler.Socket.ProtocolUpgrade(New REST.RESTWebSocketHandler(protocolHandler.Socket))
 		        
 		      Else
-		        response = New REST.RESTResponse("WebSocket version not supported", "400 Bad Request")
+		        response = New REST.RESTResponse("WebSocket version not supported", HttpStatus.BadRequest)
 		        response.headers.Value("Sec-WebSocket-Version") = RESTWebSocketHandler.kProtocolRFC6455
 		      End If
 		      
 		    Else
-		      response = New REST.RESTResponse("Incomplete WebSocket handshake", "400 Bad Request")
+		      response = New REST.RESTResponse("Incomplete WebSocket handshake", HttpStatus.BadRequest)
 		    End If
 		  ElseIf protocolHandler IsA RESTWebSocketHandler Then
 		    
@@ -58,11 +58,11 @@ Implements REST.RESTResource
 		    If success Then
 		      response = New REST.RESTResponse("OK")
 		    Else
-		      response = New REST.RESTResponse("The requested action is not available.", "404 Not Found")
+		      response = New REST.RESTResponse("The requested action is not available.", HttpStatus.NotFound)
 		    End If
 		    
 		  Else
-		    response = New REST.RESTResponse("The requested action is not available without the use of a WebSocket connection.", "404 Not Found")
+		    response = New REST.RESTResponse("The requested action is not available without the use of a WebSocket connection.", HttpStatus.NotFound)
 		  End If
 		  
 		  Return response
@@ -80,33 +80,33 @@ Implements REST.RESTResource
 			Visible=true
 			Group="ID"
 			InitialValue="-2147483648"
-			InheritedFrom="Object"
+			Type="Integer"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Left"
 			Visible=true
 			Group="Position"
 			InitialValue="0"
-			InheritedFrom="Object"
+			Type="Integer"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Name"
 			Visible=true
 			Group="ID"
-			InheritedFrom="Object"
+			Type="String"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Super"
 			Visible=true
 			Group="ID"
-			InheritedFrom="Object"
+			Type="String"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Top"
 			Visible=true
 			Group="Position"
 			InitialValue="0"
-			InheritedFrom="Object"
+			Type="Integer"
 		#tag EndViewProperty
 	#tag EndViewBehavior
 End Class

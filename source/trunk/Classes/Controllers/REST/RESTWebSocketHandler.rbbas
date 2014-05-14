@@ -236,12 +236,12 @@ Implements REST.RESTProtocolHandler,iStatusNotifier
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Function Method() As String
+		Function Method() As HttpMethod
 		  // Part of the REST.RESTProtocolHandler interface.
 		  
 		  'Methods are not applicable when using WebSockets.
 		  'All requests are considered GET
-		  Return "GET"
+		  Return HttpMethod.Get
 		End Function
 	#tag EndMethod
 
@@ -437,14 +437,14 @@ Implements REST.RESTProtocolHandler,iStatusNotifier
 			Visible=true
 			Group="ID"
 			InitialValue="-2147483648"
-			InheritedFrom="Object"
+			Type="Integer"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Left"
 			Visible=true
 			Group="Position"
 			InitialValue="0"
-			InheritedFrom="Object"
+			Type="Integer"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="m_open"
@@ -456,20 +456,20 @@ Implements REST.RESTProtocolHandler,iStatusNotifier
 			Name="Name"
 			Visible=true
 			Group="ID"
-			InheritedFrom="Object"
+			Type="String"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Super"
 			Visible=true
 			Group="ID"
-			InheritedFrom="Object"
+			Type="String"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Top"
 			Visible=true
 			Group="Position"
 			InitialValue="0"
-			InheritedFrom="Object"
+			Type="Integer"
 		#tag EndViewProperty
 	#tag EndViewBehavior
 End Class
