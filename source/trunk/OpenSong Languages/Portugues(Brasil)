@@ -399,7 +399,7 @@
   </main_menu>
 
   <general_settings title="Configurações Gerais">
-    <general caption="Geral" head1="Básico" head2="Localização" head3="Sistema" head4="Aparência">
+    <general caption="Geral" head1="Básico" head2="Localização" head3="Imagem" head4="Sistema" head5="Aparência">
       <ccli caption="Licença CCLI"/>
       <version_check caption="Verificar nova versão ao iniciar"/>
       <language caption="Idiomas"/>

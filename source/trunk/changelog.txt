@@ -1,4 +1,8 @@
-﻿* Improvements and extensions to the OpenSong API (Vwout)
+﻿* Fix for Português(Brasil) translation of settings dialog (thanks pauloneto)
+
+* Added new translation for Traditional Chinese (thanks Three-leg-cat)
+
+* Improvements and extensions to the OpenSong API (Vwout)
 - Added support for HTTP OPTIONS method to correctly handle CORS requests
 - Added support for HTTP HEAD method
 - Image width and height in API calls to /presentation/slide/identifier/preview and /presentation/slide/identifier/image now respect the aspect ration in case only one of the two is specified
