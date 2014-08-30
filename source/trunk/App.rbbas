@@ -63,6 +63,8 @@ Inherits Application
 		  ReleaseCandidate = 0
 		  '--
 		  
+		  m_statusNotifiers = New Dictionary
+		  
 		  DebugWriter = New DebugOutput
 		  '++JRC For compatibilty with RB 2008 debugger
 		  'RB insists on outputing the executable in a subfolder (sigh)
@@ -1377,6 +1379,49 @@ Inherits Application
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
+		Sub StatusNotifierSubscribe(subject As String, client As iStatusNotifier)
+		  Dim notifiers() As iStatusNotifier
+		  If m_statusNotifiers.HasKey(subject) Then
+		    notifiers = m_statusNotifiers.Value(subject)
+		  End If
+		  
+		  If notifiers.IndexOf(client) < 0 Then
+		    notifiers.Append(client)
+		    m_statusNotifiers.Value(subject) = notifiers
+		    
+		    client.StatusNotification(subject, "subscribe")
+		  End If
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub StatusNotifierUnsubscribe(subject As String, client  As iStatusNotifier)
+		  Dim notifiers() As iStatusNotifier
+		  If m_statusNotifiers.HasKey(subject) Then
+		    notifiers = m_statusNotifiers.Value(subject)
+		  End If
+		  
+		  Dim i As Integer = notifiers.IndexOf(client)
+		  If i >= 0 Then
+		    notifiers.Remove(i)
+		    m_statusNotifiers.Value(subject) = notifiers
+		  End If
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub StatusNotifierUpdate(subject As String, info As String)
+		  If m_statusNotifiers.HasKey(subject) Then
+		    Dim notifiers() As iStatusNotifier = m_statusNotifiers.Value(subject)
+		    
+		    For Each client As iStatusNotifier in notifiers
+		      client.StatusNotification(subject, info)
+		    Next
+		  End If
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
 		Sub TranslateMe(splashShowing As Boolean = False)
 		  Dim xnode As XmlNode
 		  Dim i As Integer
@@ -1708,6 +1753,10 @@ Inherits Application
 
 	#tag Property, Flags = &h21
 		Private m_ControlServer As REST.RESTServer
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
+		Private m_statusNotifiers As Dictionary
 	#tag EndProperty
 
 	#tag Property, Flags = &h0

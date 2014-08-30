@@ -2289,15 +2289,6 @@ End
 		End Sub
 	#tag EndMethod
 
-	#tag Method, Flags = &h0
-		Sub SubscribeStatusNotifier(subject As iStatusNotifier)
-		  if m_statusNotifiers.IndexOf(subject) < 0 Then
-		    m_statusNotifiers.Append(subject)
-		    subject.StatusNotification("present", "subscribe")
-		  end if
-		End Sub
-	#tag EndMethod
-
 	#tag Method, Flags = &h1
 		Protected Function ToggleBlack() As Boolean
 		  'Great idea :)
@@ -2395,20 +2386,9 @@ End
 		End Function
 	#tag EndMethod
 
-	#tag Method, Flags = &h0
-		Sub UnsubscribeStatusNotifier(subject As iStatusNotifier)
-		  Dim i As Integer = m_statusNotifiers.IndexOf(subject)
-		  If i >= 0 Then
-		    m_statusNotifiers.Remove(i)
-		  End If
-		End Sub
-	#tag EndMethod
-
 	#tag Method, Flags = &h21
 		Private Sub UpdateStatusNotifiers(info As String)
-		  For Each subject As iStatusNotifier in m_statusNotifiers
-		    subject.StatusNotification("present", info)
-		  Next
+		  App.StatusNotifierUpdate("presentation", info)
 		End Sub
 	#tag EndMethod
 
@@ -2427,10 +2407,10 @@ End
 		  
 		  While slide_group <> Nil
 		    If SmartML.GetValue(slide_group, "@type") <> "style" And _
-		      SmartML.GetNode(slide_group, "slides", True).ChildCount < 1 Then _
-		      SmartML.SetValue slide_group, "slides/slide/body", ""
-		      
-		      slide_group = slide_group.NextSibling
+		    SmartML.GetNode(slide_group, "slides", True).ChildCount < 1 Then _
+		    SmartML.SetValue slide_group, "slides/slide/body", ""
+		    
+		    slide_group = slide_group.NextSibling
 		  Wend
 		  
 		End Sub
@@ -2551,10 +2531,6 @@ End
 
 	#tag Property, Flags = &h1
 		Protected m_Snapshots As Boolean = False
-	#tag EndProperty
-
-	#tag Property, Flags = &h21
-		Private m_statusNotifiers() As iStatusNotifier
 	#tag EndProperty
 
 	#tag Property, Flags = &h21

@@ -1,4 +1,6 @@
-﻿* Fix for Português(Brasil) translation of settings dialog (thanks pauloneto)
+﻿* Fix for WebSocket subscribe notifications that now survive a presentation restart / stop-start (Vwout)
+
+* Fix for Português(Brasil) translation of settings dialog (thanks pauloneto)
 
 * Added new translation for Traditional Chinese (thanks Three-leg-cat)
 

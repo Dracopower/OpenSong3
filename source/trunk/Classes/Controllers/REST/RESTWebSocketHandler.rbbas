@@ -323,9 +323,12 @@ Implements REST.RESTProtocolHandler,iStatusNotifier
 		Sub StatusNotification(subject As String, info As String)
 		  // Part of the iStatusNotifier interface.
 		  
-		  Dim resource As New RESTResourcePresent()
-		  Dim response As REST.RESTResponse = resource.GetStatus()
-		  SendData response
+		  Select Case subject
+		  Case "presentation"
+		    Dim resource As New RESTResourcePresent()
+		    Dim response As REST.RESTResponse = resource.GetStatus()
+		    SendData response
+		  End Select
 		End Sub
 	#tag EndMethod
 
@@ -333,9 +336,10 @@ Implements REST.RESTProtocolHandler,iStatusNotifier
 		Function SubscribeNotifier(context As String) As Boolean
 		  Dim success As Boolean = True
 		  
-		  Select Case Lowercase(context)
+		  context = Lowercase(context)
+		  Select Case context
 		  Case "presentation"
-		    PresentWindow.SubscribeStatusNotifier(me)
+		    App.StatusNotifierSubscribe(context, me)
 		  Else
 		    success = False
 		  End Select
@@ -348,9 +352,10 @@ Implements REST.RESTProtocolHandler,iStatusNotifier
 		Function UnsubscribeNotifier(context As String) As Boolean
 		  Dim success As Boolean = True
 		  
-		  Select Case Lowercase(context)
-		  Case "present"
-		    PresentWindow.UnsubscribeStatusNotifier(me)
+		  context = Lowercase(context)
+		  Select Case context
+		  Case "presentation"
+		    App.StatusNotifierUnsubscribe(context, me)
 		  Else
 		    success = False
 		  End Select
