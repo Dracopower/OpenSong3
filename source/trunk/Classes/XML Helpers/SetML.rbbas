@@ -374,7 +374,7 @@ Protected Module SetML
 		    
 		    ' Round Pre-1: Pre-guess shrinkage based on perfect wrapping
 		    '++JRC:
-		    line = ReplaceAll(StringUtils.Trim(s, Globals.StringUtils.WhiteSpaces), Chr(10), "")
+		    line = ReplaceAll(StringUtils.Trim(s, StringUtils.WhiteSpaces), Chr(10), "")
 		    '--
 		    
 		    If style.BodyScale Then

@@ -501,8 +501,8 @@ End
 		  
 		  btn_about_close.Caption = App.T.Translate("shared/close/@caption")
 		  
-		  txt_about_memory.Text = Format(REALbasic.Runtime.MemoryUsed, "#,##9")
-		  txt_about_objects.Text = Format(REALbasic.Runtime.ObjectCount, "#,##9")
+		  txt_about_memory.Text = Format(Runtime.MemoryUsed, "#,##9")
+		  txt_about_objects.Text = Format(Runtime.ObjectCount, "#,##9")
 		  txt_about_build.Text = Format(App.NonReleaseVersion, "#,##9")
 		  txt_about_compiler.Text = RBVersionString
 		End Sub
