@@ -807,6 +807,8 @@ Module SongML
 		  If Tag = "" Then Tag = "Tag"
 		  Verse = App.T.Translate("songml/verse/@caption")
 		  If Verse  = "" Then Verse  = "Verse"
+		  // Restore old behavior to correct issue with printing set lists (See changes in revision 713 and bug report in Discussion forum)
+		  If Len(heading) > 2 Then Verse = ""
 		  
 		  //--
 		  
@@ -2313,33 +2315,33 @@ Module SongML
 			Visible=true
 			Group="ID"
 			InitialValue="-2147483648"
-			InheritedFrom="Object"
+			Type="Integer"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Left"
 			Visible=true
 			Group="Position"
 			InitialValue="0"
-			InheritedFrom="Object"
+			Type="Integer"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Name"
 			Visible=true
 			Group="ID"
-			InheritedFrom="Object"
+			Type="String"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Super"
 			Visible=true
 			Group="ID"
-			InheritedFrom="Object"
+			Type="String"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Top"
 			Visible=true
 			Group="Position"
 			InitialValue="0"
-			InheritedFrom="Object"
+			Type="Integer"
 		#tag EndViewProperty
 	#tag EndViewBehavior
 End Module

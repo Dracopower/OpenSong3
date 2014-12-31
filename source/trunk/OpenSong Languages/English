@@ -612,8 +612,9 @@
       <play caption="Play"/>
     </audio>
 
-    <misc caption="Misc">
+    <misc caption="Presentation Control">
       <exit_prompt caption="Prompt when exiting"/>
+			<exit_doubleclick caption="Double click to exit"/>
     </misc>
 
     <errors>
