@@ -612,9 +612,9 @@
       <play caption="Tocar"/>
     </audio>
 
-    <misc caption="Miscelâneas">
+    <presentation_control caption="Miscelâneas">
       <exit_prompt caption="Peguntar ao sair"/>
-    </misc>
+    </presentation_control>
 
     <errors>
         <snapshot_file>Erro: a criação de telas está habilitada, mas nenhum nome de arquivo foi digitado.</snapshot_file>

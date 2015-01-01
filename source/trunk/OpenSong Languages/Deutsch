@@ -610,9 +610,9 @@
       <stop caption="Stopp"/>
       <play caption="Wiedergabe"/>
     </audio>
-    <misc caption="Verschiedenes">
+    <presentation_control caption="Verschiedenes">
       <exit_prompt caption="Nachfrage beim Beenden"/>
-    </misc>
+    </presentation_control>
     <errors>
       <snapshot_file>Fehler: Das Erstellen von Bildschirmabzügen ist aktiviert, aber es ist kein Dateiname konfiguriert.</snapshot_file>
     </errors>

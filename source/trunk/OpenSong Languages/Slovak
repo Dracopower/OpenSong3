@@ -604,9 +604,9 @@
       <play caption="Prehrať"/>
     </audio>
 
-    <misc caption="Rôzne">
+    <presentation_control caption="Rôzne">
       <exit_prompt caption="Spýtať sa pred ukončením"/>
-    </misc>
+    </presentation_control>
 
     <errors>
         <snapshot_file>Chyba: vytváranie záberov je zapnuté, ale nie je zadané meno súboru.</snapshot_file>

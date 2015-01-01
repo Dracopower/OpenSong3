@@ -613,9 +613,9 @@
       <play caption="Odtwarzaj"/>
     </audio>
 
-    <misc caption="Różne">
+    <presentation_control caption="Różne">
       <exit_prompt caption="Pytaj przed wyjściem"/>
-    </misc>
+    </presentation_control>
 
     <errors>
         <snapshot_file>Błąd: włączono tworzenie zrzutów, lecz nie wprowadzono nazwy pliku.</snapshot_file>

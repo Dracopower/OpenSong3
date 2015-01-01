@@ -1,3 +1,6 @@
+presentation_settings/presentation_control (renamed from presentation_settings/misc)
+presentation_settings/presentation_control/exit_doubleclick
+
 -= Version 2.1.0 =-
 
 print_settings/fonts/spacing

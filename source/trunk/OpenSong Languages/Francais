@@ -574,9 +574,9 @@
       <play caption="Lecture"/>
     </audio>
 
-    <misc caption="Divers">
+    <presentation_control caption="Divers">
       <exit_prompt caption="Confirmer avant de quitter"/>
-    </misc>
+    </presentation_control>
 	
     <errors>
         <snapshot_file>Erreurr: la création de captures est activée, mais aucun nom de fichier n'a été saisi.</snapshot_file>

@@ -580,9 +580,9 @@
       <play caption="Lejátszás"/>
     </audio>
 
-    <misc caption="Egyéb">
+    <presentation_control caption="Egyéb">
       <exit_prompt caption="Figyelmeztetés kilépéskor"/>
-    </misc>
+    </presentation_control>
     
     <errors>
         <snapshot_file>Hiba: A pillanatfelvétel készítése be van kapcsolva, de fájlnév nincs megadva.</snapshot_file>

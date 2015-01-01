@@ -621,9 +621,10 @@
       <play caption="Play"/>
     </audio>
 
-    <misc caption="Diversen">
+    <presentation_control caption="Presentatie bediening">
       <exit_prompt caption="Waarschuwen bij afsluiten"/>
-    </misc>
+      <exit_doubleclick caption="Afsluiten via dubbel-klik"/>
+    </presentation_control>
 
     <errors>
         <snapshot_file>Fout: het opslaan van momentopnamen is ingeschakeld, maar er is geen bestandsnaam opgegeven.</snapshot_file>

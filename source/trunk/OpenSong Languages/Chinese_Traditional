@@ -612,9 +612,9 @@
       <play caption="Play"/>
     </audio>
 
-    <misc caption="雜項">
+    <presentation_control caption="雜項">
       <exit_prompt caption="離開簡報器前先提示"/>
-    </misc>
+    </presentation_control>
 
     <errors>
         <snapshot_file>Error: creating snapshots is enabled, but no filename is entered.</snapshot_file>

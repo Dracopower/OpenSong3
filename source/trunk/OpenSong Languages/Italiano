@@ -575,9 +575,9 @@
       <play caption="Play"/>
     </audio>
 
-    <misc caption="Misc">
+    <presentation_control caption="Misc">
       <exit_prompt caption="Chiedi prima di uscire"/>
-    </misc>
+    </presentation_control>
 
     <errors>
         <snapshot_file>Errore: la creazione di snapshots è attivata, ma non è stato inserito nessun nome file.</snapshot_file>

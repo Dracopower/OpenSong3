@@ -458,9 +458,9 @@
       <play caption="Predvajaj"/>
     </audio>
 
-    <misc caption="Mešano">
+    <presentation_control caption="Mešano">
       <exit_prompt caption="Pozovi ob izhodu"/>
-    </misc>
+    </presentation_control>
   </presentation_settings>
 
   <presentation_helper title="Predstavitveni pomočnik">

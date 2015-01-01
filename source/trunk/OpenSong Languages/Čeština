@@ -606,9 +606,9 @@
       <play caption="Přehrát"/>
     </audio>
 
-    <misc caption="Jiné">
+    <presentation_control caption="Jiné">
       <exit_prompt caption="Potvrdit konec prezentace"/>
-    </misc>
+    </presentation_control>
 
     <errors>
         <snapshot_file>Chyba: export snímků je zapnut, ale nebyl definován žádný název souboru.</snapshot_file>

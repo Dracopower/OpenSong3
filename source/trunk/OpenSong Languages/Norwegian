@@ -410,10 +410,10 @@
       <play caption="Spill"/>
     </audio>
 
-    <misc caption="Diverse">
+    <presentation_control caption="Diverse">
       <exit_prompt caption="Tilskynd under lukking"/>
       <descriptive_subtitle caption="Beskrivende undertittel info"/>
-   </misc>
+   </presentation_control>
     
   </presentation_settings>
 

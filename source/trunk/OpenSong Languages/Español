@@ -612,9 +612,9 @@
       <play caption="Reproducir"/>
     </audio>
 
-    <misc caption="Misc.">
+    <presentation_control caption="Misc.">
       <exit_prompt caption="Preguntar al salir"/>
-    </misc>
+    </presentation_control>
 
     <errors>
         <snapshot_file>Error: la creación de instantáneas está habilitada pero no se ha introducido un nombre de archivo.</snapshot_file>

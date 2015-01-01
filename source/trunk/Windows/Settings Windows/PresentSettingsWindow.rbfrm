@@ -727,7 +727,7 @@ Begin Window PresentSettingsWindow
          Bold            =   False
          Caption         =   "Transitions"
          Enabled         =   True
-         Height          =   135
+         Height          =   153
          HelpTag         =   ""
          Index           =   -2147483648
          InitialParent   =   "tab_present_settings"
@@ -1036,7 +1036,7 @@ Begin Window PresentSettingsWindow
          Index           =   -2147483648
          InitialParent   =   "tab_present_settings"
          Italic          =   False
-         Left            =   30
+         Left            =   28
          LockBottom      =   False
          LockedInPosition=   False
          LockLeft        =   True
@@ -1049,7 +1049,7 @@ Begin Window PresentSettingsWindow
          TextFont        =   "Arial"
          TextSize        =   11.0
          TextUnit        =   0
-         Top             =   188
+         Top             =   208
          Underline       =   False
          Visible         =   True
          Width           =   392
@@ -1064,7 +1064,7 @@ Begin Window PresentSettingsWindow
             Index           =   -2147483648
             InitialParent   =   "grp_settings_style"
             Italic          =   False
-            Left            =   39
+            Left            =   37
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   True
@@ -1081,7 +1081,7 @@ Begin Window PresentSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
-            Top             =   206
+            Top             =   226
             Transparent     =   False
             Underline       =   False
             Visible         =   True
@@ -1105,7 +1105,7 @@ Begin Window PresentSettingsWindow
             Index           =   -2147483648
             InitialParent   =   "grp_settings_style"
             Italic          =   False
-            Left            =   39
+            Left            =   37
             LimitText       =   4
             LockBottom      =   False
             LockedInPosition=   False
@@ -1124,7 +1124,7 @@ Begin Window PresentSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
-            Top             =   221
+            Top             =   241
             Underline       =   False
             UseFocusRing    =   True
             Visible         =   True
@@ -1141,7 +1141,7 @@ Begin Window PresentSettingsWindow
             Index           =   -2147483648
             InitialParent   =   "grp_settings_style"
             Italic          =   False
-            Left            =   39
+            Left            =   37
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   True
@@ -1158,7 +1158,7 @@ Begin Window PresentSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
-            Top             =   245
+            Top             =   265
             Transparent     =   False
             Underline       =   False
             Visible         =   True
@@ -1176,7 +1176,7 @@ Begin Window PresentSettingsWindow
             InitialParent   =   "grp_settings_style"
             InitialValue    =   ""
             Italic          =   False
-            Left            =   39
+            Left            =   37
             ListIndex       =   0
             LockBottom      =   False
             LockedInPosition=   False
@@ -1190,7 +1190,7 @@ Begin Window PresentSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
-            Top             =   260
+            Top             =   280
             Underline       =   False
             Visible         =   True
             Width           =   140
@@ -1206,7 +1206,7 @@ Begin Window PresentSettingsWindow
             Index           =   -2147483648
             InitialParent   =   "grp_settings_style"
             Italic          =   False
-            Left            =   39
+            Left            =   37
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   True
@@ -1223,7 +1223,7 @@ Begin Window PresentSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
-            Top             =   282
+            Top             =   302
             Transparent     =   False
             Underline       =   False
             Visible         =   True
@@ -1241,7 +1241,7 @@ Begin Window PresentSettingsWindow
             Index           =   -2147483648
             InitialParent   =   "grp_settings_style"
             Italic          =   False
-            Left            =   214
+            Left            =   212
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   True
@@ -1255,7 +1255,7 @@ Begin Window PresentSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
-            Top             =   211
+            Top             =   231
             Underline       =   False
             Value           =   False
             Visible         =   True
@@ -1273,7 +1273,7 @@ Begin Window PresentSettingsWindow
             InitialParent   =   "grp_settings_style"
             InitialValue    =   ""
             Italic          =   False
-            Left            =   39
+            Left            =   37
             ListIndex       =   0
             LockBottom      =   False
             LockedInPosition=   False
@@ -1287,7 +1287,7 @@ Begin Window PresentSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
-            Top             =   297
+            Top             =   317
             Underline       =   False
             Visible         =   True
             Width           =   140
@@ -1303,7 +1303,7 @@ Begin Window PresentSettingsWindow
             Index           =   -2147483648
             InitialParent   =   "grp_settings_style"
             Italic          =   False
-            Left            =   234
+            Left            =   232
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   True
@@ -1320,7 +1320,7 @@ Begin Window PresentSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
-            Top             =   226
+            Top             =   246
             Transparent     =   False
             Underline       =   False
             Visible         =   True
@@ -1338,7 +1338,7 @@ Begin Window PresentSettingsWindow
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "grp_settings_style"
-            Left            =   214
+            Left            =   211
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   True
@@ -1348,11 +1348,11 @@ Begin Window PresentSettingsWindow
             TabIndex        =   8
             TabPanelIndex   =   2
             TabStop         =   True
-            Top             =   245
+            Top             =   273
             Transparent     =   True
             UseFocusRing    =   False
             Visible         =   True
-            Width           =   177
+            Width           =   196
             Begin Label lbl_style_blank_style
                AutoDeactivate  =   True
                Bold            =   False
@@ -1364,7 +1364,7 @@ Begin Window PresentSettingsWindow
                Index           =   -2147483648
                InitialParent   =   "nil_blanks"
                Italic          =   False
-               Left            =   226
+               Left            =   223
                LockBottom      =   False
                LockedInPosition=   False
                LockLeft        =   True
@@ -1381,7 +1381,7 @@ Begin Window PresentSettingsWindow
                TextFont        =   "Arial"
                TextSize        =   10.0
                TextUnit        =   0
-               Top             =   249
+               Top             =   277
                Transparent     =   False
                Underline       =   False
                Visible         =   True
@@ -1397,7 +1397,7 @@ Begin Window PresentSettingsWindow
                Index           =   -2147483648
                InitialParent   =   "nil_blanks"
                Italic          =   False
-               Left            =   226
+               Left            =   223
                LockBottom      =   False
                LockedInPosition=   False
                LockLeft        =   True
@@ -1410,7 +1410,7 @@ Begin Window PresentSettingsWindow
                TextFont        =   "Arial"
                TextSize        =   10.0
                TextUnit        =   0
-               Top             =   268
+               Top             =   296
                Underline       =   False
                Value           =   False
                Visible         =   True
@@ -1426,7 +1426,7 @@ Begin Window PresentSettingsWindow
                Index           =   -2147483648
                InitialParent   =   "nil_blanks"
                Italic          =   False
-               Left            =   226
+               Left            =   223
                LockBottom      =   False
                LockedInPosition=   False
                LockLeft        =   True
@@ -1439,7 +1439,7 @@ Begin Window PresentSettingsWindow
                TextFont        =   "Arial"
                TextSize        =   10.0
                TextUnit        =   0
-               Top             =   291
+               Top             =   319
                Underline       =   False
                Value           =   False
                Visible         =   True
@@ -1452,7 +1452,7 @@ Begin Window PresentSettingsWindow
          Bold            =   False
          Caption         =   "Monitor Settings"
          Enabled         =   True
-         Height          =   190
+         Height          =   203
          HelpTag         =   ""
          Index           =   -2147483648
          InitialParent   =   "tab_present_settings"
@@ -1502,7 +1502,7 @@ Begin Window PresentSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
-            Top             =   106
+            Top             =   108
             Transparent     =   False
             Underline       =   False
             Visible         =   True
@@ -1520,7 +1520,7 @@ Begin Window PresentSettingsWindow
             InitialParent   =   "grp_settings_monitor"
             InitialValue    =   "1\r\n2"
             Italic          =   False
-            Left            =   443
+            Left            =   444
             ListIndex       =   1
             LockBottom      =   False
             LockedInPosition=   False
@@ -1534,7 +1534,7 @@ Begin Window PresentSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
-            Top             =   121
+            Top             =   125
             Underline       =   False
             Visible         =   True
             Width           =   40
@@ -1567,7 +1567,7 @@ Begin Window PresentSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
-            Top             =   146
+            Top             =   153
             Transparent     =   False
             Underline       =   False
             Visible         =   True
@@ -1599,7 +1599,7 @@ Begin Window PresentSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
-            Top             =   81
+            Top             =   83
             Underline       =   False
             Visible         =   True
             Width           =   40
@@ -1649,7 +1649,7 @@ Begin Window PresentSettingsWindow
             Index           =   -2147483648
             InitialParent   =   "grp_settings_monitor"
             Italic          =   False
-            Left            =   443
+            Left            =   444
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   True
@@ -1666,7 +1666,7 @@ Begin Window PresentSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
-            Top             =   166
+            Top             =   178
             Transparent     =   False
             Underline       =   False
             Visible         =   True
@@ -1684,7 +1684,7 @@ Begin Window PresentSettingsWindow
             InitialParent   =   "grp_settings_monitor"
             InitialValue    =   ""
             Italic          =   False
-            Left            =   443
+            Left            =   444
             ListIndex       =   0
             LockBottom      =   False
             LockedInPosition=   False
@@ -1698,7 +1698,7 @@ Begin Window PresentSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
-            Top             =   180
+            Top             =   195
             Underline       =   False
             Visible         =   True
             Width           =   127
@@ -1729,7 +1729,7 @@ Begin Window PresentSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
-            Top             =   212
+            Top             =   226
             Underline       =   False
             Value           =   False
             Visible         =   True
@@ -1746,7 +1746,7 @@ Begin Window PresentSettingsWindow
          Index           =   -2147483648
          InitialParent   =   "tab_present_settings"
          Italic          =   False
-         Left            =   434
+         Left            =   432
          LockBottom      =   False
          LockedInPosition=   False
          LockLeft        =   True
@@ -1759,7 +1759,7 @@ Begin Window PresentSettingsWindow
          TextFont        =   "Arial"
          TextSize        =   11.0
          TextUnit        =   0
-         Top             =   250
+         Top             =   326
          Underline       =   False
          Visible         =   False
          Width           =   155
@@ -1774,7 +1774,7 @@ Begin Window PresentSettingsWindow
             Index           =   -2147483648
             InitialParent   =   "grp_settings_audio"
             Italic          =   False
-            Left            =   443
+            Left            =   441
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   True
@@ -1791,7 +1791,7 @@ Begin Window PresentSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   11.0
             TextUnit        =   0
-            Top             =   268
+            Top             =   344
             Transparent     =   False
             Underline       =   False
             Visible         =   True
@@ -1810,7 +1810,7 @@ Begin Window PresentSettingsWindow
             Index           =   -2147483648
             InitialParent   =   "grp_settings_audio"
             Italic          =   False
-            Left            =   505
+            Left            =   503
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   True
@@ -1823,7 +1823,7 @@ Begin Window PresentSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   11.0
             TextUnit        =   0
-            Top             =   267
+            Top             =   343
             Underline       =   False
             Visible         =   True
             Width           =   69
@@ -1841,7 +1841,7 @@ Begin Window PresentSettingsWindow
             Index           =   -2147483648
             InitialParent   =   "grp_settings_audio"
             Italic          =   False
-            Left            =   487
+            Left            =   485
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   True
@@ -1854,7 +1854,7 @@ Begin Window PresentSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   11.0
             TextUnit        =   0
-            Top             =   295
+            Top             =   371
             Underline       =   False
             Visible         =   True
             Width           =   40
@@ -1872,7 +1872,7 @@ Begin Window PresentSettingsWindow
             Index           =   -2147483648
             InitialParent   =   "grp_settings_audio"
             Italic          =   False
-            Left            =   442
+            Left            =   440
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   True
@@ -1885,7 +1885,7 @@ Begin Window PresentSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   11.0
             TextUnit        =   0
-            Top             =   295
+            Top             =   371
             Underline       =   False
             Visible         =   True
             Width           =   40
@@ -2100,7 +2100,7 @@ Begin Window PresentSettingsWindow
          DataField       =   ""
          DataSource      =   ""
          Enabled         =   True
-         Height          =   219
+         Height          =   242
          HelpTag         =   ""
          Index           =   -2147483648
          InitialParent   =   "tab_present_settings"
@@ -2128,12 +2128,12 @@ Begin Window PresentSettingsWindow
          Visible         =   True
          Width           =   546
       End
-      Begin GroupBox grp_settings_misc
+      Begin GroupBox grp_settings_presentation_control
          AutoDeactivate  =   True
          Bold            =   False
          Caption         =   "Presentation Control"
          Enabled         =   True
-         Height          =   63
+         Height          =   47
          HelpTag         =   ""
          Index           =   -2147483648
          InitialParent   =   "tab_present_settings"
@@ -2151,7 +2151,7 @@ Begin Window PresentSettingsWindow
          TextFont        =   "Arial"
          TextSize        =   11.0
          TextUnit        =   0
-         Top             =   338
+         Top             =   358
          Underline       =   False
          Visible         =   True
          Width           =   391
@@ -2165,7 +2165,7 @@ Begin Window PresentSettingsWindow
             Height          =   26
             HelpTag         =   ""
             Index           =   -2147483648
-            InitialParent   =   "grp_settings_misc"
+            InitialParent   =   "grp_settings_presentation_control"
             Italic          =   False
             Left            =   37
             LockBottom      =   False
@@ -2179,9 +2179,9 @@ Begin Window PresentSettingsWindow
             TabPanelIndex   =   2
             TabStop         =   True
             TextFont        =   "Arial"
-            TextSize        =   11.0
+            TextSize        =   10.0
             TextUnit        =   0
-            Top             =   363
+            Top             =   374
             Underline       =   False
             Value           =   False
             Visible         =   True
@@ -2190,14 +2190,14 @@ Begin Window PresentSettingsWindow
          Begin CheckBox chk_style_exit_doubleclick
             AutoDeactivate  =   True
             Bold            =   False
-            Caption         =   "Double click to exit"
+            Caption         =   "Exit on double-click"
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
             Height          =   26
             HelpTag         =   ""
             Index           =   -2147483648
-            InitialParent   =   "grp_settings_misc"
+            InitialParent   =   "grp_settings_presentation_control"
             Italic          =   False
             Left            =   221
             LockBottom      =   False
@@ -2211,9 +2211,9 @@ Begin Window PresentSettingsWindow
             TabPanelIndex   =   2
             TabStop         =   True
             TextFont        =   "Arial"
-            TextSize        =   11.0
+            TextSize        =   10.0
             TextUnit        =   0
-            Top             =   364
+            Top             =   375
             Underline       =   False
             Value           =   False
             Visible         =   True
@@ -2260,7 +2260,7 @@ End
 		  chk_style_blanks.Value = SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "style/@blanks")
 		  
 		  chk_style_exit_prompt.Value = SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "style/@exit_prompt")
-		  chk_style_exit_doubleclick.Value = SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "style/@exit_doubleclick",True, False)
+		  chk_style_exit_doubleclick.Value = SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "style/@exit_doubleclick")
 		  '++JRC
 		  Dim file As String
 		  file = SmartML.GetValue(App.MyPresentSettings.DocumentElement, "style/@default_audio")
@@ -2908,6 +2908,7 @@ End
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="Composite"
+		Visible=true
 		Group="Appearance"
 		InitialValue="False"
 		Type="Boolean"
@@ -2976,7 +2977,6 @@ End
 		Visible=true
 		Group="ID"
 		Type="String"
-		EditorType="String"
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="LiveResize"
@@ -2988,6 +2988,7 @@ End
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="MacProcID"
+		Visible=true
 		Group="Appearance"
 		InitialValue="0"
 		Type="Integer"
@@ -3055,7 +3056,6 @@ End
 		Visible=true
 		Group="ID"
 		Type="String"
-		EditorType="String"
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="Placement"
@@ -3085,7 +3085,6 @@ End
 		Visible=true
 		Group="ID"
 		Type="String"
-		EditorType="String"
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="Title"

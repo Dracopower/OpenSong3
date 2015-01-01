@@ -614,9 +614,9 @@
       <play caption="Mängi"/>
     </audio>
 
-    <misc caption="Muud-Lisaks">
+    <presentation_control caption="Muud-Lisaks">
       <exit_prompt caption="Hoiata väljumisel"/>
-    </misc>
+    </presentation_control>
 
     <errors>
 

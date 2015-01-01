@@ -611,9 +611,9 @@
       <play caption="Oynat"/>
     </audio>
 
-    <misc caption="Çeşitli">
+    <presentation_control caption="Çeşitli">
       <exit_prompt caption="Çıkarken uyar"/>
-    </misc>
+    </presentation_control>
 
     <errors>
         <snapshot_file>Hata: şipşak yaratma etkinleştirildi, ancak dosya adı girilmedi.</snapshot_file>

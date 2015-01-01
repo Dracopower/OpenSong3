@@ -580,9 +580,9 @@
       <play caption="Spela"/>
     </audio>
 
-    <misc caption="Övrigt">
+    <presentation_control caption="Övrigt">
       <exit_prompt caption="Fråga innan avslut"/>
-    </misc>
+    </presentation_control>
 
     <errors>
         <snapshot_file>Fel: Ögonblicksbilder är aktiverat, men inget filnamn har uppgetts. Skriv in ett filnamn i rutan under fliken Ögonblicksbilder.</snapshot_file>

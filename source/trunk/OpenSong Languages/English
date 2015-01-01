@@ -612,10 +612,10 @@
       <play caption="Play"/>
     </audio>
 
-    <misc caption="Presentation Control">
+    <presentation_control caption="Presentation Control">
       <exit_prompt caption="Prompt when exiting"/>
-			<exit_doubleclick caption="Double click to exit"/>
-    </misc>
+      <exit_doubleclick caption="Exit on double-click"/>
+    </presentation_control>
 
     <errors>
         <snapshot_file>Error: creating snapshots is enabled, but no filename is entered.</snapshot_file>

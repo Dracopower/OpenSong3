@@ -1,4 +1,8 @@
-﻿* Fix for WebSocket subscribe notifications that now survive a presentation restart / stop-start (Vwout)
+﻿* New feature to close a presentation by double-clicking on the presentation. The option can be enabled in the presentation settings under 'Presentation Control' (feature request #376) (Vwout)
+
+* Fix bug regarding invalid use of namespace prefixes causing build failures as of Xojo 2014r3.0 (Vwout)
+
+* Fix for WebSocket subscribe notifications that now survive a presentation restart / stop-start (Vwout)
 
 * Fix for Português(Brasil) translation of settings dialog (thanks pauloneto)
 

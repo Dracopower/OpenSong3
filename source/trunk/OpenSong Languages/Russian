@@ -610,9 +610,9 @@
 			<play caption="Играть"/>
 		</audio>
 
-		<misc caption="Дополнительно">
+		<presentation_control caption="Дополнительно">
 			<exit_prompt caption="Подтверждение выхода"/>
-		</misc>
+		</presentation_control>
 
 		<errors>
 			<snapshot_file>Ошибка: указана опция создания снимков, но не указано имя файла.</snapshot_file>
