@@ -358,22 +358,8 @@ End
 
 	#tag Method, Flags = &h1
 		Protected Function DoPickSong() As Boolean
-		  Dim newGroup As XmlNode
-		  Dim s As XmlDocument
-		  Dim f As FolderItem
-		  Dim xOldSlide As XmlNode
-		  Dim xNewSlide As XmlNode
-		  Dim oldSlide As Integer
-		  Dim newSlide As Integer
-		  Dim i As Integer
-		  Dim presentation As String
-		  '++JRC
-		  Dim Answer As Boolean
-		  Dim AddToLog As Boolean
-		  Dim sDoc() As FolderItem
 		  Dim CheckLinked As Boolean = True
-		  Dim j As Integer = 0
-		  '--
+		  Dim result As Boolean = False
 		  
 		  '++JRC Check if we have a songs folder if not try to create one
 		  If App.CheckDocumentFolders(App.SONGS_FOLDER) = App.NO_FOLDER Then
@@ -400,161 +386,36 @@ End
 		    End If
 		  End If
 		  
-		  ' Added code to remember current position so song can be inserted without changing
-		  ' what's up on the screen (allows operator to cue next song in a highly dynamic,
-		  ' Spirit-lead P&W service before the previous song is finished).
-		  '
-		  ' TODO: Parameterize this behavior -- add checkbox or radiobuttons to the
-		  ' add song dialog box.
-		  '
-		  ' EMP 6/20/05
-		  '
-		  xOldSlide = XCurrentSlide
-		  OldSlide = CurrentSlide
+		  Dim presentation As String
+		  Dim f As FolderItem = SongPickerWindow.Popup(presentation)
 		  
-		  
-		  
-		  f = SongPickerWindow.Popup(presentation)
-		  
-		  While f <> Nil
+		  If f <> Nil Then
+		    ' Added code to remember current position so song can be inserted without changing
+		    ' what's up on the screen (allows operator to cue next song in a highly dynamic,
+		    ' Spirit-lead P&W service before the previous song is finished).
+		    '
+		    ' TODO: Parameterize this behavior -- add checkbox or radiobuttons to the
+		    ' add song dialog box.
+		    '
+		    ' EMP 6/20/05
+		    '
 		    App.MouseCursor = System.Cursors.Wait
 		    
-		    s = SmartML.XDocFromFile(f)
-		    If s = Nil Then
-		      SmartML.DisplayError
-		      f = Nil
-		      Continue
-		    End If
+		    result = InsertSongIntoSet(f, CurrentSlide, presentation, CheckLinked, True)
 		    
-		    ' Get a reference
-		    newGroup = SmartML.InsertAfter(XCurrentSlide.Parent.Parent, "slide_group")
-		    
-		    '++JRC get song info for logging
-		    'Don't log in preview mode
-		    NumberOfItems = NumberOfItems + 1
-		    
-		    If  App.MainPreferences.GetValueB(App.kActivityLog, True) And Globals.SongActivityLog <> Nil And PresentationMode <> MODE_PREVIEW And Globals.AddToLog Then
-		      ActLog.Append(New LogEntry(Globals.SongActivityLog))
-		      Dim d As New Date
-		      
-		      i = UBound(ActLog)
-		      ActLog(i).Title = SmartML.GetValue(s.DocumentElement, "title", True)
-		      ActLog(i).Author = SmartML.GetValue(s.DocumentElement, "author", True)
-		      ActLog(i).CCLISongNumber = SmartML.GetValue(s.DocumentElement, "ccli", True)  //The song's CCLI number
-		      ActLog(i).SongFileName =  f.Parent.Name + "/" +  f.Name 'Should we use AbsolutePath?
-		      ActLog(i).DateAndTime = d
-		      ActLog(i).HasChords =ActLog(i).CheckLyricsForChords( SmartML.GetValue(s.DocumentElement, "lyrics", True))
-		      ActLog(i).Presented = True
-		      ActLog(i).SetItemNumber = NumberOfItems  'Assign an index to this song
-		      ActLog(i).Displayed = false 'Set this to true if user displays this song
-		      
-		      'AddToLog = True
-		    Else
-		      
-		    End If
-		    
-		    If CheckLinked Then
-		      sDoc = MainWindow.AddLinkedSongsFolderItem(s.DocumentElement, False)
-		      If UBound(sDoc) >= 0 Then
-		        If SmartML.GetValueB(App.MyMainSettings.DocumentElement, "linked_songs/@prompt", True) Then
-		          App.MouseCursor = Nil
-		          
-		          Answer = InputBox.AskYN(App.T.Translate("questions/linked_songs/@caption"))
-		          
-		          App.MouseCursor = System.Cursors.Wait
-		        Else
-		          Answer = True
-		        End If
-		      End If
-		      
-		      CheckLinked = False
-		    End If
-		    '--
-		    
-		    If presentation <> "" Then 'Override the song's default presentation
-		      SmartML.SetValue(s.DocumentElement, "presentation", presentation)
-		    End If
-		    
-		    SongML.ToSetML s.DocumentElement
-		    If SmartML.GetNode(s.DocumentElement, "slides").ChildCount < 1 Then
-		      App.MouseCursor = Nil
-		      InputBox.Message App.T.Translate("errors/empty_group", SmartML.GetValue(s.DocumentElement, "@name", True))
-		      newGroup.Parent.RemoveChild newGroup
-		      Return False
-		    End If
-		    
-		    newGroup = SmartML.ReplaceWithImportNode(newGroup, s.DocumentElement)
-		    '++JRC
-		    SmartML.SetValueN(newgroup, "@ItemNumber", NumberOfItems)
-		    SmartML.SetValueB(newgroup, "@LiveInsertion", True)
-		    
-		    ' --- Move to where we need to be ---
-		    Do Until SmartML.GetValueN(XCurrentSlide.Parent.Parent, "@ItemNumber") = NumberOfItems
-		      currentSlide = currentSlide + 1
-		      XCurrentSlide = SetML.GetSlide(CurrentSet, currentSlide)
-		    Loop
+		    ' Added to move back to original position (see EMP 6/20/05 comments above).
+		    '
 		    
 		    If HelperActive Then
-		      xNewSlide = SmartML.GetNode(newGroup, "slides").FirstChild
-		      i = 0
-		      While xNewSlide <> Nil
-		        PresentHelperWindow.InsertItem xNewSlide, currentSlide + i - 1
-		        xNewSlide = xNewSlide.NextSibling
-		        i = i + 1
-		      Wend
-		    End If
-		    
-		    ' Insert blank slides if needed
-		    If SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "style/@blanks") Then
-		      newSlide = CurrentSlide
-		      xNewSlide = XCurrentSlide
-		      If XCurrentSlide.Parent.Parent.NextSibling = Nil Or SmartML.GetValue(XCurrentSlide.Parent.Parent.NextSibling, "@name") <> "" Then
-		        xNewSlide = SmartML.InsertAfter(XCurrentSlide.Parent.Parent, "slide_group")
-		        xNewSlide = SmartML.GetNode(xNewSlide, "slides/slide", True)
-		        SmartML.SetValue xNewSlide.Parent.Parent, "@type", "blank"
-		        SmartML.SetValue xNewSlide, "body", ""
-		        If HelperActive Then PresentHelperWindow.InsertItem xNewSlide, currentSlide + XCurrentSlide.Parent.ChildCount - 1
-		      End If
-		      If XCurrentSlide.Parent.Parent.PreviousSibling = Nil Or SmartML.GetValue(XCurrentSlide.Parent.Parent.PreviousSibling, "@name") <> "" Then
-		        xNewSlide = SmartML.InsertBefore(XCurrentSlide.Parent.Parent, "slide_group")
-		        xNewSlide = SmartML.GetNode(xNewSlide, "slides/slide", True)
-		        SmartML.SetValue xNewSlide.Parent.Parent, "@type", "blank"
-		        SmartML.SetValue xNewSlide, "body", ""
-		        If HelperActive Then PresentHelperWindow.InsertItem xNewSlide, currentSlide - 1
-		        CurrentSlide = CurrentSlide + 1
-		        XCurrentSlide = xNewSlide
-		      End If
-		    End If
-		    
-		    
-		    If j <= UBound(sDoc) And Answer Then
-		      f = sDoc(j)
-		      j = j + 1
-		      presentation = ""
+		      App.MouseCursor = Nil
+		      PresentHelperWindow.ScrollTo currentSlide
 		    Else
-		      f = Nil
+		      App.MouseCursor = Nil
+		      ResetPaint XCurrentSlide
 		    End If
-		    
-		    currentSlide = currentSlide + 1
-		    XCurrentSlide = SetML.GetSlide(CurrentSet, currentSlide)
-		    
-		  Wend
-		  
-		  ' Added to move back to original position (see EMP 6/20/05 comments above).
-		  '
-		  XCurrentSlide = xOldSlide
-		  CurrentSlide  = OldSlide
-		  '
-		  If HelperActive Then
-		    App.MouseCursor = Nil
-		    PresentHelperWindow.ScrollTo currentSlide
-		  Else
-		    App.MouseCursor = Nil
-		    ResetPaint XCurrentSlide
 		  End If
 		  
-		  
-		  Return True
+		  Return result
 		End Function
 	#tag EndMethod
 
@@ -1261,6 +1122,159 @@ End
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
+		Function InsertSongIntoSet(song As Folderitem, atSlide As Integer, presentation As String, CheckLinked As Boolean, showErrorPopup As Boolean) As Boolean
+		  Dim success As Boolean = True
+		  Dim xNewSlide As XmlNode
+		  Dim newSlide As Integer
+		  '++JRC
+		  Dim InsertLinkedSongs As Boolean = False
+		  Dim sDoc() As FolderItem
+		  Dim j As Integer = 0
+		  '--
+		  
+		  If atSlide < 0 Then
+		    atSlide = Me.CurrentSlide
+		  End If
+		  
+		  Dim atXSlide As XmlNode = SetML.GetSlide(Me.CurrentSet, atSlide)
+		  If atXSlide <> Nil Then
+		    
+		    While song <> Nil
+		      Dim s As XmlDocument = SmartML.XDocFromFile(song)
+		      If s = Nil Then
+		        If showErrorPopup Then
+		          SmartML.DisplayError
+		        End If
+		        song = Nil
+		        Continue
+		      End If
+		      
+		      ' Get a reference
+		      Dim newGroup As XmlNode = SmartML.InsertAfter(atXSlide.Parent.Parent, "slide_group")
+		      
+		      '++JRC get song info for logging
+		      'Don't log in preview mode
+		      NumberOfItems = NumberOfItems + 1
+		      
+		      If  App.MainPreferences.GetValueB(App.kActivityLog, True) And _
+		        Globals.SongActivityLog <> Nil And _
+		        PresentationMode <> MODE_PREVIEW And _
+		        Globals.AddToLog Then
+		        ActLog.Append(New LogEntry(Globals.SongActivityLog))
+		        Dim d As New Date
+		        
+		        Dim i As Integer = UBound(ActLog)
+		        ActLog(i).Title = SmartML.GetValue(s.DocumentElement, "title", True)
+		        ActLog(i).Author = SmartML.GetValue(s.DocumentElement, "author", True)
+		        ActLog(i).CCLISongNumber = SmartML.GetValue(s.DocumentElement, "ccli", True)  //The song's CCLI number
+		        ActLog(i).SongFileName =  song.Parent.Name + "/" +  song.Name 'Should we use AbsolutePath?
+		        ActLog(i).DateAndTime = d
+		        ActLog(i).HasChords =ActLog(i).CheckLyricsForChords( SmartML.GetValue(s.DocumentElement, "lyrics", True))
+		        ActLog(i).Presented = True
+		        ActLog(i).SetItemNumber = NumberOfItems  'Assign an index to this song
+		        ActLog(i).Displayed = false 'Set this to true if user displays this song
+		      End If
+		      
+		      If CheckLinked Then
+		        sDoc = MainWindow.AddLinkedSongsFolderItem(s.DocumentElement, False)
+		        If UBound(sDoc) >= 0 Then
+		          If showErrorPopup Then
+		            If SmartML.GetValueB(App.MyMainSettings.DocumentElement, "linked_songs/@prompt", True) Then
+		              App.MouseCursor = Nil
+		              
+		              InsertLinkedSongs = InputBox.AskYN(App.T.Translate("questions/linked_songs/@caption"))
+		              
+		              App.MouseCursor = System.Cursors.Wait
+		            Else
+		              InsertLinkedSongs = True
+		            End If
+		          Else
+		            InsertLinkedSongs = True
+		          End If
+		        End If
+		        
+		        CheckLinked = False
+		      End If
+		      '--
+		      
+		      If presentation <> "" Then 'Override the song's default presentation
+		        SmartML.SetValue(s.DocumentElement, "presentation", presentation)
+		      End If
+		      
+		      SongML.ToSetML s.DocumentElement
+		      If SmartML.GetNode(s.DocumentElement, "slides").ChildCount < 1 Then
+		        App.MouseCursor = Nil
+		        If showErrorPopup Then
+		          InputBox.Message App.T.Translate("errors/empty_group", SmartML.GetValue(s.DocumentElement, "@name", True))
+		        End If
+		        newGroup.Parent.RemoveChild newGroup
+		        Return False
+		      End If
+		      
+		      newGroup = SmartML.ReplaceWithImportNode(newGroup, s.DocumentElement)
+		      '++JRC
+		      SmartML.SetValueN(newgroup, "@ItemNumber", NumberOfItems)
+		      SmartML.SetValueB(newgroup, "@LiveInsertion", True)
+		      
+		      ' --- Move to where we need to be ---
+		      Do Until SmartML.GetValueN(atXSlide.Parent.Parent, "@ItemNumber") = NumberOfItems
+		        atSlide = atSlide + 1
+		        atXSlide = SetML.GetSlide(Me.CurrentSet, atSlide)
+		      Loop
+		      
+		      If HelperActive Then
+		        xNewSlide = SmartML.GetNode(newGroup, "slides").FirstChild
+		        Dim i As Integer = 0
+		        While xNewSlide <> Nil
+		          PresentHelperWindow.InsertItem xNewSlide, atSlide + i - 1
+		          xNewSlide = xNewSlide.NextSibling
+		          i = i + 1
+		        Wend
+		      End If
+		      
+		      ' Insert blank slides if needed
+		      If SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "style/@blanks") Then
+		        newSlide = atSlide
+		        xNewSlide = atXSlide
+		        If atXSlide.Parent.Parent.NextSibling = Nil Or SmartML.GetValue(atXSlide.Parent.Parent.NextSibling, "@name") <> "" Then
+		          xNewSlide = SmartML.InsertAfter(atXSlide.Parent.Parent, "slide_group")
+		          xNewSlide = SmartML.GetNode(xNewSlide, "slides/slide", True)
+		          SmartML.SetValue xNewSlide.Parent.Parent, "@type", "blank"
+		          SmartML.SetValue xNewSlide, "body", ""
+		          If HelperActive Then PresentHelperWindow.InsertItem xNewSlide, atSlide + atXSlide.Parent.ChildCount - 1
+		        End If
+		        If atXSlide.Parent.Parent.PreviousSibling = Nil Or SmartML.GetValue(atXSlide.Parent.Parent.PreviousSibling, "@name") <> "" Then
+		          xNewSlide = SmartML.InsertBefore(atXSlide.Parent.Parent, "slide_group")
+		          xNewSlide = SmartML.GetNode(xNewSlide, "slides/slide", True)
+		          SmartML.SetValue xNewSlide.Parent.Parent, "@type", "blank"
+		          SmartML.SetValue xNewSlide, "body", ""
+		          If HelperActive Then PresentHelperWindow.InsertItem xNewSlide, atSlide - 1
+		          atSlide = atSlide + 1
+		          atXSlide = xNewSlide
+		        End If
+		      End If
+		      
+		      
+		      If j <= UBound(sDoc) And InsertLinkedSongs Then
+		        song = sDoc(j)
+		        j = j + 1
+		        presentation = ""
+		      Else
+		        song = Nil
+		      End If
+		      
+		      atSlide = atSlide + 1
+		      atXSlide = SetML.GetSlide(Me.CurrentSet, atSlide)
+		    Wend
+		  Else
+		    success = False
+		  End If
+		  
+		  return success
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
 		Function IsClosingExternal() As Boolean
 		  Return self._IsClosingExternal
 		End Function
@@ -1279,8 +1293,10 @@ End
 		End Function
 	#tag EndMethod
 
-	#tag Method, Flags = &h0
+	#tag Method, Flags = &h1000
 		Function KeyDownX(Key As String) As Boolean
+		  // Calling the overridden superclass constructor.
+		  Super.Constructor
 		  '
 		  ' This routine was originally where all the code to decode a keystroke was kept
 		  '
@@ -1553,26 +1569,26 @@ End
 		  // Add a generic exception handler in an attempt to keep from bailing out
 		  // TODO: This needs to log somewhere and notify the operator after the presentation is done.
 		  //
-		Exception ex
-		  // Do something here later.  For now, validate that XCurrentSlide isn't Nil and
-		  // return to the caller.
-		  //
-		  If XCurrentSlide = Nil Then
-		    // Sorry, the only possible valid action is to go back to the first slide, otherwise
-		    // how do you keep XCurrentSlide and CurrentSlide in sync?
-		    // (perhaps look at xNewSlide to get close to the original location?)
-		    CurrentSlide = 1
-		    XCurrentSlide = SetML.GetSlide(CurrentSet, 1)
-		  End If
-		  // Put up wherever we're at now (and pray!)
-		  If HelperActive Then
-		    PresentHelperWindow.SetMode Mode
-		  Else
-		    ResetPaint XCurrentSlide
-		  End If
-		  
-		  Return False // Show that it failed
-		  //--EMP 15 Jan 06
+		  Exception ex
+		    // Do something here later.  For now, validate that XCurrentSlide isn't Nil and
+		    // return to the caller.
+		    //
+		    If XCurrentSlide = Nil Then
+		      // Sorry, the only possible valid action is to go back to the first slide, otherwise
+		      // how do you keep XCurrentSlide and CurrentSlide in sync?
+		      // (perhaps look at xNewSlide to get close to the original location?)
+		      CurrentSlide = 1
+		      XCurrentSlide = SetML.GetSlide(CurrentSet, 1)
+		    End If
+		    // Put up wherever we're at now (and pray!)
+		    If HelperActive Then
+		      PresentHelperWindow.SetMode Mode
+		    Else
+		      ResetPaint XCurrentSlide
+		    End If
+		    
+		    Return False // Show that it failed
+		    //--EMP 15 Jan 06
 		End Function
 	#tag EndMethod
 
@@ -1841,9 +1857,9 @@ End
 		  PresentCursor = Self.MouseCursor
 		  AppCursor = App.MouseCursor
 		  Self.Visible = True
-		Catch e
-		  RuntimeException(e).message = "In PresentWindow.Present: " + e.Message
-		  Raise e
+		  Catch e
+		    RuntimeException(e).message = "In PresentWindow.Present: " + e.Message
+		    Raise e
 		End Sub
 	#tag EndMethod
 
@@ -2829,10 +2845,10 @@ End
 		  // This corrects an issue seen when changing the SButton style
 		  // after a presentation and for some reason this window is still open
 		  //--
-		Catch ex
-		  App.DebugWriter.Write("PresentWindow.cnvSlide.Paint: Got an exception: " +_
-		  RuntimeException(ex).Message, 1)
-		  Return
+		  Catch ex
+		    App.DebugWriter.Write("PresentWindow.cnvSlide.Paint: Got an exception: " +_
+		    RuntimeException(ex).Message, 1)
+		    Return
 		End Sub
 	#tag EndEvent
 #tag EndEvents

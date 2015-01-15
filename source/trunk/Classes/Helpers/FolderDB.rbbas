@@ -353,6 +353,34 @@ Protected Class FolderDB
 		End Function
 	#tag EndMethod
 
+	#tag Method, Flags = &h0
+		Function GetFileInFolderSafe(file As String, folder As String = "") As FolderItem
+		  Dim f As FolderItem = Nil
+		  
+		  file = ReplaceAll(file, "/", "")
+		  file = ReplaceAll(file, "\", "")
+		  file = ReplaceAll(file, "..", "")
+		  folder = ReplaceAll(folder, "..", "")
+		  
+		  Dim folders() As String = GetFolders()
+		  If folders.IndexOf(folder) > -1 Then
+		    
+		    Dim fileName As String = folder
+		    If Not fileName.EndsWith("/") Then fileName = fileName + "/"
+		    fileName = fileName + file
+		    
+		    f = GetFile(fileName)
+		    If f <> Nil Then
+		      If Not f.Exists() Then
+		        f = Nil
+		      End If
+		    End If
+		  End If
+		  
+		  return f
+		End Function
+	#tag EndMethod
+
 	#tag Method, Flags = &h1
 		Protected Function GetFilesInFolder(path As String, list As listbox = Nil, recurse As Boolean = False) As String()
 		  #If TargetWin32

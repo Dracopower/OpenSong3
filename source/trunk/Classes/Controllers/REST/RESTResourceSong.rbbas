@@ -8,7 +8,7 @@ Implements REST.RESTResource
 		  Dim root As XmlNode
 		  
 		  Dim songDoc As XmlDocument = Nil
-		  Dim f As FolderItem = GetSongFile(song, folder)
+		  Dim f As FolderItem = MainWindow.Songs.GetFileInFolderSafe(song, folder)
 		  If f <> Nil Then
 		    songDoc = SmartML.XDocFromFile(f)
 		  End If
@@ -26,34 +26,6 @@ Implements REST.RESTResource
 		  End If
 		  
 		  return result
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h21
-		Private Function GetSongFile(songName As String, folder As String = "") As FolderItem
-		  Dim song As FolderItem = Nil
-		  
-		  songName = ReplaceAll(songName, "/", "")
-		  songName = ReplaceAll(songName, "\", "")
-		  songName = ReplaceAll(songName, "..", "")
-		  folder = ReplaceAll(folder, "..", "")
-		  
-		  Dim folders() As String = MainWindow.Songs.GetFolders()
-		  If folders.IndexOf(folder) > -1 Then
-		    
-		    Dim songFile As String = folder
-		    If Not songFile.EndsWith("/") Then songFile = songFile + "/"
-		    songFile = songFile + songName
-		    
-		    song = MainWindow.Songs.GetFile(songFile)
-		    If song <> Nil Then
-		      If Not song.Exists() Then
-		        song = Nil
-		      End If
-		    End If
-		  End If
-		  
-		  return song
 		End Function
 	#tag EndMethod
 
@@ -115,7 +87,7 @@ Implements REST.RESTResource
 		    result = New REST.RESTresponse("The currently loaded set has unsaved changes, requested action cannot be executed.", HttpStatus.Forbidden)
 		  Else
 		    
-		    Dim f As FolderItem = GetSongFile(songName, folder)
+		    Dim f As FolderItem = MainWindow.Songs.GetFileInFolderSafe(songName, folder)
 		    If f <> Nil Then
 		      songXml = SmartML.XDocFromFile(f)
 		    End If
@@ -161,7 +133,7 @@ Implements REST.RESTResource
 		    result = New REST.RESTresponse("The currently loaded set has unsaved changes, requested action cannot be executed.", HttpStatus.Forbidden)
 		  Else
 		    
-		    Dim f As FolderItem = GetSongFile(songName, folder)
+		    Dim f As FolderItem = MainWindow.Songs.GetFileInFolderSafe(songName, folder)
 		    If f <> Nil Then
 		      songXml = SmartML.XDocFromFile(f)
 		    End If

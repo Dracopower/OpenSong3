@@ -389,9 +389,13 @@ Implements REST.RESTResource
 		        Case"last"
 		          success = PresentWindow.PerformAction(PresentWindow.ACTION_LAST_SLIDE)
 		          
-		        Case "song", _
-		          "scripture"
+		        Case "song"
+		          result = InsertSong(protocolHandler.Parameter("folder", ""), _
+		          protocolHandler.Parameter("song", ""), _
+		          protocolHandler.Parameter("after", -1), _
+		          protocolHandler.Parameter("order", ""))
 		          
+		        Case"scripture"
 		          Return New REST.RESTResponse("Todo.", HttpStatus.NotImplemented)
 		          
 		        Else
@@ -489,6 +493,25 @@ Implements REST.RESTResource
 		    End If
 		  Else
 		    result = New REST.RESTResponse("The requested action is not available.", HttpStatus.NotFound)
+		  End If
+		  
+		  Return result
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Private Function InsertSong(folder As String, song As String, after As Integer, order As String) As REST.RESTResponse
+		  Dim result As REST.RESTResponse = Nil
+		  
+		  Dim f As FolderItem = MainWindow.Songs.GetFileInFolderSafe(song, folder)
+		  If f <> Nil Then
+		    If PresentWindow.InsertSongIntoSet(f, after, order, False, False) Then
+		      result = New REST.RESTResponse("OK")
+		    Else
+		      result = New REST.RESTResponse("The requested action failed.", HttpStatus.InternalServerError)
+		    End If
+		  Else
+		    result = New REST.RESTresponse("The requested action is not available.", HttpStatus.NotFound)
 		  End If
 		  
 		  Return result
