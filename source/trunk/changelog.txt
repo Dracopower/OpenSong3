@@ -1,4 +1,8 @@
-﻿* New feature to close a presentation by double-clicking on the presentation. The option can be enabled in the presentation settings under 'Presentation Control' (feature request #376) (Vwout)
+﻿* Improve handling of UTF8 alert messages in API call /presentation/screen/alert/message:text (Vwout)
+
+* Implementation of API call /presentation/slide/song/... to enable inserting of songs into a running presentation (Vwout)
+
+* New feature to close a presentation by double-clicking on the presentation. The option can be enabled in the presentation settings under 'Presentation Control' (feature request #376) (Vwout)
 
 * Fix bug regarding invalid use of namespace prefixes causing build failures as of Xojo 2014r3.0 (Vwout)
 

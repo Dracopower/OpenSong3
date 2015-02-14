@@ -94,7 +94,7 @@ Begin Window PresentWindow Implements ScriptureReceiver
       Priority        =   5
       Scope           =   2
       StackSize       =   0
-      TabIndex        =   3
+      TabIndex        =   "3"
       TabPanelIndex   =   0
       TabStop         =   True
       Top             =   249
@@ -433,24 +433,29 @@ End
 
 	#tag Method, Flags = &h1
 		Protected Sub DrawAlert(g As Graphics, alert As String)
-		  Dim RealSize, Margin, Border As Integer
-		  Dim alertFont As FontFace
-		  
-		  alertFont = SmartML.GetValueF(App.MyPresentSettings.DocumentElement, "alert")
-		  RealSize = alertFont.Size * g.Width / 500
-		  Margin = RealSize / 10
+		  Dim alertFont As FontFace = SmartML.GetValueF(App.MyPresentSettings.DocumentElement, "alert")
+		  Dim RealSize As Integer = alertFont.Size * g.Width / 500
+		  'Dim Margin As Integer = RealSize / 10
 		  
 		  alertFont.OntoGraphics g
 		  
 		  g.TextSize = RealSize
 		  alertFont.Size = RealSize
 		  
-		  Dim align, valign As String
-		  valign = Lowercase(SmartML.GetValue(App.MyPresentSettings.DocumentElement, "alert/@valign"))
-		  align = Lowercase(SmartML.GetValue(App.MyPresentSettings.DocumentElement, "alert/@align"))
-		  Border = CalcBorderSize(g)
-		  Call GraphicsX.DrawFontString(g, alert, Border*3, Border, _
-		  alertFont, cnvSlide.Width-Border*6, align, cnvSlide.Height-Border*7, valign)
+		  Dim valign As String = Lowercase(SmartML.GetValue(App.MyPresentSettings.DocumentElement, "alert/@valign"))
+		  Dim align As String = Lowercase(SmartML.GetValue(App.MyPresentSettings.DocumentElement, "alert/@align"))
+		  Dim Border As Integer = CalcBorderSize(g)
+		  
+		  Call GraphicsX.DrawFontString(g, _
+		  alert, _
+		  Border*3, _
+		  Border, _
+		  alertFont, _
+		  cnvSlide.Width-Border*6, _
+		  align, _
+		  cnvSlide.Height-Border*7, _
+		  valign)
+		  
 		End Sub
 	#tag EndMethod
 
@@ -1569,26 +1574,26 @@ End
 		  // Add a generic exception handler in an attempt to keep from bailing out
 		  // TODO: This needs to log somewhere and notify the operator after the presentation is done.
 		  //
-		  Exception ex
-		    // Do something here later.  For now, validate that XCurrentSlide isn't Nil and
-		    // return to the caller.
-		    //
-		    If XCurrentSlide = Nil Then
-		      // Sorry, the only possible valid action is to go back to the first slide, otherwise
-		      // how do you keep XCurrentSlide and CurrentSlide in sync?
-		      // (perhaps look at xNewSlide to get close to the original location?)
-		      CurrentSlide = 1
-		      XCurrentSlide = SetML.GetSlide(CurrentSet, 1)
-		    End If
-		    // Put up wherever we're at now (and pray!)
-		    If HelperActive Then
-		      PresentHelperWindow.SetMode Mode
-		    Else
-		      ResetPaint XCurrentSlide
-		    End If
-		    
-		    Return False // Show that it failed
-		    //--EMP 15 Jan 06
+		Exception ex
+		  // Do something here later.  For now, validate that XCurrentSlide isn't Nil and
+		  // return to the caller.
+		  //
+		  If XCurrentSlide = Nil Then
+		    // Sorry, the only possible valid action is to go back to the first slide, otherwise
+		    // how do you keep XCurrentSlide and CurrentSlide in sync?
+		    // (perhaps look at xNewSlide to get close to the original location?)
+		    CurrentSlide = 1
+		    XCurrentSlide = SetML.GetSlide(CurrentSet, 1)
+		  End If
+		  // Put up wherever we're at now (and pray!)
+		  If HelperActive Then
+		    PresentHelperWindow.SetMode Mode
+		  Else
+		    ResetPaint XCurrentSlide
+		  End If
+		  
+		  Return False // Show that it failed
+		  //--EMP 15 Jan 06
 		End Function
 	#tag EndMethod
 
@@ -1857,9 +1862,9 @@ End
 		  PresentCursor = Self.MouseCursor
 		  AppCursor = App.MouseCursor
 		  Self.Visible = True
-		  Catch e
-		    RuntimeException(e).message = "In PresentWindow.Present: " + e.Message
-		    Raise e
+		Catch e
+		  RuntimeException(e).message = "In PresentWindow.Present: " + e.Message
+		  Raise e
 		End Sub
 	#tag EndMethod
 
@@ -2297,7 +2302,7 @@ End
 		  If IsNull(alert) Then
 		    AlertText = InputBox.Input(App.T.Translate("presentation_helper/actions/alert") + ":", "")
 		  Else
-		    AlertText = alert.StringValue
+		    AlertText = ConvertEncoding(alert.StringValue(), Encodings.UTF8)
 		  End If
 		  
 		  If HelperActive Then
@@ -2845,10 +2850,10 @@ End
 		  // This corrects an issue seen when changing the SButton style
 		  // after a presentation and for some reason this window is still open
 		  //--
-		  Catch ex
-		    App.DebugWriter.Write("PresentWindow.cnvSlide.Paint: Got an exception: " +_
-		    RuntimeException(ex).Message, 1)
-		    Return
+		Catch ex
+		  App.DebugWriter.Write("PresentWindow.cnvSlide.Paint: Got an exception: " +_
+		  RuntimeException(ex).Message, 1)
+		  Return
 		End Sub
 	#tag EndEvent
 #tag EndEvents
