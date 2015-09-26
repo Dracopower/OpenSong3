@@ -1,4 +1,6 @@
-﻿* Improve handling of UTF8 alert messages in API call /presentation/screen/alert/message:text (Vwout)
+﻿* Look for a UTF-16 byte mark at the start of an XML file and define the encoding correctly to the XML parser. This fixes an issue with OpenSong not handling files imported from OnSong (swampcat)
+
+* Improve handling of UTF8 alert messages in API call /presentation/screen/alert/message:text (Vwout)
 
 * Implementation of API call /presentation/slide/song/... to enable inserting of songs into a running presentation (Vwout)
 

@@ -591,7 +591,19 @@ Protected Module SmartML
 		  input.Close
 		  Try
 		    If Len(s) > 5 Then
-		      's = ConvertEncoding(s, Encodings.ISOLatin1)
+		      Dim dbg As String
+		      '
+		      ' OnSong writes "OpenSong" format claiming UTF-8 in the XML  header, but the file has a UTF-16 bytemark. 
+                      '     The XML parser throws an error
+		      '     trying to load this with the encoding wrong. By empirical testing, it appears that the &HFFFE byte mark for
+		      '     a UTF-16 file in little-endian format shows up as &H001C0000 when we read the leftmost "character" of the string.
+		      '     Check for this and define the correct encoding.
+		      '     We'll excuse OnSong for claiming in the XML header that it's a UTF-8 encoding when it's not... :-)
+		      '     This may need to be revisited and corrected by reopening the file and re-reading it with a defined UTF-16 encoding.
+		      '
+		      if asc(Left(s,1)) = &H001C0000 Then 'The string actually starts with a UTF-16LE byte mark (&HFFFE)
+		        s = DefineEncoding(s, encodings.UTF16)
+		      End If
 		      d.LoadXml(s)
 		      Return d
 		    Else
@@ -608,22 +620,22 @@ Protected Module SmartML
 		    '--
 		    Return Nil
 		  End Try
-		Catch ex
-		  If ex IsA NilObjectException Then
-		    //++
-		    // Most likely the Nil object is App.T and we're trying to open
-		    // one of the XML documents that should be in a subdirectory of
-		    // the application.  Without trapping this, the program abruptly
-		    // blows up.  With this, at least a basic error message is output
-		    // to give someone an idea of what is happening.
-		    //--
-		    ErrorString = "Error in SmartML.XDocFromFile and translator is not loaded"
-		  Else
-		    ErrorString = "Unexpected exception in SmartML.XDocFromFile"
-		    If ErrorCode = 0 Then ErrorCode = -1
-		  End If
-		  If f <> Nil Then ErrorString = ErrorString + ", file is " + f.AbsolutePath
-		  Return Nil
+		  Catch ex
+		    If ex IsA NilObjectException Then
+		      //++
+		      // Most likely the Nil object is App.T and we're trying to open
+		      // one of the XML documents that should be in a subdirectory of
+		      // the application.  Without trapping this, the program abruptly
+		      // blows up.  With this, at least a basic error message is output
+		      // to give someone an idea of what is happening.
+		      //--
+		      ErrorString = "Error in SmartML.XDocFromFile and translator is not loaded"
+		    Else
+		      ErrorString = "Unexpected exception in SmartML.XDocFromFile"
+		      If ErrorCode = 0 Then ErrorCode = -1
+		    End If
+		    If f <> Nil Then ErrorString = ErrorString + ", file is " + f.AbsolutePath
+		    Return Nil
 		End Function
 	#tag EndMethod
 
@@ -725,33 +737,33 @@ Protected Module SmartML
 			Visible=true
 			Group="ID"
 			InitialValue="-2147483648"
-			InheritedFrom="Object"
+			Type="Integer"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Left"
 			Visible=true
 			Group="Position"
 			InitialValue="0"
-			InheritedFrom="Object"
+			Type="Integer"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Name"
 			Visible=true
 			Group="ID"
-			InheritedFrom="Object"
+			Type="String"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Super"
 			Visible=true
 			Group="ID"
-			InheritedFrom="Object"
+			Type="String"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Top"
 			Visible=true
 			Group="Position"
 			InitialValue="0"
-			InheritedFrom="Object"
+			Type="Integer"
 		#tag EndViewProperty
 	#tag EndViewBehavior
 End Module
