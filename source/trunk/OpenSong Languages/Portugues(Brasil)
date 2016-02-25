@@ -1155,6 +1155,7 @@ Se o campo de apresentação estiver vazio, então a Exibição pedirá os slides base
     <option name="3/4"/>
     <option name="4/4"/>
     <option name="3/8"/>
+    <option name="5/8"/>
     <option name="6/8"/>
   </time_sig_list>
 
