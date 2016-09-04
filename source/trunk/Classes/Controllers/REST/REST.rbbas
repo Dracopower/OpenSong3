@@ -61,28 +61,44 @@ Protected Module REST
 
 	#tag Method, Flags = &h0
 		Function UrlDecode(s As String) As String
-		  // takes a Unix-encoded string and decodes it to the standard text encoding.
+		  // takes a Unix-encoded string and decodes it to a UTF8 string.
 		  
 		  // Based on DecodeFromUnixString
 		  // By Sascha René Leib, published 11/08/2003 on the Athenaeum
 		  // http://web.archive.org/web/20060520231659/http://realbasic.thezaz.com/Athenaeum/Browse.php?by=category&category=2
 		  
-		  dim r as String
-		  dim c as Integer ' current char
-		  dim i as Integer ' loop var
+		  Dim r As String
+		  Dim c As Integer ' current char
+		  Dim i As Integer ' loop var
 		  
-		  for i= 1 to lenB(s)
-		    c = ascB(midB(s, i, 1))
+		  Const PERCENTAGE As Integer = 37
+		  
+		  For i= 1 To lenB(s)
+		    c = AscB(midB(s, i, 1))
 		    
-		    if c = 37 then ' %
-		      r = r + ChrB(val("&h" + MidB(s, i+1, 2)))
-		      i = i + 2
-		    else
+		    If c = PERCENTAGE Then ' %
+		      Dim charB1 As Integer = Val("&h" + MidB(s, i+1, 2))
+		      If charB1 < 127 Then
+		        'Ascii character
+		        r = r + ChrB(charB1)
+		        i = i + 2
+		      ElseIf (charB1 >= 192 And charB1 <= 223) And _
+		        AscB(MidB(s, i+3, 1)) = PERCENTAGE Then
+		        'UTF8 character
+		        Dim charB2 As Integer = Val("&h" + MidB(s, i+4, 2))
+		        Dim charMB As Integer = ((charB1 - 192) * 64) + (charB2 - 128)
+		        r = r + Encodings.UTF8.Chr(charMB)
+		        i = i + 5
+		      Else
+		        'Not supported
+		        Return ""
+		      End If
+		    Else
 		      r = r + ChrB(c)
-		    end if
-		  next ' i
+		    End If
+		  Next ' i
 		  
-		  return r
+		  Return r.DefineEncoding(Encodings.UTF8)
 		End Function
 	#tag EndMethod
 
