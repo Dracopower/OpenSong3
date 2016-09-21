@@ -8,6 +8,10 @@
 		MacType=BMPf
 		Name=BMP Files
 		UTI=com.microsoft.bmp
+		UTIConformsTo=
+		Description=
+		MimeType=
+		Imported=True
 	#tag EndFileType
 
 	#tag FileType
@@ -19,6 +23,10 @@
 		MacType=GIFf
 		Name=GIF Files
 		UTI=com.compuserve.gif
+		UTIConformsTo=
+		Description=
+		MimeType=
+		Imported=True
 	#tag EndFileType
 
 	#tag FileType
@@ -30,6 +38,10 @@
 		MacType=JPEG
 		Name=JPG Files
 		UTI=public.jpeg
+		UTIConformsTo=
+		Description=
+		MimeType=
+		Imported=True
 	#tag EndFileType
 
 	#tag FileType
@@ -41,6 +53,10 @@
 		MacType=PICT
 		Name=PICT Files
 		UTI=com.apple.pict
+		UTIConformsTo=
+		Description=
+		MimeType=
+		Imported=True
 	#tag EndFileType
 
 	#tag FileType
@@ -52,6 +68,10 @@
 		MacType=PNGf
 		Name=PNG Files
 		UTI=public.png
+		UTIConformsTo=
+		Description=
+		MimeType=
+		Imported=True
 	#tag EndFileType
 
 	#tag FileType
@@ -63,6 +83,10 @@
 		MacType=TIFF
 		Name=TIFF Files
 		UTI=public.tiff
+		UTIConformsTo=
+		Description=
+		MimeType=
+		Imported=True
 	#tag EndFileType
 
 #tag EndFileTypeSet

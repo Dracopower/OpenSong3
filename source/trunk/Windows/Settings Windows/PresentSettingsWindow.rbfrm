@@ -9,7 +9,7 @@ Begin Window PresentSettingsWindow
    FullScreen      =   False
    FullScreenButton=   False
    HasBackColor    =   False
-   Height          =   460
+   Height          =   488
    ImplicitInstance=   True
    LiveResize      =   False
    MacProcID       =   0
@@ -25,7 +25,7 @@ Begin Window PresentSettingsWindow
    Resizeable      =   False
    Title           =   "Presentation Settings"
    Visible         =   True
-   Width           =   620
+   Width           =   700
    Begin PushButton btn_ok
       AutoDeactivate  =   True
       Bold            =   False
@@ -39,7 +39,7 @@ Begin Window PresentSettingsWindow
       Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
-      Left            =   462
+      Left            =   542
       LockBottom      =   True
       LockedInPosition=   False
       LockLeft        =   False
@@ -52,7 +52,7 @@ Begin Window PresentSettingsWindow
       TextFont        =   "Arial"
       TextSize        =   10.0
       TextUnit        =   0
-      Top             =   429
+      Top             =   457
       Underline       =   False
       Visible         =   True
       Width           =   70
@@ -70,7 +70,7 @@ Begin Window PresentSettingsWindow
       Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
-      Left            =   542
+      Left            =   622
       LockBottom      =   True
       LockedInPosition=   False
       LockLeft        =   False
@@ -83,7 +83,7 @@ Begin Window PresentSettingsWindow
       TextFont        =   "Arial"
       TextSize        =   10.0
       TextUnit        =   0
-      Top             =   429
+      Top             =   457
       Underline       =   False
       Visible         =   True
       Width           =   69
@@ -92,7 +92,7 @@ Begin Window PresentSettingsWindow
       AutoDeactivate  =   True
       Bold            =   False
       Enabled         =   True
-      Height          =   407
+      Height          =   435
       HelpTag         =   ""
       Index           =   -2147483648
       InitialParent   =   ""
@@ -115,9 +115,9 @@ Begin Window PresentSettingsWindow
       TextUnit        =   0
       Top             =   14
       Underline       =   False
-      Value           =   1
+      Value           =   2
       Visible         =   True
-      Width           =   600
+      Width           =   680
       Begin Label lbl_style_default_slides
          AutoDeactivate  =   True
          Bold            =   False
@@ -129,7 +129,7 @@ Begin Window PresentSettingsWindow
          Index           =   -2147483648
          InitialParent   =   "tab_present_settings"
          Italic          =   False
-         Left            =   48
+         Left            =   30
          LockBottom      =   False
          LockedInPosition=   False
          LockLeft        =   True
@@ -150,7 +150,7 @@ Begin Window PresentSettingsWindow
          Transparent     =   False
          Underline       =   False
          Visible         =   True
-         Width           =   160
+         Width           =   200
       End
       Begin SStyleCanvas can_style_default
          AcceptFocus     =   False
@@ -160,11 +160,11 @@ Begin Window PresentSettingsWindow
          DoubleBuffer    =   False
          Enabled         =   True
          EraseBackground =   True
-         Height          =   120
+         Height          =   150
          HelpTag         =   ""
          Index           =   -2147483648
          InitialParent   =   "tab_present_settings"
-         Left            =   47
+         Left            =   30
          LockBottom      =   False
          LockedInPosition=   False
          LockLeft        =   True
@@ -179,7 +179,7 @@ Begin Window PresentSettingsWindow
          Transparent     =   True
          UseFocusRing    =   True
          Visible         =   True
-         Width           =   160
+         Width           =   200
       End
       Begin Label nte_style_click_to_change_1
          AutoDeactivate  =   True
@@ -192,7 +192,7 @@ Begin Window PresentSettingsWindow
          Index           =   -2147483648
          InitialParent   =   "tab_present_settings"
          Italic          =   True
-         Left            =   47
+         Left            =   30
          LockBottom      =   False
          LockedInPosition=   False
          LockLeft        =   True
@@ -209,11 +209,11 @@ Begin Window PresentSettingsWindow
          TextFont        =   "Arial"
          TextSize        =   9.0
          TextUnit        =   0
-         Top             =   200
+         Top             =   235
          Transparent     =   False
          Underline       =   False
          Visible         =   True
-         Width           =   160
+         Width           =   200
       End
       Begin Label lbl_style_scripture_slides
          AutoDeactivate  =   True
@@ -226,7 +226,7 @@ Begin Window PresentSettingsWindow
          Index           =   -2147483648
          InitialParent   =   "tab_present_settings"
          Italic          =   False
-         Left            =   253
+         Left            =   255
          LockBottom      =   False
          LockedInPosition=   False
          LockLeft        =   True
@@ -247,7 +247,7 @@ Begin Window PresentSettingsWindow
          Transparent     =   False
          Underline       =   False
          Visible         =   True
-         Width           =   160
+         Width           =   200
       End
       Begin SStyleCanvas can_style_scripture
          AcceptFocus     =   False
@@ -257,11 +257,11 @@ Begin Window PresentSettingsWindow
          DoubleBuffer    =   False
          Enabled         =   True
          EraseBackground =   True
-         Height          =   120
+         Height          =   150
          HelpTag         =   ""
          Index           =   -2147483648
          InitialParent   =   "tab_present_settings"
-         Left            =   254
+         Left            =   255
          LockBottom      =   False
          LockedInPosition=   False
          LockLeft        =   True
@@ -276,7 +276,7 @@ Begin Window PresentSettingsWindow
          Transparent     =   True
          UseFocusRing    =   True
          Visible         =   True
-         Width           =   160
+         Width           =   200
       End
       Begin Label nte_style_click_to_change_2
          AutoDeactivate  =   True
@@ -289,7 +289,7 @@ Begin Window PresentSettingsWindow
          Index           =   -2147483648
          InitialParent   =   "tab_present_settings"
          Italic          =   True
-         Left            =   254
+         Left            =   255
          LockBottom      =   False
          LockedInPosition=   False
          LockLeft        =   True
@@ -306,11 +306,11 @@ Begin Window PresentSettingsWindow
          TextFont        =   "Arial"
          TextSize        =   9.0
          TextUnit        =   0
-         Top             =   200
+         Top             =   235
          Transparent     =   False
          Underline       =   False
          Visible         =   True
-         Width           =   160
+         Width           =   200
       End
       Begin GroupBox grp_settings_alerts
          AutoDeactivate  =   True
@@ -322,7 +322,7 @@ Begin Window PresentSettingsWindow
          Index           =   -2147483648
          InitialParent   =   "tab_present_settings"
          Italic          =   False
-         Left            =   38
+         Left            =   30
          LockBottom      =   False
          LockedInPosition=   False
          LockLeft        =   True
@@ -335,10 +335,10 @@ Begin Window PresentSettingsWindow
          TextFont        =   "Arial"
          TextSize        =   11.0
          TextUnit        =   0
-         Top             =   237
+         Top             =   300
          Underline       =   False
          Visible         =   True
-         Width           =   387
+         Width           =   400
          Begin Label lbl_alerts_align
             AutoDeactivate  =   True
             Bold            =   False
@@ -350,7 +350,7 @@ Begin Window PresentSettingsWindow
             Index           =   -2147483648
             InitialParent   =   "grp_settings_alerts"
             Italic          =   False
-            Left            =   46
+            Left            =   38
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   True
@@ -367,7 +367,7 @@ Begin Window PresentSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
-            Top             =   277
+            Top             =   340
             Transparent     =   False
             Underline       =   False
             Visible         =   True
@@ -385,7 +385,7 @@ Begin Window PresentSettingsWindow
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "grp_settings_alerts"
-            Left            =   70
+            Left            =   62
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   True
@@ -395,7 +395,7 @@ Begin Window PresentSettingsWindow
             TabIndex        =   1
             TabPanelIndex   =   1
             TabStop         =   True
-            Top             =   292
+            Top             =   355
             Transparent     =   True
             UseFocusRing    =   True
             Visible         =   True
@@ -412,7 +412,7 @@ Begin Window PresentSettingsWindow
             Index           =   -2147483648
             InitialParent   =   "grp_settings_alerts"
             Italic          =   False
-            Left            =   140
+            Left            =   132
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   True
@@ -429,7 +429,7 @@ Begin Window PresentSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
-            Top             =   258
+            Top             =   321
             Transparent     =   False
             Underline       =   False
             Visible         =   True
@@ -449,7 +449,7 @@ Begin Window PresentSettingsWindow
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "grp_settings_alerts"
-            Left            =   140
+            Left            =   132
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   True
@@ -459,7 +459,7 @@ Begin Window PresentSettingsWindow
             TabIndex        =   3
             TabPanelIndex   =   1
             TabStop         =   True
-            Top             =   272
+            Top             =   335
             Transparent     =   True
             UseFocusRing    =   True
             Visible         =   True
@@ -471,12 +471,12 @@ Begin Window PresentSettingsWindow
          Bold            =   False
          Caption         =   "Logo"
          Enabled         =   True
-         Height          =   302
+         Height          =   365
          HelpTag         =   ""
          Index           =   -2147483648
          InitialParent   =   "tab_present_settings"
          Italic          =   False
-         Left            =   445
+         Left            =   470
          LockBottom      =   False
          LockedInPosition=   False
          LockLeft        =   False
@@ -492,7 +492,7 @@ Begin Window PresentSettingsWindow
          Top             =   65
          Underline       =   False
          Visible         =   True
-         Width           =   142
+         Width           =   200
          Begin SImageCanvas can_logo
             AcceptFocus     =   False
             AcceptTabs      =   False
@@ -502,11 +502,11 @@ Begin Window PresentSettingsWindow
             DoubleBuffer    =   False
             Enabled         =   True
             EraseBackground =   True
-            Height          =   60
+            Height          =   120
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "grp_option_logo"
-            Left            =   475
+            Left            =   490
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   True
@@ -516,11 +516,11 @@ Begin Window PresentSettingsWindow
             TabIndex        =   0
             TabPanelIndex   =   1
             TabStop         =   True
-            Top             =   95
+            Top             =   89
             Transparent     =   True
             UseFocusRing    =   True
             Visible         =   True
-            Width           =   80
+            Width           =   160
          End
          Begin Label nte_logo_click_to_change_1
             AutoDeactivate  =   True
@@ -533,7 +533,7 @@ Begin Window PresentSettingsWindow
             Index           =   -2147483648
             InitialParent   =   "grp_option_logo"
             Italic          =   True
-            Left            =   450
+            Left            =   490
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   True
@@ -550,11 +550,11 @@ Begin Window PresentSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   9.0
             TextUnit        =   0
-            Top             =   159
+            Top             =   213
             Transparent     =   False
             Underline       =   False
             Visible         =   True
-            Width           =   137
+            Width           =   160
          End
          Begin Label nte_logo_right_click_to_clear_1
             AutoDeactivate  =   True
@@ -567,7 +567,7 @@ Begin Window PresentSettingsWindow
             Index           =   -2147483648
             InitialParent   =   "grp_option_logo"
             Italic          =   True
-            Left            =   450
+            Left            =   490
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   True
@@ -584,11 +584,11 @@ Begin Window PresentSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   9.0
             TextUnit        =   0
-            Top             =   172
+            Top             =   228
             Transparent     =   False
             Underline       =   False
             Visible         =   True
-            Width           =   137
+            Width           =   160
          End
          Begin Label lbl_logo_mask
             AutoDeactivate  =   True
@@ -601,7 +601,7 @@ Begin Window PresentSettingsWindow
             Index           =   -2147483648
             InitialParent   =   "grp_option_logo"
             Italic          =   False
-            Left            =   454
+            Left            =   490
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   True
@@ -618,11 +618,11 @@ Begin Window PresentSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
-            Top             =   223
+            Top             =   253
             Transparent     =   False
             Underline       =   False
             Visible         =   True
-            Width           =   125
+            Width           =   160
          End
          Begin SImageCanvas can_logo_mask
             AcceptFocus     =   False
@@ -633,11 +633,11 @@ Begin Window PresentSettingsWindow
             DoubleBuffer    =   False
             Enabled         =   True
             EraseBackground =   True
-            Height          =   60
+            Height          =   120
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "grp_option_logo"
-            Left            =   475
+            Left            =   490
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   True
@@ -647,11 +647,11 @@ Begin Window PresentSettingsWindow
             TabIndex        =   4
             TabPanelIndex   =   1
             TabStop         =   True
-            Top             =   238
+            Top             =   273
             Transparent     =   True
             UseFocusRing    =   True
             Visible         =   True
-            Width           =   80
+            Width           =   160
          End
          Begin Label nte_logo_click_to_change_2
             AutoDeactivate  =   True
@@ -664,7 +664,7 @@ Begin Window PresentSettingsWindow
             Index           =   -2147483648
             InitialParent   =   "grp_option_logo"
             Italic          =   True
-            Left            =   454
+            Left            =   490
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   True
@@ -681,11 +681,11 @@ Begin Window PresentSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   9.0
             TextUnit        =   0
-            Top             =   302
+            Top             =   393
             Transparent     =   False
             Underline       =   False
             Visible         =   True
-            Width           =   125
+            Width           =   160
          End
          Begin Label nte_logo_right_click_to_clear_2
             AutoDeactivate  =   True
@@ -698,7 +698,7 @@ Begin Window PresentSettingsWindow
             Index           =   -2147483648
             InitialParent   =   "grp_option_logo"
             Italic          =   True
-            Left            =   454
+            Left            =   490
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   True
@@ -715,11 +715,11 @@ Begin Window PresentSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   9.0
             TextUnit        =   0
-            Top             =   315
+            Top             =   408
             Transparent     =   False
             Underline       =   False
             Visible         =   True
-            Width           =   125
+            Width           =   160
          End
       End
       Begin GroupBox grp_settings_transitions
@@ -748,7 +748,7 @@ Begin Window PresentSettingsWindow
          Top             =   52
          Underline       =   False
          Visible         =   True
-         Width           =   392
+         Width           =   430
          Begin CheckBox chk_style_use_transitions
             AutoDeactivate  =   True
             Bold            =   False
@@ -779,7 +779,7 @@ Begin Window PresentSettingsWindow
             Underline       =   False
             Value           =   False
             Visible         =   True
-            Width           =   151
+            Width           =   173
          End
          Begin Label lbl_style_frames
             AutoDeactivate  =   True
@@ -809,7 +809,7 @@ Begin Window PresentSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
-            Top             =   93
+            Top             =   89
             Transparent     =   False
             Underline       =   False
             Visible         =   True
@@ -914,7 +914,7 @@ Begin Window PresentSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
-            Top             =   128
+            Top             =   124
             Transparent     =   False
             Underline       =   False
             Visible         =   True
@@ -1002,7 +1002,7 @@ Begin Window PresentSettingsWindow
             Index           =   -2147483648
             InitialParent   =   "grp_settings_transitions"
             Italic          =   False
-            Left            =   204
+            Left            =   227
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   True
@@ -1023,7 +1023,7 @@ Begin Window PresentSettingsWindow
             Transparent     =   False
             Underline       =   False
             Visible         =   True
-            Width           =   204
+            Width           =   223
          End
       End
       Begin GroupBox grp_settings_style
@@ -1036,7 +1036,7 @@ Begin Window PresentSettingsWindow
          Index           =   -2147483648
          InitialParent   =   "tab_present_settings"
          Italic          =   False
-         Left            =   28
+         Left            =   30
          LockBottom      =   False
          LockedInPosition=   False
          LockLeft        =   True
@@ -1052,7 +1052,7 @@ Begin Window PresentSettingsWindow
          Top             =   208
          Underline       =   False
          Visible         =   True
-         Width           =   392
+         Width           =   430
          Begin Label lbl_style_border_thickness
             AutoDeactivate  =   True
             Bold            =   False
@@ -1064,7 +1064,7 @@ Begin Window PresentSettingsWindow
             Index           =   -2147483648
             InitialParent   =   "grp_settings_style"
             Italic          =   False
-            Left            =   37
+            Left            =   39
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   True
@@ -1105,7 +1105,7 @@ Begin Window PresentSettingsWindow
             Index           =   -2147483648
             InitialParent   =   "grp_settings_style"
             Italic          =   False
-            Left            =   37
+            Left            =   39
             LimitText       =   4
             LockBottom      =   False
             LockedInPosition=   False
@@ -1141,7 +1141,7 @@ Begin Window PresentSettingsWindow
             Index           =   -2147483648
             InitialParent   =   "grp_settings_style"
             Italic          =   False
-            Left            =   37
+            Left            =   39
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   True
@@ -1162,7 +1162,7 @@ Begin Window PresentSettingsWindow
             Transparent     =   False
             Underline       =   False
             Visible         =   True
-            Width           =   140
+            Width           =   189
          End
          Begin PopupMenu pop_style_initial_mode
             AutoDeactivate  =   True
@@ -1176,7 +1176,7 @@ Begin Window PresentSettingsWindow
             InitialParent   =   "grp_settings_style"
             InitialValue    =   ""
             Italic          =   False
-            Left            =   37
+            Left            =   39
             ListIndex       =   0
             LockBottom      =   False
             LockedInPosition=   False
@@ -1206,7 +1206,7 @@ Begin Window PresentSettingsWindow
             Index           =   -2147483648
             InitialParent   =   "grp_settings_style"
             Italic          =   False
-            Left            =   37
+            Left            =   39
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   True
@@ -1227,7 +1227,7 @@ Begin Window PresentSettingsWindow
             Transparent     =   False
             Underline       =   False
             Visible         =   True
-            Width           =   136
+            Width           =   189
          End
          Begin CheckBox chk_style_blanks
             AutoDeactivate  =   True
@@ -1241,7 +1241,7 @@ Begin Window PresentSettingsWindow
             Index           =   -2147483648
             InitialParent   =   "grp_settings_style"
             Italic          =   False
-            Left            =   212
+            Left            =   240
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   True
@@ -1273,7 +1273,7 @@ Begin Window PresentSettingsWindow
             InitialParent   =   "grp_settings_style"
             InitialValue    =   ""
             Italic          =   False
-            Left            =   37
+            Left            =   39
             ListIndex       =   0
             LockBottom      =   False
             LockedInPosition=   False
@@ -1303,7 +1303,7 @@ Begin Window PresentSettingsWindow
             Index           =   -2147483648
             InitialParent   =   "grp_settings_style"
             Italic          =   False
-            Left            =   232
+            Left            =   260
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   True
@@ -1338,7 +1338,7 @@ Begin Window PresentSettingsWindow
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "grp_settings_style"
-            Left            =   211
+            Left            =   233
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   True
@@ -1352,7 +1352,7 @@ Begin Window PresentSettingsWindow
             Transparent     =   True
             UseFocusRing    =   False
             Visible         =   True
-            Width           =   196
+            Width           =   227
             Begin Label lbl_style_blank_style
                AutoDeactivate  =   True
                Bold            =   False
@@ -1364,7 +1364,7 @@ Begin Window PresentSettingsWindow
                Index           =   -2147483648
                InitialParent   =   "nil_blanks"
                Italic          =   False
-               Left            =   223
+               Left            =   244
                LockBottom      =   False
                LockedInPosition=   False
                LockLeft        =   True
@@ -1381,11 +1381,11 @@ Begin Window PresentSettingsWindow
                TextFont        =   "Arial"
                TextSize        =   10.0
                TextUnit        =   0
-               Top             =   277
+               Top             =   273
                Transparent     =   False
                Underline       =   False
                Visible         =   True
-               Width           =   164
+               Width           =   210
             End
             Begin RadioButton rad_style_blank_prev
                AutoDeactivate  =   True
@@ -1397,7 +1397,7 @@ Begin Window PresentSettingsWindow
                Index           =   -2147483648
                InitialParent   =   "nil_blanks"
                Italic          =   False
-               Left            =   223
+               Left            =   244
                LockBottom      =   False
                LockedInPosition=   False
                LockLeft        =   True
@@ -1410,11 +1410,11 @@ Begin Window PresentSettingsWindow
                TextFont        =   "Arial"
                TextSize        =   10.0
                TextUnit        =   0
-               Top             =   296
+               Top             =   292
                Underline       =   False
                Value           =   False
                Visible         =   True
-               Width           =   164
+               Width           =   210
             End
             Begin RadioButton rad_style_blank_next
                AutoDeactivate  =   True
@@ -1426,7 +1426,7 @@ Begin Window PresentSettingsWindow
                Index           =   -2147483648
                InitialParent   =   "nil_blanks"
                Italic          =   False
-               Left            =   223
+               Left            =   244
                LockBottom      =   False
                LockedInPosition=   False
                LockLeft        =   True
@@ -1439,11 +1439,11 @@ Begin Window PresentSettingsWindow
                TextFont        =   "Arial"
                TextSize        =   10.0
                TextUnit        =   0
-               Top             =   319
+               Top             =   315
                Underline       =   False
                Value           =   False
                Visible         =   True
-               Width           =   164
+               Width           =   210
             End
          End
       End
@@ -1457,7 +1457,7 @@ Begin Window PresentSettingsWindow
          Index           =   -2147483648
          InitialParent   =   "tab_present_settings"
          Italic          =   False
-         Left            =   434
+         Left            =   480
          LockBottom      =   False
          LockedInPosition=   False
          LockLeft        =   False
@@ -1473,7 +1473,7 @@ Begin Window PresentSettingsWindow
          Top             =   52
          Underline       =   False
          Visible         =   True
-         Width           =   155
+         Width           =   200
          Begin Label lbl_monitor_presentation
             AutoDeactivate  =   True
             Bold            =   False
@@ -1485,7 +1485,7 @@ Begin Window PresentSettingsWindow
             Index           =   -2147483648
             InitialParent   =   "grp_settings_monitor"
             Italic          =   False
-            Left            =   443
+            Left            =   489
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   True
@@ -1506,7 +1506,7 @@ Begin Window PresentSettingsWindow
             Transparent     =   False
             Underline       =   False
             Visible         =   True
-            Width           =   137
+            Width           =   181
          End
          Begin PopupMenu pop_monitor_presentation
             AutoDeactivate  =   True
@@ -1520,7 +1520,7 @@ Begin Window PresentSettingsWindow
             InitialParent   =   "grp_settings_monitor"
             InitialValue    =   "1\r\n2"
             Italic          =   False
-            Left            =   444
+            Left            =   490
             ListIndex       =   1
             LockBottom      =   False
             LockedInPosition=   False
@@ -1550,7 +1550,7 @@ Begin Window PresentSettingsWindow
             Index           =   -2147483648
             InitialParent   =   "grp_settings_monitor"
             Italic          =   True
-            Left            =   443
+            Left            =   489
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   True
@@ -1571,7 +1571,7 @@ Begin Window PresentSettingsWindow
             Transparent     =   False
             Underline       =   False
             Visible         =   True
-            Width           =   137
+            Width           =   179
          End
          Begin PopupMenu pop_monitor_control
             AutoDeactivate  =   True
@@ -1585,7 +1585,7 @@ Begin Window PresentSettingsWindow
             InitialParent   =   "grp_settings_monitor"
             InitialValue    =   "1\r\n2"
             Italic          =   False
-            Left            =   443
+            Left            =   489
             ListIndex       =   0
             LockBottom      =   False
             LockedInPosition=   False
@@ -1615,7 +1615,7 @@ Begin Window PresentSettingsWindow
             Index           =   -2147483648
             InitialParent   =   "grp_settings_monitor"
             Italic          =   False
-            Left            =   443
+            Left            =   489
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   True
@@ -1636,7 +1636,7 @@ Begin Window PresentSettingsWindow
             Transparent     =   False
             Underline       =   False
             Visible         =   True
-            Width           =   137
+            Width           =   181
          End
          Begin Label lbl_monitor_default_mode
             AutoDeactivate  =   True
@@ -1649,7 +1649,7 @@ Begin Window PresentSettingsWindow
             Index           =   -2147483648
             InitialParent   =   "grp_settings_monitor"
             Italic          =   False
-            Left            =   444
+            Left            =   490
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   True
@@ -1670,7 +1670,7 @@ Begin Window PresentSettingsWindow
             Transparent     =   False
             Underline       =   False
             Visible         =   True
-            Width           =   125
+            Width           =   182
          End
          Begin PopupMenu pop_monitor_mode
             AutoDeactivate  =   True
@@ -1684,7 +1684,7 @@ Begin Window PresentSettingsWindow
             InitialParent   =   "grp_settings_monitor"
             InitialValue    =   ""
             Italic          =   False
-            Left            =   444
+            Left            =   490
             ListIndex       =   0
             LockBottom      =   False
             LockedInPosition=   False
@@ -1701,7 +1701,7 @@ Begin Window PresentSettingsWindow
             Top             =   195
             Underline       =   False
             Visible         =   True
-            Width           =   127
+            Width           =   182
          End
          Begin CheckBox chk_monitor_force_4_3_preview
             AutoDeactivate  =   True
@@ -1715,7 +1715,7 @@ Begin Window PresentSettingsWindow
             Index           =   -2147483648
             InitialParent   =   "grp_settings_monitor"
             Italic          =   False
-            Left            =   443
+            Left            =   489
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   True
@@ -1746,11 +1746,11 @@ Begin Window PresentSettingsWindow
          Index           =   -2147483648
          InitialParent   =   "tab_present_settings"
          Italic          =   False
-         Left            =   432
+         Left            =   480
          LockBottom      =   False
          LockedInPosition=   False
-         LockLeft        =   True
-         LockRight       =   False
+         LockLeft        =   False
+         LockRight       =   True
          LockTop         =   True
          Scope           =   0
          TabIndex        =   4
@@ -1762,7 +1762,7 @@ Begin Window PresentSettingsWindow
          Top             =   326
          Underline       =   False
          Visible         =   False
-         Width           =   155
+         Width           =   200
          Begin Label lbl_audio_file_to_play
             AutoDeactivate  =   True
             Bold            =   False
@@ -1774,7 +1774,7 @@ Begin Window PresentSettingsWindow
             Index           =   -2147483648
             InitialParent   =   "grp_settings_audio"
             Italic          =   False
-            Left            =   441
+            Left            =   489
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   True
@@ -1795,7 +1795,7 @@ Begin Window PresentSettingsWindow
             Transparent     =   False
             Underline       =   False
             Visible         =   True
-            Width           =   100
+            Width           =   109
          End
          Begin PushButton btn_audio_browse
             AutoDeactivate  =   True
@@ -1810,7 +1810,7 @@ Begin Window PresentSettingsWindow
             Index           =   -2147483648
             InitialParent   =   "grp_settings_audio"
             Italic          =   False
-            Left            =   503
+            Left            =   601
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   True
@@ -1841,7 +1841,7 @@ Begin Window PresentSettingsWindow
             Index           =   -2147483648
             InitialParent   =   "grp_settings_audio"
             Italic          =   False
-            Left            =   485
+            Left            =   570
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   True
@@ -1857,7 +1857,7 @@ Begin Window PresentSettingsWindow
             Top             =   371
             Underline       =   False
             Visible         =   True
-            Width           =   40
+            Width           =   70
          End
          Begin PushButton btn_audio_stop
             AutoDeactivate  =   True
@@ -1872,7 +1872,7 @@ Begin Window PresentSettingsWindow
             Index           =   -2147483648
             InitialParent   =   "grp_settings_audio"
             Italic          =   False
-            Left            =   440
+            Left            =   488
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   True
@@ -1888,7 +1888,7 @@ Begin Window PresentSettingsWindow
             Top             =   371
             Underline       =   False
             Visible         =   True
-            Width           =   40
+            Width           =   70
          End
       End
       Begin CheckBox chk_settings_export_snapshot
@@ -1921,7 +1921,7 @@ Begin Window PresentSettingsWindow
          Underline       =   False
          Value           =   False
          Visible         =   True
-         Width           =   580
+         Width           =   660
       End
       Begin TextField edt_settings_snapshot_filename
          AcceptTabs      =   False
@@ -1964,7 +1964,7 @@ Begin Window PresentSettingsWindow
          Underline       =   False
          UseFocusRing    =   True
          Visible         =   True
-         Width           =   546
+         Width           =   626
       End
       Begin SButton btn_settings_snapshot_file
          AcceptFocus     =   False
@@ -1980,7 +1980,7 @@ Begin Window PresentSettingsWindow
          Index           =   -2147483648
          InitialParent   =   "tab_present_settings"
          LabelAlign      =   0
-         Left            =   578
+         Left            =   658
          LockBottom      =   False
          LockedInPosition=   False
          LockLeft        =   False
@@ -2028,7 +2028,7 @@ Begin Window PresentSettingsWindow
          Underline       =   False
          Value           =   False
          Visible         =   True
-         Width           =   546
+         Width           =   626
       End
       Begin CheckBox chk_settings_export_live_insertions
          AutoDeactivate  =   True
@@ -2060,7 +2060,7 @@ Begin Window PresentSettingsWindow
          Underline       =   False
          Value           =   False
          Visible         =   True
-         Width           =   546
+         Width           =   626
       End
       Begin CheckBox chk_settings_export_metadata
          AutoDeactivate  =   True
@@ -2092,7 +2092,7 @@ Begin Window PresentSettingsWindow
          Underline       =   False
          Value           =   False
          Visible         =   True
-         Width           =   546
+         Width           =   626
       End
       Begin Label txt_settings_snapshot_parameters
          AutoDeactivate  =   True
@@ -2133,12 +2133,12 @@ Begin Window PresentSettingsWindow
          Bold            =   False
          Caption         =   "Presentation Control"
          Enabled         =   True
-         Height          =   47
+         Height          =   81
          HelpTag         =   ""
          Index           =   -2147483648
          InitialParent   =   "tab_present_settings"
          Italic          =   False
-         Left            =   28
+         Left            =   30
          LockBottom      =   False
          LockedInPosition=   False
          LockLeft        =   True
@@ -2154,7 +2154,7 @@ Begin Window PresentSettingsWindow
          Top             =   358
          Underline       =   False
          Visible         =   True
-         Width           =   391
+         Width           =   430
          Begin CheckBox chk_style_exit_prompt
             AutoDeactivate  =   True
             Bold            =   False
@@ -2167,7 +2167,7 @@ Begin Window PresentSettingsWindow
             Index           =   -2147483648
             InitialParent   =   "grp_settings_presentation_control"
             Italic          =   False
-            Left            =   37
+            Left            =   40
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   True
@@ -2181,11 +2181,11 @@ Begin Window PresentSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
-            Top             =   374
+            Top             =   400
             Underline       =   False
             Value           =   False
             Visible         =   True
-            Width           =   157
+            Width           =   400
          End
          Begin CheckBox chk_style_exit_doubleclick
             AutoDeactivate  =   True
@@ -2199,7 +2199,7 @@ Begin Window PresentSettingsWindow
             Index           =   -2147483648
             InitialParent   =   "grp_settings_presentation_control"
             Italic          =   False
-            Left            =   221
+            Left            =   40
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   True
@@ -2213,26 +2213,22 @@ Begin Window PresentSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
-            Top             =   375
+            Top             =   374
             Underline       =   False
             Value           =   False
             Visible         =   True
-            Width           =   178
+            Width           =   400
          End
       End
    End
    Begin Timer AudioTimer
-      Height          =   32
       Index           =   -2147483648
       InitialParent   =   ""
-      Left            =   418
       LockedInPosition=   False
       Mode            =   2
       Period          =   500
       Scope           =   0
       TabPanelIndex   =   0
-      Top             =   400
-      Width           =   32
    End
 End
 #tag EndWindow
@@ -2931,7 +2927,6 @@ End
 			"7 - Global Floating Window"
 			"8 - Sheet Window"
 			"9 - Metal Window"
-			"10 - Drawer Window"
 			"11 - Modeless Dialog"
 		#tag EndEnumValues
 	#tag EndViewProperty
@@ -2977,6 +2972,7 @@ End
 		Visible=true
 		Group="ID"
 		Type="String"
+		EditorType="String"
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="LiveResize"
@@ -3056,6 +3052,7 @@ End
 		Visible=true
 		Group="ID"
 		Type="String"
+		EditorType="String"
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="Placement"
@@ -3085,6 +3082,7 @@ End
 		Visible=true
 		Group="ID"
 		Type="String"
+		EditorType="String"
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="Title"

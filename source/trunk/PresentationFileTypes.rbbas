@@ -6,6 +6,11 @@
 		MacCreator=
 		MacType=
 		Name=Microsoft PowerPoint presentation
+		UTI=
+		UTIConformsTo=
+		Description=
+		MimeType=
+		Imported=True
 	#tag EndFileType
 
 	#tag FileType
@@ -15,6 +20,11 @@
 		MacCreator=
 		MacType=
 		Name=OpenOffice.org Impress presentation
+		UTI=
+		UTIConformsTo=
+		Description=
+		MimeType=
+		Imported=True
 	#tag EndFileType
 
 #tag EndFileTypeSet

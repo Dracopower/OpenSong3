@@ -1,4 +1,10 @@
-﻿* Update German language file which switches chords to German style (B -> H; Bb -> B) (thanks SvA)
+﻿-= Version 2.2 RC =-
+
+* Removed blank menu items from MainMenu. These previously did not show in the built application but the latest version of the Xojo compiler now includes them in the app. (Swampcat)
+
+* Increase size of Main Settings (Mac: Preferences) and Present Settings windows and text labels/fields to reduce truncation of localized strings. (Swampcat; thanks to Paulo for point it out and testing)
+
+* Update German language file which switches chords to German style (B -> H; Bb -> B) (thanks SvA)
 
 * Fix for UTF8 characters in the automation API URLs (bug #156) (Vwout)
 
