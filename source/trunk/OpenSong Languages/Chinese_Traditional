@@ -1,32 +1,32 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<language name="Traditional Chinese" author="Three-leg-cat" version="2.1.2">
+<language name="Chinese (Traditional)" author="'Three-leg-cat'" version="2.1.0">
 
   <load_settings>
-    <checking_folders>Creating/Checking documents folders</checking_folders>
-    <main>Loading main settings</main>
-    <print>Loading print settings</print>
-    <presentation>Loading presentation settings</presentation>
-    <transitions>Loading transitions list</transitions>
-    <tempos>Loading tempo list</tempos>
-    <themes>Loading theme list</themes>
-    <time_signatures>Loading 拍子記號 list</time_signatures>
-    <imagequality>Loading image quality list</imagequality>
-    <videolan_preset>Loading Videolan parameter presets</videolan_preset>
-    <fonts>Loading font list</fonts>
-    <latest_version>Checking for the latest version
-      <newer_available>A 新 version (%1) is available. Visit www.opensong.org to download it.</newer_available>
+    <checking_folders>正在建立／檢查文件資料夾</checking_folders>
+    <main>正在載入主設定值</main>
+    <print>正在載入列印設定值</print>
+    <presentation>正在載入簡報設定值</presentation>
+    <transitions>正在載入過渡效果清單</transitions>
+    <tempos>正在載入音樂速度清單</tempos>
+    <themes>正在載入主題清單</themes>
+    <time_signatures>正在載入拍子記號清單</time_signatures>
+    <imagequality>正在載入圖片品質清單</imagequality>
+    <videolan_preset>正在載入 Videolan 參數預設選項</videolan_preset>
+    <fonts>正在載入字型清單</fonts>
+    <latest_version>正在檢查最新版本
+      <newer_available>有新的 (%1) 版本可用了，請到 www.opensong.org 下載。</newer_available>
     </latest_version>
  </load_settings>
 
   <load_data>
-      <bible>Loading the 預設聖經</bible>
-      <songs_cache>Caching songs</songs_cache>
-      <folders>Loading song folders</folders>
-      <songs>Loading songs</songs>
-      <sets>Loading sets</sets>
+      <bible>正在載入預設聖經</bible>
+      <songs_cache>正在快取樂曲</songs_cache>
+      <folders>正在載入樂曲資料夾</folders>
+      <songs>正在載入樂曲</songs>
+      <sets>正在載入樂集</sets>
   </load_data>
 
-  <welcome>Welcome!</welcome>
+  <welcome>歡迎您！</welcome>
 
   <songs_mode caption="樂曲模式">使用此模式來輸入並編輯您的樂曲。Songs can be printed as lead sheets, or presented as slides. When changing from songs mode to sets mode, you will be prompted to save any changes.
     <all_songs caption="全部樂曲">
@@ -63,7 +63,7 @@
     <curr_folder caption="所在的資料夾">Shows the folder containing this song (relative to the Active folder)</curr_folder>
 
     <song_folders caption="資料夾">Select a folder from the list to filter the current list of songs.
-      <new>Creates a new folder to store songs in.</new>
+      <new>建立新資料夾儲存樂曲。</new>
       <delete>Deletes the currently selected song folder. The folder must be empty.</delete>
       <filter_all caption="全部"/>
       <filter_main caption="主要"/>
@@ -80,7 +80,7 @@
     <ccli caption="CCLI Song #">設定已選樂曲的 CCLI 號碼。</ccli>
     <hymn_number caption="Hymn #">設定已選樂曲的詩歌號碼。</hymn_number>
     <presentation caption="簡報播放">設定已選樂曲的簡報播放分段排序。分段應以一半形空格隔開。 (i.e. "V1 C V2 C")</presentation>
-    <lyrics caption="和弦／歌詞">Edit songs here using Section lines, Comment lines, Chord lines, and Lyric lines.</lyrics>
+    <lyrics caption="和弦／歌詞">在此處編輯樂曲，可使用分段線、評註線、和弦線和歌詞線。</lyrics>
     <insert caption="插入"/>
       <ins_section caption="分段">使用分段以區隔一首樂曲的不同部分。
         <section_name caption="分段名稱"/>
@@ -95,8 +95,8 @@
       <ins_comment caption="評註">Comments are printed on lead sheets but do not show up in presentations.</ins_comment>
       <ins_column caption="新欄">Lead sheets can contain two columns to aid in fitting longer songs onto a single page.</ins_column>
       <ins_page caption="新頁">Indicates the location a page break should be placed in the lead sheet when printing longer songs.</ins_page>
-    <transpose caption="移調">Use this option to automatically transpose your song to any key. Amounts are measured in half-steps.
-      <using caption="使用">Select 升號 from this list to cause OpenSong to transpose accidentals to sharps rather than flats. Select 降號 from this list to cause OpenSong to transpose accidentals to flats rather than sharps.
+    <transpose caption="移調">使用此選項來自動讓您的樂曲移至任何調，以半音為單位。
+      <using caption="使用">在選單中選擇升號來在 OpenSong 中升調，選擇降號來降調。
         <sharps caption="升號"/>
         <flats caption="降號"/>
       </using>
@@ -118,12 +118,12 @@
     <key caption="調">設定已選樂曲的調號。</key>
     <aka caption="AKA">設定已選樂曲的另類通用標題。</aka>
     <key_line caption="主題句">設定已選樂曲的一行以協助識別。</key_line>
-    <style caption="替代預設值的樣式">Click here to customize the style for this song. Custom styles override the default presentation style.</style>
+    <style caption="替代預設值的樣式">按此處自訂此樂曲的樣式。自訂樣式將蓋過預設的簡報樣式。</style>
     <user1 caption="使用者定義 1">可依照個人需要而任意加入。此欄位可用於第三方軟體等。</user1>
     <user2 caption="使用者定義 2">可依照個人需要而任意加入。此欄位可用於第三方軟體等。</user2>
     <user3 caption="使用者定義 3">可依照個人需要而任意加入。此欄位可用於第三方軟體等。</user3>
-    <backgrounds caption="指定每節樂曲另外加入背景" head1="節" head2="背景圖片">展示特家每節主歌可自選的背景。</backgrounds>
-    <add_background caption="加入">Links an image to the selected verse.</add_background>
+    <backgrounds caption="指定每節樂曲另外加入背景" head1="節" head2="背景圖片">展示特定每節主歌可選用的背景。</backgrounds>
+    <add_background caption="加入">為所選主歌節數連結圖片。</add_background>
     <del_background caption="移除">Removes the currently selected verse image.</del_background>
     <fit_to_screen caption="link(general_settings/imagedefaults/fit_to_screen/@caption)">link(general_settings/imagedefaults/fit_to_screen)</fit_to_screen>
     <fit_to_body caption="link(general_settings/imagedefaults/fit_to_body/@caption)">link(general_settings/imagedefaults/fit_to_body)</fit_to_body>
@@ -156,14 +156,14 @@
     <new_item caption="新增項目">
       <add_song caption="樂曲">加入一首樂曲到現行的曲集。這會讓您在 song editor 選擇現存清單中的歌曲。</add_song>
       <add_scripture caption="經文">加入一張或多張經文投映片到現行的曲集。經文查閱視窗可讓您選取您要用作顯示的特定章節段落。</add_scripture>
-      <add_slides caption="投映片">加入一張自訂的投映片到現行的曲集。 自訂的投映片 allow you to specify your own title, subtitle, body text, and even style. A custom slide item can actually contain a series of slides.</add_slides>
-      <add_style caption="樣式">Changes the current set's default style at any place in the set. Styles changes can define a new style or revert to the previous style.</add_style>
-      <add_image caption="圖片">加入一張圖片投映片到現行的曲集。 Image slides will allow you to display a single image or a slideshow of multiple images instead of a body text.</add_image>
+      <add_slides caption="投映片">加入一張自訂的投映片到現行的曲集。 自訂的投映片讓您指定自訂的標題、副標題、內文，乃至樣式。自訂的投映片項目可實際包含一連串投映片。</add_slides>
+      <add_style caption="樣式">變更現行曲集中所有位置的預設樣式。變更樣式可讓您定義新樣式或回復舊有的樣式。</add_style>
+      <add_image caption="圖片">加入一張圖片投映片到現行的曲集。圖片投映片讓您顯示的單一圖片或多張圖片的投映片演示，而不包含內文。</add_image>
       <add_external caption="外部媒體">加入一張新的投映片到現行的曲集，並啟用外部程式如簡報或 DVD 播放軟體。</add_external>
     </new_item>
     <current_item caption="現行項目">
-      <move_up caption="往上移">移動現時所選曲集中的項目到較近曲集前端的地方。</move_up>
-      <move_down caption="往下移">移動現時所選曲集中的項目到較近曲集後端的地方。</move_down>
+      <move_up caption="往上移">移動現時所選曲集中的項目到較近曲集開始的位置。</move_up>
+      <move_down caption="往下移">移動現時所選曲集中的項目到較近曲集結束的位置。</move_down>
       <remove caption="移除">移除現時所選曲集中的項目。</remove>
       <copy caption="複製">為現時所選曲集中的項目複製一個副本。</copy>
       <paste caption="link(shared/insert/@caption)">在現時的項目位置後插入複製的項目。</paste>
@@ -191,7 +191,7 @@
       <insert caption="Insertion of copied slides failed:&#10;%1"/>
     </errors>
     <messages>
-      <export_complete>&quot;%1&quot; exported to
+      <export_complete>&quot;%1&quot; 已匯出到
 %2
       </export_complete>
     </messages>
@@ -199,42 +199,42 @@
 
   <slide_editor>
     <header caption="Slide Editor"/>
-    <title caption="標題">Sets the title of the slide displayed on the slide itself.</title>
-    <subtitle caption="副標題">Sets the subtitle of the slide displayed on the slide itself.</subtitle>
-    <name caption="名稱">Sets the title of the slide(s) displayed in the Presentation Helper window. It does not display on the actual slide(s).</name>
-    <slides caption="（多張）投映片">Contains the bodies of the actual slide(s) in this custom slide item. Hint: Drag one or more images to this list for easy adding.</slides>
-    <presentation caption="自訂簡報順序">Overrides the presentation order in the song file</presentation>
-    <origorder caption="原訂簡報順序">Presentation order in the song file</origorder>
-    <folder caption="樂曲資料夾">Folder containing the selected item</folder>
-    <notes caption="備註">These notes show up in the 簡報助理視窗 while giving a presentation using multiple monitors.</notes>
+    <title caption="標題">設定顯示在投映片本身的標題。</title>
+    <subtitle caption="副標題">設定顯示在投映片本身的到標題。</subtitle>
+    <name caption="名稱">設定顯示在簡報助理視窗的（多張）投映片標題。這標題並不會顯示在真實的投映片中。</name>
+    <slides caption="（多張）投映片">在此自訂投映片的實體（多張）投映片。提示：可簡單拖放一張或多張圖片加入到清單中。</slides>
+    <presentation caption="自訂播放順序">覆蓋原訂樂曲檔案中段落的播放順序</presentation>
+    <origorder caption="原訂播放順序">原訂樂曲檔案中段落的播放順序</origorder>
+    <folder caption="樂曲資料夾">包含所選項目的資料夾</folder>
+    <notes caption="備註">這備註會在使用多顯示器播放簡報時，展示於簡報助理視窗中。</notes>
     <insert caption="插入"/>
-      <ins_slide caption="投映片">Allows for the creation of multiple slides that all share a common title, subtitle, style, and/or auto-advance setting. Slides created this way can also be set to automatically loop.</ins_slide>
-    <loop caption="循環播放投映片">Check this box to have OpenSong automatically  loop back to the first slide in this item after it finishes displaying the last slide in this item.</loop>
-    <print caption="包含在清單列印中">Uncheck this box to have this custom slide group not appear when printing set lists.</print>
-    <transition caption="選用過渡效果">Check this box to use a transition when this slide is shown.</transition>
-    <auto_advance caption="自動切換下一投映片的時間">Enter the number of seconds that OpenSong should display each slide in this item before automatically advancing to the next slide in this item.</auto_advance>
+      <ins_slide caption="投映片">可製作分享共同標題、副標題、樣式和／或自動交替設定值的多張投映片。這方式製作的投映片甚至可設定自動重播。</ins_slide>
+    <loop caption="循環播放投映片">勾選此方塊使 OpenSong 在每次顯示完此項目的最後一張投映片後，均從此項目的最前一張投映片開始回放。</loop>
+    <print caption="包含在列印清單中">不勾選此方塊的話，在列印曲集清單時將不印出自訂這組投映片。</print>
+    <transition caption="選用過渡效果">勾選此方塊使此投映片展示時使用過渡效果。</transition>
+    <auto_advance caption="自動切換下一投映片的時間">輸入 OpenSong 播放此項目中每張投映片的秒數，才自動接替為此項目中的下一張投映片。</auto_advance>
     <seconds caption="秒"/>
-    <style caption="替代預設值的樣式">Checking this box enables this slide item to contain a custom style. When enabled, click the preview box above to edit this item's style.</style>
+    <style caption="替代預設值的樣式">勾選此方塊將容許此投映片包含自訂的樣式。在啟用後，請按上方的預覽方塊來編輯項目的樣式。</style>
   </slide_editor>
 
   <image_slide>
     <header caption="Image Slide Editor"/>
     <title caption="link(slide_editor/title/@caption)">link(slide_editor/title)</title>
     <subtitle caption="link(slide_editor/subtitle/@caption)">link(slide_editor/subtitle)</subtitle>
-    <descriptions caption="副標題包含圖片說明">Add the description of the showing image to the subtitle.</descriptions>
+    <descriptions caption="副標題包含圖片說明">在副標題中加入對所展示圖片的說明。</descriptions>
     <name caption="link(slide_editor/name/@caption)">link(slide_editor/name)</name>
-    <images caption="圖片" head1="預覽" head2="說明">Contains the images that are shown in this slide. Hint: Drag one or more images to this list for easy adding.</images>
+    <images caption="圖片" head1="預覽" head2="說明">在此投映片的顯示的圖片。提示：可簡單拖放一張或多張圖片加入到清單中。</images>
     <fit_to_screen caption="link(general_settings/imagedefaults/fit_to_screen/@caption)">link(general_settings/imagedefaults/fit_to_screen)</fit_to_screen>
     <fit_to_body caption="link(general_settings/imagedefaults/fit_to_body/@caption)">link(general_settings/imagedefaults/fit_to_body)</fit_to_body>
     <keepaspect caption="link(general_settings/imagedefaults/keepaspect/@caption)">link(general_settings/imagedefaults/keepaspect)</keepaspect>
     <store_as_link caption="不要在曲集內儲存圖片，而是使用鏈結">link(general_settings/imagedefaults/store_as_link)</store_as_link>
     <notes caption="link(slide_editor/notes/@caption)">link(slide_editor/notes)</notes>
     <action caption="動作" />
-      <ins_image caption="加入">Adds an image to this slide to allow for a slideshow that shares a common title, subtitle, style, and/or auto-advance setting. Slides created this way can also be set to automatically loop.</ins_image>
-      <imp_image caption="從簡報文件匯入">Loads all available slides from a presentation and adds these as image.</imp_image>
-      <del_image caption="移除">Removes the currently selected image from the slide.</del_image>
-      <move_up caption="向上移">Moves the currently selected image in the slide closer to the beginning of the slide.</move_up>
-      <move_down caption="向下移">Moves the currently selected image in the slide closer to the end of the slide.</move_down>
+      <ins_image caption="加入">加入圖片在此投映片中，可用作分享共同標題、副標題、樣式和／或自動交替設定值的投映片演示。這方式製作的投映片甚至可設定自動重播。</ins_image>
+      <imp_image caption="從簡報文件匯入">載入簡報中所有可用的投映片並加入成為圖片。</imp_image>
+      <del_image caption="移除">從投映片中移除現行選擇的圖片。</del_image>
+      <move_up caption="向上移">移動現時所選圖片到較近投映片開始的位置。</move_up>
+      <move_down caption="向下移">移動現時所選圖片到較近投映片結束的位置。</move_down>
     <loop caption="link(slide_editor/loop/@caption)">link(slide_editor/loop)</loop>
     <print caption="link(slide_editor/print/@caption)">link(slide_editor/print)</print>
     <transition caption="link(slide_editor/transition/@caption)">link(slide_editor/transition)</transition>
@@ -247,9 +247,9 @@
     <header caption="External Slide Editor"/>
     <name caption="link(slide_editor/name/@caption)">link(slide_editor/name)</name>
     <application caption="應用程式"/>
-    <presentation caption="簡報">Use this slide to show a presentation using Microsoft PowerPoint or the free and open source OpenOffice.org Impress.</presentation>
-    <videolan caption="Videolan">Use this slide to run a media file using the versatile and open source media player Videolan (VLC).</videolan>
-    <application caption="應用程式">Use this slide to run an external program by using a command line.</application>
+    <presentation caption="簡報">用此投映片來使用 Microsoft PowerPoint 或自由、免費和開放源始碼的 Apache OpenOffice Impress 去展示簡報。</presentation>
+    <videolan caption="Videolan">用此投映片來使用多功能的開放源始碼媒體播放軟體 Videolan (VLC)來執行媒體檔案。</videolan>
+    <application caption="應用程式">用此投映片來使用指令列執行外部程式。</application>
     <no_application caption="沒有應用程式">
     <no_application caption="請為此投映片內容選擇用作開啟的應用程式資源。"/>
     </no_application>
@@ -286,23 +286,23 @@
   </external_slide>
 
   <style_change>
-    <header caption="Style Change"/>
-    <revert caption="恢復到前一種樣式">此選項使曲集樣式從現在起恢復到前一種樣式。</revert>
-    <change caption="變更到這一種樣式">此選項容許在曲集的任何位置變更樣式。樣式變更影響其後的所有投映片直至下一個樣式更改。</change>
-    <style>Click here to edit the new style.</style>
+    <header caption="變更樣式"/>
+    <revert caption="恢復到前一種樣式">此選項使曲集樣式即恢復到前一種樣式。</revert>
+    <change caption="變更到這一種樣式">此選項容許在曲集的任何位置變更樣式。變更樣式影響其後的所有投映片直至下一個變更樣式。</change>
+    <style>按此處編輯新樣式。</style>
   </style_change>
 
   <video_slides>
     <header caption="Video Slides Editor"/>
-    <name caption="投映片名稱">The name used by OpenSong to identify this slide.</name>
-    <file caption="影片檔案">Sets the name of the video file for this slide.</file>
-    <loop caption="循環播放影片">Check this box to make the movie restart each time it reaches its end.</loop>
+    <name caption="投映片名稱">OpenSong 用以辨別此投映片的名稱。</name>
+    <file caption="影片檔案">設定此投映片所用的影片檔案名稱。</file>
+    <loop caption="循環播放影片">勾選此方塊來使影片結束時重新播放。</loop>
   </video_slides>
 
   <powerpoint_slides>
     <header caption="PowerPoint Slides Editor"/>
-    <name caption="投映片名稱">The name used by OpenSong to identify this slide group.</name>
-    <file caption="PowerPoint File">Sets the name of the PowerPoint file for this slide.</file>
+    <name caption="投映片名稱">OpenSong 用以辨別此投映片組的名稱。</name>
+    <file caption="PowerPoint 檔案">設定此投映片所用的 PowerPoint 檔案名稱。</file>
   </powerpoint_slides>
 
   <song_search title="樂曲搜尋">
@@ -334,18 +334,18 @@
   </song_search>
 
   <scripture_search title="搜尋">
-    <caption caption="Search in bible using keyword"/>
-    <example caption="To search for an exact phrase enclose it in double quotes, like &quot;Simon Peter&quot;"/>
-    <match caption="Match">
-      <exact caption="E&amp;xact"/>
-      <begin caption="&amp;Begins with"/>
+    <caption caption="搜尋聖經關鍵字"/>
+    <example caption="要搜尋完全符合的字句，請以雙括號括起，如 &quot;Simon Peter&quot;"/>
+    <match caption="配對">
+      <exact caption="符合整個詞語(&amp;L)"/>
+      <begin caption="句首以此開始(&amp;L)"/>
     </match>
     <words caption="經節須包含">
-      <all caption="A&amp;ll words"/>
+      <all caption="全部詞語(&amp;L)"/>
       <any caption="任何其一詞語(&amp;Y)"/>
     </words>
     <search caption="搜尋(&amp;S)"/>
-    <result caption="%1 matches were found using the specified keyword(s)."/>
+    <result caption="使用指定的關鍵字，找到 %1 項符合。"/>
     <ok caption="link(shared/ok/@caption)"/>
     <cancel caption="link(shared/cancel/@caption)"/>
     <result head1="Reference" head2="文字" />
@@ -435,16 +435,16 @@
       <warning caption="設定變更將會在 OpenSong 重新啟動時生效。"/>
       <default caption="預設"/>
       <custom caption="自訂"/>
-      <message>The new location for OpenSong documents will not take effect until OpenSong is restarted. You may want to copy your old OpenSong documents over to the new location first.</message>
+      <message>新的 OpenSong 的文件位置要待 OpenSong 重新啟動才生效。您或須要先複製您的舊的 OpenSong 文件到新的位置。</message>
       <changed>您選取了一個文件資料夾，但仍未點選變更按鈕。您要使用新的資料夾嗎？</changed>
       <change caption="Change"/>
       <oldfolderdb caption="使用 pre-V1.1 快取檔案"/>
     </documents_folder>
     <imagedefaults caption="圖片處理的預設值">
-      <fit_to_screen caption="縮放圖片配合螢幕大小">Images that are too large for the projector screen are resized to show the entire image. This also happens for images that are smaller than the screen size.</fit_to_screen>
+      <fit_to_screen caption="縮放圖片配合螢幕大小">對於投映螢幕太大的圖片，會縮小到能展示全圖。同樣，太小的圖片會放大來配合螢幕大小。</fit_to_screen>
       <fit_to_body caption="縮放圖片配合內文區域">Images are made to always fit in the area that is bounded by the body style settings. This goes for both images that are larger and smaller than the body area.</fit_to_body>
-      <keepaspect caption="縮放圖片時保持長寬比例">In case of a resizing activity for either one of the above, the horizontal and vertical aspect will be maintained.</keepaspect>
-      <store_as_link caption="不要在背景內嵌圖片，而是使用鏈結">Storing images in the set or song rapidly increases the size of it on disk and might degrade the quality of the image. Using a link avoids this. Images from the 'Backgrounds' folder are stored as relative link, which makes the switch to the presentation computer easier. Use with care if the presentation is created on a machine different from the presentation device!</store_as_link>
+      <keepaspect caption="縮放圖片時保持長寬比例">無論是上述哪種縮放，長寬比均維持不變。</keepaspect>
+      <store_as_link caption="不要在背景內嵌圖片，而是使用鏈結">儲存圖片在曲集或樂曲中會加速佔用磁碟的位置，並降低圖片品質，這情況可使用鏈結來避免。Images from the 'Backgrounds' folder are stored as relative link, which makes the switch to the presentation computer easier. Use with care if the presentation is created on a machine different from the presentation device!</store_as_link>
       <background_as_text caption="展示背景而不展示歌詞文字">Use the background image only and do not display the verse text. Usefull when the text is pre-rendered or when scores are displayed using the background image.</background_as_text>
     </imagedefaults>
     <imagequality caption="設定圖片品質">
@@ -481,7 +481,7 @@
       <tag caption="樂曲，Tag"/>
       <scripture caption="經文"/>
       <custom caption="自訂的投映片"/>
-      <style caption="樣式更改"/>
+      <style caption="變更樣式"/>
       <image caption="圖片投映片"/>
       <application caption="外部應用程式"/>
       <blank caption="空白的（已插入）"/>
@@ -534,12 +534,12 @@
         <scripture_slides caption="預設的經文樣式"/>
         <click_to_change caption="link(shared/click_to_change/@caption)"/>
         <right_click_to_clear caption="link(shared/right_click_to_clear/@caption)"/>
-        <export_snapshot caption="匯出a snapshot of each presented slide to the following file"/>
-        <snapshot_file caption="螢幕截圖檔案名稱">選取 snapshot檔案名稱 using a file selection dialog.</snapshot_file>
-        <export_preview caption="匯出snapshots during set preview"/>
-        <export_live_insertions caption="匯出snapshots of slides inserted during a live presentation"/>
-        <export_metadata caption="匯出slide details in a similarly named xml file"/>
-        <snapshot_parameters caption="link(/presentation_settings/settings/snapshot_parameters)">The following parameters can be used in the file name or path:
+        <export_snapshot caption="匯出每張所播放投映片的螢幕截圖到下列檔案"/>
+        <snapshot_file caption="螢幕截圖檔案名稱">使用檔案選擇對話框來選取螢幕截圖檔案名稱。</snapshot_file>
+        <export_preview caption="在曲集預覽時匯出螢幕截圖"/>
+        <export_live_insertions caption="在實際簡報時匯出各投映片的螢幕截圖"/>
+        <export_metadata caption="匯出投映片細節於相同形式命名的 xml 檔案"/>
+        <snapshot_parameters caption="link(/presentation_settings/settings/snapshot_parameters)">以下參數適用於檔案名稱或路徑:
     - %d: The day of the current month (01-31)
     - %h: The hour from the current time of day in 24-hour format (00-23)
     - %i: The minutes from the current time (00-59)
@@ -612,12 +612,12 @@
       <play caption="Play"/>
     </audio>
 
-    <presentation_control caption="雜項">
+    <misc caption="雜項">
       <exit_prompt caption="離開簡報器前先提示"/>
-    </presentation_control>
+    </misc>
 
     <errors>
-        <snapshot_file>Error: creating snapshots is enabled, but no filename is entered.</snapshot_file>
+        <snapshot_file>錯誤: 已啟用螢幕截圖的產生，但未有輸入檔案名稱。</snapshot_file>
     </errors>
   </presentation_settings>
 
@@ -640,7 +640,7 @@
       <return caption="[Esc] 返回"/>
     </actions>
     <exit caption="要離開簡報器？"/>
-    <loop caption="Loop"/>
+    <loop caption="循環播放"/>
     <keys>- 鍵盤按鍵 -
 下: 下一張投映片
 上: 上一張投映片
@@ -677,7 +677,7 @@ W 鍵: (White) 淡入白底色畫面。
 K 鍵: (Black) 淡入黑底色畫面。
 L 鍵: (Logo) 顯示 OpenSong 標誌。
 H 鍵: (Hide) 隱藏文字，只展示背景圖片。
-F 鍵: (Freeze) 靜止簡報播放（即停放新投映片，可讓您更改現行投映片而無須影響簡報播放，按 N 鍵 (Normal) 解除靜止播放）。
+F 鍵: (Freeze) 靜止簡報播放（即停放新投映片，可讓您變更現行投映片而無須影響簡報播放，按 N 鍵 (Normal) 解除靜止播放）。
 N 鍵: (Normal) 正常模式(如要退出黑畫面等)
 B 鍵: (Bridge) 前往過門／過渡樂句（在 song editor 以 [B#] 所標示）。如果有超過一過門／過渡樂句，按 B 鍵將移動到下一過門／過渡樂句.
 C 鍵: (Chorus) 前往副歌（在 song editor 以 [C#] 所標示）。如果有超過一首副歌，按 C 鍵將移動到下一副歌。
@@ -821,16 +821,16 @@ ch
 
 <print>
      <continued caption="(continued)"/>
-     <toc caption="Table of Contents"/>
+     <toc caption="目錄"/>
      <categorized caption="Categorized"/>
      <alphabetical caption="Alphabetical"/>
      <copyright caption="著作權／版權"/>
      <page caption="Page %1"/>
      <ccli_number caption="link(general_song_editor/ccli/@caption)"/>
      <ccli_license caption="link(general_settings/general/ccli/@caption)"/>
-     <create_list caption="Creating list of %1..."/>
+     <create_list caption="正在產生 %1 的清單..."/>
      <uncategorized caption="Other"/>
-     <setlist caption="Order of Service">
+     <setlist caption="崇拜程序">
      <date caption="Printed "/>
      </setlist>
 </print>
@@ -868,12 +868,12 @@ ch
 
   <smartml>
     <attrib_except>SmartML.GetAttribute: Exception looking for attribute '%1' in '%2'</attrib_except>
-    <no_path>Path not found.</no_path>
-    <no_file>File not found: %1</no_file>
-    <cant_open>Error Opening File: %1</cant_open>
-    <cant_create>File could not be created: %1</cant_create>
-    <xml_error>Error parsing XML: %1</xml_error>
-    <xml_exterror>Error parsing XML: %1: %2: %3</xml_exterror>
+    <no_path>找不到路徑。</no_path>
+    <no_file>找不到檔案: %1</no_file>
+    <cant_open>開啟檔案錯誤: %1</cant_open>
+    <cant_create>未能建立檔案: %1</cant_create>
+    <xml_error>錯誤剖析 XML: %1</xml_error>
+    <xml_exterror>錯誤剖析 XML: %1: %2: %3</xml_exterror>
   </smartml>
 
   <style_editor title="Style Editor">
@@ -937,7 +937,7 @@ ch
   </style_tabs>
 
   <song_lookup title="樂曲查閱">
-    <header caption="To add a song, click the song title below and click 'Add'. If you know the name of the song you can type it in the Quick Lookup field and click 'Add'. Or you can click 搜尋(Ctrl+F) to search song, Ctrl+G to repeat search . You can also double-click on the song name or press ENTER to add the song."/>
+    <header caption="要加入樂曲，請按下列樂曲名稱，然後按「加入」。如果您知道樂曲的名稱，您可以在快速查閱欄位輸入，然後按「加入」。您也可按「搜尋」(Ctrl+F) 來搜尋樂曲，Ctrl+G 來重覆搜尋。您可以雙按樂曲或按 ENTER 鍵加入該樂曲。"/>
     <no_selection>You have not selected a song.</no_selection>
     <folder caption="選擇資料夾"/>
     <preview caption="樂曲預覽"/>
@@ -982,16 +982,16 @@ ch
       <erase_all>This will erase all entries，要繼續嗎？</erase_all>
     </input_box>
     <description>Created|Deleted|Modified|Moved|Presented|Printed|Renamed|Copied</description>
-    <file_type>OpenSong Activity Log File</file_type>
+    <file_type>OpenSong 活動日誌檔案</file_type>
     <merged>Merge complete %1 entries were added to the song活動日誌.</merged>
-    <merged_dupes>%1 duplicate entries were ignored.</merged_dupes>
+    <merged_dupes>已忽略 %1 項重覆的條目。</merged_dupes>
   </song_activity>
 
   <scripture_lookup title="經文查閱">
     <lookup caption="快速查閱">
       <reference caption="Reference"/>
       <lookup caption="查閱"/>
-      <example caption="例: '2Pet 1:1-2' o '2Pet 1:1-2 (KJV)'"/>
+      <example caption="例: '2Pet 1:1-2' 或 '2Pet 1:1-2 (KJV)'"/>
     </lookup>
     <search caption="Full text search"/>
     <books caption="聖經經卷">
@@ -1018,41 +1018,41 @@ ch
     <copy caption="link(shared/copy/@caption)"/>
     <done caption="link(shared/done/@caption)"/>
     <bad_reference>
-      <format>Please check the format of the query and try again.</format>
-      <empty>Bad reference: the reference was empty.</empty>
-      <book>Bad reference: could not find book.</book>
+      <format>請檢查查詢的格式，然後再試一次。</format>
+      <empty>Bad reference: 參照空白。</empty>
+      <book>Bad reference: 找不到經卷。</book>
       <ambiguous>Bad reference: Multiple books match %1: %2</ambiguous>
-      <version>Bad reference: '%1' version could not be found.</version>
-      <chapter>Bad reference: could not find chapter '%1'.</chapter>
-      <verse>Bad reference: could not find verse '%1'.</verse>
-      <verse_range>Bad reference: the 'to' verse must be greater than or equal to the 'from' verse.</verse_range>
+      <version>Bad reference: 找不到第 '%1' 版本。</version>
+      <chapter>Bad reference: 找不到第 '%1' 章。</chapter>
+      <verse>Bad reference: 找不到第 '%1' 節。</verse>
+      <verse_range>Bad reference: 「結束節」必須大於「開始節」。</verse_range>
     </bad_reference>
   </scripture_lookup>
 
   <module>
-    <read_error>不能 read file or invalid file format.</read_error>
-    <format_error>Invalid module format.</format_error>
-    <move_error>Error moving module file. Please verify that you have write access to '%1'.</move_error>
-    <rename_error>Error renaming module file. Please verify that you have write access to '%1'.</rename_error>
-    <success>Module successfully loaded.</success>
-    <file_type>OpenSong Modules</file_type>
+    <read_error>不能選取檔案或無效的檔案格式。</read_error>
+    <format_error>無效的模組格式。</format_error>
+    <move_error>移動模組檔案錯誤，請檢查您有 '%1' 的寫入權限。</move_error>
+    <rename_error>變更模組檔案名稱錯誤，請檢查您有 '%1' 的寫入權限。</rename_error>
+    <success>已成功載入模組。</success>
+    <file_type>OpenSong 模組</file_type>
     <generate_index>產生經文檔案: '%1' 的索引？</generate_index>
     <generate_error>產生經文索引時發生錯誤; 您是否有 %1 的寫入權限？</generate_error>
   </module>
 
-  <index_progress title="Please Wait">
-    <top caption="Building index:"/>
-    <bottom caption="Press 'esc' to cancel"/>
+  <index_progress title="請等待">
+    <top caption="正在建立索引:"/>
+    <bottom caption="按 'esc' 鍵取消"/>
   </index_progress>
 
   <import_from_ccli title="從 CCLI 匯入">
     <user_id caption="使用者 ID"/>
     <password caption="密碼"/>
-    <for caption="Search For"/>
+    <for caption="搜尋"/>
     <songs head1="Ly" head2="So" head3="Le" head4="標題" head5="作者"
       head6="Catalog" head7="AKA" head8="主題句" head9="調" head10="CCLI #"/>
     <by caption="By">
-      <title_and_aka caption="Title and AKA"/>
+      <title_and_aka caption="標題與 AKA"/>
       <title caption="標題"/>
       <lyrics caption="歌詞"/>
       <author caption="作者"/>
@@ -1070,13 +1070,13 @@ ch
     <next_page caption="下一頁"/>
     <page caption="Page"/>
     <of_pages caption="of %1"/>
-    <import caption="Import"/>
+    <import caption="匯入"/>
     <errors>
-      <no_data>No data was returned. Please check your search string and/or your CCLI ID/password.</no_data>
-      <bad_html>Error parsing HTML. Contact OpenSong technical support.</bad_html>
-      <no_results>No results returned.</no_results>
-      <no_headers>No header data was returned. Please check your search string and/or your CCLI ID/password.</no_headers>
-      <no_connect>不能 connect to CCLI. Please try again later.</no_connect>
+      <no_data>沒有資料回傳，請檢查您的搜尋字串和／或您的 CCLI ID／密碼。</no_data>
+      <bad_html>錯誤剖析 HTML，請連繫 OpenSong 技術支援。</bad_html>
+      <no_results>沒有結果回傳。</no_results>
+      <no_headers>沒有標頭資料回傳，請檢查您的搜尋字串和／或您的 CCLI ID／密碼。</no_headers>
+      <no_connect>不能連接到 CCLI，請稍後再試。</no_connect>
       <already_exists>Song 已經存在。</already_exists>
     </errors>
   </import_from_ccli>
@@ -1148,7 +1148,6 @@ ch
     <option name="3/4"/>
     <option name="4/4"/>
     <option name="3/8"/>
-    <option name="5/8"/>
     <option name="6/8"/>
   </time_sig_list>
 
@@ -1168,24 +1167,24 @@ ch
   </imagequality_list>
 
   <videolan_preset_list>
-    <preset name="Video as wallpaper background in Windows (use background color RGB 0,0,1)" parameters="--no-video-deco --no-video-title-show --no-osd --video-wallpaper --direct3d-desktop --one-instance --directx-device=\\.\DISPLAY%d %s"/>
-    <preset name="Fullscreen video on presentation screen" parameters="--no-video-deco --no-video-title-show --no-osd --one-instance %s"/>
-    <preset name="Fullscreen video from default DirectShow video input" parameters="--no-video-deco --no-video-title-show --no-osd --one-instance dshow://"/>
+    <preset name="在 Windows 中以視訊為桌面背景（桌布）（使用背景色彩 RGB 0,0,1）" parameters="--no-video-deco --no-video-title-show --no-osd --video-wallpaper --direct3d-desktop --one-instance --directx-device=\\.\DISPLAY%d %s"/>
+    <preset name="在播放螢幕使用全螢幕視訊" parameters="--no-video-deco --no-video-title-show --no-osd --one-instance %s"/>
+    <preset name="從預設的 DirectShow 視訊輸入使用全螢幕視訊" parameters="--no-video-deco --no-video-title-show --no-osd --one-instance dshow://"/>
     <!-- The line below is mandatory. Translators: only modify the value for 'name' -->
     <preset name="Manual" parameters=""/>
   </videolan_preset_list>
 
   <style_preview>
     <slide_groups>
-      <slide_group name="Sample Title" type="custom" seconds="0" loop="false">
-        <title>Sample Title</title>
-        <subtitle>Sample Subtitle</subtitle>
-        <notes>Sample Notes</notes>
+      <slide_group name="樣板標題" type="custom" seconds="0" loop="false">
+        <title>樣板標題</title>
+        <subtitle>樣板副標題</subtitle>
+        <notes>樣板備註</notes>
         <slides>
           <slide>
-            <body>This is a sample slide.
-This text is the body text.
-Click on this slide to edit its style.</body>
+            <body>這是樣板投映片。
+這段文字是內文。
+點按此投映片，編輯樣式。</body>
           </slide>
         </slides>
       </slide_group>
@@ -1206,23 +1205,23 @@ Click on this slide to edit its style.</body>
     <cancel caption="取消"/>
     <yes caption="是"/>
     <no caption="否"/>
-    <apply caption="Appl&amp;y"/>
+    <apply caption="套用(&amp;Y)"/>
     <browse caption="瀏覽"/>
     <browse_for caption="瀏覽資料夾"/>
     <add caption="加入"/>
     <done caption="完成"/>
-    <untitled caption="Untitled"/>
+    <untitled caption="未命名"/>
     <click_to_change caption="點選以變更"/>
     <right_click_to_clear caption="右點選以清除"/>
     <insert caption="插入"/>
     <close caption="關閉"/>
     <search caption="搜尋"/>
-    <save caption="儲存" message="%1 has not been saved."/>
-    <nosave caption="Don't Save"/>
+    <save caption="儲存" message="%1 並未儲存。"/>
+    <nosave caption="不要儲存"/>
     <cut caption="剪下"/>
     <copy caption="複製"/>
     <paste caption="貼上"/>
-    <clear caption="Clear"/>
+    <clear caption="清除"/>
     <selectall caption="全選"/>
     <select caption="選擇"/>
     <exit_program caption="離開程式"/>
@@ -1252,15 +1251,15 @@ Click on this slide to edit its style.</body>
   <questions>
     <new_name caption="請輸入名稱:"/>
     <rename caption="請輸入 '%1' 的新名稱:"/>
-    <save caption="您是否要儲存變更到 '%1'?"/>
-    <delete caption="您是否確定要刪除 '%1'?"/>
+    <save caption="您是否要儲存變更到 '%1'？"/>
+    <delete caption="您是否確定要刪除 '%1'？"/>
     <clear caption="您是否確定要清除此項目？"/>
-    <changed caption="現行的樂曲已更改，您是否要儲存？"/>
+    <changed caption="現行的樂曲已變更，您是否要儲存？"/>
     <revert caption="所有變更將會失去，要繼續嗎？"/>
     <long_operation caption="這會花很長時間才能完成，要繼續嗎？"/>
     <generic_save caption="要儲存變更嗎？"/>
     <generic_save_explanation caption="如果您不儲存，您所作的變更都會失去"/>
-    <set_changed caption="現行的曲集已更改，您是否要儲存？"/>
+    <set_changed caption="現行的曲集已變更，您是否要儲存？"/>
     <select_docs_folder caption="選擇 OpenSong 文件資料夾">OpenSong 檔案（樂曲與曲集）要儲存到哪裡？</select_docs_folder>
     <activity_log caption="您是否想把本次簡報播放的樂曲加入到活動日誌中？注意這也包含簡報播放時即時加入的樂曲！"/>
     <import_presentation caption="Import presentation images">選擇您想匯入到投映片的簡報檔案。</import_presentation>
@@ -1272,18 +1271,18 @@ Click on this slide to edit its style.</body>
     <no_songs_folder caption="找不到樂曲資料夾，您是否想要建立此資料夾？"/>
     <no_sets_folder caption="找不到曲集資料夾，您是否想要建立此資料夾？"/>
     <no_folder caption="找不到folder '%1'，您是否想要建立此資料夾？"/>
-    <destination_exists caption="檔案已存在於該目的資料夾。您是否想要更改此檔案的名稱？"/>
+    <destination_exists caption="檔案已存在於該目的資料夾。您是否想要變更此檔案的名稱？"/>
     <linked_songs caption="所選樂曲包含一首或多首鏈結樂曲，您是否想加入這（些）樂曲？"/>
   </questions>
 
   <about>
-    <additional>Additional development by:</additional>
+    <additional>還有以下開發者:</additional>
     <copyright>Copyright</copyright>
-    <gpl>This software is released under the terms of the GPL.</gpl>
-    <web>For more information visit http://www.opensong.org/.</web>
+    <gpl>本軟體是以 GPL 授權條款釋出。</gpl>
+    <web>請到 http://www.opensong.org/ 了解詳情。</web>
     <translating>To translate OpenSong, copy the 'English' file in the 'OpenSong Languages' folder and rename it to the name of the new language. Translate everything in the file except for the tag and attribute names. Then, send the new file to opensong-translate@lists.sourceforge.net or add it in the 'Patches' Tracker on the OpenSong project page at Source Forge and we'll include it in the official release.</translating>
-    <created_with_opensong>Created with OpenSong</created_with_opensong>
-    <sources>OpenSong includes source code from:
+    <created_with_opensong>使用 OpenSong 製作</created_with_opensong>
+    <sources>OpenSong 包含以下源始碼:
 StringUtils (http://www.strout.net/info/coding/rb/)
 HTMLEntityEncode (http://sourceforge.jp/project/php-i18n/)
 REALbasic Examples (http://www.declaresub.com/Articles/HowDoI.html)
@@ -1304,74 +1303,72 @@ The splash screen contains images of stock.xchng created by ba1969 and everywher
     <error code="8">找不到檔案 '%1'。</error>
     <error code="9">不能刪除檔案 '%1'。</error>
     <error code="10">不能重新命名檔案 '%2'。</error>
-    <error code="11">資料夾 '%1'is not empty.</error>
+    <error code="11">資料夾 '%1' 並非空白。</error>
     <error code="12">不能移動檔案 '%1' 到 '%2'。</error>
     <error code="13">檔案 '%1' 已經存在於資料夾 '%2'。</error>
   </folderdb_errors>
 
   <errors>
-    <empty_group>Group '%1' must contain at least one slide.</empty_group>
+    <empty_group>Group '%1' 必須包含起碼一張投映片。</empty_group>
     <unreadable_image>不能讀取圖片檔案 '%1'。</unreadable_image>
-    <end_of_songs>End of songs reached.</end_of_songs>
+    <end_of_songs>已經搜尋至最後的樂曲。</end_of_songs>
     <already_exists>'%1' 已經存在。</already_exists>
-    <bad_format>'%1' contains bad formatting. Skipping...</bad_format>
-    <no_songs>There are no songs in the song list.</no_songs>
-    <no_multi_screen>Multiple screens not found.</no_multi_screen>
+    <bad_format>'%1' 包含錯誤格式，正略過...</bad_format>
+    <no_songs>樂曲清單中並沒有樂曲。</no_songs>
+    <no_multi_screen>找不到多螢幕。</no_multi_screen>
     <bad_file_name>無效的檔案名稱 '%1'。</bad_file_name>
-    <internal>Internal error. Contact technical support.</internal>
+    <internal>內部錯誤，請連繫技術支援。</internal>
     <no_such_song>找不到樂曲。</no_such_song>
     <no_such_set>找不到曲集檔案: '%1'。</no_such_set>
     <number_please>請輸入有效的數目。</number_please>
     <number_range>請輸入 %1 到 %2 之間的數目。</number_range>
-    <no_path_allowed>File name may not include a path.</no_path_allowed>
+    <no_path_allowed>檔案名稱不能包含路徑。</no_path_allowed>
     <rename_error>無法重新命名檔案。</rename_error>
     <same_filename>目的檔案與來源相同。</same_filename>
-    <general1>In '%1': Unknown error</general1>
+    <general1>In '%1': 未知的錯誤</general1>
     <general2>In '%1': '%2'</general2>
-    <folder_error>Internal folder error. Contact technical support.</folder_error>
+    <folder_error>內部資料夾錯誤，請連繫技術支援。</folder_error>
     <create_backgrounds_folder>不能建立背景圖片資料夾: %1。請確保您有此資料夾的寫入權限，或從[一般設定值]選擇一個新的文件資料夾。</create_backgrounds_folder>
-    <create_sets_folder>不能建立／編輯曲集資料夾 %1。請確保您有此資料夾的寫入權限，或從[一般設定值]選擇一個新的文件資料夾。 Please note that you will be unable to save/present Sets without a 曲集資料夾.</create_sets_folder>
+    <create_sets_folder>不能建立／編輯曲集資料夾 %1。請確保您有此資料夾的寫入權限，或從[一般設定值]選擇一個新的文件資料夾。請注意您將因為沒有曲集資料夾而無法儲存／播放曲集。</create_sets_folder>
     <create_settings_folder>不能建立設定值資料夾: %1。請確保您有此資料夾的寫入權限，或從[一般設定值]選擇一個新的文件資料夾。</create_settings_folder>
     <load_default_settings>OpenSong will attempt to load the Default Settings.</load_default_settings>
-    <create_songs_folder>不能建立樂曲資料夾: %1。請確保您有此資料夾的寫入權限，或從[一般設定值]選擇一個新的文件資料夾。 Please note that you will be unable to save/present Songs without a 樂曲資料夾.</create_songs_folder>
-    <copy_default_songs>不能 copy default songs to folder: %1。請確保您有此資料夾的寫入權限。</copy_default_songs>
-    <no_backgrounds_folder>找不到 default 背景圖片資料夾: %1，或資料夾是空的</no_backgrounds_folder>
+    <create_songs_folder>不能建立樂曲資料夾: %1。請確保您有此資料夾的寫入權限，或從[一般設定值]選擇一個新的文件資料夾。請注意您將因為沒有樂曲資料夾而無法儲存／播放樂曲。</create_songs_folder>
+    <copy_default_songs>不能複製預設的樂曲到資料夾: %1。請確保您有此資料夾的寫入權限。</copy_default_songs>
+    <no_backgrounds_folder>找不到預設的背景圖片資料夾: %1，或資料夾是空的</no_backgrounds_folder>
     <no_defaults_folder>找不到 Defaults folder: %1，或資料夾是空的</no_defaults_folder>
     <no_scripture_folder>找不到經文資料夾: %1，或資料夾是空的。經文查閱功能將不能使用。Please add a Bible file by selecting Install Module from the Settings Menu, or re-installing OpenSong.</no_scripture_folder>
     <load_bible>不能載入預設聖經: '%1'。OpenSong 會嘗試開啟另一本既有的聖經。</load_bible>
     <no_sets_folder>找不到 Default 曲集資料夾: %1，或資料夾是空的</no_sets_folder>
     <no_settings_folder>找不到 Default Settings folder: %1，或資料夾是空的</no_settings_folder>
     <no_songs_folder>找不到 Default 樂曲資料夾: %1，或資料夾是空的。</no_songs_folder>
-    <no_docs_folder>不能 create/find 文件資料夾: %1。請確保您有此資料夾的寫入權限，或從[一般設定值]選擇一個新的文件資料夾。 Please note that much of OpenSong's functionality will be unavailable without a 文件資料夾.</no_docs_folder>
+    <no_docs_folder>不能建立／尋找文件資料夾: %1。請確保您有此資料夾的寫入權限，或從[一般設定值]選擇一個新的文件資料夾。請注意大部分 OpenSong 的功能將因為沒有文件資料夾而不能使用。</no_docs_folder>
     <docs_folder>文件資料夾並不能為 'OpenSong Defaults' 的子資料夾
-Temporarily changing to: %1
-Please modify your preferences.</docs_folder>
+暫時變更為: %1
+請修改您的偏好設定。</docs_folder>
     <fileutils>
-       <destdoesnotexisterror>File並不存在: %1</destdoesnotexisterror>
-       <nilobjecterror>NilObjectException: FolderItem argument to FileUtils is Nil</nilobjecterror>
-       <accessdenied>File protection error, access denied: %1</accessdenied>
-       <fileinuse>File in use error: %1
-(Is there a second copy of OpenSong running?)</fileinuse>
-       <filenotfound>File was not found: %1</filenotfound>
-       <invalidname>Invalid name for file: %1</invalidname>
-       <notenoughmemory>Memory exhausted accessing file %1
-Restart OpenSong and retry.</notenoughmemory>
-       <unknownerror>Unknown error accessing file %1</unknownerror>
-       <notaregularfile>Expected %1 to be a file, not a folder.</notaregularfile>
-       <notafolder>Expected %1 to be a folder, not a file.</notafolder>
+       <destdoesnotexisterror>檔案並不存在: %1</destdoesnotexisterror>
+       <nilobjecterror>NilObjectException: FolderItem argument to FileUtils is Nil</nilobjecterror>要
+       <accessdenied>檔案寫入保護錯誤，拒絕存取: %1</accessdenied>
+       <fileinuse>檔案正在使用中錯誤: %1
+（是否有另一副本的 OpenSong 在執行中？）</fileinuse>
+       <filenotfound>找不到檔案: %1</filenotfound>
+       <invalidname>檔案名稱無效: %1</invalidname>
+       <notenoughmemory>存取檔案 %1 耗盡記憶體
+請重新啟動 OpenSong 再試。</notenoughmemory>
+       <unknownerror>存取檔案 %1 的未知錯誤</unknownerror>
+       <notaregularfile>預期 %1 為檔案而非資料夾。</notaregularfile>
+       <notafolder>預期 %1 為資料夾而非檔案。</notafolder>
        <temporaryfailed>Creating a temporary file for %1 failed.</temporaryfailed>
     </fileutils>
-    <cclinotavailable>The CCLI website has changed significantly.
-This has broken Import function until a new interface can be used.
-In the meantime, please investigate the OpenSong Import utility as an option.
-The OpenSong development team members regret any inconvenience.
+    <cclinotavailable>CCLI 網站由於大幅改動，在有更新的介面可用前，匯入功能即失效。
+請參考選用 OpenSong 匯入功能。OpenSong 開發團隊成員對此不便感到抱歉。
     </cclinotavailable>
-    <activity_disabled>不能 load Song Activity Log file: %1! Please ensure this file exists and is not corrupted. Log viewing and activity logging will be disabled for this session.</activity_disabled>
-    <adding_logentry>Error Adding log entry!</adding_logentry>
+    <activity_disabled>不能載入樂曲活動日誌檔案: %1！請確保檔案存在並無損毀。將停用本節的日誌檢視及活動日誌。</activity_disabled>
+    <adding_logentry>加入日誌條目錯誤！</adding_logentry>
     <chars_per_slide>每張投映片的最多字元數必須在 1 到 1000 之間。</chars_per_slide>
     <presentations>
-      <nohost>There is no application available to load a presentation. Please install OpenOffice.org, Microsoft PowerPoint or Microsoft PowerPoint Viewer.</nohost>
-      <unsupported_feature>The application '%1' does not support this feature.</unsupported_feature>
+      <nohost>現時並無可用的應用程式來載入簡報。請安裝 Apache OpenOffice、Microsoft PowerPoint 或 Microsoft PowerPoint Viewer。</nohost>
+      <unsupported_feature>應用程式 '%1' 並不支援此功能。</unsupported_feature>
       <load_failed>簡報 '%1' 並不能開啟。</load_failed>
     </presentations>
     <videolan_app_missing>Videolan 應用程式並未正確設定。請在檔案位置標籤的 [一般設定值] 方塊中指定 videolan 的用戶端。</videolan_app_missing>
@@ -1384,7 +1381,7 @@ The OpenSong development team members regret any inconvenience.
   </errors>
 
   <xml_errors>
-    <noattribute>無法 find XML attribute '%1' in '%2'.</noattribute>
+    <noattribute>無法在 '%2' 找到 XML 屬性 '%1'。</noattribute>
   </xml_errors>
 
   <bible>
@@ -1399,19 +1396,19 @@ The OpenSong development team members regret any inconvenience.
 
       <noindex>No search index available.  Select a different translation or restart OpenSong.</noindex>
 
-      <missing_bnames>無法在 'OpenSong Settings' 中找到 Zefania 支援檔案 'bnames.xml'</missing_bnames>
+      <missing_bnames>無法在 'OpenSong Settings' 資料夾中找到 Zefania 支援檔案 'bnames.xml'</missing_bnames>
 
-      <nobnames>Bible does not have required bname attributes and they could not be added</nobnames>
-      <roman>Error converting Roman numeral '%1': %2</roman>
+      <nobnames>這（些）聖經並無所需的 bname 屬性，所以不能加入</nobnames>
+      <roman>轉換羅馬數字錯誤 '%1': %2</roman>
 
-      <save>Error saving updated file '%1.'</save>
+      <save>儲存更新檔案 '%1' 時發生錯誤。</save>
     </errors>
 
-    <load_successful>Successfully loaded Bible: '%1'.</load_successful>
+    <load_successful>成功載入聖經: '%1'。</load_successful>
     <messages>
       <bnames>Book names must be added to this translation.
 &#10;Please indicate the appropriate language for the names.</bnames>
-      <save>Save updated file?</save>
+      <save>儲存已更新的檔案？</save>
     </messages>
   </bible>
 
@@ -1422,7 +1419,7 @@ The OpenSong development team members regret any inconvenience.
   </song>
 
   <open_titles>
-    <audio>Select Audio File to Open</audio>
+    <audio>選擇要開啟的音效檔</audio>
   </open_titles>
 
   <hotkeys>
@@ -1452,15 +1449,15 @@ The OpenSong development team members regret any inconvenience.
   <progress_status>
     <folder>Caching Folder %1</folder>
     <lead_sheets>Generating Lead Sheets</lead_sheets>
-    <process_themes>Processing Themes</process_themes>
-    <process_songs>Processing Songs</process_songs>
-    <song_search>Searching Songs</song_search>
-    <export>Exporting Song(s)</export>
-    <load_songs>Loading Song(s)</load_songs>
-    <load_externals>Loading External sheet(s)</load_externals>
-    <pass1>Sorting, 1st Pass</pass1>
-    <pass2>Sorting, 2nd Pass</pass2>
-    <detect_presentation_hosts>Detecting available presentation applications</detect_presentation_hosts>
+    <process_themes> 正在處理主題</process_themes>
+    <process_songs> 正在處理樂曲</process_songs>
+    <song_search>正在搜尋樂曲</song_search>
+    <export>正在匯出樂曲</export>
+    <load_songs>正在載入樂曲</load_songs>
+    <load_externals>正在載入External sheet(s)</load_externals>
+    <pass1>正在排序，1st Pass</pass1>
+    <pass2>正在排序，2nd Pass</pass2>
+    <detect_presentation_hosts>正在偵測可用的簡報應用程式</detect_presentation_hosts>
   </progress_status>
     <export_options title="HTML 匯出選項">
         <handling caption="CSS 樣式表存放">
@@ -1472,8 +1469,8 @@ The OpenSong development team members regret any inconvenience.
             <print caption="使用根據列印設定值的樣式表"/>
         </options>
         <export caption="Multiple export">
-            <single caption="Single file for全部樂曲"/>
-            <unique caption="Unique file for全部樂曲"/>
+            <single caption="全部樂曲匯出為單一檔案"/>
+            <unique caption="全部樂曲均各以獨立檔案匯出"/>
         </export>
         <cssfile caption="樣式表">link(shared/style_file/@caption)</cssfile>
         <outdir caption="輸出資料夾">link(shared/export_to/@caption)</outdir>
@@ -1481,6 +1478,6 @@ The OpenSong development team members regret any inconvenience.
         <cancel caption="link(shared/cancel/@caption)"/>
         <ok caption="link(shared/ok/@caption)"/>
         <nofile>(None)</nofile>
-        <filter_css>Cascading Style Sheet</filter_css>
+        <filter_css>CSS 樣式表</filter_css>
     </export_options>
 </language>
