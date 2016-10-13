@@ -910,11 +910,21 @@ Abschnittsmarken im Textfeld des Liededitors erscheinen.
     <!--The string "|NL|" is a special code to tell OpenSong that each subtitle should be on a separate line.-->
     <separator caption="|NL|"/>
     <!--The leading comma is needed for internal data structure reasons.-->
+    <!-- English style chords -->
+    <sharpchords>,C,C#,D,D#,E,F,F#,G,G#,A,A#,B</sharpchords>
+    <altsharpchords>,B#,C#,D,D#,E,E#,F#,G,G#,A,A#,B</altsharpchords>
+    <flatchords>,C,Db,D,Eb,E,F,Gb,G,Ab,A,Bb,B</flatchords>
+    <altflatchords>,C,Db,D,Eb,Fb,F,Gb,G,Ab,A,Bb,Cb</altflatchords>
+    <chordkeys>alle,A,A#,Ab,B,B#,Bb,C,C#,Cb,D,D#,Db,E,E#,Eb,F,F#,Fb,G,G#,Gb</chordkeys>    
+
+    <!-- German style chords (to enable, uncomment the below and comment the English style chords.
     <sharpchords>,C,C#,D,D#,E,F,F#,G,G#,A,A#,H</sharpchords>
     <altsharpchords>,H#,C#,D,D#,E,E#,F#,G,G#,A,A#,H</altsharpchords>
     <flatchords>,C,Db,D,Eb,E,F,Gb,G,Ab,A,B,H</flatchords>
     <altflatchords>,C,Db,D,Eb,Fb,F,Gb,G,Ab,A,B,Cb</altflatchords>
     <chordkeys>alle,A,A#,Ab,H,H#,B,C,C#,Cb,D,D#,Db,E,E#,Eb,F,F#,Fb,G,G#,Gb</chordkeys>
+    -->
+    
     <chordforms>Any,,m,2,M7,m7,7,dim7,dim,+,sus,sus2,6,6/9,M9,add9,7b5,7#5,9,7b9,7#9,13th,m7b5,m7#5,m7b9,11</chordforms>
     <!-- formsdescriptive>alle,Dur,Moll(m),Sekund(2),Überm. Septim(M7),Moll Septim(m7),Dominant Septim(7),Vermindert Septim(dim7),Vermindert(dim),Augmented(+),Suspended(sus),Suspended 2nd(sus2),Sext(6),Sext Non(6/9),Überm. Non(M9),Add9(add9),Seven Flat Five(7b5),Seven Sharp Five(7#5),Non(9),Seven Flat Nine(7b9),Seven Sharp Nine(7#9),Tredezim(13),Moll Septim verm. Quint(m7b5),Moll Septim erh. Quint(m7#5),Moll Septim verm Non(m7b9),Undezim(11)</formsdescriptive -->
     <formsdescriptive>alle,Major,Minor(m),2nd(2),Major 7th(M7),Minor 7th(m7),Dominant 7th(7),Diminished 7th(dim7),Diminished(dim),Augmented(+),Suspended(sus),Suspended 2nd(sus2),Sixth(6),Six Nine(6/9),Major 9th(M9),Add9(add9),Seven Flat Five(7b5),Seven Sharp Five(7#5),9th(9),Seven Flat Nine(7b9),Seven Sharp Nine(7#9),13th(13),Minor 7th Flat Five(m7b5),Minor 7th Sharp Five(m7#5),Minor 7th Flat Nine(m7b9),11th(11)</formsdescriptive>
