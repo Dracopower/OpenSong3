@@ -746,7 +746,15 @@ End
 		      m_screenRatio = 3.0/4.0
 		    End If
 		  End If
-		  
+
+		  If SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "monitors/@force_16_9_preview", False, False) Then
+		    If m_screenRatio > 1.0 Then
+		      m_screenRatio = 16.0/9.0
+		    Else
+		      m_screenRatio = 9.0/16.0
+		    End If
+		  End If
+
 		  cnv_preview.Width = cnv_preview.Height * m_screenRatio
 		  marginLeft = cnv_preview.Left + cnv_preview.Width + 10
 		  Me.MinWidth = marginLeft + grp_presentation_actions.Width + 10

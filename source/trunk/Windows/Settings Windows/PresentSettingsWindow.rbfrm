@@ -1452,7 +1452,7 @@ Begin Window PresentSettingsWindow
          Bold            =   False
          Caption         =   "Monitor Settings"
          Enabled         =   True
-         Height          =   203
+         Height          =   223
          HelpTag         =   ""
          Index           =   -2147483648
          InitialParent   =   "tab_present_settings"
@@ -1730,6 +1730,38 @@ Begin Window PresentSettingsWindow
             TextSize        =   10.0
             TextUnit        =   0
             Top             =   226
+            Underline       =   False
+            Value           =   False
+            Visible         =   True
+            Width           =   137
+         End
+         Begin CheckBox chk_monitor_force_16_9_preview
+            AutoDeactivate  =   True
+            Bold            =   False
+            Caption         =   "Force 16:9 preview"
+            DataField       =   ""
+            DataSource      =   ""
+            Enabled         =   True
+            Height          =   20
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "grp_settings_monitor"
+            Italic          =   False
+            Left            =   489
+            LockBottom      =   False
+            LockedInPosition=   False
+            LockLeft        =   True
+            LockRight       =   False
+            LockTop         =   True
+            Scope           =   0
+            State           =   0
+            TabIndex        =   7
+            TabPanelIndex   =   2
+            TabStop         =   True
+            TextFont        =   "Arial"
+            TextSize        =   10.0
+            TextUnit        =   0
+            Top             =   250
             Underline       =   False
             Value           =   False
             Visible         =   True
@@ -2290,7 +2322,8 @@ End
 		  pop_monitor_presentation.ListIndex = SmartML.GetValueN(App.MyPresentSettings.DocumentElement, "monitors/@present") - 1
 		  If pop_monitor_presentation.ListIndex < 0 Then pop_monitor_presentation.ListIndex = 1
 		  chk_monitor_force_4_3_preview.Value = SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "monitors/@force_4_3_preview", True, False)
-		  
+		  chk_monitor_force_16_9_preview.Value = SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "monitors/@force_16_9_preview", True, False)
+
 		  can_style_default.SetStyleNode SmartML.GetNode(App.MyPresentSettings.DocumentElement, "default_style")
 		  DefaultStyle = New SlideStyle(can_style_default.GetStyleNode)
 		  can_style_scripture.SetStyleNode SmartML.GetNode(App.MyPresentSettings.DocumentElement, "scripture_style")
@@ -2505,7 +2538,8 @@ End
 		  SmartML.SetValueN Settings, "monitors/@control", pop_monitor_control.ListIndex+1
 		  SmartML.SetValueN Settings, "monitors/@present", pop_monitor_presentation.ListIndex+1
 		  SmartML.SetValueB Settings, "monitors/@force_4_3_preview", chk_monitor_force_4_3_preview.Value
-		  
+		  SmartML.SetValueB Settings, "monitors/@force_16_9_preview", chk_monitor_force_16_9_preview.Value
+
 		  ' pop_pres_mode added EMP, 2005
 		  ' Allows user to specify default presentation mode (single screen, dual, preview)
 		  ' Eventual goal is to support a hotkey to go to presenter mode
@@ -2604,6 +2638,24 @@ End
 	#tag Event
 		Sub Open()
 		  Me.SetValid "YYYNNNYYY"
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events chk_monitor_force_4_3_preview
+	#tag Event
+		Sub Action()
+		  if chk_monitor_force_4_3_preview.Value then
+		    chk_monitor_force_16_9_preview.Value = false
+		  end if
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events chk_monitor_force_16_9_preview
+	#tag Event
+		Sub Action()
+		  if chk_monitor_force_16_9_preview.Value then
+		    chk_monitor_force_4_3_preview.Value = false
+		  end if
 		End Sub
 	#tag EndEvent
 #tag EndEvents

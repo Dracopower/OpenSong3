@@ -1,4 +1,5 @@
 ﻿-= Version 2.2 RC =-
+* Added an option to force 16:9 preview mode on classic 4:3 screens. This option can be enabled on the Presentation Settings dialog. See the tab 'options' under 'Screens'. (thanks pvbeem)
 * Removed blank menu items from MainMenu. These previously did not show in the built application but the latest version of the Xojo compiler now includes them in the app. (Swampcat)
 * Increase size of Main Settings (Mac: Preferences) and Present Settings windows and text labels/fields to reduce truncation of localized strings. (Swampcat; thanks to Paulo for point it out and testing)
 * Update German language file to also contain chords in German style (B -> H; Bb -> B) The German style chords are disabled by default, see the translation file for details; search for 'German style chords'. (thanks SvA).

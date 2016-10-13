@@ -55,8 +55,7 @@ Begin Window PresentWindow Implements ScriptureReceiver
       Width           =   300
    End
    Begin Timer timerAdvance
-      Enabled         =   True
-      Height          =   "32"
+      Height          =   32
       Index           =   -2147483648
       InitialParent   =   ""
       Left            =   249
@@ -66,12 +65,10 @@ Begin Window PresentWindow Implements ScriptureReceiver
       Scope           =   0
       TabPanelIndex   =   0
       Top             =   249
-      Visible         =   True
-      Width           =   "32"
+      Width           =   32
    End
    Begin Timer timerTransition
-      Enabled         =   True
-      Height          =   "32"
+      Height          =   32
       Index           =   -2147483648
       InitialParent   =   ""
       Left            =   205
@@ -81,12 +78,10 @@ Begin Window PresentWindow Implements ScriptureReceiver
       Scope           =   0
       TabPanelIndex   =   0
       Top             =   249
-      Visible         =   True
-      Width           =   "32"
+      Width           =   32
    End
    Begin SnapshotThread m_SnapshotThread
-      Enabled         =   True
-      Height          =   "32"
+      Height          =   32
       Index           =   -2147483648
       InitialParent   =   ""
       Left            =   161
@@ -94,16 +89,12 @@ Begin Window PresentWindow Implements ScriptureReceiver
       Priority        =   5
       Scope           =   2
       StackSize       =   0
-      TabIndex        =   "3"
       TabPanelIndex   =   0
-      TabStop         =   True
       Top             =   249
-      Visible         =   True
-      Width           =   "32"
+      Width           =   32
    End
    Begin Timer timerClick
-      Enabled         =   True
-      Height          =   "32"
+      Height          =   32
       Index           =   -2147483648
       InitialParent   =   ""
       Left            =   0
@@ -113,8 +104,7 @@ Begin Window PresentWindow Implements ScriptureReceiver
       Scope           =   2
       TabPanelIndex   =   0
       Top             =   0
-      Visible         =   True
-      Width           =   "32"
+      Width           =   32
    End
 End
 #tag EndWindow
@@ -1574,26 +1564,26 @@ End
 		  // Add a generic exception handler in an attempt to keep from bailing out
 		  // TODO: This needs to log somewhere and notify the operator after the presentation is done.
 		  //
-		Exception ex
-		  // Do something here later.  For now, validate that XCurrentSlide isn't Nil and
-		  // return to the caller.
-		  //
-		  If XCurrentSlide = Nil Then
-		    // Sorry, the only possible valid action is to go back to the first slide, otherwise
-		    // how do you keep XCurrentSlide and CurrentSlide in sync?
-		    // (perhaps look at xNewSlide to get close to the original location?)
-		    CurrentSlide = 1
-		    XCurrentSlide = SetML.GetSlide(CurrentSet, 1)
-		  End If
-		  // Put up wherever we're at now (and pray!)
-		  If HelperActive Then
-		    PresentHelperWindow.SetMode Mode
-		  Else
-		    ResetPaint XCurrentSlide
-		  End If
-		  
-		  Return False // Show that it failed
-		  //--EMP 15 Jan 06
+		  Exception ex
+		    // Do something here later.  For now, validate that XCurrentSlide isn't Nil and
+		    // return to the caller.
+		    //
+		    If XCurrentSlide = Nil Then
+		      // Sorry, the only possible valid action is to go back to the first slide, otherwise
+		      // how do you keep XCurrentSlide and CurrentSlide in sync?
+		      // (perhaps look at xNewSlide to get close to the original location?)
+		      CurrentSlide = 1
+		      XCurrentSlide = SetML.GetSlide(CurrentSet, 1)
+		    End If
+		    // Put up wherever we're at now (and pray!)
+		    If HelperActive Then
+		      PresentHelperWindow.SetMode Mode
+		    Else
+		      ResetPaint XCurrentSlide
+		    End If
+		    
+		    Return False // Show that it failed
+		    //--EMP 15 Jan 06
 		End Function
 	#tag EndMethod
 
@@ -1735,6 +1725,14 @@ End
 		        Height = Width * 3/4
 		      End If
 		    End If
+
+		    If SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "monitors/@force_16_9_preview", False, False) Then
+		      If Width > Height Then
+		        Width = Height * 16/9
+		      Else
+		        Height = Width * 9/16
+		      End If
+		    End If
 		    
 		    PresentHelperWindow.Left = OSScreen(presentScreen).AvailableLeft + availableWidth - PresentHelperWindow.Width - 10
 		    PresentHelperWindow.Top = OSScreen(presentScreen).AvailableTop + OSScreen(presentScreen).Height - PresentHelperWindow.Height - 40
@@ -1862,9 +1860,9 @@ End
 		  PresentCursor = Self.MouseCursor
 		  AppCursor = App.MouseCursor
 		  Self.Visible = True
-		Catch e
-		  RuntimeException(e).message = "In PresentWindow.Present: " + e.Message
-		  Raise e
+		  Catch e
+		    RuntimeException(e).message = "In PresentWindow.Present: " + e.Message
+		    Raise e
 		End Sub
 	#tag EndMethod
 
@@ -2829,7 +2827,9 @@ End
 		  
 		  If (doTransition And (curslideTransition = SlideTransitionEnum.ApplicationDefault)) Or (curslideTransition = SlideTransitionEnum.UseTransition) Then
 		    Profiler.BeginProfilerEntry "PresentWindow::Repaint Timer::Blit"
-		    CurrentPicture.Mask.Graphics.ForeColor = rgb(255*(TransitionFrames-TransitionFrame)/TransitionFrames, 255*(TransitionFrames-TransitionFrame)/TransitionFrames, 255*(TransitionFrames-TransitionFrame)/TransitionFrames)
+		    
+		    Dim transparency As Integer = 255 * (TransitionFrames-TransitionFrame)/TransitionFrames
+		    CurrentPicture.Mask.Graphics.ForeColor = rgb(transparency, transparency, transparency)
 		    CurrentPicture.Mask.Graphics.FillRect(0, 0, CurrentPicture.Mask.Graphics.Width, CurrentPicture.Mask.Graphics.Height)
 		    LastPicture.Graphics.DrawPicture CurrentPicture, 0, 0
 		    g.DrawPicture LastPicture, 0, 0, g.Width, g.Height, 0, 0, LastPicture.Width, LastPicture.Height
@@ -2850,10 +2850,10 @@ End
 		  // This corrects an issue seen when changing the SButton style
 		  // after a presentation and for some reason this window is still open
 		  //--
-		Catch ex
-		  App.DebugWriter.Write("PresentWindow.cnvSlide.Paint: Got an exception: " +_
-		  RuntimeException(ex).Message, 1)
-		  Return
+		  Catch ex
+		    App.DebugWriter.Write("PresentWindow.cnvSlide.Paint: Got an exception: " +_
+		    RuntimeException(ex).Message, 1)
+		    Return
 		End Sub
 	#tag EndEvent
 #tag EndEvents
@@ -3021,6 +3021,7 @@ End
 		Visible=true
 		Group="ID"
 		Type="String"
+		EditorType="String"
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="LastPicture"
@@ -3116,6 +3117,7 @@ End
 		Visible=true
 		Group="ID"
 		Type="String"
+		EditorType="String"
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="NumberOfItems"
@@ -3160,6 +3162,7 @@ End
 		Visible=true
 		Group="ID"
 		Type="String"
+		EditorType="String"
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="Title"

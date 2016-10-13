@@ -598,6 +598,7 @@
       <detected caption="%1 monitor(s) detected."/>
       <default_mode caption="Default Monitor Mode"/>
       <force_4_3_preview caption="Force 4:3 preview"/>
+      <force_16_9_preview caption="Force 16:9 preview"/>
     </monitor>
     <logo caption="Logo">
       <mask caption="Mask"/>
