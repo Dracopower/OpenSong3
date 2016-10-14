@@ -1429,16 +1429,20 @@ End
 		  
 		  '++JRC Added check here for backgrounds folder
 		  'if it doesn't exist then switch to the Op System documents folder
-		  If App.CheckDocumentFolders(App.BACKGROUNDS_FOLDER) <> App.NO_FOLDER Then
-		    BackgroundFolder = App.DocsFolder.Child(App.STR_BACKGROUNDS)
+		  If App.LastImageFolder <> Nil Then
+		    BackgroundFolder = App.LastImageFolder
 		  Else
-		    #If TargetWin32
-		      BackgroundFolder = SpecialFolder.Documents
-		    #ElseIf TargetMacOS
-		      BackgroundFolder = SpecialFolder.Documents
-		    #ElseIf TargetLinux
-		      BackgroundFolder = Nil
-		    #EndIf
+		    If App.CheckDocumentFolders(App.BACKGROUNDS_FOLDER) <> App.NO_FOLDER Then
+		      BackgroundFolder = App.DocsFolder.Child(App.STR_BACKGROUNDS)
+		    Else
+		      #If TargetWin32
+		        BackgroundFolder = SpecialFolder.Documents
+		      #ElseIf TargetMacOS
+		        BackgroundFolder = SpecialFolder.Documents
+		      #ElseIf TargetLinux
+		        BackgroundFolder = Nil
+		      #EndIf
+		    End If
 		  End If
 		  '--
 		  App.T.TranslateWindow Me, "find_image", App.TranslationFonts
@@ -1463,7 +1467,7 @@ End
 		  // JDL 2/01/2006  Modified formula used to calculate scr_vertical.Maximum
 		  // JDL 2/01/2006  Added some OpSys specific code for the txt_path.Caption
 		  Dim path As String
-		  Dim folderIndex,i, j, TotImg, jd, jd2 As Integer
+		  Dim imgidx, folderIndex, i, j, TotImg, jd, jd2 As Integer
 		  '++JRC If BackgroundFolder is Nil do nothing
 		  If BackgroundFolder = Nil Then Return
 		  
@@ -1494,7 +1498,13 @@ End
 		        folderIndex = folderIndex + 1
 		        ImageFiles.Insert folderIndex, BackgroundFolder.Item(i)
 		      Else
-		        ImageFiles.Append BackgroundFolder.Item(i)
+		        ' Do an insertion sort
+		        For imgidx = 1 To UBound(ImageFiles) + 1
+		          If imgidx > UBound(ImageFiles) or not ImageFiles(imgidx).Directory and ImageFiles(imgidx).Name() > BackgroundFolder.Item(i).Name() Then
+		            ImageFiles.Insert imgidx, BackgroundFolder.Item(i)
+		            Exit For
+		          End If
+		        Next imgidx
 		      End If
 		      j = j + 1
 		    End If
@@ -1553,10 +1563,15 @@ End
 		  // Added a list of picture file types to the GetOpenFolderItem call
 		  // to clear up an issue with Mac in particular not allowing the browse to work
 		  // [Bug 1495745]
+		  Dim dlg As OpenDialog
 		  Dim fi As FolderItem
-		  fi = GetOpenFolderItem("JPG Files;BMP Files;GIF Files;PNG Files;TIFF Files")
+		  dlg = New OpenDialog
+		  dlg.InitialDirectory = Self.f
+		  dlg.Filter = "JPG Files;BMP Files;GIF Files;PNG Files;TIFF Files"
+		  fi = dlg.ShowModal
 		  If fi <> Nil Then
 		    Self.f = fi
+		    App.LastImageFolder = fi.Parent
 		    Close
 		  End If
 		End Sub

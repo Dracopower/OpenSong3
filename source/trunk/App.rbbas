@@ -1708,6 +1708,10 @@ Inherits Application
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
+		LastImageFolder As FolderItem
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
 		#tag Note
 			Holds the main preferences for the application.
 			This is the target for all future preferences instead
