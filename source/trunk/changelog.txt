@@ -1,4 +1,6 @@
 ﻿-= Version 2.2 RC =-
+* Fixed a bug: When "Use a link" is not checked on the Image Slide Editor but "Exclude background images" is set and an image from the background folder is selected, it was not stored as path but as image. (thanks pvbeem)
+* Extended the relative paths: If "Use a link" is selected on the Image Slide Editor and the selected image is within the Documents Folder, a relative path is used, starting with "../". (thanks pvbeem)
 * Images on the "Find Image" window are now sorted alphabetical. (thanks pvbeem)
 * The "Find Image" window (and the "Browse..." button) now remember the last selected folder and open in that folder for the next selection. (thanks pvbeem)
 * Added an option to force 16:9 preview mode on classic 4:3 screens. This option can be enabled on the Presentation Settings dialog. See the tab 'options' under 'Screens'. (thanks pvbeem)

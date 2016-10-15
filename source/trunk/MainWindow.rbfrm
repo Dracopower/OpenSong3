@@ -9460,15 +9460,22 @@ End
 		    ' Create the new slides
 		    xslides = xgroup.AppendChild(CurrentSet.CreateElement("slides"))
 		    str = edt_slide_slides.Text
+		    Dim bgpath As String = App.DocsFolder.Child("Backgrounds").AbsolutePath
+		    Dim docpath As String = App.DocsFolder.AbsolutePath
+		    
 		    For i = 0 To lst_image_images.ListCount()-1
 		      xslide = xslides.AppendChild(CurrentSet.CreateElement("slide"))
 		      img = lst_image_images.GetImage( i )
-		      If chk_image_store_as_link.Value And img.GetImageFilename()<>"" Then
-		        
-		        If img.GetImageFilename().StartsWith(App.DocsFolder.Child("Backgrounds").AbsolutePath) And ImageDefaults.ExcludeBackgroundsImages() Then
-		          SmartML.SetValue xslide, "filename", img.GetImageFilename().Mid(App.DocsFolder.Child("Backgrounds").AbsolutePath().Len()+1)
+		      
+		      Dim filename As String = img.GetImageFilename()
+		      If filename.StartsWith(bgpath) And _
+		        (chk_image_store_as_link.Value or ImageDefaults.ExcludeBackgroundsImages()) Then
+		        SmartML.SetValue xslide, "filename", filename.Mid(bgpath.Len()+1)
+		      ElseIf chk_image_store_as_link.Value And filename <> "" Then
+		        If filename.StartsWith(docpath) Then
+		          SmartML.SetValue xslide, "filename", "../" + filename.Mid(docpath.Len()+1)
 		        Else
-		          SmartML.SetValue xslide, "filename", img.GetImageFilename()
+		          SmartML.SetValue xslide, "filename", filename
 		        End If
 		      Else
 		        SmartML.SetValue xslide, "image", img.GetImageAsString
