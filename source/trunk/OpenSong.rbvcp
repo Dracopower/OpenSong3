@@ -1,5 +1,5 @@
 Type=Desktop
-RBProjectVersion=2016.03
+RBProjectVersion=2014.031
 MinIDEVersion=20070100
 FileTypeSet=FileTypes;FileTypes.rbbas;&h45B5FE02;&h0;false
 FileTypeSet=ImageFileTypes;ImageFileTypes.rbbas;&h37D50FFF;&h0;false
@@ -274,4 +274,3 @@ DebuggerCommandLine=
 UseGDIPlus=False
 UseBuildsFolder=False
 IsWebProject=False
-OptimizationLevel=0

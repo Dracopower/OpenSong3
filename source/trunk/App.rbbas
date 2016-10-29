@@ -111,11 +111,6 @@ Inherits Application
 		  DebugWriter.Write d.SQLDateTime
 		  d = Nil
 		  
-		  //++
-		  // Initialize Factory objects
-		  //--
-		  BibleFactory.Folder = AppFolder.Child("OpenSong Scripture")
-		  
 		  Splash.Show
 		  
 		  SmartML.Init
@@ -176,13 +171,26 @@ Inherits Application
 		    Quit
 		  End If
 		  
+		  //++
+		  // Initialize Factory objects
+		  // PvB: Added the option to have the Scripture in the documents folder instead of the AppFolder.
+		  //--
+		  If DocsFolder.Child("Scripture").Exists Then
+		    ScriptureFolder = DocsFolder.Child("Scripture")
+		  ElseIf DocsFolder.Child("OpenSong Scripture").Exists Then
+		    ScriptureFolder = DocsFolder.Child("OpenSong Scripture")
+		  Else
+		    ScriptureFolder = AppFolder.Child("OpenSong Scripture")
+		  End If
+		  BibleFactory.Folder = ScriptureFolder
+		  
 		  ' Create whatever sub-folders are needed
 		  '++JRC: Fix corner case where the sub-Folders exist but are empty (bug #1803741)
 		  
 		  '++JRC
-		  If Not AppFolder.Child("OpenSong Scripture").Exists OR AppFolder.Child("OpenSong Scripture").Count = 0 Then
+		  If Not ScriptureFolder.Exists OR ScriptureFolder.Count = 0 Then
 		    App.MouseCursor = Nil
-		    MsgBox T.Translate("errors/no_scripture_folder", AppFolder.Child("OpenSong Scripture").AbsolutePath)
+		    MsgBox T.Translate("errors/no_scripture_folder", ScriptureFolder.AbsolutePath)
 		    '++JRC Change behavior here to notify user but continue operation
 		    'Quit
 		  End If
@@ -1395,7 +1403,7 @@ Inherits Application
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub StatusNotifierUnsubscribe(subject As String, client  As iStatusNotifier)
+		Sub StatusNotifierUnsubscribe(subject As String, client As iStatusNotifier)
 		  Dim notifiers() As iStatusNotifier
 		  If m_statusNotifiers.HasKey(subject) Then
 		    notifiers = m_statusNotifiers.Value(subject)
@@ -1765,6 +1773,10 @@ Inherits Application
 
 	#tag Property, Flags = &h0
 		ReleaseCandidate As Integer
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
+		ScriptureFolder As FolderItem
 	#tag EndProperty
 
 	#tag Property, Flags = &h0

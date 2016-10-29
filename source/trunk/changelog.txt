@@ -1,4 +1,5 @@
 ﻿-= Version 2.2 RC =-
+* Added the possibility to add scriptures in the Documents Folder instead of the application folder. If the OpenSong Documents Folder contains a folder named "Scripture", this folder is used to load the scriptures from, instead of from the "OpenSong Scripture" folder in the installation location. (thanks pvbeem)
 * Fixed a bug: When "Use a link" is not checked on the Image Slide Editor but "Exclude background images" is set and an image from the background folder is selected, it was not stored as path but as image. (thanks pvbeem)
 * Extended the relative paths: If "Use a link" is selected on the Image Slide Editor and the selected image is within the Documents Folder, a relative path is used, starting with "../". (thanks pvbeem)
 * Images on the "Find Image" window are now sorted alphabetical. (thanks pvbeem)
