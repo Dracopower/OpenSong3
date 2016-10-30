@@ -209,7 +209,7 @@
     <notes caption="Opmerkingen">Deze opmerkingen verschijnen in het Presentatie Hulp schermgedurende het weergeven op meerdere schermen.</notes>
     <insert caption="Invoegen"/>
       <ins_slide caption="Dia">Staat het aanmaken toe van meerdere dia's met een gelijkluidende titel, subtitel, stijl, en/of auto-overgang instelling. Op deze wijze gemaakte dia's kunnen ook in een automatische loop worden gezet.</ins_slide>
-    <loop caption="Dia's herhalen">Gelecteer deze optie om OpenSong automatisch terug te laten gaan naar de eerste dia nadat de laatste is gepresenteert.</loop>
+    <loop caption="Dia's herhalen">Selecteer deze optie om OpenSong automatisch terug te laten gaan naar de eerste dia in de huidige groep nadat de laatste uit de groep is gepresenteerd. Een groep is een serie van minimaal 1 dia met dezelfde naam.</loop>
     <print caption="Afdrukken in lijst">Haal het vinkje weg om deze aangepaste groep dia's niet te laten afdrukken.</print>
     <transition caption="Gebruik overgang">Selecteer deze optie om bij het tonen van deze dia een overgang te gebruiken.</transition>
     <auto_advance caption="De volgende dia automatisch afspelen na">Geef een aantal seconden op voor het item zodat OpenSong automatisch doorgaat naar de volgende dia in dit item.</auto_advance>
@@ -1323,7 +1323,7 @@ Klik op de dia om de stijl te wijzigen.</body>
     <web>Bezoek http://www.opensong.org/ voor meer informatie.</web>
     <translating>Om OpenSong te vertalen, kopiëer de 'English file' in de 'OpenSong Languages' directory en geef het de naam van de taal waarin je wilt vertalen. Vertaal alles in het bestand behalve de 'tags' en attribuut namen. Stuur het bestand daarna naar opensong-translate@lists.sourceforge.net of voeg het toe aan de 'Patches' Tracker op de Source Forge pagina van OpenSong en wij zullen het bestand toevoegen aan de officiele release.</translating>
     <created_with_opensong>Gemaakt met OpenSong</created_with_opensong>
-    <sources>OpenSong includes source code from:
+    <sources>OpenSong bevat broncode afkomstig van:
 StringUtils (http://www.strout.net/info/coding/rb/)
 HTMLEntityEncode (http://sourceforge.jp/project/php-i18n/)
 REALbasic Examples (http://www.declaresub.com/Articles/HowDoI.html)

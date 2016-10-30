@@ -209,7 +209,7 @@
     <notes caption="Notes">These notes show up in the Presentation Helper window while giving a presentation using multiple monitors.</notes>
     <insert caption="Insert"/>
       <ins_slide caption="Slide">Allows for the creation of multiple slides that all share a common title, subtitle, style, and/or auto-advance setting. Slides created this way can also be set to automatically loop.</ins_slide>
-    <loop caption="Loop Slides">Check this box to have OpenSong automatically  loop back to the first slide in this item after it finishes displaying the last slide in this item.</loop>
+    <loop caption="Loop Slides">Check this box to have OpenSong automatically loop back to the first slide in this group after it finishes displaying the last slide in this group. A group is a series of one or more slides that share the same name.</loop>
     <print caption="Print in List">Uncheck this box to have this custom slide group not appear when printing set lists.</print>
     <transition caption="Use transition">Check this box to use a transition when this slide is shown.</transition>
     <auto_advance caption="Auto-advance slides every">Enter the number of seconds that OpenSong should display each slide in this item before automatically advancing to the next slide in this item.</auto_advance>

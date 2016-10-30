@@ -215,7 +215,7 @@ Begin Window AboutWindow
       Selectable      =   False
       TabIndex        =   6
       TabPanelIndex   =   0
-      Text            =   "Joshua Coley, Ed Palmer, Gareth Evans, Joseph Dol, Sebastian Schöps, Rüdiger Greeb, Martyn Eggleton, Ben Henny, Matt Gillies, Jon Wright, Dean Whisnant, Ewout Voogt, Gerrit Prins, Tim Howard, Ng Oon-Ee, Caleb"
+      Text            =   "Joshua Coley, Ed Palmer, Gareth Evans, Joseph Dol, Sebastian Schöps, Rüdiger Greeb, Martyn Eggleton, Ben Henny, Matt Gillies, Jon Wright, Dean Whisnant, Ewout Voogt, Gerrit Prins, Tim Howard, Ng Oon-Ee, Caleb, Patrick van Beem"
       TextAlign       =   0
       TextColor       =   &c00000000
       TextFont        =   "Arial"
