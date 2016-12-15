@@ -1,11 +1,13 @@
 #tag Window
 Begin Window StyleWindow
-   BackColor       =   16777215
+   BackColor       =   &cFFFFFF00
    Backdrop        =   0
    CloseButton     =   True
+   Compatibility   =   ""
    Composite       =   False
    Frame           =   1
    FullScreen      =   False
+   FullScreenButton=   False
    HasBackColor    =   False
    Height          =   546
    ImplicitInstance=   True
@@ -27,7 +29,7 @@ Begin Window StyleWindow
    Begin PushButton btn_ok
       AutoDeactivate  =   True
       Bold            =   False
-      ButtonStyle     =   0
+      ButtonStyle     =   "0"
       Cancel          =   False
       Caption         =   "OK"
       Default         =   True
@@ -48,7 +50,7 @@ Begin Window StyleWindow
       TabPanelIndex   =   0
       TabStop         =   True
       TextFont        =   "Arial"
-      TextSize        =   10
+      TextSize        =   10.0
       TextUnit        =   0
       Top             =   515
       Underline       =   False
@@ -58,7 +60,7 @@ Begin Window StyleWindow
    Begin PushButton btn_cancel
       AutoDeactivate  =   True
       Bold            =   False
-      ButtonStyle     =   0
+      ButtonStyle     =   "0"
       Cancel          =   True
       Caption         =   "Cancel"
       Default         =   False
@@ -79,7 +81,7 @@ Begin Window StyleWindow
       TabPanelIndex   =   0
       TabStop         =   True
       TextFont        =   "Arial"
-      TextSize        =   10
+      TextSize        =   10.0
       TextUnit        =   0
       Top             =   515
       Underline       =   False
@@ -91,7 +93,7 @@ Begin Window StyleWindow
       Bold            =   False
       Caption         =   "Style Editor"
       Enabled         =   True
-      Height          =   403
+      Height          =   339
       HelpTag         =   ""
       Index           =   -2147483648
       InitialParent   =   ""
@@ -105,8 +107,9 @@ Begin Window StyleWindow
       Scope           =   0
       TabIndex        =   2
       TabPanelIndex   =   0
+      TabStop         =   True
       TextFont        =   "System"
-      TextSize        =   0
+      TextSize        =   0.0
       TextUnit        =   0
       Top             =   10
       Underline       =   False
@@ -114,7 +117,7 @@ Begin Window StyleWindow
       Width           =   410
       Begin SFontCanvas can_font_subtitle
          AcceptFocus     =   False
-         AcceptMouseDown =   true
+         AcceptMouseDown =   True
          AcceptTabs      =   False
          AdvancedOptions =   True
          AutoDeactivate  =   True
@@ -137,13 +140,14 @@ Begin Window StyleWindow
          TabPanelIndex   =   0
          TabStop         =   True
          Top             =   144
+         Transparent     =   True
          UseFocusRing    =   True
          Visible         =   True
          Width           =   250
       End
       Begin SFontCanvas can_font_title
          AcceptFocus     =   False
-         AcceptMouseDown =   true
+         AcceptMouseDown =   True
          AcceptTabs      =   False
          AdvancedOptions =   True
          AutoDeactivate  =   True
@@ -166,6 +170,7 @@ Begin Window StyleWindow
          TabPanelIndex   =   0
          TabStop         =   True
          Top             =   45
+         Transparent     =   True
          UseFocusRing    =   True
          Visible         =   True
          Width           =   250
@@ -194,9 +199,9 @@ Begin Window StyleWindow
          TabPanelIndex   =   0
          Text            =   "Align:"
          TextAlign       =   1
-         TextColor       =   0
+         TextColor       =   &c00000000
          TextFont        =   "System"
-         TextSize        =   0
+         TextSize        =   0.0
          TextUnit        =   0
          Top             =   30
          Transparent     =   False
@@ -227,69 +232,70 @@ Begin Window StyleWindow
          TabPanelIndex   =   0
          TabStop         =   True
          Top             =   60
+         Transparent     =   True
          UseFocusRing    =   True
          Visible         =   True
          Width           =   44
       End
       Begin PushButton btn_title_margin
          AutoDeactivate  =   True
-         Bold            =   ""
-         ButtonStyle     =   0
-         Cancel          =   ""
+         Bold            =   False
+         ButtonStyle     =   "0"
+         Cancel          =   False
          Caption         =   "Margins"
-         Default         =   ""
+         Default         =   False
          Enabled         =   True
          Height          =   22
          HelpTag         =   ""
          Index           =   -2147483648
          InitialParent   =   "grp_style_fonts_and_alignment"
-         Italic          =   ""
+         Italic          =   False
          Left            =   343
-         LockBottom      =   ""
+         LockBottom      =   False
          LockedInPosition=   False
          LockLeft        =   True
-         LockRight       =   ""
+         LockRight       =   False
          LockTop         =   True
          Scope           =   0
          TabIndex        =   4
          TabPanelIndex   =   0
          TabStop         =   True
          TextFont        =   "System"
-         TextSize        =   0
+         TextSize        =   0.0
          TextUnit        =   0
          Top             =   71
-         Underline       =   ""
+         Underline       =   False
          Visible         =   True
          Width           =   66
       End
       Begin PushButton btn_subtitle_margin
          AutoDeactivate  =   True
-         Bold            =   ""
-         ButtonStyle     =   0
-         Cancel          =   ""
+         Bold            =   False
+         ButtonStyle     =   "0"
+         Cancel          =   False
          Caption         =   "Margins"
-         Default         =   ""
+         Default         =   False
          Enabled         =   True
          Height          =   22
          HelpTag         =   ""
          Index           =   -2147483648
          InitialParent   =   "grp_style_fonts_and_alignment"
-         Italic          =   ""
+         Italic          =   False
          Left            =   343
-         LockBottom      =   ""
+         LockBottom      =   False
          LockedInPosition=   False
          LockLeft        =   True
-         LockRight       =   ""
+         LockRight       =   False
          LockTop         =   True
          Scope           =   0
          TabIndex        =   5
          TabPanelIndex   =   0
          TabStop         =   True
          TextFont        =   "System"
-         TextSize        =   0
+         TextSize        =   0.0
          TextUnit        =   0
          Top             =   169
-         Underline       =   ""
+         Underline       =   False
          Visible         =   True
          Width           =   66
       End
@@ -316,13 +322,14 @@ Begin Window StyleWindow
          TabPanelIndex   =   0
          TabStop         =   True
          Top             =   159
+         Transparent     =   True
          UseFocusRing    =   True
          Visible         =   True
          Width           =   44
       End
       Begin CheckBox chk_font_title
          AutoDeactivate  =   True
-         Bold            =   ""
+         Bold            =   False
          Caption         =   "Show Title:"
          DataField       =   ""
          DataSource      =   ""
@@ -331,12 +338,12 @@ Begin Window StyleWindow
          HelpTag         =   ""
          Index           =   -2147483648
          InitialParent   =   "grp_style_fonts_and_alignment"
-         Italic          =   ""
+         Italic          =   False
          Left            =   25
-         LockBottom      =   ""
+         LockBottom      =   False
          LockedInPosition=   False
          LockLeft        =   True
-         LockRight       =   ""
+         LockRight       =   False
          LockTop         =   True
          Scope           =   0
          State           =   0
@@ -344,17 +351,17 @@ Begin Window StyleWindow
          TabPanelIndex   =   0
          TabStop         =   True
          TextFont        =   "System"
-         TextSize        =   0
+         TextSize        =   0.0
          TextUnit        =   0
          Top             =   28
-         Underline       =   ""
+         Underline       =   False
          Value           =   False
          Visible         =   True
          Width           =   250
       End
       Begin CheckBox chk_font_subtitle
          AutoDeactivate  =   True
-         Bold            =   ""
+         Bold            =   False
          Caption         =   "Show Subtitle:"
          DataField       =   ""
          DataSource      =   ""
@@ -363,12 +370,12 @@ Begin Window StyleWindow
          HelpTag         =   ""
          Index           =   -2147483648
          InitialParent   =   "grp_style_fonts_and_alignment"
-         Italic          =   ""
+         Italic          =   False
          Left            =   25
-         LockBottom      =   ""
+         LockBottom      =   False
          LockedInPosition=   False
          LockLeft        =   True
-         LockRight       =   ""
+         LockRight       =   False
          LockTop         =   True
          Scope           =   0
          State           =   0
@@ -376,79 +383,79 @@ Begin Window StyleWindow
          TabPanelIndex   =   0
          TabStop         =   True
          TextFont        =   "System"
-         TextSize        =   0
+         TextSize        =   0.0
          TextUnit        =   0
          Top             =   127
-         Underline       =   ""
+         Underline       =   False
          Value           =   False
          Visible         =   True
          Width           =   250
       End
       Begin PushButton btn_body_tabs
          AutoDeactivate  =   True
-         Bold            =   ""
-         ButtonStyle     =   0
-         Cancel          =   ""
+         Bold            =   False
+         ButtonStyle     =   "0"
+         Cancel          =   False
          Caption         =   "Tabulators"
-         Default         =   ""
+         Default         =   False
          Enabled         =   True
          Height          =   22
          HelpTag         =   ""
          Index           =   -2147483648
          InitialParent   =   "grp_style_fonts_and_alignment"
-         Italic          =   ""
+         Italic          =   False
          Left            =   343
-         LockBottom      =   ""
+         LockBottom      =   False
          LockedInPosition=   False
          LockLeft        =   True
-         LockRight       =   ""
+         LockRight       =   False
          LockTop         =   True
          Scope           =   0
          TabIndex        =   9
          TabPanelIndex   =   0
          TabStop         =   True
          TextFont        =   "System"
-         TextSize        =   0
+         TextSize        =   0.0
          TextUnit        =   0
          Top             =   291
-         Underline       =   ""
+         Underline       =   False
          Visible         =   True
          Width           =   66
       End
       Begin PushButton btn_body_margin
          AutoDeactivate  =   True
-         Bold            =   ""
-         ButtonStyle     =   0
-         Cancel          =   ""
+         Bold            =   False
+         ButtonStyle     =   "0"
+         Cancel          =   False
          Caption         =   "Margins"
-         Default         =   ""
+         Default         =   False
          Enabled         =   True
          Height          =   22
          HelpTag         =   ""
          Index           =   -2147483648
          InitialParent   =   "grp_style_fonts_and_alignment"
-         Italic          =   ""
+         Italic          =   False
          Left            =   343
-         LockBottom      =   ""
+         LockBottom      =   False
          LockedInPosition=   False
          LockLeft        =   True
-         LockRight       =   ""
+         LockRight       =   False
          LockTop         =   True
          Scope           =   0
          TabIndex        =   10
          TabPanelIndex   =   0
          TabStop         =   True
          TextFont        =   "System"
-         TextSize        =   0
+         TextSize        =   0.0
          TextUnit        =   0
          Top             =   256
-         Underline       =   ""
+         Underline       =   False
          Visible         =   True
          Width           =   66
       End
       Begin CheckBox chk_font_body
          AutoDeactivate  =   True
-         Bold            =   ""
+         Bold            =   False
          Caption         =   "Show Body:"
          DataField       =   ""
          DataSource      =   ""
@@ -457,12 +464,12 @@ Begin Window StyleWindow
          HelpTag         =   ""
          Index           =   -2147483648
          InitialParent   =   "grp_style_fonts_and_alignment"
-         Italic          =   ""
+         Italic          =   False
          Left            =   25
-         LockBottom      =   ""
+         LockBottom      =   False
          LockedInPosition=   False
          LockLeft        =   True
-         LockRight       =   ""
+         LockRight       =   False
          LockTop         =   True
          Scope           =   0
          State           =   0
@@ -470,17 +477,17 @@ Begin Window StyleWindow
          TabPanelIndex   =   0
          TabStop         =   True
          TextFont        =   "System"
-         TextSize        =   0
+         TextSize        =   0.0
          TextUnit        =   0
          Top             =   224
-         Underline       =   ""
+         Underline       =   False
          Value           =   False
          Visible         =   True
          Width           =   250
       End
       Begin SFontCanvas can_font_body
          AcceptFocus     =   False
-         AcceptMouseDown =   true
+         AcceptMouseDown =   True
          AcceptTabs      =   False
          AdvancedOptions =   True
          AutoDeactivate  =   True
@@ -503,6 +510,7 @@ Begin Window StyleWindow
          TabPanelIndex   =   0
          TabStop         =   True
          Top             =   245
+         Transparent     =   True
          UseFocusRing    =   True
          Visible         =   True
          Width           =   250
@@ -530,13 +538,14 @@ Begin Window StyleWindow
          TabPanelIndex   =   0
          TabStop         =   True
          Top             =   260
+         Transparent     =   True
          UseFocusRing    =   True
          Visible         =   True
          Width           =   44
       End
       Begin CheckBox chk_font_body_autosize
          AutoDeactivate  =   True
-         Bold            =   ""
+         Bold            =   False
          Caption         =   "Automatic font size scaling to make text fit"
          DataField       =   ""
          DataSource      =   ""
@@ -545,12 +554,12 @@ Begin Window StyleWindow
          HelpTag         =   ""
          Index           =   -2147483648
          InitialParent   =   "grp_style_fonts_and_alignment"
-         Italic          =   ""
+         Italic          =   False
          Left            =   25
-         LockBottom      =   ""
+         LockBottom      =   False
          LockedInPosition=   False
          LockLeft        =   True
-         LockRight       =   ""
+         LockRight       =   False
          LockTop         =   True
          Scope           =   0
          State           =   0
@@ -558,235 +567,13 @@ Begin Window StyleWindow
          TabPanelIndex   =   0
          TabStop         =   True
          TextFont        =   "System"
-         TextSize        =   0
+         TextSize        =   0.0
          TextUnit        =   0
          Top             =   325
-         Underline       =   ""
+         Underline       =   False
          Value           =   False
          Visible         =   True
          Width           =   384
-      End
-      Begin Label lbl_multilanguage_color
-         AutoDeactivate  =   True
-         Bold            =   False
-         DataField       =   ""
-         DataSource      =   ""
-         Enabled         =   True
-         Height          =   15
-         HelpTag         =   ""
-         Index           =   -2147483648
-         InitialParent   =   "grp_style_fonts_and_alignment"
-         Italic          =   False
-         Left            =   155
-         LockBottom      =   False
-         LockedInPosition=   False
-         LockLeft        =   True
-         LockRight       =   False
-         LockTop         =   True
-         Multiline       =   False
-         Scope           =   0
-         Selectable      =   False
-         TabIndex        =   16
-         TabPanelIndex   =   0
-         TabStop         =   True
-         Text            =   "Color:"
-         TextAlign       =   2
-         TextColor       =   &c00000000
-         TextFont        =   "System"
-         TextSize        =   0.0
-         TextUnit        =   0
-         Top             =   379
-         Transparent     =   False
-         Underline       =   False
-         Visible         =   True
-         Width           =   55
-      End
-      Begin Label lbl_multilanguage_style
-         AutoDeactivate  =   True
-         Bold            =   False
-         DataField       =   ""
-         DataSource      =   ""
-         Enabled         =   True
-         Height          =   16
-         HelpTag         =   ""
-         Index           =   -2147483648
-         InitialParent   =   "grp_style_fonts_and_alignment"
-         Italic          =   False
-         Left            =   25
-         LockBottom      =   False
-         LockedInPosition=   False
-         LockLeft        =   True
-         LockRight       =   False
-         LockTop         =   True
-         Multiline       =   True
-         Scope           =   0
-         Selectable      =   False
-         TabIndex        =   17
-         TabPanelIndex   =   0
-         TabStop         =   True
-         Text            =   "For second language same style but:"
-         TextAlign       =   0
-         TextColor       =   &c00000000
-         TextFont        =   "System"
-         TextSize        =   0.0
-         TextUnit        =   0
-         Top             =   358
-         Transparent     =   False
-         Underline       =   False
-         Visible         =   True
-         Width           =   220
-      End
-      Begin Label lbl_font_size
-         AutoDeactivate  =   True
-         Bold            =   False
-         DataField       =   ""
-         DataSource      =   ""
-         Enabled         =   True
-         Height          =   15
-         HelpTag         =   ""
-         Index           =   -2147483648
-         InitialParent   =   "grp_style_fonts_and_alignment"
-         Italic          =   False
-         Left            =   31
-         LockBottom      =   False
-         LockedInPosition=   False
-         LockLeft        =   True
-         LockRight       =   False
-         LockTop         =   True
-         Multiline       =   False
-         Scope           =   0
-         Selectable      =   False
-         TabIndex        =   18
-         TabPanelIndex   =   0
-         TabStop         =   True
-         Text            =   "Size [10-100 %] :"
-         TextAlign       =   2
-         TextColor       =   &c00000000
-         TextFont        =   "System"
-         TextSize        =   0.0
-         TextUnit        =   0
-         Top             =   379
-         Transparent     =   False
-         Underline       =   False
-         Visible         =   True
-         Width           =   85
-      End
-      Begin SEditFieldNumeric edt_multilanguage_size
-         AcceptTabs      =   False
-         Alignment       =   0
-         AutoDeactivate  =   True
-         AutomaticallyCheckSpelling=   True
-         BackColor       =   &cFFFFFF00
-         Bold            =   False
-         Border          =   True
-         DataField       =   ""
-         DataSource      =   ""
-         Enabled         =   True
-         EnforceRange    =   True
-         Format          =   ""
-         Height          =   20
-         HelpTag         =   ""
-         HideSelection   =   True
-         Index           =   -2147483648
-         InitialParent   =   "grp_style_fonts_and_alignment"
-         Italic          =   False
-         Left            =   121
-         LimitText       =   3
-         LineHeight      =   0.0
-         LineSpacing     =   1.0
-         LockBottom      =   False
-         LockedInPosition=   False
-         LockLeft        =   True
-         LockRight       =   False
-         LockTop         =   True
-         Mask            =   ""
-         Maximum         =   100.0
-         Minimum         =   10.0
-         Multiline       =   False
-         ReadOnly        =   False
-         Scope           =   0
-         ScrollbarHorizontal=   False
-         ScrollbarVertical=   True
-         SignalRangeErrors=   False
-         Styled          =   False
-         TabIndex        =   19
-         TabPanelIndex   =   0
-         TabStop         =   True
-         Text            =   ""
-         TextColor       =   &c00000000
-         TextFont        =   "Arial"
-         TextSize        =   11.0
-         TextUnit        =   0
-         Top             =   377
-         Underline       =   False
-         UseFocusRing    =   True
-         Visible         =   True
-         Width           =   30
-      End
-      Begin Label nte_multilanguage_note
-         AutoDeactivate  =   True
-         Bold            =   False
-         DataField       =   ""
-         DataSource      =   ""
-         Enabled         =   True
-         Height          =   46
-         HelpTag         =   ""
-         Index           =   -2147483648
-         InitialParent   =   "grp_style_fonts_and_alignment"
-         Italic          =   False
-         Left            =   257
-         LockBottom      =   False
-         LockedInPosition=   False
-         LockLeft        =   True
-         LockRight       =   False
-         LockTop         =   True
-         Multiline       =   True
-         Scope           =   0
-         Selectable      =   False
-         TabIndex        =   20
-         TabPanelIndex   =   0
-         TabStop         =   True
-         Text            =   "Usage: append -L in section name [V1-L]"
-         TextAlign       =   0
-         TextColor       =   &c00000000
-         TextFont        =   "System"
-         TextSize        =   0.0
-         TextUnit        =   0
-         Top             =   364
-         Transparent     =   False
-         Underline       =   False
-         Visible         =   True
-         Width           =   107
-      End
-      Begin SColorCanvas can_multilanguage_color
-         AcceptFocus     =   False
-         AcceptTabs      =   False
-         AutoDeactivate  =   True
-         Backdrop        =   0
-         DoubleBuffer    =   False
-         Enabled         =   True
-         EraseBackground =   True
-         Height          =   20
-         HelpTag         =   ""
-         Index           =   -2147483648
-         InitialParent   =   "grp_style_fonts_and_alignment"
-         IsColorSet      =   False
-         Left            =   215
-         LockBottom      =   False
-         LockedInPosition=   False
-         LockLeft        =   True
-         LockRight       =   False
-         LockTop         =   True
-         MyColor         =   &c00000000
-         Scope           =   0
-         TabIndex        =   21
-         TabPanelIndex   =   0
-         TabStop         =   True
-         Top             =   377
-         Transparent     =   True
-         UseFocusRing    =   True
-         Visible         =   True
-         Width           =   30
       End
    End
    Begin GroupBox grp_style_background
@@ -808,8 +595,9 @@ Begin Window StyleWindow
       Scope           =   0
       TabIndex        =   3
       TabPanelIndex   =   0
+      TabStop         =   True
       TextFont        =   "System"
-      TextSize        =   0
+      TextSize        =   0.0
       TextUnit        =   0
       Top             =   10
       Underline       =   False
@@ -839,9 +627,9 @@ Begin Window StyleWindow
          TabPanelIndex   =   0
          Text            =   "Color:"
          TextAlign       =   2
-         TextColor       =   0
+         TextColor       =   &c00000000
          TextFont        =   "System"
-         TextSize        =   0
+         TextSize        =   0.0
          TextUnit        =   0
          Top             =   55
          Transparent     =   False
@@ -873,9 +661,9 @@ Begin Window StyleWindow
          TabPanelIndex   =   0
          Text            =   "Image:"
          TextAlign       =   1
-         TextColor       =   0
+         TextColor       =   &c00000000
          TextFont        =   "System"
-         TextSize        =   0
+         TextSize        =   0.0
          TextUnit        =   0
          Top             =   90
          Transparent     =   False
@@ -907,9 +695,9 @@ Begin Window StyleWindow
          TabPanelIndex   =   0
          Text            =   "(left-click to change)"
          TextAlign       =   1
-         TextColor       =   0
+         TextColor       =   &c00000000
          TextFont        =   "System"
-         TextSize        =   0
+         TextSize        =   0.0
          TextUnit        =   0
          Top             =   170
          Transparent     =   False
@@ -941,9 +729,9 @@ Begin Window StyleWindow
          TabPanelIndex   =   0
          Text            =   "(right-click to clear)"
          TextAlign       =   1
-         TextColor       =   0
+         TextColor       =   &c00000000
          TextFont        =   "System"
-         TextSize        =   0
+         TextSize        =   0.0
          TextUnit        =   0
          Top             =   185
          Transparent     =   False
@@ -975,9 +763,9 @@ Begin Window StyleWindow
          TabPanelIndex   =   0
          Text            =   "Position:"
          TextAlign       =   1
-         TextColor       =   0
+         TextColor       =   &c00000000
          TextFont        =   "System"
-         TextSize        =   0
+         TextSize        =   0.0
          TextUnit        =   0
          Top             =   206
          Transparent     =   False
@@ -1009,9 +797,9 @@ Begin Window StyleWindow
          TabPanelIndex   =   0
          Text            =   "Trim Bottom*:"
          TextAlign       =   1
-         TextColor       =   0
+         TextColor       =   &c00000000
          TextFont        =   "System"
-         TextSize        =   0
+         TextSize        =   0.0
          TextUnit        =   0
          Top             =   256
          Transparent     =   False
@@ -1043,7 +831,7 @@ Begin Window StyleWindow
          TabPanelIndex   =   0
          TabStop         =   True
          TextFont        =   "System"
-         TextSize        =   12
+         TextSize        =   12.0
          TextUnit        =   0
          Top             =   223
          Underline       =   False
@@ -1074,9 +862,9 @@ Begin Window StyleWindow
          TabPanelIndex   =   0
          Text            =   "px"
          TextAlign       =   0
-         TextColor       =   0
+         TextColor       =   &c00000000
          TextFont        =   "System"
-         TextSize        =   0
+         TextSize        =   0.0
          TextUnit        =   0
          Top             =   271
          Transparent     =   False
@@ -1096,19 +884,20 @@ Begin Window StyleWindow
          HelpTag         =   ""
          Index           =   -2147483648
          InitialParent   =   "grp_style_background"
-         IsColorSet      =   0
+         IsColorSet      =   False
          Left            =   500
          LockBottom      =   False
          LockedInPosition=   False
          LockLeft        =   True
          LockRight       =   False
          LockTop         =   True
-         MyColor         =   0
+         MyColor         =   &c00000000
          Scope           =   0
          TabIndex        =   8
          TabPanelIndex   =   0
          TabStop         =   True
          Top             =   50
+         Transparent     =   True
          UseFocusRing    =   True
          Visible         =   True
          Width           =   30
@@ -1118,7 +907,7 @@ Begin Window StyleWindow
          AcceptTabs      =   False
          AutoDeactivate  =   True
          Backdrop        =   0
-         bgColor         =   0
+         bgColor         =   &c00000000
          DoubleBuffer    =   False
          Enabled         =   True
          EraseBackground =   True
@@ -1137,6 +926,7 @@ Begin Window StyleWindow
          TabPanelIndex   =   0
          TabStop         =   True
          Top             =   105
+         Transparent     =   True
          UseFocusRing    =   True
          Visible         =   True
          Width           =   80
@@ -1146,13 +936,13 @@ Begin Window StyleWindow
          Alignment       =   0
          AutoDeactivate  =   True
          AutomaticallyCheckSpelling=   True
-         BackColor       =   16777215
+         BackColor       =   &cFFFFFF00
          Bold            =   False
          Border          =   True
          DataField       =   ""
          DataSource      =   ""
          Enabled         =   True
-         EnforceRange    =   0
+         EnforceRange    =   False
          Format          =   ""
          Height          =   20
          HelpTag         =   ""
@@ -1162,30 +952,30 @@ Begin Window StyleWindow
          Italic          =   False
          Left            =   473
          LimitText       =   4
-         LineHeight      =   0
-         LineSpacing     =   1
+         LineHeight      =   0.0
+         LineSpacing     =   1.0
          LockBottom      =   False
          LockedInPosition=   False
          LockLeft        =   True
          LockRight       =   False
          LockTop         =   True
          Mask            =   ""
-         Maximum         =   0
-         Minimum         =   0
+         Maximum         =   0.0
+         Minimum         =   0.0
          Multiline       =   False
          ReadOnly        =   False
          Scope           =   0
          ScrollbarHorizontal=   False
          ScrollbarVertical=   True
-         SignalRangeErrors=   0
+         SignalRangeErrors=   False
          Styled          =   False
          TabIndex        =   10
          TabPanelIndex   =   0
          TabStop         =   True
          Text            =   ""
-         TextColor       =   0
+         TextColor       =   &c00000000
          TextFont        =   "Arial"
-         TextSize        =   11
+         TextSize        =   11.0
          TextUnit        =   0
          Top             =   271
          Underline       =   False
@@ -1218,9 +1008,9 @@ Begin Window StyleWindow
       TabPanelIndex   =   0
       Text            =   "*Cuts the bottom of the background to hide watermarks, web site urls, etc. (To avoid distortion, this also trims from the sides to compensate.)"
       TextAlign       =   0
-      TextColor       =   0
+      TextColor       =   &c00000000
       TextFont        =   "System"
-      TextSize        =   0
+      TextSize        =   0.0
       TextUnit        =   0
       Top             =   310
       Transparent     =   False
@@ -1230,28 +1020,29 @@ Begin Window StyleWindow
    End
    Begin GroupBox grp_style_options
       AutoDeactivate  =   True
-      Bold            =   ""
+      Bold            =   False
       Caption         =   "Textual options"
       Enabled         =   True
-      Height          =   122
+      Height          =   117
       HelpTag         =   ""
       Index           =   -2147483648
       InitialParent   =   ""
-      Italic          =   ""
+      Italic          =   False
       Left            =   10
-      LockBottom      =   ""
+      LockBottom      =   False
       LockedInPosition=   False
       LockLeft        =   True
-      LockRight       =   ""
+      LockRight       =   False
       LockTop         =   True
       Scope           =   0
       TabIndex        =   5
       TabPanelIndex   =   0
+      TabStop         =   True
       TextFont        =   "System"
-      TextSize        =   0
+      TextSize        =   0.0
       TextUnit        =   0
-      Top             =   415
-      Underline       =   ""
+      Top             =   420
+      Underline       =   False
       Visible         =   True
       Width           =   410
       Begin Label lbl_options_subtitles
@@ -1278,11 +1069,11 @@ Begin Window StyleWindow
          TabPanelIndex   =   0
          Text            =   "Song Subtitles:"
          TextAlign       =   0
-         TextColor       =   0
+         TextColor       =   &c00000000
          TextFont        =   "System"
-         TextSize        =   0
+         TextSize        =   0.0
          TextUnit        =   0
-         Top             =   435
+         Top             =   440
          Transparent     =   False
          Underline       =   False
          Visible         =   True
@@ -1312,9 +1103,9 @@ Begin Window StyleWindow
          TabPanelIndex   =   0
          TabStop         =   True
          TextFont        =   "System"
-         TextSize        =   0
+         TextSize        =   0.0
          TextUnit        =   0
-         Top             =   450
+         Top             =   465
          Underline       =   False
          Value           =   False
          Visible         =   True
@@ -1344,9 +1135,9 @@ Begin Window StyleWindow
          TabPanelIndex   =   0
          TabStop         =   True
          TextFont        =   "System"
-         TextSize        =   0
+         TextSize        =   0.0
          TextUnit        =   0
-         Top             =   470
+         Top             =   485
          Underline       =   False
          Value           =   False
          Visible         =   True
@@ -1354,7 +1145,7 @@ Begin Window StyleWindow
       End
       Begin CheckBox chk_options_verse_in_title
          AutoDeactivate  =   True
-         Bold            =   ""
+         Bold            =   False
          Caption         =   "Include verse numbers in title"
          DataField       =   ""
          DataSource      =   ""
@@ -1363,12 +1154,12 @@ Begin Window StyleWindow
          HelpTag         =   ""
          Index           =   -2147483648
          InitialParent   =   "grp_style_options"
-         Italic          =   ""
+         Italic          =   False
          Left            =   200
-         LockBottom      =   ""
+         LockBottom      =   False
          LockedInPosition=   False
          LockLeft        =   True
-         LockRight       =   ""
+         LockRight       =   False
          LockTop         =   True
          Scope           =   0
          State           =   0
@@ -1376,10 +1167,10 @@ Begin Window StyleWindow
          TabPanelIndex   =   0
          TabStop         =   True
          TextFont        =   "System"
-         TextSize        =   0
+         TextSize        =   0.0
          TextUnit        =   0
-         Top             =   490
-         Underline       =   ""
+         Top             =   505
+         Underline       =   False
          Value           =   False
          Visible         =   True
          Width           =   209
@@ -1415,7 +1206,7 @@ Begin Window StyleWindow
          LockLeft        =   True
          LockRight       =   False
          LockTop         =   True
-         RequiresSelection=   ""
+         RequiresSelection=   False
          Scope           =   0
          ScrollbarHorizontal=   False
          ScrollBarVertical=   False
@@ -1424,15 +1215,261 @@ Begin Window StyleWindow
          TabPanelIndex   =   0
          TabStop         =   True
          TextFont        =   "Arial"
-         TextSize        =   11
+         TextSize        =   11.0
          TextUnit        =   0
-         Top             =   450
+         Top             =   455
          Underline       =   False
          UseFocusRing    =   True
          Visible         =   True
          Width           =   154
          _ScrollOffset   =   0
          _ScrollWidth    =   -1
+      End
+   End
+   Begin GroupBox grp_style_bilingual
+      AutoDeactivate  =   True
+      Bold            =   False
+      Caption         =   "Bilingual presentation"
+      Enabled         =   True
+      Height          =   67
+      HelpTag         =   ""
+      Index           =   -2147483648
+      InitialParent   =   ""
+      Italic          =   False
+      Left            =   10
+      LockBottom      =   False
+      LockedInPosition=   False
+      LockLeft        =   True
+      LockRight       =   False
+      LockTop         =   True
+      Scope           =   0
+      TabIndex        =   7
+      TabPanelIndex   =   0
+      TabStop         =   True
+      TextFont        =   "System"
+      TextSize        =   0.0
+      TextUnit        =   0
+      Top             =   351
+      Underline       =   False
+      Visible         =   True
+      Width           =   410
+      Begin SColorCanvas can_multilanguage_color
+         AcceptFocus     =   False
+         AcceptTabs      =   False
+         AutoDeactivate  =   True
+         Backdrop        =   0
+         DoubleBuffer    =   False
+         Enabled         =   True
+         EraseBackground =   True
+         Height          =   20
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "grp_style_bilingual"
+         IsColorSet      =   False
+         Left            =   243
+         LockBottom      =   False
+         LockedInPosition=   False
+         LockLeft        =   True
+         LockRight       =   False
+         LockTop         =   True
+         MyColor         =   &c00000000
+         Scope           =   0
+         TabIndex        =   0
+         TabPanelIndex   =   0
+         TabStop         =   True
+         Top             =   387
+         Transparent     =   True
+         UseFocusRing    =   True
+         Visible         =   True
+         Width           =   30
+      End
+      Begin Label lbl_multilanguage_color
+         AutoDeactivate  =   True
+         Bold            =   False
+         DataField       =   ""
+         DataSource      =   ""
+         Enabled         =   True
+         Height          =   15
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "grp_style_bilingual"
+         Italic          =   False
+         Left            =   181
+         LockBottom      =   False
+         LockedInPosition=   False
+         LockLeft        =   True
+         LockRight       =   False
+         LockTop         =   True
+         Multiline       =   False
+         Scope           =   0
+         Selectable      =   False
+         TabIndex        =   1
+         TabPanelIndex   =   0
+         Text            =   "Color:"
+         TextAlign       =   2
+         TextColor       =   &c00000000
+         TextFont        =   "System"
+         TextSize        =   0.0
+         TextUnit        =   0
+         Top             =   389
+         Transparent     =   False
+         Underline       =   False
+         Visible         =   True
+         Width           =   55
+      End
+      Begin SEditFieldNumeric edt_multilanguage_size
+         AcceptTabs      =   False
+         Alignment       =   0
+         AutoDeactivate  =   True
+         AutomaticallyCheckSpelling=   True
+         BackColor       =   &cFFFFFF00
+         Bold            =   False
+         Border          =   True
+         DataField       =   ""
+         DataSource      =   ""
+         Enabled         =   True
+         EnforceRange    =   True
+         Format          =   ""
+         Height          =   20
+         HelpTag         =   ""
+         HideSelection   =   True
+         Index           =   -2147483648
+         InitialParent   =   "grp_style_bilingual"
+         Italic          =   False
+         Left            =   139
+         LimitText       =   3
+         LineHeight      =   0.0
+         LineSpacing     =   1.0
+         LockBottom      =   False
+         LockedInPosition=   False
+         LockLeft        =   True
+         LockRight       =   False
+         LockTop         =   True
+         Mask            =   ""
+         Maximum         =   100.0
+         Minimum         =   10.0
+         Multiline       =   False
+         ReadOnly        =   False
+         Scope           =   0
+         ScrollbarHorizontal=   False
+         ScrollbarVertical=   True
+         SignalRangeErrors=   False
+         Styled          =   False
+         TabIndex        =   2
+         TabPanelIndex   =   0
+         TabStop         =   True
+         Text            =   ""
+         TextColor       =   &c00000000
+         TextFont        =   "Arial"
+         TextSize        =   11.0
+         TextUnit        =   0
+         Top             =   387
+         Underline       =   False
+         UseFocusRing    =   True
+         Visible         =   True
+         Width           =   31
+      End
+      Begin Label lbl_font_size
+         AutoDeactivate  =   True
+         Bold            =   False
+         DataField       =   ""
+         DataSource      =   ""
+         Enabled         =   True
+         Height          =   15
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "grp_style_bilingual"
+         Italic          =   False
+         Left            =   21
+         LockBottom      =   False
+         LockedInPosition=   False
+         LockLeft        =   True
+         LockRight       =   False
+         LockTop         =   True
+         Multiline       =   False
+         Scope           =   0
+         Selectable      =   False
+         TabIndex        =   3
+         TabPanelIndex   =   0
+         Text            =   "Size [10-100 %] :"
+         TextAlign       =   2
+         TextColor       =   &c00000000
+         TextFont        =   "System"
+         TextSize        =   0.0
+         TextUnit        =   0
+         Top             =   389
+         Transparent     =   False
+         Underline       =   False
+         Visible         =   True
+         Width           =   110
+      End
+      Begin Label lbl_multilanguage_style
+         AutoDeactivate  =   True
+         Bold            =   False
+         DataField       =   ""
+         DataSource      =   ""
+         Enabled         =   True
+         Height          =   16
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "grp_style_bilingual"
+         Italic          =   False
+         Left            =   21
+         LockBottom      =   False
+         LockedInPosition=   False
+         LockLeft        =   True
+         LockRight       =   False
+         LockTop         =   True
+         Multiline       =   True
+         Scope           =   0
+         Selectable      =   False
+         TabIndex        =   4
+         TabPanelIndex   =   0
+         Text            =   "Style variations for the second language:"
+         TextAlign       =   0
+         TextColor       =   &c00000000
+         TextFont        =   "System"
+         TextSize        =   0.0
+         TextUnit        =   0
+         Top             =   368
+         Transparent     =   False
+         Underline       =   False
+         Visible         =   True
+         Width           =   244
+      End
+      Begin Label nte_multilanguage_note
+         AutoDeactivate  =   True
+         Bold            =   False
+         DataField       =   ""
+         DataSource      =   ""
+         Enabled         =   True
+         Height          =   44
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "grp_style_bilingual"
+         Italic          =   False
+         Left            =   285
+         LockBottom      =   False
+         LockedInPosition=   False
+         LockLeft        =   True
+         LockRight       =   False
+         LockTop         =   True
+         Multiline       =   True
+         Scope           =   0
+         Selectable      =   False
+         TabIndex        =   5
+         TabPanelIndex   =   0
+         Text            =   "Usage: append -L in section name [V1-L]"
+         TextAlign       =   0
+         TextColor       =   &c00000000
+         TextFont        =   "System"
+         TextSize        =   0.0
+         TextUnit        =   0
+         Top             =   368
+         Transparent     =   False
+         Underline       =   False
+         Visible         =   True
+         Width           =   123
       End
    End
 End
@@ -1799,36 +1836,6 @@ End
 		End Sub
 	#tag EndEvent
 #tag EndEvents
-#tag Events edt_multilanguage_size
-	#tag Event
-		Sub TextChange()
-		  // CHANGE-PJ: Whole element added for second language feature
-		  If Me.Value = 0 Then
-		    edt_multilanguage_size.SetValue 70 'standard value
-		  ElseIf Me.Value < 10 Then
-		    edt_multilanguage_size.SetValue 10
-		  ElseIf Me.Value > 100 Then
-		    edt_multilanguage_size.SetValue 100
-		  End If
-		  workingStyle.MultilanguageSize = Me.Value
-		End Sub
-	#tag EndEvent
-#tag EndEvents
-#tag Events can_multilanguage_color
-	#tag Event
-		Sub Action()
-		  // CHANGE-PJ: Whole element added for second language feature
-		  Dim hasColor As Boolean
-		  Dim c As Color
-		  hasColor = Me.GetColor(c)
-		  If hasColor Then
-		    workingStyle.MultilanguageColor = c
-		  Else
-		    workingStyle.MultilanguageColor = &cDCDCDC
-		  End If
-		End Sub
-	#tag EndEvent
-#tag EndEvents
 #tag Events pop_background_position
 	#tag Event
 		Sub Change()
@@ -1897,3 +1904,260 @@ End
 		End Sub
 	#tag EndEvent
 #tag EndEvents
+#tag Events can_multilanguage_color
+	#tag Event
+		Sub Action()
+		  // CHANGE-PJ: Whole element added for second language feature
+		  Dim hasColor As Boolean
+		  Dim c As Color
+		  hasColor = Me.GetColor(c)
+		  If hasColor Then
+		    workingStyle.MultilanguageColor = c
+		  Else
+		    workingStyle.MultilanguageColor = &cDCDCDC
+		  End If
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events edt_multilanguage_size
+	#tag Event
+		Sub TextChange()
+		  // CHANGE-PJ: Whole element added for second language feature
+		  If Me.Value = 0 Then
+		    edt_multilanguage_size.SetValue 70 'standard value
+		  ElseIf Me.Value < 10 Then
+		    edt_multilanguage_size.SetValue 10
+		  ElseIf Me.Value > 100 Then
+		    edt_multilanguage_size.SetValue 100
+		  End If
+		  workingStyle.MultilanguageSize = Me.Value
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag ViewBehavior
+	#tag ViewProperty
+		Name="BackColor"
+		Visible=true
+		Group="Appearance"
+		InitialValue="&hFFFFFF"
+		Type="Color"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="Backdrop"
+		Visible=true
+		Group="Appearance"
+		Type="Picture"
+		EditorType="Picture"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="CloseButton"
+		Visible=true
+		Group="Appearance"
+		InitialValue="True"
+		Type="Boolean"
+		EditorType="Boolean"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="Composite"
+		Group="Appearance"
+		InitialValue="False"
+		Type="Boolean"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="Frame"
+		Visible=true
+		Group="Appearance"
+		InitialValue="0"
+		Type="Integer"
+		EditorType="Enum"
+		#tag EnumValues
+			"0 - Document"
+			"1 - Movable Modal"
+			"2 - Modal Dialog"
+			"3 - Floating Window"
+			"4 - Plain Box"
+			"5 - Shadowed Box"
+			"6 - Rounded Window"
+			"7 - Global Floating Window"
+			"8 - Sheet Window"
+			"9 - Metal Window"
+			"10 - Drawer Window"
+			"11 - Modeless Dialog"
+		#tag EndEnumValues
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="FullScreen"
+		Group="Appearance"
+		InitialValue="False"
+		Type="Boolean"
+		EditorType="Boolean"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="FullScreenButton"
+		Visible=true
+		Group="Appearance"
+		InitialValue="False"
+		Type="Boolean"
+		EditorType="Boolean"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="HasBackColor"
+		Visible=true
+		Group="Appearance"
+		InitialValue="False"
+		Type="Boolean"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="Height"
+		Visible=true
+		Group="Position"
+		InitialValue="400"
+		Type="Integer"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="ImplicitInstance"
+		Visible=true
+		Group="Appearance"
+		InitialValue="True"
+		Type="Boolean"
+		EditorType="Boolean"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="Interfaces"
+		Visible=true
+		Group="ID"
+		Type="String"
+		EditorType="String"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="LiveResize"
+		Visible=true
+		Group="Appearance"
+		InitialValue="True"
+		Type="Boolean"
+		EditorType="Boolean"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="MacProcID"
+		Group="Appearance"
+		InitialValue="0"
+		Type="Integer"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="MaxHeight"
+		Visible=true
+		Group="Position"
+		InitialValue="32000"
+		Type="Integer"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="MaximizeButton"
+		Visible=true
+		Group="Appearance"
+		InitialValue="True"
+		Type="Boolean"
+		EditorType="Boolean"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="MaxWidth"
+		Visible=true
+		Group="Position"
+		InitialValue="32000"
+		Type="Integer"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="MenuBar"
+		Visible=true
+		Group="Appearance"
+		Type="MenuBar"
+		EditorType="MenuBar"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="MenuBarVisible"
+		Group="Appearance"
+		InitialValue="True"
+		Type="Boolean"
+		EditorType="Boolean"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="MinHeight"
+		Visible=true
+		Group="Position"
+		InitialValue="64"
+		Type="Integer"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="MinimizeButton"
+		Visible=true
+		Group="Appearance"
+		InitialValue="True"
+		Type="Boolean"
+		EditorType="Boolean"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="MinWidth"
+		Visible=true
+		Group="Position"
+		InitialValue="64"
+		Type="Integer"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="Name"
+		Visible=true
+		Group="ID"
+		Type="String"
+		EditorType="String"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="Placement"
+		Visible=true
+		Group="Position"
+		InitialValue="0"
+		Type="Integer"
+		EditorType="Enum"
+		#tag EnumValues
+			"0 - Default"
+			"1 - Parent Window"
+			"2 - Main Screen"
+			"3 - Parent Window Screen"
+			"4 - Stagger"
+		#tag EndEnumValues
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="Resizeable"
+		Visible=true
+		Group="Appearance"
+		InitialValue="True"
+		Type="Boolean"
+		EditorType="Boolean"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="Super"
+		Visible=true
+		Group="ID"
+		Type="String"
+		EditorType="String"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="Title"
+		Visible=true
+		Group="Appearance"
+		InitialValue="Untitled"
+		Type="String"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="Visible"
+		Visible=true
+		Group="Appearance"
+		InitialValue="True"
+		Type="Boolean"
+		EditorType="Boolean"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="Width"
+		Visible=true
+		Group="Position"
+		InitialValue="600"
+		Type="Integer"
+	#tag EndViewProperty
+#tag EndViewBehavior

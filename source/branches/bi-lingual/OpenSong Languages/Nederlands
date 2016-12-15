@@ -923,11 +923,13 @@ Als het Presentatie veld leeg is, ordend de Presentatie de dia's gebaseerd op de
       <align caption="Uitlijning"/>
       <margin caption="Marges"/>
       <tabs caption="Tabulators"/>
+    </fonts_and_alignment>
+    <bilingual caption="Tweetalige presentatie">
       <style caption="Dezelfde stijl voor de tweede taal, behalve:"/>
       <size caption="Grootte [10-100%]"/>
       <color caption="Kleur"/>
       <note caption="Gebruik: voeg -L toe aan de sectienaam, bijvoorbeeld [V1-L]"/>
-    </fonts_and_alignment>
+    </bilingual>
     <options caption="Tekst opties">
       <subtitles caption="Subtitel van het lied"/>
       <highlight_chorus caption="Laten oplichten van de refreintekst"/>
