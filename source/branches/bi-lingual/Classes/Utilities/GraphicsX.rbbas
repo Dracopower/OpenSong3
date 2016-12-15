@@ -33,15 +33,28 @@ Protected Module GraphicsX
 		  ' --- Draw decoration ---
 		  
 		  If f <> Nil Then
+		    // CHANGE-PJ IMPROVEMENT: No impact but needed for Second language feature (for sections ending with "L") -> recopy f on g
+		    f.OntoGraphics g
 		    
 		    If f.Fill Then
 		      g.ForeColor = f.FillColor
 		      g.FillRect xx-borderSize, yy-g.TextAscent, GraphicsX.FontFaceWidth(g, thisLine, f)+borderSize*2, g.TextHeight
 		    End If
 		    
+		    // CHANGE-PJ IMPROVEMENT: recalculate shadowSize and borderSize (taken from DrawFontString) - makes more sense to calculate here instead of using own parameters
+		    shadowSize = CalcShadowSize(g)
+		    borderSize = CalcBorderSize(g)
+		    
 		    If f.Shadow Then
 		      If f.Border Then
-		        Call DrawFontString(g, thisLine, xx + shadowSize, yy + shadowSize, shadowFace, 0, "left", 0, "bottom")
+		        // CHANGE-PJ IMPROVEMENT: recalculate shadowFace (taken from DrawFontString) - makes more sense to calculate here instead of using own parameters
+		        shadowFace = f.Clone
+		        shadowFace.ForeColor = shadowFace.ShadowColor
+		        shadowFace.BorderColor = shadowFace.ShadowColor
+		        shadowFace.Fill = False
+		        shadowFace.Shadow = False
+		        
+		        Call DrawFontString(g, thisLine, xx + shadowSize, yy + shadowSize, shadowFace, 0, "left", 0, "bottom") // TODO-PJ: do we have some issues here?
 		      Else
 		        g.ForeColor = f.ShadowColor
 		        g.DrawString thisLine, xx + shadowSize, yy + shadowSize
@@ -84,6 +97,7 @@ Protected Module GraphicsX
 		  // x, y is top left of bounding box if valign = "top"
 		  // x, y is left center of bounding box (half the text is above, half below) if valign = "middle"
 		  // x, y is bottom left of bounding box if valign = "bottom"
+		  // TODO-PJ: second language feature not implemented here - is this anywhere used?
 		  
 		  Profiler.BeginProfilerEntry "DrawFontString (" + str + ")"
 		  Dim dx, dy, xx, yy, i As Integer
@@ -271,7 +285,7 @@ Protected Module GraphicsX
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Function DrawFontString(g As Graphics, str As String, x As Integer, y As Integer, f As FontFace, width As Integer = 0, align As String = "left", height As Integer = 0, valign As String = "top", tabs() As StyleTabsType = Nil, InsertAfterBreak as string = "") As Integer'gp
+		Function DrawFontString(g As Graphics, str As String, x As Integer, y As Integer, f As FontFace, width As Integer = 0, align As String = "left", height As Integer = 0, valign As String = "top", tabs() As StyleTabsType = Nil, InsertAfterBreak as string = "", section As String = "", Style as SlideStyle = Nil) As Integer
 		  Profiler.BeginProfilerEntry "DrawFontString (" + str + ")"
 		  Dim dx, dy, xx, yy, i, j As Integer
 		  Dim lineCount, lineHeight, lineAscent, thisWidth As Integer
@@ -282,6 +296,25 @@ Protected Module GraphicsX
 		  Dim tabCount as Integer
 		  
 		  If ThicknessFactor <= 0 Then ThicknessFactor = 1
+		  
+		  // CHANGE-PJ START: Second language feature (for sections ending with "L") - change every second line to different style
+		  Dim tmpStyle, secondLanguageStyle As FontFace
+		  Dim countLinesSecond As Integer
+		  Dim separationMark As String
+		  
+		  secondLanguageStyle = f.Clone // take same style as f but some small adaptations as follows
+		  tmpStyle = f
+		  countLinesSecond = 1
+		  
+		  If section = "two-languages" Then //add separationMark to identify auto linebreaks by algorithm
+		    separationMark = Chr(244)
+		    secondLanguageStyle.Italic = Not f.Italic // show second language as italic if f is not italic and the other way round
+		    secondLanguageStyle.Size = Floor(f.Size * Style.MultilanguageSize/100) // taken from style setting window
+		    secondLanguageStyle.ForeColor = Style.MultilanguageColor // taken from style setting window
+		  Else
+		    separationMark = "" //neutral for non two-languages sections
+		  End If
+		  // CHANGE-PJ END
 		  
 		  If f <> Nil Then
 		    f.OntoGraphics g
@@ -310,6 +343,11 @@ Protected Module GraphicsX
 		  End If
 		  
 		  If width > 0 Then
+		    
+		    // CHANGE-PJ: Second language feature - save original text size
+		    Dim origTextSize As Integer
+		    origTextSize = g.TextSize
+		    
 		    ' wrap
 		    xx = 1
 		    yy = 1
@@ -321,6 +359,16 @@ Protected Module GraphicsX
 		        xx = yy + 1
 		        yy = yy + 1
 		        thisWidth = 0
+		        
+		        // CHANGE-PJ START: Second language feature - calculate character length with different font size, change every second line
+		        If section = "two-languages" And Mid(str, yy, 1) <> separationMark Then // second line detected only if first character is not equal to the separationMark
+		          If g.TextSize = origTextSize Then
+		            g.TextSize = secondLanguageStyle.Size
+		          Else
+		            g.TextSize = origTextSize
+		          End If
+		        End If
+		        
 		      ElseIf thisWidth > width Then ' if we get longer than the width...
 		        i = yy ' remember yy in case we can't find a space
 		        While yy > 1 And thisChar <> " " ' we need to backup to a space
@@ -328,13 +376,20 @@ Protected Module GraphicsX
 		          thisChar = Mid(str, yy, 1)
 		        Wend
 		        If yy <= 1 Then yy = i ' we didn't find a space; go back where we were and split there; ugly, but we have to.
-		        str = Left(str, yy-1) + Chr(10) + InsertAfterBreak+ Mid(str, yy+1)'gpgpgpgpgp als regel afbreekt, dan 3 spaties, zodat duidelker is dat regel doorloopt 'gp
+		        
+		        // CHANGE-PJ: Second language feature - add separationMark if another linebreak needs to be inserted
+		        str = Left(str, yy-1) + Chr(10) + InsertAfterBreak + separationMark + Mid(str, yy+1)'gpgpgpgpgp als regel afbreekt, dan 3 spaties, zodat duidelker is dat regel doorloopt 'gp
+		        
 		        xx = yy + 1
 		        yy = yy + 1
 		        thisWidth = 0
 		      End If
 		      yy = yy + 1
 		    Wend
+		    
+		    // CHANGE-PJ: Second language feature - revert back to original text size
+		    g.TextSize = origTextSize
+		    
 		  End If
 		  
 		  lineCount = CountFields(str, Chr(10))
@@ -448,28 +503,53 @@ Protected Module GraphicsX
 		        thisLine = ReplaceAll(thisLine, Chr(9), " ")
 		      End If
 		      
+		      // CHANGE-PJ START: Second language feature - change every second line to different style
+		      If section = "two-languages" Then
+		        If InStr(thisLine, separationMark) <> 1 Then // only change style if not line break inserted automatically above (indicated by separationMark)
+		          If tmpStyle = f And i <> 1 Then // stay in first line to f style (original body style)
+		            tmpStyle = secondLanguageStyle
+		          ElseIf tmpStyle = secondLanguageStyle Then
+		            countLinesSecond = 1
+		            tmpStyle = f
+		          End If
+		        Else
+		          thisLine = ReplaceAll(StringUtils.Trim(thisLine, StringUtils.WhiteSpaces), separationMark, "") // replace all sepatrationMarks with ""
+		        End If
+		      Else
+		        tmpStyle = f
+		      End If
+		      
+		      If tmpStyle = secondLanguageStyle Then // reduce line height according to smaller font size + add a small offset that second language stays a little away from main language
+		        yy = yy + (- f.Size + tmpStyle.Size) * countLinesSecond + (f.Size - tmpStyle.Size) / 4
+		        countLinesSecond = countLinesSecond + 1
+		      End If
+		      
+		      tmpStyle.OntoGraphics g // tmpStyle needs to be applied for g to calculate the rest correct
+		      // CHANGE-PJ END
+		      
 		      ' --- Setup position ---
 		      If align = "center" Then
-		        xx = x + Round((width - FontFaceWidth(g, thisLine, f))/2)
+		        xx = x + Round((width - FontFaceWidth(g, thisLine, tmpStyle))/2)
 		      ElseIf align = "right" Then
-		        xx = x + width - FontFaceWidth(g, thisLine, f)
+		        xx = x + width - FontFaceWidth(g, thisLine, tmpStyle)
 		      Else ' left?
 		        xx = x
 		      End If
 		      
-		      DrawFontSingleLine(g, thisLine, xx, yy, f, borderSize, shadowFace, shadowSize)
+		      // CHANGE-PJ ADAPTATION: No impact but needed for Second language feature - tmpStyle instead of f used
+		      DrawFontSingleLine(g, thisLine, xx, yy, tmpStyle, borderSize, shadowFace, shadowSize)
 		    End If
 		    
 		  Next i
 		  Profiler.EndProfilerEntry
 		  
 		  If lineCount = 0 Then lineCount = 1
-		  Return FontFaceHeight(g, f) * lineCount
+		  Return FontFaceHeight(g, f) * lineCount // TODO-PJ: LineHeight not taken into account for Second language Feature - makes not much sense anyway!
 		End Function
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Function DrawFontString(g As Graphics, str As String, x As Integer, y As Integer, f As FontFace, borderSize as Integer, headerSize as Integer, footerSize as Integer, margins as StyleMarginType, width As Integer, align As String, height As Integer, valign As String, tabs() As StyleTabsType = Nil, InsertAfterBreak as string = "") As Integer'gp
+		Function DrawFontString(g As Graphics, str As String, x As Integer, y As Integer, f As FontFace, borderSize as Integer, headerSize as Integer, footerSize as Integer, margins as StyleMarginType, width As Integer, align As String, height As Integer, valign As String, tabs() As StyleTabsType = Nil, InsertAfterBreak as string = "", section as String = "", Style as SlideStyle = Nil) As Integer
 		  Dim drawHeight as Integer
 		  
 		  If x < margins.Left Then
@@ -494,7 +574,7 @@ Protected Module GraphicsX
 		  align, _
 		  height - (borderSize * 2) - headerSize - footerSize, _
 		  valign, _
-		  tabs, InsertAfterBreak) 'gp
+		  tabs, InsertAfterBreak, section, Style) 'gp // CHANGE-PJ: Second language feature - added "section" and "Style" parameter
 		  
 		  If valign = "top" Then
 		    drawHeight = drawHeight

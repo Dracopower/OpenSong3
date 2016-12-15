@@ -7,7 +7,7 @@ Begin Window StyleWindow
    Frame           =   1
    FullScreen      =   False
    HasBackColor    =   False
-   Height          =   486
+   Height          =   546
    ImplicitInstance=   True
    LiveResize      =   False
    MacProcID       =   0
@@ -50,7 +50,7 @@ Begin Window StyleWindow
       TextFont        =   "Arial"
       TextSize        =   10
       TextUnit        =   0
-      Top             =   451
+      Top             =   515
       Underline       =   False
       Visible         =   True
       Width           =   70
@@ -81,7 +81,7 @@ Begin Window StyleWindow
       TextFont        =   "Arial"
       TextSize        =   10
       TextUnit        =   0
-      Top             =   451
+      Top             =   515
       Underline       =   False
       Visible         =   True
       Width           =   70
@@ -91,7 +91,7 @@ Begin Window StyleWindow
       Bold            =   False
       Caption         =   "Style Editor"
       Enabled         =   True
-      Height          =   339
+      Height          =   403
       HelpTag         =   ""
       Index           =   -2147483648
       InitialParent   =   ""
@@ -566,6 +566,228 @@ Begin Window StyleWindow
          Visible         =   True
          Width           =   384
       End
+      Begin Label lbl_multilanguage_color
+         AutoDeactivate  =   True
+         Bold            =   False
+         DataField       =   ""
+         DataSource      =   ""
+         Enabled         =   True
+         Height          =   15
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "grp_style_fonts_and_alignment"
+         Italic          =   False
+         Left            =   155
+         LockBottom      =   False
+         LockedInPosition=   False
+         LockLeft        =   True
+         LockRight       =   False
+         LockTop         =   True
+         Multiline       =   False
+         Scope           =   0
+         Selectable      =   False
+         TabIndex        =   16
+         TabPanelIndex   =   0
+         TabStop         =   True
+         Text            =   "Color:"
+         TextAlign       =   2
+         TextColor       =   &c00000000
+         TextFont        =   "System"
+         TextSize        =   0.0
+         TextUnit        =   0
+         Top             =   379
+         Transparent     =   False
+         Underline       =   False
+         Visible         =   True
+         Width           =   55
+      End
+      Begin Label lbl_multilanguage_style
+         AutoDeactivate  =   True
+         Bold            =   False
+         DataField       =   ""
+         DataSource      =   ""
+         Enabled         =   True
+         Height          =   16
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "grp_style_fonts_and_alignment"
+         Italic          =   False
+         Left            =   25
+         LockBottom      =   False
+         LockedInPosition=   False
+         LockLeft        =   True
+         LockRight       =   False
+         LockTop         =   True
+         Multiline       =   True
+         Scope           =   0
+         Selectable      =   False
+         TabIndex        =   17
+         TabPanelIndex   =   0
+         TabStop         =   True
+         Text            =   "For second language same style but:"
+         TextAlign       =   0
+         TextColor       =   &c00000000
+         TextFont        =   "System"
+         TextSize        =   0.0
+         TextUnit        =   0
+         Top             =   358
+         Transparent     =   False
+         Underline       =   False
+         Visible         =   True
+         Width           =   220
+      End
+      Begin Label lbl_font_size
+         AutoDeactivate  =   True
+         Bold            =   False
+         DataField       =   ""
+         DataSource      =   ""
+         Enabled         =   True
+         Height          =   15
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "grp_style_fonts_and_alignment"
+         Italic          =   False
+         Left            =   31
+         LockBottom      =   False
+         LockedInPosition=   False
+         LockLeft        =   True
+         LockRight       =   False
+         LockTop         =   True
+         Multiline       =   False
+         Scope           =   0
+         Selectable      =   False
+         TabIndex        =   18
+         TabPanelIndex   =   0
+         TabStop         =   True
+         Text            =   "Size [10-100 %] :"
+         TextAlign       =   2
+         TextColor       =   &c00000000
+         TextFont        =   "System"
+         TextSize        =   0.0
+         TextUnit        =   0
+         Top             =   379
+         Transparent     =   False
+         Underline       =   False
+         Visible         =   True
+         Width           =   85
+      End
+      Begin SEditFieldNumeric edt_multilanguage_size
+         AcceptTabs      =   False
+         Alignment       =   0
+         AutoDeactivate  =   True
+         AutomaticallyCheckSpelling=   True
+         BackColor       =   &cFFFFFF00
+         Bold            =   False
+         Border          =   True
+         DataField       =   ""
+         DataSource      =   ""
+         Enabled         =   True
+         EnforceRange    =   True
+         Format          =   ""
+         Height          =   20
+         HelpTag         =   ""
+         HideSelection   =   True
+         Index           =   -2147483648
+         InitialParent   =   "grp_style_fonts_and_alignment"
+         Italic          =   False
+         Left            =   121
+         LimitText       =   3
+         LineHeight      =   0.0
+         LineSpacing     =   1.0
+         LockBottom      =   False
+         LockedInPosition=   False
+         LockLeft        =   True
+         LockRight       =   False
+         LockTop         =   True
+         Mask            =   ""
+         Maximum         =   100.0
+         Minimum         =   10.0
+         Multiline       =   False
+         ReadOnly        =   False
+         Scope           =   0
+         ScrollbarHorizontal=   False
+         ScrollbarVertical=   True
+         SignalRangeErrors=   False
+         Styled          =   False
+         TabIndex        =   19
+         TabPanelIndex   =   0
+         TabStop         =   True
+         Text            =   ""
+         TextColor       =   &c00000000
+         TextFont        =   "Arial"
+         TextSize        =   11.0
+         TextUnit        =   0
+         Top             =   377
+         Underline       =   False
+         UseFocusRing    =   True
+         Visible         =   True
+         Width           =   30
+      End
+      Begin Label nte_multilanguage_note
+         AutoDeactivate  =   True
+         Bold            =   False
+         DataField       =   ""
+         DataSource      =   ""
+         Enabled         =   True
+         Height          =   46
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "grp_style_fonts_and_alignment"
+         Italic          =   False
+         Left            =   257
+         LockBottom      =   False
+         LockedInPosition=   False
+         LockLeft        =   True
+         LockRight       =   False
+         LockTop         =   True
+         Multiline       =   True
+         Scope           =   0
+         Selectable      =   False
+         TabIndex        =   20
+         TabPanelIndex   =   0
+         TabStop         =   True
+         Text            =   "Usage: append -L in section name [V1-L]"
+         TextAlign       =   0
+         TextColor       =   &c00000000
+         TextFont        =   "System"
+         TextSize        =   0.0
+         TextUnit        =   0
+         Top             =   364
+         Transparent     =   False
+         Underline       =   False
+         Visible         =   True
+         Width           =   107
+      End
+      Begin SColorCanvas can_multilanguage_color
+         AcceptFocus     =   False
+         AcceptTabs      =   False
+         AutoDeactivate  =   True
+         Backdrop        =   0
+         DoubleBuffer    =   False
+         Enabled         =   True
+         EraseBackground =   True
+         Height          =   20
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "grp_style_fonts_and_alignment"
+         IsColorSet      =   False
+         Left            =   215
+         LockBottom      =   False
+         LockedInPosition=   False
+         LockLeft        =   True
+         LockRight       =   False
+         LockTop         =   True
+         MyColor         =   &c00000000
+         Scope           =   0
+         TabIndex        =   21
+         TabPanelIndex   =   0
+         TabStop         =   True
+         Top             =   377
+         Transparent     =   True
+         UseFocusRing    =   True
+         Visible         =   True
+         Width           =   30
+      End
    End
    Begin GroupBox grp_style_background
       AutoDeactivate  =   True
@@ -1028,7 +1250,7 @@ Begin Window StyleWindow
       TextFont        =   "System"
       TextSize        =   0
       TextUnit        =   0
-      Top             =   351
+      Top             =   415
       Underline       =   ""
       Visible         =   True
       Width           =   410
@@ -1060,7 +1282,7 @@ Begin Window StyleWindow
          TextFont        =   "System"
          TextSize        =   0
          TextUnit        =   0
-         Top             =   371
+         Top             =   435
          Transparent     =   False
          Underline       =   False
          Visible         =   True
@@ -1092,7 +1314,7 @@ Begin Window StyleWindow
          TextFont        =   "System"
          TextSize        =   0
          TextUnit        =   0
-         Top             =   386
+         Top             =   450
          Underline       =   False
          Value           =   False
          Visible         =   True
@@ -1124,7 +1346,7 @@ Begin Window StyleWindow
          TextFont        =   "System"
          TextSize        =   0
          TextUnit        =   0
-         Top             =   406
+         Top             =   470
          Underline       =   False
          Value           =   False
          Visible         =   True
@@ -1156,7 +1378,7 @@ Begin Window StyleWindow
          TextFont        =   "System"
          TextSize        =   0
          TextUnit        =   0
-         Top             =   426
+         Top             =   490
          Underline       =   ""
          Value           =   False
          Visible         =   True
@@ -1204,7 +1426,7 @@ Begin Window StyleWindow
          TextFont        =   "Arial"
          TextSize        =   11
          TextUnit        =   0
-         Top             =   386
+         Top             =   450
          Underline       =   False
          UseFocusRing    =   True
          Visible         =   True
@@ -1259,6 +1481,8 @@ End
 		    sal_align_body.Enabled = true
 		    btn_body_margin.Enabled = true
 		    chk_font_body_autosize.Enabled = true
+		    edt_multilanguage_size.Enabled = true // CHANGE-PJ: Second language feature
+		    can_multilanguage_color.Enabled = true // CHANGE-PJ: Second language feature
 		    
 		    If workingStyle.BodyAlign = "left" Then
 		      btn_body_tabs.Enabled = True
@@ -1271,6 +1495,8 @@ End
 		    btn_body_margin.Enabled = false
 		    chk_font_body_autosize.Enabled = false
 		    btn_body_tabs.Enabled = false
+		    edt_multilanguage_size.Enabled = false // CHANGE-PJ: Second language feature
+		    can_multilanguage_color.Enabled = false // CHANGE-PJ: Second language feature
 		    
 		  End If
 		End Sub
@@ -1314,7 +1540,7 @@ End
 		  can_background_image.SetImage( workingStyle.Background() )
 		  can_background_image.bgColor = workingStyle.BGColor
 		  
-		  edt_background_trim_bottom.Text = CStr(workingStyle.StripFooter)
+		  edt_background_trim_bottom.SetValue workingStyle.StripFooter // CHANGE-PJ BUG-FIX
 		  
 		  '++JRC
 		  chk_font_title.Value = workingStyle.TitleEnable
@@ -1347,6 +1573,9 @@ End
 		  If IsSong Then
 		    lst_song_subtitles.SetSelected(workingStyle.SubtitleList)
 		  End If
+		  
+		  edt_multilanguage_size.SetValue workingStyle.MultilanguageSize // CHANGE-PJ: Second language feature
+		  can_multilanguage_color.SetColor workingStyle.MultilanguageColor // CHANGE-PJ: Second language feature
 		  
 		  Return
 		End Sub
@@ -1567,6 +1796,36 @@ End
 	#tag Event
 		Sub Action()
 		  workingStyle.BodyScale = Me.Value
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events edt_multilanguage_size
+	#tag Event
+		Sub TextChange()
+		  // CHANGE-PJ: Whole element added for second language feature
+		  If Me.Value = 0 Then
+		    edt_multilanguage_size.SetValue 70 'standard value
+		  ElseIf Me.Value < 10 Then
+		    edt_multilanguage_size.SetValue 10
+		  ElseIf Me.Value > 100 Then
+		    edt_multilanguage_size.SetValue 100
+		  End If
+		  workingStyle.MultilanguageSize = Me.Value
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events can_multilanguage_color
+	#tag Event
+		Sub Action()
+		  // CHANGE-PJ: Whole element added for second language feature
+		  Dim hasColor As Boolean
+		  Dim c As Color
+		  hasColor = Me.GetColor(c)
+		  If hasColor Then
+		    workingStyle.MultilanguageColor = c
+		  Else
+		    workingStyle.MultilanguageColor = &cDCDCDC
+		  End If
 		End Sub
 	#tag EndEvent
 #tag EndEvents

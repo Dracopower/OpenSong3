@@ -949,6 +949,10 @@ Abschnittsmarken im Textfeld des Liededitors erscheinen.
       <align caption="Ausrichtung"/>
       <margin caption="Ränder"/>
       <tabs caption="Tabulatoren"/>
+      <style caption="Für zweite Sprache gleicher Stil aber"/>
+      <size caption="Größe [10-100%]"/>
+      <color caption="Farbe"/>
+      <note caption="Verwendung: -L bei Abschnitts-Namen anhängen z.B. [V1-L]"/>
     </fonts_and_alignment>
     <options caption="Darstellungsoptionen">
       <subtitles caption="Untertitel"/>

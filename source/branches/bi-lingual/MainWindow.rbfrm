@@ -3844,7 +3844,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Visible         =   True
             Width           =   220
          End
-         Begin SEditField edf_song_lyrics
+         Begin TextArea edf_song_lyrics
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
@@ -11573,6 +11573,36 @@ End
 		    
 		  End If
 		  
+		  // CHANGE-PJ START: Second language feature (for sections ending with "L") - on save highlight every second line in the editor
+		  Dim line, lines(-1), section As String
+		  Dim j,k,start,length As Integer
+		  
+		  edf_song_lyrics.StyledText.TextColor(0,edf_song_lyrics.Text.Len) = RGB(0,0,0) //reset color
+		  
+		  lines = Split(edf_song_lyrics.Text, Chr(13)) //TODO-PJ: is this working on UNIX?
+		  start = 0
+		  
+		  For j = 0 To UBound(lines)
+		    If Left(lines(j), 1) = "[" Then
+		      section = Mid(lines(j), 2, Instr(2, lines(j), "]") - 2)
+		      k = 0
+		    End If
+		    
+		    If Right(section,1) = "L" Then //two-languages section
+		      If Left(lines(j), 1) = " " Then //no Chord, no comment, no multiline, no page layout command -> lyric line
+		        //print every second line in a different color
+		        If k = 0 Then
+		          edf_song_lyrics.StyledText.TextColor(start, lines(j).Len) = RGB(0,50,200)
+		          k = 1
+		        Else
+		          edf_song_lyrics.StyledText.TextColor(start, lines(j).Len) = RGB(200,150,0)
+		          k = 0
+		        End If
+		      End If
+		    End If
+		    start = start + lines(j).Len + 1
+		  Next j
+		  // CHANGE-PJ END
 		End Sub
 	#tag EndMethod
 
@@ -11834,7 +11864,7 @@ End
 	#tag EndMethod
 
 	#tag Method, Flags = &h1
-		Protected Sub CheckLyricLines(edfLyrics As SEditField)
+		Protected Sub CheckLyricLines(edfLyrics As TextArea)
 		  //+
 		  // Revised version of CheckLyricLines works on the edit field instead of a string
 		  // Goal: maintain cursor position while changing contents of the field
@@ -12895,8 +12925,48 @@ End
 		  
 		  edf_song_lyrics.Text = ""
 		  'edf_song_lyrics..ScrollBarVertical = False
-		  edf_song_lyrics.Text = SmartML.GetValue(CurrentSong.DocumentElement, "lyrics", True).FormatLocalEndOfLine
+		  
+		  // CHANGE-PJ: Second language feature (for sections ending with "L") - use StyledText instead of normal Text
+		  // -> edf_song_lyrics changed to TextArea and activate attribute "Styled"
+		  // -> in "CheckLyricLines" changed parameter type to TextArea as well
+		  edf_song_lyrics.StyledText.Text = SmartML.GetValue(CurrentSong.DocumentElement, "lyrics", True).FormatLocalEndOfLine
+		  
 		  'edf_song_lyrics.ScrollBarVertical = True
+		  
+		  // CHANGE-PJ START: Second language feature (for sections ending with "L") - similar  as in ActionSongSave -> TODO-PJ: add method for it
+		  Dim f As FontFace
+		  Dim lines(-1), section As String
+		  Dim j,k,start As Integer
+		  
+		  // set TextFont and TextSize taken from settings
+		  f = SmartML.GetValueF(App.MyMainSettings.DocumentElement, "fonts/fixed_width")
+		  edf_song_lyrics.TextFont = f.Name
+		  edf_song_lyrics.TextSize = f.Size
+		  
+		  lines = Split(edf_song_lyrics.Text, Chr(13)) // TODO-PJ: is this working on UNIX?
+		  start = 0
+		  
+		  For j = 0 To UBound(lines)
+		    If Left(lines(j), 1) = "[" Then
+		      section = Mid(lines(j), 2, Instr(2, lines(j), "]") - 2)
+		      k = 0
+		    End If
+		    
+		    If Right(section,1) = "L" Then // two-languages section
+		      If Left(lines(j), 1) = " " Then // no Chord, no comment, no multiline, no page layout command -> lyric line
+		        // print every second line in a different color
+		        If k = 0 Then
+		          edf_song_lyrics.StyledText.TextColor(start, lines(j).Len) = RGB(0,50,200)
+		          k = 1
+		        Else
+		          edf_song_lyrics.StyledText.TextColor(start, lines(j).Len) = RGB(200,150,0)
+		          k = 0
+		        End If
+		      End If
+		    End If
+		    start = start + lines(j).Len + 1
+		  Next j
+		  // CHANGE-PJ END
 		  
 		  If SmartML.GetNode(CurrentSong.DocumentElement, "style", False) = Nil Then
 		    'If CurrentSongObj.SongStyle = Nil Then
