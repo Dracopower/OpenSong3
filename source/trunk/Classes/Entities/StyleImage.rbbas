@@ -149,9 +149,23 @@ Protected Class StyleImage
 
 	#tag Method, Flags = &h0
 		Function SetImageFromFileName(Filename As String) As Boolean
+		  #if TargetMacOS then
+		    Filename = Filename.ReplaceAll("\", "/")
+		  #elseif TargetWin32 then
+		    Filename = Filename.ReplaceAll("/", "\")
+		  #elseif TargetLinux then
+		    Filename = Filename.ReplaceAll("\", "/")
+		  #endif
+
 		  Dim result As Boolean = False
-		  
 		  Dim f as FolderItem = GetFolderItem(FileName)
+		  
+		  If FileName.StartsWith("/") or FileName.StartsWith("\\") or FileName.Mid(2, 1)=":" Then 
+		    f = new FolderItem(FileName)
+		  Else
+		    f = new FolderItem( App.DocsFolder.Child("Backgrounds").AbsolutePath + Filename )
+		  End If
+		  
 		  If IsNull(f) Then
 		    If Filename <> "" Then
 		      InputBox.Message App.T.Translate("errors/unreadable_image", Filename)

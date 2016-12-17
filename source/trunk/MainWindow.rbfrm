@@ -12788,11 +12788,7 @@ End
 		      Dim s As String = SmartML.GetValue(xbacks.Child(i), "filename")
 		      
 		      If imageLink And s<>"" Then
-		        If s.StartsWith("/") or s.StartsWith("\\") or s.Mid(2, 1)=":" Then
-		          Call image.SetImageFromFileName( s )
-		        Else
-		          Call image.SetImageFromFileName( App.DocsFolder.Child("Backgrounds").AbsolutePath + s )
-		        End If
+		        Call image.SetImageFromFileName( s )
 		      Else
 		        Call image.SetImageAsString( SmartML.GetValue(xbacks.Child(i), "image") )
 		      End If
@@ -15666,12 +15662,7 @@ End
 		      image = new StyleImage()
 		      s = SmartML.GetValue(xslides.Child(i), "filename")
 		      If imageLink And s<>"" Then
-		        If s.StartsWith("/") or s.StartsWith("\\") or s.Mid(2, 1)=":" Then
-		          Call image.SetImageFromFileName( s )
-		        Else
-		          Call image.SetImageFromFileName( App.DocsFolder.Child("Backgrounds").AbsolutePath + s )
-		        End If
-		        
+		        Call image.SetImageFromFileName( s )
 		      Else
 		        Call image.SetImageAsString( SmartML.GetValue(xslides.Child(i), "image") )
 		      End If

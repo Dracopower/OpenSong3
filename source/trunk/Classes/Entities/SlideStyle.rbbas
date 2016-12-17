@@ -301,7 +301,7 @@ Protected Class SlideStyle
 		  
 		  fileName = SmartML.GetValue(xstyle, "background/@filename", False)
 		  If fileName <> "" Then
-		    If Not Background.SetImageFromFileName( App.DocsFolder.Child("Backgrounds").AbsolutePath + fileName ) Then
+		    If Not Background.SetImageFromFileName( fileName ) Then
 		      Call Background.SetImageAsString(SmartML.GetValue(xstyle, "background", False))
 		    End If
 		  Else

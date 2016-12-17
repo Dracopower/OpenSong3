@@ -135,11 +135,7 @@ Protected Module SetML
 		    img = new StyleImage()
 		    sImageFile = SmartML.GetValue(xslide, "filename")
 		    If SmartML.GetValueB(xslide.Parent.Parent, "@link", False) = True And sImageFile<>"" Then
-		      If sImageFile.StartsWith("/") or sImageFile.StartsWith("\\") or sImageFile.Mid(2, 1)=":" Then
-		        Call img.SetImageFromFileName( sImageFile )
-		      Else
-		        Call img.SetImageFromFileName( App.DocsFolder.Child("Backgrounds").AbsolutePath + sImageFile )
-		      End If
+		      Call img.SetImageFromFileName( sImageFile )
 		    Else
 		      Call img.SetImageAsString( SmartML.GetValue(xslide, "image") )
 		    End If
