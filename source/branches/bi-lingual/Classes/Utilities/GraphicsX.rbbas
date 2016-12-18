@@ -285,7 +285,7 @@ Protected Module GraphicsX
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Function DrawFontString(g As Graphics, str As String, x As Integer, y As Integer, f As FontFace, width As Integer = 0, align As String = "left", height As Integer = 0, valign As String = "top", tabs() As StyleTabsType = Nil, InsertAfterBreak as string = "", section As String = "", Style as SlideStyle = Nil) As Integer
+		Function DrawFontString(g As Graphics, str As String, x As Integer, y As Integer, f As FontFace, width As Integer = 0, align As String = "left", height As Integer = 0, valign As String = "top", tabs() As StyleTabsType = Nil, InsertAfterBreak as string = "", section As SectionMode = SectionMode.Normal, Style as SlideStyle = Nil) As Integer
 		  Profiler.BeginProfilerEntry "DrawFontString (" + str + ")"
 		  Dim dx, dy, xx, yy, i, j As Integer
 		  Dim lineCount, lineHeight, lineAscent, thisWidth As Integer
@@ -300,19 +300,19 @@ Protected Module GraphicsX
 		  // CHANGE-PJ START: Second language feature (for sections ending with "L") - change every second line to different style
 		  Dim tmpStyle, secondLanguageStyle As FontFace
 		  Dim countLinesSecond As Integer
-		  Dim separationMark As String
+		  Dim separationMark As String = ""
 		  
 		  secondLanguageStyle = f.Clone // take same style as f but some small adaptations as follows
 		  tmpStyle = f
 		  countLinesSecond = 1
 		  
-		  If section = "two-languages" Then //add separationMark to identify auto linebreaks by algorithm
-		    separationMark = Chr(244)
+		  If section = SectionMode.Bilingual Then //add separationMark to identify auto linebreaks by algorithm
+		    separationMark = SetML.SeparationMarkBilingual
 		    secondLanguageStyle.Italic = Not f.Italic // show second language as italic if f is not italic and the other way round
 		    secondLanguageStyle.Size = Floor(f.Size * Style.MultilanguageSize/100) // taken from style setting window
 		    secondLanguageStyle.ForeColor = Style.MultilanguageColor // taken from style setting window
 		  Else
-		    separationMark = "" //neutral for non two-languages sections
+		    separationMark = "" //neutral for non bilingual sections
 		  End If
 		  // CHANGE-PJ END
 		  
@@ -361,7 +361,8 @@ Protected Module GraphicsX
 		        thisWidth = 0
 		        
 		        // CHANGE-PJ START: Second language feature - calculate character length with different font size, change every second line
-		        If section = "two-languages" And Mid(str, yy, 1) <> separationMark Then // second line detected only if first character is not equal to the separationMark
+		        If section = SectionMode.Bilingual And _
+		          Mid(str, yy, 1) <> separationMark Then // second line detected only if first character is not equal to the separationMark
 		          If g.TextSize = origTextSize Then
 		            g.TextSize = secondLanguageStyle.Size
 		          Else
@@ -504,7 +505,7 @@ Protected Module GraphicsX
 		      End If
 		      
 		      // CHANGE-PJ START: Second language feature - change every second line to different style
-		      If section = "two-languages" Then
+		      If section = SectionMode.Bilingual Then
 		        If InStr(thisLine, separationMark) <> 1 Then // only change style if not line break inserted automatically above (indicated by separationMark)
 		          If tmpStyle = f And i <> 1 Then // stay in first line to f style (original body style)
 		            tmpStyle = secondLanguageStyle
@@ -549,7 +550,7 @@ Protected Module GraphicsX
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Function DrawFontString(g As Graphics, str As String, x As Integer, y As Integer, f As FontFace, borderSize as Integer, headerSize as Integer, footerSize as Integer, margins as StyleMarginType, width As Integer, align As String, height As Integer, valign As String, tabs() As StyleTabsType = Nil, InsertAfterBreak as string = "", section as String = "", Style as SlideStyle = Nil) As Integer
+		Function DrawFontString(g As Graphics, str As String, x As Integer, y As Integer, f As FontFace, borderSize as Integer, headerSize as Integer, footerSize as Integer, margins as StyleMarginType, width As Integer, align As String, height As Integer, valign As String, tabs() As StyleTabsType = Nil, InsertAfterBreak as string = "", section as SectionMode = SectionMode.Normal, Style as SlideStyle = Nil) As Integer
 		  Dim drawHeight as Integer
 		  
 		  If x < margins.Left Then
@@ -702,26 +703,26 @@ Protected Module GraphicsX
 			Visible=true
 			Group="ID"
 			InitialValue="-2147483648"
-			InheritedFrom="Object"
+			Type="Integer"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Left"
 			Visible=true
 			Group="Position"
 			InitialValue="0"
-			InheritedFrom="Object"
+			Type="Integer"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Name"
 			Visible=true
 			Group="ID"
-			InheritedFrom="Object"
+			Type="String"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Super"
 			Visible=true
 			Group="ID"
-			InheritedFrom="Object"
+			Type="String"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="ThicknessFactor"
@@ -734,7 +735,7 @@ Protected Module GraphicsX
 			Visible=true
 			Group="Position"
 			InitialValue="0"
-			InheritedFrom="Object"
+			Type="Integer"
 		#tag EndViewProperty
 	#tag EndViewBehavior
 End Module

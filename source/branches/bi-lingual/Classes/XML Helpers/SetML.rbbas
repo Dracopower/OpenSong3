@@ -38,12 +38,12 @@ Protected Module SetML
 		  Dim bodyTabs() As StyleTabsType
 		  
 		  // CHANGE-PJ: Second language feature - if last character of section name = "L" for "L"anguage -> show second language (every second line) in different style
-		  Dim section, separationMark As String
-		  If Trim(SmartML.GetValue(xslide, "@id")).Right(1) = "L" Then
-		    section = "two-languages"
-		    separationMark = Chr(244)
+		  Dim section As SectionMode = SectionMode.Normal
+		  Dim separationMark As String
+		  If IsBilingualSection(SmartML.GetValue(xslide, "@id")) Then
+		    section = SectionMode.Bilingual
+		    separationMark = SetML.SeparationMarkBilingual
 		  Else
-		    section = ""
 		    separationMark = ""
 		  End If
 		  
@@ -350,13 +350,16 @@ Protected Module SetML
 		      s = SmartML.GetValue(xslide, "body", True).FormatUnixEndOfLine
 		      SplitToArray(StringUtils.Trim(s, StringUtils.WhiteSpaces), lines, Chr(10))
 		      
+		      // CHANGE-PJ: Second language feature - save original text size
+		      Dim origTextSize As Integer
+		      origTextSize = g.TextSize
 		      
 		      ' Find the longest line
 		      MaxLineIndex = UBound(lines)
 		      For i = 0 to UBound(lines)
 		        
 		        // CHANGE-PJ START: Second language feature - calculate character length with different font size, change every second line
-		        If section = "two-languages" Then
+		        If section = SectionMode.Bilingual Then
 		          If InStr(lines(i), separationMark) <> 1 Then //only change style if not line break inserted automatically before
 		            If g.TextSize = origTextSize And i > 1 Then // stay in first line to f style (body style)
 		              g.TextSize = Floor(g.TextSize * Style.MultilanguageSize/100) // taken from style settings window
@@ -428,7 +431,7 @@ Protected Module SetML
 		    For i = 1 To UBound(lines)
 		      
 		      // CHANGE-PJ START: Second language feature - calculate character length with different font size, change every second line
-		      If section = "two-languages" Then
+		      If section = SectionMode.Bilingual Then
 		        If InStr(lines(i), separationMark) <> 1 Then //only change style if not line break inserted automatically before
 		          If g.TextSize = origTextSize And i > 1 Then // stay in first line to f style (body style)
 		            g.TextSize = Floor(g.TextSize * Style.MultilanguageSize/100) // taken from style settings window
@@ -457,7 +460,7 @@ Protected Module SetML
 		          d = Mid(line, z, 1)
 		          If d = " " and z <> 2 Then ' wrap it here
 		            lines(i) = Mid(line, x, z-x)
-		            lines.Insert i+1, InsertAfterBreak+ separationMark + Mid(line, z+1) // CHANGE-PJ: Second language feature - add separationMark in case of two-languages section to identify auto linebreak by algorithm
+		            lines.Insert i+1, InsertAfterBreak+ separationMark + Mid(line, z+1) // CHANGE-PJ: Second language feature - add separationMark in case of a bilingual section to identify auto linebreak by algorithm
 		            isWrapped = True
 		            Exit
 		          End If
@@ -471,7 +474,7 @@ Protected Module SetML
 		            If (d.Asc >= &h4E00 and d.Asc <= &h9FBF) or _
 		              (d2.Asc >= &h4E00 and d2.Asc <= &h9FBF) Then
 		              lines(i) = Mid(line, x, z-x)
-		              lines.Insert i+1,insertafterbreak+ separationMark + Mid(line, z) // CHANGE-PJ: Second language feature - add separationMark in case of two-languages section to identify auto linebreak by algorithm
+		              lines.Insert i+1,insertafterbreak+ separationMark + Mid(line, z) // CHANGE-PJ: Second language feature - add separationMark in case of a bilingual section to identify auto linebreak by algorithm
 		              isWrapped = True
 		              Exit
 		            End If
@@ -486,12 +489,12 @@ Protected Module SetML
 		        //--
 		        If Not isWrapped Then
 		          lines(i) = Mid(line, x, y-x)
-		          lines.Insert i + 1, insertafterbreak+ separationMark + Mid(line, y) // CHANGE-PJ: Second language feature - add separationMark in case of two-languages section to identify auto linebreak by algorithm
+		          lines.Insert i + 1, insertafterbreak+ separationMark + Mid(line, y) // CHANGE-PJ: Second language feature - add separationMark in case of a bilingual section to identify auto linebreak by algorithm
 		        End If
 		      ElseIf g.StringWidth(lines(i)) > UsableWidth Then ' this line is less than twice as long, but still too long: smart wrap it (EMP 09/05)
 		        ' FUTURE PROBLEM: If a later longer line would end up shrinking the text, we may not have had to wrap a prior line
 		        line = lines(i)
-		        lines.Insert i+1, insertafterbreak+ separationMark + SmartWrap(line) // CHANGE-PJ: Second language feature - add separationMark in case of two-languages section to identify auto linebreak by algorithm
+		        lines.Insert i+1, insertafterbreak+ separationMark + SmartWrap(line) // CHANGE-PJ: Second language feature - add separationMark in case of a bilingual section to identify auto linebreak by algorithm
 		        lines(i) = line
 		        'While g.StringWidth(lines(i)) > g.Width - (2*RealBorder)
 		        While g.StringWidth(lines(i)) > UsableWidth 'EMP 09/05
@@ -1120,6 +1123,12 @@ Protected Module SetML
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
+		Function IsBilingualSection(section As String) As boolean
+		  Return Trim(section).Right(1) = "L"
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
 		Function IsExternal(slide As XmlNode) As Boolean
 		  Dim slideType As String
 		  Dim external As Boolean = False
@@ -1145,6 +1154,13 @@ Protected Module SetML
 		  End Try
 		  
 		  Return external
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function SeparationMarkBilingual() As String
+		  'This actually is a const, however Xojo unfortunately does not support constant expressions
+		  Return Chr(244)
 		End Function
 	#tag EndMethod
 
@@ -1291,26 +1307,32 @@ Protected Module SetML
 	#tag EndProperty
 
 
+	#tag Enum, Name = SectionMode, Type = Integer, Flags = &h0
+		Normal
+		Bilingual
+	#tag EndEnum
+
+
 	#tag ViewBehavior
 		#tag ViewProperty
 			Name="Index"
 			Visible=true
 			Group="ID"
 			InitialValue="-2147483648"
-			InheritedFrom="Object"
+			Type="Integer"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Left"
 			Visible=true
 			Group="Position"
 			InitialValue="0"
-			InheritedFrom="Object"
+			Type="Integer"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Name"
 			Visible=true
 			Group="ID"
-			InheritedFrom="Object"
+			Type="String"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="SlideType"
@@ -1322,14 +1344,14 @@ Protected Module SetML
 			Name="Super"
 			Visible=true
 			Group="ID"
-			InheritedFrom="Object"
+			Type="String"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Top"
 			Visible=true
 			Group="Position"
 			InitialValue="0"
-			InheritedFrom="Object"
+			Type="Integer"
 		#tag EndViewProperty
 	#tag EndViewBehavior
 End Module

@@ -3937,7 +3937,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Visible         =   True
             Width           =   220
          End
-         Begin TextArea edf_song_lyrics
+         Begin SEditField edf_song_lyrics
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
@@ -12155,7 +12155,7 @@ End
 		      k = 0
 		    End If
 		    
-		    If Right(section, 1) = "L" Then //two-languages section
+		    If SetML.IsBilingualSection(section) Then //bilingual section
 		      If Left(lines(j), 1) = " " Then //no Chord, no comment, no multiline, no page layout command -> lyric line
 		        
 		        //print every second line in a different color

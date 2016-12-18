@@ -147,7 +147,7 @@ Module SongML
 
 	#tag Method, Flags = &h1
 		Protected Function DeflateString(lyrics As String, separationMark As String = "") As String
-		  // CHANGE-PJ: Second language feature - add separationMark taken as parameter (only applied for two-languages sections) -> needed to differentiate between a "real" second line and just an manual linebreak chosen by the user
+		  // CHANGE-PJ: Second language feature - add separationMark taken as parameter (only applied for bilingual sections) -> needed to differentiate between a "real" second line and just an manual linebreak chosen by the user
 		  Return ReplaceAll(ReplaceAll(lyrics, "_", ""), "|", Chr(10)+separationMark).CleanSpaces
 		End Function
 	#tag EndMethod
@@ -2195,8 +2195,8 @@ Module SongML
 		      
 		      // CHANGE-PJ: Second language feature - if last character of section name = "L" for "L"anguage -> activate separationMark (detect linebreaks inserted by algorithm)
 		      Dim separationMark As String
-		      If Trim(section).Right(1) = "L" Then
-		        separationMark = Chr(244)
+		      If SetML.IsBilingualSection(section) Then
+		        separationMark = SetML.SeparationMarkBilingual
 		      Else
 		        separationMark = ""
 		      End If
@@ -2204,7 +2204,7 @@ Module SongML
 		      sub_sections = Split(dict.Value(section), "||")
 		      For Each sub_section In sub_sections
 		        slide = SmartML.InsertChild(slides, "slide", slides.ChildCount)
-		        SmartML.SetValue(slide, "body", DeflateString(StringUtils.Trim(sub_section, StringUtils.WhiteSpaces), separationMark)) // CHANGE-PJ: added parameter separationMark (makes only a difference for two-languages sections) 
+		        SmartML.SetValue(slide, "body", DeflateString(StringUtils.Trim(sub_section, StringUtils.WhiteSpaces), separationMark)) // CHANGE-PJ: added parameter separationMark (makes only a difference for bilingual sections)
 		        If section = "default" Then
 		          SmartML.SetValue(slide, "@id", "")
 		        Else
