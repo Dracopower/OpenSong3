@@ -11757,8 +11757,6 @@ End
 		    
 		  End If
 		  
-		  edf_song_lyrics.StyledText.TextColor(0,edf_song_lyrics.Text.Len) = RGB(0,0,0) //reset color
-		  
 		  ColorizeBilingualSongtext()
 		End Sub
 	#tag EndMethod
@@ -12143,11 +12141,19 @@ End
 
 	#tag Method, Flags = &h21
 		Private Sub ColorizeBilingualSongtext()
-		  // CHANGE-PJ START: Second language feature (for sections ending with "L") - on save highlight every second line in the editor
+		  'Bilingual presentation feature (for sections ending with "L") - highlight every second line in the editor
 		  
-		  Dim lines() As String = Split(edf_song_lyrics.Text, Chr(13)) //TODO-PJ: is this working on UNIX?
+		  Dim lines() As String = Split(edf_song_lyrics.Text, SmartML.Newline.Left(1))
 		  Dim section As String = ""
 		  Dim k, start As Integer = 0
+		  
+		  // set TextFont and TextSize taken from settings
+		  Dim f As FontFace = SmartML.GetValueF(App.MyMainSettings.DocumentElement, "fonts/fixed_width")
+		  edf_song_lyrics.TextFont = f.Name
+		  edf_song_lyrics.TextSize = f.Size
+		  
+		  Dim st As StyledText = edf_song_lyrics.StyledText
+		  st.TextColor(0,edf_song_lyrics.Text.Len) = RGB(0,0,0) //reset color
 		  
 		  For j As Integer = 0 To UBound(lines)
 		    If Left(lines(j), 1) = "[" Then
@@ -12160,17 +12166,16 @@ End
 		        
 		        //print every second line in a different color
 		        If k = 0 Then
-		          edf_song_lyrics.StyledText.TextColor(start, lines(j).Len) = RGB(0,50,200)
+		          st.TextColor(start, lines(j).Len) = RGB(0,50,200)
 		          k = 1
 		        Else
-		          edf_song_lyrics.StyledText.TextColor(start, lines(j).Len) = RGB(200,150,0)
+		          st.TextColor(start, lines(j).Len) = RGB(200,150,0)
 		          k = 0
 		        End If
 		      End If
 		    End If
 		    start = start + lines(j).Len + 1
 		  Next j
-		  // CHANGE-PJ END
 		  
 		End Sub
 	#tag EndMethod
@@ -12876,6 +12881,7 @@ End
 		  Status_InSongLoading = True
 		  
 		  Dim fullpath As String = f.AbsolutePath().Mid(Songs.GetRootFolder().AbsolutePath().Len + 1)
+		  Dim index As Integer = -1
 		  
 		  If f <> Nil And f.Exists Then
 		    App.MouseCursor = System.Cursors.Wait
@@ -12883,7 +12889,6 @@ End
 		    Dim folderPath As String = fullpath.Mid(1, fullpath.Len() - f.Name().Len() - 1)
 		    folderPath = ReplaceAll(folderPath, "\", "/")
 		    
-		    Dim index As Integer = -1
 		    If folderPath = "" Then
 		      If pop_songs_song_folders.Text = Songs.GetFilterAll() Or _
 		        pop_songs_song_folders.Text = Songs.GetFilterMain() Then
@@ -12986,6 +12991,12 @@ End
 		  App.MouseCursor = Nil
 		  Status_InSongLoading = False
 		  UpdateMenuItems
+		  
+		  // CHANGE-PJ: Second language feature (for sections ending with "L") - coloring every second line to different color in editor (was not working inside LoadSongFields directly, so I put it here)
+		  If f <> Nil And f.Exists And index > -1 Then
+		    ColorizeBilingualSongtext
+		  End If
+		  
 		  
 		  Return result
 		End Function
@@ -13115,21 +13126,9 @@ End
 		  pop_song_time_sig.ListIndex = found
 		  
 		  edf_song_lyrics.Text = ""
-		  'edf_song_lyrics..ScrollBarVertical = False
-		  
-		  // CHANGE-PJ: Second language feature (for sections ending with "L") - use StyledText instead of normal Text
-		  // -> edf_song_lyrics changed to TextArea and activate attribute "Styled"
-		  // -> in "CheckLyricLines" changed parameter type to TextArea as well
 		  edf_song_lyrics.StyledText.Text = SmartML.GetValue(CurrentSong.DocumentElement, "lyrics", True).FormatLocalEndOfLine
 		  
 		  'edf_song_lyrics.ScrollBarVertical = True
-		  
-		  // set TextFont and TextSize taken from settings
-		  Dim f As FontFace = SmartML.GetValueF(App.MyMainSettings.DocumentElement, "fonts/fixed_width")
-		  edf_song_lyrics.TextFont = f.Name
-		  edf_song_lyrics.TextSize = f.Size
-		  
-		  ColorizeBilingualSongtext()
 		  
 		  If SmartML.GetNode(CurrentSong.DocumentElement, "style", False) = Nil Then
 		    'If CurrentSongObj.SongStyle = Nil Then
@@ -16930,6 +16929,20 @@ End
 		    Status_SongChanged = True
 		    EnableMenuItems
 		  End If
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub LostFocus()
+		  ColorizeBilingualSongtext
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub KeyUp(Key As String)
+		  Select Case Asc(key)
+		  Case 10, 13
+		    ColorizeBilingualSongtext
+		  End Select
+		  
 		End Sub
 	#tag EndEvent
 #tag EndEvents
