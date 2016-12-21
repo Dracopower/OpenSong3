@@ -250,6 +250,16 @@ Protected Class SlideStyle
 		  BodyEnable = SmartML.GetValueB(xStyle, "body/@enabled", true, true)
 		  BodyScale = SmartML.GetValueB(xStyle, "body/@auto_scale", true, true)
 		  
+		  // CHANGE-PJ START: Second language feature
+		  If Not SmartML.GetValueC(xStyle, "body/@multilanguage_color", MultilanguageColor, False) Then
+		    MultilanguageColor = &cdcdcdc 'standard value
+		  End If
+		  MultilanguageSize = SmartML.GetValueN(xStyle, "body/@multilanguage_size")
+		  If MultilanguageSize = 0 Then
+		    MultilanguageSize = 70 'standard value
+		  End If
+		  // CHANGE-PJ END
+		  
 		  tabsNode = SmartML.GetNode(xStyle, "body/tabs")
 		  If tabsNode <> Nil Then
 		    For i = 0 to tabsNode.ChildCount() - 1
@@ -328,6 +338,34 @@ Protected Class SlideStyle
 	#tag Method, Flags = &h0
 		Sub HighlightChorus(Assigns Value As Boolean)
 		  Highlight = Value
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function MultilanguageColor() As Color
+		  Dim C As Color
+		  C = MultilanguageColor
+		  Return C
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub MultilanguageColor(Assigns fontcolor As Color)
+		  MultilanguageColor = fontcolor
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function MultilanguageSize() As Integer
+		  Dim I As Integer
+		  I = MultilanguageSize
+		  Return I
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub MultilanguageSize(Assigns Size As Integer)
+		  MultilanguageSize = Size
 		End Sub
 	#tag EndMethod
 
@@ -567,6 +605,8 @@ Protected Class SlideStyle
 		  SmartML.SetValueN(CurrChild, "@margin-top", BodyMargins.Top)
 		  SmartML.SetValueN(CurrChild, "@margin-bottom", BodyMargins.Bottom)
 		  SmartML.SetValueF(root, thisNode, BodyFont)
+		  SmartML.SetValueN(CurrChild, "@multilanguage_size", MultilanguageSize)
+		  SmartML.SetValueC(CurrChild, "@multilanguage_color", MultilanguageColor)
 		  
 		  tabsChild = CurrChild.AppendChild(XmlDoc.CreateElement("tabs"))
 		  For i = 0 To UBound(BodyTabs)
@@ -669,6 +709,14 @@ Protected Class SlideStyle
 
 	#tag Property, Flags = &h1
 		Protected Highlight As Boolean
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
+		Private MultilanguageColor As Color = &cffffff
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
+		Private MultilanguageSize As Integer = 70
 	#tag EndProperty
 
 	#tag Property, Flags = &h1

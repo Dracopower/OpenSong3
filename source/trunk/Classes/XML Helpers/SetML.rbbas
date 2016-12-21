@@ -37,6 +37,16 @@ Protected Module SetML
 		  Dim titleMargins, subtitleMargins, bodyMargins as StyleMarginType
 		  Dim bodyTabs() As StyleTabsType
 		  
+		  // CHANGE-PJ: Second language feature - if last character of section name = "L" for "L"anguage -> show second language (every second line) in different style
+		  Dim section As SectionMode = SectionMode.Normal
+		  Dim separationMark As String
+		  If IsBilingualSection(SmartML.GetValue(xslide, "@id")) Then
+		    section = SectionMode.Bilingual
+		    separationMark = SetML.SeparationMarkBilingual
+		  Else
+		    separationMark = ""
+		  End If
+		  
 		  If Style <> Nil Then 'TODO: What if it's NIL????  Ain't gonna be pretty....
 		    bodyStyle = Style.BodyFont
 		    titleStyle = Style.TitleFont
@@ -336,14 +346,35 @@ Protected Module SetML
 		      s = SmartML.GetValue(xslide, "body", True).FormatUnixEndOfLine
 		      SplitToArray(StringUtils.Trim(s, StringUtils.WhiteSpaces), lines, Chr(10))
 		      
+		      // CHANGE-PJ: Second language feature - save original text size
+		      Dim origTextSize As Integer
+		      origTextSize = g.TextSize
+		      
 		      ' Find the longest line
 		      MaxLineIndex = UBound(lines)
 		      For i = 0 to UBound(lines)
+		        
+		        // CHANGE-PJ START: Second language feature - calculate character length with different font size, change every second line
+		        If section = SectionMode.Bilingual Then
+		          If InStr(lines(i), separationMark) <> 1 Then //only change style if not line break inserted automatically before
+		            If g.TextSize = origTextSize And i > 1 Then // stay in first line to f style (body style)
+		              g.TextSize = Floor(g.TextSize * Style.MultilanguageSize/100) // taken from style settings window
+		            ElseIf g.TextSize <> origTextSize Then
+		              g.TextSize = origTextSize
+		            End If
+		          End If
+		        End If
+		        // CHANGE-PJ END
+		        
 		        If g.StringWidth(lines(i)) > MaxLineLen Then
 		          MaxLineLen = g.StringWidth(lines(i))
 		          MaxLineIndex = i
 		        End If
 		      Next i
+		      
+		      // CHANGE-PJ: Second language feature - revert back to original text size
+		      g.TextSize = origTextSize
+		      
 		    End If
 		    '--
 		    
@@ -387,9 +418,26 @@ Protected Module SetML
 		    SplitToArray(StringUtils.Trim(s, StringUtils.WhiteSpaces), lines, Chr(10))
 		    '--
 		    
+		    // CHANGE-PJ: Second language feature - save original text size
+		    Dim origTextSize As Integer
+		    origTextSize = g.TextSize
+		    
 		    If Val(Left(lines(1), 2)) > 0 Then multiwrap = True ' If the slide starts with a number, it is probably a verse; lets force multiwrap
 		    ' Round 1: Fit to size (pre-wrap)
 		    For i = 1 To UBound(lines)
+		      
+		      // CHANGE-PJ START: Second language feature - calculate character length with different font size, change every second line
+		      If section = SectionMode.Bilingual Then
+		        If InStr(lines(i), separationMark) <> 1 Then //only change style if not line break inserted automatically before
+		          If g.TextSize = origTextSize And i > 1 Then // stay in first line to f style (body style)
+		            g.TextSize = Floor(g.TextSize * Style.MultilanguageSize/100) // taken from style settings window
+		          ElseIf g.TextSize <> origTextSize Then
+		            g.TextSize = origTextSize
+		          End If
+		        End If
+		      End If
+		      // CHANGE-PJ END
+		      
 		      If (g.StringWidth(lines(i)) > UsableWidth * 2) Or (multiwrap And g.StringWidth(lines(i)) > UsableWidth) Then
 		        ' this line is more than twice as long: multiple-wrapping
 		        ' or this line is too long and this slide has already been multiwrapped
@@ -408,7 +456,7 @@ Protected Module SetML
 		          d = Mid(line, z, 1)
 		          If d = " " and z <> 2 Then ' wrap it here
 		            lines(i) = Mid(line, x, z-x)
-		            lines.Insert i+1, InsertAfterBreak+ Mid(line, z+1)
+		            lines.Insert i+1, InsertAfterBreak+ separationMark + Mid(line, z+1) // CHANGE-PJ: Second language feature - add separationMark in case of a bilingual section to identify auto linebreak by algorithm
 		            isWrapped = True
 		            Exit
 		          End If
@@ -422,7 +470,7 @@ Protected Module SetML
 		            If (d.Asc >= &h4E00 and d.Asc <= &h9FBF) or _
 		              (d2.Asc >= &h4E00 and d2.Asc <= &h9FBF) Then
 		              lines(i) = Mid(line, x, z-x)
-		              lines.Insert i+1,insertafterbreak+ Mid(line, z)
+		              lines.Insert i+1,insertafterbreak+ separationMark + Mid(line, z) // CHANGE-PJ: Second language feature - add separationMark in case of a bilingual section to identify auto linebreak by algorithm
 		              isWrapped = True
 		              Exit
 		            End If
@@ -437,12 +485,12 @@ Protected Module SetML
 		        //--
 		        If Not isWrapped Then
 		          lines(i) = Mid(line, x, y-x)
-		          lines.Insert i + 1, insertafterbreak+Mid(line, y)
+		          lines.Insert i + 1, insertafterbreak+ separationMark + Mid(line, y) // CHANGE-PJ: Second language feature - add separationMark in case of a bilingual section to identify auto linebreak by algorithm
 		        End If
 		      ElseIf g.StringWidth(lines(i)) > UsableWidth Then ' this line is less than twice as long, but still too long: smart wrap it (EMP 09/05)
 		        ' FUTURE PROBLEM: If a later longer line would end up shrinking the text, we may not have had to wrap a prior line
 		        line = lines(i)
-		        lines.Insert i+1, insertafterbreak+SmartWrap(line)
+		        lines.Insert i+1, insertafterbreak+ separationMark + SmartWrap(line) // CHANGE-PJ: Second language feature - add separationMark in case of a bilingual section to identify auto linebreak by algorithm
 		        lines(i) = line
 		        'While g.StringWidth(lines(i)) > g.Width - (2*RealBorder)
 		        While g.StringWidth(lines(i)) > UsableWidth 'EMP 09/05
@@ -457,6 +505,9 @@ Protected Module SetML
 		        i = i + 1 ' skip the extra
 		      End If
 		    Next i
+		    
+		    // CHANGE-PJ: Second language feature - revert back to original text size
+		    g.TextSize = origTextSize
 		    
 		    Profiler.EndProfilerEntry
 		    Profiler.BeginProfilerEntry "DrawSlide>Post-shrink" ' --------------------------------------------------
@@ -485,7 +536,8 @@ Protected Module SetML
 		    Next i
 		    line = RTrim(line)
 		    
-		    Call DrawFontString(g, line, 0, HeaderSize, bodyStyle, RealBorder, 0, 0, bodyMargins, g.Width, Style.BodyAlign, MainHeight, Style.BodyVAlign, bodyTabs, insertafterbreak) 'EMP 09/05
+		    // CHANGE-PJ: Second language feature - if last character of section name = "L" for "L"anguage -> "section" and "Style" parameter added
+		    Call DrawFontString(g, line, 0, HeaderSize, bodyStyle, RealBorder, 0, 0, bodyMargins, g.Width, Style.BodyAlign, MainHeight, Style.BodyVAlign, bodyTabs, insertafterbreak, section, Style) 'EMP 09/05
 		  End If
 		  
 		  Profiler.EndProfilerEntry
@@ -1067,6 +1119,12 @@ Protected Module SetML
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
+		Function IsBilingualSection(section As String) As boolean
+		  Return Trim(section).Right(1) = "L"
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
 		Function IsExternal(slide As XmlNode) As Boolean
 		  Dim slideType As String
 		  Dim external As Boolean = False
@@ -1092,6 +1150,13 @@ Protected Module SetML
 		  End Try
 		  
 		  Return external
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function SeparationMarkBilingual() As String
+		  'This actually is a const, however Xojo unfortunately does not support constant expressions
+		  Return Chr(244)
 		End Function
 	#tag EndMethod
 
@@ -1238,26 +1303,32 @@ Protected Module SetML
 	#tag EndProperty
 
 
+	#tag Enum, Name = SectionMode, Type = Integer, Flags = &h0
+		Normal
+		Bilingual
+	#tag EndEnum
+
+
 	#tag ViewBehavior
 		#tag ViewProperty
 			Name="Index"
 			Visible=true
 			Group="ID"
 			InitialValue="-2147483648"
-			InheritedFrom="Object"
+			Type="Integer"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Left"
 			Visible=true
 			Group="Position"
 			InitialValue="0"
-			InheritedFrom="Object"
+			Type="Integer"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Name"
 			Visible=true
 			Group="ID"
-			InheritedFrom="Object"
+			Type="String"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="SlideType"
@@ -1269,14 +1340,14 @@ Protected Module SetML
 			Name="Super"
 			Visible=true
 			Group="ID"
-			InheritedFrom="Object"
+			Type="String"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Top"
 			Visible=true
 			Group="Position"
 			InitialValue="0"
-			InheritedFrom="Object"
+			Type="Integer"
 		#tag EndViewProperty
 	#tag EndViewBehavior
 End Module

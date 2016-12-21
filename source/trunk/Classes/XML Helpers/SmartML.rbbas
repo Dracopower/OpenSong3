@@ -593,8 +593,8 @@ Protected Module SmartML
 		    If Len(s) > 5 Then
 		      Dim dbg As String
 		      '
-		      ' OnSong writes "OpenSong" format claiming UTF-8 in the XML  header, but the file has a UTF-16 bytemark. 
-                      '     The XML parser throws an error
+		      ' OnSong writes "OpenSong" format claiming UTF-8 in the XML  header, but the file has a UTF-16 bytemark.
+		      '     The XML parser throws an error
 		      '     trying to load this with the encoding wrong. By empirical testing, it appears that the &HFFFE byte mark for
 		      '     a UTF-16 file in little-endian format shows up as &H001C0000 when we read the leftmost "character" of the string.
 		      '     Check for this and define the correct encoding.

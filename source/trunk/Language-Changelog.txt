@@ -1,4 +1,5 @@
 -= Version 2.2 RC =-
+style_editor/bilingual
 presentation_settings/monitor/force_16_9_preview
 presentation_settings/presentation_control (renamed from presentation_settings/misc)
 presentation_settings/presentation_control/exit_doubleclick
