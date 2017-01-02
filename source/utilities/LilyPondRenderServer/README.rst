@@ -11,7 +11,7 @@ This is also one of my first bigger learning-Python projects. So if you are a
 more advanced Python user, please, point me to all the bads in my code :-)
 
 The latest distributions can be found in the
-[dist](https://sourceforge.net/p/opensong/code/HEAD/tree/source/utilities/LilyPondRenderServer/dist)
+https://sourceforge.net/p/opensong/code/HEAD/tree/source/utilities/LilyPondRenderServer/dist
 folder
 
 Install with a command like:
