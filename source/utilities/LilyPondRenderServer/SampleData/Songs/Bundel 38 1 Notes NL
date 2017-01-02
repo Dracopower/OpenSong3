@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<song>
+  <title>B38 1 Hoe zal ik U ontvangen</title>
+  <lyrics>[N]
+ \relative c
+ {
+  \time 4/4
+  \key g \minor
+  \partial 4 bes' f' f g a bes2 bes4 d c bes bes a bes2. bes,4 f' f 
+  g a bes2 bes4 d c bes bes a bes2. bes4 d d c bes a (g) 
+  f f bes a g g f2. f4 d f g f f (ees) d d ees d c c bes2 
+  \bar "|."
+ }
+[V1]
+ Hoe zal ik U ont -- van -- gen,
+ hoe wilt Gij zijn ont -- moet,
+ der we -- reld hoogst ver -- lan -- gen,
+ des har -- ten hei -- ligst goed?
+ Wil zelf uw fak -- kel dra -- gen
+ in on -- ze duis -- ter -- nis,
+ op -- dat wat U be -- ha -- ge
+ ons klaar en ze -- ker is.
+[V2]
+ Uw Si -- on strooit U pal -- men
+ en twij -- gen voor de voet,
+ en ik breng U in psal -- men
+ mijn ju -- be -- len -- de groet.
+ Mijn hart zal_'t feest -- kleed dra -- gen
+ van al -- tijd jeug -- dig groen,
+ en van uw lof ge -- wa -- gen,
+ zo -- veel mijn lied kan doen.
+[V3]
+ Ver van de troon der tro -- nen
+ en 's_he -- mels zon -- ne -- schijn
+ wilt G'_on -- der men -- sen wo -- nen,
+ der men -- sen broe -- der zijn!
+ Met God wilt G'_ons ver -- zoe -- nen,
+ tot God heft G'_ons om -- hoog,
+ en on -- der mil -- li -- oe -- nen
+ hebt Gij ook mij in_'t oog.
+ </lyrics>
+  <author></author>
+  <copyright></copyright>
+  <hymn_number></hymn_number>
+  <presentation>V1 V2 V3</presentation>
+  <ccli></ccli>
+  <capo print="false"></capo>
+  <key></key>
+  <aka></aka>
+  <key_line></key_line>
+  <user1></user1>
+  <user2></user2>
+  <user3></user3>
+  <theme></theme>
+  <linked_songs/>
+  <tempo></tempo>
+  <time_sig></time_sig>
+  <backgrounds resize="screen" keep_aspect="true" link="true" background_as_text="false">
+  <background verse="V1">
+  <filename>Cross.jpg</filename></background></backgrounds></song>
