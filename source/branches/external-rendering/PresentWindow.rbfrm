@@ -144,6 +144,8 @@ End
 		  'MainWindow.Show
 		  'MainWindow.SetFocus
 		  
+		  m_ExternalRenderer.EndPresent()
+		  
 		  Call ResetPaint(Nil) 'This will cleanup external slide stuff
 		  
 		  App.MouseCursor = Nil
@@ -264,6 +266,7 @@ End
 		  
 		  m_videolanController = New VideolanController 'Initialise shell control for videolan
 		  m_AppLaunchShell = New Shell 'Initialise shell control for external applications
+		  m_ExternalRenderer = New ExternalRenderer
 		  m_updatingSlide = False
 		  
 		  App.DebugWriter.Write("PresentWindow.Open: Exit")
@@ -1290,8 +1293,6 @@ End
 
 	#tag Method, Flags = &h1000
 		Function KeyDownX(Key As String) As Boolean
-		  // Calling the overridden superclass constructor.
-		  Super.Constructor
 		  '
 		  ' This routine was originally where all the code to decode a keystroke was kept
 		  '
@@ -1608,6 +1609,7 @@ End
 		  
 		  App.MouseCursor = System.Cursors.Wait
 		  PresentationMode = PresentMode
+		  
 		  // Copy the set to a working copy we can change
 		  CurrentSet = New XmlDocument
 		  CurrentSet.AppendChild CurrentSet.ImportNode(setDoc.FirstChild, CopyAllChildren)
@@ -1616,6 +1618,90 @@ End
 		  'f = GetFolderItem("SetDoc.xml")
 		  'setDoc.SaveXml f
 		  '#endif
+		  
+		  '++JRC
+		  InsertBlanksIntoSet(CurrentSet, Item)
+		  VerifySlideBodies(CurrentSet)
+		  
+		  'System.DebugLog "Add blanks and confirm bodies exist"
+		  
+		  'Dim f1 As FolderItem
+		  '#if DebugBuild
+		  'f1 = GetFolderItem("CurrentSet.xml")
+		  'CurrentSet.SaveXml f1
+		  '#endif
+		  'System.DebugLog "Dumped CurrentSet"
+		  
+		  'CurrentSlide = 1
+		  'XCurrentSlide = SetML.GetSlide(CurrentSet, 1)
+		  
+		  'System.DebugLog "Setup monitors"
+		  presentScreen = SmartML.GetValueN(de, "monitors/@present") - 1
+		  controlScreen = SmartML.GetValueN(de, "monitors/@control") - 1
+		  If presentScreen < 0 Or presentScreen > OSScreenCount() - 1 Then presentScreen = 0
+		  If controlScreen < 0 Or controlScreen > OSScreenCount() -1 Then controlScreen = 0
+		  
+		  cnvSlide.Visible = False 'Prevent the canvas to redraw itself for all size changes below
+		  'System.DebugLog "Determine correct PresentMode"
+		  If PresentMode = MODE_SINGLE_SCREEN Then ' Single Screen
+		    presentScreen = controlScreen
+		    HelperActive = False
+		    MenuBarVisible = False
+		    Top = OSScreen(presentScreen).Top
+		    Left = OSScreen(presentScreen).Left
+		    Width = OSScreen(presentScreen).Width
+		    Height = OSScreen(presentScreen).Height
+		    FullScreen = True
+		    
+		  ElseIf PresentMode = MODE_PREVIEW Then ' Split Screen
+		    HelperActive = True
+		    MenuBarVisible = True
+		    presentScreen = controlScreen
+		    Top = OSScreen(presentScreen).AvailableTop + 10
+		    Left = OSScreen(presentScreen).AvailableLeft + 10
+		    availableWidth = OSScreen(presentScreen).AvailableWidth
+		    
+		    Width = availableWidth - PresentHelperWindow.Width - 30
+		    Height = Width * OSScreen(presentScreen).AvailableHeight / availableWidth ' Screen(presentScreen).Height - PresentHelperWindow.Height - 30
+		    
+		    If SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "monitors/@force_4_3_preview", False, False) Then
+		      If Width > Height Then
+		        Width = Height * 4/3
+		      Else
+		        Height = Width * 3/4
+		      End If
+		    End If
+		    
+		    If SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "monitors/@force_16_9_preview", False, False) Then
+		      If Width > Height Then
+		        Width = Height * 16/9
+		      Else
+		        Height = Width * 9/16
+		      End If
+		    End If
+		    
+		    PresentHelperWindow.Left = OSScreen(presentScreen).AvailableLeft + availableWidth - PresentHelperWindow.Width - 10
+		    PresentHelperWindow.Top = OSScreen(presentScreen).AvailableTop + OSScreen(presentScreen).Height - PresentHelperWindow.Height - 40
+		    
+		    If Not SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "snapshot/@export_preview", False, False) Then
+		      m_Snapshots = False
+		    End If
+		    
+		  ElseIf PresentMode = MODE_DUAL_SCREEN Then ' Multiple Screens
+		    HelperActive = True
+		    Top = OSScreen(presentScreen).Top
+		    Left = OSScreen(presentScreen).Left
+		    Width = OSScreen(presentScreen).Width
+		    Height = OSScreen(presentScreen).Height
+		    FullScreen = True
+		    MenuBarVisible = (presentScreen > 0) // Only show the menu bar if we're presenting on a secondary screen
+		    PresentHelperWindow.Left = OSScreen(controlScreen).Left + (OSScreen(controlScreen).Width - PresentHelperWindow.Width) / 2
+		    PresentHelperWindow.Top = OSScreen(controlScreen).Top + (OSScreen(controlScreen).Height - PresentHelperWindow.Height) / 2
+		  End If
+		  cnvSlide.Visible = True
+		  
+		  m_ExternalRenderer.Prepare(CurrentSet, Width, Height)
+		  
 		  StyleDict = New Dictionary
 		  
 		  '++JRC
@@ -1673,86 +1759,6 @@ End
 		  SmartML.SetValue de, "default_style/@index", "default_style"
 		  'System.DebugLog "Completed default_style"
 		  //--
-		  '++JRC
-		  InsertBlanksIntoSet(CurrentSet, Item)
-		  VerifySlideBodies(CurrentSet)
-		  
-		  'System.DebugLog "Add blanks and confirm bodies exist"
-		  
-		  'Dim f1 As FolderItem
-		  '#if DebugBuild
-		  'f1 = GetFolderItem("CurrentSet.xml")
-		  'CurrentSet.SaveXml f1
-		  '#endif
-		  'System.DebugLog "Dumped CurrentSet"
-		  
-		  'CurrentSlide = 1
-		  'XCurrentSlide = SetML.GetSlide(CurrentSet, 1)
-		  
-		  'System.DebugLog "Setup monitors"
-		  presentScreen = SmartML.GetValueN(de, "monitors/@present") - 1
-		  controlScreen = SmartML.GetValueN(de, "monitors/@control") - 1
-		  If presentScreen < 0 Or presentScreen > OSScreenCount() - 1 Then presentScreen = 0
-		  If controlScreen < 0 Or controlScreen > OSScreenCount() -1 Then controlScreen = 0
-		  
-		  cnvSlide.Visible = False 'Prevent the canvas to redraw itself for all size changes below
-		  'System.DebugLog "Determine correct PresentMode"
-		  If PresentMode = MODE_SINGLE_SCREEN Then ' Single Screen
-		    presentScreen = controlScreen
-		    HelperActive = False
-		    MenuBarVisible = False
-		    Top = OSScreen(presentScreen).Top
-		    Left = OSScreen(presentScreen).Left
-		    Width = OSScreen(presentScreen).Width
-		    Height = OSScreen(presentScreen).Height
-		    FullScreen = True
-		    
-		  ElseIf PresentMode = MODE_PREVIEW Then ' Split Screen
-		    HelperActive = True
-		    MenuBarVisible = True
-		    presentScreen = controlScreen
-		    Top = OSScreen(presentScreen).AvailableTop + 10
-		    Left = OSScreen(presentScreen).AvailableLeft + 10
-		    availableWidth = OSScreen(presentScreen).AvailableWidth
-		    
-		    Width = availableWidth - PresentHelperWindow.Width - 30
-		    Height = Width * OSScreen(presentScreen).AvailableHeight / availableWidth ' Screen(presentScreen).Height - PresentHelperWindow.Height - 30
-		    
-		    If SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "monitors/@force_4_3_preview", False, False) Then
-		      If Width > Height Then
-		        Width = Height * 4/3
-		      Else
-		        Height = Width * 3/4
-		      End If
-		    End If
-
-		    If SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "monitors/@force_16_9_preview", False, False) Then
-		      If Width > Height Then
-		        Width = Height * 16/9
-		      Else
-		        Height = Width * 9/16
-		      End If
-		    End If
-		    
-		    PresentHelperWindow.Left = OSScreen(presentScreen).AvailableLeft + availableWidth - PresentHelperWindow.Width - 10
-		    PresentHelperWindow.Top = OSScreen(presentScreen).AvailableTop + OSScreen(presentScreen).Height - PresentHelperWindow.Height - 40
-		    
-		    If Not SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "snapshot/@export_preview", False, False) Then
-		      m_Snapshots = False
-		    End If
-		    
-		  ElseIf PresentMode = MODE_DUAL_SCREEN Then ' Multiple Screens
-		    HelperActive = True
-		    Top = OSScreen(presentScreen).Top
-		    Left = OSScreen(presentScreen).Left
-		    Width = OSScreen(presentScreen).Width
-		    Height = OSScreen(presentScreen).Height
-		    FullScreen = True
-		    MenuBarVisible = (presentScreen > 0) // Only show the menu bar if we're presenting on a secondary screen
-		    PresentHelperWindow.Left = OSScreen(controlScreen).Left + (OSScreen(controlScreen).Width - PresentHelperWindow.Width) / 2
-		    PresentHelperWindow.Top = OSScreen(controlScreen).Top + (OSScreen(controlScreen).Height - PresentHelperWindow.Height) / 2
-		  End If
-		  cnvSlide.Visible = True
 		  
 		  //++
 		  // EMP, September 2006
@@ -2138,7 +2144,12 @@ End
 		    'SetML.DrawSlide PreviewPicture.Graphics, XCurrentSlide, xStyle
 		    ' -- New way --
 		    xStyle = SetML.GetStyle(slide)
-		    SetML.DrawSlide PreviewPicture.Graphics, slide, xStyle
+
+		    Dim external_did_draw as Boolean = m_ExternalRenderer.Render(PreviewPicture.Graphics, slide, PresentWindow.CurrentSlide)
+		    if not external_did_draw then
+		      SetML.DrawSlide PreviewPicture.Graphics, slide, xStyle
+		    end if
+
 		    curslideTransition = SetML.GetSlideTransition(slide)
 		    
 		    Profiler.EndProfilerEntry'
@@ -2584,6 +2595,10 @@ End
 
 	#tag Property, Flags = &h21
 		Private m_ClickCount As Integer = 0
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
+		m_ExternalRenderer As ExternalRenderer
 	#tag EndProperty
 
 	#tag Property, Flags = &h1

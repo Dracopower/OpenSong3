@@ -1,4 +1,5 @@
 -= Version 2.2 RC =-
+general_settings/extrender
 style_editor/bilingual
 presentation_settings/monitor/force_16_9_preview
 presentation_settings/presentation_control (renamed from presentation_settings/misc)
