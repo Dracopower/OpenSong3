@@ -416,6 +416,12 @@
       <key caption="Beveiligings sleutel"/>
       <port caption="Poort"/>
     </rcserver>
+    <extrender caption="Externe Renderer">
+      <enable caption="Externe renderer inschakelen"/>
+      <server caption="Server"/>
+      <port caption="Poort"/>
+      <timeout caption="Tijdslimiet (in ms)"/>
+    </extrender>
     <user_defined caption="Naamgeving voor instelbare velden voor liederen">
       <user1 caption="link(advanced_song_editor/user1/@caption)"/>
       <user2 caption="link(advanced_song_editor/user2/@caption)"/>

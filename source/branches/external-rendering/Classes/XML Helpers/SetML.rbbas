@@ -1005,6 +1005,10 @@ Protected Module SetML
 		      songDoc = SmartML.XDocFromFile(songf)
 		      If songDoc = Nil Then
 		        InputBox.Message App.T.Translate("errors/bad_format", SmartML.GetValue(slidegroup, "@name", False))
+		      Else
+		        ' Can be used by an external renderer.
+		        Dim pathnode as XmlNode = songDoc.FirstChild.AppendChild(songDoc.CreateElement("path"))
+		        pathnode.AppendChild(songDoc.CreateTextNode(songfolder))
 		      End If
 		    End If
 		  Else

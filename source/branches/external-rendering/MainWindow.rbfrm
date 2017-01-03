@@ -11305,6 +11305,11 @@ End
 		  '--
 		  song = song.AppendChild(setDoc.CreateElement("TEMP"))
 		  song = SmartML.ReplaceWithImportNode(song, CurrentSong.DocumentElement)
+		  
+		  ' Can be used by an external renderer.
+		  Dim pathnode as XmlNode = song.AppendChild(setDoc.CreateElement("path"))
+		  pathnode.AppendChild(setDoc.CreateTextNode(edt_songs_curr_folder.Text))
+		  
 		  StyleNode = SmartML.GetNode(song, "style")
 		  //++
 		  // If this looks weird, it's because I don't want to go chase down the other
