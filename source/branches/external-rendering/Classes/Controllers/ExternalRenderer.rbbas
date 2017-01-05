@@ -98,11 +98,12 @@ Inherits TCPSocket
 		      if mData.StringValue(0,4) <> SYNC_ID or mMsgID = 0 then
 		        System.DebugLog("Incorrect SYNC_ID or message ID, disconnected.")
 		        Disconnect()
-		        return
+		        mMsgID = 0
+		      else
+		        mData = new MemoryBlock(mData.Int32Value(8))
+		        mRead = 0
+		        //System.DebugLog("Start reading payload: " + str(mData.Size))
 		      end if
-		      mData = new MemoryBlock(mData.Int32Value(8))
-		      mRead = 0
-		      //System.DebugLog("Start reading payload: " + str(mData.Size))
 		    end if
 		  end if
 		  
@@ -122,7 +123,6 @@ Inherits TCPSocket
 		      end if
 		    end if
 		  end if
-		  
 		  
 		End Sub
 	#tag EndMethod
