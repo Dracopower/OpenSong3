@@ -11310,17 +11310,21 @@ End
 		  
 		  '++JRC Log song presentation
 		  
-		  Dim AddToLogAnswer As Boolean = True
+		  Dim AddToLogAnswer As Boolean = False
 		  
 		  'Don't log in preview mode
-		  If App.MainPreferences.GetValueB(App.kActivityLog, True) And Globals.SongActivityLog <> Nil And Mode <> PresentWindow.MODE_PREVIEW Then
-		    '++JRC Added option to prompt before adding presented songs to the activity log
+		  If App.MainPreferences.GetValueB(App.kActivityLog, True) And _
+		    Globals.SongActivityLog <> Nil And _
+		    Mode <> PresentWindow.MODE_PREVIEW Then
 		    
+		    AddToLogAnswer = True
+		    
+		    '++JRC Added option to prompt before adding presented songs to the activity log
 		    If App.MainPreferences.GetValueB(App.kPromptBeforePresenting, True) Then
 		      AddToLogAnswer = InputBox.AskYN(App.T.Translate("questions/activity_log/@caption"))
 		    End If
 		    
-		    if AddToLogAnswer Then
+		    If AddToLogAnswer Then
 		      Dim d As New Date
 		      
 		      ActLog.Append(New LogEntry(Globals.SongActivityLog))
@@ -11341,7 +11345,7 @@ End
 		      'End If
 		    End If
 		  End If
-		  '--
+		  
 		  Globals.AddToLog =AddToLogAnswer
 		  Dim sDoc() As XmlDocument = AddLinkedSongs(song, AddToLogAnswer)
 		  
