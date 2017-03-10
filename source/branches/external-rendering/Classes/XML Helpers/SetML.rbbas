@@ -252,11 +252,19 @@ Protected Module SetML
 		  Profiler.EndProfilerEntry
 		  Profiler.BeginProfilerEntry "DrawSlide>Declare 3" ' --------------------------------------------------
 		  
+		  bodyStyle.OntoGraphics g
+		  
+		  If HeaderSize < bodyMargins.Top Then
+		    HeaderSize = bodyMargins.Top
+		  End If
+		  
 		  MainHeight = g.Height - HeaderSize - FooterSize
 		  UsableWidth = g.Width - (2 * RealBorder) - bodyMargins.Left - bodyMargins.Right ' This just comes up again and again in the calcs & won't change (EMP 09/05)
 		  
-		  bodyStyle.OntoGraphics g
-		  
+		  If MainHeight > (g.Height - bodyMargins.Top - bodyMargins.Bottom) Then
+		    MainHeight = (g.Height - bodyMargins.Top - bodyMargins.Bottom)
+		  End If
+		        
 		  If hasImage Then
 		    Dim scale as Double
 		    Dim Left, Top As Integer
@@ -266,13 +274,6 @@ Protected Module SetML
 		      If resize = "screen" Then
 		        'Image was drawn before the (sub)titles
 		      ElseIf resize = "body" Then
-		        
-		        If HeaderSize < bodyMargins.Top Then
-		          HeaderSize = bodyMargins.Top
-		        End If
-		        If MainHeight > (g.Height - bodyMargins.Top - bodyMargins.Bottom) Then
-		          MainHeight = (g.Height - bodyMargins.Top - bodyMargins.Bottom)
-		        End If
 		        
 		        If keepaspect Then
 		          UsableWidth =  UsableWidth + (2 * RealBorder)

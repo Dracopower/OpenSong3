@@ -55,7 +55,8 @@ Begin Window PresentWindow Implements ScriptureReceiver
       Width           =   300
    End
    Begin Timer timerAdvance
-      Height          =   32
+      Enabled         =   True
+      Height          =   "32"
       Index           =   -2147483648
       InitialParent   =   ""
       Left            =   249
@@ -65,10 +66,12 @@ Begin Window PresentWindow Implements ScriptureReceiver
       Scope           =   0
       TabPanelIndex   =   0
       Top             =   249
-      Width           =   32
+      Visible         =   True
+      Width           =   "32"
    End
    Begin Timer timerTransition
-      Height          =   32
+      Enabled         =   True
+      Height          =   "32"
       Index           =   -2147483648
       InitialParent   =   ""
       Left            =   205
@@ -78,10 +81,12 @@ Begin Window PresentWindow Implements ScriptureReceiver
       Scope           =   0
       TabPanelIndex   =   0
       Top             =   249
-      Width           =   32
+      Visible         =   True
+      Width           =   "32"
    End
    Begin SnapshotThread m_SnapshotThread
-      Height          =   32
+      Enabled         =   True
+      Height          =   "32"
       Index           =   -2147483648
       InitialParent   =   ""
       Left            =   161
@@ -89,12 +94,16 @@ Begin Window PresentWindow Implements ScriptureReceiver
       Priority        =   5
       Scope           =   2
       StackSize       =   0
+      TabIndex        =   3
       TabPanelIndex   =   0
+      TabStop         =   True
       Top             =   249
-      Width           =   32
+      Visible         =   True
+      Width           =   "32"
    End
    Begin Timer timerClick
-      Height          =   32
+      Enabled         =   True
+      Height          =   "32"
       Index           =   -2147483648
       InitialParent   =   ""
       Left            =   0
@@ -104,7 +113,8 @@ Begin Window PresentWindow Implements ScriptureReceiver
       Scope           =   2
       TabPanelIndex   =   0
       Top             =   0
-      Width           =   32
+      Visible         =   True
+      Width           =   "32"
    End
 End
 #tag EndWindow

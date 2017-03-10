@@ -1,4 +1,6 @@
 ﻿-= Version 2.2 RC =-
+* Fix for override Style does not work correctly in Song preview mode (bug #450) (Vwout)
+* Fixed a bug where the bottom margin was not repspected for the body-rendering when no other items were rendered at the bottom of the screen.
 * Added a new feature to allow external renderers to:
 - Modify the presentation temporarily just before it's being presented
 - Mody individual sheets every time they're shown.

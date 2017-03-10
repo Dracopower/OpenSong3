@@ -11284,40 +11284,25 @@ End
 
 	#tag Method, Flags = &h0
 		Sub ActionSongPresent(mode As Integer, ItemNumber As Integer = 0)
-		  
 		  'Ask if user wants to save
-		  If NOT ActionSongAskSave Then Return 'User Canceled, Don't Present
-		  
-		  Dim setDoc As XmlDocument
-		  Dim sDoc() As XmlDocument
-		  Dim song As XmlNode
-		  Dim slideGroups As XmlNode
-		  Dim StyleNode As XmlNode
-		  Dim i As Integer
+		  If Not ActionSongAskSave Then Return 'User Canceled, Don't Present
 		  
 		  App.MouseCursor = System.Cursors.Wait
-		  setDoc = New XmlDocument
-		  song = setDoc.AppendChild(setDoc.CreateElement("set"))
+		  
+		  Dim setDoc As XmlDocument = New XmlDocument
+		  Dim song As XmlNode = setDoc.AppendChild(setDoc.CreateElement("set"))
 		  song = song.AppendChild(setDoc.CreateElement("slide_groups"))
-		  '++JRC
-		  Dim Answer As Boolean
-		  slideGroups = song
-		  '--
+		  
 		  song = song.AppendChild(setDoc.CreateElement("TEMP"))
 		  song = SmartML.ReplaceWithImportNode(song, CurrentSong.DocumentElement)
+		  
 		  
 		  ' Can be used by an external renderer.
 		  Dim pathnode as XmlNode = song.AppendChild(setDoc.CreateElement("path"))
 		  pathnode.AppendChild(setDoc.CreateTextNode(edt_songs_curr_folder.Text))
 		  
-		  StyleNode = SmartML.GetNode(song, "style")
-		  //++
-		  // If this looks weird, it's because I don't want to go chase down the other
-		  // places ToSetML is called and fix the style nodes that get passed in to start
-		  // at //style instead of the node above...Ed 19 Dec 2006
-		  //--
-		  If StyleNode <> Nil Then StyleNode = StyleNode.Parent
-		  SongML.ToSetML song, StyleNode
+		  Dim SongStyleNode As XmlNode = SmartML.GetNode(song, "style")
+		  SongML.ToSetML song, SongStyleNode
 		  
 		  '++JRC Assign an index for this set item
 		  Dim item As Integer = 1
@@ -11326,21 +11311,25 @@ End
 		  App.MouseCursor = Nil
 		  
 		  Status_Presentation = True
-		  
 		  Globals.Status_Presentation = True
 		  
 		  '++JRC Log song presentation
 		  
+		  Dim AddToLogAnswer As Boolean = False
+		  
 		  'Don't log in preview mode
-		  If App.MainPreferences.GetValueB(App.kActivityLog, True) And Globals.SongActivityLog <> Nil And Mode <> PresentWindow.MODE_PREVIEW Then
-		    '++JRC Added option to prompt before adding presented songs to the activity log
+		  If App.MainPreferences.GetValueB(App.kActivityLog, True) And _
+		    Globals.SongActivityLog <> Nil And _
+		    Mode <> PresentWindow.MODE_PREVIEW Then
 		    
-		    Answer = True
+		    AddToLogAnswer = True
+		    
+		    '++JRC Added option to prompt before adding presented songs to the activity log
 		    If App.MainPreferences.GetValueB(App.kPromptBeforePresenting, True) Then
-		      Answer = InputBox.AskYN(App.T.Translate("questions/activity_log/@caption"))
+		      AddToLogAnswer = InputBox.AskYN(App.T.Translate("questions/activity_log/@caption"))
 		    End If
 		    
-		    if Answer Then
+		    If AddToLogAnswer Then
 		      Dim d As New Date
 		      
 		      ActLog.Append(New LogEntry(Globals.SongActivityLog))
@@ -11361,20 +11350,19 @@ End
 		      'End If
 		    End If
 		  End If
-		  '--
-		  Globals.AddToLog = Answer
 		  
-		  '++JRC
+		  Globals.AddToLog =AddToLogAnswer
+		  Dim sDoc() As XmlDocument = AddLinkedSongs(song, AddToLogAnswer)
 		  
-		  sDoc = AddLinkedSongs(song, Answer)
-		  
+		  Dim AddLinkedSongsAnswer As Boolean = True
 		  If UBound(sDoc) >= 0 And SmartML.GetValueB(App.MyMainSettings.DocumentElement, "linked_songs/@prompt", True) Then
-		    Answer = InputBox.AskYN(App.T.Translate("questions/linked_songs/@caption"))
+		    AddLinkedSongsAnswer = InputBox.AskYN(App.T.Translate("questions/linked_songs/@caption"))
 		  End If
 		  
-		  If Answer Then
+		  If AddLinkedSongsAnswer Then
+		    Dim slideGroups As XmlNode = song
 		    
-		    For i = 0 To UBound(sDoc)
+		    For i As Integer = 0 To UBound(sDoc)
 		      
 		      item = item + 1
 		      song = slideGroups
@@ -11382,12 +11370,9 @@ End
 		      song = SmartML.ReplaceWithImportNode(song, sDoc(i).DocumentElement)
 		      '++JRC Assign an index for this set item
 		      SmartML.SetValueN(song, "@ItemNumber", item)
-		      StyleNode = SmartML.GetNode(song, "style")
-		      If StyleNode <> Nil Then StyleNode = StyleNode.Parent
-		      SongML.ToSetML song, StyleNode
+		      SongML.ToSetML song, SongStyleNode
 		      
 		    Next i
-		    
 		  End If
 		  '--
 		  

@@ -1191,11 +1191,11 @@ Biçemini değiştirmek için slaytı tıklayın.</body>
 
 
   <subtitles caption="Alt Başlıklar" head1="Sırala" head2="Etkin" head3="Açıklama">
-    <row0 caption="Telif|telif"/>
-    <row1 caption="Yazar|yazar"/>
-    <row2 caption="İlahi numarası|ilahi_numarası"/>
-    <row3 caption="CCLI Şarkı Numarası|ccli_numarası"/>
-    <row4 caption="CCLI Lisans Numarası|ccli_lisansı"/>
+    <row0 caption="Telif|copyright"/>
+    <row1 caption="Yazar|author"/>
+    <row2 caption="İlahi numarası|hymn_number"/>
+    <row3 caption="CCLI Şarkı Numarası|ccli_number"/>
+    <row4 caption="CCLI Lisans Numarası|ccli_license"/>
   </subtitles>
 
   <shared>
