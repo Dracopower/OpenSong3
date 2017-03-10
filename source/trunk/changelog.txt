@@ -1,6 +1,11 @@
 ﻿-= Version 2.2 RC =-
 * Fix for override Style does not work correctly in Song preview mode (bug #450) (Vwout)
 * Fixed a bug where the bottom margin was not repspected for the body-rendering when no other items were rendered at the bottom of the screen.
+* Added a new feature to allow external renderers to:
+- Modify the presentation temporarily just before it's being presented
+- Mody individual sheets every time they're shown.
+- Render individual sheets and provide the image to show.
+- Add sheets after the current sheet during the presentation.
 * Add new feature for bilingual songs: rendering a second language in a different style (thanks philipp)
 - Different styles will be applied to every second song line when the song section name ends with 'L'
 - The size and color can be adjusted in the presentation styles

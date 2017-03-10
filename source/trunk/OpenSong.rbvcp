@@ -242,6 +242,7 @@ Interface=RESTProtocolHandler;Classes/Controllers/REST/RESTProtocolHandler.rbbas
 Class=RESTHttpHandler;Classes/Controllers/REST/RESTHttpHandler.rbbas;&h2C8DAFFF;&h3C5B2FFF;false
 Class=RESTWebSocketHandler;Classes/Controllers/REST/RESTWebSocketHandler.rbbas;&h5075DFFF;&h3C5B2FFF;false
 Interface=iStatusNotifier;Classes/Interfaces/iStatusNotifier.rbbas;&h7E1537FF;&h227B4962;false
+Class=ExternalRenderer;Classes/Controllers/ExternalRenderer.rbbas;&h43F1CFFF;&h6B93A7F1;false
 BuildSteps=Build Automation;Build Automation.xojo_code;&h48CAB32;&h0;false
 AppMenuBar=MainMenu
 MajorVersion=2

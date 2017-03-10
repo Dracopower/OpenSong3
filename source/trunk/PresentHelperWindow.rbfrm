@@ -1485,7 +1485,10 @@ End
 		  Else
 		    // Catch a race condition between this Paint event and PresentWindow still initializing
 		    Try
-		      SetML.DrawSlide g, nextSlide, SetML.GetStyle(nextSlide)
+		      Dim external_did_draw as Boolean = PresentWindow.m_ExternalRenderer.Render(g, nextSlide, PresentWindow.CurrentSlide + 1)
+		      if not external_did_draw then
+		        SetML.DrawSlide g, nextSlide, SetML.GetStyle(nextSlide)
+		      End If
 		    Catch e As NilObjectException
 		      // Just make it black for the moment
 		      g.ForeColor = RGB(0,0,0)

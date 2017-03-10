@@ -416,6 +416,12 @@
       <key caption="Authentication key"/>
       <port caption="Port"/>
     </rcserver>
+    <extrender caption="External Renderer">
+      <enable caption="Enable external renderer"/>
+      <server caption="Server"/>
+      <port caption="Port"/>
+      <timeout caption="Timeout (in ms)"/>
+    </extrender>
     <user_defined caption="Naming for user defined song fields">
       <user1 caption="link(advanced_song_editor/user1/@caption)"/>
       <user2 caption="link(advanced_song_editor/user2/@caption)"/>

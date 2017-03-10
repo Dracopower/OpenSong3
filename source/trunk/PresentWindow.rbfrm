@@ -154,6 +154,8 @@ End
 		  'MainWindow.Show
 		  'MainWindow.SetFocus
 		  
+		  m_ExternalRenderer.EndPresent()
+		  
 		  Call ResetPaint(Nil) 'This will cleanup external slide stuff
 		  
 		  App.MouseCursor = Nil
@@ -274,6 +276,7 @@ End
 		  
 		  m_videolanController = New VideolanController 'Initialise shell control for videolan
 		  m_AppLaunchShell = New Shell 'Initialise shell control for external applications
+		  m_ExternalRenderer = New ExternalRenderer
 		  m_updatingSlide = False
 		  
 		  App.DebugWriter.Write("PresentWindow.Open: Exit")
@@ -1616,6 +1619,7 @@ End
 		  
 		  App.MouseCursor = System.Cursors.Wait
 		  PresentationMode = PresentMode
+		  
 		  // Copy the set to a working copy we can change
 		  CurrentSet = New XmlDocument
 		  CurrentSet.AppendChild CurrentSet.ImportNode(setDoc.FirstChild, CopyAllChildren)
@@ -1624,63 +1628,7 @@ End
 		  'f = GetFolderItem("SetDoc.xml")
 		  'setDoc.SaveXml f
 		  '#endif
-		  StyleDict = New Dictionary
 		  
-		  '++JRC
-		  NumberOfItems =Val(setDoc.DocumentElement.GetAttribute("NumberOfItems"))
-		  
-		  slide_groups = SmartML.GetNode(CurrentSet.DocumentElement, "slide_groups", True)
-		  slide_group = slide_groups.FirstChild
-		  'System.DebugLog "Starting While..."
-		  While slide_group <> Nil
-		    
-		    //++EMP
-		    // If the current group has a style, add it to the style objects dictionary
-		    // N.B.: This WILL break if slide-level styles are ever implemented
-		    // Under RB 5.5.5 I tried to do this outside this While with
-		    // StyleNodes = CurrentSet.Xql("//style") to get them all regardless of depth
-		    // but RB kept throwing an "assertion failed" error both with the debug
-		    // and production builds.
-		    // With the current (V1.0) design, this is a little more efficient anyway
-		    // since we don't keep reparsing the set's XML.
-		    
-		    StyleNode = SmartML.GetNode(slide_group, "style", False)
-		    If StyleNode <> Nil Then
-		      tempSlideStyle = New SlideStyle(StyleNode)
-		      // We'll just use the dictionary index as the key; this makes it unique if unimaginative
-		      StyleDict.Value(str(StyleDict.Count)) = tempSlideStyle
-		      '++JRC unnecessary as we will overwrite StyleNode anyway
-		      'StyleNode.SetAttribute "index", Str(StyleDict.Count - 1)
-		      // Going for broke here: Replace the style node with a new one that just has the index...
-		      NewStyleNode = CurrentSet.CreateElement("style")
-		      NewStyleNode.SetAttribute "index", Str(StyleDict.Count - 1)
-		      StyleNode = SmartML.ReplaceWithImportNode(StyleNode, NewStyleNode)
-		    End If
-		    //--EMP
-		    slide_group = slide_group.NextSibling
-		    'System.DebugLog "Next Slide Group"
-		    If slide_group <> Nil Then
-		      'System.DebugLog "Slide Group is " + smartml.GetValue(slide_group, "@name") + ", a " + SmartML.GetValue(slide_group, "@type")
-		    End If
-		  Wend
-		  
-		  'System.DebugLog "Ending While"
-		  
-		  //++EMP
-		  // Now handle  the default styles...
-		  'System.DebugLog "Acquire Defaults"
-		  de = App.MyPresentSettings.DocumentElement
-		  StyleNode = SmartML.GetNode(de, "scripture_style")
-		  tempSlideStyle = New SlideStyle(StyleNode)
-		  StyleDict.Value("scripture_style") = tempSlideStyle
-		  SmartML.SetValue de, "scripture_style/@index", "scripture_style"
-		  'System.DebugLog "Completed scripture_style"
-		  StyleNode = SmartML.GetNode(de, "default_style")
-		  tempSlideStyle = New SlideStyle(StyleNode)
-		  StyleDict.Value("default_style") = tempSlideStyle
-		  SmartML.SetValue de, "default_style/@index", "default_style"
-		  'System.DebugLog "Completed default_style"
-		  //--
 		  '++JRC
 		  InsertBlanksIntoSet(CurrentSet, Item)
 		  VerifySlideBodies(CurrentSet)
@@ -1761,6 +1709,66 @@ End
 		    PresentHelperWindow.Top = OSScreen(controlScreen).Top + (OSScreen(controlScreen).Height - PresentHelperWindow.Height) / 2
 		  End If
 		  cnvSlide.Visible = True
+		  
+		  m_ExternalRenderer.Prepare(CurrentSet, Width, Height)
+		  
+		  StyleDict = New Dictionary
+		  
+		  '++JRC
+		  NumberOfItems =Val(setDoc.DocumentElement.GetAttribute("NumberOfItems"))
+		  
+		  slide_groups = SmartML.GetNode(CurrentSet.DocumentElement, "slide_groups", True)
+		  slide_group = slide_groups.FirstChild
+		  'System.DebugLog "Starting While..."
+		  While slide_group <> Nil
+		    
+		    //++EMP
+		    // If the current group has a style, add it to the style objects dictionary
+		    // N.B.: This WILL break if slide-level styles are ever implemented
+		    // Under RB 5.5.5 I tried to do this outside this While with
+		    // StyleNodes = CurrentSet.Xql("//style") to get them all regardless of depth
+		    // but RB kept throwing an "assertion failed" error both with the debug
+		    // and production builds.
+		    // With the current (V1.0) design, this is a little more efficient anyway
+		    // since we don't keep reparsing the set's XML.
+		    
+		    StyleNode = SmartML.GetNode(slide_group, "style", False)
+		    If StyleNode <> Nil Then
+		      tempSlideStyle = New SlideStyle(StyleNode)
+		      // We'll just use the dictionary index as the key; this makes it unique if unimaginative
+		      StyleDict.Value(str(StyleDict.Count)) = tempSlideStyle
+		      '++JRC unnecessary as we will overwrite StyleNode anyway
+		      'StyleNode.SetAttribute "index", Str(StyleDict.Count - 1)
+		      // Going for broke here: Replace the style node with a new one that just has the index...
+		      NewStyleNode = CurrentSet.CreateElement("style")
+		      NewStyleNode.SetAttribute "index", Str(StyleDict.Count - 1)
+		      StyleNode = SmartML.ReplaceWithImportNode(StyleNode, NewStyleNode)
+		    End If
+		    //--EMP
+		    slide_group = slide_group.NextSibling
+		    'System.DebugLog "Next Slide Group"
+		    If slide_group <> Nil Then
+		      'System.DebugLog "Slide Group is " + smartml.GetValue(slide_group, "@name") + ", a " + SmartML.GetValue(slide_group, "@type")
+		    End If
+		  Wend
+		  
+		  'System.DebugLog "Ending While"
+		  
+		  //++EMP
+		  // Now handle  the default styles...
+		  'System.DebugLog "Acquire Defaults"
+		  de = App.MyPresentSettings.DocumentElement
+		  StyleNode = SmartML.GetNode(de, "scripture_style")
+		  tempSlideStyle = New SlideStyle(StyleNode)
+		  StyleDict.Value("scripture_style") = tempSlideStyle
+		  SmartML.SetValue de, "scripture_style/@index", "scripture_style"
+		  'System.DebugLog "Completed scripture_style"
+		  StyleNode = SmartML.GetNode(de, "default_style")
+		  tempSlideStyle = New SlideStyle(StyleNode)
+		  StyleDict.Value("default_style") = tempSlideStyle
+		  SmartML.SetValue de, "default_style/@index", "default_style"
+		  'System.DebugLog "Completed default_style"
+		  //--
 		  
 		  //++
 		  // EMP, September 2006
@@ -2146,7 +2154,12 @@ End
 		    'SetML.DrawSlide PreviewPicture.Graphics, XCurrentSlide, xStyle
 		    ' -- New way --
 		    xStyle = SetML.GetStyle(slide)
-		    SetML.DrawSlide PreviewPicture.Graphics, slide, xStyle
+
+		    Dim external_did_draw as Boolean = m_ExternalRenderer.Render(PreviewPicture.Graphics, slide, PresentWindow.CurrentSlide)
+		    if not external_did_draw then
+		      SetML.DrawSlide PreviewPicture.Graphics, slide, xStyle
+		    end if
+
 		    curslideTransition = SetML.GetSlideTransition(slide)
 		    
 		    Profiler.EndProfilerEntry'
@@ -2592,6 +2605,10 @@ End
 
 	#tag Property, Flags = &h21
 		Private m_ClickCount As Integer = 0
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
+		m_ExternalRenderer As ExternalRenderer
 	#tag EndProperty
 
 	#tag Property, Flags = &h1
