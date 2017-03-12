@@ -55,7 +55,8 @@ class LilyPondRenderer:
                         filenames[int(basename)] = pngfile
                     else:
                         filenames[1] = pngfile
-            for index, filename in filenames.items():
+            for index in sorted(filenames.keys()):
+                filename = filenames[index]
                 newname = song.MakeFileName(index)
                 os.rename( path.join(self.workdir, filename), path.join(songfolder, newname) )
                 song.files.append(newname)
