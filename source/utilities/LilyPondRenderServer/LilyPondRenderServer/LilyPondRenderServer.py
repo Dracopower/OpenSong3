@@ -17,11 +17,19 @@ import xml.etree.ElementTree as ET
 from os import path
 import os
 
+# Some global configuration data
+myappname='LilyPondRenderer'
+myappauthor='OpenSong'
+
 # We have a global renderer and song manager.
 renderer = LilyPondRenderer()        
 manager = None
 
 class LilyPondRenderServer(ExternalRenderer):
+
+    defaultport = 8083
+    defaulthost = 'localhost'
+    defaultcommand = 'cd "{workdir}" ; lilypond -ddelete-intermediate-files --png -dresolution=400 "{lilypondfile}"'
 
     def __init__(self, socket):
         ExternalRenderer.__init__(self, socket)
@@ -30,6 +38,8 @@ class LilyPondRenderServer(ExternalRenderer):
 
     def GenerateSongSheets(self, slidesnode, songpath, name, lyrics, versestorender):
         verses = {}
+
+        # Split the lyrics in verses
         lines = lyrics.splitlines()
         verseid = ''
         for line in lines:
@@ -39,11 +49,16 @@ class LilyPondRenderServer(ExternalRenderer):
             else:
                 if verseid:
                     verses[verseid] = verses[verseid] + line + '\n'
-        notes = ''
-        if 'N' in verses:
-            notes = verses['N']
+        # Create the songs and song sheets for each selected verse.
         for verseid in versestorender:
             if verseid in verses:
+                notesid = 'N' + verseid.replace('V', '')
+                if notesid in verses:
+                    notes = verses[notesid]
+                elif 'N' in verses:
+                    notes = verses['N']
+                else:
+                    continue
                 song = SongRecord(songpath, name, name, verseid, notes, verses[verseid])
                 available, song = manager.GetOrSchedule(song)
                 if available:
@@ -142,6 +157,21 @@ class LilyPondRenderServer(ExternalRenderer):
             result = xmltext.encode()
         return command, result, extrasheets
 
+    def DefaultCacheDir():
+        return appdirs.user_cache_dir(appname=myappname, appauthor=myappauthor)
+
+    def DefaultCacheRoot():
+        return path.join(LilyPondRenderServer.DefaultCacheDir(), 'cache')
+
+    def DefaultWorkDir():
+        return path.join(LilyPondRenderServer.DefaultCacheDir(), 'workdir')
+
+    def DefaultThreadCount():
+        defaultthreadcount = multiprocessing.cpu_count() - 1
+        if defaultthreadcount < 1:
+            defaultthreadcount = 1
+        return defaultthreadcount
+
 class LilyPondRendererHandler(socketserver.BaseRequestHandler):
     """
     The RequestHandler class for our server.
@@ -159,40 +189,32 @@ class LilyPondRendererHandler(socketserver.BaseRequestHandler):
         print("I: Session ended")
 
 def runserver():
-    cachedir = appdirs.user_cache_dir(appname='OpenSongLilyPondRenderer', appauthor='OpenSong')
-    defaultcachedir = path.join(cachedir, 'cache')
-    defaultworkdir = path.join(cachedir, 'workdir')
-    defaultthreadcount = multiprocessing.cpu_count() - 1
-    if defaultthreadcount < 1:
-        defaultthreadcount = 1
+    defaulttemplate = path.join(appdirs.user_config_dir(appname=myappname, appauthor=myappauthor), 'Template.ly')
 
     parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter,
         description='External renderer for OpenSong using LilyPond to render songs with notes.')
-    parser.add_argument('-p', '--port', type=int, default=8083, help='The port to use to listen to for OpenSong render commands')
-    parser.add_argument('--host', default='localhost', help='The host to use when listening')
-    parser.add_argument('-t', '--lilypondtemplate', default='Template.ly', 
+    parser.add_argument('-p', '--port', type=int, default=LilyPondRenderServer.defaultport, help='The port to use to listen to for OpenSong render commands')
+    parser.add_argument('--host', default=LilyPondRenderServer.defaulthost, help='The host to use when listening')
+    parser.add_argument('-t', '--lilypondtemplate', default=defaulttemplate, 
         help='The LilyPond template file used to create a .ly file for rendering with LilyPond. '
         'Available substitutes within the file are: $(osrtitle), $(osrcopyright), $(osrauthor), $(osrnotes), $(osrverse), $(osrlyrics)')
-    parser.add_argument('-c', '--lilypondcommand', default='cd "{workdir}" ; lilypond -ddelete-intermediate-files $include --png -dresolution=400 "{lilypondfile}"', 
+    parser.add_argument('-c', '--lilypondcommand', default=LilyPondRenderServer.defaultcommand, 
         help='The lilypond shell command to execute for rendering. Use {workdir} and {lilypondfile} to be substituted with the respective values.')
-    parser.add_argument('-w', '--workdir', default=defaultworkdir, help='Folder used as temporary work directory for LilyPond')
-    parser.add_argument('-s', '--cachedir', default=defaultcachedir, help='Folder used as cache to store the generated images')
+    parser.add_argument('-w', '--workdir', default=LilyPondRenderServer.DefaultWorkDir(), help='Folder used as temporary work directory for LilyPond')
+    parser.add_argument('-s', '--cachedir', default=LilyPondRenderServer.DefaultCacheDir(), help='Folder used as cache to store the generated images')
     parser.add_argument('--keeply', action='store_true', default=False, help='Do not delete the .ly files from the workdir')
-    parser.add_argument('--threads', type=int, default=defaultthreadcount, help='The amount or parallel worker threads for rendering.')
+    parser.add_argument('--threads', type=int, default=LilyPondRenderServer.DefaultThreadCount(), help='The amount or parallel worker threads for rendering.')
     args = parser.parse_args()
-
-    # Make sure the cache and work folders are there
-    os.makedirs(args.workdir, exist_ok=True)
-    os.makedirs(args.cachedir, exist_ok=True)
 
     # The global ones!
     global renderer
     global manager
-    renderer.keeplyfile = args.keeply
-    renderer.templatefile = args.lilypondtemplate
-    renderer.rendercommand = args.lilypondcommand
-    renderer.workdir = args.workdir
-    renderer.cachedir = args.cachedir
+    renderer.keeplyfile     = args.keeply
+    renderer.templatefile   = args.lilypondtemplate
+    renderer.rendercommand  = args.lilypondcommand
+    renderer.workdir        = args.workdir
+    renderer.cachedir       = args.cachedir
+    renderer.Initialize()
     manager = SongManager(renderer, args.threads)
 
     # Create the server

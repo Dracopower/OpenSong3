@@ -7,12 +7,46 @@ from .SongRecord import SongRecord
 class LilyPondRenderer:
 
     def __init__(self):
-        # self.keeplyfile = False
-        # self.workdir = "/home/patrick/Dropbox/Python/OSLilyPondRenderServer/workdir"
-        # self.cachedir = "/home/patrick/Dropbox/Python/OSLilyPondRenderServer/cache"
-        # self.templatefile = "/home/patrick/Dropbox/Python/OSLilyPondRenderServer/Template.ly"
-        # self.rendercommand = './renderlilypond "{workdir}" "{lilypondfile}"'
         pass
+
+    def Initialize(self):
+        # Make sure the cache and work folders are there
+        os.makedirs(self.workdir, exist_ok=True)
+        os.makedirs(self.cachedir, exist_ok=True)
+        if not path.isfile(self.templatefile):
+            os.makedirs(path.dirname(self.templatefile), exist_ok=True)
+            with open(self.templatefile, "w") as tfile:
+                tfile.write(r"""\version "2.16.0"
+
+% With 300 dpi, this will result in a 1920 x 1080 = Full HD image.
+%#(set! paper-alist (cons '("Full-HD" . (cons (* 6.4 in) (* 3.6 in))) paper-alist))
+%\paper { #(set-paper-size "Full-HD") print-page-number = ##f }
+
+% With 400 dpi, this will result in a 1920 x 1080 = Full HD image with bigger scores.
+% = 400dpi * 4.8" x 400dpi * 2.7" = 1920 x 1080
+#(set! paper-alist (cons '("Full-HD" . (cons (* 4.8 in) (* 2.7 in))) paper-alist))
+\paper { #(set-paper-size "Full-HD") print-page-number = ##f }
+
+\header {
+  title = \markup \fontsize #-3 "$(osrtitle): $(osrverse)"
+  copyright = "$(osrcopyright)"
+  composer = "$(osrauthor)"
+  tagline = ""
+}
+
+\score 
+{
+  <<
+    \new Staff \new Voice = "verse" 
+    $(osrnotes)
+    \new Lyrics \lyricsto "verse" 
+    \lyricmode 
+    { 
+      $(osrlyrics)
+    } 
+  >> 
+}
+""")
 
     def RenderToCache(self, song):
         try:
@@ -20,9 +54,9 @@ class LilyPondRenderer:
             # LilyPond rendering command to render the files.
             verse = song.verse
             if verse.startswith('V'):
-                verse = verse[1:] + '.'
-            elif verse == 'C':
-                verse = 'Refrein:'
+                verse = verse[1:]
+            elif verse.startswith('C'):
+                verse = 'Refrein'
             with open(self.templatefile) as file:
                 template = file.read()
             for source, destenation in [
