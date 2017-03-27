@@ -1646,6 +1646,7 @@ End
 		  'XCurrentSlide = SetML.GetSlide(CurrentSet, 1)
 		  
 		  'System.DebugLog "Setup monitors"
+		  de = App.MyPresentSettings.DocumentElement
 		  presentScreen = SmartML.GetValueN(de, "monitors/@present") - 1
 		  controlScreen = SmartML.GetValueN(de, "monitors/@control") - 1
 		  If presentScreen < 0 Or presentScreen > OSScreenCount() - 1 Then presentScreen = 0
@@ -1757,7 +1758,6 @@ End
 		  //++EMP
 		  // Now handle  the default styles...
 		  'System.DebugLog "Acquire Defaults"
-		  de = App.MyPresentSettings.DocumentElement
 		  StyleNode = SmartML.GetNode(de, "scripture_style")
 		  tempSlideStyle = New SlideStyle(StyleNode)
 		  StyleDict.Value("scripture_style") = tempSlideStyle
