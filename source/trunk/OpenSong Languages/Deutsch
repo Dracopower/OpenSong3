@@ -167,7 +167,7 @@
       <move_down caption="Nach unten">Verschiebt den aktuellen Eintrag um eine Position nach unten.</move_down>
       <remove caption="Löschen">Löscht den aktuellen Eintrag aus dem Set.</remove>
       <copy caption="Kopieren">Dupliziert den aktuellen Eintrag.</copy>
-      <paste caption="link(shared/paste/@caption)">Fügt den Eintrag aus der Zwischenablage nach dem aktuellen Eintrag ein.</paste>
+      <paste caption="Einfügen">Fügt den Eintrag aus der Zwischenablage nach dem aktuellen Eintrag ein.</paste>
       <store caption="Speichern">Speichert Änderungen am aktuellen Eintrag. Es wird nicht das Set gespeichert. Klicken Sie dazu auf "Aktuelles Set|Speichern".</store>
       <presentitem caption="link(sets_mode/current_set/present/@caption)">Startet die Presentation angefangen beim aktuellen Eintrag im Set. Sie können wählen zwischen: Aktueller Monitor (Einzelmonitor), Zweiter Monitor (Multi-Monitor), Vorschau des Multi-Monitor-Modus auf dem aktuellen Bildschirm (Multi-Monitor-Vorschau).
         <single_screen caption="link(sets_mode/current_set/present/single_screen/@caption)"/>
@@ -210,7 +210,7 @@
     <notes caption="Notizen">Die Notizen werden in der Präsentationssteuerung angezeigt.</notes>
     <insert caption="link(shared/insert/@caption)"/>
     <ins_slide caption="Neue Folie">Erstellt eine weitere Folie in diesem Eintrag. Alle Folien haben den gleichen Titel, Untertitel und Stil. Auf die Folien eines Eintrags können die Funktionen "Automatisch weiterschalten" und "Wiederholen" angewandt werden.</ins_slide>
-    <loop caption="Wiederholen">Ist diese Option aktiviert, springt OpenSong zur ersten Folie dieses Eintrags, nachdem die letzte Folie dieses Eintrags erreicht wurde.</loop>
+    <loop caption="Wiederholen">Ist diese Option aktiviert, springt OpenSong zur ersten Folie dieser Gruppe, nachdem die letzte Folie dieser Gruppe erreicht wurde. Eine Gruppe ist eine Reihe aufeinanderfolgender Einträge mit gleichem Namen</loop>
     <print caption="Auf Ablaufplan drucken">Deaktivieren Sie diese Option, wenn Sie nicht möchten, dass dieser Eintrag auf dem gedruckten Ablaufplan erscheint.</print>
     <transition caption="Überblendung verwenden">Geben Sie an, ob beim Wechsel zwischen Folien dieses Eintrags Überblendungen verwendet werden sollen.</transition>
     <auto_advance caption="Automatisch weiterschalten nach">Geben Sie die Zeit in Sekunden an, nach der automatisch zur nächsten Folie in diesem Eintrag geschaltet wird.</auto_advance>
@@ -224,7 +224,7 @@
     <subtitle caption="link(slide_editor/subtitle/@caption)">link(slide_editor/subtitle)</subtitle>
     <descriptions caption="Bildbeschreibung im Untertitel">Fügt die Bildbeschreibung dem Untertitel hinzu.</descriptions>
     <name caption="link(slide_editor/name/@caption)">link(slide_editor/name)</name>
-    <images caption="Bilder" head1="Vorschau" head2="beschreibung">Liste der Bilder, die zur Diaschau gehören. Ziehen Sie Bilder auf diese Liste um auf einfache Weise Bilder hinzuzufügen.</images>
+    <images caption="Bilder" head1="Vorschau" head2="Beschreibung">Liste der Bilder, die zur Diaschau gehören. Ziehen Sie Bilder auf diese Liste um auf einfache Weise Bilder hinzuzufügen.</images>
     <fit_to_screen caption="link(general_settings/imagedefaults/fit_to_screen/@caption)">link(general_settings/imagedefaults/fit_to_screen)</fit_to_screen>
     <fit_to_body caption="link(general_settings/imagedefaults/fit_to_body/@caption)">link(general_settings/imagedefaults/fit_to_body)</fit_to_body>
     <keepaspect caption="link(general_settings/imagedefaults/keepaspect/@caption)">link(general_settings/imagedefaults/keepaspect)</keepaspect>
@@ -303,7 +303,7 @@
   <powerpoint_slides>
     <header caption="PowerPoint-Präsentation"/>
     <name caption="Name">Text, der in der Präsentationssteuerung angezeigt wird. Er wird in der Präsentation nicht angezeigt.</name>
-    <file caption="PowerPoint-Datei">Dateinamen der PowerPoint-Präsentation die angezeigt werden soll.</file>
+    <file caption="PowerPoint-Datei">Dateiname der PowerPoint-Präsentation die angezeigt werden soll.</file>
   </powerpoint_slides>
 
   <song_search title="Liedersuche">
@@ -417,6 +417,12 @@
       <key caption="Zugriffsschlüßel"/>
       <port caption="Port"/>
     </rcserver>
+    <extrender caption="Externer Renderer">
+      <enable caption="Externer Renderer benutzen"/>
+      <server caption="Server"/>
+      <port caption="Port"/>
+      <timeout caption="Timeout (in ms)"/>
+    </extrender>
     <user_defined caption="Benutzerdefnierte Felder in Liedern">
       <user1 caption="link(advanced_song_editor/user1/@caption)"/>
       <user2 caption="link(advanced_song_editor/user2/@caption)"/>
@@ -598,6 +604,7 @@
       <detected caption="%1 Monitor(e) angeschlossen."/>
       <default_mode caption="Standard Anzeigemodus"/>
       <force_4_3_preview caption="Preview auf 4:3 festlegen"/>
+      <force_16_9_preview caption="Preview auf 16:9 festlegen"/>
     </monitor>
     <logo caption="Logo">
       <mask caption="Logomaske"/>
@@ -612,6 +619,7 @@
     </audio>
     <presentation_control caption="Verschiedenes">
       <exit_prompt caption="Nachfrage beim Beenden"/>
+      <exit_doubleclick caption="Beenden mit Doppelklick"/>
     </presentation_control>
     <errors>
       <snapshot_file>Fehler: Das Erstellen von Bildschirmabzügen ist aktiviert, aber es ist kein Dateiname konfiguriert.</snapshot_file>
@@ -665,13 +673,13 @@ Die Präsentation kann mit folgenden Tasten gesteuert werden:
 &lt;h4&gt;Navigation&lt;/h4&gt;
 Pfeil hoch: Vorhergehende Folie
 Pfeil runter, Leertaste: Nächste Folie
-Pfeil links: Ans Ende des vorangehenden Blockes springen (leere Folie)
+Pfeil links: Ans Ende des vorangehenden Blocks springen (leere Folie)
 Pfeil rechts: Ans Ende des Blocks springen (leere Folie)
-Rücktaste: Auf die erste Folie des aktuellen Blockes springen.
+Rücktaste: Auf die erste Folie des aktuellen Blocks springen.
 
 Anm: Wenn keine leeren Folien zwischen den Blöcken angezeigt werden springen die
 Tasten Pfeil links/rechst sowie Rücktaste (Backspace) jeweils zum ersten
-Eintrag des aktuellen vorhergehenden oder nachfolgenden Blockes. Die Rücktaste
+Eintrag des aktuellen vorhergehenden oder nachfolgenden Blocks. Die Rücktaste
 verhält sich dabei genau gleich wie die Pfeil links Taste.
 
 B: Springe zur (nächsten) Bridge im aktuellen Lied
@@ -694,7 +702,7 @@ W: Anzeige auf weiss schalten (White).
 K: Anzeige auf schwarz schalten (blacK).
 L: Logo in die Anzeige einblenden (Logo).
 H: Text ausblenden, nur den Hintergrund anzeigen (Hide).
-F: Anzeige einfrieren (Freeze). Dies ermöglicht es, das Bild in der Präsentationssteuerung ändern, ohne dass das präsentierte Bild verändert wird.
+F: Anzeige einfrieren (Freeze). Dies ermöglicht es, in der Präsentationssteuerung eine andere Folie anzuwählen, ohne dass die präsentierte Folie verändert wird.
 N: Normalen Anzeige (spezial-Anzeigemodi verlassen).
 
 Esc : Präsentation beenden
@@ -794,9 +802,9 @@ kein Unterschied. Beispiel:
 &lt;b&gt;&lt;i&gt;(Versuche erst gar nicht, das zu singen ;-)&lt;/i&gt;&lt;pre&gt;
 [V]
 .G     C                 G
-1Dies  ist Strophe       one;
+1Dies  ist Strophe       eins;
 2Dies  ist nicht Strophe drei;
-3Wo    bleibt Strophe    verse;
+3Wo    bleibt Strophe    vier;
 4End___los geht's hier   nicht weiter;
 
 .G     D    C                    D        G
@@ -821,8 +829,8 @@ ausgedruckt.
 
 &lt;h3&gt;Spaltenumbruch&lt;/h3&gt;
 
-Stehen auf einer Zeile nur drei Striche "---" wird im Ausdruck an dieser Stelle im Ausdruck 
-eine neue Druckspalte begonnen. Auf diese Wiese konnen Lieder zweispaltig ausgedruckt werden.
+Stehen auf einer Zeile nur drei Striche "---" wird im Ausdruck an dieser Stelle 
+eine neue Druckspalte begonnen. Auf diese Weise können Lieder zweispaltig ausgedruckt werden.
 
 &lt;h3&gt;Seitenumbruch&lt;/h3&gt;
 
