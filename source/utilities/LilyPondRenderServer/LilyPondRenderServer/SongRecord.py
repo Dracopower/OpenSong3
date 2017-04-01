@@ -5,7 +5,7 @@ from os import path
 from threading import Lock
 
 class SongRecord:
-    ''' Fully describes content and files that makeup one verse of an opensong self.
+    ''' Fully describes content and files that makeup one verse of an opensong verse.
     The format for the png files that makeup the song is:
         <osfile>$<verse>$<16-char-md5>$<3-digit-count>.png
     '''

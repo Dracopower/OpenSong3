@@ -1,6 +1,9 @@
 #! /usr/bin/env python3
+import pyphen
 import sys
+import re
 import os
+from threading import Lock
 from os import path
 from .SongRecord import SongRecord
 
@@ -13,60 +16,37 @@ class LilyPondRenderer:
         # Make sure the cache and work folders are there
         os.makedirs(self.workdir, exist_ok=True)
         os.makedirs(self.cachedir, exist_ok=True)
-        if not path.isfile(self.templatefile):
-            os.makedirs(path.dirname(self.templatefile), exist_ok=True)
-            with open(self.templatefile, "w") as tfile:
-                tfile.write(r"""\version "2.16.0"
-
-% With 300 dpi, this will result in a 1920 x 1080 = Full HD image.
-%#(set! paper-alist (cons '("Full-HD" . (cons (* 6.4 in) (* 3.6 in))) paper-alist))
-%\paper { #(set-paper-size "Full-HD") print-page-number = ##f }
-
-% With 400 dpi, this will result in a 1920 x 1080 = Full HD image with bigger scores.
-% = 400dpi * 4.8" x 400dpi * 2.7" = 1920 x 1080
-#(set! paper-alist (cons '("Full-HD" . (cons (* 4.8 in) (* 2.7 in))) paper-alist))
-\paper { #(set-paper-size "Full-HD") print-page-number = ##f }
-
-\header {
-  title = \markup \fontsize #-3 "$(osrtitle): $(osrverse)"
-  copyright = "$(osrcopyright)"
-  composer = "$(osrauthor)"
-  tagline = ""
-}
-
-\score 
-{
-  <<
-    \new Staff \new Voice = "verse" 
-    $(osrnotes)
-    \new Lyrics \lyricsto "verse" 
-    \lyricmode 
-    { 
-      $(osrlyrics)
-    } 
-  >> 
-}
-""")
+        self._pyphens = {}
+        self._lock = Lock()
 
     def RenderToCache(self, song):
         try:
-            # Load the template file, replace the configurable items and call the
-            # LilyPond rendering command to render the files.
+            # Replace the configurable items and call the LilyPond rendering command to render the files.
             verse = song.verse
             if verse.startswith('V'):
                 verse = verse[1:]
             elif verse.startswith('C'):
                 verse = 'Refrein'
-            with open(self.templatefile) as file:
-                template = file.read()
+            
+            # Optionally auto-hyphenate the lyrics. Disable auto-hyphen if already hyphened.
+            hyphenlanguage = self.autohyphen or song.hyphen
+            if hyphenlanguage and song.lyrics.find(' -- ') < 0:
+                lyrics = self.HyphenLyrics(song.lyrics, hyphenlanguage)
+            else:
+                lyrics = song.lyrics
+
+            # Create a lilypond file by replacing the special items in the template.
+            template = self.template
             for source, destenation in [
                 ("$(osrtitle)", song.title), ("$(osrcopyright)" , song.copyright), ("$(osrauthor)", song.composer),
-                ("$(osrnotes)", song.notes), ("$(osrverse)",      verse),          ("$(osrlyrics)", song.lyrics)
+                ("$(osrnotes)", song.notes), ("$(osrverse)",      verse),          ("$(osrlyrics)", lyrics)
             ]:
                 template = template.replace(source, destenation)
             lilypondfile = path.join(self.workdir, song.md5 + ".ly")
             with open(lilypondfile, 'w') as file:
-                template = file.write(template)
+                file.write(template)
+
+            # Run LilyPond to render the pages.
             command = self.rendercommand.replace("{lilypondfile}", lilypondfile)
             command = command.replace("{workdir}", self.workdir)
             result = os.system(command)
@@ -81,7 +61,7 @@ class LilyPondRenderer:
             songfolder = song.GetSongFolder(self.cachedir)
             for pngfile in os.listdir(self.workdir):
                 if pngfile.startswith(song.md5) and pngfile.endswith(".png"):
-                    # remove the original file name + the .png extension and the optional '-page' part.
+                    # remove the original filename + the .png extension and the optional '-page' part.
                     basename = pngfile[len(song.md5):-4]
                     if basename.startswith("-page"):
                         basename = basename[5:]
@@ -95,9 +75,51 @@ class LilyPondRenderer:
                 os.rename( path.join(self.workdir, filename), path.join(songfolder, newname) )
                 song.files.append(newname)
 
+            # Done. Mark the song as being available.
             song.status = SongRecord.STATUS_AVAILABLE
             return True
 
         except Exception as ex:
             print("LilyPond rendering failed:", ex, file=sys.stderr)
             return False
+
+    def LoadHyphen(self, language):
+        ''' Load a hyphen language or file. Since the same renderer is used by multiple threads
+            and we don't want to load a renderer dictionary for every thread, we must protect the loading.  '''
+        with self._lock:
+            mypyphen = self._pyphens.get(language)
+            if not mypyphen:
+                if language in pyphen.LANGUAGES:
+                    mypyphen = pyphen.Pyphen(lang=language)
+                else:
+                    mypyphen = pyphen.Pyphen(file=language)
+                self._pyphens[language] = mypyphen
+        return mypyphen
+
+    def _hyphenwords(self, words, language):
+        ''' This hyphens a collection of words. It could be the 'single' statement on method below, but
+            I needed one special case: When the custom hyphen ends with '_' (underscore), it must
+            be joined with the next word, so we remove the next delimiter.
+            Oh, and casing for a custom hyphenation became a second special case...'''
+        mypyphen = self.LoadHyphen(language)
+        removenext = False
+        for word in words:
+            if word.isalpha():
+                custom = self.customhyphen.get(word.lower())
+                if custom:
+                    removenext = custom.endswith('_')
+                    if word[0].isupper():   # Simple first-letter-case support. Needs to be extended.
+                        custom = custom[0].upper() + custom[1:]
+                    yield custom
+                else:
+                    yield mypyphen.inserted(word, hyphen=' -- ')
+            else:
+                if removenext:
+                    removenext = False
+                else:
+                    yield word
+
+    def HyphenLyrics(self, lyrics, language):
+        # return ''.join([self.customhyphen.get(word) or self.defaultpyphen.inserted(word, hyphen=' -- ') if word.isalpha() 
+        #                 else word for word in re.findall(r'[^\w]+|\w+', lyrics)])
+        return ''.join(self._hyphenwords(re.findall(r'[^\w]+|\w+', lyrics), language))

@@ -16,4 +16,4 @@ folder
 
 Install with a command like:
 
-    pip3 install LilyPondRenderServer-0.1.0-py3-none-any.whl
+    pip3 install LilyPondRenderServer-0.1.2-py3-none-any.whl
