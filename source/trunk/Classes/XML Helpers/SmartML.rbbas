@@ -587,11 +587,10 @@ Protected Module SmartML
 		    return nil
 		  End If
 		  '--
-		  s = input.ReadAll.FormatUnixEndOfLine
+		  s = input.ReadAll
 		  input.Close
 		  Try
 		    If Len(s) > 5 Then
-		      Dim dbg As String
 		      '
 		      ' OnSong writes "OpenSong" format claiming UTF-8 in the XML  header, but the file has a UTF-16 bytemark.
 		      '     The XML parser throws an error
@@ -601,10 +600,20 @@ Protected Module SmartML
 		      '     We'll excuse OnSong for claiming in the XML header that it's a UTF-8 encoding when it's not... :-)
 		      '     This may need to be revisited and corrected by reopening the file and re-reading it with a defined UTF-16 encoding.
 		      '
-		      if asc(Left(s,1)) = &H001C0000 Then 'The string actually starts with a UTF-16LE byte mark (&HFFFE)
+		      Dim FixSongFile As Boolean = False
+		      If asc(Left(s,1)) = &H001C0000 Then 'The string actually starts with a UTF-16LE byte mark (&HFFFE)
 		        s = DefineEncoding(s, encodings.UTF16)
+		        Dim XmlDeclLen As Integer = InStr(6, s, ">")
+		        If InStr(Mid(s, 6, XmlDeclLen-6), "UTF-8") <> 0 Then
+		          ' the xml declaration says it is UTF-8, so convert it to be so
+		          s = s.ConvertEncoding(Encodings.UTF8)
+		          FixSongFile = True
+		        End If 
 		      End If
 		      d.LoadXml(s)
+		      If FixSongFile Then 
+		        FixSongFile = XDocToFile(d, f) ' try to write the file in the correct encoding, ignoring errors
+		      End If
 		      Return d
 		    Else
 		      ErrorCode = 5
