@@ -1,13 +1,11 @@
 #tag Window
 Begin Window MainWindow Implements ScriptureReceiver
-   BackColor       =   &c40404000
+   BackColor       =   "&c40404000"
    Backdrop        =   0
    CloseButton     =   True
-   Compatibility   =   ""
    Composite       =   False
    Frame           =   0
    FullScreen      =   False
-   FullScreenButton=   False
    HasBackColor    =   False
    Height          =   590
    ImplicitInstance=   True
@@ -53,7 +51,6 @@ Begin Window MainWindow Implements ScriptureReceiver
       TabPanelIndex   =   0
       TabStop         =   True
       Top             =   3
-      Transparent     =   True
       UseFocusRing    =   True
       Visible         =   True
       Width           =   200
@@ -85,7 +82,6 @@ Begin Window MainWindow Implements ScriptureReceiver
       TabPanelIndex   =   0
       TabStop         =   True
       Top             =   3
-      Transparent     =   True
       UseFocusRing    =   True
       Visible         =   True
       Width           =   200
@@ -114,7 +110,7 @@ Begin Window MainWindow Implements ScriptureReceiver
       TabPanelIndex   =   0
       Text            =   ""
       TextAlign       =   0
-      TextColor       =   &c00000000
+      TextColor       =   "&c00000000"
       TextFont        =   "Arial"
       TextSize        =   10.0
       TextUnit        =   0
@@ -143,7 +139,7 @@ Begin Window MainWindow Implements ScriptureReceiver
       TabIndex        =   4
       TabPanelIndex   =   0
       Top             =   35
-      Value           =   0
+      Value           =   1
       Visible         =   True
       Width           =   250
       Begin Canvas can_controls_songs_mode
@@ -169,7 +165,6 @@ Begin Window MainWindow Implements ScriptureReceiver
          TabPanelIndex   =   1
          TabStop         =   True
          Top             =   40
-         Transparent     =   True
          UseFocusRing    =   True
          Visible         =   True
          Width           =   240
@@ -223,7 +218,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   0
             TabPanelIndex   =   1
-            TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   11.0
             TextUnit        =   0
@@ -258,7 +252,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                TabPanelIndex   =   1
                TabStop         =   True
                Top             =   85
-               Transparent     =   True
                UseFocusRing    =   True
                Visible         =   True
                Width           =   87
@@ -290,7 +283,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                TabPanelIndex   =   1
                TabStop         =   True
                Top             =   135
-               Transparent     =   True
                UseFocusRing    =   True
                Visible         =   True
                Width           =   87
@@ -322,7 +314,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                TabPanelIndex   =   1
                TabStop         =   True
                Top             =   60
-               Transparent     =   True
                UseFocusRing    =   True
                Visible         =   True
                Width           =   87
@@ -354,7 +345,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                TabPanelIndex   =   1
                TabStop         =   True
                Top             =   110
-               Transparent     =   True
                UseFocusRing    =   True
                Visible         =   True
                Width           =   87
@@ -386,7 +376,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                TabPanelIndex   =   1
                TabStop         =   True
                Top             =   185
-               Transparent     =   True
                UseFocusRing    =   True
                Visible         =   True
                Width           =   87
@@ -418,7 +407,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                TabPanelIndex   =   1
                TabStop         =   True
                Top             =   160
-               Transparent     =   True
                UseFocusRing    =   True
                Visible         =   True
                Width           =   87
@@ -450,7 +438,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                TabPanelIndex   =   1
                TabStop         =   True
                Top             =   235
-               Transparent     =   True
                UseFocusRing    =   True
                Visible         =   True
                Width           =   87
@@ -482,7 +469,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                TabPanelIndex   =   1
                TabStop         =   True
                Top             =   210
-               Transparent     =   True
                UseFocusRing    =   True
                Visible         =   True
                Width           =   87
@@ -514,7 +500,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                TabPanelIndex   =   1
                TabStop         =   True
                Top             =   260
-               Transparent     =   True
                UseFocusRing    =   True
                Visible         =   True
                Width           =   87
@@ -539,7 +524,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   5
             TabPanelIndex   =   1
-            TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   11.0
             TextUnit        =   0
@@ -574,7 +558,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                TabPanelIndex   =   1
                TabStop         =   True
                Top             =   61
-               Transparent     =   True
                UseFocusRing    =   True
                Visible         =   True
                Width           =   87
@@ -606,7 +589,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                TabPanelIndex   =   1
                TabStop         =   True
                Top             =   86
-               Transparent     =   True
                UseFocusRing    =   True
                Visible         =   True
                Width           =   87
@@ -638,7 +620,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                TabPanelIndex   =   1
                TabStop         =   True
                Top             =   111
-               Transparent     =   True
                UseFocusRing    =   True
                Visible         =   True
                Width           =   87
@@ -663,7 +644,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   4
             TabPanelIndex   =   1
-            TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   11.0
             TextUnit        =   0
@@ -698,7 +678,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                TabPanelIndex   =   1
                TabStop         =   True
                Top             =   166
-               Transparent     =   True
                UseFocusRing    =   True
                Visible         =   True
                Width           =   87
@@ -730,7 +709,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                TabPanelIndex   =   1
                TabStop         =   True
                Top             =   191
-               Transparent     =   True
                UseFocusRing    =   True
                Visible         =   True
                Width           =   87
@@ -760,7 +738,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   1
             Text            =   "Folders:"
             TextAlign       =   0
-            TextColor       =   &c00000000
+            TextColor       =   "&c00000000"
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
@@ -794,7 +772,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   1
             Text            =   "Songs:"
             TextAlign       =   0
-            TextColor       =   &c00000000
+            TextColor       =   "&c00000000"
             TextFont        =   "Arial"
             TextSize        =   11.0
             TextUnit        =   0
@@ -831,7 +809,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   1
             TabStop         =   True
             Top             =   300
-            Transparent     =   True
             UseFocusRing    =   True
             Visible         =   True
             Width           =   23
@@ -860,7 +837,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   1
             Text            =   "Containing Folder:"
             TextAlign       =   0
-            TextColor       =   &c00000000
+            TextColor       =   "&c00000000"
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
@@ -897,7 +874,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   1
             TabStop         =   True
             Top             =   300
-            Transparent     =   True
             UseFocusRing    =   True
             Visible         =   True
             Width           =   23
@@ -957,7 +933,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Alignment       =   0
             AutoDeactivate  =   True
             AutomaticallyCheckSpelling=   True
-            BackColor       =   &cFFFFFF00
+            BackColor       =   "&cFFFFFF00"
             Bold            =   False
             Border          =   True
             DataField       =   ""
@@ -972,8 +948,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Italic          =   False
             Left            =   10
             LimitText       =   0
-            LineHeight      =   0.0
-            LineSpacing     =   1.0
             LockBottom      =   True
             LockedInPosition=   False
             LockLeft        =   True
@@ -990,9 +964,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   1
             TabStop         =   False
             Text            =   ""
-            TextColor       =   &c00000000
+            TextColor       =   "&c00000000"
             TextFont        =   "Arial"
-            TextSize        =   10.0
+            TextSize        =   10
             TextUnit        =   0
             Top             =   554
             Underline       =   False
@@ -1024,7 +998,6 @@ Begin Window MainWindow Implements ScriptureReceiver
          TabPanelIndex   =   2
          TabStop         =   True
          Top             =   40
-         Transparent     =   True
          UseFocusRing    =   True
          Visible         =   True
          Width           =   240
@@ -1047,7 +1020,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   0
             TabPanelIndex   =   2
-            TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   11.0
             TextUnit        =   0
@@ -1113,7 +1085,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                TabPanelIndex   =   2
                TabStop         =   True
                Top             =   58
-               Transparent     =   True
                UseFocusRing    =   True
                Visible         =   True
                Width           =   23
@@ -1138,7 +1109,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   3
             TabPanelIndex   =   2
-            TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   11.0
             TextUnit        =   0
@@ -1173,7 +1143,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                TabPanelIndex   =   2
                TabStop         =   True
                Top             =   311
-               Transparent     =   True
                UseFocusRing    =   True
                Visible         =   True
                Width           =   92
@@ -1205,7 +1174,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                TabPanelIndex   =   2
                TabStop         =   True
                Top             =   286
-               Transparent     =   True
                UseFocusRing    =   True
                Visible         =   True
                Width           =   92
@@ -1237,7 +1205,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                TabPanelIndex   =   2
                TabStop         =   True
                Top             =   336
-               Transparent     =   True
                UseFocusRing    =   True
                Visible         =   True
                Width           =   92
@@ -1269,7 +1236,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                TabPanelIndex   =   2
                TabStop         =   True
                Top             =   261
-               Transparent     =   True
                UseFocusRing    =   True
                Visible         =   True
                Width           =   92
@@ -1301,7 +1267,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                TabPanelIndex   =   2
                TabStop         =   True
                Top             =   361
-               Transparent     =   True
                UseFocusRing    =   True
                Visible         =   True
                Width           =   92
@@ -1333,7 +1298,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                TabPanelIndex   =   2
                TabStop         =   True
                Top             =   386
-               Transparent     =   True
                UseFocusRing    =   True
                Visible         =   True
                Width           =   92
@@ -1365,7 +1329,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                TabPanelIndex   =   2
                TabStop         =   True
                Top             =   236
-               Transparent     =   True
                UseFocusRing    =   True
                Visible         =   True
                Width           =   92
@@ -1390,7 +1353,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   1
             TabPanelIndex   =   2
-            TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   11.0
             TextUnit        =   0
@@ -1425,7 +1387,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                TabPanelIndex   =   2
                TabStop         =   True
                Top             =   160
-               Transparent     =   True
                UseFocusRing    =   True
                Visible         =   True
                Width           =   92
@@ -1457,7 +1418,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                TabPanelIndex   =   2
                TabStop         =   True
                Top             =   110
-               Transparent     =   True
                UseFocusRing    =   True
                Visible         =   True
                Width           =   92
@@ -1489,7 +1449,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                TabPanelIndex   =   2
                TabStop         =   True
                Top             =   135
-               Transparent     =   True
                UseFocusRing    =   True
                Visible         =   True
                Width           =   92
@@ -1521,7 +1480,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                TabPanelIndex   =   2
                TabStop         =   True
                Top             =   135
-               Transparent     =   True
                UseFocusRing    =   True
                Visible         =   True
                Width           =   92
@@ -1553,7 +1511,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                TabPanelIndex   =   2
                TabStop         =   True
                Top             =   160
-               Transparent     =   True
                UseFocusRing    =   True
                Visible         =   True
                Width           =   92
@@ -1585,7 +1542,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                TabPanelIndex   =   2
                TabStop         =   True
                Top             =   110
-               Transparent     =   True
                UseFocusRing    =   True
                Visible         =   True
                Width           =   92
@@ -1617,7 +1573,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                TabPanelIndex   =   2
                TabStop         =   True
                Top             =   185
-               Transparent     =   True
                UseFocusRing    =   True
                Visible         =   True
                Width           =   92
@@ -1649,7 +1604,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                TabPanelIndex   =   2
                TabStop         =   True
                Top             =   185
-               Transparent     =   True
                UseFocusRing    =   True
                Visible         =   True
                Width           =   92
@@ -1679,7 +1633,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   2
             Text            =   "Items In Set:"
             TextAlign       =   0
-            TextColor       =   &c00000000
+            TextColor       =   "&c00000000"
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
@@ -1708,7 +1662,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   2
             TabPanelIndex   =   2
-            TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   11.0
             TextUnit        =   0
@@ -1743,7 +1696,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                TabPanelIndex   =   2
                TabStop         =   True
                Top             =   261
-               Transparent     =   True
                UseFocusRing    =   True
                Visible         =   True
                Width           =   92
@@ -1775,7 +1727,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                TabPanelIndex   =   2
                TabStop         =   True
                Top             =   286
-               Transparent     =   True
                UseFocusRing    =   True
                Visible         =   True
                Width           =   92
@@ -1807,7 +1758,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                TabPanelIndex   =   2
                TabStop         =   True
                Top             =   311
-               Transparent     =   True
                UseFocusRing    =   True
                Visible         =   True
                Width           =   92
@@ -1839,7 +1789,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                TabPanelIndex   =   2
                TabStop         =   True
                Top             =   236
-               Transparent     =   True
                UseFocusRing    =   True
                Visible         =   True
                Width           =   92
@@ -1871,7 +1820,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                TabPanelIndex   =   2
                TabStop         =   True
                Top             =   336
-               Transparent     =   True
                UseFocusRing    =   True
                Visible         =   True
                Width           =   92
@@ -1903,7 +1851,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                TabPanelIndex   =   2
                TabStop         =   True
                Top             =   361
-               Transparent     =   True
                UseFocusRing    =   True
                Visible         =   True
                Width           =   92
@@ -1980,7 +1927,7 @@ Begin Window MainWindow Implements ScriptureReceiver
       TabIndex        =   5
       TabPanelIndex   =   0
       Top             =   34
-      Value           =   0
+      Value           =   5
       Visible         =   True
       Width           =   591
       Begin Canvas cnv_editor_style_change
@@ -2006,7 +1953,6 @@ Begin Window MainWindow Implements ScriptureReceiver
          TabPanelIndex   =   4
          TabStop         =   True
          Top             =   40
-         Transparent     =   True
          UseFocusRing    =   True
          Visible         =   True
          Width           =   581
@@ -2034,7 +1980,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   4
             Text            =   "Style Change"
             TextAlign       =   0
-            TextColor       =   &c00000000
+            TextColor       =   "&c00000000"
             TextFont        =   "Arial"
             TextSize        =   22.0
             TextUnit        =   0
@@ -2126,7 +2072,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   4
             TabStop         =   True
             Top             =   184
-            Transparent     =   True
             UseFocusRing    =   True
             Visible         =   True
             Width           =   320
@@ -2155,7 +2100,6 @@ Begin Window MainWindow Implements ScriptureReceiver
          TabPanelIndex   =   2
          TabStop         =   True
          Top             =   40
-         Transparent     =   True
          UseFocusRing    =   True
          Visible         =   True
          Width           =   581
@@ -2183,7 +2127,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   2
             Text            =   "AKA:"
             TextAlign       =   0
-            TextColor       =   &c00000000
+            TextColor       =   "&c00000000"
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
@@ -2217,7 +2161,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   2
             Text            =   "Themes:"
             TextAlign       =   0
-            TextColor       =   &c00000000
+            TextColor       =   "&c00000000"
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
@@ -2251,7 +2195,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   2
             Text            =   "Capo:"
             TextAlign       =   0
-            TextColor       =   &c00000000
+            TextColor       =   "&c00000000"
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
@@ -2285,7 +2229,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   2
             Text            =   "Key Line:"
             TextAlign       =   0
-            TextColor       =   &c00000000
+            TextColor       =   "&c00000000"
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
@@ -2372,7 +2316,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   2
             TabStop         =   True
             Top             =   51
-            Transparent     =   True
             UseFocusRing    =   True
             Visible         =   True
             Width           =   125
@@ -2401,7 +2344,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   2
             Text            =   "Key:"
             TextAlign       =   0
-            TextColor       =   &c00000000
+            TextColor       =   "&c00000000"
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
@@ -2435,7 +2378,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   2
             Text            =   "Time Signature:"
             TextAlign       =   0
-            TextColor       =   &c00000000
+            TextColor       =   "&c00000000"
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
@@ -2500,7 +2443,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   2
             Text            =   "User Defined 2:"
             TextAlign       =   0
-            TextColor       =   &c00000000
+            TextColor       =   "&c00000000"
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
@@ -2534,7 +2477,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   2
             Text            =   "Tempo:"
             TextAlign       =   0
-            TextColor       =   &c00000000
+            TextColor       =   "&c00000000"
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
@@ -2568,7 +2511,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   2
             Text            =   "User Defined 3:"
             TextAlign       =   0
-            TextColor       =   &c00000000
+            TextColor       =   "&c00000000"
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
@@ -2669,7 +2612,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   2
             TabStop         =   True
             Top             =   51
-            Transparent     =   True
             UseFocusRing    =   True
             Visible         =   True
             Width           =   125
@@ -2729,7 +2671,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   2
             TabStop         =   True
             Top             =   105
-            Transparent     =   True
             UseFocusRing    =   True
             Visible         =   True
             Width           =   102
@@ -2739,7 +2680,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Alignment       =   0
             AutoDeactivate  =   True
             AutomaticallyCheckSpelling=   True
-            BackColor       =   &cFFFFFF00
+            BackColor       =   "&cFFFFFF00"
             Bold            =   False
             Border          =   True
             DataField       =   ""
@@ -2754,8 +2695,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Italic          =   False
             Left            =   535
             LimitText       =   0
-            LineHeight      =   0.0
-            LineSpacing     =   1.0
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   True
@@ -2772,9 +2711,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   2
             TabStop         =   True
             Text            =   ""
-            TextColor       =   &c00000000
+            TextColor       =   "&c00000000"
             TextFont        =   "Arial"
-            TextSize        =   10.0
+            TextSize        =   10
             TextUnit        =   0
             Top             =   146
             Underline       =   False
@@ -2787,7 +2726,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Alignment       =   0
             AutoDeactivate  =   True
             AutomaticallyCheckSpelling=   True
-            BackColor       =   &cFFFFFF00
+            BackColor       =   "&cFFFFFF00"
             Bold            =   False
             Border          =   True
             DataField       =   ""
@@ -2802,8 +2741,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Italic          =   False
             Left            =   675
             LimitText       =   0
-            LineHeight      =   0.0
-            LineSpacing     =   1.0
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   True
@@ -2820,9 +2757,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   2
             TabStop         =   True
             Text            =   ""
-            TextColor       =   &c00000000
+            TextColor       =   "&c00000000"
             TextFont        =   "Arial"
-            TextSize        =   10.0
+            TextSize        =   10
             TextUnit        =   0
             Top             =   221
             Underline       =   False
@@ -2866,7 +2803,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Alignment       =   0
             AutoDeactivate  =   True
             AutomaticallyCheckSpelling=   True
-            BackColor       =   &cFFFFFF00
+            BackColor       =   "&cFFFFFF00"
             Bold            =   False
             Border          =   True
             DataField       =   ""
@@ -2881,8 +2818,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Italic          =   False
             Left            =   535
             LimitText       =   0
-            LineHeight      =   0.0
-            LineSpacing     =   1.0
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   True
@@ -2899,9 +2834,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   2
             TabStop         =   True
             Text            =   ""
-            TextColor       =   &c00000000
+            TextColor       =   "&c00000000"
             TextFont        =   "Arial"
-            TextSize        =   10.0
+            TextSize        =   10
             TextUnit        =   0
             Top             =   264
             Underline       =   False
@@ -2933,7 +2868,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   2
             Text            =   "User Defined 1:"
             TextAlign       =   0
-            TextColor       =   &c00000000
+            TextColor       =   "&c00000000"
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
@@ -2967,7 +2902,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   2
             Text            =   "Song Editor"
             TextAlign       =   0
-            TextColor       =   &c00000000
+            TextColor       =   "&c00000000"
             TextFont        =   "Arial"
             TextSize        =   22.0
             TextUnit        =   0
@@ -2982,7 +2917,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Alignment       =   0
             AutoDeactivate  =   True
             AutomaticallyCheckSpelling=   True
-            BackColor       =   &cFFFFFF00
+            BackColor       =   "&cFFFFFF00"
             Bold            =   False
             Border          =   True
             DataField       =   ""
@@ -2997,8 +2932,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Italic          =   False
             Left            =   535
             LimitText       =   0
-            LineHeight      =   0.0
-            LineSpacing     =   1.0
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   True
@@ -3015,9 +2948,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   2
             TabStop         =   True
             Text            =   ""
-            TextColor       =   &c00000000
+            TextColor       =   "&c00000000"
             TextFont        =   "Arial"
-            TextSize        =   10.0
+            TextSize        =   10
             TextUnit        =   0
             Top             =   308
             Underline       =   False
@@ -3030,7 +2963,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Alignment       =   0
             AutoDeactivate  =   True
             AutomaticallyCheckSpelling=   True
-            BackColor       =   &cFFFFFF00
+            BackColor       =   "&cFFFFFF00"
             Bold            =   False
             Border          =   True
             DataField       =   ""
@@ -3045,8 +2978,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Italic          =   False
             Left            =   535
             LimitText       =   0
-            LineHeight      =   0.0
-            LineSpacing     =   1.0
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   True
@@ -3063,9 +2994,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   2
             TabStop         =   True
             Text            =   ""
-            TextColor       =   &c00000000
+            TextColor       =   "&c00000000"
             TextFont        =   "Arial"
-            TextSize        =   10.0
+            TextSize        =   10
             TextUnit        =   0
             Top             =   353
             Underline       =   False
@@ -3078,7 +3009,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Alignment       =   0
             AutoDeactivate  =   True
             AutomaticallyCheckSpelling=   True
-            BackColor       =   &cFFFFFF00
+            BackColor       =   "&cFFFFFF00"
             Bold            =   False
             Border          =   True
             DataField       =   ""
@@ -3093,8 +3024,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Italic          =   False
             Left            =   535
             LimitText       =   0
-            LineHeight      =   0.0
-            LineSpacing     =   1.0
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   True
@@ -3111,9 +3040,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   2
             TabStop         =   True
             Text            =   ""
-            TextColor       =   &c00000000
+            TextColor       =   "&c00000000"
             TextFont        =   "Arial"
-            TextSize        =   10.0
+            TextSize        =   10
             TextUnit        =   0
             Top             =   398
             Underline       =   False
@@ -3145,7 +3074,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   2
             Text            =   "Verse specific backgrounds:"
             TextAlign       =   0
-            TextColor       =   &c00000000
+            TextColor       =   "&c00000000"
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
@@ -3162,7 +3091,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Border          =   True
             ColumnCount     =   2
             ColumnsResizable=   True
-            ColumnWidths    =   "50,120"
+            ColumnWidths    =   50,120
             DataField       =   ""
             DataSource      =   ""
             DefaultRowHeight=   120
@@ -3197,7 +3126,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   2
             TabStop         =   True
             TextFont        =   "Arial"
-            TextSize        =   10.0
+            TextSize        =   10
             TextUnit        =   0
             Top             =   447
             Underline       =   False
@@ -3234,7 +3163,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   2
             TabStop         =   True
             Top             =   559
-            Transparent     =   True
             UseFocusRing    =   True
             Visible         =   True
             Width           =   115
@@ -3266,7 +3194,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   2
             TabStop         =   True
             Top             =   559
-            Transparent     =   True
             UseFocusRing    =   True
             Visible         =   True
             Width           =   115
@@ -3455,7 +3382,6 @@ Begin Window MainWindow Implements ScriptureReceiver
          TabPanelIndex   =   1
          TabStop         =   True
          Top             =   40
-         Transparent     =   True
          UseFocusRing    =   True
          Visible         =   True
          Width           =   581
@@ -3483,7 +3409,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   1
             Text            =   "Song Editor"
             TextAlign       =   0
-            TextColor       =   &c00000000
+            TextColor       =   "&c00000000"
             TextFont        =   "Arial"
             TextSize        =   22.0
             TextUnit        =   0
@@ -3517,7 +3443,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   1
             Text            =   "CCLI #:"
             TextAlign       =   0
-            TextColor       =   &c00000000
+            TextColor       =   "&c00000000"
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
@@ -3551,7 +3477,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   1
             Text            =   "Copyright:"
             TextAlign       =   0
-            TextColor       =   &c00000000
+            TextColor       =   "&c00000000"
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
@@ -3585,7 +3511,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   1
             Text            =   "Author:"
             TextAlign       =   0
-            TextColor       =   &c00000000
+            TextColor       =   "&c00000000"
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
@@ -3619,7 +3545,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   1
             Text            =   "Presentation:"
             TextAlign       =   0
-            TextColor       =   &c00000000
+            TextColor       =   "&c00000000"
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
@@ -3653,7 +3579,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   1
             Text            =   "Chord/Lyrics:"
             TextAlign       =   0
-            TextColor       =   &c00000000
+            TextColor       =   "&c00000000"
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
@@ -3687,7 +3613,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   1
             Text            =   "Hymn #:"
             TextAlign       =   0
-            TextColor       =   &c00000000
+            TextColor       =   "&c00000000"
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
@@ -3721,7 +3647,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   1
             Text            =   "Insert:"
             TextAlign       =   0
-            TextColor       =   &c00000000
+            TextColor       =   "&c00000000"
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
@@ -3755,7 +3681,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   1
             Text            =   "Title:"
             TextAlign       =   0
-            TextColor       =   &c00000000
+            TextColor       =   "&c00000000"
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
@@ -3784,7 +3710,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   22
             TabPanelIndex   =   1
-            TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   11.0
             TextUnit        =   0
@@ -3847,7 +3772,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                TabPanelIndex   =   1
                Text            =   "Using:"
                TextAlign       =   0
-               TextColor       =   &c00000000
+               TextColor       =   "&c00000000"
                TextFont        =   "Arial"
                TextSize        =   10.0
                TextUnit        =   0
@@ -3894,7 +3819,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Alignment       =   0
             AutoDeactivate  =   True
             AutomaticallyCheckSpelling=   True
-            BackColor       =   &cFFFFFF00
+            BackColor       =   "&cFFFFFF00"
             Bold            =   False
             Border          =   True
             DataField       =   ""
@@ -3909,8 +3834,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Italic          =   False
             Left            =   270
             LimitText       =   0
-            LineHeight      =   0.0
-            LineSpacing     =   1.0
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   True
@@ -3927,9 +3850,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   1
             TabStop         =   True
             Text            =   ""
-            TextColor       =   &c00000000
+            TextColor       =   "&c00000000"
             TextFont        =   "Arial"
-            TextSize        =   10.0
+            TextSize        =   10
             TextUnit        =   0
             Top             =   140
             Underline       =   False
@@ -3942,7 +3865,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Alignment       =   0
             AutoDeactivate  =   True
             AutomaticallyCheckSpelling=   True
-            BackColor       =   &cFFFFFF00
+            BackColor       =   "&cFFFFFF00"
             Bold            =   False
             Border          =   True
             DataField       =   ""
@@ -3957,8 +3880,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Italic          =   False
             Left            =   270
             LimitText       =   0
-            LineHeight      =   0.0
-            LineSpacing     =   1.0
             LockBottom      =   True
             LockedInPosition=   False
             LockLeft        =   True
@@ -3975,9 +3896,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   1
             TabStop         =   True
             Text            =   ""
-            TextColor       =   &c00000000
+            TextColor       =   "&c00000000"
             TextFont        =   "Courier New"
-            TextSize        =   11.0
+            TextSize        =   11
             TextUnit        =   0
             Top             =   175
             Underline       =   False
@@ -4012,7 +3933,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   1
             TabStop         =   True
             Top             =   231
-            Transparent     =   True
             UseFocusRing    =   True
             Visible         =   True
             Width           =   135
@@ -4044,7 +3964,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   1
             TabStop         =   True
             Top             =   256
-            Transparent     =   True
             UseFocusRing    =   True
             Visible         =   True
             Width           =   135
@@ -4076,7 +3995,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   1
             TabStop         =   True
             Top             =   281
-            Transparent     =   True
             UseFocusRing    =   True
             Visible         =   True
             Width           =   135
@@ -4108,7 +4026,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   1
             TabStop         =   True
             Top             =   306
-            Transparent     =   True
             UseFocusRing    =   True
             Visible         =   True
             Width           =   135
@@ -4140,7 +4057,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   1
             TabStop         =   True
             Top             =   331
-            Transparent     =   True
             UseFocusRing    =   True
             Visible         =   True
             Width           =   135
@@ -4172,7 +4088,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   1
             TabStop         =   True
             Top             =   356
-            Transparent     =   True
             UseFocusRing    =   True
             Visible         =   True
             Width           =   135
@@ -4204,7 +4119,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   1
             TabStop         =   True
             Top             =   50
-            Transparent     =   True
             UseFocusRing    =   True
             Visible         =   True
             Width           =   125
@@ -4236,7 +4150,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   1
             TabStop         =   True
             Top             =   50
-            Transparent     =   True
             UseFocusRing    =   True
             Visible         =   True
             Width           =   125
@@ -4246,7 +4159,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Alignment       =   0
             AutoDeactivate  =   True
             AutomaticallyCheckSpelling=   True
-            BackColor       =   &cFFFFFF00
+            BackColor       =   "&cFFFFFF00"
             Bold            =   False
             Border          =   True
             DataField       =   ""
@@ -4261,8 +4174,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Italic          =   False
             Left            =   505
             LimitText       =   0
-            LineHeight      =   0.0
-            LineSpacing     =   1.0
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   True
@@ -4279,9 +4190,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   1
             TabStop         =   True
             Text            =   ""
-            TextColor       =   &c00000000
+            TextColor       =   "&c00000000"
             TextFont        =   "Arial"
-            TextSize        =   10.0
+            TextSize        =   10
             TextUnit        =   0
             Top             =   140
             Underline       =   False
@@ -4294,7 +4205,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Alignment       =   0
             AutoDeactivate  =   True
             AutomaticallyCheckSpelling=   True
-            BackColor       =   &cFFFFFF00
+            BackColor       =   "&cFFFFFF00"
             Bold            =   False
             Border          =   True
             DataField       =   ""
@@ -4309,8 +4220,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Italic          =   False
             Left            =   625
             LimitText       =   0
-            LineHeight      =   0.0
-            LineSpacing     =   1.0
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   True
@@ -4327,9 +4236,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   1
             TabStop         =   True
             Text            =   ""
-            TextColor       =   &c00000000
+            TextColor       =   "&c00000000"
             TextFont        =   "Arial"
-            TextSize        =   10.0
+            TextSize        =   10
             TextUnit        =   0
             Top             =   140
             Underline       =   False
@@ -4342,7 +4251,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Alignment       =   0
             AutoDeactivate  =   True
             AutomaticallyCheckSpelling=   True
-            BackColor       =   &cFFFFFF00
+            BackColor       =   "&cFFFFFF00"
             Bold            =   False
             Border          =   True
             DataField       =   ""
@@ -4357,8 +4266,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Italic          =   False
             Left            =   505
             LimitText       =   0
-            LineHeight      =   0.0
-            LineSpacing     =   1.0
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   True
@@ -4375,9 +4282,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   1
             TabStop         =   True
             Text            =   ""
-            TextColor       =   &c00000000
+            TextColor       =   "&c00000000"
             TextFont        =   "Arial"
-            TextSize        =   10.0
+            TextSize        =   10
             TextUnit        =   0
             Top             =   105
             Underline       =   False
@@ -4390,7 +4297,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Alignment       =   0
             AutoDeactivate  =   True
             AutomaticallyCheckSpelling=   True
-            BackColor       =   &cFFFFFF00
+            BackColor       =   "&cFFFFFF00"
             Bold            =   False
             Border          =   True
             DataField       =   ""
@@ -4405,8 +4312,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Italic          =   False
             Left            =   270
             LimitText       =   0
-            LineHeight      =   0.0
-            LineSpacing     =   1.0
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   True
@@ -4423,9 +4328,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   1
             TabStop         =   True
             Text            =   ""
-            TextColor       =   &c00000000
+            TextColor       =   "&c00000000"
             TextFont        =   "Arial"
-            TextSize        =   10.0
+            TextSize        =   10
             TextUnit        =   0
             Top             =   105
             Underline       =   False
@@ -4460,7 +4365,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   1
             TabStop         =   True
             Top             =   551
-            Transparent     =   True
             UseFocusRing    =   True
             Visible         =   True
             Width           =   113
@@ -4492,7 +4396,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   1
             TabStop         =   True
             Top             =   551
-            Transparent     =   True
             UseFocusRing    =   True
             Visible         =   True
             Width           =   113
@@ -4521,7 +4424,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   1
             Text            =   "Linked Songs:"
             TextAlign       =   0
-            TextColor       =   &c00000000
+            TextColor       =   "&c00000000"
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
@@ -4586,7 +4489,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Alignment       =   0
             AutoDeactivate  =   True
             AutomaticallyCheckSpelling=   True
-            BackColor       =   &cFFFFFF00
+            BackColor       =   "&cFFFFFF00"
             Bold            =   False
             Border          =   True
             DataField       =   ""
@@ -4601,8 +4504,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Italic          =   False
             Left            =   590
             LimitText       =   0
-            LineHeight      =   0.0
-            LineSpacing     =   1.0
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   False
@@ -4619,9 +4520,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   1
             TabStop         =   True
             Text            =   ""
-            TextColor       =   &c00000000
+            TextColor       =   "&c00000000"
             TextFont        =   "System"
-            TextSize        =   12.0
+            TextSize        =   12
             TextUnit        =   0
             Top             =   187
             Underline       =   False
@@ -4653,7 +4554,6 @@ Begin Window MainWindow Implements ScriptureReceiver
          TabPanelIndex   =   3
          TabStop         =   True
          Top             =   40
-         Transparent     =   True
          UseFocusRing    =   True
          Visible         =   True
          Width           =   581
@@ -4681,7 +4581,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   3
             Text            =   "Auto-advance slide(s) every..."
             TextAlign       =   1
-            TextColor       =   &c00000000
+            TextColor       =   "&c00000000"
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
@@ -4715,7 +4615,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   3
             Text            =   "seconds"
             TextAlign       =   1
-            TextColor       =   &c00000000
+            TextColor       =   "&c00000000"
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
@@ -4749,7 +4649,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   3
             Text            =   "Insert:"
             TextAlign       =   0
-            TextColor       =   &c00000000
+            TextColor       =   "&c00000000"
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
@@ -4796,7 +4696,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Alignment       =   0
             AutoDeactivate  =   True
             AutomaticallyCheckSpelling=   True
-            BackColor       =   &cFFFFFF00
+            BackColor       =   "&cFFFFFF00"
             Bold            =   False
             Border          =   True
             DataField       =   ""
@@ -4811,8 +4711,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Italic          =   False
             Left            =   756
             LimitText       =   0
-            LineHeight      =   0.0
-            LineSpacing     =   1.0
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   False
@@ -4829,9 +4727,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   3
             TabStop         =   True
             Text            =   ""
-            TextColor       =   &c00000000
+            TextColor       =   "&c00000000"
             TextFont        =   "Arial"
-            TextSize        =   10.0
+            TextSize        =   10
             TextUnit        =   0
             Top             =   270
             Underline       =   False
@@ -4939,7 +4837,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Alignment       =   0
             AutoDeactivate  =   True
             AutomaticallyCheckSpelling=   True
-            BackColor       =   &cFFFFFF00
+            BackColor       =   "&cFFFFFF00"
             Bold            =   False
             Border          =   True
             DataField       =   ""
@@ -4954,8 +4852,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Italic          =   False
             Left            =   453
             LimitText       =   0
-            LineHeight      =   0.0
-            LineSpacing     =   1.0
             LockBottom      =   True
             LockedInPosition=   False
             LockLeft        =   True
@@ -4972,9 +4868,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   3
             TabStop         =   True
             Text            =   ""
-            TextColor       =   &c00000000
+            TextColor       =   "&c00000000"
             TextFont        =   "Arial"
-            TextSize        =   10.0
+            TextSize        =   10
             TextUnit        =   0
             Top             =   405
             Underline       =   False
@@ -5006,7 +4902,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   3
             Text            =   "File Folder"
             TextAlign       =   0
-            TextColor       =   &c00000000
+            TextColor       =   "&c00000000"
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
@@ -5040,7 +4936,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   3
             Text            =   "Custom Slide Editor"
             TextAlign       =   0
-            TextColor       =   &c00000000
+            TextColor       =   "&c00000000"
             TextFont        =   "Arial"
             TextSize        =   22.0
             TextUnit        =   0
@@ -5074,7 +4970,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   3
             Text            =   "Custom Presentation Order:"
             TextAlign       =   0
-            TextColor       =   &c00000000
+            TextColor       =   "&c00000000"
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
@@ -5108,7 +5004,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   3
             Text            =   "Original Presentation Order:"
             TextAlign       =   0
-            TextColor       =   &c00000000
+            TextColor       =   "&c00000000"
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
@@ -5123,7 +5019,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Alignment       =   0
             AutoDeactivate  =   True
             AutomaticallyCheckSpelling=   True
-            BackColor       =   &cFFFFFF00
+            BackColor       =   "&cFFFFFF00"
             Bold            =   False
             Border          =   True
             DataField       =   ""
@@ -5138,8 +5034,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Italic          =   False
             Left            =   270
             LimitText       =   0
-            LineHeight      =   0.0
-            LineSpacing     =   1.0
             LockBottom      =   True
             LockedInPosition=   False
             LockLeft        =   True
@@ -5156,9 +5050,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   3
             TabStop         =   True
             Text            =   ""
-            TextColor       =   &c00000000
+            TextColor       =   "&c00000000"
             TextFont        =   "Arial"
-            TextSize        =   10.0
+            TextSize        =   10
             TextUnit        =   0
             Top             =   405
             Underline       =   False
@@ -5190,7 +5084,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   3
             Text            =   "Name:"
             TextAlign       =   0
-            TextColor       =   &c00000000
+            TextColor       =   "&c00000000"
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
@@ -5224,7 +5118,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   3
             Text            =   "Subtitle:"
             TextAlign       =   0
-            TextColor       =   &c00000000
+            TextColor       =   "&c00000000"
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
@@ -5258,7 +5152,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   3
             Text            =   "Title:"
             TextAlign       =   0
-            TextColor       =   &c00000000
+            TextColor       =   "&c00000000"
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
@@ -5292,7 +5186,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   3
             Text            =   "Slides:"
             TextAlign       =   0
-            TextColor       =   &c00000000
+            TextColor       =   "&c00000000"
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
@@ -5326,7 +5220,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   3
             Text            =   "Use Transition"
             TextAlign       =   0
-            TextColor       =   &c00000000
+            TextColor       =   "&c00000000"
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
@@ -5360,7 +5254,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   3
             Text            =   "Notes:"
             TextAlign       =   0
-            TextColor       =   &c00000000
+            TextColor       =   "&c00000000"
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
@@ -5375,7 +5269,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Alignment       =   0
             AutoDeactivate  =   True
             AutomaticallyCheckSpelling=   True
-            BackColor       =   &cFFFFFF00
+            BackColor       =   "&cFFFFFF00"
             Bold            =   False
             Border          =   True
             DataField       =   ""
@@ -5390,8 +5284,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Italic          =   False
             Left            =   430
             LimitText       =   0
-            LineHeight      =   0.0
-            LineSpacing     =   1.0
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   True
@@ -5408,9 +5300,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   3
             TabStop         =   True
             Text            =   ""
-            TextColor       =   &c00000000
+            TextColor       =   "&c00000000"
             TextFont        =   "Arial"
-            TextSize        =   10.0
+            TextSize        =   10
             TextUnit        =   0
             Top             =   105
             Underline       =   False
@@ -5423,7 +5315,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Alignment       =   0
             AutoDeactivate  =   True
             AutomaticallyCheckSpelling=   True
-            BackColor       =   &cFFFFFF00
+            BackColor       =   "&cFFFFFF00"
             Bold            =   False
             Border          =   True
             DataField       =   ""
@@ -5438,8 +5330,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Italic          =   False
             Left            =   270
             LimitText       =   0
-            LineHeight      =   0.0
-            LineSpacing     =   1.0
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   True
@@ -5456,9 +5346,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   3
             TabStop         =   True
             Text            =   ""
-            TextColor       =   &c00000000
+            TextColor       =   "&c00000000"
             TextFont        =   "Arial"
-            TextSize        =   10.0
+            TextSize        =   10
             TextUnit        =   0
             Top             =   105
             Underline       =   False
@@ -5471,7 +5361,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Alignment       =   0
             AutoDeactivate  =   True
             AutomaticallyCheckSpelling=   True
-            BackColor       =   &cFFFFFF00
+            BackColor       =   "&cFFFFFF00"
             Bold            =   False
             Border          =   True
             DataField       =   ""
@@ -5486,8 +5376,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Italic          =   False
             Left            =   590
             LimitText       =   0
-            LineHeight      =   0.0
-            LineSpacing     =   1.0
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   True
@@ -5504,9 +5392,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   3
             TabStop         =   True
             Text            =   ""
-            TextColor       =   &c00000000
+            TextColor       =   "&c00000000"
             TextFont        =   "Arial"
-            TextSize        =   10.0
+            TextSize        =   10
             TextUnit        =   0
             Top             =   105
             Underline       =   False
@@ -5519,7 +5407,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Alignment       =   0
             AutoDeactivate  =   True
             AutomaticallyCheckSpelling=   True
-            BackColor       =   &cFFFFFF00
+            BackColor       =   "&cFFFFFF00"
             Bold            =   False
             Border          =   True
             DataField       =   ""
@@ -5534,8 +5422,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Italic          =   False
             Left            =   270
             LimitText       =   0
-            LineHeight      =   0.0
-            LineSpacing     =   1.0
             LockBottom      =   True
             LockedInPosition=   False
             LockLeft        =   True
@@ -5552,9 +5438,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   3
             TabStop         =   True
             Text            =   ""
-            TextColor       =   &c00000000
+            TextColor       =   "&c00000000"
             TextFont        =   "Arial"
-            TextSize        =   10.0
+            TextSize        =   10
             TextUnit        =   0
             Top             =   140
             Underline       =   False
@@ -5567,7 +5453,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Alignment       =   0
             AutoDeactivate  =   True
             AutomaticallyCheckSpelling=   True
-            BackColor       =   &cFFFFFF00
+            BackColor       =   "&cFFFFFF00"
             Bold            =   False
             Border          =   True
             DataField       =   ""
@@ -5582,8 +5468,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Italic          =   False
             Left            =   270
             LimitText       =   0
-            LineHeight      =   0.0
-            LineSpacing     =   1.0
             LockBottom      =   True
             LockedInPosition=   False
             LockLeft        =   True
@@ -5600,9 +5484,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   3
             TabStop         =   True
             Text            =   ""
-            TextColor       =   &c00000000
+            TextColor       =   "&c00000000"
             TextFont        =   "Arial"
-            TextSize        =   10.0
+            TextSize        =   10
             TextUnit        =   0
             Top             =   442
             Underline       =   False
@@ -5637,7 +5521,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   3
             TabStop         =   True
             Top             =   155
-            Transparent     =   True
             UseFocusRing    =   True
             Visible         =   True
             Width           =   115
@@ -5647,7 +5530,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Alignment       =   0
             AutoDeactivate  =   True
             AutomaticallyCheckSpelling=   True
-            BackColor       =   &cFFFFFF00
+            BackColor       =   "&cFFFFFF00"
             Bold            =   False
             Border          =   True
             DataField       =   ""
@@ -5662,8 +5545,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Italic          =   False
             Left            =   270
             LimitText       =   0
-            LineHeight      =   0.0
-            LineSpacing     =   1.0
             LockBottom      =   True
             LockedInPosition=   False
             LockLeft        =   True
@@ -5680,9 +5561,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   3
             TabStop         =   True
             Text            =   ""
-            TextColor       =   &c00000000
+            TextColor       =   "&c00000000"
             TextFont        =   "Arial"
-            TextSize        =   10.0
+            TextSize        =   10
             TextUnit        =   0
             Top             =   476
             Underline       =   False
@@ -5714,7 +5595,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   3
             TabStop         =   True
             Top             =   310
-            Transparent     =   True
             UseFocusRing    =   True
             Visible         =   True
             Width           =   102
@@ -5743,7 +5623,6 @@ Begin Window MainWindow Implements ScriptureReceiver
          TabPanelIndex   =   5
          TabStop         =   True
          Top             =   40
-         Transparent     =   True
          UseFocusRing    =   True
          Visible         =   True
          Width           =   581
@@ -5771,7 +5650,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   5
             Text            =   "seconds"
             TextAlign       =   1
-            TextColor       =   &c00000000
+            TextColor       =   "&c00000000"
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
@@ -5805,7 +5684,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   5
             Text            =   "Auto-advance slide(s) every..."
             TextAlign       =   1
-            TextColor       =   &c00000000
+            TextColor       =   "&c00000000"
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
@@ -5839,7 +5718,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   5
             Text            =   "Use Transition"
             TextAlign       =   0
-            TextColor       =   &c00000000
+            TextColor       =   "&c00000000"
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
@@ -5905,7 +5784,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   5
             Text            =   "Image Slide Editor"
             TextAlign       =   0
-            TextColor       =   &c00000000
+            TextColor       =   "&c00000000"
             TextFont        =   "Arial"
             TextSize        =   22.0
             TextUnit        =   0
@@ -5970,7 +5849,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   5
             Text            =   "Name:"
             TextAlign       =   0
-            TextColor       =   &c00000000
+            TextColor       =   "&c00000000"
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
@@ -6132,7 +6011,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   5
             Text            =   "Notes:"
             TextAlign       =   0
-            TextColor       =   &c00000000
+            TextColor       =   "&c00000000"
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
@@ -6166,7 +6045,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   5
             Text            =   "Title:"
             TextAlign       =   0
-            TextColor       =   &c00000000
+            TextColor       =   "&c00000000"
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
@@ -6200,7 +6079,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   5
             Text            =   "Insert:"
             TextAlign       =   0
-            TextColor       =   &c00000000
+            TextColor       =   "&c00000000"
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
@@ -6279,7 +6158,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Alignment       =   0
             AutoDeactivate  =   True
             AutomaticallyCheckSpelling=   True
-            BackColor       =   &cFFFFFF00
+            BackColor       =   "&cFFFFFF00"
             Bold            =   False
             Border          =   True
             DataField       =   ""
@@ -6294,8 +6173,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Italic          =   False
             Left            =   756
             LimitText       =   0
-            LineHeight      =   0.0
-            LineSpacing     =   1.0
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   False
@@ -6312,9 +6189,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   5
             TabStop         =   True
             Text            =   ""
-            TextColor       =   &c00000000
+            TextColor       =   "&c00000000"
             TextFont        =   "Arial"
-            TextSize        =   10.0
+            TextSize        =   10
             TextUnit        =   0
             Top             =   369
             Underline       =   False
@@ -6346,7 +6223,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   5
             Text            =   "Subtitle:"
             TextAlign       =   0
-            TextColor       =   &c00000000
+            TextColor       =   "&c00000000"
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
@@ -6380,7 +6257,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   5
             Text            =   "Images:"
             TextAlign       =   0
-            TextColor       =   &c00000000
+            TextColor       =   "&c00000000"
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
@@ -6427,7 +6304,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Alignment       =   0
             AutoDeactivate  =   True
             AutomaticallyCheckSpelling=   True
-            BackColor       =   &cFFFFFF00
+            BackColor       =   "&cFFFFFF00"
             Bold            =   False
             Border          =   True
             DataField       =   ""
@@ -6442,8 +6319,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Italic          =   False
             Left            =   270
             LimitText       =   0
-            LineHeight      =   0.0
-            LineSpacing     =   1.0
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   True
@@ -6460,9 +6335,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   5
             TabStop         =   True
             Text            =   ""
-            TextColor       =   &c00000000
+            TextColor       =   "&c00000000"
             TextFont        =   "Arial"
-            TextSize        =   10.0
+            TextSize        =   10
             TextUnit        =   0
             Top             =   105
             Underline       =   False
@@ -6494,7 +6369,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   5
             TabStop         =   True
             Top             =   409
-            Transparent     =   True
             UseFocusRing    =   True
             Visible         =   True
             Width           =   102
@@ -6504,7 +6378,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Alignment       =   0
             AutoDeactivate  =   True
             AutomaticallyCheckSpelling=   True
-            BackColor       =   &cFFFFFF00
+            BackColor       =   "&cFFFFFF00"
             Bold            =   False
             Border          =   True
             DataField       =   ""
@@ -6519,8 +6393,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Italic          =   False
             Left            =   430
             LimitText       =   0
-            LineHeight      =   0.0
-            LineSpacing     =   1.0
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   True
@@ -6537,9 +6409,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   5
             TabStop         =   True
             Text            =   ""
-            TextColor       =   &c00000000
+            TextColor       =   "&c00000000"
             TextFont        =   "Arial"
-            TextSize        =   10.0
+            TextSize        =   10
             TextUnit        =   0
             Top             =   105
             Underline       =   False
@@ -6552,7 +6424,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Alignment       =   0
             AutoDeactivate  =   True
             AutomaticallyCheckSpelling=   True
-            BackColor       =   &cFFFFFF00
+            BackColor       =   "&cFFFFFF00"
             Bold            =   False
             Border          =   True
             DataField       =   ""
@@ -6567,8 +6439,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Italic          =   False
             Left            =   590
             LimitText       =   0
-            LineHeight      =   0.0
-            LineSpacing     =   1.0
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   True
@@ -6585,9 +6455,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   5
             TabStop         =   True
             Text            =   ""
-            TextColor       =   &c00000000
+            TextColor       =   "&c00000000"
             TextFont        =   "Arial"
-            TextSize        =   10.0
+            TextSize        =   10
             TextUnit        =   0
             Top             =   105
             Underline       =   False
@@ -6637,7 +6507,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   5
             TabStop         =   True
             TextFont        =   "System"
-            TextSize        =   0.0
+            TextSize        =   0
             TextUnit        =   0
             Top             =   160
             Underline       =   False
@@ -6652,7 +6522,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Alignment       =   0
             AutoDeactivate  =   True
             AutomaticallyCheckSpelling=   True
-            BackColor       =   &cFFFFFF00
+            BackColor       =   "&cFFFFFF00"
             Bold            =   False
             Border          =   True
             DataField       =   ""
@@ -6667,8 +6537,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Italic          =   False
             Left            =   270
             LimitText       =   0
-            LineHeight      =   0.0
-            LineSpacing     =   1.0
             LockBottom      =   True
             LockedInPosition=   False
             LockLeft        =   True
@@ -6685,9 +6553,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   5
             TabStop         =   True
             Text            =   ""
-            TextColor       =   &c00000000
+            TextColor       =   "&c00000000"
             TextFont        =   "Arial"
-            TextSize        =   10.0
+            TextSize        =   10
             TextUnit        =   0
             Top             =   488
             Underline       =   False
@@ -6722,7 +6590,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   5
             TabStop         =   True
             Top             =   161
-            Transparent     =   True
             UseFocusRing    =   True
             Visible         =   True
             Width           =   115
@@ -6754,7 +6621,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   5
             TabStop         =   True
             Top             =   212
-            Transparent     =   True
             UseFocusRing    =   True
             Visible         =   True
             Width           =   115
@@ -6786,7 +6652,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   5
             TabStop         =   True
             Top             =   263
-            Transparent     =   True
             UseFocusRing    =   True
             Visible         =   True
             Width           =   115
@@ -6818,7 +6683,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   5
             TabStop         =   True
             Top             =   237
-            Transparent     =   True
             UseFocusRing    =   True
             Visible         =   True
             Width           =   115
@@ -6850,7 +6714,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   5
             TabStop         =   False
             Top             =   185
-            Transparent     =   True
             UseFocusRing    =   True
             Visible         =   True
             Width           =   115
@@ -6879,7 +6742,6 @@ Begin Window MainWindow Implements ScriptureReceiver
          TabPanelIndex   =   6
          TabStop         =   True
          Top             =   40
-         Transparent     =   True
          UseFocusRing    =   True
          Visible         =   True
          Width           =   581
@@ -6907,7 +6769,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   6
             Text            =   "External Slide Editor"
             TextAlign       =   0
-            TextColor       =   &c00000000
+            TextColor       =   "&c00000000"
             TextFont        =   "Arial"
             TextSize        =   22.0
             TextUnit        =   0
@@ -6941,7 +6803,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   6
             Text            =   "Name:"
             TextAlign       =   0
-            TextColor       =   &c00000000
+            TextColor       =   "&c00000000"
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
@@ -6975,7 +6837,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   6
             Text            =   "Notes:"
             TextAlign       =   0
-            TextColor       =   &c00000000
+            TextColor       =   "&c00000000"
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
@@ -7009,7 +6871,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   6
             Text            =   "Application:"
             TextAlign       =   0
-            TextColor       =   &c00000000
+            TextColor       =   "&c00000000"
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
@@ -7056,7 +6918,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Alignment       =   0
             AutoDeactivate  =   True
             AutomaticallyCheckSpelling=   True
-            BackColor       =   &cFFFFFF00
+            BackColor       =   "&cFFFFFF00"
             Bold            =   False
             Border          =   True
             DataField       =   ""
@@ -7071,8 +6933,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Italic          =   False
             Left            =   270
             LimitText       =   0
-            LineHeight      =   0.0
-            LineSpacing     =   1.0
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   True
@@ -7089,9 +6949,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   6
             TabStop         =   True
             Text            =   ""
-            TextColor       =   &c00000000
+            TextColor       =   "&c00000000"
             TextFont        =   "Arial"
-            TextSize        =   10.0
+            TextSize        =   10
             TextUnit        =   0
             Top             =   105
             Underline       =   False
@@ -7104,7 +6964,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Alignment       =   0
             AutoDeactivate  =   True
             AutomaticallyCheckSpelling=   True
-            BackColor       =   &cFFFFFF00
+            BackColor       =   "&cFFFFFF00"
             Bold            =   False
             Border          =   True
             DataField       =   ""
@@ -7119,8 +6979,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Italic          =   False
             Left            =   270
             LimitText       =   0
-            LineHeight      =   0.0
-            LineSpacing     =   1.0
             LockBottom      =   True
             LockedInPosition=   False
             LockLeft        =   True
@@ -7137,9 +6995,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   6
             TabStop         =   True
             Text            =   ""
-            TextColor       =   &c00000000
+            TextColor       =   "&c00000000"
             TextFont        =   "Arial"
-            TextSize        =   10.0
+            TextSize        =   10
             TextUnit        =   0
             Top             =   488
             Underline       =   False
@@ -7174,7 +7032,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   6
             TabStop         =   True
             Top             =   161
-            Transparent     =   True
             UseFocusRing    =   True
             Visible         =   True
             Width           =   115
@@ -7206,7 +7063,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   6
             TabStop         =   True
             Top             =   223
-            Transparent     =   True
             UseFocusRing    =   True
             Visible         =   True
             Width           =   115
@@ -7238,7 +7094,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   6
             TabStop         =   True
             Top             =   192
-            Transparent     =   True
             UseFocusRing    =   True
             Visible         =   True
             Width           =   115
@@ -7284,7 +7139,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                Scope           =   0
                TabIndex        =   0
                TabPanelIndex   =   2
-               TabStop         =   True
                TextFont        =   "Arial"
                TextSize        =   11.0
                TextUnit        =   0
@@ -7351,7 +7205,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                   TabPanelIndex   =   2
                   TabStop         =   True
                   Top             =   339
-                  Transparent     =   True
                   UseFocusRing    =   True
                   Visible         =   True
                   Width           =   20
@@ -7380,7 +7233,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   TabPanelIndex   =   2
                   Text            =   "Presentation filename"
                   TextAlign       =   0
-                  TextColor       =   &c00000000
+                  TextColor       =   "&c00000000"
                   TextFont        =   "Arial"
                   TextSize        =   10.0
                   TextUnit        =   0
@@ -7501,7 +7354,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   TabPanelIndex   =   2
                   Text            =   "Which application should be used to run the presentation?"
                   TextAlign       =   0
-                  TextColor       =   &c00000000
+                  TextColor       =   "&c00000000"
                   TextFont        =   "Arial"
                   TextSize        =   10.0
                   TextUnit        =   0
@@ -7516,7 +7369,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Alignment       =   0
                   AutoDeactivate  =   True
                   AutomaticallyCheckSpelling=   True
-                  BackColor       =   &cFFFFFF00
+                  BackColor       =   "&cFFFFFF00"
                   Bold            =   False
                   Border          =   True
                   DataField       =   ""
@@ -7531,8 +7384,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Italic          =   False
                   Left            =   285
                   LimitText       =   0
-                  LineHeight      =   0.0
-                  LineSpacing     =   1.0
                   LockBottom      =   False
                   LockedInPosition=   False
                   LockLeft        =   True
@@ -7549,9 +7400,9 @@ Begin Window MainWindow Implements ScriptureReceiver
                   TabPanelIndex   =   2
                   TabStop         =   True
                   Text            =   ""
-                  TextColor       =   &c00000000
+                  TextColor       =   "&c00000000"
                   TextFont        =   "System"
-                  TextSize        =   0.0
+                  TextSize        =   0
                   TextUnit        =   0
                   Top             =   360
                   Underline       =   False
@@ -7615,7 +7466,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   TabPanelIndex   =   2
                   Text            =   "For full control over your PowerPoint presentation an installation of Microsoft Office is required."
                   TextAlign       =   0
-                  TextColor       =   &c00000000
+                  TextColor       =   "&c00000000"
                   TextFont        =   "Arial"
                   TextSize        =   10.0
                   TextUnit        =   0
@@ -7649,7 +7500,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   TabPanelIndex   =   2
                   Text            =   "For showing your PowerPoint presentation without interaction, you can use the free Microsoft PowerPoint Viewer. OpenSong tries to detect it. You can set a specific viewer in the general settings."
                   TextAlign       =   0
-                  TextColor       =   &c00000000
+                  TextColor       =   "&c00000000"
                   TextFont        =   "Arial"
                   TextSize        =   10.0
                   TextUnit        =   0
@@ -7683,7 +7534,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   TabPanelIndex   =   2
                   Text            =   "For full control of an Impress or PowerPoint presentation the free OpenOffice.org suite is required."
                   TextAlign       =   0
-                  TextColor       =   &c00000000
+                  TextColor       =   "&c00000000"
                   TextFont        =   "Arial"
                   TextSize        =   10.0
                   TextUnit        =   0
@@ -7713,7 +7564,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                Scope           =   0
                TabIndex        =   0
                TabPanelIndex   =   1
-               TabStop         =   True
                TextFont        =   "Arial"
                TextSize        =   11.0
                TextUnit        =   0
@@ -7745,7 +7595,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   TabPanelIndex   =   1
                   Text            =   "Select an application to use as source for this slides content."
                   TextAlign       =   1
-                  TextColor       =   &c00000000
+                  TextColor       =   "&c00000000"
                   TextFont        =   "Arial"
                   TextSize        =   10.0
                   TextUnit        =   0
@@ -7775,7 +7625,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                Scope           =   0
                TabIndex        =   0
                TabPanelIndex   =   4
-               TabStop         =   True
                TextFont        =   "Arial"
                TextSize        =   11.0
                TextUnit        =   0
@@ -7807,7 +7656,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   TabPanelIndex   =   4
                   Text            =   "Application parameters"
                   TextAlign       =   0
-                  TextColor       =   &c00000000
+                  TextColor       =   "&c00000000"
                   TextFont        =   "Arial"
                   TextSize        =   10.0
                   TextUnit        =   0
@@ -7841,7 +7690,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   TabPanelIndex   =   4
                   Text            =   "Path to application executable"
                   TextAlign       =   0
-                  TextColor       =   &c00000000
+                  TextColor       =   "&c00000000"
                   TextFont        =   "Arial"
                   TextSize        =   10.0
                   TextUnit        =   0
@@ -7878,7 +7727,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                   TabPanelIndex   =   4
                   TabStop         =   True
                   Top             =   191
-                  Transparent     =   True
                   UseFocusRing    =   True
                   Visible         =   True
                   Width           =   20
@@ -7888,7 +7736,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Alignment       =   0
                   AutoDeactivate  =   True
                   AutomaticallyCheckSpelling=   True
-                  BackColor       =   &cFFFFFF00
+                  BackColor       =   "&cFFFFFF00"
                   Bold            =   False
                   Border          =   True
                   DataField       =   ""
@@ -7903,8 +7751,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Italic          =   False
                   Left            =   305
                   LimitText       =   0
-                  LineHeight      =   0.0
-                  LineSpacing     =   1.0
                   LockBottom      =   False
                   LockedInPosition=   False
                   LockLeft        =   True
@@ -7921,9 +7767,9 @@ Begin Window MainWindow Implements ScriptureReceiver
                   TabPanelIndex   =   4
                   TabStop         =   True
                   Text            =   ""
-                  TextColor       =   &c00000000
+                  TextColor       =   "&c00000000"
                   TextFont        =   "System"
-                  TextSize        =   0.0
+                  TextSize        =   0
                   TextUnit        =   0
                   Top             =   212
                   Underline       =   False
@@ -7936,7 +7782,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Alignment       =   0
                   AutoDeactivate  =   True
                   AutomaticallyCheckSpelling=   True
-                  BackColor       =   &cFFFFFF00
+                  BackColor       =   "&cFFFFFF00"
                   Bold            =   False
                   Border          =   True
                   DataField       =   ""
@@ -7951,8 +7797,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Italic          =   False
                   Left            =   305
                   LimitText       =   0
-                  LineHeight      =   0.0
-                  LineSpacing     =   1.0
                   LockBottom      =   False
                   LockedInPosition=   False
                   LockLeft        =   True
@@ -7969,9 +7813,9 @@ Begin Window MainWindow Implements ScriptureReceiver
                   TabPanelIndex   =   4
                   TabStop         =   True
                   Text            =   ""
-                  TextColor       =   &c00000000
+                  TextColor       =   "&c00000000"
                   TextFont        =   "System"
-                  TextSize        =   0.0
+                  TextSize        =   0
                   TextUnit        =   0
                   Top             =   256
                   Underline       =   False
@@ -8089,7 +7933,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                Scope           =   0
                TabIndex        =   0
                TabPanelIndex   =   3
-               TabStop         =   True
                TextFont        =   "Arial"
                TextSize        =   11.0
                TextUnit        =   0
@@ -8203,7 +8046,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                   TabPanelIndex   =   3
                   TabStop         =   True
                   Top             =   191
-                  Transparent     =   True
                   UseFocusRing    =   True
                   Visible         =   True
                   Width           =   20
@@ -8213,7 +8055,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Alignment       =   0
                   AutoDeactivate  =   True
                   AutomaticallyCheckSpelling=   True
-                  BackColor       =   &cFFFFFF00
+                  BackColor       =   "&cFFFFFF00"
                   Bold            =   False
                   Border          =   True
                   DataField       =   ""
@@ -8228,8 +8070,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Italic          =   False
                   Left            =   305
                   LimitText       =   0
-                  LineHeight      =   0.0
-                  LineSpacing     =   1.0
                   LockBottom      =   False
                   LockedInPosition=   False
                   LockLeft        =   True
@@ -8246,9 +8086,9 @@ Begin Window MainWindow Implements ScriptureReceiver
                   TabPanelIndex   =   3
                   TabStop         =   False
                   Text            =   ""
-                  TextColor       =   &c00000000
+                  TextColor       =   "&c00000000"
                   TextFont        =   "System"
-                  TextSize        =   0.0
+                  TextSize        =   0
                   TextUnit        =   0
                   Top             =   212
                   Underline       =   False
@@ -8309,7 +8149,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   TabPanelIndex   =   3
                   Text            =   "Path to media file to play"
                   TextAlign       =   0
-                  TextColor       =   &c00000000
+                  TextColor       =   "&c00000000"
                   TextFont        =   "Arial"
                   TextSize        =   10.0
                   TextUnit        =   0
@@ -8343,7 +8183,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   TabPanelIndex   =   3
                   Text            =   "Use the following preset with parameters"
                   TextAlign       =   0
-                  TextColor       =   &c00000000
+                  TextColor       =   "&c00000000"
                   TextFont        =   "Arial"
                   TextSize        =   10.0
                   TextUnit        =   0
@@ -8377,7 +8217,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   TabPanelIndex   =   3
                   Text            =   "Manually adjusted parameters (use %d for display number, %s for mediafile)"
                   TextAlign       =   0
-                  TextColor       =   &c00000000
+                  TextColor       =   "&c00000000"
                   TextFont        =   "Arial"
                   TextSize        =   10.0
                   TextUnit        =   0
@@ -8392,7 +8232,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Alignment       =   0
                   AutoDeactivate  =   True
                   AutomaticallyCheckSpelling=   True
-                  BackColor       =   &cFFFFFF00
+                  BackColor       =   "&cFFFFFF00"
                   Bold            =   False
                   Border          =   True
                   DataField       =   ""
@@ -8407,8 +8247,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Italic          =   False
                   Left            =   305
                   LimitText       =   0
-                  LineHeight      =   0.0
-                  LineSpacing     =   1.0
                   LockBottom      =   True
                   LockedInPosition=   False
                   LockLeft        =   True
@@ -8425,9 +8263,9 @@ Begin Window MainWindow Implements ScriptureReceiver
                   TabPanelIndex   =   3
                   TabStop         =   True
                   Text            =   ""
-                  TextColor       =   &c00000000
+                  TextColor       =   "&c00000000"
                   TextFont        =   "System"
-                  TextSize        =   0.0
+                  TextSize        =   0
                   TextUnit        =   0
                   Top             =   382
                   Underline       =   False
@@ -8943,7 +8781,7 @@ End
 	#tag EndEvent
 
 	#tag Event
-		Sub Paint(g As Graphics, areas() As REALbasic.Rect)
+		Sub Paint(g As Graphics)
 		  ' left side
 		  g.ForeColor = DarkBevelColor
 		  g.FillOval 3, 9, 2, 2
@@ -9429,23 +9267,12 @@ End
 		    ' No need to EnableMenuItems, since the following selection change will call it
 		    
 		    Dim set_item_index As Integer = 0
-		    Dim set_item_name As String = SmartML.GetValue(xslide, "@name", True)
-		    Dim set_item_type As String = SmartML.GetValue(xslide, "@type", True)
-		    If set_item_type = "style" Then
-		      set_item_type = SmartML.GetValue(xslide, "@action", True)
-		    End If
-		    
-		    Dim set_item_caption As String = App.T.Translate("sets_mode/items/"+set_item_type+"/@caption")
-		    If set_item_type = "" or set_item_caption = "" Then // unknown slide type
-		      App.DebugWriter.Write "MainWindow.ActionInSetAddSlide.Change: Unknown slide type '" + set_item_type + "/@caption" + "'", 1
-		      set_item_caption = "*ERROR*"
-		    End If
 		    
 		    If lst_set_items.ListIndex >= 0 Then
-		      lst_set_items.InsertRow lst_set_items.ListIndex + 1, set_item_name + " " + set_item_caption
+		      lst_set_items.InsertRow lst_set_items.ListIndex + 1, GetSlideGroupCaption(xslide)
 		      set_item_index = lst_set_items.ListIndex + 1
 		    Else
-		      lst_set_items.AddRow set_item_name + " " + set_item_caption
+		      lst_set_items.AddRow GetSlideGroupCaption(xslide)
 		      set_item_index = lst_set_items.ListCount - 1
 		    End If
 		    
@@ -9668,13 +9495,17 @@ End
 		    Next i
 		    
 		    can_image_style.PreviewSlide = SmartML.GetNode(xgroup, "slides/slide")
-		    lst_set_items.List(CurrentInSetItem) = edt_image_name.Text + " " + App.T.Translate("sets_mode/items/" + SmartML.GetValue(xgroup, "@type") + "/@caption")
+		    lst_set_items.List(CurrentInSetItem) = GetSlideGroupCaption(xgroup)
 		    
 		  Case "external"
 		    If btn_external_presentation.GetStuck() Then
 		      If chk_external_embed_presentation.Enabled Then
-		        Dim f As FolderItem = GetFolderItem(edt_external_presentation_file.Text)
-		        If f.Exists() Then
+		        Dim f As FolderItem
+		        If Trim(edt_external_presentation_file.Text) <> "" Then f = GetFolderItem(edt_external_presentation_file.Text)
+		        If f = Nil Then
+		          MsgBox(App.T.Translate("errors/fileutils/invalidname", edt_external_presentation_file.Text))
+		          Return False
+		        ElseIf f.Exists() Then
 		          If chk_external_embed_presentation.Value Then
 		            Dim inputStream As BinaryStream = BinaryStream.Open(f, False)
 		            SmartML.SetValue xgroup, "file", EncodeBase64(inputStream.Read(f.Length))
@@ -9706,9 +9537,40 @@ End
 		      SmartML.SetValueB xgroup, "@loop_presentation", chk_external_loop_presentation.Value
 		      
 		    ElseIf btn_external_videolan.GetStuck() Then
+		      SmartML.SetValue xgroup, "@application", "videolan"
+		      
+		      If rad_external_videolan_start.Value Then
+		        SmartML.SetValue xgroup, "@action", "start"
+		      ElseIf rad_external_videolan_stop.Value Then
+		        SmartML.SetValue xgroup, "@action", "stop"
+		      End If
+		      Dim videoLanPresetParams As String
+		      If lst_external_videolan_preset.ListIndex > -1 Then
+		        videoLanPresetParams = App.VideolanPresetList.Lookup(lst_external_videolan_preset.Cell(lst_external_videolan_preset.ListIndex,0), "")
+		      End If
+		      If videoLanPresetParams = "" Then videoLanPresetParams = edt_external_videolan_manual.Text
+		      SmartML.SetValue xgroup, "@videolan_parameters", videoLanPresetParams
+		      SmartML.SetValueB xgroup, "@wait_to_finish", chk_external_wait_for_videolan.Value
+		      
 		      If chk_external_embed_mediafile.Enabled Then
-		        Dim f As FolderItem = GetFolderItem(edt_external_videolan_mediafilename.Text)
-		        If f.Exists() Then
+		        Dim f As FolderItem
+		        If Trim(edt_external_videolan_mediafilename.Text) = "" Then
+		          If videoLanPresetParams.InStrB("%s") <> 0 Then
+		            MsgBox(App.T.Translate("errors/videolan/no_medium", GetSlideGroupCaption(xgroup)))
+		            Return False
+		          End If
+		        Else
+		          f = GetFolderItem(edt_external_videolan_mediafilename.Text)
+		        End If
+		        If f = Nil Then
+		          If chk_external_embed_mediafile.Value Then
+		            MsgBox(App.T.Translate("errors/fileutils/invalidname", edt_external_videolan_mediafilename.Text))
+		            Return False
+		          Else
+		            SmartML.SetValue xgroup, "@filename", edt_external_videolan_mediafilename.Text
+		          End If
+		          ' Else we just ignore it. It might be an URL or a MRL (Media Resource Locator, VLC's stream naming scheme)
+		        ElseIf f.Exists() Then
 		          If chk_external_embed_mediafile.Value Then
 		            Dim inputStream As BinaryStream = BinaryStream.Open(f, False)
 		            SmartML.SetValue xgroup, "file", EncodeBase64(inputStream.Read(f.Length))
@@ -9727,24 +9589,13 @@ End
 		        SmartML.SetValue xgroup, "@filename", edt_external_videolan_mediafilename.Text
 		      End If
 		      
-		      SmartML.SetValue xgroup, "@application", "videolan"
-		      
-		      If rad_external_videolan_start.Value Then
-		        SmartML.SetValue xgroup, "@action", "start"
-		      ElseIf rad_external_videolan_stop.Value Then
-		        SmartML.SetValue xgroup, "@action", "stop"
-		      End If
-		      Dim videoLanPresetParams As String
-		      If lst_external_videolan_preset.ListIndex > -1 Then
-		        videoLanPresetParams = App.VideolanPresetList.Lookup(lst_external_videolan_preset.Cell(lst_external_videolan_preset.ListIndex,0), "")
-		      End If
-		      If videoLanPresetParams = "" Then videoLanPresetParams = edt_external_videolan_manual.Text
-		      SmartML.SetValue xgroup, "@videolan_parameters", videoLanPresetParams
-		      SmartML.SetValueB xgroup, "@wait_to_finish", chk_external_wait_for_videolan.Value
-		      
 		    ElseIf btn_external_application.GetStuck() Then
-		      Dim f As FolderItem = GetFolderItem(edt_external_application_filename.Text)
-		      If f.Exists() Then
+		      Dim f As FolderItem
+		      If Trim(edt_external_application_filename.Text) <> "" Then f = GetFolderItem(edt_external_application_filename.Text)
+		      If f = Nil Then
+		        MsgBox(App.T.Translate("errors/fileutils/invalidname", edt_external_application_filename.Text))
+		        Return False
+		      ElseIf f.Exists() Then
 		        SmartML.SetValue xgroup, "@app_filename", f.AbsolutePath
 		      Else
 		        MsgBox(App.T.Translate("errors/fileutils/filenotfound", f.AbsolutePath))
@@ -9766,7 +9617,7 @@ End
 		    SmartML.SetValue xgroup, "notes", edt_external_notes.Text
 		    SmartML.SetValueB xgroup, "@loop", chk_external_loop.Value
 		    
-		    lst_set_items.List(CurrentInSetItem) = edt_external_name.Text + " " + App.T.Translate("sets_mode/items/" + SmartML.GetValue(xgroup, "@type") + "/@caption")
+		    lst_set_items.List(CurrentInSetItem) = GetSlideGroupCaption(xgroup)
 		    
 		  Case "style"
 		    
@@ -9795,7 +9646,7 @@ End
 		      SmartML.SetValue xslide, "body", StringUtils.Trim(bodies(i), StringUtils.WhiteSpaces)
 		    Next i
 		    
-		    lst_set_items.List(CurrentInSetItem) = edt_slide_name.Text + " (" + SmartML.GetValue(xgroup, "@type", True) + ")"
+		    lst_set_items.List(CurrentInSetItem) = GetSlideGroupCaption(xgroup)
 		  End Select
 		  
 		  Status_InSetChanged = False
@@ -11461,9 +11312,9 @@ End
 		    App.DebugWriter.Write "MainWindow.ActionSongPrintAll: Return from PrintWindow"
 		  End If
 		  App.MouseCursor = Nil
-		  Catch ex
-		    App.DebugWriter.Write "MainWindow.ActionSongPrintAll: Caught exception"
-		    App.MouseCursor = Nil
+		Catch ex
+		  App.DebugWriter.Write "MainWindow.ActionSongPrintAll: Caught exception"
+		  App.MouseCursor = Nil
 		End Sub
 	#tag EndMethod
 
@@ -12394,6 +12245,26 @@ End
 	#tag EndMethod
 
 	#tag Method, Flags = &h1
+		Protected Function GetSlideGroupCaption(SlideGroup As XmlNode) As String
+		  Dim set_item_name As String = SmartML.GetValue(slideGroup, "@name", True)
+		  Dim set_item_type As String = SmartML.GetValue(slideGroup, "@type", True)
+		  If set_item_type = "style" Then
+		    If SmartML.GetValue(slideGroup, "@action", True) = "revert" Then
+		      set_item_type = "revert"
+		    End If
+		  End If
+		  
+		  Dim set_item_caption As String = App.T.Translate("sets_mode/items/"+set_item_type+"/@caption")
+		  If set_item_type = "" or set_item_caption = "" Then // unknown slide type
+		    App.DebugWriter.Write "MainWindow.ActionInSetAddSlide.Change: Unknown slide type '" + set_item_type + "/@caption" + "'", 1
+		    set_item_caption = "*ERROR*"
+		  End If
+		  Return set_item_name + " " + set_item_caption
+		  
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h1
 		Protected Function GetSongFolderPath(FolderName As String) As String
 		  //++EMP 18 Feb 2006
 		  // This was added to clear up a problem in lst_songs_songs where
@@ -12526,8 +12397,11 @@ End
 		      Case "videolan"
 		        Dim videolanLocation As FolderItem = App.MainPreferences.GetValueFI(Prefs.kVideolanLocation, Nil, False)
 		        If Not IsNull(videolanLocation) And videolanLocation.Exists Then
-		          Dim mediaFileName As String = SmartML.GetValue(slide_group, "@filename")
-		          Dim mediaFile As FolderItem = GetFolderItem( mediaFileName )
+		          Dim mediaFileName As String = Trim(SmartML.GetValue(slide_group, "@filename"))
+		          Dim mediaFile As FolderItem
+		          If mediaFileName <> "" Then
+		            mediaFile = GetFolderItem( mediaFileName )
+		          End If
 		          
 		          Dim embedFiledata As String = SmartML.GetValue(slide_group, "file", False)
 		          If embedFiledata.Len() > 0 Then
@@ -12544,13 +12418,19 @@ End
 		            End Try
 		          End If
 		          
-		          If IsNull(mediaFile) Or Not mediaFile.Exists() Then
+		          If IsNull(mediaFile) Then
+		            If mediaFileName = "" Then
+		              Dim videoLanParams As String = SmartML.GetValue(slide_group, "@videolan_parameters", False)
+		              If videoLanParams.InStrB("%s") > 0 Then
+		                InputBox.Message App.T.Translate("errors/videolan/no_medium_in_slide", GetSlideGroupCaption(slide_group))
+		              End If
+		            End If
+		          ElseIf Not mediaFile.Exists() Then
 		            InputBox.Message App.T.Translate("errors/fileutils/filenotfound", mediaFileName)
 		          End If
 		        Else
 		          InputBox.Message App.T.Translate("errors/videolan_app_missing")
 		        End If
-		        
 		        
 		      Case "launch"
 		        'No action required here
@@ -12735,7 +12615,6 @@ End
 		  Dim success As Boolean = False
 		  Dim f As FolderItem
 		  Dim xnode As XmlNode
-		  Dim slideType As String
 		  
 		  If Status_InSetLoading Then
 		    Return success
@@ -12785,13 +12664,7 @@ End
 		    If Not IsNull(slide_groups)Then
 		      xchild = slide_groups.FirstChild
 		      While xchild <> Nil
-		        '++JRC Fix broken set item type displaying in set list
-		        slideType = App.T.Translate("sets_mode/items/" + xchild.GetAttribute("type") + "/@caption")
-		        If slideType = "" Then // unknown slide type
-		          App.DebugWriter.Write "MainWindow.pop_sets_sets.Change: Unknown slide type '" + xchild.GetAttribute("type") + "/@caption" + "'", 1
-		          slideType = "*ERROR*"
-		        End If
-		        lst_set_items.AddRow xchild.GetAttribute("name") + " " + slideType
+		        lst_set_items.AddRow GetSlideGroupCaption(xchild)
 		        lst_set_items.CellTag(lst_set_items.ListCount-1, 0) = xchild.GetAttribute("type")
 		        xchild = xchild.NextSibling
 		      Wend
@@ -13374,14 +13247,14 @@ End
 		  
 		  pop_songs_song_folders.ListIndex = 0
 		  
-		  Catch ex
-		    If ex IsA OutOfBoundsException Then
-		      If pop_songs_song_folders.ListCount > 0 Then
-		        pop_songs_song_folders.ListIndex = 0
-		      End If
-		    Else
-		      Raise ex
+		Catch ex
+		  If ex IsA OutOfBoundsException Then
+		    If pop_songs_song_folders.ListCount > 0 Then
+		      pop_songs_song_folders.ListIndex = 0
 		    End If
+		  Else
+		    Raise ex
+		  End If
 		End Sub
 	#tag EndMethod
 
@@ -15361,11 +15234,6 @@ End
 #tag EndEvents
 #tag Events btn_set_print_order
 	#tag Event
-		Sub Action()
-		  ActionSetPrintList
-		End Sub
-	#tag EndEvent
-	#tag Event
 		Sub MouseEnter()
 		  SetHelp "sets_mode/current_set/print_order"
 		End Sub
@@ -15378,6 +15246,11 @@ End
 	#tag Event
 		Sub Open()
 		  Me.SetIcon fileprintpic, fileprintmask
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub Action()
+		  ActionSetPrintList
 		End Sub
 	#tag EndEvent
 #tag EndEvents
@@ -18886,270 +18759,3 @@ End
 		End Sub
 	#tag EndEvent
 #tag EndEvents
-#tag ViewBehavior
-	#tag ViewProperty
-		Name="BackColor"
-		Visible=true
-		Group="Appearance"
-		InitialValue="&hFFFFFF"
-		Type="Color"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="Backdrop"
-		Visible=true
-		Group="Appearance"
-		Type="Picture"
-		EditorType="Picture"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="CloseButton"
-		Visible=true
-		Group="Appearance"
-		InitialValue="True"
-		Type="Boolean"
-		EditorType="Boolean"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="Composite"
-		Group="Appearance"
-		InitialValue="False"
-		Type="Boolean"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="DontUpdateSetItem"
-		Group="Behavior"
-		Type="Boolean"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="FindFocus"
-		Group="Behavior"
-		Type="Integer"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="Frame"
-		Visible=true
-		Group="Appearance"
-		InitialValue="0"
-		Type="Integer"
-		EditorType="Enum"
-		#tag EnumValues
-			"0 - Document"
-			"1 - Movable Modal"
-			"2 - Modal Dialog"
-			"3 - Floating Window"
-			"4 - Plain Box"
-			"5 - Shadowed Box"
-			"6 - Rounded Window"
-			"7 - Global Floating Window"
-			"8 - Sheet Window"
-			"9 - Metal Window"
-			"10 - Drawer Window"
-			"11 - Modeless Dialog"
-		#tag EndEnumValues
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="FullScreen"
-		Group="Appearance"
-		InitialValue="False"
-		Type="Boolean"
-		EditorType="Boolean"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="FullScreenButton"
-		Visible=true
-		Group="Appearance"
-		InitialValue="False"
-		Type="Boolean"
-		EditorType="Boolean"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="HasBackColor"
-		Visible=true
-		Group="Appearance"
-		InitialValue="False"
-		Type="Boolean"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="Height"
-		Visible=true
-		Group="Position"
-		InitialValue="400"
-		Type="Integer"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="ImplicitInstance"
-		Visible=true
-		Group="Appearance"
-		InitialValue="True"
-		Type="Boolean"
-		EditorType="Boolean"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="Interfaces"
-		Visible=true
-		Group="ID"
-		Type="String"
-		EditorType="String"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="LiveResize"
-		Visible=true
-		Group="Appearance"
-		InitialValue="True"
-		Type="Boolean"
-		EditorType="Boolean"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="MacProcID"
-		Group="Appearance"
-		InitialValue="0"
-		Type="Integer"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="MaxHeight"
-		Visible=true
-		Group="Position"
-		InitialValue="32000"
-		Type="Integer"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="MaximizeButton"
-		Visible=true
-		Group="Appearance"
-		InitialValue="True"
-		Type="Boolean"
-		EditorType="Boolean"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="MaxWidth"
-		Visible=true
-		Group="Position"
-		InitialValue="32000"
-		Type="Integer"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="MenuBar"
-		Visible=true
-		Group="Appearance"
-		Type="MenuBar"
-		EditorType="MenuBar"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="MenuBarVisible"
-		Group="Appearance"
-		InitialValue="True"
-		Type="Boolean"
-		EditorType="Boolean"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="MinHeight"
-		Visible=true
-		Group="Position"
-		InitialValue="64"
-		Type="Integer"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="MinimizeButton"
-		Visible=true
-		Group="Appearance"
-		InitialValue="True"
-		Type="Boolean"
-		EditorType="Boolean"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="MinWidth"
-		Visible=true
-		Group="Position"
-		InitialValue="64"
-		Type="Integer"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="Name"
-		Visible=true
-		Group="ID"
-		Type="String"
-		EditorType="String"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="Placement"
-		Visible=true
-		Group="Position"
-		InitialValue="0"
-		Type="Integer"
-		EditorType="Enum"
-		#tag EnumValues
-			"0 - Default"
-			"1 - Parent Window"
-			"2 - Main Screen"
-			"3 - Parent Window Screen"
-			"4 - Stagger"
-		#tag EndEnumValues
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="PPT"
-		Group="Behavior"
-		Type="Integer"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="Resizeable"
-		Visible=true
-		Group="Appearance"
-		InitialValue="True"
-		Type="Boolean"
-		EditorType="Boolean"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="SongChangesMade"
-		Group="Behavior"
-		Type="Boolean"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="Status_Presentation"
-		Group="Behavior"
-		Type="Boolean"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="Status_SetChanged"
-		Group="Behavior"
-		Type="Boolean"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="Status_SongChanged"
-		Group="Behavior"
-		Type="Boolean"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="Status_SongOpen"
-		Group="Behavior"
-		Type="Boolean"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="Super"
-		Visible=true
-		Group="ID"
-		Type="String"
-		EditorType="String"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="Title"
-		Visible=true
-		Group="Appearance"
-		InitialValue="Untitled"
-		Type="String"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="Visible"
-		Visible=true
-		Group="Appearance"
-		InitialValue="True"
-		Type="Boolean"
-		EditorType="Boolean"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="Width"
-		Visible=true
-		Group="Position"
-		InitialValue="600"
-		Type="Integer"
-	#tag EndViewProperty
-#tag EndViewBehavior

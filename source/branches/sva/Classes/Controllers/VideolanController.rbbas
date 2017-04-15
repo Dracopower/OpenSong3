@@ -98,45 +98,52 @@ Inherits Timer
 		    m_running = False
 		  End If
 		  
-		  If screen < 0 Or screen > OSScreenCount() - 1 Then screen = 0
-		  
-		  If fullScreen Then
-		    VLCparams = VLCparams + " --fullscreen"
-		  Else
-		    VLCparams = VLCparams + " --no-fullscreen"
-		  End If
-		  
-		  parameters = VLCparams + " " + parameters
-		  parameters  = ReplaceAllB(parameters , "%d", Str(screen))
-		  parameters  = ReplaceAllB(parameters, "%x", Str(OSScreen(screen).Left+1))
-		  parameters  = ReplaceAllB(parameters, "%y", Str(OSScreen(screen).Top+1))
-		  
-		  If Not IsNull(mediaFile) Then
-		    If mediaFile.Exists() Then
-		      If InStr(parameters, "%s") = 0 Then
-		        parameters =parameters + " """ + mediaFile.AbsolutePath() + """"
+		  If Not IsNull(videolanLocation) And videolanLocation.Exists() Then
+		    If InStrB(parameters, "%s") <> 0 Then
+		      
+		      If screen < 0 Or screen > OSScreenCount() - 1 Then screen = 0
+		      
+		      If fullScreen Then
+		        VLCparams = VLCparams + " --fullscreen"
 		      Else
-		        parameters = ReplaceAllB(parameters, "%s", """" + mediaFile.AbsolutePath() + """")
+		        VLCparams = VLCparams + " --no-fullscreen"
 		      End If
 		      
-		      If Not IsNull(videolanLocation) Then
-		        If videolanLocation.Exists() Then
-		          Dim cmd As String = """" + VideolanLocation.AbsolutePath() + """  " + parameters + " vlc://quit"
-		          
-		          m_vlcShell.Mode = 1 'Asynchronous
-		          m_vlcShell.Execute( cmd )
-		          
-		          m_waitForPlayback = waitForPlayback
-		          m_running = True
-		          m_RCconnected = False
-		          
-		          'Start internal timer for status updates
-		          Enabled = True
-		        Else
-		          MsgBox(App.T.Translate("errors/videolan_app_missing"))
-		        End If
+		      parameters = VLCparams + " " + parameters
+		      parameters  = ReplaceAllB(parameters , "%d", Str(screen))
+		      parameters  = ReplaceAllB(parameters, "%x", Str(OSScreen(screen).Left+1))
+		      parameters  = ReplaceAllB(parameters, "%y", Str(OSScreen(screen).Top+1))
+		      
+		      If Trim(mediaFilename) <> "" And Not IsNull(mediaFile) Then
+		        mediaFilename = """" + mediaFile.AbsolutePath() + """"
+		      Else
+		        ' quote for the command line
+		        #If TargetWin32
+		          mediaFilename = ReplaceAll(mediaFilename, "^", "^^")
+		          mediaFilename = ReplaceAll(mediaFilename, ">", "^>")
+		          mediaFilename = ReplaceAll(mediaFilename, "<", "^<")
+		          mediaFilename = ReplaceAll(mediaFilename, "%", "^%")
+		          mediaFilename = ReplaceAll(mediaFilename, """", "^""")
+		          mediaFilename = ReplaceAll(mediaFilename, "&", "^&")
+		          mediaFilename = ReplaceAll(mediaFilename, "|", "^|")
+		          mediaFilename = ReplaceAll(mediaFilename, "\", "\\")
+		        #endif
 		      End If
+		      parameters = ReplaceAllB(parameters, "%s", mediaFilename)
 		    End If
+		    Dim cmd As String = """" + VideolanLocation.AbsolutePath() + """  " + parameters + " vlc://quit"
+		    
+		    m_vlcShell.Mode = 1 'Asynchronous
+		    m_vlcShell.Execute( cmd )
+		    
+		    m_waitForPlayback = waitForPlayback
+		    m_running = True
+		    m_RCconnected = False
+		    
+		    'Start internal timer for status updates
+		    Enabled = True
+		  Else
+		    MsgBox(App.T.Translate("errors/videolan_app_missing"))
 		  End If
 		  
 		  Return m_running

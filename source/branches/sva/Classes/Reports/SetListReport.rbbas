@@ -130,22 +130,10 @@ Inherits LeadSheetReport
 
 	#tag ViewBehavior
 		#tag ViewProperty
-			Name="Name"
-			Visible=true
-			Group="ID"
-			InheritedFrom="LeadSheetReport"
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="Index"
 			Visible=true
 			Group="ID"
 			InitialValue="-2147483648"
-			InheritedFrom="LeadSheetReport"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="Super"
-			Visible=true
-			Group="ID"
 			InheritedFrom="LeadSheetReport"
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -156,17 +144,16 @@ Inherits LeadSheetReport
 			InheritedFrom="LeadSheetReport"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="Top"
-			Visible=true
-			Group="Position"
-			InitialValue="0"
-			InheritedFrom="LeadSheetReport"
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="LeftMargin"
 			Group="Behavior"
 			InitialValue="0"
 			Type="Double"
+			InheritedFrom="LeadSheetReport"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Name"
+			Visible=true
+			Group="ID"
 			InheritedFrom="LeadSheetReport"
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -181,6 +168,19 @@ Inherits LeadSheetReport
 			Group="Behavior"
 			InitialValue="0"
 			Type="Double"
+			InheritedFrom="LeadSheetReport"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Super"
+			Visible=true
+			Group="ID"
+			InheritedFrom="LeadSheetReport"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Top"
+			Visible=true
+			Group="Position"
+			InitialValue="0"
 			InheritedFrom="LeadSheetReport"
 		#tag EndViewProperty
 		#tag ViewProperty

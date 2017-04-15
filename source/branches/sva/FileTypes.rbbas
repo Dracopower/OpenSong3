@@ -7,11 +7,6 @@
 		MacCreator=
 		MacType=
 		Name=All Audio Types
-		UTI=
-		UTIConformsTo=
-		Description=
-		MimeType=
-		Imported=True
 	#tag EndFileType
 
 	#tag FileType
@@ -22,11 +17,6 @@
 		MacCreator=????
 		MacType=????
 		Name=All Files (*.*)
-		UTI=
-		UTIConformsTo=
-		Description=
-		MimeType=
-		Imported=True
 	#tag EndFileType
 
 	#tag FileType
@@ -37,11 +27,6 @@
 		MacCreator=
 		MacType=
 		Name=MIDI Files (*.mid,*.midi,*.rmi)
-		UTI=
-		UTIConformsTo=
-		Description=
-		MimeType=
-		Imported=True
 	#tag EndFileType
 
 	#tag FileType
@@ -52,11 +37,6 @@
 		MacCreator=
 		MacType=
 		Name=MP3s (*.mp3)
-		UTI=
-		UTIConformsTo=
-		Description=
-		MimeType=
-		Imported=True
 	#tag EndFileType
 
 	#tag FileType
@@ -67,11 +47,6 @@
 		MacCreator=
 		MacType=
 		Name=WAV Files (*.wav)
-		UTI=
-		UTIConformsTo=
-		Description=
-		MimeType=
-		Imported=True
 	#tag EndFileType
 
 	#tag FileType
@@ -81,11 +56,6 @@
 		MacCreator=????
 		MacType=????
 		Name=special/any
-		UTI=
-		UTIConformsTo=
-		Description=
-		MimeType=
-		Imported=True
 	#tag EndFileType
 
 	#tag FileType
@@ -97,10 +67,6 @@
 		MacType=OXmm
 		Name=OpenSong Module
 		UTI=org.opensong.module
-		UTIConformsTo=
-		Description=
-		MimeType=
-		Imported=True
 	#tag EndFileType
 
 	#tag FileType
@@ -111,10 +77,6 @@
 		MacType=css
 		Name=Cascading Style Sheets
 		UTI=public.css
-		UTIConformsTo=
-		Description=
-		MimeType=
-		Imported=True
 	#tag EndFileType
 
 	#tag FileType
@@ -125,10 +87,6 @@
 		MacType=TEXT
 		Name=HTML Source
 		UTI=public.html
-		UTIConformsTo=
-		Description=
-		MimeType=
-		Imported=True
 	#tag EndFileType
 
 	#tag FileType
@@ -138,11 +96,6 @@
 		MacCreator=MACS
 		MacType=fold
 		Name=special/folder
-		UTI=
-		UTIConformsTo=
-		Description=
-		MimeType=
-		Imported=True
 	#tag EndFileType
 
 #tag EndFileTypeSet
