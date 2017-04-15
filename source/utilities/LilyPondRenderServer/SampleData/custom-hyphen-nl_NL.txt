@@ -1,0 +1,167 @@
+; This file defines custom hyphenation words for the lilypond renderer.
+; Each line should contain either a comment (start with a ; ) or the word
+; to hyphen, followed by some empty space (tabs, spaces, etc.) followed the hyphen
+; result in lilypond format (so: part1 -- part2 -- part3, etc.)
+; A word is defined by a consecutive sequence of alphabetical characters or the ' character.
+; When a custom hyphen ends with an underscore, spaces between this and the next
+; word will be removed. This allows you to merge words together. 
+'k 'k_
+'s 's_
+'t 't_
+a' a'_
+aadren aad -- ren
+aarz'lend aarz'-- lend
+above a -- bo -- ve
+achim a -- chim
+achtb're acht -- b're
+adams a -- dams
+ademen a -- de -- men
+adel a -- del
+adem a -- dem
+ademloos a -- dem -- loos
+ademt a -- demt
+ader a -- der
+adore a -- do -- re
+adres a -- dres
+again a -- gain
+alle a -- lle
+alone a -- lo -- ne
+aloe a -- lo -- e
+alomme a -- lom -- me
+alom a -- lom
+altaar al -- taar
+amen a -- men
+andre an -- dre
+andren an -- dren
+apart a -- part
+apost'len a -- post' -- len
+aren a -- ren
+arend a -- rend
+arends a -- rends
+arme ar -- me
+around a -- round
+aten a -- ten
+avond a -- vond
+avonds a -- vonds
+away a -- way
+azijn a -- zijn
+azuur a -- zuur
+b' b'_
+bethlehem beth -- le -- hem
+c' c'_
+d' d'_
+dankaltaar dank -- al -- taar
+duistre dui -- stre
+e' e'_
+ebaoth e -- ba -- oth
+echo e -- cho
+ede -- le ede -- le
+edel e -- del
+edelen e -- de -- len
+edeler e -- de -- ler
+edelst e -- delst
+eden e -- den
+edik e -- dik
+egypteland E -- gyp -- te -- land
+eland e -- land
+elke el -- ke
+emoe e -- moe
+ene e -- ne
+enen e -- nen
+enes e -- nes
+eni -- ge eni -- ge
+enig e -- nig
+enigst e -- nigst
+ere e -- re
+eren e -- ren
+erin er -- in
+erover er -- o -- ver
+erve er -- ve
+ete e -- te
+eten e -- ten
+etend e -- tend
+etende e -- ten -- de
+even e -- ven
+evenzo e -- ven -- zo
+evers e -- vers
+ev'ry ev -- 'ry
+exodus ex -- o -- dus
+ezel e -- zel
+ezelen e -- ze -- len
+ezelin eze -- lin
+f' f'_
+g' g'_
+gistren gist -- ren
+h' h'_
+i' i'_
+ibis i -- bis
+iedre ie -- dre
+ijle ij -- le
+israël is -- ra -- ël
+ivoor i -- voor
+j' j'_
+k' k'_
+l' l'_
+m' m'_
+n' n'_
+needrig need -- rig
+o' o'_
+oases o -- a -- ses
+offren off -- ren
+oge o -- ge
+ogen o -- gen
+olie o -- lie
+olijf o -- lijf
+omega o -- me -- ga
+ontelb're on -- tel -- b're
+onzaal'gen on -- zaal' -- gen
+onnooz'le on -- nooz -- 'le
+onze on -- ze
+onzeek're on -- zeek -- 're
+ooma oo -- ma
+open -- de o -- pen -- de
+open o -- pen
+openbaarde o -- pen -- baar -- de
+openga o -- pen -- ga
+opent o -- pent
+orde or -- de
+ore o -- re
+oren o -- ren
+oude ou -- de
+oven o -- ven
+over o -- ver
+overal o -- ver -- al
+overdaad o -- ver -- daad
+overeind o -- ver -- eind
+overig o -- ve -- rig
+overkomen o -- ver -- ko -- men
+overmorgen o -- ver -- mor -- gen
+overstelpt o -- ver -- stelpt
+overvloed o -- ver -- vloed
+overvloedig o -- ver -- vloe -- dig
+overwinnaar o -- ver -- win -- naar
+overwinnaars o -- ver -- win -- naars
+overwinnen o -- ver -- win -- nen
+overwinning o -- ver -- win -- ning
+overwint o -- ver -- wint
+ovrig ov -- rig
+p' p'_
+q' q'_
+r' r'_
+s' s'_
+t' t'_
+u' u'_
+under un -- der
+ure u -- re
+uren u -- ren
+uwe u -- we
+uwen uw -- en
+uwer uw -- er
+uzelf u -- zelf
+uzelve uzel -- ve
+v' v'_
+verste ver -- ste
+w' w'_
+x' x'_
+y' y'_	
+z' z'_

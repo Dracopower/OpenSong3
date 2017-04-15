@@ -1,9 +1,8 @@
 #! /usr/bin/env python3
 
 # Application environment
-import pyphen
 import appdirs
-import argparse
+import locale
  
 # Song render
 from .LilyPondRender import LilyPondRenderer
@@ -12,6 +11,8 @@ from .SongRecord import SongRecord
 from .RenderServer import ExternalRenderer
 
 # Misc
+import argparse
+import pyphen
 import multiprocessing
 import socketserver
 import xml.etree.ElementTree as ET
@@ -22,6 +23,7 @@ import re
 # Some global configuration data
 myappname='LilyPondRenderer'
 myappauthor='OpenSong'
+myversion = "0.1.5"
 
 # We have a global renderer and song manager.
 renderer = LilyPondRenderer()        
@@ -47,8 +49,8 @@ class LilyPondRenderServer(ExternalRenderer):
         lines = lyrics.splitlines()
         verseid = ''
         for line in lines:
-            if line.startswith(';!hyphen '):                    # This song has it's own hyphen language
-                customhyphen = line[9:]
+            if line.startswith(';$hyphenlanguage='):            # This song has it's own hyphen language
+                customhyphen = line[17:]
             elif line.startswith('[') and line.find(']') > 0:   # Start of a new verse
                 verseid = line[1:line.find(']')]
                 verses[verseid] = ''
@@ -245,16 +247,6 @@ def ListAutoHyphenLanguages():
     for language in pyphen.LANGUAGES:
         print(language)
 
-def LoadCustomHyphen(customhyphen):
-    hyphens = {}
-    if customhyphen:
-        with open(customhyphen) as file:
-            for line in file.read().splitlines():
-                parts = line.split(maxsplit=1)
-                if len(parts) >= 2:
-                    hyphens[parts[0]] = parts[1]
-    return hyphens
-
 class LilyPondRendererHandler(socketserver.BaseRequestHandler):
     """
     The RequestHandler class for our server.
@@ -271,40 +263,43 @@ class LilyPondRendererHandler(socketserver.BaseRequestHandler):
         renderer.Process()
         print("I: Session ended")
 
-def runserver():
-    defaulttemplate = path.join(appdirs.user_config_dir(appname=myappname, appauthor=myappauthor), 'Template.ly')
+def runserver(arguments=None):
+    configdir = appdirs.user_config_dir(appname=myappname, appauthor=myappauthor)
+    defaulttemplate = path.join(configdir, 'Template.ly')
+    languagecode, encoding = locale.getdefaultlocale()
 
     parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter,
-        description='External renderer for OpenSong using LilyPond to render songs with notes.')
+        description = myappname + ' ' + myversion + '. External renderer for OpenSong using LilyPond to render songs with notes.')
+    parser.add_argument('-v', '--version', action='version', version=myversion)
     parser.add_argument('-p', '--port', type=int, default=LilyPondRenderServer.defaultport, help='The port to use to listen to for OpenSong render commands')
     parser.add_argument('--host', default=LilyPondRenderServer.defaulthost, help='The host to use when listening')
     parser.add_argument('-t', '--lilypondtemplate', default=defaulttemplate, 
         help='The LilyPond template file used to create a .ly file for rendering with LilyPond. '
-        'Available substitutes within the file are: $(osrtitle), $(osrcopyright), $(osrauthor), $(osrnotes), $(osrverse), $(osrlyrics)')
+        'Available substitutes within the file are: $osrtitle, $osrcopyright, $osrauthor, $osrnotes, $osrverse, $osrlyrics')
     parser.add_argument('-c', '--lilypondcommand', default=LilyPondRenderServer.defaultcommand, 
         help='The lilypond shell command to execute for rendering. Use {workdir} and {lilypondfile} to be substituted with the respective values.')
     parser.add_argument('-w', '--workdir', default=DefaultWorkDir(), help='Folder used as temporary work directory for LilyPond')
     parser.add_argument('-s', '--cachedir', default=DefaultCacheDir(), help='Folder used as cache to store the generated images')
     parser.add_argument('--keeply', action='store_true', default=False, help='Do not delete the .ly files from the workdir')
     parser.add_argument('--threads', type=int, default=DefaultThreadCount(), help='The amount or parallel worker threads for rendering.')
-    parser.add_argument('--autohyphen', help='Specify the language to use to automatically hyphenate the songs.')
-    parser.add_argument('--customhyphen', help='A file with words with customized hyphenations per line. E.g.: overvloed o-ver-vloed')
-    parser.add_argument('--autohyphenlanguages', action='store_true', default=False, help='Do not start the server but give a list of available languages for autohyphen')
-    args = parser.parse_args()
+    parser.add_argument('-l', '--defaulthyphenlanguage', default=languagecode, help='Specify the default language to automatically hyphenate the songs. Can be overwritter per song with ;$hyphenlanguage=xx_XX')
+    parser.add_argument('-f', '--customhyphenfolder', default=configdir, help='Folder to seach for custom hyphen files with customized hyphenations per line. E.g.: overvloed o -- ver -- vloed')
+    parser.add_argument('--hyphenlanguages', action='store_true', default=False, help='Do not start the server but give a list of available languages for autohyphen')
+    args = parser.parse_args(arguments)
 
-    if args.autohyphenlanguages:
+    if args.hyphenlanguages:
         ListAutoHyphenLanguages()
     else:
         # The global ones!
         global renderer
         global manager
-        renderer.keeplyfile     = args.keeply
-        renderer.template       = LoadTemplate(args.lilypondtemplate)
-        renderer.rendercommand  = args.lilypondcommand
-        renderer.workdir        = args.workdir
-        renderer.cachedir       = args.cachedir
-        renderer.autohyphen     = args.autohyphen
-        renderer.customhyphen   = LoadCustomHyphen(args.customhyphen)
+        renderer.keeplyfile             = args.keeply
+        renderer.template               = LoadTemplate(args.lilypondtemplate)
+        renderer.rendercommand          = args.lilypondcommand
+        renderer.workdir                = args.workdir
+        renderer.cachedir               = args.cachedir
+        renderer.defaulthyphenlanguage  = args.defaulthyphenlanguage
+        renderer.customhyphenfolder     = args.customhyphenfolder
         renderer.Initialize()
         manager = SongManager(renderer, args.threads)
 
