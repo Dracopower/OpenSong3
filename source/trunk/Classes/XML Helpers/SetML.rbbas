@@ -257,14 +257,13 @@ Protected Module SetML
 		  If HeaderSize < bodyMargins.Top Then
 		    HeaderSize = bodyMargins.Top
 		  End If
-		  
-		  MainHeight = g.Height - HeaderSize - FooterSize
-		  UsableWidth = g.Width - (2 * RealBorder) - bodyMargins.Left - bodyMargins.Right ' This just comes up again and again in the calcs & won't change (EMP 09/05)
-		  
-		  If MainHeight > (g.Height - bodyMargins.Top - bodyMargins.Bottom) Then
-		    MainHeight = (g.Height - bodyMargins.Top - bodyMargins.Bottom)
+		  If FooterSize < bodyMargins.Bottom Then
+		    FooterSize = bodyMargins.Bottom
 		  End If
-		        
+		  
+		  MainHeight = g.Height - HeaderSize - FooterSize - (2 * RealBorder)
+		  UsableWidth = g.Width - (2 * RealBorder) - bodyMargins.Left - bodyMargins.Right ' This just comes up again and again in the calcs & won't change (EMP 09/05)
+		    
 		  If hasImage Then
 		    Dim scale as Double
 		    Dim Left, Top As Integer
@@ -319,16 +318,15 @@ Protected Module SetML
 		      bodyStyle.Italic = Not bodyStyle.Italic
 		    End If
 		    
-		    Dim st, linecount, x2 As Integer
-		    Dim line, line2, lines(0) As String
-		    st = 1
+		    Dim linecount As Integer
+		    Dim line, lines(0) As String
 		    
 		    Profiler.EndProfilerEntry
 		    //++EMP 09/05
 		    // Take a pass at the slide to see if the lines will fit reasonably as they are.
 		    // Hopefully in most cases this will be all we need
 		    Profiler.BeginProfilerEntry "DrawSlide -> BestCaseBodyWrap"
-		    Dim MaxLineIndex, MaxLineLen As Integer '
+		    Dim MaxLineLen As Integer
 		    Dim NHeight As Integer
 		    Dim WrapPercent, HWrapPercent, VWrapPercent As Double
 		    Dim LineLen As Integer
@@ -352,7 +350,6 @@ Protected Module SetML
 		      origTextSize = g.TextSize
 		      
 		      ' Find the longest line
-		      MaxLineIndex = UBound(lines)
 		      For i = 0 to UBound(lines)
 		        
 		        // CHANGE-PJ START: Second language feature - calculate character length with different font size, change every second line
@@ -369,7 +366,6 @@ Protected Module SetML
 		        
 		        If g.StringWidth(lines(i)) > MaxLineLen Then
 		          MaxLineLen = g.StringWidth(lines(i))
-		          MaxLineIndex = i
 		        End If
 		      Next i
 		      
@@ -388,7 +384,7 @@ Protected Module SetML
 		    'Skip all text size adjustments; we don't want to skip all code below, as wrapping will be required.
 		    If style.BodyScale Then
 		      HWrapPercent = Min(UsableWidth / MaxLineLen, 1.0)
-		      VWrapPercent = Min(MainHeight / GraphicsX.FontFaceHeight(g, bodyStyle) , 1.0)
+		      VWrapPercent = Min(MainHeight / (UBound(lines) * GraphicsX.FontFaceHeight(g, bodyStyle)) , 1.0)
 		      WrapPercent = Min(HWrapPercent, VWrapPercent) // Consensus number
 		      If WrapPercent > .85 Then // arbitrary, but that means 32pt wouldn't go less than ~28pt
 		        g.TextSize = Floor(g.TextSize * WrapPercent) //TextSize is an Integer; keep from hanging on one number
@@ -406,7 +402,7 @@ Protected Module SetML
 		    '--
 		    
 		    If style.BodyScale Then
-		      While g.StringWidth(line) / UsableWidth * GraphicsX.FontFaceHeight(g, bodyStyle) > MainHeight * .85 ' last number offsets the non-perfectness of this guessing
+		      While (g.StringWidth(line) / UsableWidth) * GraphicsX.FontFaceHeight(g, bodyStyle) > MainHeight * .85 ' last number offsets the non-perfectness of this guessing
 		        g.TextSize = Floor(g.TextSize * .95)
 		        if g.textsize <=0 then exit
 		      Wend
