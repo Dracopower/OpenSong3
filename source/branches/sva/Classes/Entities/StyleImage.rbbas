@@ -156,11 +156,11 @@ Protected Class StyleImage
 		  #elseif TargetLinux then
 		    Filename = Filename.ReplaceAll("\", "/")
 		  #endif
-
+		  
 		  Dim result As Boolean = False
 		  Dim f as FolderItem = GetFolderItem(FileName)
 		  
-		  If FileName.StartsWith("/") or FileName.StartsWith("\\") or FileName.Mid(2, 1)=":" Then 
+		  If FileName.StartsWith("/") or FileName.StartsWith("\\") or FileName.Mid(2, 1)=":" Then
 		    f = new FolderItem(FileName)
 		  Else
 		    f = new FolderItem( App.DocsFolder.Child("Backgrounds").AbsolutePath + Filename )
