@@ -1129,7 +1129,7 @@ End
 		            numBlanks = numBlanks + 1
 		          End If
 		        ElseIf slideGroupName <> prevSlideGroupName Then
-		          slide_group = SmartML.InsertAfter(slide_group, "slide_group")
+		          slide_group = SmartML.InsertBefore(slide_group, "slide_group")
 		          SmartML.SetValue slide_group, "@type", "blank"
 		          SmartML.SetValue slide_group, "slides/slide/body", ""
 		          If i < Item Then
@@ -1138,7 +1138,7 @@ End
 		        End If
 		      End If
 		    Loop Until slide_group = Nil
-		  End If 
+		  End If
 		  'While slide_group <> Nil
 		  '
 		  'If insertBlanks Then
