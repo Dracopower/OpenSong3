@@ -1,13 +1,11 @@
 #tag Window
 Begin Window StyleWindow
-   BackColor       =   &cFFFFFF00
+   BackColor       =   "&cFFFFFF00"
    Backdrop        =   0
    CloseButton     =   True
-   Compatibility   =   ""
    Composite       =   False
    Frame           =   1
    FullScreen      =   False
-   FullScreenButton=   False
    HasBackColor    =   False
    Height          =   578
    ImplicitInstance=   True
@@ -29,7 +27,7 @@ Begin Window StyleWindow
    Begin PushButton btn_ok
       AutoDeactivate  =   True
       Bold            =   False
-      ButtonStyle     =   "0"
+      ButtonStyle     =   0
       Cancel          =   False
       Caption         =   "OK"
       Default         =   True
@@ -60,7 +58,7 @@ Begin Window StyleWindow
    Begin PushButton btn_cancel
       AutoDeactivate  =   True
       Bold            =   False
-      ButtonStyle     =   "0"
+      ButtonStyle     =   0
       Cancel          =   True
       Caption         =   "Cancel"
       Default         =   False
@@ -107,7 +105,6 @@ Begin Window StyleWindow
       Scope           =   0
       TabIndex        =   2
       TabPanelIndex   =   0
-      TabStop         =   True
       TextFont        =   "System"
       TextSize        =   0.0
       TextUnit        =   0
@@ -140,7 +137,6 @@ Begin Window StyleWindow
          TabPanelIndex   =   0
          TabStop         =   True
          Top             =   144
-         Transparent     =   True
          UseFocusRing    =   True
          Visible         =   True
          Width           =   250
@@ -170,7 +166,6 @@ Begin Window StyleWindow
          TabPanelIndex   =   0
          TabStop         =   True
          Top             =   45
-         Transparent     =   True
          UseFocusRing    =   True
          Visible         =   True
          Width           =   250
@@ -199,7 +194,7 @@ Begin Window StyleWindow
          TabPanelIndex   =   0
          Text            =   "Align:"
          TextAlign       =   1
-         TextColor       =   &c00000000
+         TextColor       =   "&c00000000"
          TextFont        =   "System"
          TextSize        =   0.0
          TextUnit        =   0
@@ -232,7 +227,6 @@ Begin Window StyleWindow
          TabPanelIndex   =   0
          TabStop         =   True
          Top             =   60
-         Transparent     =   True
          UseFocusRing    =   True
          Visible         =   True
          Width           =   44
@@ -240,7 +234,7 @@ Begin Window StyleWindow
       Begin PushButton btn_title_margin
          AutoDeactivate  =   True
          Bold            =   False
-         ButtonStyle     =   "0"
+         ButtonStyle     =   0
          Cancel          =   False
          Caption         =   "Margins"
          Default         =   False
@@ -271,7 +265,7 @@ Begin Window StyleWindow
       Begin PushButton btn_subtitle_margin
          AutoDeactivate  =   True
          Bold            =   False
-         ButtonStyle     =   "0"
+         ButtonStyle     =   0
          Cancel          =   False
          Caption         =   "Margins"
          Default         =   False
@@ -322,7 +316,6 @@ Begin Window StyleWindow
          TabPanelIndex   =   0
          TabStop         =   True
          Top             =   159
-         Transparent     =   True
          UseFocusRing    =   True
          Visible         =   True
          Width           =   44
@@ -394,7 +387,7 @@ Begin Window StyleWindow
       Begin PushButton btn_body_tabs
          AutoDeactivate  =   True
          Bold            =   False
-         ButtonStyle     =   "0"
+         ButtonStyle     =   0
          Cancel          =   False
          Caption         =   "Tabulators"
          Default         =   False
@@ -479,7 +472,6 @@ Begin Window StyleWindow
          TabPanelIndex   =   0
          TabStop         =   True
          Top             =   245
-         Transparent     =   True
          UseFocusRing    =   True
          Visible         =   True
          Width           =   250
@@ -507,7 +499,6 @@ Begin Window StyleWindow
          TabPanelIndex   =   0
          TabStop         =   True
          Top             =   260
-         Transparent     =   True
          UseFocusRing    =   True
          Visible         =   True
          Width           =   44
@@ -547,7 +538,7 @@ Begin Window StyleWindow
       Begin PushButton btn_body_margin
          AutoDeactivate  =   True
          Bold            =   False
-         ButtonStyle     =   "0"
+         ButtonStyle     =   0
          Cancel          =   False
          Caption         =   "Margins"
          Default         =   False
@@ -595,7 +586,6 @@ Begin Window StyleWindow
       Scope           =   0
       TabIndex        =   3
       TabPanelIndex   =   0
-      TabStop         =   True
       TextFont        =   "System"
       TextSize        =   0.0
       TextUnit        =   0
@@ -627,7 +617,7 @@ Begin Window StyleWindow
          TabPanelIndex   =   0
          Text            =   "Color:"
          TextAlign       =   2
-         TextColor       =   &c00000000
+         TextColor       =   "&c00000000"
          TextFont        =   "System"
          TextSize        =   0.0
          TextUnit        =   0
@@ -661,7 +651,7 @@ Begin Window StyleWindow
          TabPanelIndex   =   0
          Text            =   "Image:"
          TextAlign       =   1
-         TextColor       =   &c00000000
+         TextColor       =   "&c00000000"
          TextFont        =   "System"
          TextSize        =   0.0
          TextUnit        =   0
@@ -695,7 +685,7 @@ Begin Window StyleWindow
          TabPanelIndex   =   0
          Text            =   "(left-click to change)"
          TextAlign       =   1
-         TextColor       =   &c00000000
+         TextColor       =   "&c00000000"
          TextFont        =   "System"
          TextSize        =   0.0
          TextUnit        =   0
@@ -729,7 +719,7 @@ Begin Window StyleWindow
          TabPanelIndex   =   0
          Text            =   "(right-click to clear)"
          TextAlign       =   1
-         TextColor       =   &c00000000
+         TextColor       =   "&c00000000"
          TextFont        =   "System"
          TextSize        =   0.0
          TextUnit        =   0
@@ -763,7 +753,7 @@ Begin Window StyleWindow
          TabPanelIndex   =   0
          Text            =   "Position:"
          TextAlign       =   1
-         TextColor       =   &c00000000
+         TextColor       =   "&c00000000"
          TextFont        =   "System"
          TextSize        =   0.0
          TextUnit        =   0
@@ -797,7 +787,7 @@ Begin Window StyleWindow
          TabPanelIndex   =   0
          Text            =   "Trim Bottom*:"
          TextAlign       =   1
-         TextColor       =   &c00000000
+         TextColor       =   "&c00000000"
          TextFont        =   "System"
          TextSize        =   0.0
          TextUnit        =   0
@@ -862,7 +852,7 @@ Begin Window StyleWindow
          TabPanelIndex   =   0
          Text            =   "px"
          TextAlign       =   0
-         TextColor       =   &c00000000
+         TextColor       =   "&c00000000"
          TextFont        =   "System"
          TextSize        =   0.0
          TextUnit        =   0
@@ -891,13 +881,12 @@ Begin Window StyleWindow
          LockLeft        =   True
          LockRight       =   False
          LockTop         =   True
-         MyColor         =   &c00000000
+         MyColor         =   "&c00000000"
          Scope           =   0
          TabIndex        =   1
          TabPanelIndex   =   0
          TabStop         =   True
          Top             =   50
-         Transparent     =   True
          UseFocusRing    =   True
          Visible         =   True
          Width           =   30
@@ -907,7 +896,7 @@ Begin Window StyleWindow
          AcceptTabs      =   False
          AutoDeactivate  =   True
          Backdrop        =   0
-         bgColor         =   &c00000000
+         bgColor         =   "&c00000000"
          DoubleBuffer    =   False
          Enabled         =   True
          EraseBackground =   True
@@ -926,7 +915,6 @@ Begin Window StyleWindow
          TabPanelIndex   =   0
          TabStop         =   True
          Top             =   105
-         Transparent     =   True
          UseFocusRing    =   True
          Visible         =   True
          Width           =   80
@@ -936,7 +924,7 @@ Begin Window StyleWindow
          Alignment       =   0
          AutoDeactivate  =   True
          AutomaticallyCheckSpelling=   True
-         BackColor       =   &cFFFFFF00
+         BackColor       =   "&cFFFFFF00"
          Bold            =   False
          Border          =   True
          DataField       =   ""
@@ -952,8 +940,6 @@ Begin Window StyleWindow
          Italic          =   False
          Left            =   488
          LimitText       =   4
-         LineHeight      =   0.0
-         LineSpacing     =   1.0
          LockBottom      =   False
          LockedInPosition=   False
          LockLeft        =   True
@@ -973,9 +959,9 @@ Begin Window StyleWindow
          TabPanelIndex   =   0
          TabStop         =   True
          Text            =   ""
-         TextColor       =   &c00000000
+         TextColor       =   "&c00000000"
          TextFont        =   "Arial"
-         TextSize        =   11.0
+         TextSize        =   11
          TextUnit        =   0
          Top             =   271
          Underline       =   False
@@ -1008,7 +994,7 @@ Begin Window StyleWindow
       TabPanelIndex   =   0
       Text            =   "*Cuts the bottom of the background to hide watermarks, web site urls, etc. (To avoid distortion, this also trims from the sides to compensate.)"
       TextAlign       =   0
-      TextColor       =   &c00000000
+      TextColor       =   "&c00000000"
       TextFont        =   "System"
       TextSize        =   0.0
       TextUnit        =   0
@@ -1037,7 +1023,6 @@ Begin Window StyleWindow
       Scope           =   0
       TabIndex        =   6
       TabPanelIndex   =   0
-      TabStop         =   True
       TextFont        =   "System"
       TextSize        =   0.0
       TextUnit        =   0
@@ -1069,7 +1054,7 @@ Begin Window StyleWindow
          TabPanelIndex   =   0
          Text            =   "Song Subtitles:"
          TextAlign       =   0
-         TextColor       =   &c00000000
+         TextColor       =   "&c00000000"
          TextFont        =   "System"
          TextSize        =   0.0
          TextUnit        =   0
@@ -1215,7 +1200,7 @@ Begin Window StyleWindow
          TabPanelIndex   =   0
          TabStop         =   True
          TextFont        =   "Arial"
-         TextSize        =   11.0
+         TextSize        =   11
          TextUnit        =   0
          Top             =   487
          Underline       =   False
@@ -1245,7 +1230,6 @@ Begin Window StyleWindow
       Scope           =   0
       TabIndex        =   5
       TabPanelIndex   =   0
-      TabStop         =   True
       TextFont        =   "System"
       TextSize        =   0.0
       TextUnit        =   0
@@ -1272,13 +1256,12 @@ Begin Window StyleWindow
          LockLeft        =   True
          LockRight       =   False
          LockTop         =   True
-         MyColor         =   &c00000000
+         MyColor         =   "&c00000000"
          Scope           =   0
          TabIndex        =   4
          TabPanelIndex   =   0
          TabStop         =   True
          Top             =   421
-         Transparent     =   True
          UseFocusRing    =   True
          Visible         =   True
          Width           =   35
@@ -1307,7 +1290,7 @@ Begin Window StyleWindow
          TabPanelIndex   =   0
          Text            =   "Color:"
          TextAlign       =   0
-         TextColor       =   &c00000000
+         TextColor       =   "&c00000000"
          TextFont        =   "System"
          TextSize        =   0.0
          TextUnit        =   0
@@ -1322,7 +1305,7 @@ Begin Window StyleWindow
          Alignment       =   0
          AutoDeactivate  =   True
          AutomaticallyCheckSpelling=   True
-         BackColor       =   &cFFFFFF00
+         BackColor       =   "&cFFFFFF00"
          Bold            =   False
          Border          =   True
          DataField       =   ""
@@ -1338,8 +1321,6 @@ Begin Window StyleWindow
          Italic          =   False
          Left            =   150
          LimitText       =   3
-         LineHeight      =   0.0
-         LineSpacing     =   1.0
          LockBottom      =   False
          LockedInPosition=   False
          LockLeft        =   True
@@ -1359,9 +1340,9 @@ Begin Window StyleWindow
          TabPanelIndex   =   0
          TabStop         =   True
          Text            =   ""
-         TextColor       =   &c00000000
+         TextColor       =   "&c00000000"
          TextFont        =   "Arial"
-         TextSize        =   11.0
+         TextSize        =   11
          TextUnit        =   0
          Top             =   394
          Underline       =   False
@@ -1393,7 +1374,7 @@ Begin Window StyleWindow
          TabPanelIndex   =   0
          Text            =   "Size [10-100 %] :"
          TextAlign       =   0
-         TextColor       =   &c00000000
+         TextColor       =   "&c00000000"
          TextFont        =   "System"
          TextSize        =   0.0
          TextUnit        =   0
@@ -1427,7 +1408,7 @@ Begin Window StyleWindow
          TabPanelIndex   =   0
          Text            =   "Style variations for the second language:"
          TextAlign       =   0
-         TextColor       =   &c00000000
+         TextColor       =   "&c00000000"
          TextFont        =   "System"
          TextSize        =   0.0
          TextUnit        =   0
@@ -1461,7 +1442,7 @@ Begin Window StyleWindow
          TabPanelIndex   =   0
          Text            =   "Usage: append -L in section name [V1-L]"
          TextAlign       =   0
-         TextColor       =   &c00000000
+         TextColor       =   "&c00000000"
          TextFont        =   "System"
          TextSize        =   0.0
          TextUnit        =   0
@@ -1934,230 +1915,3 @@ End
 		End Sub
 	#tag EndEvent
 #tag EndEvents
-#tag ViewBehavior
-	#tag ViewProperty
-		Name="BackColor"
-		Visible=true
-		Group="Appearance"
-		InitialValue="&hFFFFFF"
-		Type="Color"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="Backdrop"
-		Visible=true
-		Group="Appearance"
-		Type="Picture"
-		EditorType="Picture"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="CloseButton"
-		Visible=true
-		Group="Appearance"
-		InitialValue="True"
-		Type="Boolean"
-		EditorType="Boolean"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="Composite"
-		Group="Appearance"
-		InitialValue="False"
-		Type="Boolean"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="Frame"
-		Visible=true
-		Group="Appearance"
-		InitialValue="0"
-		Type="Integer"
-		EditorType="Enum"
-		#tag EnumValues
-			"0 - Document"
-			"1 - Movable Modal"
-			"2 - Modal Dialog"
-			"3 - Floating Window"
-			"4 - Plain Box"
-			"5 - Shadowed Box"
-			"6 - Rounded Window"
-			"7 - Global Floating Window"
-			"8 - Sheet Window"
-			"9 - Metal Window"
-			"10 - Drawer Window"
-			"11 - Modeless Dialog"
-		#tag EndEnumValues
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="FullScreen"
-		Group="Appearance"
-		InitialValue="False"
-		Type="Boolean"
-		EditorType="Boolean"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="FullScreenButton"
-		Visible=true
-		Group="Appearance"
-		InitialValue="False"
-		Type="Boolean"
-		EditorType="Boolean"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="HasBackColor"
-		Visible=true
-		Group="Appearance"
-		InitialValue="False"
-		Type="Boolean"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="Height"
-		Visible=true
-		Group="Position"
-		InitialValue="400"
-		Type="Integer"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="ImplicitInstance"
-		Visible=true
-		Group="Appearance"
-		InitialValue="True"
-		Type="Boolean"
-		EditorType="Boolean"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="Interfaces"
-		Visible=true
-		Group="ID"
-		Type="String"
-		EditorType="String"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="LiveResize"
-		Visible=true
-		Group="Appearance"
-		InitialValue="True"
-		Type="Boolean"
-		EditorType="Boolean"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="MacProcID"
-		Group="Appearance"
-		InitialValue="0"
-		Type="Integer"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="MaxHeight"
-		Visible=true
-		Group="Position"
-		InitialValue="32000"
-		Type="Integer"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="MaximizeButton"
-		Visible=true
-		Group="Appearance"
-		InitialValue="True"
-		Type="Boolean"
-		EditorType="Boolean"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="MaxWidth"
-		Visible=true
-		Group="Position"
-		InitialValue="32000"
-		Type="Integer"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="MenuBar"
-		Visible=true
-		Group="Appearance"
-		Type="MenuBar"
-		EditorType="MenuBar"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="MenuBarVisible"
-		Group="Appearance"
-		InitialValue="True"
-		Type="Boolean"
-		EditorType="Boolean"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="MinHeight"
-		Visible=true
-		Group="Position"
-		InitialValue="64"
-		Type="Integer"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="MinimizeButton"
-		Visible=true
-		Group="Appearance"
-		InitialValue="True"
-		Type="Boolean"
-		EditorType="Boolean"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="MinWidth"
-		Visible=true
-		Group="Position"
-		InitialValue="64"
-		Type="Integer"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="Name"
-		Visible=true
-		Group="ID"
-		Type="String"
-		EditorType="String"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="Placement"
-		Visible=true
-		Group="Position"
-		InitialValue="0"
-		Type="Integer"
-		EditorType="Enum"
-		#tag EnumValues
-			"0 - Default"
-			"1 - Parent Window"
-			"2 - Main Screen"
-			"3 - Parent Window Screen"
-			"4 - Stagger"
-		#tag EndEnumValues
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="Resizeable"
-		Visible=true
-		Group="Appearance"
-		InitialValue="True"
-		Type="Boolean"
-		EditorType="Boolean"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="Super"
-		Visible=true
-		Group="ID"
-		Type="String"
-		EditorType="String"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="Title"
-		Visible=true
-		Group="Appearance"
-		InitialValue="Untitled"
-		Type="String"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="Visible"
-		Visible=true
-		Group="Appearance"
-		InitialValue="True"
-		Type="Boolean"
-		EditorType="Boolean"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="Width"
-		Visible=true
-		Group="Position"
-		InitialValue="600"
-		Type="Integer"
-	#tag EndViewProperty
-#tag EndViewBehavior
