@@ -5,6 +5,7 @@ Inherits SBufferedCanvas
 		Function MouseDown(X As Integer, Y As Integer) As Boolean
 		  If Enabled Then
 		    If StyleWindow.Edit(StyleNode, PreviewSlideNode, SongStyle) Then
+		      Style = New SlideStyle(StyleNode)
 		      Action
 		      Repaint
 		    End If
@@ -22,17 +23,13 @@ Inherits SBufferedCanvas
 		  // September 2005
 		  // Updated to use a SlideStyle object for DrawSlide
 		  //
-		  Dim Style As SlideStyle
 		  //--EMP
+		  
 		  If Enabled Then
-		    If Not (StyleNode Is Nil) Then
-		      Style = New SlideStyle(StyleNode) 'EMP 09/05
-		      'SetML.DrawSlide g, _
-		      'SmartML.GetNode(App.StylePreview, "slide_groups/slide_group/slides/slide"), _
-		      'StyleNode
+		    If Not (Style Is Nil) Then
 		      SetML.DrawSlide g, _
 		      self.PreviewSlideNode, _
-		      Style 'EMP 09/05
+		      Style
 		      g.ForeColor = DarkBevelColor
 		      g.DrawRect 0, 0, g.Width, g.Height
 		    Else
@@ -62,6 +59,7 @@ Inherits SBufferedCanvas
 	#tag Method, Flags = &h0
 		Sub ClearStyleNode()
 		  StyleNode = Nil
+		  Style = Nil
 		  Repaint
 		End Sub
 	#tag EndMethod
@@ -91,6 +89,7 @@ Inherits SBufferedCanvas
 	#tag Method, Flags = &h0
 		Sub SetStyleNode(node As XmlNode)
 		  StyleNode = node
+		  Style = New SlideStyle(StyleNode)
 		  Repaint
 		End Sub
 	#tag EndMethod
@@ -107,6 +106,10 @@ Inherits SBufferedCanvas
 
 	#tag Property, Flags = &h0
 		SongStyle As Boolean
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
+		Private Style As SlideStyle
 	#tag EndProperty
 
 	#tag Property, Flags = &h1
