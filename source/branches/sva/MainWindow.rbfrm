@@ -1927,7 +1927,7 @@ Begin Window MainWindow Implements ScriptureReceiver
       TabIndex        =   5
       TabPanelIndex   =   0
       Top             =   34
-      Value           =   5
+      Value           =   2
       Visible         =   True
       Width           =   591
       Begin Canvas cnv_editor_style_change
@@ -10204,7 +10204,7 @@ End
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub ActionSetPresent(mode As Integer, ItemNumber As Integer = 0)
+		Sub ActionSetPresent(mode As Integer, ItemNumber As Integer = -1)
 		  Dim i As Integer
 		  Dim lastType As String
 		  'this is our working copy of the set's XML Doc
@@ -11202,7 +11202,7 @@ End
 		    End If
 		  End If
 		  
-		  Globals.AddToLog =AddToLogAnswer
+		  Globals.AddToLog = AddToLogAnswer
 		  Dim sDoc() As XmlDocument = AddLinkedSongs(song, AddToLogAnswer)
 		  
 		  Dim AddLinkedSongsAnswer As Boolean = True
@@ -12470,6 +12470,7 @@ End
 		  '++JRC
 		  Dim ActiveCustomStyle As XmlNode = Nil
 		  Dim ItemNumber As Integer
+		  Dim StyleGroupCount As Integer = 0
 		  Dim i As Integer
 		  '--
 		  Dim Transition As Integer
@@ -12533,6 +12534,7 @@ End
 		        
 		        SongStyle = SmartML.GetNode(slide_group, "style", False)
 		        'Check if there is an overide for the song style in this slide
+		        'SvA: Todo: compare this to the 2 fn SetML.SongStylePreferred and SetML.StyleChangeActive used there. Tidy up and unite
 		        If SlideSongStyle <> Nil Then
 		          If SongStyle <> Nil Then
 		            SmartML.RemoveChild(slide_group, SongStyle)
@@ -12577,6 +12579,7 @@ End
 		        ActiveCustomStyle = Nil
 		      end if
 		      slide_group  = slide_group.NextSibling
+		      StyleGroupCount = StyleGroupCount + 1
 		    Else
 		      '++JRC Assign an index for this set item
 		      SmartML.SetValueN(slide_group, "@ItemNumber", ItemNumber)
@@ -12586,7 +12589,7 @@ End
 		      ItemNumber = ItemNumber + 1
 		    End If
 		    
-		    ProgressWindow.SetProgress(ItemNumber)
+		    ProgressWindow.SetProgress(ItemNumber + StyleGroupCount)
 		  Wend
 		  '++JRC
 		  setDoc.DocumentElement.SetAttribute("NumberOfItems",Str(ItemNumber))
