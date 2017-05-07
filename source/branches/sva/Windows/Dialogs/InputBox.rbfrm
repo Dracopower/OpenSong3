@@ -24,6 +24,83 @@ Begin Window InputBox
    Title           =   "OpenSong"
    Visible         =   True
    Width           =   3.15e+2
+   Begin PopupMenu pop_the_input
+      AutoDeactivate  =   True
+      Bold            =   False
+      DataField       =   ""
+      DataSource      =   ""
+      Enabled         =   True
+      Height          =   25
+      HelpTag         =   ""
+      Index           =   -2147483648
+      InitialParent   =   ""
+      InitialValue    =   ""
+      Italic          =   False
+      Left            =   9
+      ListIndex       =   0
+      LockBottom      =   True
+      LockedInPosition=   False
+      LockLeft        =   True
+      LockRight       =   False
+      LockTop         =   True
+      Scope           =   0
+      TabIndex        =   6
+      TabPanelIndex   =   0
+      TabStop         =   True
+      TextFont        =   "System"
+      TextSize        =   12
+      TextUnit        =   0
+      Top             =   90
+      Underline       =   False
+      Visible         =   True
+      Width           =   300
+   End
+   Begin SEditField edt_the_input
+      AcceptTabs      =   False
+      Alignment       =   0
+      AutoDeactivate  =   True
+      AutomaticallyCheckSpelling=   True
+      BackColor       =   16777215
+      Bold            =   False
+      Border          =   True
+      DataField       =   ""
+      DataSource      =   ""
+      Enabled         =   True
+      Format          =   ""
+      Height          =   25
+      HelpTag         =   ""
+      HideSelection   =   True
+      Index           =   -2147483648
+      InitialParent   =   ""
+      Italic          =   False
+      Left            =   8
+      LimitText       =   255
+      LockBottom      =   True
+      LockedInPosition=   False
+      LockLeft        =   True
+      LockRight       =   True
+      LockTop         =   False
+      Mask            =   ""
+      Multiline       =   False
+      ReadOnly        =   False
+      Scope           =   0
+      ScrollbarHorizontal=   False
+      ScrollbarVertical=   True
+      Styled          =   False
+      TabIndex        =   7
+      TabPanelIndex   =   0
+      TabStop         =   True
+      Text            =   ""
+      TextColor       =   0
+      TextFont        =   "Arial"
+      TextSize        =   11
+      TextUnit        =   0
+      Top             =   89
+      Underline       =   False
+      UseFocusRing    =   True
+      Visible         =   True
+      Width           =   300
+   End
    Begin SButton btn_ok
       AcceptFocus     =   True
       AcceptTabs      =   False
@@ -106,7 +183,7 @@ Begin Window InputBox
       Scope           =   0
       TabIndex        =   2
       TabPanelIndex   =   0
-      TabStop         =   True
+      TabStop         =   False
       TextFont        =   "System"
       TextSize        =   12
       TextUnit        =   0
@@ -137,7 +214,7 @@ Begin Window InputBox
       Scope           =   0
       TabIndex        =   3
       TabPanelIndex   =   0
-      TabStop         =   True
+      TabStop         =   False
       TextFont        =   "System"
       TextSize        =   12
       TextUnit        =   0
@@ -180,95 +257,15 @@ Begin Window InputBox
       Visible         =   True
       Width           =   297
    End
-   Begin PopupMenu pop_the_input
-      AutoDeactivate  =   True
-      Bold            =   False
-      DataField       =   ""
-      DataSource      =   ""
-      Enabled         =   True
-      Height          =   25
-      HelpTag         =   ""
-      Index           =   -2147483648
-      InitialParent   =   ""
-      InitialValue    =   ""
-      Italic          =   False
-      Left            =   9
-      ListIndex       =   0
-      LockBottom      =   True
-      LockedInPosition=   False
-      LockLeft        =   True
-      LockRight       =   False
-      LockTop         =   True
-      Scope           =   0
-      TabIndex        =   6
-      TabPanelIndex   =   0
-      TabStop         =   True
-      TextFont        =   "System"
-      TextSize        =   12
-      TextUnit        =   0
-      Top             =   90
-      Underline       =   False
-      Visible         =   True
-      Width           =   300
-   End
-   Begin SEditField edt_the_input
-      AcceptTabs      =   False
-      Alignment       =   0
-      AutoDeactivate  =   True
-      AutomaticallyCheckSpelling=   True
-      BackColor       =   16777215
-      Bold            =   False
-      Border          =   True
-      DataField       =   ""
-      DataSource      =   ""
-      Enabled         =   True
-      Format          =   ""
-      Height          =   25
-      HelpTag         =   ""
-      HideSelection   =   True
-      Index           =   -2147483648
-      InitialParent   =   ""
-      Italic          =   False
-      Left            =   8
-      LimitText       =   255
-      LineHeight      =   0
-      LineSpacing     =   1
-      LockBottom      =   True
-      LockedInPosition=   False
-      LockLeft        =   True
-      LockRight       =   True
-      LockTop         =   False
-      Mask            =   ""
-      Multiline       =   False
-      ReadOnly        =   False
-      Scope           =   0
-      ScrollbarHorizontal=   False
-      ScrollbarVertical=   True
-      Styled          =   False
-      TabIndex        =   7
-      TabPanelIndex   =   0
-      TabStop         =   True
-      Text            =   ""
-      TextColor       =   0
-      TextFont        =   "Arial"
-      TextSize        =   11
-      TextUnit        =   0
-      Top             =   89
-      Underline       =   False
-      UseFocusRing    =   True
-      Visible         =   True
-      Width           =   300
-   End
 End
 #tag EndWindow
 
 #tag WindowCode
 	#tag Event
 		Sub Activate()
-		  Me.SetFocus
 		  BringToFront
 		  If edt_the_input.Visible Then edt_the_input.SetFocus
-		  if pop_the_input.Visible Then pop_the_input.SetFocus
+		  If pop_the_input.Visible Then pop_the_input.SetFocus
 		End Sub
 	#tag EndEvent
 
@@ -387,13 +384,14 @@ End
 		  lbl_the_question.MultiLine = True
 		  lbl_the_question.Text = message
 		  edt_the_input.Visible = False
-		  '++JRC: dereased height to make push buttons visible again
+		  '++JRC: decreased height to make push buttons visible again
 		  lbl_the_question.Height = 80
 		  '--
 		  pop_the_input.Visible = False
 		  
 		  btn_cancel.Visible = False
 		  PositionPushButtons
+		  btn_ok.SetFocus
 		  ShowModal
 		  
 		End Sub
