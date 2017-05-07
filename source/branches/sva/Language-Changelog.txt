@@ -1,4 +1,5 @@
 -= Version 2.2 RC =-
+errors/unsupported_image_type
 errors/videolan/no_medium
 errors/videolan/no_medium_in_slide
 general_settings/extrender

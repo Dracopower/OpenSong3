@@ -112,7 +112,19 @@ Protected Class StyleImage
 		      
 		      Dim inputStream As BinaryStream = BinaryStream.Open(File, False)
 		      If inputStream <> Nil Then
-		        Me.oImage = Picture.Open(File)
+		        Try
+		          Me.oImage = Picture.Open(File)
+		        Catch excpt
+		          If Not Globals.Status_Presentation Then
+		            If excpt IsA UnsupportedFormatException Then
+		              If Not Globals.Status_Presentation Then
+		                InputBox.Message App.T.Translate("errors/unsupported_image_type", File.AbsolutePath)
+		              End If
+		            Else
+		              Raise excpt
+		            End If
+		          End If
+		        End Try
 		        
 		        If Me.oImage <> Nil Then
 		          
@@ -130,14 +142,18 @@ Protected Class StyleImage
 		        End If
 		        
 		      Else
-		        InputBox.Message App.T.Translate("errors/unreadable_image", File.AbsolutePath)
+		        If Not Globals.Status_Presentation Then
+		          InputBox.Message App.T.Translate("errors/unreadable_image", File.AbsolutePath)
+		        End If
 		      End If
 		      
 		    End If
 		  Else
 		    If File<>Nil Then
 		      If File.AbsolutePath() <> "" Then
-		        InputBox.Message App.T.Translate("errors/unreadable_image", File.AbsolutePath)
+		        If Not Globals.Status_Presentation Then
+		          InputBox.Message App.T.Translate("errors/unreadable_image", File.AbsolutePath)
+		        End If
 		      End If
 		    End If
 		    Clear()
@@ -158,17 +174,26 @@ Protected Class StyleImage
 		  #endif
 		  
 		  Dim result As Boolean = False
-		  Dim f as FolderItem = GetFolderItem(FileName)
+		  Dim f as FolderItem
 		  
-		  If FileName.StartsWith("/") or FileName.StartsWith("\\") or FileName.Mid(2, 1)=":" Then
-		    f = new FolderItem(FileName)
-		  Else
-		    f = new FolderItem( App.DocsFolder.Child("Backgrounds").AbsolutePath + Filename )
-		  End If
+		  Try
+		    If Filename = "" Then
+		      ' don't try to load the current folder
+		    ElseIf FileName.StartsWith("/") or FileName.StartsWith("\\") or FileName.Mid(2, 1)=":" Then
+		      f = new FolderItem(FileName)
+		    Else
+		      f = new FolderItem( App.DocsFolder.Child("Backgrounds").AbsolutePath + Filename )
+		    End If
+		  Catch excpt As RuntimeException
+		    App.DebugWriter.Write "Exception in " + CurrentMethodName + "(" + Filename + ") : " + Introspection.GetType(excpt).FullName + "->" + excpt.message
+		    f = nil
+		  End Try
 		  
 		  If IsNull(f) Then
 		    If Filename <> "" Then
-		      InputBox.Message App.T.Translate("errors/unreadable_image", Filename)
+		      If Not Globals.Status_Presentation Then
+		        InputBox.Message App.T.Translate("errors/unreadable_image", Filename)
+		      End If
 		    End If
 		  Else
 		    result = SetImageFromFile(f)

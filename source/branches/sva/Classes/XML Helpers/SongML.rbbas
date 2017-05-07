@@ -2181,9 +2181,14 @@ Module SongML
 		              sfile = App.DocsFolder.Child("Backgrounds").AbsolutePath + sfile
 		            End If
 		            
-		            Dim file As FolderItem = GetFolderItem(sfile)
-		            If Not file.Exists() Then
-		              InputBox.Message App.T.Translate("errors/fileutils/filenotfound", SmartML.GetValue(xbackground, "filename"))
+		            Dim file As FolderItem
+		            Try
+		              file = GetFolderItem(sfile)
+		            Catch
+		              file = Nil
+		            End Try
+		            If file Is Nil Or Not file.Exists() Then
+		              InputBox.Message App.T.Translate("errors/fileutils/filenotfound", sfile)
 		              
 		              xbacks.RemoveChild(xbackground)
 		              xbackground = Nil

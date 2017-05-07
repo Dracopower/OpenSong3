@@ -1333,6 +1333,7 @@ The splash screen contains images of stock.xchng created by ba1969 and everywher
   <errors>
     <empty_group>Group '%1' must contain at least one slide.</empty_group>
     <unreadable_image>Could not read image file '%1'.</unreadable_image>
+    <unsupported_image_type>This image file format is not supported '%1'</unsupported_image_type>
     <end_of_songs>End of songs reached.</end_of_songs>
     <already_exists>'%1' already exists.</already_exists>
     <bad_format>'%1' contains bad formatting. Skipping...</bad_format>

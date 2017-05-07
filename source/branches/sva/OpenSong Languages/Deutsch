@@ -1391,6 +1391,7 @@ Der Splash Screen beinhaltet Bilder von stock.xchng die von ba1969 und everywher
   <errors>
     <empty_group>Der Abschnitt '%1' muss mindestens eine Folie enthalten.</empty_group>
     <unreadable_image>Die Bilddatei '%1' konnte nicht gelesen werden.</unreadable_image>
+    <unsupported_image_type>Das Bilddateiformat kann nicht verarbeitet werden '%1'</unsupported_image_type>
     <end_of_songs>Ende der Liederliste erreicht.</end_of_songs>
     <already_exists>'%1' ist bereits vorhanden.</already_exists>
     <bad_format>'%1' enthält ein falsches Format und wird übersprungen.</bad_format>
