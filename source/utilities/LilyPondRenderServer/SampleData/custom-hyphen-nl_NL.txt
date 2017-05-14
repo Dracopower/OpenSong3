@@ -84,6 +84,7 @@ etende e -- ten -- de
 even e -- ven
 evenzo e -- ven -- zo
 evers e -- vers
+ezels e -- zels
 ev'ry ev -- 'ry
 exodus ex -- o -- dus
 ezel e -- zel
@@ -137,6 +138,7 @@ overig o -- ve -- rig
 overkomen o -- ver -- ko -- men
 overmorgen o -- ver -- mor -- gen
 overstelpt o -- ver -- stelpt
+overstromen o -- ver -- stro -- men
 overvloed o -- ver -- vloed
 overvloedig o -- ver -- vloe -- dig
 overwinnaar o -- ver -- win -- naar
@@ -162,6 +164,9 @@ uzelve uzel -- ve
 v' v'_
 verste ver -- ste
 w' w'_
+weêuw weêuw
+weeuw weeuw
+woudezels woud -- e -- zels
 x' x'_
 y' y'_	
 z' z'_

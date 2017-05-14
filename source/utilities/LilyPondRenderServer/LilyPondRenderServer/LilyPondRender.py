@@ -1,12 +1,17 @@
 #! /usr/bin/env python3
 import pyphen
-import sys
 import re
 import os
+import subprocess
 from string import Template
 from threading import Lock
 from os import path
 from .SongRecord import SongRecord
+
+# Configuration
+from .Keys import *
+from .Translations import *
+from .Logger import *
 
 class HyphenSet:
 
@@ -27,9 +32,9 @@ class HyphenSet:
             if path.isfile(self.customfile):
                 self.LoadCustomHyphen()
             else:
-                print("Custom hyphens not found:", self.customfile)
+                LogKey(ERR_HYPHENSNOTFOUND, LogLevel.Warning, self.customfile)
         except Exception as ex:
-            print("Failed initializing hyphenation for", language, ":", ex)
+            LogKey(ERR_INNITHYPHENS, LogLevel.Error, language, str(ex))
 
     def LoadCustomHyphen(self):
         try:
@@ -42,9 +47,9 @@ class HyphenSet:
                         parts = line.split(maxsplit=1)
                         if len(parts) >= 2:
                             self.customhyphens[parts[0]] = parts[1]
-            print("Loaded custom hyphens:", self.customfile)
+            LogKey(TXT_LOADEDHYPHENS, LogLevel.Info, self.customfile)
         except Exception as ex:
-            print("Failed loading custom hyphens", self.customfile, ":", ex)
+            LogKey(ERR_LOADHYPHENS, LogLevel.Error, self.customfile, str(ex))
 
     def UpdateCustomHyphen(self):
         if self.custommtime:
@@ -55,24 +60,67 @@ class HyphenSet:
 
 class LilyPondRenderer:
 
-    def __init__(self):
-        pass
-
-    def Initialize(self):
+    def __init__(self, **kwargs):
+        vars(self).update(kwargs)
         # Make sure the cache and work folders are there
         os.makedirs(self.workdir, exist_ok=True)
         os.makedirs(self.cachedir, exist_ok=True)
+        self.LoadTemplate()
         self._pyphens = {}
         self._lock = Lock()
 
+    def LoadTemplate(self):
+        ''' Pre-load the LilyPond template file. If there is no template file with that name yet,
+            create one with some handy default content.
+        '''
+        if not path.isfile(self.lilypondtemplate):
+            self.template = r"""\version "2.16.0"
+
+% With 300 dpi, this will result in a 1920 x 1080 = Full HD image.
+%#(set! paper-alist (cons '("Full-HD" . (cons (* 6.4 in) (* 3.6 in))) paper-alist))
+%\paper { #(set-paper-size "Full-HD") print-page-number = ##f }
+
+% With 400 dpi, this will result in a 1920 x 1080 = Full HD image with bigger scores.
+% = 400dpi * 4.8" x 400dpi * 2.7" = 1920 x 1080
+#(set! paper-alist (cons '("Full-HD" . (cons (* 4.8 in) (* 2.7 in))) paper-alist))
+\paper { #(set-paper-size "Full-HD") print-page-number = ##f }
+
+\header {
+title = \markup \fontsize #-3 "$(osrtitle): $(osrverse)"
+copyright = "$(osrcopyright)"
+composer = "$(osrauthor)"
+tagline = ""
+}
+
+\score 
+{
+<<
+    \new Staff \new Voice = "verse" 
+    $(osrnotes)
+    \new Lyrics \lyricsto "verse" 
+    \lyricmode 
+    { 
+    $(osrlyrics)
+    } 
+>> 
+}
+"""
+            os.makedirs(path.dirname(self.lilypondtemplate), exist_ok=True)
+            with open(self.lilypondtemplate, "w") as tfile:
+                tfile.write(template)
+        else:
+            with open(self.lilypondtemplate) as file:
+                self.template = file.read()
+
     def RenderToCache(self, song):
+        command = ''
         try:
             # Replace the configurable items and call the LilyPond rendering command to render the files.
             verse = song.verse
             if verse.startswith('V'):
                 verse = verse[1:]
             elif verse.startswith('C'):
-                verse = 'Refrein'
+                verse = Translate(TXT_CHORUS)
             
             # Optionally auto-hyphenate the lyrics. Disable auto-hyphen if already hyphened.
             hyphenlanguage = song.hyphen or self.defaulthyphenlanguage
@@ -90,12 +138,16 @@ class LilyPondRenderer:
                 file.write(lycontent)
 
             # Run LilyPond to render the pages.
-            command = self.rendercommand.format(lilypondfile=lilypondfile, workdir=self.workdir)
-            result = os.system(command)
-            if not self.keeplyfile:
+            command = self.lilypondcommand.format(lilypondfile=lilypondfile, workdir=self.workdir)
+            try:
+                LogText(subprocess.check_output(command, shell=True, stderr=subprocess.STDOUT, universal_newlines=True))
+                ok = True
+            except subprocess.CalledProcessError as ex:
+                LogKey(ERR_LILYPOND_FAILED, LogLevel.Error, command, ex.output)
+                ok = False
+            if not self.keeply:
                 os.remove(lilypondfile)
-            if result != 0:
-                print("LilyPond rendering command failed:", command, file=sys.stderr)
+            if not ok:
                 return False
 
             # The rendering succeeded. Now pickup the files and rename and move them to desired name / location
@@ -122,7 +174,7 @@ class LilyPondRenderer:
             return True
 
         except Exception as ex:
-            print("LilyPond rendering failed:", ex, file=sys.stderr)
+            LogKey(ERR_LILYPOND_FAILED, LogLevel.Error, command, str(ex))
             return False
 
     def LoadHyphen(self, language):

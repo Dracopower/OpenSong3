@@ -2,6 +2,8 @@ import socketserver
 import struct
 import sys
 
+from .Logger import *
+
 class ExternalRenderer:
     """
     Extenal renderer processes (render) requests from OpenSong.
@@ -63,7 +65,7 @@ class ExternalRenderer:
             self.Reply(self.CMD_PREPARE_RESULT, xmlresult)
             return True
         except Exception as ex:
-            print("Prepare failed:", ex, file=sys.stderr)
+            LogText("Prepare failed: " + str(ex))
             return False
 
     def DoRender(self, xmltext):
@@ -97,7 +99,7 @@ class ExternalRenderer:
             self.Reply(command, msg)
             return True
         except Exception as ex:
-            print("Render failed:", ex, file=sys.stderr)
+            LogText("Render failed: " + str(ex))
             return False
 
     def EndPresent(self, payload):
@@ -136,25 +138,25 @@ class ExternalRenderer:
         while keepgoing:
             header = self._ReadExact(12)
             if len(header) == 0:
-                print('I: Other side closed the socket.')
+                LogText('Other side closed the socket.')
                 return # Socket closed.
             if header[0:4] != self.PROTOCOL_ID:
-                print('E: Other side is not a supported OpenSong protocol.')
+                LogText('Other side is not a supported OpenSong protocol.', LogLevel.Error)
                 return # No OpenSong.
             self.msgid, command, msgsize = struct.unpack('!hhi', header[4:12])
             payload = b''
             if msgsize > 0:
                 payload = self._ReadExact(msgsize)
                 if len(payload) == 0:
-                    print('E: Other closed the socket while reading a message.')
+                    LogText('Other closed the socket while reading a message.', LogLevel.Error)
                     return # Socket closed.
             try:
                 if command in self._mCommandHandlers:
                     keepgoing = self._mCommandHandlers[command](payload)
                 else:
-                    print('E: Invalid command received:', command)
+                    LogText('Invalid command received: ' + str(command), LogLevel.Error)
             except OSError as ex:
-                print('E:',ex.errno, ex.strerror)
+                LogText('Renderer error: ' + str(ex), LogLevel.Error)
 
 class ExternalRendererHandler(socketserver.BaseRequestHandler):
     """
@@ -166,11 +168,11 @@ class ExternalRendererHandler(socketserver.BaseRequestHandler):
     """
 
     def handle(self):
-        print("I: Session started")
+        LogText("Session started")
         renderer = ExternalRenderer(self.request)
         # fork here!
         renderer.Process()
-        print("I: Session ended")
+        LogText("Session ended")
 
 if __name__ == "__main__":
     HOST, PORT = "localhost", 4444

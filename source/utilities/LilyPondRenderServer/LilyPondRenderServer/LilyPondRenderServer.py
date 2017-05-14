@@ -10,30 +10,24 @@ from .SongManager import SongManager
 from .SongRecord import SongRecord
 from .RenderServer import ExternalRenderer
 
+# Configuration
+from .Logger import *
+from .Configuration import *
+
 # Misc
-import argparse
+from threading import Thread
 import pyphen
-import multiprocessing
 import socketserver
 import xml.etree.ElementTree as ET
 from os import path
-import os
 import re
 
-# Some global configuration data
-myappname='LilyPondRenderer'
-myappauthor='OpenSong'
-myversion = "0.1.5"
-
 # We have a global renderer and song manager.
-renderer = LilyPondRenderer()        
+renderer = None
 manager = None
+server = None
 
 class LilyPondRenderServer(ExternalRenderer):
-
-    defaultport = 8083
-    defaulthost = 'localhost'
-    defaultcommand = 'cd "{workdir}" ; lilypond -ddelete-intermediate-files --png -dresolution=400 "{lilypondfile}"'
 
     def __init__(self, socket):
         ExternalRenderer.__init__(self, socket)
@@ -184,68 +178,14 @@ class LilyPondRenderServer(ExternalRenderer):
             result = xmltext.encode()
         return command, result, extrasheets
 
-def DefaultCacheDir():
-    ''' OS dependent cache folder to store the rendered songs. '''
-    return appdirs.user_cache_dir(appname=myappname, appauthor=myappauthor)
+    @staticmethod
+    def GetAutoHyphenLanguages():
+        return [language for language in pyphen.LANGUAGES]
 
-def DefaultWorkDir():
-    ''' OS dependent cache folder to store the temporary LilyPond files. '''
-    return path.join(DefaultCacheDir(), 'workdir')
-
-def DefaultThreadCount():
-    ''' The default amount of threads to use for background rendering. We leave one for OpenSong. '''
-    defaultthreadcount = multiprocessing.cpu_count() - 1
-    if defaultthreadcount < 1:
-        defaultthreadcount = 1
-    return defaultthreadcount
-
-def LoadTemplate(templatefile):
-    ''' Pre-load the LilyPond template file. If there is no template file with that name yet,
-        create one with some handy default content.
-    '''
-    if not path.isfile(templatefile):
-        template = r"""\version "2.16.0"
-
-% With 300 dpi, this will result in a 1920 x 1080 = Full HD image.
-%#(set! paper-alist (cons '("Full-HD" . (cons (* 6.4 in) (* 3.6 in))) paper-alist))
-%\paper { #(set-paper-size "Full-HD") print-page-number = ##f }
-
-% With 400 dpi, this will result in a 1920 x 1080 = Full HD image with bigger scores.
-% = 400dpi * 4.8" x 400dpi * 2.7" = 1920 x 1080
-#(set! paper-alist (cons '("Full-HD" . (cons (* 4.8 in) (* 2.7 in))) paper-alist))
-\paper { #(set-paper-size "Full-HD") print-page-number = ##f }
-
-\header {
-  title = \markup \fontsize #-3 "$(osrtitle): $(osrverse)"
-  copyright = "$(osrcopyright)"
-  composer = "$(osrauthor)"
-  tagline = ""
-}
-
-\score 
-{
-  <<
-    \new Staff \new Voice = "verse" 
-    $(osrnotes)
-    \new Lyrics \lyricsto "verse" 
-    \lyricmode 
-    { 
-      $(osrlyrics)
-    } 
-  >> 
-}
-"""
-        os.makedirs(path.dirname(templatefile), exist_ok=True)
-        with open(templatefile, "w") as tfile:
-            tfile.write(template)
-    else:
-        with open(templatefile) as file:
-            template = file.read()
-    return template
-
-def ListAutoHyphenLanguages():
-    for language in pyphen.LANGUAGES:
-        print(language)
+    @staticmethod
+    def ListAutoHyphenLanguages():
+        for language in pyphen.LANGUAGES:
+            print(language)
 
 class LilyPondRendererHandler(socketserver.BaseRequestHandler):
     """
@@ -257,58 +197,45 @@ class LilyPondRendererHandler(socketserver.BaseRequestHandler):
     """
 
     def handle(self):
-        print("I: Session started")
+        LogText("Session started")
         renderer = LilyPondRenderServer(self.request)
         # fork here!
         renderer.Process()
-        print("I: Session ended")
+        LogText("Session ended")
 
-def runserver(arguments=None):
-    configdir = appdirs.user_config_dir(appname=myappname, appauthor=myappauthor)
-    defaulttemplate = path.join(configdir, 'Template.ly')
-    languagecode, encoding = locale.getdefaultlocale()
+def startserver(sync=True, **kwargs):
+    # The global ones!
+    global renderer
+    global manager
+    global server
+    renderer = LilyPondRenderer(**kwargs)
+    manager = SongManager(renderer, kwargs['threads'])
 
-    parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter,
-        description = myappname + ' ' + myversion + '. External renderer for OpenSong using LilyPond to render songs with notes.')
-    parser.add_argument('-v', '--version', action='version', version=myversion)
-    parser.add_argument('-p', '--port', type=int, default=LilyPondRenderServer.defaultport, help='The port to use to listen to for OpenSong render commands')
-    parser.add_argument('--host', default=LilyPondRenderServer.defaulthost, help='The host to use when listening')
-    parser.add_argument('-t', '--lilypondtemplate', default=defaulttemplate, 
-        help='The LilyPond template file used to create a .ly file for rendering with LilyPond. '
-        'Available substitutes within the file are: $osrtitle, $osrcopyright, $osrauthor, $osrnotes, $osrverse, $osrlyrics')
-    parser.add_argument('-c', '--lilypondcommand', default=LilyPondRenderServer.defaultcommand, 
-        help='The lilypond shell command to execute for rendering. Use {workdir} and {lilypondfile} to be substituted with the respective values.')
-    parser.add_argument('-w', '--workdir', default=DefaultWorkDir(), help='Folder used as temporary work directory for LilyPond')
-    parser.add_argument('-s', '--cachedir', default=DefaultCacheDir(), help='Folder used as cache to store the generated images')
-    parser.add_argument('--keeply', action='store_true', default=False, help='Do not delete the .ly files from the workdir')
-    parser.add_argument('--threads', type=int, default=DefaultThreadCount(), help='The amount or parallel worker threads for rendering.')
-    parser.add_argument('-l', '--defaulthyphenlanguage', default=languagecode, help='Specify the default language to automatically hyphenate the songs. Can be overwritter per song with ;$hyphenlanguage=xx_XX')
-    parser.add_argument('-f', '--customhyphenfolder', default=configdir, help='Folder to seach for custom hyphen files with customized hyphenations per line. E.g.: overvloed o -- ver -- vloed')
-    parser.add_argument('--hyphenlanguages', action='store_true', default=False, help='Do not start the server but give a list of available languages for autohyphen')
-    args = parser.parse_args(arguments)
-
-    if args.hyphenlanguages:
-        ListAutoHyphenLanguages()
-    else:
-        # The global ones!
-        global renderer
-        global manager
-        renderer.keeplyfile             = args.keeply
-        renderer.template               = LoadTemplate(args.lilypondtemplate)
-        renderer.rendercommand          = args.lilypondcommand
-        renderer.workdir                = args.workdir
-        renderer.cachedir               = args.cachedir
-        renderer.defaulthyphenlanguage  = args.defaulthyphenlanguage
-        renderer.customhyphenfolder     = args.customhyphenfolder
-        renderer.Initialize()
-        manager = SongManager(renderer, args.threads)
-
-        # Create the server
-        server = socketserver.TCPServer((args.host, args.port), LilyPondRendererHandler)
+    # Create the server
+    try:
+        server = socketserver.TCPServer((kwargs['host'], kwargs['port']), LilyPondRendererHandler)
 
         # Activate the server; this will keep running until you
         # interrupt the program with Ctrl-C
-        server.serve_forever()
+        if sync:
+            server.serve_forever()
+        else:
+            thread = Thread(target=server.serve_forever)
+            thread.start()
+        return True
+    except Exception as ex:
+        LogKey(ERR_STARTFAILED, LogLevel.Error, str(ex))
+        stopserver()
+        return False
 
-if __name__ == "__main__":
-    runserver()
+
+def stopserver():
+    global server
+    global manager
+    if server:
+        server.shutdown()
+        server.server_close()
+        server = None
+    if manager:
+        manager.TerminateNicely()
+        manager = None
