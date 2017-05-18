@@ -91,6 +91,12 @@ Inherits Application
 		    IsPortable =  SmartML.GetValueB(MyGlobals.DocumentElement, "portable/@installation", True, False)
 		  End If
 		  
+		  If parameters.IndexOf("--profiler")>-1 Or parameters.IndexOf("/profiler")>-1 Then
+		    Profiler.EndProfilerEntry
+		    Profiler.EnableProfiler
+		    Profiler.BeginProfilerEntry "App::Open2"
+		  End If
+		  
 		  LoadPreferences
 		  '++JRC Couldn't load Preferences, Log error and Bail
 		  If MainPreferences = Nil Then

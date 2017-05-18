@@ -507,9 +507,10 @@ Protected Module SetML
 		    g.TextSize = origTextSize
 		    
 		    Profiler.EndProfilerEntry
-		    Profiler.BeginProfilerEntry "DrawSlide>Post-shrink" ' --------------------------------------------------
 		    
 		    DrawText: 'EMP 09/05
+		    
+		    Profiler.BeginProfilerEntry "DrawSlide>Post-shrink" ' --------------------------------------------------
 		    
 		    ' Post-shrink - we did our best, this is just in case.
 		    While UBound(lines) * GraphicsX.FontFaceHeight(g, bodyStyle) > MainHeight

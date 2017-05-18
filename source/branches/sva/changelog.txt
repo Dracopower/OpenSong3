@@ -1,4 +1,5 @@
 ﻿-= Version 2.2 RC =-
+* Profiler can be activated from the command line for diagnostic purposes: command line option --profiler
 * Prevent NilObjectException in External Slide on presentation, media, and application file and allow URLs and MRLs as Videolan "media file to play".
 * Fix for override Style does not work correctly in Song preview mode (bug #450) (Vwout)
 * Fixed a bug where the bottom margin was not repspected for the body-rendering when no other items were rendered at the bottom of the screen.

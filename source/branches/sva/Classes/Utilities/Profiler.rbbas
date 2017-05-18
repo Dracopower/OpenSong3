@@ -5,13 +5,14 @@ Protected Module Profiler
 		  If Not ProfileEnabled Then Return
 		  
 		  If ProfileFile = Nil Then
-		    ProfileFile = GetFolderItem("profile.txt")
+		    ProfileFile = App.AppPreferencesFolderForOpenSong.Child("profile.txt") 'place in a writeable folder
 		    If ProfileFile.Exists Then ProfileFile.Delete
 		    ProfileStream =  TextOutputStream.Create(ProfileFile)
 		  End If
 		  
 		  If ProfileFile <> Nil Then
-		    ProfileStream.WriteLine MakeSpaces(UBound(LastDateStack)) + desc
+		    desc = ReplaceLineEndings(desc,"\n")
+		    ProfileStream.WriteLine MakeSpaces(2*UBound(LastDateStack)) + desc
 		    LastDateStack.Append New Date
 		    LastEntryStack.Append desc
 		  End If
@@ -29,19 +30,12 @@ Protected Module Profiler
 		Sub EndProfilerEntry()
 		  If Not ProfileEnabled Then Return
 		  
-		  If ProfileFile = Nil Then
-		    ProfileFile = GetFolderItem("profile.txt")
-		    If ProfileFile.Exists Then ProfileFile.Delete
-		    ProfileStream = TextOutputStream.Create(ProfileFile)
-		  End If
-		  
 		  Dim d As New Date
 		  Dim diff As Double
 		  
 		  If ProfileFile <> Nil Then
 		    diff = d.TotalSeconds - LastDateStack(UBound(LastDateStack)).TotalSeconds
-		    ProfileStream.WriteLine MakeSpaces(UBound(LastDateStack)-1) + Str(diff) + " seconds (" + LastEntryStack(UBound(LastEntryStack)) + ")"
-		    ProfileStream.WriteLine ""
+		    ProfileStream.WriteLine MakeSpaces(2*(UBound(LastDateStack)-1)) + Str(diff) + " seconds (" + LastEntryStack(UBound(LastEntryStack)) + ")"
 		    LastDateStack.Remove UBound(LastDateStack)
 		    LastEntryStack.Remove UBound(LastEntryStack)
 		  End If
