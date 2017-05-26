@@ -12,9 +12,9 @@ class Configuration(ConfigurationFile):
     def __init__(self):
         ConfigurationFile.__init__(self)
         
-        self.appname        = 'LilyPondRenderer'
-        self.appauthor      = 'OpenSong'
-        self.version        = "0.5.0"
+        self.appname   = 'LilyPondRenderer'
+        self.appauthor = 'OpenSong'
+        self.version   = "0.5.1"
 
         cachedir  = appdirs.user_cache_dir(appname=self.appname, appauthor=self.appauthor)
         configdir = appdirs.user_config_dir(appname=self.appname, appauthor=self.appauthor)

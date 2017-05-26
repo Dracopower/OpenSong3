@@ -28,12 +28,13 @@ class SongManager:
     ''' Processes jobs in parallel.
     '''
     def __init__(self, renderer, threadcount):
-        self.renderer = renderer
-        self._jobs = Queue()
-        self._workers = []
+        self.renderer     = renderer
+        self._jobs        = Queue()
+        self._workers     = []
         self._terminating = False
-        self._songs = {}
-        self._songslock = Lock()
+        self._songs       = {}
+        self._songslock   = Lock()
+        self._hyphenfiles = []
 
         # Kick the worker threads into the air.
         for i in range(threadcount):
@@ -50,8 +51,12 @@ class SongManager:
 
     def _Register(self, song):
         with self._songslock:
-            if song.md5 in self._songs:
-                return self._songs[song.md5]
+            foundsong = self._songs.get(song.md5)
+            if foundsong:
+                # Rerender the song if the most recent hyphen file is newer then the last song rendering.
+                if foundsong.hyphenfiledate and self.renderer.latesthyphenfiledate > foundsong.hyphenfiledate:
+                    foundsong.SafeSwitchStatus(SongRecord.STATUS_AVAILABLE, SongRecord.STATUS_NOTAVAILABLE)
+                return foundsong
             else:
                 self._songs[song.md5] = song
                 return song
@@ -63,14 +68,16 @@ class SongManager:
 
     def _Render(self, song):
         # remove old versions from the cache, prior to generating a new one.
+        song.files = []
         songfolder = song.GetSongFolder(self.renderer.cachedir)
         songprefix = song.MakeFileName()
-        prefixlen = len(songprefix)
+        prefixlen  = len(songprefix)
         for filename in os.listdir(songfolder):
             if filename.startswith(songprefix):
                 os.remove(os.path.join(songfolder, filename))
                 filemd5 = filename[prefixlen:prefixlen+32]
-                self._Unregister(filemd5)
+                if filemd5 != song.md5:
+                    self._Unregister(filemd5)
 
         success = self.renderer.RenderToCache(song)
         if success:

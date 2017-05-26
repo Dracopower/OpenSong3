@@ -32,7 +32,7 @@ class LilyPondRenderServer(ExternalRenderer):
     def __init__(self, socket):
         ExternalRenderer.__init__(self, socket)
         self.idreplacements = {}
-        self.sheetcount = 0
+        self.sheetcount     = 0
 
     def _GenerateSongSheets(self, slidesnode, songpath, name, lyrics, versestorender):
         ''' Adds slides to the 'slidenodes' collection for every verse in 'versestorender'. '''
@@ -55,8 +55,8 @@ class LilyPondRenderServer(ExternalRenderer):
         for verseid in versestorender:
             if verseid in verses:
                 # Lookup a notes verse to this lyric verse and create a song record for verse.
-                notes = verses.get('N' + verseid) or verses.get('N') or ''
-                song = SongRecord(songpath, name, name, verseid, notes, verses[verseid])
+                notes       = verses.get('N' + verseid) or verses.get('N') or ''
+                song        = SongRecord(songpath, name, name, verseid, notes, verses[verseid])
                 song.hyphen = customhyphen
                 available, song = manager.GetOrSchedule(song)
                 if available:
@@ -126,15 +126,15 @@ class LilyPondRenderServer(ExternalRenderer):
         ''' This is a call from OpenSong to render this specific sheet. The sheet is in the 'xmltext'. '''
 
         # The defaults of what we're going to return.
-        command = self.CMD_RENDER_RESULT_XML
+        command     = self.CMD_RENDER_RESULT_XML
         extrasheets = b''
-        imagefile = ''
+        imagefile   = ''
 
         # Turn the xml into a nice tree and see what we've got...
         slide = ET.XML(xmltext)
         if slide is not None and slide.tag == 'slide':
             renderid = slide.get('externalrenderid', '')
-            verseid = slide.get('id', '')
+            verseid  = slide.get('id', '')
             renderid = self.idreplacements.get(renderid, renderid)  # See furtheron in this method...
             # When the renderid starts with 'song', it was not available when the presentation started. Get it now.
             if renderid.startswith('song'):
@@ -197,10 +197,12 @@ class LilyPondRendererHandler(socketserver.BaseRequestHandler):
     """
 
     def handle(self):
+        global renderer
         LogText("Session started")
-        renderer = LilyPondRenderServer(self.request)
+        renderer.UpdateHyphenFiles()
+        renderserver = LilyPondRenderServer(self.request)
         # fork here!
-        renderer.Process()
+        renderserver.Process()
         LogText("Session ended")
 
 def startserver(sync=True, **kwargs):
@@ -209,7 +211,7 @@ def startserver(sync=True, **kwargs):
     global manager
     global server
     renderer = LilyPondRenderer(**kwargs)
-    manager = SongManager(renderer, kwargs['threads'])
+    manager  = SongManager(renderer, kwargs['threads'])
 
     # Create the server
     try:

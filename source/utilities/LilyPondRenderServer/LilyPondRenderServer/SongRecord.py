@@ -3,6 +3,7 @@ import hashlib
 import os
 from os import path
 from threading import Lock
+from datetime import datetime
 
 class SongRecord:
     ''' Fully describes content and files that makeup one verse of an opensong verse.
@@ -11,12 +12,12 @@ class SongRecord:
     '''
 
     # Status codes
-    STATUS_UNKNOWN = 0
+    STATUS_UNKNOWN      = 0
     STATUS_NOTAVAILABLE = 1
-    STATUS_AVAILABLE = 1
-    STATUS_SCHEDULED = 2
-    STATUS_RENDERING = 3
-    STATUS_ERROR = 4
+    STATUS_AVAILABLE    = 2
+    STATUS_SCHEDULED    = 3
+    STATUS_RENDERING    = 4
+    STATUS_ERROR        = 5
 
     # filename = <0:osfile>$<1:verse>$<2:16-char-md5>$<3:3-digit-count>.png
     BASE_FILE_FORMAT = "{0:.200}${1}$"
@@ -28,18 +29,19 @@ class SongRecord:
     def __init__(self, osfolder="", osfile="", title="", verse="", notes="", lyrics="", composer="", copyright="", songid=None):
 
         if songid:
-            self.md5 = songid
+            self.md5     = songid
             self._status = self.STATUS_UNKNOWN
         else:
             # Input fields
-            self.osfolder = osfolder
-            self.osfile = osfile
-            self.title = title
-            self.copyright = copyright
-            self.composer = composer
-            self.notes = notes
-            self.verse = verse
-            self.lyrics = lyrics
+            self.osfolder       = osfolder
+            self.osfile         = osfile
+            self.title          = title
+            self.copyright      = copyright
+            self.composer       = composer
+            self.notes          = notes
+            self.verse          = verse
+            self.lyrics         = lyrics
+            self.hyphenfiledate = None
 
             # Processingfields
             self.InitializeStatus()
@@ -49,16 +51,18 @@ class SongRecord:
         is not the fromstatus, no switch will take place. Return True if switched, false otherwise.
         '''
         with SongRecord._statuslock:
+            print("{0}: from status {1}".format(self.md5, self._status))
             if self._status == fromstatus:
                 self._status = tostatus
+                print("{0}: to status {1}".format(self.md5, self._status))
                 return True
         return False
 
     def InitializeStatus(self):
-        self.files = []
+        self.files   = []
         self._status = self.STATUS_UNKNOWN
-        self.osfile = self.osfile.replace("$","")
-        self.verse = self.verse.replace("$","")
+        self.osfile  = self.osfile.replace("$","")
+        self.verse   = self.verse.replace("$","")
         md5 = hashlib.md5()
         md5.update(self.title.encode())
         md5.update(self.copyright.encode())

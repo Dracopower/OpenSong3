@@ -16,10 +16,10 @@ from .Logger import *
 class HyphenSet:
 
     def __init__(self, language, customfolder):
-        self.language = language
-        self.customhyphens = {}
-        self.custommtime = None
-        self.hyphenator = None
+        self.language         = language
+        self.customhyphens    = {}
+        self.modificationtime = None
+        self.hyphenator       = None
 
         try:        
             if language in pyphen.LANGUAGES:
@@ -39,7 +39,7 @@ class HyphenSet:
     def LoadCustomHyphen(self):
         try:
             self.customhyphens = {}
-            self.custommtime = os.stat(self.customfile).st_mtime
+            self.modificationtime = os.stat(self.customfile).st_mtime
             with open(self.customfile) as file:
                 for line in file.read().splitlines():
                     # Can be commented with a ;
@@ -52,11 +52,8 @@ class HyphenSet:
             LogKey(ERR_LOADHYPHENS, LogLevel.Error, self.customfile, str(ex))
 
     def UpdateCustomHyphen(self):
-        if self.custommtime:
-            newmtime = os.stat(self.customfile).st_mtime
-            if newmtime != self.custommtime:
-                self.custommtime = newmtime
-                self.LoadCustomHyphen()
+        if self.modificationtime and os.stat(self.customfile).st_mtime != self.modificationtime:
+            self.LoadCustomHyphen()
 
 class LilyPondRenderer:
 
@@ -66,8 +63,9 @@ class LilyPondRenderer:
         os.makedirs(self.workdir, exist_ok=True)
         os.makedirs(self.cachedir, exist_ok=True)
         self.LoadTemplate()
-        self._pyphens = {}
-        self._lock = Lock()
+        self._pyphens             = {}
+        self._lock                = Lock()
+        self.latesthyphenfiledate = 0.0
 
     def LoadTemplate(self):
         ''' Pre-load the LilyPond template file. If there is no template file with that name yet,
@@ -125,7 +123,9 @@ tagline = ""
             # Optionally auto-hyphenate the lyrics. Disable auto-hyphen if already hyphened.
             hyphenlanguage = song.hyphen or self.defaulthyphenlanguage
             if hyphenlanguage and song.lyrics.find(' -- ') < 0:
-                lyrics = self.HyphenLyrics(song.lyrics, hyphenlanguage)
+                hyphenset = self.LoadHyphen(hyphenlanguage)
+                lyrics    = self.HyphenLyrics(song.lyrics, hyphenset)
+                song.hyphenfiledate = self.latesthyphenfiledate
             else:
                 lyrics = song.lyrics
 
@@ -165,7 +165,7 @@ tagline = ""
                         filenames[1] = pngfile
             for index in sorted(filenames.keys()):
                 filename = filenames[index]
-                newname = song.MakeFileName(index)
+                newname  = song.MakeFileName(index)
                 os.rename( path.join(self.workdir, filename), path.join(songfolder, newname) )
                 song.files.append(newname)
 
@@ -177,29 +177,34 @@ tagline = ""
             LogKey(ERR_LILYPOND_FAILED, LogLevel.Error, command, str(ex))
             return False
 
+    def UpdateHyphenFiles(self):
+        for hyphenset in self._pyphens.values():
+            hyphenset.UpdateCustomHyphen()
+            self.latesthyphenfiledate = max(self.latesthyphenfiledate, hyphenset.modificationtime)
+
     def LoadHyphen(self, language):
         ''' Load a hyphen language or file. Since the same renderer is used by multiple threads
             and we don't want to load a renderer dictionary for every thread, we must protect the loading.  '''
         with self._lock:
-            result = self._pyphens.get(language)
-            if not result:
-                result = HyphenSet(language, self.customhyphenfolder)
-                self._pyphens[language] = result
+            hyphenset = self._pyphens.get(language)
+            if not hyphenset:
+                hyphenset = HyphenSet(language, self.customhyphenfolder)
+                self._pyphens[language] = hyphenset
             else:
-                result.UpdateCustomHyphen()
-        return result
+                hyphenset.UpdateCustomHyphen()
+        self.latesthyphenfiledate = max(self.latesthyphenfiledate, hyphenset.modificationtime)
+        return hyphenset
 
-    def _hyphenwords(self, words, language):
+    def _hyphenwords(self, words, hyphenset):
         ''' This hyphens a collection of words. Words with a ' in them are treated special. '''
-        mypyphen = self.LoadHyphen(language)
         stripnext = False
         for word in words:
             if stripnext:
-                word = word.lstrip()
+                word      = word.lstrip()
                 stripnext = False
             if word:
                 if word[0].isalpha() or word.find("'") >= 0:
-                    custom = mypyphen.customhyphens.get(word.lower())
+                    custom = hyphenset.customhyphens.get(word.lower())
                     if custom:
                         stripnext = custom.endswith("_")
                         # Simple first-letter-case support. Needs to be extended.
@@ -222,15 +227,15 @@ tagline = ""
                             else:
                                 addapp = True
                             addspace = len(ncword) > 1
-                            if mypyphen.hyphenator:
-                                yield mypyphen.hyphenator.inserted(ncword, hyphen=' -- ')
+                            if hyphenset.hyphenator:
+                                yield hyphenset.hyphenator.inserted(ncword, hyphen=' -- ')
                             else:
                                 yield word
                 else:
                     yield word
 
-    def HyphenLyrics(self, lyrics, language):
+    def HyphenLyrics(self, lyrics, hyphenset):
         # return ''.join([self.customhyphen.get(word) or self.defaultpyphen.inserted(word, hyphen=' -- ') if word.isalpha() 
         #                 else word for word in re.findall(r'[^\w]+|\w+', lyrics)])
         # We do keep the ' character as part of the words, to allow them to be custom-hyphened.
-        return ''.join(self._hyphenwords(re.findall(r"[^\w']+|[\w']+", lyrics), language))
+        return ''.join(self._hyphenwords(re.findall(r"[^\w']+|[\w']+", lyrics), hyphenset))

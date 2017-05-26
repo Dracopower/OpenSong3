@@ -70,7 +70,9 @@ immediately after starting you presentation, in the order the presentation needs
 These results are saved in the cache folder. If you change a verse (notes or lyrics),
 the cached version for that verse will automatically be invalidated. The caching does not support
 updates to the cache by other applications when the server is running.
-The cache is NOT invalidated when the template or custom hyphen file(s) change.
+The cache is NOT invalidated when the template or custom hyphen file(s) change, however, changing
+the custom hyphen file will trigger re-rendering of all songs rendered while the
+active instance of the server was running.
 The cache is preserved over sessions. So once rendered correctly, you won't need to render
 the song the next time you use it (unless you cleared the cache or changed the song).
 
@@ -156,6 +158,8 @@ of noten van een vers veranderd, wordt de versie in de cache automatisch ongeldi
 en zal het vers de volgende keer opnieuw opgemaakt worden. Het veranderen van de template
 of de afbreek lijsten maakt de cache NIET ongeldig. Wel wordt tijdens het draaien
 van de server de afbreek lijst automatisch opnieuw geladen als deze veranderd is.
+Alle verzen die door deze instantie van de server opgemaakt zijn, zullen dan opnieuw
+opgemaakt worden.
 De cache blijft bewaard tussen sessies in. Wanneer een lied / vers dus eenmaal is
 opgemaakt hoeft deze niet telkens opnieuw opgemaakt te worden wanneer het vers
 later opnieuw gebruikt wordt.
