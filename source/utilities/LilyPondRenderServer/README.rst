@@ -14,7 +14,7 @@ folder
 
 Install on any platform with:
 
-    pip3 install LilyPondRenderServer-0.5.0-py3-none-any.whl
+    pip3 install LilyPondRenderServer-0.5.1-py3-none-any.whl
 
 On some platforms it's pip instead of pip3.
 
@@ -72,7 +72,9 @@ immediately after starting you presentation, in the order the presentation needs
 These results are saved in the cache folder. If you change a verse (notes or lyrics),
 the cached version for that verse will automatically be invalidated. The caching does not support
 updates to the cache by other applications when the server is running.
-The cache is NOT invalidated when the template or custom hyphen file(s) change.
+The cache is NOT invalidated when the template or custom hyphen file(s) change, however, changing
+the custom hyphen file will trigger re-rendering of all songs rendered while the
+active instance of the server was running.
 The cache is preserved over sessions. So once rendered correctly, you won't need to render
 the song the next time you use it (unless you cleared the cache or changed the song).
 
