@@ -1,13 +1,11 @@
 #tag Window
 Begin Window PresentSettingsWindow
-   BackColor       =   &cFFFFFF00
+   BackColor       =   "&cFFFFFF00"
    Backdrop        =   0
    CloseButton     =   True
-   Compatibility   =   ""
    Composite       =   False
    Frame           =   1
    FullScreen      =   False
-   FullScreenButton=   False
    HasBackColor    =   False
    Height          =   488
    ImplicitInstance=   True
@@ -29,7 +27,7 @@ Begin Window PresentSettingsWindow
    Begin PushButton btn_ok
       AutoDeactivate  =   True
       Bold            =   False
-      ButtonStyle     =   "0"
+      ButtonStyle     =   0
       Cancel          =   False
       Caption         =   "OK"
       Default         =   True
@@ -60,7 +58,7 @@ Begin Window PresentSettingsWindow
    Begin PushButton btn_cancel
       AutoDeactivate  =   True
       Bold            =   False
-      ButtonStyle     =   "0"
+      ButtonStyle     =   0
       Cancel          =   True
       Caption         =   "Cancel"
       Default         =   False
@@ -140,9 +138,10 @@ Begin Window PresentSettingsWindow
          Selectable      =   False
          TabIndex        =   0
          TabPanelIndex   =   1
+         TabStop         =   True
          Text            =   "Default Slide Style:"
          TextAlign       =   1
-         TextColor       =   &c00000000
+         TextColor       =   "&c00000000"
          TextFont        =   "Arial"
          TextSize        =   10.0
          TextUnit        =   0
@@ -203,9 +202,10 @@ Begin Window PresentSettingsWindow
          Selectable      =   False
          TabIndex        =   2
          TabPanelIndex   =   1
+         TabStop         =   True
          Text            =   "(click to change)"
          TextAlign       =   1
-         TextColor       =   &c00000000
+         TextColor       =   "&c00000000"
          TextFont        =   "Arial"
          TextSize        =   9.0
          TextUnit        =   0
@@ -237,9 +237,10 @@ Begin Window PresentSettingsWindow
          Selectable      =   False
          TabIndex        =   3
          TabPanelIndex   =   1
+         TabStop         =   True
          Text            =   "Scripture Slide Style:"
          TextAlign       =   1
-         TextColor       =   &c00000000
+         TextColor       =   "&c00000000"
          TextFont        =   "Arial"
          TextSize        =   10.0
          TextUnit        =   0
@@ -300,9 +301,10 @@ Begin Window PresentSettingsWindow
          Selectable      =   False
          TabIndex        =   5
          TabPanelIndex   =   1
+         TabStop         =   True
          Text            =   "(click to change)"
          TextAlign       =   1
-         TextColor       =   &c00000000
+         TextColor       =   "&c00000000"
          TextFont        =   "Arial"
          TextSize        =   9.0
          TextUnit        =   0
@@ -361,9 +363,10 @@ Begin Window PresentSettingsWindow
             Selectable      =   False
             TabIndex        =   0
             TabPanelIndex   =   1
+            TabStop         =   True
             Text            =   "Align:"
             TextAlign       =   1
-            TextColor       =   &c00000000
+            TextColor       =   "&c00000000"
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
@@ -423,9 +426,10 @@ Begin Window PresentSettingsWindow
             Selectable      =   False
             TabIndex        =   2
             TabPanelIndex   =   1
+            TabStop         =   True
             Text            =   "Font:"
             TextAlign       =   1
-            TextColor       =   &c00000000
+            TextColor       =   "&c00000000"
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
@@ -498,7 +502,7 @@ Begin Window PresentSettingsWindow
             AcceptTabs      =   False
             AutoDeactivate  =   True
             Backdrop        =   0
-            bgColor         =   &c00000000
+            bgColor         =   "&c00000000"
             DoubleBuffer    =   False
             Enabled         =   True
             EraseBackground =   True
@@ -544,9 +548,10 @@ Begin Window PresentSettingsWindow
             Selectable      =   False
             TabIndex        =   1
             TabPanelIndex   =   1
+            TabStop         =   True
             Text            =   "(click to change)"
             TextAlign       =   1
-            TextColor       =   &c00000000
+            TextColor       =   "&c00000000"
             TextFont        =   "Arial"
             TextSize        =   9.0
             TextUnit        =   0
@@ -578,9 +583,10 @@ Begin Window PresentSettingsWindow
             Selectable      =   False
             TabIndex        =   2
             TabPanelIndex   =   1
+            TabStop         =   True
             Text            =   "(right-click to clear)"
             TextAlign       =   1
-            TextColor       =   &c00000000
+            TextColor       =   "&c00000000"
             TextFont        =   "Arial"
             TextSize        =   9.0
             TextUnit        =   0
@@ -612,9 +618,10 @@ Begin Window PresentSettingsWindow
             Selectable      =   False
             TabIndex        =   3
             TabPanelIndex   =   1
+            TabStop         =   True
             Text            =   "Mask:"
             TextAlign       =   1
-            TextColor       =   &c00000000
+            TextColor       =   "&c00000000"
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
@@ -629,7 +636,7 @@ Begin Window PresentSettingsWindow
             AcceptTabs      =   False
             AutoDeactivate  =   True
             Backdrop        =   0
-            bgColor         =   &c00000000
+            bgColor         =   "&c00000000"
             DoubleBuffer    =   False
             Enabled         =   True
             EraseBackground =   True
@@ -675,9 +682,10 @@ Begin Window PresentSettingsWindow
             Selectable      =   False
             TabIndex        =   5
             TabPanelIndex   =   1
+            TabStop         =   True
             Text            =   "(click to change)"
             TextAlign       =   1
-            TextColor       =   &c00000000
+            TextColor       =   "&c00000000"
             TextFont        =   "Arial"
             TextSize        =   9.0
             TextUnit        =   0
@@ -709,9 +717,10 @@ Begin Window PresentSettingsWindow
             Selectable      =   False
             TabIndex        =   6
             TabPanelIndex   =   1
+            TabStop         =   True
             Text            =   "(right-click to clear)"
             TextAlign       =   1
-            TextColor       =   &c00000000
+            TextColor       =   "&c00000000"
             TextFont        =   "Arial"
             TextSize        =   9.0
             TextUnit        =   0
@@ -803,9 +812,10 @@ Begin Window PresentSettingsWindow
             Selectable      =   False
             TabIndex        =   1
             TabPanelIndex   =   2
+            TabStop         =   True
             Text            =   "Frames"
             TextAlign       =   0
-            TextColor       =   &c00000000
+            TextColor       =   "&c00000000"
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
@@ -837,7 +847,7 @@ Begin Window PresentSettingsWindow
             TabIndex        =   2
             TabPanelIndex   =   2
             TabStop         =   True
-            TickStyle       =   "0"
+            TickStyle       =   0
             Top             =   112
             Value           =   5
             Visible         =   True
@@ -848,7 +858,7 @@ Begin Window PresentSettingsWindow
             Alignment       =   0
             AutoDeactivate  =   True
             AutomaticallyCheckSpelling=   False
-            BackColor       =   &cFFFFFF00
+            BackColor       =   "&cFFFFFF00"
             Bold            =   False
             Border          =   True
             CueText         =   ""
@@ -876,7 +886,7 @@ Begin Window PresentSettingsWindow
             TabPanelIndex   =   2
             TabStop         =   True
             Text            =   ""
-            TextColor       =   &c00000000
+            TextColor       =   "&c00000000"
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
@@ -908,9 +918,10 @@ Begin Window PresentSettingsWindow
             Selectable      =   False
             TabIndex        =   4
             TabPanelIndex   =   2
+            TabStop         =   True
             Text            =   "Time:"
             TextAlign       =   0
-            TextColor       =   &c00000000
+            TextColor       =   "&c00000000"
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
@@ -942,7 +953,7 @@ Begin Window PresentSettingsWindow
             TabIndex        =   5
             TabPanelIndex   =   2
             TabStop         =   True
-            TickStyle       =   "0"
+            TickStyle       =   0
             Top             =   148
             Value           =   100
             Visible         =   True
@@ -953,7 +964,7 @@ Begin Window PresentSettingsWindow
             Alignment       =   0
             AutoDeactivate  =   True
             AutomaticallyCheckSpelling=   False
-            BackColor       =   &cFFFFFF00
+            BackColor       =   "&cFFFFFF00"
             Bold            =   False
             Border          =   True
             CueText         =   ""
@@ -981,7 +992,7 @@ Begin Window PresentSettingsWindow
             TabPanelIndex   =   2
             TabStop         =   True
             Text            =   ""
-            TextColor       =   &c00000000
+            TextColor       =   "&c00000000"
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
@@ -1013,9 +1024,10 @@ Begin Window PresentSettingsWindow
             Selectable      =   False
             TabIndex        =   7
             TabPanelIndex   =   2
+            TabStop         =   True
             Text            =   "*Transitions are greatly affected by screen resolution. If you are experiencing slow transitions, consider decreasing the resolution of the monitor that the presentation resides on. Also, if you notice that transitions are not showing up, it may be because your color levels are too low on the presentation monitor."
             TextAlign       =   0
-            TextColor       =   &c00000000
+            TextColor       =   "&c00000000"
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
@@ -1075,9 +1087,10 @@ Begin Window PresentSettingsWindow
             Selectable      =   False
             TabIndex        =   0
             TabPanelIndex   =   2
+            TabStop         =   True
             Text            =   "Border Thickness:"
             TextAlign       =   0
-            TextColor       =   &c00000000
+            TextColor       =   "&c00000000"
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
@@ -1092,7 +1105,7 @@ Begin Window PresentSettingsWindow
             Alignment       =   0
             AutoDeactivate  =   True
             AutomaticallyCheckSpelling=   False
-            BackColor       =   &cFFFFFF00
+            BackColor       =   "&cFFFFFF00"
             Bold            =   False
             Border          =   True
             CueText         =   ""
@@ -1120,7 +1133,7 @@ Begin Window PresentSettingsWindow
             TabPanelIndex   =   2
             TabStop         =   True
             Text            =   ""
-            TextColor       =   &c00000000
+            TextColor       =   "&c00000000"
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
@@ -1152,9 +1165,10 @@ Begin Window PresentSettingsWindow
             Selectable      =   False
             TabIndex        =   2
             TabPanelIndex   =   2
+            TabStop         =   True
             Text            =   "Initial Mode:"
             TextAlign       =   0
-            TextColor       =   &c00000000
+            TextColor       =   "&c00000000"
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
@@ -1217,9 +1231,10 @@ Begin Window PresentSettingsWindow
             Selectable      =   False
             TabIndex        =   4
             TabPanelIndex   =   2
+            TabStop         =   True
             Text            =   "Mouse Cursor:"
             TextAlign       =   0
-            TextColor       =   &c00000000
+            TextColor       =   "&c00000000"
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
@@ -1314,9 +1329,10 @@ Begin Window PresentSettingsWindow
             Selectable      =   False
             TabIndex        =   7
             TabPanelIndex   =   2
+            TabStop         =   True
             Text            =   "between set items"
             TextAlign       =   0
-            TextColor       =   &c00000000
+            TextColor       =   "&c00000000"
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
@@ -1375,9 +1391,10 @@ Begin Window PresentSettingsWindow
                Selectable      =   False
                TabIndex        =   0
                TabPanelIndex   =   2
+               TabStop         =   True
                Text            =   "Blanks take style of:"
                TextAlign       =   0
-               TextColor       =   &c00000000
+               TextColor       =   "&c00000000"
                TextFont        =   "Arial"
                TextSize        =   10.0
                TextUnit        =   0
@@ -1496,9 +1513,10 @@ Begin Window PresentSettingsWindow
             Selectable      =   False
             TabIndex        =   0
             TabPanelIndex   =   2
+            TabStop         =   True
             Text            =   "Presentation Monitor:"
             TextAlign       =   0
-            TextColor       =   &c00000000
+            TextColor       =   "&c00000000"
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
@@ -1561,9 +1579,10 @@ Begin Window PresentSettingsWindow
             Selectable      =   False
             TabIndex        =   2
             TabPanelIndex   =   2
+            TabStop         =   True
             Text            =   "(1 monitor(s) detected.)"
             TextAlign       =   1
-            TextColor       =   &c00000000
+            TextColor       =   "&c00000000"
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
@@ -1626,9 +1645,10 @@ Begin Window PresentSettingsWindow
             Selectable      =   False
             TabIndex        =   4
             TabPanelIndex   =   2
+            TabStop         =   True
             Text            =   "Control Monitor:"
             TextAlign       =   0
-            TextColor       =   &c00000000
+            TextColor       =   "&c00000000"
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
@@ -1660,9 +1680,10 @@ Begin Window PresentSettingsWindow
             Selectable      =   False
             TabIndex        =   5
             TabPanelIndex   =   2
+            TabStop         =   True
             Text            =   "Default Mode:"
             TextAlign       =   0
-            TextColor       =   &c00000000
+            TextColor       =   "&c00000000"
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
@@ -1817,9 +1838,10 @@ Begin Window PresentSettingsWindow
             Selectable      =   False
             TabIndex        =   0
             TabPanelIndex   =   2
+            TabStop         =   True
             Text            =   "File to Play:"
             TextAlign       =   0
-            TextColor       =   &c00000000
+            TextColor       =   "&c00000000"
             TextFont        =   "Arial"
             TextSize        =   11.0
             TextUnit        =   0
@@ -1832,7 +1854,7 @@ Begin Window PresentSettingsWindow
          Begin PushButton btn_audio_browse
             AutoDeactivate  =   True
             Bold            =   False
-            ButtonStyle     =   "0"
+            ButtonStyle     =   0
             Cancel          =   False
             Caption         =   "Browse"
             Default         =   False
@@ -1863,7 +1885,7 @@ Begin Window PresentSettingsWindow
          Begin PushButton btn_audio_play
             AutoDeactivate  =   True
             Bold            =   False
-            ButtonStyle     =   "0"
+            ButtonStyle     =   0
             Cancel          =   False
             Caption         =   "Play"
             Default         =   False
@@ -1894,7 +1916,7 @@ Begin Window PresentSettingsWindow
          Begin PushButton btn_audio_stop
             AutoDeactivate  =   True
             Bold            =   False
-            ButtonStyle     =   "0"
+            ButtonStyle     =   0
             Cancel          =   False
             Caption         =   "Stop"
             Default         =   False
@@ -1960,7 +1982,7 @@ Begin Window PresentSettingsWindow
          Alignment       =   0
          AutoDeactivate  =   True
          AutomaticallyCheckSpelling=   False
-         BackColor       =   &cFFFFFF00
+         BackColor       =   "&cFFFFFF00"
          Bold            =   False
          Border          =   True
          CueText         =   ""
@@ -1988,7 +2010,7 @@ Begin Window PresentSettingsWindow
          TabPanelIndex   =   3
          TabStop         =   True
          Text            =   ""
-         TextColor       =   &c00000000
+         TextColor       =   "&c00000000"
          TextFont        =   "System"
          TextSize        =   0.0
          TextUnit        =   0
@@ -2148,9 +2170,10 @@ Begin Window PresentSettingsWindow
          Selectable      =   False
          TabIndex        =   6
          TabPanelIndex   =   3
+         TabStop         =   True
          Text            =   "The following parameters can be used in the file name or path:\r\n- %d: The day of the current month (01-31)\r\n- %H: The hour from the current time of day in 24-hour format (00-23)\r\n- %i: The minutes from the current time (00-59)\r\n- %m: The current month (01-12)\r\n- %n: The number of the slide in the current set (with leading zeroes)\r\n- %N: The name of the current slide\r\n- %P: Presentation index for slides during presentation (with leading zeroes)\r\n- %s: The seconds from the current time (00-59)\r\n- %S: The name of the current set\r\n- %T: The title of the current slide\r\n- %V: The verse indicator of the current slide (for songs, empty for other slides)\r\n- %Y: The current year (4 digits)\r\n"
          TextAlign       =   0
-         TextColor       =   &c00000000
+         TextColor       =   "&c00000000"
          TextFont        =   "System"
          TextSize        =   0.0
          TextUnit        =   0
@@ -2254,13 +2277,17 @@ Begin Window PresentSettingsWindow
       End
    End
    Begin Timer AudioTimer
+      Enabled         =   True
       Index           =   -2147483648
       InitialParent   =   ""
       LockedInPosition=   False
       Mode            =   2
       Period          =   500
       Scope           =   0
+      TabIndex        =   3
       TabPanelIndex   =   0
+      TabStop         =   True
+      Visible         =   True
    End
 End
 #tag EndWindow
@@ -2323,7 +2350,7 @@ End
 		  If pop_monitor_presentation.ListIndex < 0 Then pop_monitor_presentation.ListIndex = 1
 		  chk_monitor_force_4_3_preview.Value = SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "monitors/@force_4_3_preview", True, False)
 		  chk_monitor_force_16_9_preview.Value = SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "monitors/@force_16_9_preview", True, False)
-
+		  
 		  can_style_default.SetStyleNode SmartML.GetNode(App.MyPresentSettings.DocumentElement, "default_style")
 		  DefaultStyle = New SlideStyle(can_style_default.GetStyleNode)
 		  can_style_scripture.SetStyleNode SmartML.GetNode(App.MyPresentSettings.DocumentElement, "scripture_style")
@@ -2539,7 +2566,7 @@ End
 		  SmartML.SetValueN Settings, "monitors/@present", pop_monitor_presentation.ListIndex+1
 		  SmartML.SetValueB Settings, "monitors/@force_4_3_preview", chk_monitor_force_4_3_preview.Value
 		  SmartML.SetValueB Settings, "monitors/@force_16_9_preview", chk_monitor_force_16_9_preview.Value
-
+		  
 		  ' pop_pres_mode added EMP, 2005
 		  ' Allows user to specify default presentation mode (single screen, dual, preview)
 		  ' Eventual goal is to support a hotkey to go to presenter mode
@@ -2641,24 +2668,6 @@ End
 		End Sub
 	#tag EndEvent
 #tag EndEvents
-#tag Events chk_monitor_force_4_3_preview
-	#tag Event
-		Sub Action()
-		  if chk_monitor_force_4_3_preview.Value then
-		    chk_monitor_force_16_9_preview.Value = false
-		  end if
-		End Sub
-	#tag EndEvent
-#tag EndEvents
-#tag Events chk_monitor_force_16_9_preview
-	#tag Event
-		Sub Action()
-		  if chk_monitor_force_16_9_preview.Value then
-		    chk_monitor_force_4_3_preview.Value = false
-		  end if
-		End Sub
-	#tag EndEvent
-#tag EndEvents
 #tag Events chk_style_use_transitions
 	#tag Event
 		Sub Action()
@@ -2754,6 +2763,24 @@ End
 		Sub Open()
 		  Dim s as String
 		  s = App.T.Translate("presentation_settings/style/initial_mode/@caption")
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events chk_monitor_force_4_3_preview
+	#tag Event
+		Sub Action()
+		  if chk_monitor_force_4_3_preview.Value then
+		    chk_monitor_force_16_9_preview.Value = false
+		  end if
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events chk_monitor_force_16_9_preview
+	#tag Event
+		Sub Action()
+		  if chk_monitor_force_16_9_preview.Value then
+		    chk_monitor_force_4_3_preview.Value = false
+		  end if
 		End Sub
 	#tag EndEvent
 #tag EndEvents
@@ -2926,236 +2953,3 @@ End
 		End Sub
 	#tag EndEvent
 #tag EndEvents
-#tag ViewBehavior
-	#tag ViewProperty
-		Name="BackColor"
-		Visible=true
-		Group="Appearance"
-		InitialValue="&hFFFFFF"
-		Type="Color"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="Backdrop"
-		Visible=true
-		Group="Appearance"
-		Type="Picture"
-		EditorType="Picture"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="BGImage"
-		Group="Behavior"
-		Type="Picture"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="CloseButton"
-		Visible=true
-		Group="Appearance"
-		InitialValue="True"
-		Type="Boolean"
-		EditorType="Boolean"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="Composite"
-		Visible=true
-		Group="Appearance"
-		InitialValue="False"
-		Type="Boolean"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="Frame"
-		Visible=true
-		Group="Appearance"
-		InitialValue="0"
-		Type="Integer"
-		EditorType="Enum"
-		#tag EnumValues
-			"0 - Document"
-			"1 - Movable Modal"
-			"2 - Modal Dialog"
-			"3 - Floating Window"
-			"4 - Plain Box"
-			"5 - Shadowed Box"
-			"6 - Rounded Window"
-			"7 - Global Floating Window"
-			"8 - Sheet Window"
-			"9 - Metal Window"
-			"11 - Modeless Dialog"
-		#tag EndEnumValues
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="FullScreen"
-		Group="Appearance"
-		InitialValue="False"
-		Type="Boolean"
-		EditorType="Boolean"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="FullScreenButton"
-		Visible=true
-		Group="Appearance"
-		InitialValue="False"
-		Type="Boolean"
-		EditorType="Boolean"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="HasBackColor"
-		Visible=true
-		Group="Appearance"
-		InitialValue="False"
-		Type="Boolean"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="Height"
-		Visible=true
-		Group="Position"
-		InitialValue="400"
-		Type="Integer"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="ImplicitInstance"
-		Visible=true
-		Group="Appearance"
-		InitialValue="True"
-		Type="Boolean"
-		EditorType="Boolean"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="Interfaces"
-		Visible=true
-		Group="ID"
-		Type="String"
-		EditorType="String"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="LiveResize"
-		Visible=true
-		Group="Appearance"
-		InitialValue="True"
-		Type="Boolean"
-		EditorType="Boolean"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="MacProcID"
-		Visible=true
-		Group="Appearance"
-		InitialValue="0"
-		Type="Integer"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="MaxHeight"
-		Visible=true
-		Group="Position"
-		InitialValue="32000"
-		Type="Integer"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="MaximizeButton"
-		Visible=true
-		Group="Appearance"
-		InitialValue="True"
-		Type="Boolean"
-		EditorType="Boolean"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="MaxWidth"
-		Visible=true
-		Group="Position"
-		InitialValue="32000"
-		Type="Integer"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="MenuBar"
-		Visible=true
-		Group="Appearance"
-		Type="MenuBar"
-		EditorType="MenuBar"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="MenuBarVisible"
-		Group="Appearance"
-		InitialValue="True"
-		Type="Boolean"
-		EditorType="Boolean"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="MinHeight"
-		Visible=true
-		Group="Position"
-		InitialValue="64"
-		Type="Integer"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="MinimizeButton"
-		Visible=true
-		Group="Appearance"
-		InitialValue="True"
-		Type="Boolean"
-		EditorType="Boolean"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="MinWidth"
-		Visible=true
-		Group="Position"
-		InitialValue="64"
-		Type="Integer"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="Name"
-		Visible=true
-		Group="ID"
-		Type="String"
-		EditorType="String"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="Placement"
-		Visible=true
-		Group="Position"
-		InitialValue="0"
-		Type="Integer"
-		EditorType="Enum"
-		#tag EnumValues
-			"0 - Default"
-			"1 - Parent Window"
-			"2 - Main Screen"
-			"3 - Parent Window Screen"
-			"4 - Stagger"
-		#tag EndEnumValues
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="Resizeable"
-		Visible=true
-		Group="Appearance"
-		InitialValue="True"
-		Type="Boolean"
-		EditorType="Boolean"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="Super"
-		Visible=true
-		Group="ID"
-		Type="String"
-		EditorType="String"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="Title"
-		Visible=true
-		Group="Appearance"
-		InitialValue="Untitled"
-		Type="String"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="Visible"
-		Visible=true
-		Group="Appearance"
-		InitialValue="True"
-		Type="Boolean"
-		EditorType="Boolean"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="Width"
-		Visible=true
-		Group="Position"
-		InitialValue="600"
-		Type="Integer"
-	#tag EndViewProperty
-#tag EndViewBehavior

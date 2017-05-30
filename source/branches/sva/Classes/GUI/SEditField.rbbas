@@ -219,6 +219,14 @@ Inherits TextArea
 			InheritedFrom="EditField"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="AutomaticallyCheckSpelling"
+			Visible=true
+			Group="Behavior"
+			InitialValue="True"
+			Type="boolean"
+			InheritedFrom="TextArea"
+		#tag EndViewProperty
+		#tag ViewProperty
 			Name="BackColor"
 			Visible=true
 			Group="Appearance"
@@ -289,14 +297,18 @@ Inherits TextArea
 			InheritedFrom="EditField"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="HideSelection"
+			Visible=true
+			Group="Appearance"
+			InitialValue="True"
+			Type="Boolean"
+			InheritedFrom="TextArea"
+		#tag EndViewProperty
+		#tag ViewProperty
 			Name="Index"
 			Visible=true
 			Group="ID"
 			Type="Integer"
-			InheritedFrom="EditField"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="InitialParent"
 			InheritedFrom="EditField"
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -368,13 +380,6 @@ Inherits TextArea
 			Visible=true
 			Group="ID"
 			Type="String"
-			InheritedFrom="EditField"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="Password"
-			Visible=true
-			Group="Appearance"
-			Type="Boolean"
 			InheritedFrom="EditField"
 		#tag EndViewProperty
 		#tag ViewProperty

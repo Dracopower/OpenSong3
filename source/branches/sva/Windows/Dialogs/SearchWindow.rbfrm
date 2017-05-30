@@ -91,6 +91,7 @@ Begin Window SearchWindow
       Scope           =   0
       TabIndex        =   1
       TabPanelIndex   =   0
+      TabStop         =   True
       TextFont        =   "Arial"
       TextSize        =   10
       TextUnit        =   0
@@ -176,6 +177,7 @@ Begin Window SearchWindow
       Scope           =   0
       TabIndex        =   2
       TabPanelIndex   =   0
+      TabStop         =   True
       TextFont        =   "Arial"
       TextSize        =   10
       TextUnit        =   0
@@ -407,6 +409,7 @@ Begin Window SearchWindow
       Selectable      =   False
       TabIndex        =   7
       TabPanelIndex   =   0
+      TabStop         =   True
       Text            =   "To search for an exact phrase enclose it in double quotes, like ""Simon Peter"""
       TextAlign       =   0
       TextColor       =   0
@@ -441,6 +444,7 @@ Begin Window SearchWindow
       Selectable      =   False
       TabIndex        =   8
       TabPanelIndex   =   0
+      TabStop         =   True
       Text            =   "Search in bible using keyword:"
       TextAlign       =   0
       TextColor       =   &h000000
@@ -475,6 +479,7 @@ Begin Window SearchWindow
       Selectable      =   False
       TabIndex        =   9
       TabPanelIndex   =   0
+      TabStop         =   True
       Text            =   "%1 matches were found using the specified keyword(s)."
       TextAlign       =   0
       TextColor       =   &h000000

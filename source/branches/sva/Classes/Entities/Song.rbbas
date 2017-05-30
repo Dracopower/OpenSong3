@@ -1240,6 +1240,12 @@ Protected Class Song
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="LinkedSongList"
+			Group="Behavior"
+			Type="String"
+			EditorType="MultiLineEditor"
+		#tag EndViewProperty
+		#tag ViewProperty
 			Name="Lyrics"
 			Group="Behavior"
 			Type="String"
@@ -1278,6 +1284,7 @@ Protected Class Song
 			Name="ThemeList"
 			Group="Behavior"
 			Type="String"
+			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="TimeSignature"

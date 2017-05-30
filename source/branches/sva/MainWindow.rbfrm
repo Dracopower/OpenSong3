@@ -1927,7 +1927,7 @@ Begin Window MainWindow Implements ScriptureReceiver
       TabIndex        =   5
       TabPanelIndex   =   0
       Top             =   34
-      Value           =   2
+      Value           =   4
       Visible         =   True
       Width           =   591
       Begin Canvas cnv_editor_style_change
@@ -10204,7 +10204,7 @@ End
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub ActionSetPresent(mode As Integer, ItemNumber As Integer = -1)
+		Sub ActionSetPresent(mode As Integer, ItemNumber As Integer = - 1)
 		  Dim i As Integer
 		  Dim lastType As String
 		  'this is our working copy of the set's XML Doc

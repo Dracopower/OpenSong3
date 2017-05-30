@@ -43,6 +43,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Scope           =   0
       TabIndex        =   0
       TabPanelIndex   =   0
+      TabStop         =   True
       TextFont        =   "Arial"
       TextSize        =   11
       TextUnit        =   0
@@ -151,6 +152,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          Selectable      =   False
          TabIndex        =   2
          TabPanelIndex   =   0
+         TabStop         =   True
          Text            =   "Reference:"
          TextAlign       =   0
          TextColor       =   0
@@ -185,6 +187,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          Selectable      =   False
          TabIndex        =   3
          TabPanelIndex   =   0
+         TabStop         =   True
          Text            =   "Ex: ""2Pet 1:1-2"" or ""2Pet 1:1-2 (KJV)"""
          TextAlign       =   0
          TextColor       =   0
@@ -341,6 +344,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Scope           =   0
       TabIndex        =   5
       TabPanelIndex   =   0
+      TabStop         =   True
       TextFont        =   "Arial"
       TextSize        =   11
       TextUnit        =   0
@@ -470,6 +474,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          Selectable      =   False
          TabIndex        =   2
          TabPanelIndex   =   0
+         TabStop         =   True
          Text            =   "Old testament"
          TextAlign       =   0
          TextColor       =   0
@@ -504,6 +509,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          Selectable      =   False
          TabIndex        =   3
          TabPanelIndex   =   0
+         TabStop         =   True
          Text            =   "New testament"
          TextAlign       =   0
          TextColor       =   0
@@ -586,6 +592,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Scope           =   0
       TabIndex        =   7
       TabPanelIndex   =   0
+      TabStop         =   True
       TextFont        =   "Arial"
       TextSize        =   11
       TextUnit        =   0
@@ -644,6 +651,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Scope           =   0
       TabIndex        =   8
       TabPanelIndex   =   0
+      TabStop         =   True
       TextFont        =   "Arial"
       TextSize        =   11
       TextUnit        =   0
@@ -702,6 +710,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Scope           =   0
       TabIndex        =   9
       TabPanelIndex   =   0
+      TabStop         =   True
       TextFont        =   "Arial"
       TextSize        =   11
       TextUnit        =   0
@@ -967,6 +976,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Scope           =   0
       TabIndex        =   19
       TabPanelIndex   =   0
+      TabStop         =   True
       TextFont        =   "Arial"
       TextSize        =   11
       TextUnit        =   0
@@ -1049,6 +1059,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Selectable      =   False
       TabIndex        =   20
       TabPanelIndex   =   0
+      TabStop         =   True
       Text            =   "To verse"
       TextAlign       =   0
       TextColor       =   0
@@ -1114,6 +1125,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Selectable      =   False
       TabIndex        =   18
       TabPanelIndex   =   0
+      TabStop         =   True
       Text            =   "Preview of scripture passage"
       TextAlign       =   0
       TextColor       =   0
@@ -1148,6 +1160,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Selectable      =   False
       TabIndex        =   22
       TabPanelIndex   =   0
+      TabStop         =   True
       Text            =   "-"
       TextAlign       =   1
       TextColor       =   0
@@ -1182,6 +1195,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Selectable      =   False
       TabIndex        =   23
       TabPanelIndex   =   0
+      TabStop         =   True
       Text            =   ":"
       TextAlign       =   1
       TextColor       =   0
@@ -1216,6 +1230,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Selectable      =   False
       TabIndex        =   24
       TabPanelIndex   =   0
+      TabStop         =   True
       Text            =   "From verse"
       TextAlign       =   0
       TextColor       =   0
@@ -1250,6 +1265,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Selectable      =   False
       TabIndex        =   25
       TabPanelIndex   =   0
+      TabStop         =   True
       Text            =   "Paragraph"
       TextAlign       =   0
       TextColor       =   0

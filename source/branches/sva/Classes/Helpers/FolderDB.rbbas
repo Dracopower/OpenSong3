@@ -319,6 +319,34 @@ Protected Class FolderDB
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
+		Function GetFileInFolderSafe(file As String, folder As String = "") As FolderItem
+		  Dim f As FolderItem = Nil
+		  
+		  file = ReplaceAll(file, "/", "")
+		  file = ReplaceAll(file, "\", "")
+		  file = ReplaceAll(file, "..", "")
+		  folder = ReplaceAll(folder, "..", "")
+		  
+		  Dim folders() As String = GetFolders()
+		  If folders.IndexOf(folder) > -1 Then
+		    
+		    Dim fileName As String = folder
+		    If Not fileName.EndsWith("/") Then fileName = fileName + "/"
+		    fileName = fileName + file
+		    
+		    f = GetFile(fileName)
+		    If f <> Nil Then
+		      If Not f.Exists() Then
+		        f = Nil
+		      End If
+		    End If
+		  End If
+		  
+		  return f
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
 		Function GetFiles(pathFilter As String, fileBox As ListBox = Nil) As String()
 		  
 		  Dim songList(0) As String
@@ -350,34 +378,6 @@ Protected Class FolderDB
 		  
 		  Return songList
 		  
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Function GetFileInFolderSafe(file As String, folder As String = "") As FolderItem
-		  Dim f As FolderItem = Nil
-		  
-		  file = ReplaceAll(file, "/", "")
-		  file = ReplaceAll(file, "\", "")
-		  file = ReplaceAll(file, "..", "")
-		  folder = ReplaceAll(folder, "..", "")
-		  
-		  Dim folders() As String = GetFolders()
-		  If folders.IndexOf(folder) > -1 Then
-		    
-		    Dim fileName As String = folder
-		    If Not fileName.EndsWith("/") Then fileName = fileName + "/"
-		    fileName = fileName + file
-		    
-		    f = GetFile(fileName)
-		    If f <> Nil Then
-		      If Not f.Exists() Then
-		        f = Nil
-		      End If
-		    End If
-		  End If
-		  
-		  return f
 		End Function
 	#tag EndMethod
 
@@ -1132,21 +1132,21 @@ Protected Class FolderDB
 			Name="Index"
 			Visible=true
 			Group="ID"
-			InitialValue="2147483648"
-			Type="Integer"
+			InitialValue="-2147483648"
+			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Left"
 			Visible=true
 			Group="Position"
 			InitialValue="0"
-			Type="Integer"
+			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Name"
 			Visible=true
 			Group="ID"
-			Type="String"
+			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="NumFiles"
@@ -1158,14 +1158,14 @@ Protected Class FolderDB
 			Name="Super"
 			Visible=true
 			Group="ID"
-			Type="String"
+			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Top"
 			Visible=true
 			Group="Position"
 			InitialValue="0"
-			Type="Integer"
+			InheritedFrom="Object"
 		#tag EndViewProperty
 	#tag EndViewBehavior
 End Class

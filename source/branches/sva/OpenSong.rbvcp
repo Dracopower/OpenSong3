@@ -271,7 +271,6 @@ DefaultEncoding=&h8000100
 AppIcon=OpenSong.rbres;&h90
 OSXBundleID=org.opensong.opensong
 DebuggerCommandLine=
-DebuggerDestination=F:\devl\OpenSong\trunk\source\
 UseGDIPlus=False
 UseBuildsFolder=False
 IsWebProject=False

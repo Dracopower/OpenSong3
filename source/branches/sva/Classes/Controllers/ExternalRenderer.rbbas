@@ -36,7 +36,7 @@ Inherits TCPSocket
 		  
 		  Port = SmartML.GetValueN(App.MyMainSettings.DocumentElement, "extrender/@port")
 		  If Port = 0 Then
-		    Port = 8083 
+		    Port = 8083
 		  End If
 		  mTimeout = SmartML.GetValueN(App.MyMainSettings.DocumentElement, "extrender/@timeout") * 1000
 		  If mTimeout = 0 Then
@@ -361,19 +361,20 @@ Inherits TCPSocket
 			Visible=true
 			Group="Behavior"
 			Type="String"
+			InheritedFrom="TCPSocket"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Index"
 			Visible=true
 			Group="ID"
-			Type="Integer"
-			EditorType="Integer"
+			InheritedFrom="TCPSocket"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Left"
 			Visible=true
 			Group="Position"
 			Type="Integer"
+			InheritedFrom="TCPSocket"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="mTimeout"
@@ -385,8 +386,7 @@ Inherits TCPSocket
 			Name="Name"
 			Visible=true
 			Group="ID"
-			Type="String"
-			EditorType="String"
+			InheritedFrom="TCPSocket"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Port"
@@ -394,19 +394,20 @@ Inherits TCPSocket
 			Group="Behavior"
 			InitialValue="0"
 			Type="Integer"
+			InheritedFrom="TCPSocket"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Super"
 			Visible=true
 			Group="ID"
-			Type="String"
-			EditorType="String"
+			InheritedFrom="TCPSocket"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Top"
 			Visible=true
 			Group="Position"
 			Type="Integer"
+			InheritedFrom="TCPSocket"
 		#tag EndViewProperty
 	#tag EndViewBehavior
 End Class

@@ -73,6 +73,7 @@ Begin Window CCLIWindow
       Selectable      =   False
       TabIndex        =   1
       TabPanelIndex   =   0
+      TabStop         =   True
       Text            =   "CCLI User ID:"
       TextAlign       =   2
       TextColor       =   0
@@ -155,6 +156,7 @@ Begin Window CCLIWindow
       Selectable      =   False
       TabIndex        =   3
       TabPanelIndex   =   0
+      TabStop         =   True
       Text            =   "CCLI Password:"
       TextAlign       =   2
       TextColor       =   0
@@ -237,6 +239,7 @@ Begin Window CCLIWindow
       Selectable      =   False
       TabIndex        =   5
       TabPanelIndex   =   0
+      TabStop         =   True
       Text            =   "Search for:"
       TextAlign       =   0
       TextColor       =   0
@@ -319,6 +322,7 @@ Begin Window CCLIWindow
       Selectable      =   False
       TabIndex        =   7
       TabPanelIndex   =   0
+      TabStop         =   True
       Text            =   "by"
       TextAlign       =   1
       TextColor       =   0
@@ -384,6 +388,7 @@ Begin Window CCLIWindow
       Selectable      =   False
       TabIndex        =   9
       TabPanelIndex   =   0
+      TabStop         =   True
       Text            =   "filter"
       TextAlign       =   1
       TextColor       =   0
@@ -592,6 +597,7 @@ Begin Window CCLIWindow
       Selectable      =   False
       TabIndex        =   15
       TabPanelIndex   =   0
+      TabStop         =   True
       Text            =   "Page"
       TextAlign       =   2
       TextColor       =   0
@@ -657,6 +663,7 @@ Begin Window CCLIWindow
       Selectable      =   False
       TabIndex        =   17
       TabPanelIndex   =   0
+      TabStop         =   True
       Text            =   "of 0"
       TextAlign       =   0
       TextColor       =   0
@@ -1151,7 +1158,7 @@ End
 
 #tag Events can_ccli
 	#tag Event
-		Sub Paint(g As Graphics, areas() As REALbasic.Rect)
+		Sub Paint(g As Graphics)
 		  g.DrawPicture ccli, 0, 0
 		End Sub
 	#tag EndEvent

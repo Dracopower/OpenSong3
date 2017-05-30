@@ -1,6 +1,12 @@
 #tag Module
 Protected Module OOoPresentationHost
 	#tag Method, Flags = &h0
+		Sub hyperLinkClicked(hyperLink As String)
+		  MsgBox "hyperLinkClicked"
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
 		Sub paused()
 		  MsgBox "paused"
 		End Sub
@@ -9,18 +15,6 @@ Protected Module OOoPresentationHost
 	#tag Method, Flags = &h0
 		Sub resumed()
 		  MsgBox "resumed"
-		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Sub slideTransitionStarted()
-		  MsgBox "slideTransitionStarted"
-		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Sub slideTransitionEnded()
-		  MsgBox "slideTransitionEnded"
 		End Sub
 	#tag EndMethod
 
@@ -37,8 +31,14 @@ Protected Module OOoPresentationHost
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub hyperLinkClicked(hyperLink As String)
-		  MsgBox "hyperLinkClicked"
+		Sub slideTransitionEnded()
+		  MsgBox "slideTransitionEnded"
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub slideTransitionStarted()
+		  MsgBox "slideTransitionStarted"
 		End Sub
 	#tag EndMethod
 
@@ -67,12 +67,6 @@ Protected Module OOoPresentationHost
 
 	#tag ViewBehavior
 		#tag ViewProperty
-			Name="Name"
-			Visible=true
-			Group="ID"
-			InheritedFrom="Object"
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="Index"
 			Visible=true
 			Group="ID"
@@ -80,16 +74,22 @@ Protected Module OOoPresentationHost
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="Super"
+			Name="Left"
+			Visible=true
+			Group="Position"
+			InitialValue="0"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Name"
 			Visible=true
 			Group="ID"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="Left"
+			Name="Super"
 			Visible=true
-			Group="Position"
-			InitialValue="0"
+			Group="ID"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty

@@ -93,6 +93,7 @@ Begin Window PresentHelperWindow
       Scope           =   0
       TabIndex        =   1
       TabPanelIndex   =   0
+      TabStop         =   True
       TextFont        =   "Arial"
       TextSize        =   11.0
       TextUnit        =   0
@@ -330,6 +331,7 @@ Begin Window PresentHelperWindow
       Selectable      =   False
       TabIndex        =   3
       TabPanelIndex   =   0
+      TabStop         =   True
       Text            =   "- Arrows: -\r\nDown: Next Slide\r\nUp: Previous Slide\r\nRight: Next Section\r\nLeft: Previous Section\r\n- Jump To: -\r\n1-9: Verse\r\nC: Chorus\r\nP: Pre-chorus\r\nB: Bridge\r\nT: Tag"
       TextAlign       =   0
       TextColor       =   "&c00000000"
@@ -361,6 +363,7 @@ Begin Window PresentHelperWindow
       Scope           =   0
       TabIndex        =   4
       TabPanelIndex   =   0
+      TabStop         =   True
       TextFont        =   "Arial"
       TextSize        =   11.0
       TextUnit        =   0
@@ -614,6 +617,7 @@ Begin Window PresentHelperWindow
       Selectable      =   False
       TabIndex        =   7
       TabPanelIndex   =   0
+      TabStop         =   True
       Text            =   "Current slide preview"
       TextAlign       =   0
       TextColor       =   "&c00000000"
@@ -648,6 +652,7 @@ Begin Window PresentHelperWindow
       Selectable      =   False
       TabIndex        =   8
       TabPanelIndex   =   0
+      TabStop         =   True
       Text            =   "Next slide preview"
       TextAlign       =   0
       TextColor       =   "&c00000000"

@@ -232,6 +232,7 @@ Begin Window SongActivity
       Selectable      =   False
       TabIndex        =   5
       TabPanelIndex   =   0
+      TabStop         =   True
       Text            =   "Show:"
       TextAlign       =   0
       TextColor       =   &h000000
@@ -297,6 +298,7 @@ Begin Window SongActivity
       Selectable      =   False
       TabIndex        =   7
       TabPanelIndex   =   0
+      TabStop         =   True
       Text            =   "Date Range (MM/DD/YYYY):"
       TextAlign       =   0
       TextColor       =   &h000000
@@ -417,6 +419,7 @@ Begin Window SongActivity
       Selectable      =   False
       TabIndex        =   10
       TabPanelIndex   =   0
+      TabStop         =   True
       Text            =   "To"
       TextAlign       =   1
       TextColor       =   &h000000
