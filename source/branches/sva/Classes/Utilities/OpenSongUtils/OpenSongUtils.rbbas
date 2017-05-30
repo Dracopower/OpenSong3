@@ -793,6 +793,8 @@ Protected Module OpenSongUtils
 		  Static aScreens() As OS_Screen
 		  Static screens_created As Boolean = False
 		  
+		  If screens_created Then screens_created = UBound(aScreens) = OSScreenCount()-1
+		  
 		  If Not screens_created Then
 		    ReDim aScreens(OSScreenCount()-1)
 		    Dim i As Integer
