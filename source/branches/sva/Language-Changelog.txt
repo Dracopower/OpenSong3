@@ -1,4 +1,7 @@
--= Version 2.2 RC =-
+﻿-= Version 2.2 RC =-
+style_editor/background/image_fit (including children)
+style_editor/trim_note/@caption
+style_editor/background/position (deleted)
 errors/unsupported_image_type
 errors/videolan/no_medium
 errors/videolan/no_medium_in_slide

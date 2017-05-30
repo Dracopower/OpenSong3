@@ -184,7 +184,7 @@ Protected Class SlideStyle
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub Constructor(xStyle As SlideStyle)
+		Sub Constructor(Style As SlideStyle)
 		  //++
 		  // This isn't the most efficient clone constructor, but
 		  // since we don't create and destroy these at a high
@@ -193,7 +193,7 @@ Protected Class SlideStyle
 		  Me.defaultBGColor = LightBevelColor
 		  Me.Background = new StyleImage()
 		  
-		  If xStyle Is Nil Then
+		  If Style Is Nil Then
 		    Dim e As New NilObjectException
 		    e.Message = "SlideStyle.Constructor: style to clone is Nil"
 		    Raise e
@@ -201,7 +201,7 @@ Protected Class SlideStyle
 		  
 		  Dim xStyleNode As XmlNode
 		  
-		  xStyleNode = xStyle.ToXML.DocumentElement
+		  xStyleNode = Style.ToXML.DocumentElement
 		  
 		  
 		  FromXML(xStyleNode)
@@ -322,10 +322,34 @@ Protected Class SlideStyle
 		  End If
 		  StripFooter = SmartML.GetValueN(xStyle, "background/@strip_footer")
 		  
-		  Position = SmartML.GetValueN(xstyle, "background/@position", False)
-		  If Position < POS_STRETCH Or Position > POS_CENTER Then
-		    Position = POS_STRETCH
+		  If Background <> Nil Then
+		    Background.TrimBottom = StripFooter
+		    
+		    If SmartML.HasNode(xStyle, "background/@image_fit") Then
+		      Try
+		        Dim fit As Integer = SmartML.GetValueN(xstyle, "background/@image_fit", False)
+		        ImageFit = StyleImage.ObjectFit(fit)
+		      Catch
+		        ImageFit = StyleImage.ObjectFit.cover
+		      End Try
+		      Background.ImagePositionW = SmartML.GetValueN(xstyle, "background/@image_pos_left", False)
+		      Background.ImagePositionH = SmartML.GetValueN(xstyle, "background/@image_pos_top", False)
+		    Else
+		      If SmartML.HasNode(xstyle, "background/@position") Then
+		        // backward compatibility
+		        Dim Position As Integer
+		        Position = SmartML.GetValueN(xstyle, "background/@position", False)
+		        If Position = POS_CENTER Then
+		          ImageFit = StyleImage.ObjectFit._center
+		        Else
+		          ImageFit = StyleImage.ObjectFit.cover
+		        End If
+		      Else
+		        ImageFit = StyleImage.ObjectFit.cover 'default
+		      End If
+		    End If
 		  End If
+		  
 		End Sub
 	#tag EndMethod
 
@@ -338,6 +362,18 @@ Protected Class SlideStyle
 	#tag Method, Flags = &h0
 		Sub HighlightChorus(Assigns Value As Boolean)
 		  Highlight = Value
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function ImageFit() As StyleImage.ObjectFit
+		  Return Background.ImageFit
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub ImageFit(Assigns fit As StyleImage.ObjectFit)
+		  Background.ImageFit = fit
 		End Sub
 	#tag EndMethod
 
@@ -366,19 +402,6 @@ Protected Class SlideStyle
 	#tag Method, Flags = &h0
 		Sub MultilanguageSize(Assigns Size As Integer)
 		  MultilanguageSize = Size
-		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Function Position() As Integer
-		  Return Position
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Sub Position(Assigns pos As Integer)
-		  If pos < 0 or pos > 2 Then pos = POS_STRETCH ' Defaults to Stretch if invalid
-		  Position = pos
 		End Sub
 	#tag EndMethod
 
@@ -632,7 +655,13 @@ Protected Class SlideStyle
 		  
 		  SmartML.SetValueN(CurrChild, "@strip_footer", StripFooter)
 		  SmartML.SetValueC(CurrChild, "@color", BGColor)
-		  SmartML.SetValueN(CurrChild, "@position", Position)
+		  If ImageFit = StyleImage.ObjectFit._center Then ' backward compatibility
+		    SmartML.SetValueN(CurrChild, "@position", POS_CENTER)
+		  Else
+		    SmartML.SetValueN(CurrChild, "@image_fit", Integer(ImageFit))
+		    SmartML.SetValueN(CurrChild, "@image_pos_left", Background.ImagePositionW)
+		    SmartML.SetValueN(CurrChild, "@image_pos_top", Background.ImagePositionH)
+		  End If
 		  If background.GetImageFilename().StartsWith(App.DocsFolder.Child("Backgrounds").AbsolutePath) And ImageDefaults.ExcludeBackgroundsImages() Then
 		    SmartML.SetValue(CurrChild, "@filename", background.GetImageFilename().Mid(App.DocsFolder.Child("Backgrounds").AbsolutePath().Len()+1))
 		  Else
@@ -717,14 +746,6 @@ Protected Class SlideStyle
 
 	#tag Property, Flags = &h21
 		Private MultilanguageSize As Integer = 70
-	#tag EndProperty
-
-	#tag Property, Flags = &h1
-		#tag Note
-			Defines the treatment of the background image. Valid values are the
-			constants that start with POS_
-		#tag EndNote
-		Protected Position As Integer
 	#tag EndProperty
 
 	#tag Property, Flags = &h21

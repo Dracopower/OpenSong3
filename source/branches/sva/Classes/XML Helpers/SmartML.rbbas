@@ -269,6 +269,18 @@ Protected Module SmartML
 	#tag EndMethod
 
 	#tag Method, Flags = &h1
+		Protected Function HasNode(xnode As XmlNode, childPath As String) As Boolean
+		  If xnode = Nil Then Return False
+		  
+		  Dim xNodeList As XmlNodeList
+		  xNodeList = xnode.Xql(childpath)
+		  
+		  Return xNodeList.LastError = 0 AND xNodeList.Length > 0
+		  
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h1
 		Protected Sub Init()
 		  If TargetMacOS Or TargetPPC Then
 		    PathSeparator = ":"
@@ -608,10 +620,10 @@ Protected Module SmartML
 		          ' the xml declaration says it is UTF-8, so convert it to be so
 		          s = s.ConvertEncoding(Encodings.UTF8)
 		          FixSongFile = True
-		        End If 
+		        End If
 		      End If
 		      d.LoadXml(s)
-		      If FixSongFile Then 
+		      If FixSongFile Then
 		        FixSongFile = XDocToFile(d, f) ' try to write the file in the correct encoding, ignoring errors
 		      End If
 		      Return d

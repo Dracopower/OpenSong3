@@ -105,6 +105,7 @@ Begin Window StyleWindow
       Scope           =   0
       TabIndex        =   2
       TabPanelIndex   =   0
+      TabStop         =   True
       TextFont        =   "System"
       TextSize        =   0.0
       TextUnit        =   0
@@ -192,6 +193,7 @@ Begin Window StyleWindow
          Selectable      =   False
          TabIndex        =   2
          TabPanelIndex   =   0
+         TabStop         =   True
          Text            =   "Align:"
          TextAlign       =   1
          TextColor       =   "&c00000000"
@@ -586,6 +588,7 @@ Begin Window StyleWindow
       Scope           =   0
       TabIndex        =   3
       TabPanelIndex   =   0
+      TabStop         =   True
       TextFont        =   "System"
       TextSize        =   0.0
       TextUnit        =   0
@@ -615,6 +618,7 @@ Begin Window StyleWindow
          Selectable      =   False
          TabIndex        =   0
          TabPanelIndex   =   0
+         TabStop         =   True
          Text            =   "Color:"
          TextAlign       =   2
          TextColor       =   "&c00000000"
@@ -649,6 +653,7 @@ Begin Window StyleWindow
          Selectable      =   False
          TabIndex        =   2
          TabPanelIndex   =   0
+         TabStop         =   True
          Text            =   "Image:"
          TextAlign       =   1
          TextColor       =   "&c00000000"
@@ -683,6 +688,7 @@ Begin Window StyleWindow
          Selectable      =   False
          TabIndex        =   4
          TabPanelIndex   =   0
+         TabStop         =   True
          Text            =   "(left-click to change)"
          TextAlign       =   1
          TextColor       =   "&c00000000"
@@ -717,6 +723,7 @@ Begin Window StyleWindow
          Selectable      =   False
          TabIndex        =   5
          TabPanelIndex   =   0
+         TabStop         =   True
          Text            =   "(right-click to clear)"
          TextAlign       =   1
          TextColor       =   "&c00000000"
@@ -729,7 +736,7 @@ Begin Window StyleWindow
          Visible         =   True
          Width           =   140
       End
-      Begin Label lbl_background_position
+      Begin Label lbl_background_image_fit
          AutoDeactivate  =   True
          Bold            =   False
          DataField       =   ""
@@ -751,7 +758,8 @@ Begin Window StyleWindow
          Selectable      =   False
          TabIndex        =   6
          TabPanelIndex   =   0
-         Text            =   "Position:"
+         TabStop         =   True
+         Text            =   "Scaling:"
          TextAlign       =   1
          TextColor       =   "&c00000000"
          TextFont        =   "System"
@@ -785,6 +793,7 @@ Begin Window StyleWindow
          Selectable      =   False
          TabIndex        =   8
          TabPanelIndex   =   0
+         TabStop         =   True
          Text            =   "Trim Bottom*:"
          TextAlign       =   1
          TextColor       =   "&c00000000"
@@ -809,7 +818,7 @@ Begin Window StyleWindow
          InitialParent   =   "grp_style_background"
          InitialValue    =   ""
          Italic          =   False
-         Left            =   475
+         Left            =   455
          ListIndex       =   0
          LockBottom      =   False
          LockedInPosition=   False
@@ -826,7 +835,7 @@ Begin Window StyleWindow
          Top             =   223
          Underline       =   False
          Visible         =   True
-         Width           =   80
+         Width           =   125
       End
       Begin Label txt_background_pixels
          AutoDeactivate  =   True
@@ -850,6 +859,7 @@ Begin Window StyleWindow
          Selectable      =   False
          TabIndex        =   9
          TabPanelIndex   =   0
+         TabStop         =   True
          Text            =   "px"
          TextAlign       =   0
          TextColor       =   "&c00000000"
@@ -890,34 +900,6 @@ Begin Window StyleWindow
          UseFocusRing    =   True
          Visible         =   True
          Width           =   30
-      End
-      Begin SImageCanvas can_background_image
-         AcceptFocus     =   False
-         AcceptTabs      =   False
-         AutoDeactivate  =   True
-         Backdrop        =   0
-         bgColor         =   "&c00000000"
-         DoubleBuffer    =   False
-         Enabled         =   True
-         EraseBackground =   True
-         Height          =   60
-         HelpTag         =   ""
-         Index           =   -2147483648
-         InitialParent   =   "grp_style_background"
-         Left            =   475
-         LockBottom      =   False
-         LockedInPosition=   False
-         LockLeft        =   True
-         LockRight       =   False
-         LockTop         =   True
-         Scope           =   0
-         TabIndex        =   3
-         TabPanelIndex   =   0
-         TabStop         =   True
-         Top             =   105
-         UseFocusRing    =   True
-         Visible         =   True
-         Width           =   80
       End
       Begin SEditFieldNumeric edt_background_trim_bottom
          AcceptTabs      =   False
@@ -969,6 +951,34 @@ Begin Window StyleWindow
          Visible         =   True
          Width           =   30
       End
+      Begin SImageCanvas can_background_image
+         AcceptFocus     =   False
+         AcceptTabs      =   False
+         AutoDeactivate  =   True
+         Backdrop        =   0
+         bgColor         =   "&c00000000"
+         DoubleBuffer    =   False
+         Enabled         =   True
+         EraseBackground =   True
+         Height          =   60
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "grp_style_background"
+         Left            =   475
+         LockBottom      =   False
+         LockedInPosition=   False
+         LockLeft        =   True
+         LockRight       =   False
+         LockTop         =   True
+         Scope           =   0
+         TabIndex        =   3
+         TabPanelIndex   =   0
+         TabStop         =   True
+         Top             =   105
+         UseFocusRing    =   True
+         Visible         =   True
+         Width           =   80
+      End
    End
    Begin Label nte_style_trim_note
       AutoDeactivate  =   True
@@ -992,6 +1002,7 @@ Begin Window StyleWindow
       Selectable      =   False
       TabIndex        =   4
       TabPanelIndex   =   0
+      TabStop         =   True
       Text            =   "*Cuts the bottom of the background to hide watermarks, web site urls, etc. (To avoid distortion, this also trims from the sides to compensate.)"
       TextAlign       =   0
       TextColor       =   "&c00000000"
@@ -1023,6 +1034,7 @@ Begin Window StyleWindow
       Scope           =   0
       TabIndex        =   6
       TabPanelIndex   =   0
+      TabStop         =   True
       TextFont        =   "System"
       TextSize        =   0.0
       TextUnit        =   0
@@ -1052,6 +1064,7 @@ Begin Window StyleWindow
          Selectable      =   False
          TabIndex        =   0
          TabPanelIndex   =   0
+         TabStop         =   True
          Text            =   "Song Subtitles:"
          TextAlign       =   0
          TextColor       =   "&c00000000"
@@ -1230,6 +1243,7 @@ Begin Window StyleWindow
       Scope           =   0
       TabIndex        =   5
       TabPanelIndex   =   0
+      TabStop         =   True
       TextFont        =   "System"
       TextSize        =   0.0
       TextUnit        =   0
@@ -1288,6 +1302,7 @@ Begin Window StyleWindow
          Selectable      =   False
          TabIndex        =   3
          TabPanelIndex   =   0
+         TabStop         =   True
          Text            =   "Color:"
          TextAlign       =   0
          TextColor       =   "&c00000000"
@@ -1372,6 +1387,7 @@ Begin Window StyleWindow
          Selectable      =   False
          TabIndex        =   1
          TabPanelIndex   =   0
+         TabStop         =   True
          Text            =   "Size [10-100 %] :"
          TextAlign       =   0
          TextColor       =   "&c00000000"
@@ -1406,6 +1422,7 @@ Begin Window StyleWindow
          Selectable      =   False
          TabIndex        =   0
          TabPanelIndex   =   0
+         TabStop         =   True
          Text            =   "Style variations for the second language:"
          TextAlign       =   0
          TextColor       =   "&c00000000"
@@ -1440,6 +1457,7 @@ Begin Window StyleWindow
          Selectable      =   False
          TabIndex        =   5
          TabPanelIndex   =   0
+         TabStop         =   True
          Text            =   "Usage: append -L in section name [V1-L]"
          TextAlign       =   0
          TextColor       =   "&c00000000"
@@ -1460,8 +1478,15 @@ End
 	#tag Event
 		Sub Open()
 		  App.T.TranslateWindow Me, "style_editor", App.TranslationFonts
-		  pop_background_position.AddRow App.T.Translate("style_editor/background/position/row0/@caption")
-		  pop_background_position.AddRow App.T.Translate("style_editor/background/position/row1/@caption")
+		  App.T.LoadPopup("style_editor/background/image_fit",pop_background_position)
+		  If pop_background_position.ListCount = 0 Then
+		    Dim i As Integer = 0
+		    For Each f As StyleImage.ObjectFit In Array(StyleImage.ObjectFit.cover, StyleImage.ObjectFit.contain, StyleImage.ObjectFit.fill, StyleImage.ObjectFit.none)
+		      pop_background_position.AddRow(StyleImage.ObjectFitAsString(f))
+		      pop_background_position.RowTag(i) = Integer(f)
+		      i = i + 1
+		    Next
+		  End If
 		  
 		  App.CenterInControlScreen Me
 		End Sub
@@ -1554,11 +1579,11 @@ End
 
 	#tag Method, Flags = &h21
 		Private Sub LoadValues()
+		  edt_background_trim_bottom.SetValue workingStyle.StripFooter // CHANGE-PJ BUG-FIX
+		  
 		  can_background_color.SetColor workingStyle.BGColor
 		  can_background_image.SetImage( workingStyle.Background() )
 		  can_background_image.bgColor = workingStyle.BGColor
-		  
-		  edt_background_trim_bottom.SetValue workingStyle.StripFooter // CHANGE-PJ BUG-FIX
 		  
 		  '++JRC
 		  chk_font_title.Value = workingStyle.TitleEnable
@@ -1585,8 +1610,23 @@ End
 		  can_font_body.SetFont workingStyle.BodyFont
 		  can_font_subtitle.SetFont workingStyle.SubtitleFont
 		  
-		  pop_background_position.ListIndex = workingStyle.Position - 1
-		  If pop_background_position.ListIndex = -1 Then pop_background_position.ListIndex = SlideStyle.POS_STRETCH - 1
+		  Dim fit As StyleImage.ObjectFit
+		  Dim indexToUse As Integer
+		  For i As Integer = 0 To pop_background_position.ListCount - 1
+		    fit = StyleImage.AsObjectFit(pop_background_position.RowTag(i))
+		    If fit = workingStyle.ImageFit Then
+		      indexToUse = i
+		      Exit
+		    ElseIf fit = StyleImage.ObjectFit.cover Then
+		      indexToUse = i // default, as a fallback
+		    End If
+		  Next i
+		  IF workingStyle.ImageFit = StyleImage.ObjectFit._center Then
+		    IndexToUse = pop_background_position.ListCount
+		    pop_background_position.AddRow(StyleImage.ObjectFitAsString(workingStyle.ImageFit))
+		    pop_background_position.RowTag(IndexToUse) = Integer(workingStyle.ImageFit)
+		  End If
+		  pop_background_position.ListIndex = indexToUse
 		  
 		  If IsSong Then
 		    lst_song_subtitles.SetSelected(workingStyle.SubtitleList)
@@ -1820,8 +1860,16 @@ End
 #tag Events pop_background_position
 	#tag Event
 		Sub Change()
-		  can_background_image.SetImagePosition Me.ListIndex + 1
-		  workingStyle.Position = Me.ListIndex + 1
+		  'can_background_image.SetImagePosition Me.ListIndex + 1
+		  'workingStyle.Position = Me.ListIndex + 1
+		  Dim fitInt As Integer
+		  Dim fit As StyleImage.ObjectFit
+		  fitInt = Me.RowTag(Me.ListIndex)
+		  fit = StyleImage.ObjectFit(fitInt)
+		  can_background_image.GetImage().ImageFit = fit
+		  workingStyle.ImageFit = fit
+		  
+		  can_background_image.Repaint
 		  
 		End Sub
 	#tag EndEvent
@@ -1842,18 +1890,21 @@ End
 		End Sub
 	#tag EndEvent
 #tag EndEvents
-#tag Events can_background_image
-	#tag Event
-		Sub Action()
-		  workingStyle.Background = Me.GetImage()
-		End Sub
-	#tag EndEvent
-#tag EndEvents
 #tag Events edt_background_trim_bottom
 	#tag Event
 		Sub TextChange()
 		  workingStyle.StripFooter = Me.Value
-		  can_background_image.Repaint
+		  If workingStyle.Background <> Nil Then
+		    workingStyle.Background.TrimBottom = workingStyle.StripFooter
+		  End If
+		  can_background_image.SetImage(workingStyle.Background)
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events can_background_image
+	#tag Event
+		Sub Action()
+		  workingStyle.Background = Me.GetImage()
 		End Sub
 	#tag EndEvent
 #tag EndEvents

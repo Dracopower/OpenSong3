@@ -77,12 +77,6 @@ Inherits SBufferedCanvas
 
 	#tag Event
 		Sub Paint(g As Graphics)
-		  Dim img As Picture
-		  Dim bgDrawH, bgDrawW As Integer
-		  Dim bgHeightRatio, bgWidthRatio As Double
-		  Dim display_height As Integer
-		  Dim aspect_ratio As Double
-		  
 		  If Not Enabled Then
 		    g.ForeColor = FillColor
 		    g.FillRect 0, 0, Width, Height
@@ -94,33 +88,9 @@ Inherits SBufferedCanvas
 		  g.ForeColor = bgColor
 		  g.FillRect 0, 0, Width, Height
 		  
-		  img = Me.Image.GetImage()
-		  If img <> Nil Then
-		    bgDrawH = img.Height
-		    bgDrawW = img.Width
-		    bgHeightRatio = g.Height / bgDrawH
-		    bgWidthRatio = g.Width / bgDrawW
-		    aspect_ratio = Min(bgHeightRatio, bgWidthRatio)
-		    display_height = bgDrawH * aspect_ratio
-		    display_height = g.Height - display_height
-		    display_height = display_height / 2
-		    
-		    Select Case PictureAspect
-		      
-		    Case SlideStyle.POS_CENTER
-		      
-		      g.DrawPicture img, _
-		      (g.Width / 2) - ((bgDrawW * aspect_ratio) / 2), _
-		      display_height, _
-		      bgDrawW * aspect_ratio, _
-		      bgDrawH * aspect_ratio, _
-		      0, 0, bgDrawW, bgDrawH
-		      
-		    Case SlideStyle.POS_STRETCH
-		      g.DrawPicture img, 0, 0, g.Width, g.Height, 0, 0, img.Width, img.Height
-		    End Select
+		  If Me.Image <> Nil And Me.Image.GetImage <> Nil Then
+		    Me.Image.Draw(g)
 		  Else
-		    
 		    g.ForeColor = DarkBevelColor
 		    g.DrawRect 0, 0, Width, Height
 		    g.DrawLine 0, 0, Width, Height
@@ -147,7 +117,7 @@ Inherits SBufferedCanvas
 	#tag Method, Flags = &h0
 		Sub Constructor()
 		  Me.Image = New StyleImage()
-		  Me.PictureAspect = SlideStyle.POS_STRETCH // Default handling of background picture
+		  Me.Image.ImageFit = StyleImage.ObjectFit.cover // Default handling of background picture
 		  Me.bgColor = FillColor
 		  
 		  ClearImage
@@ -223,9 +193,8 @@ Inherits SBufferedCanvas
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub SetImagePosition(Pos As Integer)
-		  // Set Center/Stretch attribute
-		  PictureAspect = Pos
+		Sub SetImageScaling(fit As StyleImage.ObjectFit)
+		  Image.ImageFit = fit
 		  Repaint()
 		End Sub
 	#tag EndMethod
@@ -242,13 +211,6 @@ Inherits SBufferedCanvas
 
 	#tag Property, Flags = &h1
 		Protected Image As StyleImage
-	#tag EndProperty
-
-	#tag Property, Flags = &h1
-		#tag Note
-			Added to allow the SImageCanvas preview to work in the same way as the real thing, with Stretch & Center options
-		#tag EndNote
-		Protected PictureAspect As Integer
 	#tag EndProperty
 
 

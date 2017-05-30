@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+﻿<?xml version="1.0" encoding="ISO-8859-1"?>
 <language name="English" author="Sean Lickfold, Joshua Coley, Ewout Voogt, Ed Palmer" version="2.1.0">
 
   <load_settings>
@@ -916,17 +916,19 @@ If the presentation field is empty, then the Presenter will order the slides bas
     <background caption="Background">
       <color caption="Color"/>
       <image caption="Image"/>
-      <position caption="Position">
-          <row0 caption="Stretch"/>
-          <row1 caption="Center"/>
-          <!-- <row2 caption="Tile"/> -->
-      </position>
+      <image_fit caption="Scaling">
+        <value tag="0">Cover</value>
+        <value tag="1">Contain</value>
+        <value tag="2">Fill</value>
+        <value tag="3">None</value>
+        <value tag="99">Center</value>
+      </image_fit>
       <trim_bottom caption="*Trim Bottom"/>
       <pixels caption="px"/>
       <click_to_change caption="link(shared/click_to_change/@caption)"/>
       <right_click_to_clear caption="link(shared/right_click_to_clear/@caption)"/>
     </background>
-    <trim_note caption="*Cuts the bottom of the background to hide watermarks, web site urls, etc. To avoid distortion, this also trims from the sides to compensate."/>
+    <trim_note caption="*Cuts the bottom of the background to hide watermarks, web site urls, etc. Scaling is applied to the trimmed image."/>
   </style_editor>
 
   <style_margins title="Margins Editor">

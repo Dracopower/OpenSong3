@@ -9,27 +9,16 @@ Protected Module SetML
 		  //
 		  // Lots of changes here to support the separation of the slide style from the XML
 		  // to speed up slide changes.
-		  // Old lines will be commented out with apostrophes, and
-		  // new lines will have " 'EMP 9/05 " at the end or have the //++ & //-- blocks around them.
 		  
 		  Profiler.BeginProfilerEntry "DrawSlide>Declare 1" ' --------------------------------------------------
 		  
-		  Dim dontcare As Boolean
-		  Dim c As Color
-		  
-		  Dim strip As Integer
-		  Dim aspect_ratio, zoom As Double
+		  Dim zoom As Double
 		  Dim background As Picture
 		  Dim bodyStyle, titleStyle, subtitleStyle As FontFace
-		  //++EMP 9/05
-		  Dim bgHeightRatio, bgWidthRatio As Double
-		  Dim stripW, stripH As Integer
-		  Dim bgDrawH, bgDrawW As Double
 		  Dim gWidth, gHeight As  Integer
-		  Dim temp As Integer
-		  Dim display_height As Integer
-		  Dim license As String
 		  Dim MainHeight As Integer
+		  Dim scale as Double
+		  Dim Top, Left As Integer
 		  Dim Subtitles() As String
 		  Dim i As Integer
 		  Dim isWrapped As Boolean
@@ -37,7 +26,7 @@ Protected Module SetML
 		  Dim titleMargins, subtitleMargins, bodyMargins as StyleMarginType
 		  Dim bodyTabs() As StyleTabsType
 		  
-		  // CHANGE-PJ: Second language feature - if last character of section name = "L" for "L"anguage -> show second language (every second line) in different style
+		  // Second language feature -> show second language (every second line) in different style
 		  Dim section As SectionMode = SectionMode.Normal
 		  Dim separationMark As String
 		  If IsBilingualSection(SmartML.GetValue(xslide, "@id")) Then
@@ -47,7 +36,7 @@ Protected Module SetML
 		    separationMark = ""
 		  End If
 		  
-		  If Style <> Nil Then 'TODO: What if it's NIL????  Ain't gonna be pretty....
+		  If Style <> Nil Then 'TODO: What if it's NIL?  Ain't gonna be pretty...
 		    bodyStyle = Style.BodyFont
 		    titleStyle = Style.TitleFont
 		    subtitleStyle = Style.SubtitleFont
@@ -60,14 +49,8 @@ Protected Module SetML
 		  
 		  gWidth = g.Width
 		  gHeight = g.Height
-		  //--EMP
 		  
-		  'bodyStyle = SmartML.GetValueF(xstyle, "body")
-		  'titleStyle = SmartML.GetValueF(xstyle, "title")
-		  'subtitleStyle = SmartML.GetValueF(xstyle, "subtitle")
-		  
-		  'zoom = g.Width / 640
-		  zoom = gWidth / 640.0 'EMP 09/05
+		  zoom = gWidth / 640.0
 		  bodyStyle.Size = bodyStyle.Size * zoom
 		  titleStyle.Size = titleStyle.Size * zoom
 		  subtitleStyle.Size = subtitleStyle.Size * zoom
@@ -79,48 +62,17 @@ Protected Module SetML
 		  Profiler.EndProfilerEntry
 		  Profiler.BeginProfilerEntry "DrawSlide>Background" ' --------------------------------------------------
 		  
-		  aspect_ratio = gWidth / gHeight
-		  
 		  If Style <> Nil Then background = Style.Background().GetImage()
 		  
-		  //++EMP 09/05
 		  // Paint the background color first.  That way the borders from any trimming will
 		  // end up in that color.
 		  g.ForeColor = Style.BGColor
 		  g.FillRect 0, 0, gWidth, gHeight
-		  //--EMP
 		  
 		  If background <> Nil Then
-		    strip = (g.Height/background.Height) * Style.StripFooter
-		    //++EMP 09/05, 12/05
-		    // This section makes the picture stretch at the picture's aspect ratio, not the screen's.
-		    //
-		    stripW = strip*aspect_ratio
-		    bgDrawH = background.Height - strip
-		    bgDrawW = background.Width - stripW
-		    bgHeightRatio = gHeight / bgDrawH
-		    bgWidthRatio = gWidth / bgDrawW
-		    aspect_ratio = Min(bgHeightRatio, bgWidthRatio)
-		    display_height = bgDrawH * aspect_ratio //Scale pic to display
-		    display_height = gheight - display_height //If this is the "short" side, calculate the difference between the pic and screen
-		    display_height = display_height / 2 //Half of that is our y margin
-		    
-		    Select Case Style.Position
-		      
-		    Case SlideStyle.POS_CENTER
-		      
-		      g.DrawPicture background, _
-		      (gWidth / 2) - ((bgDrawW * aspect_ratio) / 2), _
-		      display_height, _
-		      bgDrawW * aspect_ratio, _
-		      bgDrawH * aspect_ratio, _
-		      stripw, 0, bgDrawW, bgDrawH
-		      
-		    Case SlideStyle.POS_STRETCH
-		      g.DrawPicture background, -(strip*aspect_ratio)/2, 0, g.Width+(strip*aspect_ratio), g.Height+strip, 0, 0, background.Width, background.Height
-		    End Select
-		    //--EMP
+		    Style.Background().Draw(g)
 		  End If
+		  
 		  Profiler.EndProfilerEntry
 		  
 		  If xslide = Nil Then Return
@@ -139,8 +91,6 @@ Protected Module SetML
 		    Profiler.BeginProfilerEntry "DrawSlide>ImageSlide-Fullscreen" ' --------------------------------------------------
 		    Dim img As StyleImage
 		    Dim sImageFile As String
-		    Dim scale as Double
-		    Dim Left, Top As Integer
 		    
 		    img = new StyleImage()
 		    sImageFile = SmartML.GetValue(xslide, "filename")
@@ -182,11 +132,10 @@ Protected Module SetML
 		  End If
 		  
 		  Profiler.BeginProfilerEntry "DrawSlide>Declare 2" ' --------------------------------------------------
-		  Dim RealSize, RealBorder, HeaderSize, FooterSize As Integer
+		  Dim RealBorder, HeaderSize, FooterSize As Integer
 		  Dim x, y, z As Integer
-		  Dim d, ccli As String
+		  Dim d As String
 		  Dim multiwrap As Boolean
-		  Dim presentation, currentVerse as String
 		  Dim UsableWidth As Integer 'Max body width after margins are taken out (EMP 09/05)
 		  
 		  RealBorder = g.Width / 50
@@ -265,9 +214,6 @@ Protected Module SetML
 		  UsableWidth = g.Width - (2 * RealBorder) - bodyMargins.Left - bodyMargins.Right ' This just comes up again and again in the calcs & won't change (EMP 09/05)
 		  
 		  If hasImage Then
-		    Dim scale as Double
-		    Dim Left, Top As Integer
-		    
 		    'The image was already prepared in the preparation before drawing (sub)title
 		    If pic IsA Picture Then
 		      If resize = "screen" Then
@@ -318,7 +264,6 @@ Protected Module SetML
 		      bodyStyle.Italic = Not bodyStyle.Italic
 		    End If
 		    
-		    Dim linecount As Integer
 		    Dim line, lines(0) As String
 		    
 		    Profiler.EndProfilerEntry
@@ -327,9 +272,7 @@ Protected Module SetML
 		    // Hopefully in most cases this will be all we need
 		    Profiler.BeginProfilerEntry "DrawSlide -> BestCaseBodyWrap"
 		    Dim MaxLineLen As Integer
-		    Dim NHeight As Integer
 		    Dim WrapPercent, HWrapPercent, VWrapPercent As Double
-		    Dim LineLen As Integer
 		    MaxLineLen = 0
 		    
 		    '++JRC:
@@ -587,7 +530,7 @@ Protected Module SetML
 		  Dim parts() As String
 		  Dim title As String
 		  Dim titleHeight, drawHeight As Integer
-		  Dim p, slideIndex As Integer
+		  Dim p As Integer
 		  Dim main, curr, rest As String
 		  Dim fontHeight, titleWidth, mainWidth, currWidth, restWidth As Integer
 		  Dim fVerse, fCurrVerse As FontFace
@@ -787,10 +730,9 @@ Protected Module SetML
 
 	#tag Method, Flags = &h21
 		Private Function DrawTitle(g As Graphics, xslide As XmlNode, xstyle As XmlNode, x As Integer, y As Integer, width As Integer, align As String, valign As String) As Integer
-		  Dim RealSize, RealThickness, i, oldY, newX As Integer
+		  Dim i, oldY, newX As Integer
 		  Dim zoom As Double
-		  Dim c As Color
-		  Dim title, subtitle, ccli As String
+		  Dim title, subtitle As String
 		  Dim titleStyle, subtitleStyle As FontFace
 		  
 		  titleStyle = SmartML.GetValueF(xstyle, "title")
@@ -905,20 +847,13 @@ Protected Module SetML
 
 	#tag Method, Flags = &h1
 		Protected Function GetSetItem(xSet As XmlDocument, index As Integer) As XmlNode
-		  Dim slide_groups, slide_group As XmlNode
+		  Dim slide_groups As XmlNode
 		  Dim i As Integer
 		  i = 1
 		  
 		  slide_groups = SmartML.GetNode(xSet.DocumentElement, "slide_groups", True)
 		  If slide_groups = Nil Then Return Nil
 		  
-		  'slide_group = slide_groups.FirstChild
-		  'While slide_group <> Nil And i < index
-		  'slide_group = slide_group.NextSibling
-		  'i = i + 1
-		  'Wend
-		  
-		  'Return slide_group
 		  If index < 1 Or index > slide_groups.ChildCount Then Return Nil
 		  Return slide_groups.Child(index-1)
 		End Function
@@ -1178,7 +1113,7 @@ Protected Module SetML
 		  // Truncates the passed string at the wrap point and returns the second line of the string
 		  
 		  Dim temp,c As String
-		  Dim back, fore, i, center, quarter, breakpoint As Integer
+		  Dim back, i, center, quarter, breakpoint As Integer
 		  Const Punctuation = ",.;?!)""" 'EMP 09/05
 		  Const PunctuationAndSpace = ",.;?!)"" "
 		  
@@ -1238,7 +1173,6 @@ Protected Module SetML
 	#tag Method, Flags = &h1
 		Protected Sub SplitToArray(str As String, ByRef arr() As String, char As String)
 		  Dim st, x As Integer
-		  Dim c As String
 		  ReDim arr(0)
 		  
 		  str = str + char
@@ -1246,10 +1180,7 @@ Protected Module SetML
 		  st = 1
 		  x = InStr(st, str, char)
 		  While x >= st
-		    '++JRC:
-		    'arr.Append RTrim(Mid(str, st, x-st))
 		    arr.Append StringUtils.RTrim(Mid(str, st, x-st), StringUtils.WhiteSpaces)
-		    '--
 		    
 		    st = x + Len(char)
 		    x = InStr(st, str, char)

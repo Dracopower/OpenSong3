@@ -973,17 +973,19 @@ Abschnittsmarken im Textfeld des Liededitors erscheinen.
     <background caption="Hintergrund">
       <color caption="Einfarbig"/>
       <image caption="Bild"/>
-      <position caption="Position">
-        <row0 caption="Gestreckt"/>
-        <row1 caption="Zentriert"/>
-        <!-- <row2 caption="Nebeneinander"/> -->
-      </position>
+      <image_fit caption="Skalierung">
+        <value tag="0">umschließen</value>
+        <value tag="1">einschließen</value>
+        <value tag="2">füllen</value>
+        <value tag="3">keine</value>
+        <value tag="99">Zentriert</value>
+      </image_fit>
       <trim_bottom caption="Zuschneiden¹"/>
       <pixels caption="px"/>
       <click_to_change caption="link(shared/click_to_change/@caption)"/>
       <right_click_to_clear caption="link(shared/right_click_to_clear/@caption)"/>
     </background>
-    <trim_note caption="¹ Schneidet den unteren Teil des Bildes ab, um Homepage Adressen etc. zu verstecken. Damit das Seitenverhältnis stimmt, wird auch von den Seiten abgeschnitten."/>
+    <trim_note caption="¹ Schneidet den unteren Teil des Bildes ab, um Homepage Adressen etc. zu verstecken. Die Skalierung wird auf das zugeschnittene Bild angewendet."/>
   </style_editor>
 
   <style_margins title="Ränder">
