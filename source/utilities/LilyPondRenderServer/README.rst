@@ -14,14 +14,20 @@ folder
 
 Install on any platform with:
 
-    pip3 install LilyPondRenderServer-0.5.1-py3-none-any.whl
+    pip3 install LilyPondRenderServer-0.5.2-py3-none-any.whl
 
 On some platforms it's pip instead of pip3.
+
+For Linus, you can use the .deb package to automatically install the Renderer with
+all dependencies.
 
 Documentation
 -------------
 
 This server renders OpenSong song sheets using Lilypond.
+
+To enable this external renderer in OpenSong, check the following checkbox in OpenSong:
+    Settings -> General -> System -> Enable external renderer
 
 You specify a template .ly file where the usual notes, lyrics, etc. are replaced by a
 special character sequences. While rendering, each verse of a song gets it's own .ly
