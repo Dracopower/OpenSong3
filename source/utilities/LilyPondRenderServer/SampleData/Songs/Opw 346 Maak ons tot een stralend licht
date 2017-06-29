@@ -4,7 +4,8 @@
   <copyright>Tekst &amp; muziek: Chris Christensen
 Ned. tekst: Rikkert Zuiderveld
 © 1986 Integrity Music / Small Stone Media</copyright>
-  <lyrics>[N]
+  <lyrics>;$hyphenlanguage=nl_NL
+[N]
  \relative c'
  {
   \time 4/4 

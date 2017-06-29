@@ -2,7 +2,8 @@
 <song>
   <title>518 Heer, U bent altijd bij mij</title>
   <copyright>Tekst &amp; muziek: Marcel Zimmer © 1998 Celmar Music</copyright>
-  <lyrics>[N]
+  <lyrics>;$hyphenlanguage=nl_NL
+[N]
  \relative c'
  { 
  \time 4/4 

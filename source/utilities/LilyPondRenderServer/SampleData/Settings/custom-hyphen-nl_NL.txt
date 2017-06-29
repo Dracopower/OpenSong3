@@ -9,11 +9,17 @@
 's 's_
 't 't_
 a' a'_
+aäron a -- ä -- ron
+aärons a -- ä -- rons
 aadren aad -- ren
 aarz'lend aarz'-- lend
 above a -- bo -- ve
 achim a -- chim
 achtb're acht -- b're
+abram a -- bram
+abraham a -- bra -- ham
+abrahams a -- bra -- hams
+adam a -- dam
 adams a -- dams
 ademen a -- de -- men
 adel a -- del
@@ -23,12 +29,10 @@ ademt a -- demt
 ader a -- der
 adore a -- do -- re
 adres a -- dres
-again a -- gain
-alle a -- lle
-alone a -- lo -- ne
+alle al -- le
 aloe a -- lo -- e
 alomme a -- lom -- me
-alom a -- lom
+alom al -- om
 altaar al -- taar
 amen a -- men
 andre an -- dre
@@ -43,14 +47,18 @@ around a -- round
 aten a -- ten
 avond a -- vond
 avonds a -- vonds
+avondschaduw a -- vond -- scha -- duw
+avontuur a -- von -- tuur
 away a -- way
 azijn a -- zijn
 azuur a -- zuur
 b' b'_
+belacht be -- lacht
 bethlehem beth -- le -- hem
 c' c'_
 d' d'_
 dankaltaar dank -- al -- taar
+drieenig drie -- e -- nig
 duistre dui -- stre
 e' e'_
 ebaoth e -- ba -- oth
@@ -62,7 +70,10 @@ edeler e -- de -- ler
 edelst e -- delst
 eden e -- den
 edik e -- dik
-egypteland E -- gyp -- te -- land
+egypte e -- gyp -- te
+egypte's e -- gyp -- te's
+egypteland e -- gyp -- te -- land
+egyptenaren e -- gyp -- te -- na -- ren
 eland e -- land
 elke el -- ke
 emoe e -- moe
@@ -94,14 +105,20 @@ f' f'_
 g' g'_
 gistren gist -- ren
 h' h'_
+hemelkoning he -- mel -- ko -- ning
 i' i'_
 ibis i -- bis
 iedre ie -- dre
 ijle ij -- le
 israël is -- ra -- ël
+israëls is -- ra -- ëls
 ivoor i -- voor
+izak i -- zak
+izaak i -- zaak
 j' j'_
 k' k'_
+kanaan Ka -- na -- an
+kanaän Ka -- na -- än
 l' l'_
 m' m'_
 n' n'_
@@ -111,6 +128,7 @@ oases o -- a -- ses
 offren off -- ren
 oge o -- ge
 ogen o -- gen
+ogenblik o -- gen -- blik
 olie o -- lie
 olijf o -- lijf
 omega o -- me -- ga
@@ -120,9 +138,10 @@ onnooz'le on -- nooz -- 'le
 onze on -- ze
 onzeek're on -- zeek -- 're
 ooma oo -- ma
-open -- de o -- pen -- de
+opende o -- pen -- de
 open o -- pen
 openbaarde o -- pen -- baar -- de
+openbaren o -- pen -- ba -- ren
 openga o -- pen -- ga
 opent o -- pent
 orde or -- de
@@ -134,9 +153,14 @@ over o -- ver
 overal o -- ver -- al
 overdaad o -- ver -- daad
 overeind o -- ver -- eind
+overhand o -- ver -- hand
 overig o -- ve -- rig
 overkomen o -- ver -- ko -- men
+overmacht o -- ver -- macht
+overmocht o -- ver -- mocht
+overmoed o -- ver -- moed
 overmorgen o -- ver -- mor -- gen
+overnacht o -- ver -- nacht
 overstelpt o -- ver -- stelpt
 overstromen o -- ver -- stro -- men
 overvloed o -- ver -- vloed
@@ -147,10 +171,13 @@ overwinnen o -- ver -- win -- nen
 overwinning o -- ver -- win -- ning
 overwint o -- ver -- wint
 ovrig ov -- rig
+overwon o -- ver -- won
+overwonnen o -- ver -- won -- nen
 p' p'_
 q' q'_
 r' r'_
 s' s'_
+scheppersmacht schep -- pers -- macht
 t' t'_
 u' u'_
 under un -- der
@@ -158,15 +185,19 @@ ure u -- re
 uren u -- ren
 uwe u -- we
 uwen uw -- en
+uwentwil u -- went -- wil 
 uwer uw -- er
 uzelf u -- zelf
 uzelve uzel -- ve
 v' v'_
 verste ver -- ste
+via vi -- a
 w' w'_
+wat'ie wat'ie
 weêuw weêuw
 weeuw weeuw
 woudezels woud -- e -- zels
 x' x'_
 y' y'_	
 z' z'_
+zeeën zee -- en

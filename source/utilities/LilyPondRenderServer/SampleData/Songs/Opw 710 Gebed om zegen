@@ -4,7 +4,8 @@
   <copyright>Tekst: Hans Maat
 Muziek: Gerrit Dekker
 © Small Stone Media</copyright>
-  <lyrics>[N]
+  <lyrics>;$hyphenlanguage=nl_NL
+[N]
  \relative c'
  {
   \time 2/2 

@@ -25,6 +25,9 @@ translations = {
         GUI_SAVE_CONFIG          : 'Save configuration',
         TXT_DOCUMENTATION :'''This server renders OpenSong song sheets using Lilypond.
 
+To enable this external renderer in OpenSong, check the following checkbox in OpenSong:
+    Settings -> General -> System -> Enable external renderer
+
 You specify a template .ly file where the usual notes, lyrics, etc. are replaced by a
 special character sequences. While rendering, each verse of a song gets it's own .ly
 file where the special character sequences are replaced with the actual data from Opensong.
@@ -94,10 +97,10 @@ https://sourceforge.net/p/opensong/code/HEAD/tree/source/utilities/LilyPondRende
         CFG_PORT                 : 'Server poort',
         CFG_HOST                 : 'Host naam / IP',
         CFG_THREADS              : 'Aantal werker threads',
-        CFG_TEMPLATE             : 'Lilypond Template bestand',
-        CFG_COMMAND              : 'Lilypond opmaak commando',
-        CFG_WORKDIR              : 'Werk folder voor het commando',
-        CFG_CACHEDIR             : 'Opslag folder voor het resultaat',
+        CFG_TEMPLATE             : 'Lilypond Templatebestand',
+        CFG_COMMAND              : 'Lilypond opmaakcommando',
+        CFG_WORKDIR              : 'Werkfolder voor het commando',
+        CFG_CACHEDIR             : 'Opslagfolder voor het resultaat',
         CFG_CUSTOMHYPHENFOLDER   : 'Folder met eigen woordafbreek bestanden',
         CFG_DEFAULTHYPHENLANGUAGE: 'Standaard woordafbreek taal',
         CFG_KEEPLY               : 'Tijdelijke lilypond bestanden bewaren (debug)',
@@ -110,6 +113,10 @@ https://sourceforge.net/p/opensong/code/HEAD/tree/source/utilities/LilyPondRende
         GUI_STOPED_SERVER        : 'Server gestopt',
         GUI_SAVE_CONFIG          : 'Configuratie opslaan',
         TXT_DOCUMENTATION :'''Deze server maakt OpenSong liederen op met Lilypond.
+
+Vink onderstaande optie aan in OpenSong om deze externe renderer te gebruiken
+To enable this external renderer in OpenSong, check the following checkbox in OpenSong:
+    Instellingen -> Algemene instellingen -> Systeem -> Externe renderer inschakelen
 
 Je geeft een template .ly file op waarin de gebruikelijke noten, tekst, etc. zijn
 vervangen door een speciale teken reeks. Bij het opmaken wordt er voor elke vers

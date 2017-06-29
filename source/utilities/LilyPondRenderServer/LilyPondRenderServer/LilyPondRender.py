@@ -54,6 +54,8 @@ class HyphenSet:
     def UpdateCustomHyphen(self):
         if self.modificationtime and os.stat(self.customfile).st_mtime != self.modificationtime:
             self.LoadCustomHyphen()
+            return True
+        return False
 
 class LilyPondRenderer:
 
@@ -84,28 +86,29 @@ class LilyPondRenderer:
 \paper { #(set-paper-size "Full-HD") print-page-number = ##f }
 
 \header {
-title = \markup \fontsize #-3 "$(osrtitle): $(osrverse)"
-copyright = "$(osrcopyright)"
-composer = "$(osrauthor)"
-tagline = ""
+  title = \markup \fontsize #-3 \normal-text \italic \with-color #(rgb-color 0 0.2 1) "$osrtitle: $osrverse"
+  copyright = "$osrcopyright"
+  composer = "$osrauthor"
+  tagline = ""
 }
 
 \score 
 {
-<<
-    \new Staff \new Voice = "verse" 
-    $(osrnotes)
+  <<
+    \new Staff \new Voice = "verse"
+    $osrnotes
     \new Lyrics \lyricsto "verse" 
     \lyricmode 
     { 
-    $(osrlyrics)
+      \set fontSize = #2.8
+      $osrlyrics
     } 
->> 
+  >> 
 }
 """
             os.makedirs(path.dirname(self.lilypondtemplate), exist_ok=True)
             with open(self.lilypondtemplate, "w") as tfile:
-                tfile.write(template)
+                tfile.write(self.template)
         else:
             with open(self.lilypondtemplate) as file:
                 self.template = file.read()
@@ -179,8 +182,8 @@ tagline = ""
 
     def UpdateHyphenFiles(self):
         for hyphenset in self._pyphens.values():
-            hyphenset.UpdateCustomHyphen()
-            self.latesthyphenfiledate = max(self.latesthyphenfiledate, hyphenset.modificationtime)
+            if hyphenset.UpdateCustomHyphen():
+                self.latesthyphenfiledate = max(self.latesthyphenfiledate, hyphenset.modificationtime)
 
     def LoadHyphen(self, language):
         ''' Load a hyphen language or file. Since the same renderer is used by multiple threads
@@ -192,7 +195,8 @@ tagline = ""
                 self._pyphens[language] = hyphenset
             else:
                 hyphenset.UpdateCustomHyphen()
-        self.latesthyphenfiledate = max(self.latesthyphenfiledate, hyphenset.modificationtime)
+        if hyphenset.modificationtime:
+            self.latesthyphenfiledate = max(self.latesthyphenfiledate, hyphenset.modificationtime)
         return hyphenset
 
     def _hyphenwords(self, words, hyphenset):
@@ -203,7 +207,7 @@ tagline = ""
                 word      = word.lstrip()
                 stripnext = False
             if word:
-                if word[0].isalpha() or word.find("'") >= 0:
+                if (word[0].isalpha() or word[0] == "'") and word.find("_") < 0:
                     custom = hyphenset.customhyphens.get(word.lower())
                     if custom:
                         stripnext = custom.endswith("_")
@@ -238,4 +242,4 @@ tagline = ""
         # return ''.join([self.customhyphen.get(word) or self.defaultpyphen.inserted(word, hyphen=' -- ') if word.isalpha() 
         #                 else word for word in re.findall(r'[^\w]+|\w+', lyrics)])
         # We do keep the ' character as part of the words, to allow them to be custom-hyphened.
-        return ''.join(self._hyphenwords(re.findall(r"[^\w']+|[\w']+", lyrics), hyphenset))
+        return ''.join(self._hyphenwords(re.findall(r"[^\w_']+|[\w_']+", lyrics), hyphenset))

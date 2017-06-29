@@ -51,10 +51,8 @@ class SongRecord:
         is not the fromstatus, no switch will take place. Return True if switched, false otherwise.
         '''
         with SongRecord._statuslock:
-            print("{0}: from status {1}".format(self.md5, self._status))
             if self._status == fromstatus:
                 self._status = tostatus
-                print("{0}: to status {1}".format(self.md5, self._status))
                 return True
         return False
 

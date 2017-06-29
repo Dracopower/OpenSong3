@@ -6,6 +6,7 @@ from os import path
 import appdirs
 import locale
 import multiprocessing
+import sys
 
 class Configuration(ConfigurationFile):
 
@@ -14,11 +15,15 @@ class Configuration(ConfigurationFile):
         
         self.appname   = 'LilyPondRenderer'
         self.appauthor = 'OpenSong'
-        self.version   = "0.5.1"
+        self.version   = "0.5.2"
 
         cachedir  = appdirs.user_cache_dir(appname=self.appname, appauthor=self.appauthor)
         configdir = appdirs.user_config_dir(appname=self.appname, appauthor=self.appauthor)
+        hyphendir = configdir
         languagecode, encoding = locale.getdefaultlocale()
+
+        if sys.platform == 'linux':
+            hyphendir = r"/opt/OpenSong/OpenSong Defaults/Settings"
 
         # For easy conversion into a dictionary compatible with ArgumentParser, we
         # specify specific getters for some entries. They're used by GetAsTypedDictionary().
@@ -32,7 +37,7 @@ class Configuration(ConfigurationFile):
         # Set the defaults
         self[CFG_SECTION_GENERIC] = {
             CFG_LANGUAGE         : languagecode,
-            CFG_START_WITH_SERVER: 'False',
+            CFG_START_WITH_SERVER: 'True',
             CFG_GEOMETRY         : ''
         }
         self[CFG_SECTION_SERVER] = {
@@ -45,7 +50,7 @@ class Configuration(ConfigurationFile):
             CFG_COMMAND              : 'cd "{workdir}" ; lilypond -ddelete-intermediate-files --png -dresolution=400 "{lilypondfile}"',
             CFG_WORKDIR              : path.join(cachedir, 'workdir'),
             CFG_CACHEDIR             : cachedir,
-            CFG_CUSTOMHYPHENFOLDER   : configdir,
+            CFG_CUSTOMHYPHENFOLDER   : hyphendir,
             CFG_DEFAULTHYPHENLANGUAGE: languagecode,
             CFG_KEEPLY               : 'False'
         }

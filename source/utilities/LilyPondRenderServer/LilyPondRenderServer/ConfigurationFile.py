@@ -16,7 +16,7 @@ class ConfigurationFile(ConfigParser):
         ''' Load from file, if it exists. Otherwise, create.'''
         self.file = Path(settingsfile)
         if not self.file.exists():
-            self.file.parent().mkdir(parents=True)
+            self.file.parent.mkdir(parents=True)
         if self.file.is_file():
             with self.file.open() as file:
                 self.read_file(file)
