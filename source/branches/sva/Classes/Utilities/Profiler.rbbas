@@ -5,9 +5,22 @@ Protected Module Profiler
 		  If Not ProfileEnabled Then Return
 		  
 		  If ProfileFile = Nil Then
-		    ProfileFile = App.AppPreferencesFolderForOpenSong.Child("profile.txt") 'place in a writeable folder
+		    If FileUtils.CreateFolder(App.AppPreferencesFolderForOpenSong) Then
+		      ProfileFile = App.AppPreferencesFolderForOpenSong.Child("profile.txt") 'place in a writeable folder
+		    End If
 		    If ProfileFile.Exists Then ProfileFile.Delete
-		    ProfileStream =  TextOutputStream.Create(ProfileFile)
+		    Try
+		      If ProfileFile.IsWriteable Then
+		        ProfileStream = TextOutputStream.Create(ProfileFile)
+		      End If
+		    Catch
+		      ProfileFile = Nil
+		    End Try
+		    If ProfileStream = Nil Then 
+		      ProfileFile = Nil
+		      ProfileEnabled = False
+		      App.DebugWriter.Write "Could not prepare profiler file for writing."
+		    End If
 		  End If
 		  
 		  If ProfileFile <> Nil Then
