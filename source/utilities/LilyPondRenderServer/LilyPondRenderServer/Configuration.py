@@ -15,7 +15,7 @@ class Configuration(ConfigurationFile):
         
         self.appname   = 'LilyPondRenderer'
         self.appauthor = 'OpenSong'
-        self.version   = "0.5.2"
+        self.version   = "0.5.3"
 
         cachedir  = appdirs.user_cache_dir(appname=self.appname, appauthor=self.appauthor)
         configdir = appdirs.user_config_dir(appname=self.appname, appauthor=self.appauthor)

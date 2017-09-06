@@ -55,8 +55,9 @@ class LilyPondRenderServer(ExternalRenderer):
         for verseid in versestorender:
             if verseid in verses:
                 # Lookup a notes verse to this lyric verse and create a song record for verse.
+                lyrics      = verses[verseid]
                 notes       = verses.get('N' + verseid) or verses.get('N') or ''
-                song        = SongRecord(songpath, name, name, verseid, notes, verses[verseid])
+                song        = SongRecord(songpath, name, name, verseid, notes, lyrics)
                 song.hyphen = customhyphen
                 available, song = manager.GetOrSchedule(song)
                 if available:
@@ -66,7 +67,8 @@ class LilyPondRenderServer(ExternalRenderer):
                     for filename in song.files:
                         songslide = ET.SubElement(slidesnode, 'slide', {'id':verseid, 'PresentationIndex':str(index), 
                             'externalrenderid':'file:' + path.join(renderer.cachedir, song.osfolder, filename) })
-                        ET.SubElement(songslide, 'body')
+                        bodynode      = ET.SubElement(songslide, 'body')
+                        bodynode.text = lyrics
                         index += 1
                 else:
                     # Not rendered yet: create a stub-slide. In this case, the 'externalrenderid' contains
@@ -74,7 +76,8 @@ class LilyPondRenderServer(ExternalRenderer):
                     # The song will be rendered in the background (scheduled by 'manager.GetOrSchedule(song)')
                     songslide = ET.SubElement(slidesnode, 'slide', {'id':verseid, 'PresentationIndex':'1',
                         'externalrenderid':'song{0}:{1}'.format(self.sheetcount, song.md5) })
-                    ET.SubElement(songslide, 'body')
+                    bodynode      = ET.SubElement(songslide, 'body')
+                    bodynode.text = lyrics
                     self.sheetcount += 1
                     
     def DoPrepare(self, width, height, xmltext):

@@ -1,5 +1,6 @@
 from .LilyPondRenderServerGUI import showgui
 from .LilyPondRenderServer import startserver
+from .LilyPondRenderServer import LilyPondRenderServer
 from .Configuration import *
 
 import argparse
@@ -42,7 +43,7 @@ def main():
     configuration.SetArgs(**vars(args))
 
     if args.hyphenlanguages:
-        svr.ListAutoHyphenLanguages()
+        LilyPondRenderServer.ListAutoHyphenLanguages()
     elif args.nogui:
         startserver(**vars(args))
     else:
