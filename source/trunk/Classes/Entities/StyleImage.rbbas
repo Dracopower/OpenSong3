@@ -158,20 +158,20 @@ Protected Class StyleImage
 		  #endif
 
 		  Dim result As Boolean = False
-		  Dim f as FolderItem = GetFolderItem(FileName)
+		  Dim f as FolderItem
 		  
-		  If FileName.StartsWith("/") or FileName.StartsWith("\\") or FileName.Mid(2, 1)=":" Then 
-		    f = new FolderItem(FileName)
-		  Else
-		    f = new FolderItem( App.DocsFolder.Child("Backgrounds").AbsolutePath + Filename )
-		  End If
-		  
-		  If IsNull(f) Then
-		    If Filename <> "" Then
-		      InputBox.Message App.T.Translate("errors/unreadable_image", Filename)
+		  If Filename <> "" Then
+		    If FileName.StartsWith("/") or FileName.StartsWith("\\") or FileName.Mid(2, 1)=":" Then 
+		      f = GetFolderItem(FileName)
+		    Else
+		      f = GetFolderItem( App.DocsFolder.Child("Backgrounds").AbsolutePath + Filename )
 		    End If
-		  Else
-		    result = SetImageFromFile(f)
+		    
+		    If IsNull(f) or not f.Exists() Then
+		      InputBox.Message App.T.Translate("errors/unreadable_image", Filename)
+		    Else
+		      result = SetImageFromFile(f)
+		    End If
 		  End If
 		  
 		  Return result

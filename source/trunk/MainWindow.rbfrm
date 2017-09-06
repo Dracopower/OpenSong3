@@ -13008,11 +13008,11 @@ End
 		    For i = 0 To xbacks.ChildCount - 1
 		      Dim image As StyleImage = new StyleImage()
 		      Dim s As String = SmartML.GetValue(xbacks.Child(i), "filename")
-		      
-		      If imageLink And s<>"" Then
+		      Dim imagestring As String = SmartML.GetValue(xbacks.Child(i), "image")
+		      If imagestring = "" Then
 		        Call image.SetImageFromFileName( s )
 		      Else
-		        Call image.SetImageAsString( SmartML.GetValue(xbacks.Child(i), "image") )
+		        Call image.SetImageAsString( imagestring )
 		      End If
 		      
 		      verseDict.Value( SmartML.GetValue(xbacks.Child(i), "@verse") ) = image
@@ -15703,6 +15703,7 @@ End
 		  Dim xgroup As XmlNode
 		  Dim xslides As XmlNode
 		  Dim s As String
+		  Dim imagestring As String
 		  Dim i As Integer
 		  Dim groupType As String
 		  
@@ -15883,10 +15884,11 @@ End
 		    For i = 0 To xslides.ChildCount - 1
 		      image = new StyleImage()
 		      s = SmartML.GetValue(xslides.Child(i), "filename")
-		      If imageLink And s<>"" Then
+		      imagestring = SmartML.GetValue(xslides.Child(i), "image")
+		      If imagestring = "" Then
 		        Call image.SetImageFromFileName( s )
 		      Else
-		        Call image.SetImageAsString( SmartML.GetValue(xslides.Child(i), "image") )
+		        Call image.SetImageAsString( imagestring )
 		      End If
 		      lst_image_images.AddImage( image )
 		      lst_image_images.Cell( lst_image_images.LastIndex(), 1 ) = SmartML.GetValue(xslides.Child(i), "description")
