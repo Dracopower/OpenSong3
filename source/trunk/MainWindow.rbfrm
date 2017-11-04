@@ -11360,7 +11360,7 @@ End
 		  End If
 		  
 		  If AddLinkedSongsAnswer Then
-		    Dim slideGroups As XmlNode = song
+		    Dim slideGroups As XmlNode = song.Parent
 		    
 		    For i As Integer = 0 To UBound(sDoc)
 		      
@@ -11831,7 +11831,7 @@ End
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Function AddLinkedSongs(song As XmlNode, AddToLog As Boolean) As XmlDocument()
+		Function AddLinkedSongs(song As XmlNode, AddToLog As Boolean, recursing As Boolean = False) As XmlDocument()
 		  '++JRC
 		  Dim LinkedSongs() As String
 		  Dim s As String
@@ -11842,6 +11842,12 @@ End
 		  Dim nodesSub() As XmlDocument
 		  Dim d As New Date
 		  Dim index As Integer
+		  Dim SongId As String
+		  Static songIds As Dictionary
+		  
+		  If Not recursing Then
+		    songIds = New Dictionary
+		  End If
 		  
 		  'sanity check
 		  If song = Nil Then
@@ -11858,7 +11864,10 @@ End
 		  
 		  For i = 0 To xlinked_songs.ChildCount()-1
 		    
-		    f = Songs.GetFile(xlinked_songs.Child(i).GetText())
+		    songId = xlinked_songs.Child(i).GetText()
+		    If SongIds.HasKey(songId) Then Continue
+		    songIDs.Value(songId) = Nil
+		    f = Songs.GetFile(SongId)
 		    If f = Nil Then
 		      InputBox.Message App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", xlinked_songs.Child(i).GetText() )
 		      Continue
@@ -11890,7 +11899,7 @@ End
 		    End If
 		    
 		    'recurse
-		    nodesSub = AddLinkedSongs(sDoc.DocumentElement, AddToLog)
+		    nodesSub = AddLinkedSongs(sDoc.DocumentElement, AddToLog, True)
 		    For j = 0 To UBound(nodesSub)
 		      nodes.Append(nodesSub(j))
 		    Next j

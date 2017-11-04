@@ -1,4 +1,5 @@
 ﻿-= Version 2.2 RC =-
+* Prevent infinit loop on loading linked songs. Show linked songs when presenting song from song editor.
 * Fix the failure of loading the (background) image in some cases (when files in the 'background' map are set to never be embedded). Also made failing less dramatic (no application termination)
 * Fix for override Style does not work correctly in Song preview mode (bug #450) (Vwout)
 * Fixed a bug where the bottom margin was not repspected for the body-rendering when no other items were rendered at the bottom of the screen.
