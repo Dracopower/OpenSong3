@@ -189,7 +189,7 @@ End
 		Sub Deactivate()
 		  App.DebugWriter.Write("PresentWindow.Deactivate: Enter")
 		  
-		  App.DebugWriter.Write("PresentWindow.Deactivate: Enter")
+		  App.DebugWriter.Write("PresentWindow.Deactivate: Exit")
 		End Sub
 	#tag EndEvent
 
@@ -1301,7 +1301,7 @@ End
 		End Function
 	#tag EndMethod
 
-	#tag Method, Flags = &h1000
+	#tag Method, Flags = &h0
 		Function KeyDownX(Key As String) As Boolean
 		  '
 		  ' This routine was originally where all the code to decode a keystroke was kept
@@ -1341,7 +1341,8 @@ End
 		    Command = ACTION_NEXT_SLIDE
 		  End Select
 		  
-		  Return PerformAction(Command)
+		  Call PerformAction(Command) ' sets LastCommandHandled as a side effect
+		  Return LastCommandHandled
 		End Function
 	#tag EndMethod
 
@@ -1359,6 +1360,9 @@ End
 
 	#tag Method, Flags = &h0
 		Function PerformAction(Action As Integer, param As Variant = Nil) As Boolean
+		  'KeyDown needs to know, if the command das been handled, not necessarily if it has been successful
+		  'assume the command is valid until prooven otherwise
+		  LastCommandHandled = True
 		  
 		  'Constants added for clarity EMP 9/30/04
 		  Const ASC_KEY_LEFT = 28
@@ -1568,6 +1572,7 @@ End
 		  ElseIf Lowercase(Key) = "m" Then
 		    Return DoSwapFullScreen
 		  Else
+		    LastCommandHandled = False
 		    Return False
 		  End If
 		  
@@ -1575,26 +1580,28 @@ End
 		  // Add a generic exception handler in an attempt to keep from bailing out
 		  // TODO: This needs to log somewhere and notify the operator after the presentation is done.
 		  //
-		  Exception ex
-		    // Do something here later.  For now, validate that XCurrentSlide isn't Nil and
-		    // return to the caller.
-		    //
-		    If XCurrentSlide = Nil Then
-		      // Sorry, the only possible valid action is to go back to the first slide, otherwise
-		      // how do you keep XCurrentSlide and CurrentSlide in sync?
-		      // (perhaps look at xNewSlide to get close to the original location?)
-		      CurrentSlide = 1
-		      XCurrentSlide = SetML.GetSlide(CurrentSet, 1)
-		    End If
-		    // Put up wherever we're at now (and pray!)
-		    If HelperActive Then
-		      PresentHelperWindow.SetMode Mode
-		    Else
-		      ResetPaint XCurrentSlide
-		    End If
-		    
-		    Return False // Show that it failed
-		    //--EMP 15 Jan 06
+		Exception ex
+		  // Do something here later.  For now, validate that XCurrentSlide isn't Nil and
+		  // return to the caller.
+		  //
+		  If XCurrentSlide = Nil Then
+		    // Sorry, the only possible valid action is to go back to the first slide, otherwise
+		    // how do you keep XCurrentSlide and CurrentSlide in sync?
+		    // (perhaps look at xNewSlide to get close to the original location?)
+		    CurrentSlide = 1
+		    XCurrentSlide = SetML.GetSlide(CurrentSet, 1)
+		  End If
+		  // Put up wherever we're at now (and pray!)
+		  If HelperActive Then
+		    PresentHelperWindow.SetMode Mode
+		  Else
+		    ResetPaint XCurrentSlide
+		  End If
+		  
+		  'Unless a condition threw an error, the command was valid; it just failed to execute
+		  LastCommandHandled = True
+		  Return False // Show that it failed
+		  //--EMP 15 Jan 06
 		End Function
 	#tag EndMethod
 
@@ -1876,9 +1883,9 @@ End
 		  PresentCursor = Self.MouseCursor
 		  AppCursor = App.MouseCursor
 		  Self.Visible = True
-		  Catch e
-		    RuntimeException(e).message = "In PresentWindow.Present: " + e.Message
-		    Raise e
+		Catch e
+		  RuntimeException(e).message = "In PresentWindow.Present: " + e.Message
+		  Raise e
 		End Sub
 	#tag EndMethod
 
@@ -2481,10 +2488,11 @@ End
 		  
 		  While slide_group <> Nil
 		    If SmartML.GetValue(slide_group, "@type") <> "style" And _
-		    SmartML.GetNode(slide_group, "slides", True).ChildCount < 1 Then _
-		    SmartML.SetValue slide_group, "slides/slide/body", ""
-		    
-		    slide_group = slide_group.NextSibling
+		      SmartML.GetNode(slide_group, "slides", True).ChildCount < 1 Then
+		      SmartML.SetValue slide_group, "slides/slide/body", ""
+		    End If
+		      
+		      slide_group = slide_group.NextSibling
 		  Wend
 		  
 		End Sub
@@ -2585,6 +2593,10 @@ End
 
 	#tag Property, Flags = &h0
 		HelperActive As Boolean
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
+		Private LastCommandHandled As Boolean = True
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
@@ -2875,10 +2887,10 @@ End
 		  // This corrects an issue seen when changing the SButton style
 		  // after a presentation and for some reason this window is still open
 		  //--
-		  Catch ex
-		    App.DebugWriter.Write("PresentWindow.cnvSlide.Paint: Got an exception: " +_
-		    RuntimeException(ex).Message, 1)
-		    Return
+		Catch ex
+		  App.DebugWriter.Write("PresentWindow.cnvSlide.Paint: Got an exception: " +_
+		  RuntimeException(ex).Message, 1)
+		  Return
 		End Sub
 	#tag EndEvent
 #tag EndEvents
