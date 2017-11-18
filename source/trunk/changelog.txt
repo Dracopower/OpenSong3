@@ -1,8 +1,11 @@
 ﻿-= Version 2.2 RC =-
-* Prevent infinit loop on loading linked songs. Show linked songs when presenting song from song editor.
+* Fix issues with transferring control between windows on Windows where the active control lost focus or a maximised presentation helper window was restored.
+* Fix an issue with no presentation mode set while starting the presentation with F5.
+* Fix starting presentation with F5: The current main window mode (song or set mode) helps determining whether the current song or current set is presented.
+* Prevent infinite loop on loading linked songs. Show linked songs when presenting song from song editor.
 * Fix the failure of loading the (background) image in some cases (when files in the 'background' map are set to never be embedded). Also made failing less dramatic (no application termination)
 * Fix for override Style does not work correctly in Song preview mode (bug #450) (Vwout)
-* Fixed a bug where the bottom margin was not repspected for the body-rendering when no other items were rendered at the bottom of the screen.
+* Fixed a bug where the bottom margin was not respected for the body-rendering when no other items were rendered at the bottom of the screen.
 * Added a new feature to allow external renderers to:
 - Modify the presentation temporarily just before it's being presented
 - Mody individual sheets every time they're shown.

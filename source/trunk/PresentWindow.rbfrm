@@ -129,7 +129,7 @@ End
 		      If PresentHelperWindow.IsCollapsed Then
 		        App.RestoreWindow(PresentHelperWindow)
 		      Else
-		        PresentHelperWindow.SetFocus
+		        App.SetForeground(PresentHelperWindow)
 		      End If
 		    Else
 		      If Not SetML.IsExternal(XCurrentSlide) Then
@@ -141,7 +141,6 @@ End
 		      End If
 		    End If
 		    Me.MenuBarVisible = (Not Me.FullScreen) Or (PresentScreen <> 0) // Make assumption that screen 0 has the menu; not always true
-		    Me.SetFocus
 		  End If
 		  
 		  App.DebugWriter.Write "PresentWindow.Activate: Exit"
@@ -1630,27 +1629,11 @@ End
 		  // Copy the set to a working copy we can change
 		  CurrentSet = New XmlDocument
 		  CurrentSet.AppendChild CurrentSet.ImportNode(setDoc.FirstChild, CopyAllChildren)
-		  '#if DebugBuild
-		  'Dim f As FolderItem
-		  'f = GetFolderItem("SetDoc.xml")
-		  'setDoc.SaveXml f
-		  '#endif
 		  
 		  '++JRC
+		  'System.DebugLog "Add blanks and confirm bodies exist"
 		  InsertBlanksIntoSet(CurrentSet, Item)
 		  VerifySlideBodies(CurrentSet)
-		  
-		  'System.DebugLog "Add blanks and confirm bodies exist"
-		  
-		  'Dim f1 As FolderItem
-		  '#if DebugBuild
-		  'f1 = GetFolderItem("CurrentSet.xml")
-		  'CurrentSet.SaveXml f1
-		  '#endif
-		  'System.DebugLog "Dumped CurrentSet"
-		  
-		  'CurrentSlide = 1
-		  'XCurrentSlide = SetML.GetSlide(CurrentSet, 1)
 		  
 		  'System.DebugLog "Setup monitors"
 		  de = App.MyPresentSettings.DocumentElement
@@ -1661,6 +1644,17 @@ End
 		  
 		  cnvSlide.Visible = False 'Prevent the canvas to redraw itself for all size changes below
 		  'System.DebugLog "Determine correct PresentMode"
+		  
+		  Select Case PresentMode
+		  Case MODE_SINGLE_SCREEN, MODE_DUAL_SCREEN, MODE_PREVIEW
+		    ' PresentMode is known
+		  Else
+		    If PresentScreen <> ControlScreen Then
+		      PresentMode = MODE_DUAL_SCREEN
+		    Else
+		      PresentMode = MODE_PREVIEW
+		    End If
+		  End Select
 		  If PresentMode = MODE_SINGLE_SCREEN Then ' Single Screen
 		    presentScreen = controlScreen
 		    HelperActive = False
@@ -1723,7 +1717,7 @@ End
 		  StyleDict = New Dictionary
 		  
 		  '++JRC
-		  NumberOfItems =Val(setDoc.DocumentElement.GetAttribute("NumberOfItems"))
+		  NumberOfItems = Val(setDoc.DocumentElement.GetAttribute("NumberOfItems"))
 		  
 		  slide_groups = SmartML.GetNode(CurrentSet.DocumentElement, "slide_groups", True)
 		  slide_group = slide_groups.FirstChild
@@ -2161,12 +2155,12 @@ End
 		    'SetML.DrawSlide PreviewPicture.Graphics, XCurrentSlide, xStyle
 		    ' -- New way --
 		    xStyle = SetML.GetStyle(slide)
-
+		    
 		    Dim external_did_draw as Boolean = m_ExternalRenderer.Render(PreviewPicture.Graphics, slide, PresentWindow.CurrentSlide)
 		    if not external_did_draw then
 		      SetML.DrawSlide PreviewPicture.Graphics, slide, xStyle
 		    end if
-
+		    
 		    curslideTransition = SetML.GetSlideTransition(slide)
 		    
 		    Profiler.EndProfilerEntry'
@@ -2491,8 +2485,8 @@ End
 		      SmartML.GetNode(slide_group, "slides", True).ChildCount < 1 Then
 		      SmartML.SetValue slide_group, "slides/slide/body", ""
 		    End If
-		      
-		      slide_group = slide_group.NextSibling
+		    
+		    slide_group = slide_group.NextSibling
 		  Wend
 		  
 		End Sub

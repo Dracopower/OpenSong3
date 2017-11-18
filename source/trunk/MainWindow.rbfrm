@@ -8564,7 +8564,6 @@ End
 #tag WindowCode
 	#tag Event
 		Sub Activate()
-		  '++JRC
 		  App.DebugWriter.Write "Begin MainWindow.Activate:"
 		  
 		  If Globals.Status_Presentation Or Status_Presentation Then
@@ -8573,16 +8572,32 @@ End
 		    #endif
 		    
 		    If PresentWindow.HelperActive Then
-		      App.RestoreWindow(PresentHelperWindow)
-		      App.SetForeground(PresentHelperWindow)
+		      #if Not TargetWin32
+		        App.RestoreWindow(PresentHelperWindow)
+		        App.SetForeground(PresentHelperWindow)
+		      #else
+		        If PresentHelperWindow.IsCollapsed Then
+		          App.ShowWin(PresentHelperWindow,App.SW_RESTORE)
+		        Else
+		          App.ShowWin(PresentHelperWindow,App.SW_SHOW)
+		        End If
+		      #endif
 		    Else
 		      If Not SetML.IsExternal(PresentWindow.XCurrentSlide) Then
-		        App.RestoreWindow(PresentWindow)
-		        App.SetForeground(PresentWindow)
+		        #if Not TargetWin32
+		          App.RestoreWindow(PresentWindow)
+		          App.SetForeground(PresentWindow)
+		        #else
+		          IF PresentWindow.IsCollapsed Then
+		            App.ShowWin(PresentWindow,App.SW_RESTORE)
+		          Else
+		            App.ShowWin(PresentWindow,App.SW_RESTORE)
+		          End If
+		        #endif
 		      End If
 		    End If
 		  End If
-		  '--
+		  
 		  If App.SplashShowing Then Splash.Show
 		  
 		  App.DebugWriter.Write "End MainWindow.Activate:"
@@ -8642,16 +8657,18 @@ End
 		  
 		  if asc(key) = 204 Then 'F5
 		    mode = SmartML.GetValueN(App.MyPresentSettings.DocumentElement, "presentation_mode/@code")
-		    if Status_SongOpen Then
+		    if Status_SongOpen And (Status_CurrentMode = 0 Or Not Status_SetOpen) Then
 		      'Ask if user wants to save
 		      If NOT ActionSongAskSave Then Return True 'User Canceled
 		      
 		      ActionSongPresent mode
+		      Return True
 		    elseif Status_SetOpen then
 		      'Ask if user wants to save
 		      If NOT ActionSetAskSave Then Return True  'User Canceled
 		      
 		      ActionSetPresent mode
+		      Return True
 		    end if
 		  end if
 		  
@@ -11351,7 +11368,7 @@ End
 		    End If
 		  End If
 		  
-		  Globals.AddToLog =AddToLogAnswer
+		  Globals.AddToLog = AddToLogAnswer
 		  Dim sDoc() As XmlDocument = AddLinkedSongs(song, AddToLogAnswer)
 		  
 		  Dim AddLinkedSongsAnswer As Boolean = True
