@@ -13540,7 +13540,7 @@ End
 		  btn_song_present.DeletePopup
 		  btn_song_present.AddPopupRow App.T.Translate("songs_mode/selected_song/present/single_screen/@caption")
 		  
-		  if OSScreenCount() > 1 Then
+		  If OSScreenCount() > 1 Then
 		    btn_song_present.AddPopupRow App.T.Translate("songs_mode/selected_song/present/dual_screen/@caption")
 		  End If
 		  
@@ -14512,6 +14512,20 @@ End
 		  Me.SetIcon backgroundpic, backgroundmask
 		End Sub
 	#tag EndEvent
+	#tag Event
+		Sub ConstructPopupMenu()
+		  Me.DeletePopup
+		  Me.AddPopupRow App.T.Translate("songs_mode/selected_song/present/single_screen/@caption")
+		  
+		  if OSScreenCount() > 1 Then
+		    Me.AddPopupRow App.T.Translate("songs_mode/selected_song/present/dual_screen/@caption")
+		  End If
+		  
+		  Me.AddPopupSeparator
+		  Me.AddPopupRow App.T.Translate("songs_mode/selected_song/present/preview_dual_screen/@caption")
+		  
+		End Sub
+	#tag EndEvent
 #tag EndEvents
 #tag Events btn_song_save
 	#tag Event
@@ -15280,6 +15294,20 @@ End
 		  Me.SetIcon backgroundpic, backgroundmask
 		End Sub
 	#tag EndEvent
+	#tag Event
+		Sub ConstructPopupMenu()
+		  Me.DeletePopup
+		  Me.AddPopupRow App.T.Translate("sets_mode/current_set/present/single_screen/@caption")
+		  
+		  if OSScreenCount() > 1 Then
+		    Me.AddPopupRow App.T.Translate("sets_mode/selected_song/present/dual_screen/@caption")
+		  End If
+		  
+		  Me.AddPopupSeparator
+		  Me.AddPopupRow App.T.Translate("sets_mode/current_set/present/preview_dual_screen/@caption")
+		  
+		End Sub
+	#tag EndEvent
 #tag EndEvents
 #tag Events btn_set_delete
 	#tag Event
@@ -15332,6 +15360,20 @@ End
 	#tag Event
 		Sub Open()
 		  Me.SetIcon backgroundpic, backgroundmask
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub ConstructPopupMenu()
+		  Me.DeletePopup
+		  Me.AddPopupRow App.T.Translate("sets_mode/current_set/present/single_screen/@caption")
+		  
+		  if OSScreenCount() > 1 Then
+		    Me.AddPopupRow App.T.Translate("sets_mode/selected_song/present/dual_screen/@caption")
+		  End If
+		  
+		  Me.AddPopupSeparator
+		  Me.AddPopupRow App.T.Translate("sets_mode/current_set/present/preview_dual_screen/@caption")
+		  
 		End Sub
 	#tag EndEvent
 #tag EndEvents
