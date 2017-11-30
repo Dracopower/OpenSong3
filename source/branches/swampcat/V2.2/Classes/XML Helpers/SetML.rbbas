@@ -37,6 +37,16 @@ Protected Module SetML
 		  Dim titleMargins, subtitleMargins, bodyMargins as StyleMarginType
 		  Dim bodyTabs() As StyleTabsType
 		  
+		  // CHANGE-PJ: Second language feature - if last character of section name = "L" for "L"anguage -> show second language (every second line) in different style
+		  Dim section As SectionMode = SectionMode.Normal
+		  Dim separationMark As String
+		  If IsBilingualSection(SmartML.GetValue(xslide, "@id")) Then
+		    section = SectionMode.Bilingual
+		    separationMark = SetML.SeparationMarkBilingual
+		  Else
+		    separationMark = ""
+		  End If
+		  
 		  If Style <> Nil Then 'TODO: What if it's NIL????  Ain't gonna be pretty....
 		    bodyStyle = Style.BodyFont
 		    titleStyle = Style.TitleFont
@@ -129,19 +139,17 @@ Protected Module SetML
 		    Profiler.BeginProfilerEntry "DrawSlide>ImageSlide-Fullscreen" ' --------------------------------------------------
 		    Dim img As StyleImage
 		    Dim sImageFile As String
+		    dim imagestring As String
 		    Dim scale as Double
 		    Dim Left, Top As Integer
 		    
 		    img = new StyleImage()
+		    imagestring = SmartML.GetValue(xslide, "image")
 		    sImageFile = SmartML.GetValue(xslide, "filename")
-		    If SmartML.GetValueB(xslide.Parent.Parent, "@link", False) = True And sImageFile<>"" Then
-		      If sImageFile.StartsWith("/") or sImageFile.StartsWith("\\") or sImageFile.Mid(2, 1)=":" Then
-		        Call img.SetImageFromFileName( sImageFile )
-		      Else
-		        Call img.SetImageFromFileName( App.DocsFolder.Child("Backgrounds").NativePath + sImageFile )
-		      End If
+		    If imagestring = "" Then
+		      Call img.SetImageFromFileName( sImageFile )
 		    Else
-		      Call img.SetImageAsString( SmartML.GetValue(xslide, "image") )
+		      Call img.SetImageAsString( imagestring )
 		    End If
 		    
 		    pic = img.GetImage()
@@ -246,11 +254,18 @@ Protected Module SetML
 		  Profiler.EndProfilerEntry
 		  Profiler.BeginProfilerEntry "DrawSlide>Declare 3" ' --------------------------------------------------
 		  
-		  MainHeight = g.Height - HeaderSize - FooterSize
-		  UsableWidth = g.Width - (2 * RealBorder) - bodyMargins.Left - bodyMargins.Right ' This just comes up again and again in the calcs & won't change (EMP 09/05)
-		  
 		  bodyStyle.OntoGraphics g
 		  
+		  If HeaderSize < bodyMargins.Top Then
+		    HeaderSize = bodyMargins.Top
+		  End If
+		  If FooterSize < bodyMargins.Bottom Then
+		    FooterSize = bodyMargins.Bottom
+		  End If
+		  
+		  MainHeight = g.Height - HeaderSize - FooterSize - (2 * RealBorder)
+		  UsableWidth = g.Width - (2 * RealBorder) - bodyMargins.Left - bodyMargins.Right ' This just comes up again and again in the calcs & won't change (EMP 09/05)
+		    
 		  If hasImage Then
 		    Dim scale as Double
 		    Dim Left, Top As Integer
@@ -260,13 +275,6 @@ Protected Module SetML
 		      If resize = "screen" Then
 		        'Image was drawn before the (sub)titles
 		      ElseIf resize = "body" Then
-		        
-		        If HeaderSize < bodyMargins.Top Then
-		          HeaderSize = bodyMargins.Top
-		        End If
-		        If MainHeight > (g.Height - bodyMargins.Top - bodyMargins.Bottom) Then
-		          MainHeight = (g.Height - bodyMargins.Top - bodyMargins.Bottom)
-		        End If
 		        
 		        If keepaspect Then
 		          UsableWidth =  UsableWidth + (2 * RealBorder)
@@ -312,16 +320,15 @@ Protected Module SetML
 		      bodyStyle.Italic = Not bodyStyle.Italic
 		    End If
 		    
-		    Dim st, linecount, x2 As Integer
-		    Dim line, line2, lines(0) As String
-		    st = 1
+		    Dim linecount As Integer
+		    Dim line, lines(0) As String
 		    
 		    Profiler.EndProfilerEntry
 		    //++EMP 09/05
 		    // Take a pass at the slide to see if the lines will fit reasonably as they are.
 		    // Hopefully in most cases this will be all we need
 		    Profiler.BeginProfilerEntry "DrawSlide -> BestCaseBodyWrap"
-		    Dim MaxLineIndex, MaxLineLen As Integer '
+		    Dim MaxLineLen As Integer
 		    Dim NHeight As Integer
 		    Dim WrapPercent, HWrapPercent, VWrapPercent As Double
 		    Dim LineLen As Integer
@@ -340,14 +347,33 @@ Protected Module SetML
 		      s = SmartML.GetValue(xslide, "body", True).FormatUnixEndOfLine
 		      SplitToArray(StringUtils.Trim(s, StringUtils.WhiteSpaces), lines, Chr(10))
 		      
+		      // CHANGE-PJ: Second language feature - save original text size
+		      Dim origTextSize As Integer
+		      origTextSize = g.TextSize
+		      
 		      ' Find the longest line
-		      MaxLineIndex = UBound(lines)
 		      For i = 0 to UBound(lines)
+		        
+		        // CHANGE-PJ START: Second language feature - calculate character length with different font size, change every second line
+		        If section = SectionMode.Bilingual Then
+		          If InStr(lines(i), separationMark) <> 1 Then //only change style if not line break inserted automatically before
+		            If g.TextSize = origTextSize And i > 1 Then // stay in first line to f style (body style)
+		              g.TextSize = Floor(g.TextSize * Style.MultilanguageSize/100) // taken from style settings window
+		            ElseIf g.TextSize <> origTextSize Then
+		              g.TextSize = origTextSize
+		            End If
+		          End If
+		        End If
+		        // CHANGE-PJ END
+		        
 		        If g.StringWidth(lines(i)) > MaxLineLen Then
 		          MaxLineLen = g.StringWidth(lines(i))
-		          MaxLineIndex = i
 		        End If
 		      Next i
+		      
+		      // CHANGE-PJ: Second language feature - revert back to original text size
+		      g.TextSize = origTextSize
+		      
 		    End If
 		    '--
 		    
@@ -360,7 +386,7 @@ Protected Module SetML
 		    'Skip all text size adjustments; we don't want to skip all code below, as wrapping will be required.
 		    If style.BodyScale Then
 		      HWrapPercent = Min(UsableWidth / MaxLineLen, 1.0)
-		      VWrapPercent = Min(MainHeight / GraphicsX.FontFaceHeight(g, bodyStyle) , 1.0)
+		      VWrapPercent = Min(MainHeight / (UBound(lines) * GraphicsX.FontFaceHeight(g, bodyStyle)) , 1.0)
 		      WrapPercent = Min(HWrapPercent, VWrapPercent) // Consensus number
 		      If WrapPercent > .85 Then // arbitrary, but that means 32pt wouldn't go less than ~28pt
 		        g.TextSize = Floor(g.TextSize * WrapPercent) //TextSize is an Integer; keep from hanging on one number
@@ -378,7 +404,7 @@ Protected Module SetML
 		    '--
 		    
 		    If style.BodyScale Then
-		      While g.StringWidth(line) / UsableWidth * GraphicsX.FontFaceHeight(g, bodyStyle) > MainHeight * .85 ' last number offsets the non-perfectness of this guessing
+		      While (g.StringWidth(line) / UsableWidth) * GraphicsX.FontFaceHeight(g, bodyStyle) > MainHeight * .85 ' last number offsets the non-perfectness of this guessing
 		        g.TextSize = Floor(g.TextSize * .95)
 		        if g.textsize <=0 then exit
 		      Wend
@@ -391,9 +417,26 @@ Protected Module SetML
 		    SplitToArray(StringUtils.Trim(s, StringUtils.WhiteSpaces), lines, Chr(10))
 		    '--
 		    
+		    // CHANGE-PJ: Second language feature - save original text size
+		    Dim origTextSize As Integer
+		    origTextSize = g.TextSize
+		    
 		    If Val(Left(lines(1), 2)) > 0 Then multiwrap = True ' If the slide starts with a number, it is probably a verse; lets force multiwrap
 		    ' Round 1: Fit to size (pre-wrap)
 		    For i = 1 To UBound(lines)
+		      
+		      // CHANGE-PJ START: Second language feature - calculate character length with different font size, change every second line
+		      If section = SectionMode.Bilingual Then
+		        If InStr(lines(i), separationMark) <> 1 Then //only change style if not line break inserted automatically before
+		          If g.TextSize = origTextSize And i > 1 Then // stay in first line to f style (body style)
+		            g.TextSize = Floor(g.TextSize * Style.MultilanguageSize/100) // taken from style settings window
+		          ElseIf g.TextSize <> origTextSize Then
+		            g.TextSize = origTextSize
+		          End If
+		        End If
+		      End If
+		      // CHANGE-PJ END
+		      
 		      If (g.StringWidth(lines(i)) > UsableWidth * 2) Or (multiwrap And g.StringWidth(lines(i)) > UsableWidth) Then
 		        ' this line is more than twice as long: multiple-wrapping
 		        ' or this line is too long and this slide has already been multiwrapped
@@ -412,7 +455,7 @@ Protected Module SetML
 		          d = Mid(line, z, 1)
 		          If d = " " and z <> 2 Then ' wrap it here
 		            lines(i) = Mid(line, x, z-x)
-		            lines.Insert i+1, InsertAfterBreak+ Mid(line, z+1)
+		            lines.Insert i+1, InsertAfterBreak+ separationMark + Mid(line, z+1) // CHANGE-PJ: Second language feature - add separationMark in case of a bilingual section to identify auto linebreak by algorithm
 		            isWrapped = True
 		            Exit
 		          End If
@@ -426,7 +469,7 @@ Protected Module SetML
 		            If (d.Asc >= &h4E00 and d.Asc <= &h9FBF) or _
 		              (d2.Asc >= &h4E00 and d2.Asc <= &h9FBF) Then
 		              lines(i) = Mid(line, x, z-x)
-		              lines.Insert i+1,insertafterbreak+ Mid(line, z)
+		              lines.Insert i+1,insertafterbreak+ separationMark + Mid(line, z) // CHANGE-PJ: Second language feature - add separationMark in case of a bilingual section to identify auto linebreak by algorithm
 		              isWrapped = True
 		              Exit
 		            End If
@@ -441,12 +484,12 @@ Protected Module SetML
 		        //--
 		        If Not isWrapped Then
 		          lines(i) = Mid(line, x, y-x)
-		          lines.Insert i + 1, insertafterbreak+Mid(line, y)
+		          lines.Insert i + 1, insertafterbreak+ separationMark + Mid(line, y) // CHANGE-PJ: Second language feature - add separationMark in case of a bilingual section to identify auto linebreak by algorithm
 		        End If
 		      ElseIf g.StringWidth(lines(i)) > UsableWidth Then ' this line is less than twice as long, but still too long: smart wrap it (EMP 09/05)
 		        ' FUTURE PROBLEM: If a later longer line would end up shrinking the text, we may not have had to wrap a prior line
 		        line = lines(i)
-		        lines.Insert i+1, insertafterbreak+SmartWrap(line)
+		        lines.Insert i+1, insertafterbreak+ separationMark + SmartWrap(line) // CHANGE-PJ: Second language feature - add separationMark in case of a bilingual section to identify auto linebreak by algorithm
 		        lines(i) = line
 		        'While g.StringWidth(lines(i)) > g.Width - (2*RealBorder)
 		        While g.StringWidth(lines(i)) > UsableWidth 'EMP 09/05
@@ -461,6 +504,9 @@ Protected Module SetML
 		        i = i + 1 ' skip the extra
 		      End If
 		    Next i
+		    
+		    // CHANGE-PJ: Second language feature - revert back to original text size
+		    g.TextSize = origTextSize
 		    
 		    Profiler.EndProfilerEntry
 		    Profiler.BeginProfilerEntry "DrawSlide>Post-shrink" ' --------------------------------------------------
@@ -489,7 +535,8 @@ Protected Module SetML
 		    Next i
 		    line = RTrim(line)
 		    
-		    Call DrawFontString(g, line, 0, HeaderSize, bodyStyle, RealBorder, 0, 0, bodyMargins, g.Width, Style.BodyAlign, MainHeight, Style.BodyVAlign, bodyTabs, insertafterbreak) 'EMP 09/05
+		    // CHANGE-PJ: Second language feature - if last character of section name = "L" for "L"anguage -> "section" and "Style" parameter added
+		    Call DrawFontString(g, line, 0, HeaderSize, bodyStyle, RealBorder, 0, 0, bodyMargins, g.Width, Style.BodyAlign, MainHeight, Style.BodyVAlign, bodyTabs, insertafterbreak, section, Style) 'EMP 09/05
 		  End If
 		  
 		  Profiler.EndProfilerEntry
@@ -957,6 +1004,10 @@ Protected Module SetML
 		      songDoc = SmartML.XDocFromFile(songf)
 		      If songDoc = Nil Then
 		        InputBox.Message App.T.Translate("errors/bad_format", SmartML.GetValue(slidegroup, "@name", False))
+		      Else
+		        ' Can be used by an external renderer.
+		        Dim pathnode as XmlNode = songDoc.FirstChild.AppendChild(songDoc.CreateElement("path"))
+		        pathnode.AppendChild(songDoc.CreateTextNode(songfolder))
 		      End If
 		    End If
 		  Else
@@ -1071,6 +1122,12 @@ Protected Module SetML
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
+		Function IsBilingualSection(section As String) As boolean
+		  Return Trim(section).Right(1) = "L"
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
 		Function IsExternal(slide As XmlNode) As Boolean
 		  Dim slideType As String
 		  Dim external As Boolean = False
@@ -1096,6 +1153,13 @@ Protected Module SetML
 		  End Try
 		  
 		  Return external
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function SeparationMarkBilingual() As String
+		  'This actually is a const, however Xojo unfortunately does not support constant expressions
+		  Return Chr(244)
 		End Function
 	#tag EndMethod
 
@@ -1240,6 +1304,12 @@ Protected Module SetML
 	#tag Property, Flags = &h0
 		SlideType As String
 	#tag EndProperty
+
+
+	#tag Enum, Name = SectionMode, Type = Integer, Flags = &h0
+		Normal
+		Bilingual
+	#tag EndEnum
 
 
 	#tag ViewBehavior

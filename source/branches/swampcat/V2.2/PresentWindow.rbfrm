@@ -56,43 +56,65 @@ Begin Window PresentWindow Implements ScriptureReceiver
    End
    Begin Timer timerAdvance
       Enabled         =   True
+      Height          =   "32"
       Index           =   -2147483648
       InitialParent   =   ""
+      Left            =   249
       LockedInPosition=   False
       Mode            =   0
       Period          =   10000
       Scope           =   0
       TabPanelIndex   =   0
+      Top             =   249
+      Visible         =   True
+      Width           =   "32"
    End
    Begin Timer timerTransition
       Enabled         =   True
+      Height          =   "32"
       Index           =   -2147483648
       InitialParent   =   ""
+      Left            =   205
       LockedInPosition=   False
       Mode            =   0
       Period          =   125
       Scope           =   0
       TabPanelIndex   =   0
+      Top             =   249
+      Visible         =   True
+      Width           =   "32"
    End
    Begin SnapshotThread m_SnapshotThread
       Enabled         =   True
+      Height          =   "32"
       Index           =   -2147483648
       InitialParent   =   ""
+      Left            =   161
       LockedInPosition=   False
       Priority        =   5
       Scope           =   2
       StackSize       =   0
+      TabIndex        =   3
       TabPanelIndex   =   0
+      TabStop         =   True
+      Top             =   249
+      Visible         =   True
+      Width           =   "32"
    End
    Begin Timer timerClick
       Enabled         =   True
+      Height          =   "32"
       Index           =   -2147483648
       InitialParent   =   ""
+      Left            =   0
       LockedInPosition=   False
       Mode            =   1
       Period          =   333
       Scope           =   2
       TabPanelIndex   =   0
+      Top             =   0
+      Visible         =   True
+      Width           =   "32"
    End
 End
 #tag EndWindow
@@ -107,7 +129,7 @@ End
 		      If PresentHelperWindow.IsCollapsed Then
 		        App.RestoreWindow(PresentHelperWindow)
 		      Else
-		        PresentHelperWindow.SetFocus
+		        App.SetForeground(PresentHelperWindow)
 		      End If
 		    Else
 		      If Not SetML.IsExternal(XCurrentSlide) Then
@@ -119,7 +141,6 @@ End
 		      End If
 		    End If
 		    Me.MenuBarVisible = (Not Me.FullScreen) Or (PresentScreen <> 0) // Make assumption that screen 0 has the menu; not always true
-		    Me.SetFocus
 		  End If
 		  
 		  App.DebugWriter.Write "PresentWindow.Activate: Exit"
@@ -131,6 +152,8 @@ End
 		  'MainWindow.Status_Presentation = False
 		  'MainWindow.Show
 		  'MainWindow.SetFocus
+		  
+		  m_ExternalRenderer.EndPresent()
 		  
 		  Call ResetPaint(Nil) 'This will cleanup external slide stuff
 		  
@@ -165,7 +188,7 @@ End
 		Sub Deactivate()
 		  App.DebugWriter.Write("PresentWindow.Deactivate: Enter")
 		  
-		  App.DebugWriter.Write("PresentWindow.Deactivate: Enter")
+		  App.DebugWriter.Write("PresentWindow.Deactivate: Exit")
 		End Sub
 	#tag EndEvent
 
@@ -252,6 +275,7 @@ End
 		  
 		  m_videolanController = New VideolanController 'Initialise shell control for videolan
 		  m_AppLaunchShell = New Shell 'Initialise shell control for external applications
+		  m_ExternalRenderer = New ExternalRenderer
 		  m_updatingSlide = False
 		  
 		  App.DebugWriter.Write("PresentWindow.Open: Exit")
@@ -342,7 +366,7 @@ End
 		  '++JRC Check if we have a songs folder if not try to create one
 		  If App.CheckDocumentFolders(App.SONGS_FOLDER) = App.NO_FOLDER Then
 		    If  App.DocsFolder <> Nil Then
-		      InputBox.Message App.T.Translate("errors/create_songs_folder", App.DocsFolder.NativePath + App.STR_SONGS)
+		      InputBox.Message App.T.Translate("errors/create_songs_folder", App.DocsFolder.AbsolutePath + App.STR_SONGS)
 		    Else
 		      InputBox.Message App.T.Translate("errors/no_docs_folder", "")
 		    End If
@@ -1276,10 +1300,8 @@ End
 		End Function
 	#tag EndMethod
 
-	#tag Method, Flags = &h1000
+	#tag Method, Flags = &h0
 		Function KeyDownX(Key As String) As Boolean
-		  // Calling the overridden superclass constructor.
-		  Super.Constructor
 		  '
 		  ' This routine was originally where all the code to decode a keystroke was kept
 		  '
@@ -1318,7 +1340,8 @@ End
 		    Command = ACTION_NEXT_SLIDE
 		  End Select
 		  
-		  Return PerformAction(Command)
+		  Call PerformAction(Command) ' sets LastCommandHandled as a side effect
+		  Return LastCommandHandled
 		End Function
 	#tag EndMethod
 
@@ -1336,6 +1359,9 @@ End
 
 	#tag Method, Flags = &h0
 		Function PerformAction(Action As Integer, param As Variant = Nil) As Boolean
+		  'KeyDown needs to know, if the command das been handled, not necessarily if it has been successful
+		  'assume the command is valid until prooven otherwise
+		  LastCommandHandled = True
 		  
 		  'Constants added for clarity EMP 9/30/04
 		  Const ASC_KEY_LEFT = 28
@@ -1545,6 +1571,7 @@ End
 		  ElseIf Lowercase(Key) = "m" Then
 		    Return DoSwapFullScreen
 		  Else
+		    LastCommandHandled = False
 		    Return False
 		  End If
 		  
@@ -1552,26 +1579,28 @@ End
 		  // Add a generic exception handler in an attempt to keep from bailing out
 		  // TODO: This needs to log somewhere and notify the operator after the presentation is done.
 		  //
-		  Exception ex
-		    // Do something here later.  For now, validate that XCurrentSlide isn't Nil and
-		    // return to the caller.
-		    //
-		    If XCurrentSlide = Nil Then
-		      // Sorry, the only possible valid action is to go back to the first slide, otherwise
-		      // how do you keep XCurrentSlide and CurrentSlide in sync?
-		      // (perhaps look at xNewSlide to get close to the original location?)
-		      CurrentSlide = 1
-		      XCurrentSlide = SetML.GetSlide(CurrentSet, 1)
-		    End If
-		    // Put up wherever we're at now (and pray!)
-		    If HelperActive Then
-		      PresentHelperWindow.SetMode Mode
-		    Else
-		      ResetPaint XCurrentSlide
-		    End If
-		    
-		    Return False // Show that it failed
-		    //--EMP 15 Jan 06
+		Exception ex
+		  // Do something here later.  For now, validate that XCurrentSlide isn't Nil and
+		  // return to the caller.
+		  //
+		  If XCurrentSlide = Nil Then
+		    // Sorry, the only possible valid action is to go back to the first slide, otherwise
+		    // how do you keep XCurrentSlide and CurrentSlide in sync?
+		    // (perhaps look at xNewSlide to get close to the original location?)
+		    CurrentSlide = 1
+		    XCurrentSlide = SetML.GetSlide(CurrentSet, 1)
+		  End If
+		  // Put up wherever we're at now (and pray!)
+		  If HelperActive Then
+		    PresentHelperWindow.SetMode Mode
+		  Else
+		    ResetPaint XCurrentSlide
+		  End If
+		  
+		  'Unless a condition threw an error, the command was valid; it just failed to execute
+		  LastCommandHandled = True
+		  Return False // Show that it failed
+		  //--EMP 15 Jan 06
 		End Function
 	#tag EndMethod
 
@@ -1596,88 +1625,18 @@ End
 		  
 		  App.MouseCursor = System.Cursors.Wait
 		  PresentationMode = PresentMode
+		  
 		  // Copy the set to a working copy we can change
 		  CurrentSet = New XmlDocument
 		  CurrentSet.AppendChild CurrentSet.ImportNode(setDoc.FirstChild, CopyAllChildren)
-		  '#if DebugBuild
-		  'Dim f As FolderItem
-		  'f = GetFolderItem("SetDoc.xml")
-		  'setDoc.SaveXml f
-		  '#endif
-		  StyleDict = New Dictionary
 		  
 		  '++JRC
-		  NumberOfItems =Val(setDoc.DocumentElement.GetAttribute("NumberOfItems"))
-		  
-		  slide_groups = SmartML.GetNode(CurrentSet.DocumentElement, "slide_groups", True)
-		  slide_group = slide_groups.FirstChild
-		  'System.DebugLog "Starting While..."
-		  While slide_group <> Nil
-		    
-		    //++EMP
-		    // If the current group has a style, add it to the style objects dictionary
-		    // N.B.: This WILL break if slide-level styles are ever implemented
-		    // Under RB 5.5.5 I tried to do this outside this While with
-		    // StyleNodes = CurrentSet.Xql("//style") to get them all regardless of depth
-		    // but RB kept throwing an "assertion failed" error both with the debug
-		    // and production builds.
-		    // With the current (V1.0) design, this is a little more efficient anyway
-		    // since we don't keep reparsing the set's XML.
-		    
-		    StyleNode = SmartML.GetNode(slide_group, "style", False)
-		    If StyleNode <> Nil Then
-		      tempSlideStyle = New SlideStyle(StyleNode)
-		      // We'll just use the dictionary index as the key; this makes it unique if unimaginative
-		      StyleDict.Value(str(StyleDict.Count)) = tempSlideStyle
-		      '++JRC unnecessary as we will overwrite StyleNode anyway
-		      'StyleNode.SetAttribute "index", Str(StyleDict.Count - 1)
-		      // Going for broke here: Replace the style node with a new one that just has the index...
-		      NewStyleNode = CurrentSet.CreateElement("style")
-		      NewStyleNode.SetAttribute "index", Str(StyleDict.Count - 1)
-		      StyleNode = SmartML.ReplaceWithImportNode(StyleNode, NewStyleNode)
-		    End If
-		    //--EMP
-		    slide_group = slide_group.NextSibling
-		    'System.DebugLog "Next Slide Group"
-		    If slide_group <> Nil Then
-		      'System.DebugLog "Slide Group is " + smartml.GetValue(slide_group, "@name") + ", a " + SmartML.GetValue(slide_group, "@type")
-		    End If
-		  Wend
-		  
-		  'System.DebugLog "Ending While"
-		  
-		  //++EMP
-		  // Now handle  the default styles...
-		  'System.DebugLog "Acquire Defaults"
-		  de = App.MyPresentSettings.DocumentElement
-		  StyleNode = SmartML.GetNode(de, "scripture_style")
-		  tempSlideStyle = New SlideStyle(StyleNode)
-		  StyleDict.Value("scripture_style") = tempSlideStyle
-		  SmartML.SetValue de, "scripture_style/@index", "scripture_style"
-		  'System.DebugLog "Completed scripture_style"
-		  StyleNode = SmartML.GetNode(de, "default_style")
-		  tempSlideStyle = New SlideStyle(StyleNode)
-		  StyleDict.Value("default_style") = tempSlideStyle
-		  SmartML.SetValue de, "default_style/@index", "default_style"
-		  'System.DebugLog "Completed default_style"
-		  //--
-		  '++JRC
+		  'System.DebugLog "Add blanks and confirm bodies exist"
 		  InsertBlanksIntoSet(CurrentSet, Item)
 		  VerifySlideBodies(CurrentSet)
 		  
-		  'System.DebugLog "Add blanks and confirm bodies exist"
-		  
-		  'Dim f1 As FolderItem
-		  '#if DebugBuild
-		  'f1 = GetFolderItem("CurrentSet.xml")
-		  'CurrentSet.SaveXml f1
-		  '#endif
-		  'System.DebugLog "Dumped CurrentSet"
-		  
-		  'CurrentSlide = 1
-		  'XCurrentSlide = SetML.GetSlide(CurrentSet, 1)
-		  
 		  'System.DebugLog "Setup monitors"
+		  de = App.MyPresentSettings.DocumentElement
 		  presentScreen = SmartML.GetValueN(de, "monitors/@present") - 1
 		  controlScreen = SmartML.GetValueN(de, "monitors/@control") - 1
 		  If presentScreen < 0 Or presentScreen > OSScreenCount() - 1 Then presentScreen = 0
@@ -1685,6 +1644,17 @@ End
 		  
 		  cnvSlide.Visible = False 'Prevent the canvas to redraw itself for all size changes below
 		  'System.DebugLog "Determine correct PresentMode"
+		  
+		  Select Case PresentMode
+		  Case MODE_SINGLE_SCREEN, MODE_DUAL_SCREEN, MODE_PREVIEW
+		    ' PresentMode is known
+		  Else
+		    If PresentScreen <> ControlScreen Then
+		      PresentMode = MODE_DUAL_SCREEN
+		    Else
+		      PresentMode = MODE_PREVIEW
+		    End If
+		  End Select
 		  If PresentMode = MODE_SINGLE_SCREEN Then ' Single Screen
 		    presentScreen = controlScreen
 		    HelperActive = False
@@ -1741,6 +1711,65 @@ End
 		    PresentHelperWindow.Top = OSScreen(controlScreen).Top + (OSScreen(controlScreen).Height - PresentHelperWindow.Height) / 2
 		  End If
 		  cnvSlide.Visible = True
+		  
+		  m_ExternalRenderer.Prepare(CurrentSet, Width, Height)
+		  
+		  StyleDict = New Dictionary
+		  
+		  '++JRC
+		  NumberOfItems = Val(setDoc.DocumentElement.GetAttribute("NumberOfItems"))
+		  
+		  slide_groups = SmartML.GetNode(CurrentSet.DocumentElement, "slide_groups", True)
+		  slide_group = slide_groups.FirstChild
+		  'System.DebugLog "Starting While..."
+		  While slide_group <> Nil
+		    
+		    //++EMP
+		    // If the current group has a style, add it to the style objects dictionary
+		    // N.B.: This WILL break if slide-level styles are ever implemented
+		    // Under RB 5.5.5 I tried to do this outside this While with
+		    // StyleNodes = CurrentSet.Xql("//style") to get them all regardless of depth
+		    // but RB kept throwing an "assertion failed" error both with the debug
+		    // and production builds.
+		    // With the current (V1.0) design, this is a little more efficient anyway
+		    // since we don't keep reparsing the set's XML.
+		    
+		    StyleNode = SmartML.GetNode(slide_group, "style", False)
+		    If StyleNode <> Nil Then
+		      tempSlideStyle = New SlideStyle(StyleNode)
+		      // We'll just use the dictionary index as the key; this makes it unique if unimaginative
+		      StyleDict.Value(str(StyleDict.Count)) = tempSlideStyle
+		      '++JRC unnecessary as we will overwrite StyleNode anyway
+		      'StyleNode.SetAttribute "index", Str(StyleDict.Count - 1)
+		      // Going for broke here: Replace the style node with a new one that just has the index...
+		      NewStyleNode = CurrentSet.CreateElement("style")
+		      NewStyleNode.SetAttribute "index", Str(StyleDict.Count - 1)
+		      StyleNode = SmartML.ReplaceWithImportNode(StyleNode, NewStyleNode)
+		    End If
+		    //--EMP
+		    slide_group = slide_group.NextSibling
+		    'System.DebugLog "Next Slide Group"
+		    If slide_group <> Nil Then
+		      'System.DebugLog "Slide Group is " + smartml.GetValue(slide_group, "@name") + ", a " + SmartML.GetValue(slide_group, "@type")
+		    End If
+		  Wend
+		  
+		  'System.DebugLog "Ending While"
+		  
+		  //++EMP
+		  // Now handle  the default styles...
+		  'System.DebugLog "Acquire Defaults"
+		  StyleNode = SmartML.GetNode(de, "scripture_style")
+		  tempSlideStyle = New SlideStyle(StyleNode)
+		  StyleDict.Value("scripture_style") = tempSlideStyle
+		  SmartML.SetValue de, "scripture_style/@index", "scripture_style"
+		  'System.DebugLog "Completed scripture_style"
+		  StyleNode = SmartML.GetNode(de, "default_style")
+		  tempSlideStyle = New SlideStyle(StyleNode)
+		  StyleDict.Value("default_style") = tempSlideStyle
+		  SmartML.SetValue de, "default_style/@index", "default_style"
+		  'System.DebugLog "Completed default_style"
+		  //--
 		  
 		  //++
 		  // EMP, September 2006
@@ -1848,9 +1877,9 @@ End
 		  PresentCursor = Self.MouseCursor
 		  AppCursor = App.MouseCursor
 		  Self.Visible = True
-		  Catch e
-		    RuntimeException(e).message = "In PresentWindow.Present: " + e.Message
-		    Raise e
+		Catch e
+		  RuntimeException(e).message = "In PresentWindow.Present: " + e.Message
+		  Raise e
 		End Sub
 	#tag EndMethod
 
@@ -1927,7 +1956,7 @@ End
 		              End If
 		            End Select
 		            
-		            Dim oExtPres As iPresentation = PresentationFactory.GetOrCreate( presFile.NativePath(), presHost )
+		            Dim oExtPres As iPresentation = PresentationFactory.GetOrCreate( presFile.AbsolutePath(), presHost )
 		            If Not IsNull( oExtPres ) Then
 		              Call oExtPres.EndShow()
 		            End If
@@ -1997,7 +2026,7 @@ End
 		              End If
 		            End Select
 		            
-		            Dim oExtPres As iPresentation = PresentationFactory.GetOrCreate( presFile.NativePath(), presHost )
+		            Dim oExtPres As iPresentation = PresentationFactory.GetOrCreate( presFile.AbsolutePath(), presHost )
 		            If Not IsNull( oExtPres ) Then
 		              
 		              Dim presIndex As Integer = SmartML.GetValueN(slide, "@id", False)
@@ -2073,7 +2102,7 @@ End
 		        
 		        If Not IsNull(launchAppLocation) Then
 		          If launchAppLocation.Exists() Then
-		            cmd = launchAppLocation.NativePath()
+		            cmd = launchAppLocation.AbsolutePath()
 		          End If
 		        End If
 		        
@@ -2126,7 +2155,12 @@ End
 		    'SetML.DrawSlide PreviewPicture.Graphics, XCurrentSlide, xStyle
 		    ' -- New way --
 		    xStyle = SetML.GetStyle(slide)
-		    SetML.DrawSlide PreviewPicture.Graphics, slide, xStyle
+		    
+		    Dim external_did_draw as Boolean = m_ExternalRenderer.Render(PreviewPicture.Graphics, slide, PresentWindow.CurrentSlide)
+		    if not external_did_draw then
+		      SetML.DrawSlide PreviewPicture.Graphics, slide, xStyle
+		    end if
+		    
 		    curslideTransition = SetML.GetSlideTransition(slide)
 		    
 		    Profiler.EndProfilerEntry'
@@ -2448,8 +2482,9 @@ End
 		  
 		  While slide_group <> Nil
 		    If SmartML.GetValue(slide_group, "@type") <> "style" And _
-		    SmartML.GetNode(slide_group, "slides", True).ChildCount < 1 Then _
-		    SmartML.SetValue slide_group, "slides/slide/body", ""
+		      SmartML.GetNode(slide_group, "slides", True).ChildCount < 1 Then
+		      SmartML.SetValue slide_group, "slides/slide/body", ""
+		    End If
 		    
 		    slide_group = slide_group.NextSibling
 		  Wend
@@ -2554,6 +2589,10 @@ End
 		HelperActive As Boolean
 	#tag EndProperty
 
+	#tag Property, Flags = &h21
+		Private LastCommandHandled As Boolean = True
+	#tag EndProperty
+
 	#tag Property, Flags = &h0
 		LastPicture As Picture
 	#tag EndProperty
@@ -2572,6 +2611,10 @@ End
 
 	#tag Property, Flags = &h21
 		Private m_ClickCount As Integer = 0
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
+		m_ExternalRenderer As ExternalRenderer
 	#tag EndProperty
 
 	#tag Property, Flags = &h1
@@ -2838,10 +2881,10 @@ End
 		  // This corrects an issue seen when changing the SButton style
 		  // after a presentation and for some reason this window is still open
 		  //--
-		  Catch ex
-		    App.DebugWriter.Write("PresentWindow.cnvSlide.Paint: Got an exception: " +_
-		    RuntimeException(ex).Message, 1)
-		    Return
+		Catch ex
+		  App.DebugWriter.Write("PresentWindow.cnvSlide.Paint: Got an exception: " +_
+		  RuntimeException(ex).Message, 1)
+		  Return
 		End Sub
 	#tag EndEvent
 #tag EndEvents
@@ -2958,6 +3001,7 @@ End
 			"7 - Global Floating Window"
 			"8 - Sheet Window"
 			"9 - Metal Window"
+			"10 - Drawer Window"
 			"11 - Modeless Dialog"
 		#tag EndEnumValues
 	#tag EndViewProperty

@@ -62,37 +62,8 @@ Inherits Listbox
 		    Next
 		  Next
 		  
-		  result = DragOverRow( x, y, obj, action, Me.currentDropRow )
+		  result = DragOverRowX( x, y, obj, action, Me.currentDropRow )
 		  Return result
-		End Function
-	#tag EndEvent
-
-	#tag Event
-		Function DragReorderRows(newPosition as Integer, parentRow as Integer) As Boolean
-		  Dim r, c As Integer
-		  Dim sourceRow As Integer
-		  
-		  sourceRow = ListIndex()
-		  If newPosition < sourceRow Then
-		    sourceRow = sourceRow + 1
-		  End If
-		  
-		  InsertRow( newPosition, "")
-		  For c = 0 to ColumnCount()-1
-		    CellTag( newPosition, c ) = CellTag( sourceRow, c )
-		    Cell( newPosition, c ) = Cell( sourceRow, c )
-		  Next
-		  
-		  RemoveRow( sourceRow )
-		  ListIndex() = newPosition
-		  
-		  For r = 0 to sourceRow-1
-		    For c = 0 to ColumnCount()-1
-		      CellBorderTop( r, c ) = ListBox.BorderDefault
-		    Next
-		  Next
-		  
-		  Return False
 		End Function
 	#tag EndEvent
 
@@ -226,7 +197,7 @@ Inherits Listbox
 
 
 	#tag Hook, Flags = &h0
-		Event DragOverRow(x As Integer, y As Integer, obj As DragItem, action As Integer, row as Integer) As Boolean
+		Event DragOverRowX(x As Integer, y As Integer, obj As DragItem, action As Integer, row as Integer) As Boolean
 	#tag EndHook
 
 	#tag Hook, Flags = &h0
@@ -555,6 +526,13 @@ Inherits Listbox
 				"0 - Single"
 				"1 - Multiple"
 			#tag EndEnumValues
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="ShowDropIndicator"
+			Visible=true
+			Group="Appearance"
+			InitialValue="False"
+			Type="Boolean"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Super"

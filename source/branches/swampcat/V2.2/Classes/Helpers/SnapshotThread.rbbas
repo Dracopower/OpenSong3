@@ -170,9 +170,12 @@ Inherits Thread
 		  
 		  If Not IsNull(imageFileName) Then
 		    Try
-		      '++JRC Comented out second parameter for compatibilty with RB 2010r3
-		      data.image.Save(ImageFileName, 151) ' , 85)
-		      
+		      //Optional parameter for JPG quality added in 2010r5
+		      #If RBVersion < 2010.05
+		        data.image.Save(ImageFileName, 151)
+		      #Else
+		        data.image.Save(ImageFileName, Picture.SaveAsJPEG , 85)
+		      #EndIf
 		      If export_metadata And Not IsNull(metaFileName) then
 		        Dim metaDoc As New XmlDocument
 		        Dim metaSlide As XmlElement = metaDoc.CreateElement("slide")
@@ -212,20 +215,14 @@ Inherits Thread
 			Visible=true
 			Group="ID"
 			Type="Integer"
-			InheritedFrom="Thread"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="Left"
-			Visible=true
-			Group="Position"
-			Type="Integer"
-			InheritedFrom="Thread"
+			EditorType="Integer"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Name"
 			Visible=true
 			Group="ID"
-			InheritedFrom="Thread"
+			Type="String"
+			EditorType="String"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Priority"
@@ -233,7 +230,6 @@ Inherits Thread
 			Group="Behavior"
 			InitialValue="5"
 			Type="Integer"
-			InheritedFrom="Thread"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="StackSize"
@@ -241,20 +237,13 @@ Inherits Thread
 			Group="Behavior"
 			InitialValue="0"
 			Type="Integer"
-			InheritedFrom="Thread"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Super"
 			Visible=true
 			Group="ID"
-			InheritedFrom="Thread"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="Top"
-			Visible=true
-			Group="Position"
-			Type="Integer"
-			InheritedFrom="Thread"
+			Type="String"
+			EditorType="String"
 		#tag EndViewProperty
 	#tag EndViewBehavior
 End Class

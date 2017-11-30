@@ -115,7 +115,7 @@ Begin Window MainSettingsWindow
       TextUnit        =   0
       Top             =   7
       Underline       =   False
-      Value           =   4
+      Value           =   3
       Visible         =   True
       Width           =   623
       Begin GroupBox grp_settings_general
@@ -167,7 +167,6 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   0
             TabPanelIndex   =   1
-            TabStop         =   True
             Text            =   "Church CCLI License"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -277,7 +276,6 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   3
             TabPanelIndex   =   1
-            TabStop         =   True
             Text            =   "Language:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -371,7 +369,6 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   0
             TabPanelIndex   =   1
-            TabStop         =   True
             Text            =   "User Defined 1:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -454,7 +451,6 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   2
             TabPanelIndex   =   1
-            TabStop         =   True
             Text            =   "User Defined 2:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -537,7 +533,6 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   4
             TabPanelIndex   =   1
-            TabStop         =   True
             Text            =   "User Defined 3:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -733,7 +728,7 @@ Begin Window MainSettingsWindow
          LockRight       =   False
          LockTop         =   False
          Scope           =   0
-         TabIndex        =   4
+         TabIndex        =   0
          TabPanelIndex   =   4
          TabStop         =   True
          TextFont        =   "Arial"
@@ -765,7 +760,6 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   0
             TabPanelIndex   =   4
-            TabStop         =   True
             Text            =   "Log level (0-10)"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -891,7 +885,7 @@ Begin Window MainSettingsWindow
          LockRight       =   False
          LockTop         =   False
          Scope           =   0
-         TabIndex        =   7
+         TabIndex        =   2
          TabPanelIndex   =   4
          TabStop         =   True
          TextFont        =   "Arial"
@@ -912,7 +906,7 @@ Begin Window MainSettingsWindow
             Index           =   -2147483648
             InitialParent   =   "grp_settings_proxy"
             Italic          =   False
-            Left            =   358
+            Left            =   357
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   False
@@ -923,7 +917,6 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   0
             TabPanelIndex   =   4
-            TabStop         =   True
             Text            =   "Server:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -934,7 +927,7 @@ Begin Window MainSettingsWindow
             Transparent     =   False
             Underline       =   False
             Visible         =   True
-            Width           =   143
+            Width           =   193
          End
          Begin Label lbl_proxy_port
             AutoDeactivate  =   True
@@ -947,7 +940,7 @@ Begin Window MainSettingsWindow
             Index           =   -2147483648
             InitialParent   =   "grp_settings_proxy"
             Italic          =   False
-            Left            =   563
+            Left            =   562
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   False
@@ -956,9 +949,8 @@ Begin Window MainSettingsWindow
             Multiline       =   False
             Scope           =   0
             Selectable      =   False
-            TabIndex        =   1
+            TabIndex        =   2
             TabPanelIndex   =   4
-            TabStop         =   True
             Text            =   "Port:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -1005,7 +997,7 @@ Begin Window MainSettingsWindow
             ScrollbarHorizontal=   False
             ScrollbarVertical=   True
             Styled          =   False
-            TabIndex        =   2
+            TabIndex        =   1
             TabPanelIndex   =   4
             TabStop         =   True
             Text            =   ""
@@ -1037,7 +1029,7 @@ Begin Window MainSettingsWindow
             Index           =   -2147483648
             InitialParent   =   "grp_settings_proxy"
             Italic          =   False
-            Left            =   563
+            Left            =   562
             LimitText       =   0
             LineHeight      =   0.0
             LineSpacing     =   1.0
@@ -1085,7 +1077,7 @@ Begin Window MainSettingsWindow
          LockRight       =   False
          LockTop         =   False
          Scope           =   0
-         TabIndex        =   8
+         TabIndex        =   1
          TabPanelIndex   =   4
          TabStop         =   True
          TextFont        =   "Arial"
@@ -1267,7 +1259,6 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   2
             TabPanelIndex   =   2
-            TabStop         =   True
             Text            =   "\\"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -1333,7 +1324,6 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   4
             TabPanelIndex   =   2
-            TabStop         =   True
             Text            =   "(use with caution; forces restart)"
             TextAlign       =   0
             TextColor       =   &cFF000000
@@ -1428,7 +1418,6 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   0
             TabPanelIndex   =   2
-            TabStop         =   True
             Text            =   "Location of Powerpoint Viewer"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -1568,7 +1557,6 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   4
             TabPanelIndex   =   2
-            TabStop         =   True
             Text            =   "Location of Videolan client"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -1642,7 +1630,7 @@ Begin Window MainSettingsWindow
          LockRight       =   False
          LockTop         =   False
          Scope           =   0
-         TabIndex        =   0
+         TabIndex        =   5
          TabPanelIndex   =   5
          TabStop         =   True
          TextFont        =   "Arial"
@@ -1674,7 +1662,6 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   0
             TabPanelIndex   =   5
-            TabStop         =   True
             Text            =   "Headings:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -1709,7 +1696,6 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   1
             TabPanelIndex   =   5
-            TabStop         =   True
             Text            =   "Labels:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -1744,7 +1730,6 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   2
             TabPanelIndex   =   5
-            TabStop         =   True
             Text            =   "Text Fields:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -1779,7 +1764,6 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   3
             TabPanelIndex   =   5
-            TabStop         =   True
             Text            =   "Fixed-width Text:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -1844,7 +1828,6 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   5
             TabPanelIndex   =   5
-            TabStop         =   True
             Text            =   "Buttons:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -1909,7 +1892,6 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   7
             TabPanelIndex   =   5
-            TabStop         =   True
             Text            =   "Large Headings:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -2092,7 +2074,7 @@ Begin Window MainSettingsWindow
          LockRight       =   False
          LockTop         =   True
          Scope           =   0
-         TabIndex        =   1
+         TabIndex        =   6
          TabPanelIndex   =   5
          TabStop         =   True
          TextFont        =   "Arial"
@@ -2154,7 +2136,6 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   2
             TabPanelIndex   =   5
-            TabStop         =   True
             Text            =   "Song, verse"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -2189,7 +2170,6 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   3
             TabPanelIndex   =   5
-            TabStop         =   True
             Text            =   "Song, bridge"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -2254,7 +2234,6 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   5
             TabPanelIndex   =   5
-            TabStop         =   True
             Text            =   "Song, pre-chorus"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -2319,7 +2298,6 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   7
             TabPanelIndex   =   5
-            TabStop         =   True
             Text            =   "Song, chorus"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -2384,7 +2362,6 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   9
             TabPanelIndex   =   5
-            TabStop         =   True
             Text            =   "Song, tag"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -2449,7 +2426,6 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   11
             TabPanelIndex   =   5
-            TabStop         =   True
             Text            =   "Scripture"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -2514,7 +2490,6 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   13
             TabPanelIndex   =   5
-            TabStop         =   True
             Text            =   "Custom slide"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -2579,7 +2554,6 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   15
             TabPanelIndex   =   5
-            TabStop         =   True
             Text            =   "Style change"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -2644,7 +2618,6 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   17
             TabPanelIndex   =   5
-            TabStop         =   True
             Text            =   "Image"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -2709,7 +2682,6 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   19
             TabPanelIndex   =   5
-            TabStop         =   True
             Text            =   "External application"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -2774,7 +2746,6 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   21
             TabPanelIndex   =   5
-            TabStop         =   True
             Text            =   "Blank (inserted)"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -2867,13 +2838,13 @@ Begin Window MainSettingsWindow
          LockRight       =   False
          LockTop         =   False
          Scope           =   0
-         TabIndex        =   10
+         TabIndex        =   3
          TabPanelIndex   =   4
          TabStop         =   True
          TextFont        =   "Arial"
          TextSize        =   11.0
          TextUnit        =   0
-         Top             =   137
+         Top             =   127
          Underline       =   False
          Visible         =   True
          Width           =   280
@@ -2888,7 +2859,7 @@ Begin Window MainSettingsWindow
             Index           =   -2147483648
             InitialParent   =   "grp_settings_rcserver"
             Italic          =   False
-            Left            =   358
+            Left            =   357
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   False
@@ -2897,20 +2868,19 @@ Begin Window MainSettingsWindow
             Multiline       =   False
             Scope           =   0
             Selectable      =   False
-            TabIndex        =   0
+            TabIndex        =   1
             TabPanelIndex   =   4
-            TabStop         =   True
             Text            =   "Authentication key:"
             TextAlign       =   0
             TextColor       =   &c00000000
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
-            Top             =   182
+            Top             =   172
             Transparent     =   False
             Underline       =   False
             Visible         =   True
-            Width           =   143
+            Width           =   193
          End
          Begin Label lbl_rcserver_port
             AutoDeactivate  =   True
@@ -2932,20 +2902,99 @@ Begin Window MainSettingsWindow
             Multiline       =   False
             Scope           =   0
             Selectable      =   False
-            TabIndex        =   1
+            TabIndex        =   3
             TabPanelIndex   =   4
-            TabStop         =   True
             Text            =   "Port:"
             TextAlign       =   0
             TextColor       =   &c00000000
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
-            Top             =   181
+            Top             =   171
             Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   50
+         End
+         Begin SEditField edt_rcserver_port
+            AcceptTabs      =   False
+            Alignment       =   0
+            AutoDeactivate  =   True
+            AutomaticallyCheckSpelling=   True
+            BackColor       =   &cFFFFFF00
+            Bold            =   False
+            Border          =   True
+            DataField       =   ""
+            DataSource      =   ""
+            Enabled         =   True
+            Format          =   ""
+            Height          =   20
+            HelpTag         =   ""
+            HideSelection   =   True
+            Index           =   -2147483648
+            InitialParent   =   "grp_settings_rcserver"
+            Italic          =   False
+            Left            =   562
+            LimitText       =   0
+            LineHeight      =   0.0
+            LineSpacing     =   1.0
+            LockBottom      =   False
+            LockedInPosition=   False
+            LockLeft        =   False
+            LockRight       =   False
+            LockTop         =   False
+            Mask            =   ""
+            Multiline       =   False
+            ReadOnly        =   False
+            Scope           =   0
+            ScrollbarHorizontal=   False
+            ScrollbarVertical=   True
+            Styled          =   False
+            TabIndex        =   4
+            TabPanelIndex   =   4
+            TabStop         =   True
+            Text            =   ""
+            TextColor       =   &c00000000
+            TextFont        =   "Arial"
+            TextSize        =   10.0
+            TextUnit        =   0
+            Top             =   187
+            Underline       =   False
+            UseFocusRing    =   True
+            Visible         =   True
+            Width           =   50
+         End
+         Begin CheckBox chk_rcserver_enable
+            AutoDeactivate  =   True
+            Bold            =   False
+            Caption         =   "Enable remote control server"
+            DataField       =   ""
+            DataSource      =   ""
+            Enabled         =   True
+            Height          =   20
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "grp_settings_rcserver"
+            Italic          =   False
+            Left            =   357
+            LockBottom      =   False
+            LockedInPosition=   False
+            LockLeft        =   True
+            LockRight       =   False
+            LockTop         =   True
+            Scope           =   0
+            State           =   0
+            TabIndex        =   0
+            TabPanelIndex   =   4
+            TabStop         =   True
+            TextFont        =   "Arial"
+            TextSize        =   10.0
+            TextUnit        =   0
+            Top             =   146
+            Underline       =   False
+            Value           =   False
+            Visible         =   True
+            Width           =   255
          End
          Begin SEditField edt_rcserver_key
             AcceptTabs      =   False
@@ -2989,91 +3038,11 @@ Begin Window MainSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
-            Top             =   199
+            Top             =   187
             Underline       =   False
             UseFocusRing    =   True
             Visible         =   True
             Width           =   193
-         End
-         Begin SEditField edt_rcserver_port
-            AcceptTabs      =   False
-            Alignment       =   0
-            AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   True
-            BackColor       =   &cFFFFFF00
-            Bold            =   False
-            Border          =   True
-            DataField       =   ""
-            DataSource      =   ""
-            Enabled         =   True
-            Format          =   ""
-            Height          =   20
-            HelpTag         =   ""
-            HideSelection   =   True
-            Index           =   -2147483648
-            InitialParent   =   "grp_settings_rcserver"
-            Italic          =   False
-            Left            =   562
-            LimitText       =   0
-            LineHeight      =   0.0
-            LineSpacing     =   1.0
-            LockBottom      =   False
-            LockedInPosition=   False
-            LockLeft        =   False
-            LockRight       =   False
-            LockTop         =   False
-            Mask            =   ""
-            Multiline       =   False
-            ReadOnly        =   False
-            Scope           =   0
-            ScrollbarHorizontal=   False
-            ScrollbarVertical=   True
-            Styled          =   False
-            TabIndex        =   3
-            TabPanelIndex   =   4
-            TabStop         =   True
-            Text            =   ""
-            TextColor       =   &c00000000
-            TextFont        =   "Arial"
-            TextSize        =   10.0
-            TextUnit        =   0
-            Top             =   197
-            Underline       =   False
-            UseFocusRing    =   True
-            Visible         =   True
-            Width           =   50
-         End
-         Begin CheckBox chk_rcserver_enable
-            AutoDeactivate  =   True
-            Bold            =   False
-            Caption         =   "Enable remote control server"
-            DataField       =   ""
-            DataSource      =   ""
-            Enabled         =   True
-            Height          =   20
-            HelpTag         =   ""
-            Index           =   -2147483648
-            InitialParent   =   "grp_settings_rcserver"
-            Italic          =   False
-            Left            =   357
-            LockBottom      =   False
-            LockedInPosition=   False
-            LockLeft        =   True
-            LockRight       =   False
-            LockTop         =   True
-            Scope           =   0
-            State           =   0
-            TabIndex        =   4
-            TabPanelIndex   =   4
-            TabStop         =   True
-            TextFont        =   "Arial"
-            TextSize        =   10.0
-            TextUnit        =   0
-            Top             =   156
-            Underline       =   False
-            Value           =   False
-            Visible         =   True
-            Width           =   255
          End
       End
       Begin GroupBox grp_settings_imagequality
@@ -3125,7 +3094,6 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   0
             TabPanelIndex   =   3
-            TabStop         =   True
             Text            =   "OpenSong tries to store the images that are used in a set in JPEG format. The items below control the quality and behaviour of image storage. The quality slider below will be disabled if QuickTime is not installed as OpenSong depends on that for storing JPEG images in user selectable quality."
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -3160,7 +3128,6 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   2
             TabPanelIndex   =   3
-            TabStop         =   True
             Text            =   "Image compression:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -3453,6 +3420,312 @@ Begin Window MainSettingsWindow
             Width           =   275
          End
       End
+      Begin GroupBox grp_settings_extrender
+         AutoDeactivate  =   True
+         Bold            =   False
+         Caption         =   "External Renderer"
+         Enabled         =   True
+         Height          =   136
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "tab_general_general"
+         Italic          =   False
+         Left            =   343
+         LockBottom      =   False
+         LockedInPosition=   False
+         LockLeft        =   False
+         LockRight       =   False
+         LockTop         =   False
+         Scope           =   0
+         TabIndex        =   4
+         TabPanelIndex   =   4
+         TabStop         =   True
+         TextFont        =   "Arial"
+         TextSize        =   11.0
+         TextUnit        =   0
+         Top             =   242
+         Underline       =   False
+         Visible         =   True
+         Width           =   280
+         Begin CheckBox chk_extrender_enable
+            AutoDeactivate  =   True
+            Bold            =   False
+            Caption         =   "Enable external renderer"
+            DataField       =   ""
+            DataSource      =   ""
+            Enabled         =   True
+            Height          =   20
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "grp_settings_extrender"
+            Italic          =   False
+            Left            =   357
+            LockBottom      =   False
+            LockedInPosition=   False
+            LockLeft        =   True
+            LockRight       =   False
+            LockTop         =   True
+            Scope           =   0
+            State           =   0
+            TabIndex        =   0
+            TabPanelIndex   =   4
+            TabStop         =   True
+            TextFont        =   "Arial"
+            TextSize        =   10.0
+            TextUnit        =   0
+            Top             =   261
+            Underline       =   False
+            Value           =   False
+            Visible         =   True
+            Width           =   255
+         End
+         Begin Label lbl_extrender_port
+            AutoDeactivate  =   True
+            Bold            =   False
+            DataField       =   ""
+            DataSource      =   ""
+            Enabled         =   True
+            Height          =   15
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "grp_settings_extrender"
+            Italic          =   False
+            Left            =   562
+            LockBottom      =   False
+            LockedInPosition=   False
+            LockLeft        =   False
+            LockRight       =   False
+            LockTop         =   False
+            Multiline       =   False
+            Scope           =   0
+            Selectable      =   False
+            TabIndex        =   3
+            TabPanelIndex   =   4
+            Text            =   "Port:"
+            TextAlign       =   0
+            TextColor       =   &c00000000
+            TextFont        =   "Arial"
+            TextSize        =   10.0
+            TextUnit        =   0
+            Top             =   287
+            Transparent     =   False
+            Underline       =   False
+            Visible         =   True
+            Width           =   50
+         End
+         Begin Label lbl_extrender_server
+            AutoDeactivate  =   True
+            Bold            =   False
+            DataField       =   ""
+            DataSource      =   ""
+            Enabled         =   True
+            Height          =   15
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "grp_settings_extrender"
+            Italic          =   False
+            Left            =   357
+            LockBottom      =   False
+            LockedInPosition=   False
+            LockLeft        =   False
+            LockRight       =   False
+            LockTop         =   False
+            Multiline       =   False
+            Scope           =   0
+            Selectable      =   False
+            TabIndex        =   1
+            TabPanelIndex   =   4
+            Text            =   "Server:"
+            TextAlign       =   0
+            TextColor       =   &c00000000
+            TextFont        =   "Arial"
+            TextSize        =   10.0
+            TextUnit        =   0
+            Top             =   288
+            Transparent     =   False
+            Underline       =   False
+            Visible         =   True
+            Width           =   193
+         End
+         Begin SEditField edt_extrender_port
+            AcceptTabs      =   False
+            Alignment       =   0
+            AutoDeactivate  =   True
+            AutomaticallyCheckSpelling=   True
+            BackColor       =   &cFFFFFF00
+            Bold            =   False
+            Border          =   True
+            DataField       =   ""
+            DataSource      =   ""
+            Enabled         =   True
+            Format          =   ""
+            Height          =   20
+            HelpTag         =   ""
+            HideSelection   =   True
+            Index           =   -2147483648
+            InitialParent   =   "grp_settings_extrender"
+            Italic          =   False
+            Left            =   562
+            LimitText       =   0
+            LineHeight      =   0.0
+            LineSpacing     =   1.0
+            LockBottom      =   False
+            LockedInPosition=   False
+            LockLeft        =   False
+            LockRight       =   False
+            LockTop         =   False
+            Mask            =   ""
+            Multiline       =   False
+            ReadOnly        =   False
+            Scope           =   0
+            ScrollbarHorizontal=   False
+            ScrollbarVertical=   True
+            Styled          =   False
+            TabIndex        =   4
+            TabPanelIndex   =   4
+            TabStop         =   True
+            Text            =   ""
+            TextColor       =   &c00000000
+            TextFont        =   "Arial"
+            TextSize        =   10.0
+            TextUnit        =   0
+            Top             =   302
+            Underline       =   False
+            UseFocusRing    =   True
+            Visible         =   True
+            Width           =   50
+         End
+         Begin SEditField edt_extrender_server
+            AcceptTabs      =   False
+            Alignment       =   0
+            AutoDeactivate  =   True
+            AutomaticallyCheckSpelling=   True
+            BackColor       =   &cFFFFFF00
+            Bold            =   False
+            Border          =   True
+            DataField       =   ""
+            DataSource      =   ""
+            Enabled         =   True
+            Format          =   ""
+            Height          =   20
+            HelpTag         =   ""
+            HideSelection   =   True
+            Index           =   -2147483648
+            InitialParent   =   "grp_settings_extrender"
+            Italic          =   False
+            Left            =   357
+            LimitText       =   0
+            LineHeight      =   0.0
+            LineSpacing     =   1.0
+            LockBottom      =   False
+            LockedInPosition=   False
+            LockLeft        =   False
+            LockRight       =   False
+            LockTop         =   False
+            Mask            =   ""
+            Multiline       =   False
+            ReadOnly        =   False
+            Scope           =   0
+            ScrollbarHorizontal=   False
+            ScrollbarVertical=   True
+            Styled          =   False
+            TabIndex        =   2
+            TabPanelIndex   =   4
+            TabStop         =   True
+            Text            =   ""
+            TextColor       =   &c00000000
+            TextFont        =   "Arial"
+            TextSize        =   10.0
+            TextUnit        =   0
+            Top             =   304
+            Underline       =   False
+            UseFocusRing    =   True
+            Visible         =   True
+            Width           =   193
+         End
+         Begin SEditField edt_extrender_timeout
+            AcceptTabs      =   False
+            Alignment       =   0
+            AutoDeactivate  =   True
+            AutomaticallyCheckSpelling=   True
+            BackColor       =   &cFFFFFF00
+            Bold            =   False
+            Border          =   True
+            DataField       =   ""
+            DataSource      =   ""
+            Enabled         =   True
+            Format          =   ""
+            Height          =   20
+            HelpTag         =   ""
+            HideSelection   =   True
+            Index           =   -2147483648
+            InitialParent   =   "grp_settings_extrender"
+            Italic          =   False
+            Left            =   357
+            LimitText       =   0
+            LineHeight      =   0.0
+            LineSpacing     =   1.0
+            LockBottom      =   False
+            LockedInPosition=   False
+            LockLeft        =   False
+            LockRight       =   False
+            LockTop         =   False
+            Mask            =   ""
+            Multiline       =   False
+            ReadOnly        =   False
+            Scope           =   0
+            ScrollbarHorizontal=   False
+            ScrollbarVertical=   True
+            Styled          =   False
+            TabIndex        =   6
+            TabPanelIndex   =   4
+            TabStop         =   True
+            Text            =   ""
+            TextColor       =   &c00000000
+            TextFont        =   "Arial"
+            TextSize        =   10.0
+            TextUnit        =   0
+            Top             =   345
+            Underline       =   False
+            UseFocusRing    =   True
+            Visible         =   True
+            Width           =   50
+         End
+         Begin Label lbl_extrender_timeout
+            AutoDeactivate  =   True
+            Bold            =   False
+            DataField       =   ""
+            DataSource      =   ""
+            Enabled         =   True
+            Height          =   15
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "grp_settings_extrender"
+            Italic          =   False
+            Left            =   357
+            LockBottom      =   False
+            LockedInPosition=   False
+            LockLeft        =   False
+            LockRight       =   False
+            LockTop         =   False
+            Multiline       =   False
+            Scope           =   0
+            Selectable      =   False
+            TabIndex        =   5
+            TabPanelIndex   =   4
+            Text            =   "Timeout (in ms):"
+            TextAlign       =   0
+            TextColor       =   &c00000000
+            TextFont        =   "Arial"
+            TextSize        =   10.0
+            TextUnit        =   0
+            Top             =   328
+            Transparent     =   False
+            Underline       =   False
+            Visible         =   True
+            Width           =   193
+         End
+      End
    End
 End
 #tag EndWindow
@@ -3485,6 +3758,20 @@ End
 		    edt_rcserver_port.Text = "8082"
 		  End If
 		  
+		  chk_extrender_enable.Value = SmartML.GetValueB(App.MyMainSettings.DocumentElement, "extrender/@enable", False, False)
+		  edt_extrender_server.Text = SmartML.GetValue(App.MyMainSettings.DocumentElement, "extrender/server", False)
+		  If edt_extrender_server.Text = "" Then
+		    edt_extrender_server.Text = "localhost"
+		  End If
+		  edt_extrender_port.Text = SmartML.GetValue(App.MyMainSettings.DocumentElement, "extrender/@port", False)
+		  If edt_extrender_port.Text = "" Or edt_extrender_port.Text = "0" Then
+		    edt_extrender_port.Text = "8083"
+		  End If
+		  edt_extrender_timeout.Text = SmartML.GetValue(App.MyMainSettings.DocumentElement, "extrender/@timeout", False)
+		  If edt_extrender_timeout.Text = "" Or edt_extrender_timeout.Text = "0" Then
+		    edt_extrender_timeout.Text = "3000"
+		  End If
+		  
 		  //++
 		  // EMP, July 2007
 		  // Simplified this logic a little since there is now a way to return FolderItem from preferences
@@ -3496,12 +3783,12 @@ End
 		  
 		  PPTViewLocation = App.MainPreferences.GetValueFI(Prefs.kPPTViewLocation, Nil, False)
 		  If Not IsNull( PPTViewLocation ) Then
-		    edt_applications_pptview.Text = PPTViewLocation.NativePath()
+		    edt_applications_pptview.Text = PPTViewLocation.AbsolutePath()
 		  End If
 		  
 		  VideolanLocation = App.MainPreferences.GetValueFI(Prefs.kVideolanLocation, Nil, False)
 		  If Not IsNull( VideolanLocation ) Then
-		    edt_applications_videolan.Text = VideolanLocation.NativePath()
+		    edt_applications_videolan.Text = VideolanLocation.AbsolutePath()
 		  End If
 		  
 		  s = App.MainPreferences.GetValue(Prefs.kLanguage, "English")
@@ -3522,7 +3809,7 @@ End
 		      End If
 		    Next i
 		  Catch
-		    InputBox.Message "No languages available; please check the directory " + f.NativePath
+		    InputBox.Message "No languages available; please check the directory " + f.AbsolutePath
 		  End Try
 		  
 		  pop_general_language.ListIndex = currlang
@@ -3696,12 +3983,12 @@ End
 		    If App.CheckDocumentFolders(App.SETTINGS_FOLDER) <> App.NO_FOLDER Then
 		      '+++EMP Use FolderItem and .Child instead of AbsolutePath
 		      If NOT Globals.SongActivityLog.Load(App.DocsFolder.Child("Settings").Child("ActivityLog.xml")) Then
-		        MsgBox  App.T.Translate("errors/activity_disabled", App.DocsFolder.Child("Settings").Child("ActivityLog.xml").NativePath)
+		        MsgBox  App.T.Translate("errors/activity_disabled", App.DocsFolder.Child("Settings").Child("ActivityLog.xml").AbsolutePath)
 		        Globals.SongActivityLog = Nil
 		      End If
 		    Else
 		      If App.DocsFolder <> Nil Then
-		        MsgBox  App.T.Translate("errors/activity_disabled", App.DocsFolder.NativePath + "Settings\ActivityLog.xml")
+		        MsgBox  App.T.Translate("errors/activity_disabled", App.DocsFolder.AbsolutePath + "Settings\ActivityLog.xml")
 		      Else
 		        MsgBox App.T.Translate("errors/no_docs_folder", "")
 		      End If
@@ -3852,6 +4139,11 @@ End
 		  SmartML.SetValue Settings, "rcserver/key", edt_rcserver_key.Text
 		  SmartML.SetValueN Settings, "rcserver/@port", Val(edt_rcserver_port.Text)
 		  
+		  SmartML.SetValueB Settings, "extrender/@enable", chk_extrender_enable.Value
+		  SmartML.SetValue Settings, "extrender/server", edt_extrender_server.Text
+		  SmartML.SetValueN Settings, "extrender/@port", Val(edt_extrender_port.Text)
+		  SmartML.SetValueN Settings, "extrender/@timeout", Val(edt_extrender_timeout.Text)
+		  
 		  SmartML.SetValue Settings, "user_defined/@user1", edt_define_user1.Text
 		  SmartML.SetValue Settings, "user_defined/@user2", edt_define_user2.Text
 		  SmartML.SetValue Settings, "user_defined/@user3", edt_define_user3.Text
@@ -3955,7 +4247,7 @@ End
 		    If Not SmartML.XDocToFile(App.MyMainSettings, App.DocsFolder.Child(App.STR_SETTINGS).Child("MainSettings")) Then SmartML.DisplayError
 		  Else
 		    If App.DocsFolder <> Nil Then
-		      MsgBox App.T.Translate("errors/create_settings_folder",  App.DocsFolder.NativePath + App.STR_SETTINGS)
+		      MsgBox App.T.Translate("errors/create_settings_folder",  App.DocsFolder.AbsolutePath + App.STR_SETTINGS)
 		    Else
 		      MsgBox App.T.Translate("errors/no_docs_folder", "")
 		    End If
@@ -4193,7 +4485,7 @@ End
 		  If NewDocsFolder = Nil Then Return // User cancelled
 		  
 		  // Is the selected folder the same as previous?
-		  If NewDocsFolder.NativePath = DocsFolder.NativePath Then
+		  If NewDocsFolder.AbsolutePath = DocsFolder.AbsolutePath Then
 		    NewDocsFolder = Nil
 		    Return
 		  End If
@@ -4219,7 +4511,7 @@ End
 		  If NewPPTViewLocation = Nil Then Return // User cancelled
 		  
 		  PPTViewLocation = NewPPTViewLocation
-		  edt_applications_pptview.Text = PPTViewLocation.NativePath()
+		  edt_applications_pptview.Text = PPTViewLocation.AbsolutePath()
 		  
 		End Sub
 	#tag EndEvent
@@ -4239,26 +4531,9 @@ End
 		  If NewVideolanLocation = Nil Then Return // User cancelled
 		  
 		  VideolanLocation = NewVideolanLocation
-		  edt_applications_videolan.Text = VideolanLocation.NativePath()
+		  edt_applications_videolan.Text = VideolanLocation.AbsolutePath()
 		  
 		End Sub
-	#tag EndEvent
-#tag EndEvents
-#tag Events edt_rcserver_key
-	#tag Event
-		Function KeyDown(Key As String) As Boolean
-		  dim c As New Clipboard
-		  
-		  if strComp(Key, Chr(CTRL_V), 0) = 0 then 'ctrl-v
-		    
-		    if c.TextAvailable then
-		      edt_proxy_host.Text  = c.Text
-		      return true
-		    end if
-		    
-		  end if
-		  c.close
-		End Function
 	#tag EndEvent
 #tag EndEvents
 #tag Events edt_rcserver_port
@@ -4270,6 +4545,23 @@ End
 		    
 		    if c.TextAvailable then
 		      edt_proxy_port.Text  = c.Text
+		      return true
+		    end if
+		    
+		  end if
+		  c.close
+		End Function
+	#tag EndEvent
+#tag EndEvents
+#tag Events edt_rcserver_key
+	#tag Event
+		Function KeyDown(Key As String) As Boolean
+		  dim c As New Clipboard
+		  
+		  if strComp(Key, Chr(CTRL_V), 0) = 0 then 'ctrl-v
+		    
+		    if c.TextAvailable then
+		      edt_proxy_host.Text  = c.Text
 		      return true
 		    end if
 		    
@@ -4306,6 +4598,57 @@ End
 		    chk_imagedefaults_keepaspect.Enabled = True
 		  End If
 		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events edt_extrender_port
+	#tag Event
+		Function KeyDown(Key As String) As Boolean
+		  dim c As New Clipboard
+		  
+		  if strComp(Key, Chr(CTRL_V), 0) = 0 then 'ctrl-v
+		    
+		    if c.TextAvailable then
+		      edt_proxy_port.Text  = c.Text
+		      return true
+		    end if
+		    
+		  end if
+		  c.close
+		End Function
+	#tag EndEvent
+#tag EndEvents
+#tag Events edt_extrender_server
+	#tag Event
+		Function KeyDown(Key As String) As Boolean
+		  dim c As New Clipboard
+		  
+		  if strComp(Key, Chr(CTRL_V), 0) = 0 then 'ctrl-v
+		    
+		    if c.TextAvailable then
+		      edt_proxy_host.Text  = c.Text
+		      return true
+		    end if
+		    
+		  end if
+		  c.close
+		End Function
+	#tag EndEvent
+#tag EndEvents
+#tag Events edt_extrender_timeout
+	#tag Event
+		Function KeyDown(Key As String) As Boolean
+		  dim c As New Clipboard
+		  
+		  if strComp(Key, Chr(CTRL_V), 0) = 0 then 'ctrl-v
+		    
+		    if c.TextAvailable then
+		      edt_proxy_port.Text  = c.Text
+		      return true
+		    end if
+		    
+		  end if
+		  c.close
+		End Function
 	#tag EndEvent
 #tag EndEvents
 #tag ViewBehavior

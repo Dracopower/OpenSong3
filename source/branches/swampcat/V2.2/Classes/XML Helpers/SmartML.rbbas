@@ -160,13 +160,30 @@ Protected Module SmartML
 		Protected Function GetValueC(xnode As XmlNode, childPath As String, ByRef c As Color, create As Boolean = True) As Boolean
 		  Dim s As String
 		  s = GetValue(xnode, childPath, create)
-		  If Left(s, 1) <> "#" Or Len(s) <> 7 Then Return False
-		  
-		  c = RGB( _
-		  Val("&H" + (Mid(s, 2, 2))), _
-		  Val("&H" + (Mid(s, 4, 2))), _
-		  Val("&H" + (Mid(s, 6, 2))))
-		  
+		  //
+		  // Update to support the RGBA string as well as legacy RGB
+		  //
+		  If Len(s) = 0 Then Return False
+		  If Left(s, 1) <> "#" Then
+		    App.DebugWriter.Write "SmartML::GetValueC, invalid color string '" + s + "'", 1
+		    Return False
+		  End If
+		  Select Case Len(s)
+		  Case 7
+		    c = Color.RGB( _
+		    Val("&H" + (Mid(s, 2, 2))), _
+		    Val("&H" + (Mid(s, 4, 2))), _
+		    Val("&H" + (Mid(s, 6, 2))))
+		  Case 9
+		    c = Color.RGBA(_
+		    Val("&H" + (Mid(s,2,2))), _
+		    Val("&H" + (Mid(s,4,2))), _
+		    Val("&H" + (Mid(s,6,2))), _
+		    Val("&H" + (Mid(s,8,2))))
+		  Case Else
+		    App.DebugWriter.Write "SmartML::GetValueC, invalid color string '" + s + "'", 1
+		    Return False
+		  End Select
 		  Return True
 		End Function
 	#tag EndMethod
@@ -454,16 +471,13 @@ Protected Module SmartML
 
 	#tag Method, Flags = &h1
 		Protected Sub SetValueC(xnode As XmlNode, childPath As String, c As Color)
-		  Dim r, g, b As String
-		  
-		  r = Hex(c.red)
-		  If c.red < 16 Then r = "0" + r
-		  g = Hex(c.green)
-		  If c.green < 16 Then g = "0" + g
-		  b = Hex(c.blue)
-		  If c.blue < 16 Then b = "0" + b
-		  
-		  SetValue xnode, childPath, "#" + r + g + b
+		  // Updated to include alpha value
+		  SetValue xnode, childPath, "#" _
+		  + c.Red.ToHex(2) _
+		  + c.Green.ToHex(2) _
+		  + c.Blue.ToHex(2) _
+		  + c.Alpha.ToHex(2)
+		  Return
 		End Sub
 	#tag EndMethod
 
@@ -573,7 +587,7 @@ Protected Module SmartML
 		  ElseIf Not f.Exists Then
 		    ErrorCode = 2
 		    '++JRC Translated
-		    ErrorString = TranslateMessage("smartml/no_file",  "File does not exist in XDocFromFile: %s", f.NativePath)
+		    ErrorString = TranslateMessage("smartml/no_file",  "File does not exist in XDocFromFile: %s", f.AbsolutePath)
 		    '--
 		    Return Nil
 		  End If
@@ -582,18 +596,17 @@ Protected Module SmartML
 		  If input = Nil Then
 		    ErrorCode = 4
 		    '++JRC Translated
-		    ErrorString = TranslateMessage("smartml/cant_open",  "Could not open %s in XDocFromFile: %s", f.NativePath, CStr(f.LastErrorCode))
+		    ErrorString = TranslateMessage("smartml/cant_open",  "Could not open %s in XDocFromFile: %s", f.AbsolutePath, CStr(f.LastErrorCode))
 		    '--
 		    return nil
 		  End If
 		  '--
-		  s = input.ReadAll.FormatUnixEndOfLine
+		  s = input.ReadAll
 		  input.Close
 		  Try
 		    If Len(s) > 5 Then
-		      Dim dbg As String
 		      '
-		      ' OnSong writes "OpenSong" format claiming UTF-8 in the XML  header, but the file has a UTF-16 bytemark. 
+		      ' OnSong writes "OpenSong" format claiming UTF-8 in the XML  header, but the file has a UTF-16 bytemark.
 		      '     The XML parser throws an error
 		      '     trying to load this with the encoding wrong. By empirical testing, it appears that the &HFFFE byte mark for
 		      '     a UTF-16 file in little-endian format shows up as &H001C0000 when we read the leftmost "character" of the string.
@@ -601,22 +614,32 @@ Protected Module SmartML
 		      '     We'll excuse OnSong for claiming in the XML header that it's a UTF-8 encoding when it's not... :-)
 		      '     This may need to be revisited and corrected by reopening the file and re-reading it with a defined UTF-16 encoding.
 		      '
-		      if asc(Left(s,1)) = &H001C0000 Then 'The string actually starts with a UTF-16LE byte mark (&HFFFE)
+		      Dim FixSongFile As Boolean = False
+		      If asc(Left(s,1)) = &H001C0000 Then 'The string actually starts with a UTF-16LE byte mark (&HFFFE)
 		        s = DefineEncoding(s, encodings.UTF16)
+		        Dim XmlDeclLen As Integer = InStr(6, s, ">")
+		        If InStr(Mid(s, 6, XmlDeclLen-6), "UTF-8") <> 0 Then
+		          ' the xml declaration says it is UTF-8, so convert it to be so
+		          s = s.ConvertEncoding(Encodings.UTF8)
+		          FixSongFile = True
+		        End If
 		      End If
 		      d.LoadXml(s)
+		      If FixSongFile Then
+		        FixSongFile = XDocToFile(d, f) ' try to write the file in the correct encoding, ignoring errors
+		      End If
 		      Return d
 		    Else
 		      ErrorCode = 5
 		      '++JRC Translated
-		      ErrorString = TranslateMessage("smartml/xml_error",  "LoadXML Error from file %s", f.NativePath)
+		      ErrorString = TranslateMessage("smartml/xml_error",  "LoadXML Error from file %s", f.AbsolutePath)
 		      '--
 		      Return Nil
 		    End If
 		  Catch err As XmlException
 		    ErrorCode = 3
 		    '++JRC Translated
-		    ErrorString = TranslateMessage("smartml/xml_exterror",  "XmlException from LoadXML on file %s, %s, %s", f.NativePath, err.Line, err.Node)
+		    ErrorString = TranslateMessage("smartml/xml_exterror",  "XmlException from LoadXML on file %s, %s, %s", f.AbsolutePath, err.Line, err.Node)
 		    '--
 		    Return Nil
 		  End Try
@@ -634,7 +657,7 @@ Protected Module SmartML
 		      ErrorString = "Unexpected exception in SmartML.XDocFromFile"
 		      If ErrorCode = 0 Then ErrorCode = -1
 		    End If
-		    If f <> Nil Then ErrorString = ErrorString + ", file is " + f.NativePath
+		    If f <> Nil Then ErrorString = ErrorString + ", file is " + f.AbsolutePath
 		    Return Nil
 		End Function
 	#tag EndMethod
@@ -687,7 +710,7 @@ Protected Module SmartML
 		  Else
 		    ErrorCode = 12
 		    '++JRC Translated
-		    ErrorString = TranslateMessage("smartml/cant_create", "XDocToFile: Unable to create file: %s", f.NativePath)
+		    ErrorString = TranslateMessage("smartml/cant_create", "XDocToFile: Unable to create file: %s", f.AbsolutePath)
 		    '--
 		    Return False
 		  End If

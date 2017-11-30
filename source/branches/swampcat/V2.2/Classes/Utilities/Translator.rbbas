@@ -151,7 +151,7 @@ Protected Class Translator
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Function Translate(from As String, args() As String) As String
+		Function Translate(from As String, ByRef found As Boolean, args() As String) As String
 		  If Document = Nil Then Return ""
 		  If Len(from) = 0 Then Return ""
 		  
@@ -172,24 +172,22 @@ Protected Class Translator
 		  Dim temp As String
 		  
 		  If list = Nil Or list.Length = 0 Then
-		    // Don't bother flagging the false lookups for '/shared/...'
-		    If from.InStr("shared") = 0 Then
-		      App.DebugWriter.Write(Chr(9) + "In Translate: Can't find " + from, 4)
-		    End If
+		    found = False
 		    Return ""
 		  End If
 		  
 		  If list.Item(0) IsA XmlAttribute Then
 		    temp = list.Item(0).Value
 		  ElseIf list.Item(0).ChildCount = 0 Then
-		    App.DebugWriter.Write(Chr(9) + "In Translate: Can't find " + from, 4)
+		    found = False
 		    Return ""
 		  Else
 		    temp = list.Item(0).FirstChild.Value
 		  End If
+		  found = True
 		  
 		  If Left(temp, 5) = "link(" Then
-		    Return Translate(Mid(temp, 6, temp.Len-6), args)
+		    Return Translate(Mid(temp, 6, temp.RTrim.Len-6), found, args)
 		  End If
 		  
 		  Dim i As Integer
@@ -204,8 +202,24 @@ Protected Class Translator
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
+		Function Translate(from As String, ByRef found As Boolean, ParamArray args As String) As String
+		  Return Translate(from, found, args)
+		  
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
 		Function Translate(from As String, ParamArray args As String) As String
-		  Return Translate(from, args)
+		  Dim found As Boolean
+		  Dim result As String
+		  result = Translate(from, found, args)
+		  If not found Then
+		    // Don't bother flagging the false lookups for '/shared/...'
+		    If from.InStr("shared") = 0 Then
+		      App.DebugWriter.Write(Chr(9) + "In Translate: Can't find " + from, 4)
+		    End If
+		  End If
+		  Return result
 		End Function
 	#tag EndMethod
 
@@ -246,8 +260,9 @@ Protected Class Translator
 		  Dim temp As String
 		  Dim controlUsage As String
 		  Dim parts() As String
+		  Dim txFound As Boolean
 		  
-		  Dim staticCont As Label 'Was StaticText before rb2010r4
+		  Dim staticCont As Label
 		  Dim groupCont As GroupBox
 		  Dim buttonCont As PushButton
 		  Dim checkCont As CheckBox
@@ -255,14 +270,11 @@ Protected Class Translator
 		  Dim tabCont As TabPanel
 		  Dim sbuttonCont As SButton
 		  Dim listCont As ListBox
-		  '++JRC Fix for RB 2009R4 change of EditField to TextArea
 		  Dim editCont As TextArea
 		  Dim popCont As PopupMenu
-		  Dim sldCont As Slider 'EMP 09/05
+		  Dim sldCont As Slider
 		  
-		  '++JRC Prevent OutOfBoundsException
 		  If UBound(fonts) < 6 Then doFonts = False
-		  '--
 		  
 		  tag = tag + "/"
 		  App.DebugWriter.Write "Translator.TranslateWindow: Begin translating window " + win.Title + " with tag " + tag, 4
@@ -321,6 +333,7 @@ Protected Class Translator
 		        groupCont.Underline = fonts(1).Underline
 		      End If
 		      
+		      
 		    ElseIf cont IsA CheckBox Then
 		      checkCont = CheckBox(cont)
 		      If doCaptions Then
@@ -335,7 +348,7 @@ Protected Class Translator
 		        checkCont.Underline = fonts(2).Underline
 		      End If
 		      
-		      '++JRC Fix for RB 2009R4 change of EditField to TextArea
+		      
 		    ElseIf cont IsA TextArea Then
 		      editCont = TextArea(cont)
 		      If doFonts And controlUsage = "edf" Then
@@ -357,7 +370,6 @@ Protected Class Translator
 		      End If
 		      
 		      
-		      
 		    ElseIf cont IsA PopupMenu Then
 		      popCont = PopupMenu(cont)
 		      If doFonts And fonts(3).Name.Len > 0 Then
@@ -373,21 +385,26 @@ Protected Class Translator
 		      sbuttonCont = SButton(cont)
 		      If doCaptions Then
 		        old = sbuttonCont.GetLabel
-		        // First, see if it is a shared control
 		        If controlUsage = "btn" Then
 		          parts = Split(sbuttonCont.Name, "_")
 		          parts.Remove 0
-		          temp = Translate(kTagShared + Join(parts, "_") + kAttributeCaption)
-		          If temp.Len > 0 Then
+		          name = ParseHierarchicalName(tag, sbuttonCont) + kAttributeCaption
+		          temp = Translate(name, txFound)
+		          If Not txFound Then
+		            // check if it is in shared
+		            temp = Translate(kTagShared + Join(parts, "_") + kAttributeCaption, txFound)
+		          End If
+		          If txFound Then
+		            If old.Right(3) = "..." Then temp = temp + "…"
 		            sbuttonCont.SetLabel temp
-		          Else // Not shared, do it the regular way
-		            sbuttonCont.SetLabel Translate(ParseHierarchicalName(tag, sbuttonCont) + kAttributeCaption)
+		          Else
+		            App.DebugWriter.Write(Chr(9) + "In Translate: Can't find " + name, 4)
 		          End If
 		        End If
-		        If Right(old, 3) = "..." Then sbuttonCont.SetLabel sbuttonCont.GetLabel + "..."
 		      End If
 		      
 		      If doFonts And fonts(5).Name.Len > 0 Then sbuttonCont.SetFont fonts(5)
+		      
 		      
 		    ElseIf cont IsA RadioButton Then
 		      radioCont = RadioButton(cont)
@@ -401,6 +418,7 @@ Protected Class Translator
 		        radioCont.Italic = fonts(2).Italic
 		        radioCont.Underline = fonts(2).Underline
 		      End If
+		      
 		      
 		    ElseIf cont IsA ListBox Then
 		      listCont = Listbox(cont)
@@ -421,6 +439,7 @@ Protected Class Translator
 		        End If
 		      End If
 		      
+		      
 		    ElseIf cont IsA TabPanel Then
 		      tabCont = TabPanel(cont)
 		      If doCaptions Then
@@ -438,23 +457,26 @@ Protected Class Translator
 		      End If
 		      
 		      
-		      
 		    ElseIf cont IsA PushButton Then
 		      buttonCont = PushButton(cont)
 		      If doCaptions Then
 		        old = buttonCont.Caption
-		        // See if this is has a shared tag
 		        If controlUsage = "btn" Then
 		          parts = Split(buttonCont.Name, "_")
 		          parts.Remove 0
-		          temp = Translate(kTagShared + Join(parts, "_") + kAttributeCaption)
-		          If temp.Len > 0 Then
+		          name = ParseHierarchicalName(tag, buttonCont) + kAttributeCaption
+		          temp = Translate(name, txFound)
+		          If Not txFound Then
+		            // check if it is in shared
+		            temp = Translate(kTagShared + Join(parts, "_") + kAttributeCaption, txFound)
+		          End If
+		          If txFound Then
+		            If old.Right(3) = "..." Then temp = temp + "…"
 		            buttonCont.Caption = temp
-		          Else // Not shared, do it the regular way
-		            buttonCont.Caption = Translate(ParseHierarchicalName(tag, buttonCont) + kAttributeCaption)
+		          Else
+		            App.DebugWriter.Write(Chr(9) + "In Translate: Can't find " + name, 4)
 		          End If
 		        End If
-		        If Right(old, 3) = "..." Then buttonCont.Caption = buttonCont.Caption + "..."
 		      End If
 		      If doFonts And fonts(5).Name.Len > 0 Then
 		        buttonCont.TextFont = fonts(5).Name
@@ -464,13 +486,12 @@ Protected Class Translator
 		        buttonCont.Underline = fonts(5).Underline
 		      End If
 		      
-		      //++ EMP 09/05
+		      
 		    ElseIf cont IsA Slider Then
 		      sldCont = Slider(Cont)
 		      If doCaptions Then
 		        sldCont.HelpTag = Translate(ParseHierarchicalName(tag, sldCont) + "/@helptag")
 		      End If
-		      //--
 		    End If
 		    
 		  Next i
@@ -511,33 +532,33 @@ Protected Class Translator
 			Visible=true
 			Group="ID"
 			InitialValue="2147483648"
-			Type="Integer"
+			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Left"
 			Visible=true
 			Group="Position"
 			InitialValue="0"
-			Type="Integer"
+			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Name"
 			Visible=true
 			Group="ID"
-			Type="String"
+			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Super"
 			Visible=true
 			Group="ID"
-			Type="String"
+			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Top"
 			Visible=true
 			Group="Position"
 			InitialValue="0"
-			Type="Integer"
+			InheritedFrom="Object"
 		#tag EndViewProperty
 	#tag EndViewBehavior
 End Class

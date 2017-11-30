@@ -78,7 +78,7 @@ Protected Class StyleImage
 		        Me.oImage = Picture.Open(f)
 		        #If TargetLinux
 		          If IsNull(Me.oImage) Then
-		            Dim f_jpg As FolderItem = GetFolderItem( f.NativePath() + ".jpg" )
+		            Dim f_jpg As FolderItem = GetFolderItem( f.AbsolutePath() + ".jpg" )
 		            f.MoveFileTo( f_jpg )
 		            Me.oImage = f_jpg.OpenAsPicture()
 		            f_jpg.Delete
@@ -108,7 +108,7 @@ Protected Class StyleImage
 		  Dim bSuccess As Boolean = False
 		  
 		  If File<>Nil And File.Exists() Then
-		    If File.NativePath() <> Me.sFilename Then
+		    If File.AbsolutePath() <> Me.sFilename Then
 		      
 		      Dim inputStream As BinaryStream = BinaryStream.Open(File, False)
 		      If inputStream <> Nil Then
@@ -116,12 +116,12 @@ Protected Class StyleImage
 		        
 		        If Me.oImage <> Nil Then
 		          
-		          If File.NativePath().StartsWith( SpecialFolder.Temporary.NativePath() ) Then
+		          If File.AbsolutePath().StartsWith( SpecialFolder.Temporary.AbsolutePath() ) Then
 		            Me.sBase64 = EncodeBase64(inputStream.Read(File.Length))
 		            Me.sFilename = ""
 		          Else
 		            Me.sBase64 = ""
-		            Me.sFilename = File.NativePath()
+		            Me.sFilename = File.AbsolutePath()
 		          End If
 		          
 		          bSuccess = True
@@ -130,14 +130,14 @@ Protected Class StyleImage
 		        End If
 		        
 		      Else
-		        InputBox.Message App.T.Translate("errors/unreadable_image", File.NativePath)
+		        InputBox.Message App.T.Translate("errors/unreadable_image", File.AbsolutePath)
 		      End If
 		      
 		    End If
 		  Else
 		    If File<>Nil Then
-		      If File.NativePath() <> "" Then
-		        InputBox.Message App.T.Translate("errors/unreadable_image", File.NativePath)
+		      If File.AbsolutePath() <> "" Then
+		        InputBox.Message App.T.Translate("errors/unreadable_image", File.AbsolutePath)
 		      End If
 		    End If
 		    Clear()
@@ -149,15 +149,29 @@ Protected Class StyleImage
 
 	#tag Method, Flags = &h0
 		Function SetImageFromFileName(Filename As String) As Boolean
+		  #if TargetMacOS then
+		    Filename = Filename.ReplaceAll("\", "/")
+		  #elseif TargetWin32 then
+		    Filename = Filename.ReplaceAll("/", "\")
+		  #elseif TargetLinux then
+		    Filename = Filename.ReplaceAll("\", "/")
+		  #endif
+
 		  Dim result As Boolean = False
+		  Dim f as FolderItem
 		  
-		  Dim f as FolderItem = GetFolderItem(FileName)
-		  If IsNull(f) Then
-		    If Filename <> "" Then
-		      InputBox.Message App.T.Translate("errors/unreadable_image", Filename)
+		  If Filename <> "" Then
+		    If FileName.StartsWith("/") or FileName.StartsWith("\\") or FileName.Mid(2, 1)=":" Then 
+		      f = GetFolderItem(FileName)
+		    Else
+		      f = GetFolderItem( App.DocsFolder.Child("Backgrounds").AbsolutePath + Filename )
 		    End If
-		  Else
-		    result = SetImageFromFile(f)
+		    
+		    If IsNull(f) or not f.Exists() Then
+		      InputBox.Message App.T.Translate("errors/unreadable_image", Filename)
+		    Else
+		      result = SetImageFromFile(f)
+		    End If
 		  End If
 		  
 		  Return result
@@ -184,33 +198,33 @@ Protected Class StyleImage
 			Visible=true
 			Group="ID"
 			InitialValue="-2147483648"
-			Type="Integer"
+			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Left"
 			Visible=true
 			Group="Position"
 			InitialValue="0"
-			Type="Integer"
+			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Name"
 			Visible=true
 			Group="ID"
-			Type="String"
+			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Super"
 			Visible=true
 			Group="ID"
-			Type="String"
+			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Top"
 			Visible=true
 			Group="Position"
 			InitialValue="0"
-			Type="Integer"
+			InheritedFrom="Object"
 		#tag EndViewProperty
 	#tag EndViewBehavior
 End Class

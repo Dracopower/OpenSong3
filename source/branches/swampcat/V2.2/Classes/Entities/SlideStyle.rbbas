@@ -238,6 +238,7 @@ Protected Class SlideStyle
 		  Dim tab As StyleTabsType
 		  Dim tabs() As StyleTabsType
 		  Dim fileName As String
+		  Dim imagestring As String
 		  
 		  BodyFont = SmartML.GetValueF(xStyle, "body")
 		  BodyAlign = SmartML.GetValue(xStyle, "body/@align")
@@ -249,6 +250,16 @@ Protected Class SlideStyle
 		  BodyMargins.Bottom = SmartML.GetValueN(xStyle, "body/@margin-bottom")
 		  BodyEnable = SmartML.GetValueB(xStyle, "body/@enabled", true, true)
 		  BodyScale = SmartML.GetValueB(xStyle, "body/@auto_scale", true, true)
+		  
+		  // CHANGE-PJ START: Second language feature
+		  If Not SmartML.GetValueC(xStyle, "body/@multilanguage_color", MultilanguageColor, False) Then
+		    MultilanguageColor = &cdcdcdc 'standard value
+		  End If
+		  MultilanguageSize = SmartML.GetValueN(xStyle, "body/@multilanguage_size")
+		  If MultilanguageSize = 0 Then
+		    MultilanguageSize = 70 'standard value
+		  End If
+		  // CHANGE-PJ END
 		  
 		  tabsNode = SmartML.GetNode(xStyle, "body/tabs")
 		  If tabsNode <> Nil Then
@@ -300,12 +311,11 @@ Protected Class SlideStyle
 		  SubtitleEnable = SmartML.GetValueB(xStyle, "subtitle/@enabled", true, true)
 		  
 		  fileName = SmartML.GetValue(xstyle, "background/@filename", False)
-		  If fileName <> "" Then
-		    If Not Background.SetImageFromFileName( App.DocsFolder.Child("Backgrounds").NativePath + fileName ) Then
-		      Call Background.SetImageAsString(SmartML.GetValue(xstyle, "background", False))
-		    End If
+		  imagestring = SmartML.GetValue(xstyle, "background", False)
+		  If imagestring = "" Then
+		    Call Background.SetImageFromFileName( fileName )
 		  Else
-		    Call Background.SetImageAsString(SmartML.GetValue(xstyle, "background", False))
+		    Call Background.SetImageAsString(imagestring)
 		  End If
 		  If Not SmartML.GetValueC(xstyle, "background/@color", BGColor, False) Then
 		    BGColor = defaultBGColor
@@ -328,6 +338,34 @@ Protected Class SlideStyle
 	#tag Method, Flags = &h0
 		Sub HighlightChorus(Assigns Value As Boolean)
 		  Highlight = Value
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function MultilanguageColor() As Color
+		  Dim C As Color
+		  C = MultilanguageColor
+		  Return C
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub MultilanguageColor(Assigns fontcolor As Color)
+		  MultilanguageColor = fontcolor
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function MultilanguageSize() As Integer
+		  Dim I As Integer
+		  I = MultilanguageSize
+		  Return I
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub MultilanguageSize(Assigns Size As Integer)
+		  MultilanguageSize = Size
 		End Sub
 	#tag EndMethod
 
@@ -567,6 +605,8 @@ Protected Class SlideStyle
 		  SmartML.SetValueN(CurrChild, "@margin-top", BodyMargins.Top)
 		  SmartML.SetValueN(CurrChild, "@margin-bottom", BodyMargins.Bottom)
 		  SmartML.SetValueF(root, thisNode, BodyFont)
+		  SmartML.SetValueN(CurrChild, "@multilanguage_size", MultilanguageSize)
+		  SmartML.SetValueC(CurrChild, "@multilanguage_color", MultilanguageColor)
 		  
 		  tabsChild = CurrChild.AppendChild(XmlDoc.CreateElement("tabs"))
 		  For i = 0 To UBound(BodyTabs)
@@ -593,8 +633,8 @@ Protected Class SlideStyle
 		  SmartML.SetValueN(CurrChild, "@strip_footer", StripFooter)
 		  SmartML.SetValueC(CurrChild, "@color", BGColor)
 		  SmartML.SetValueN(CurrChild, "@position", Position)
-		  If background.GetImageFilename().StartsWith(App.DocsFolder.Child("Backgrounds").NativePath) And ImageDefaults.ExcludeBackgroundsImages() Then
-		    SmartML.SetValue(CurrChild, "@filename", background.GetImageFilename().Mid(App.DocsFolder.Child("Backgrounds").NativePath().Len()+1))
+		  If background.GetImageFilename().StartsWith(App.DocsFolder.Child("Backgrounds").AbsolutePath) And ImageDefaults.ExcludeBackgroundsImages() Then
+		    SmartML.SetValue(CurrChild, "@filename", background.GetImageFilename().Mid(App.DocsFolder.Child("Backgrounds").AbsolutePath().Len()+1))
 		  Else
 		    SmartML.SetValue(root, thisNode, Background.GetImageAsString())
 		  End If
@@ -669,6 +709,14 @@ Protected Class SlideStyle
 
 	#tag Property, Flags = &h1
 		Protected Highlight As Boolean
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
+		Private MultilanguageColor As Color = &cffffff
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
+		Private MultilanguageSize As Integer = 70
 	#tag EndProperty
 
 	#tag Property, Flags = &h1
@@ -769,20 +817,20 @@ Protected Class SlideStyle
 			Visible=true
 			Group="ID"
 			InitialValue="-2147483648"
-			Type="Integer"
+			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Left"
 			Visible=true
 			Group="Position"
 			InitialValue="0"
-			Type="Integer"
+			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Name"
 			Visible=true
 			Group="ID"
-			Type="String"
+			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="SubtitleEnable"
@@ -794,7 +842,7 @@ Protected Class SlideStyle
 			Name="Super"
 			Visible=true
 			Group="ID"
-			Type="String"
+			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="TitleEnable"
@@ -807,7 +855,7 @@ Protected Class SlideStyle
 			Visible=true
 			Group="Position"
 			InitialValue="0"
-			Type="Integer"
+			InheritedFrom="Object"
 		#tag EndViewProperty
 	#tag EndViewBehavior
 End Class

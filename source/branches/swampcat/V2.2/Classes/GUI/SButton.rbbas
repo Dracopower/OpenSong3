@@ -38,6 +38,7 @@ Inherits Canvas
 		    // Mac OSX will open the popup on MouseDown,
 		    // Windows & Linux open in MouseUp
 		    #If TargetMacOS
+		      ConstructPopupMenu
 		      If Popup <> Nil Then
 		        Dim selectedItem As MenuItem
 		        selectedItem = Popup.PopUp
@@ -74,6 +75,7 @@ Inherits Canvas
 		  // a contextual dialog on mouse up, but OS X
 		  // does it on mouse down.
 		  #if Not TargetMacOS
+		    ConstructPopupMenu
 		    If Popup <> Nil Then
 		      Dim selectedItem As MenuItem
 		      selectedItem = Popup.PopUp
@@ -108,6 +110,7 @@ Inherits Canvas
 
 	#tag Event
 		Sub Paint(g As Graphics, areas() As REALbasic.Rect)
+		  g.ClearRect 0, 0, g.Width, g.Height
 		  Dim i, offset, tri(6) As Integer
 		  
 		  If NewPaint Then
@@ -507,6 +510,10 @@ Inherits Canvas
 
 	#tag Hook, Flags = &h0
 		Event Action()
+	#tag EndHook
+
+	#tag Hook, Flags = &h0
+		Event ConstructPopupMenu()
 	#tag EndHook
 
 	#tag Hook, Flags = &h0

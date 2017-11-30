@@ -112,7 +112,6 @@ Begin Window MainWindow Implements ScriptureReceiver
       Selectable      =   False
       TabIndex        =   3
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   ""
       TextAlign       =   0
       TextColor       =   &c00000000
@@ -143,7 +142,6 @@ Begin Window MainWindow Implements ScriptureReceiver
       Scope           =   0
       TabIndex        =   4
       TabPanelIndex   =   0
-      TabStop         =   True
       Top             =   35
       Value           =   0
       Visible         =   True
@@ -760,7 +758,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   6
             TabPanelIndex   =   1
-            TabStop         =   True
             Text            =   "Folders:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -795,7 +792,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   7
             TabPanelIndex   =   1
-            TabStop         =   True
             Text            =   "Songs:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -862,7 +858,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   9
             TabPanelIndex   =   1
-            TabStop         =   True
             Text            =   "Containing Folder:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -962,7 +957,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Alignment       =   0
             AutoDeactivate  =   True
             AutomaticallyCheckSpelling=   True
-            BackColor       =   &cFFFFFF
+            BackColor       =   &cFFFFFF00
             Bold            =   False
             Border          =   True
             DataField       =   ""
@@ -1682,7 +1677,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   4
             TabPanelIndex   =   2
-            TabStop         =   True
             Text            =   "Items In Set:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -1985,7 +1979,6 @@ Begin Window MainWindow Implements ScriptureReceiver
       Scope           =   0
       TabIndex        =   5
       TabPanelIndex   =   0
-      TabStop         =   True
       Top             =   34
       Value           =   0
       Visible         =   True
@@ -2039,7 +2032,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   0
             TabPanelIndex   =   4
-            TabStop         =   True
             Text            =   "Style Change"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -2189,7 +2181,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   12
             TabPanelIndex   =   2
-            TabStop         =   True
             Text            =   "AKA:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -2224,7 +2215,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   1
             TabPanelIndex   =   2
-            TabStop         =   True
             Text            =   "Themes:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -2259,7 +2249,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   3
             TabPanelIndex   =   2
-            TabStop         =   True
             Text            =   "Capo:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -2294,7 +2283,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   14
             TabPanelIndex   =   2
-            TabStop         =   True
             Text            =   "Key Line:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -2411,7 +2399,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   6
             TabPanelIndex   =   2
-            TabStop         =   True
             Text            =   "Key:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -2446,7 +2433,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   8
             TabPanelIndex   =   2
-            TabStop         =   True
             Text            =   "Time Signature:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -2512,7 +2498,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   18
             TabPanelIndex   =   2
-            TabStop         =   True
             Text            =   "User Defined 2:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -2547,7 +2532,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   10
             TabPanelIndex   =   2
-            TabStop         =   True
             Text            =   "Tempo:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -2582,7 +2566,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   20
             TabPanelIndex   =   2
-            TabStop         =   True
             Text            =   "User Defined 3:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -2756,7 +2739,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Alignment       =   0
             AutoDeactivate  =   True
             AutomaticallyCheckSpelling=   True
-            BackColor       =   &cFFFFFF
+            BackColor       =   &cFFFFFF00
             Bold            =   False
             Border          =   True
             DataField       =   ""
@@ -2804,7 +2787,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Alignment       =   0
             AutoDeactivate  =   True
             AutomaticallyCheckSpelling=   True
-            BackColor       =   &cFFFFFF
+            BackColor       =   &cFFFFFF00
             Bold            =   False
             Border          =   True
             DataField       =   ""
@@ -2883,7 +2866,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Alignment       =   0
             AutoDeactivate  =   True
             AutomaticallyCheckSpelling=   True
-            BackColor       =   &cFFFFFF
+            BackColor       =   &cFFFFFF00
             Bold            =   False
             Border          =   True
             DataField       =   ""
@@ -2948,7 +2931,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   16
             TabPanelIndex   =   2
-            TabStop         =   True
             Text            =   "User Defined 1:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -2983,7 +2965,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   0
             TabPanelIndex   =   2
-            TabStop         =   True
             Text            =   "Song Editor"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -3001,7 +2982,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Alignment       =   0
             AutoDeactivate  =   True
             AutomaticallyCheckSpelling=   True
-            BackColor       =   &cFFFFFF
+            BackColor       =   &cFFFFFF00
             Bold            =   False
             Border          =   True
             DataField       =   ""
@@ -3049,7 +3030,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Alignment       =   0
             AutoDeactivate  =   True
             AutomaticallyCheckSpelling=   True
-            BackColor       =   &cFFFFFF
+            BackColor       =   &cFFFFFF00
             Bold            =   False
             Border          =   True
             DataField       =   ""
@@ -3097,7 +3078,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Alignment       =   0
             AutoDeactivate  =   True
             AutomaticallyCheckSpelling=   True
-            BackColor       =   &cFFFFFF
+            BackColor       =   &cFFFFFF00
             Bold            =   False
             Border          =   True
             DataField       =   ""
@@ -3162,7 +3143,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   26
             TabPanelIndex   =   2
-            TabStop         =   True
             Text            =   "Verse specific backgrounds:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -3501,7 +3481,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   0
             TabPanelIndex   =   1
-            TabStop         =   True
             Text            =   "Song Editor"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -3536,7 +3515,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   7
             TabPanelIndex   =   1
-            TabStop         =   True
             Text            =   "CCLI #:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -3571,7 +3549,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   5
             TabPanelIndex   =   1
-            TabStop         =   True
             Text            =   "Copyright:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -3606,7 +3583,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   3
             TabPanelIndex   =   1
-            TabStop         =   True
             Text            =   "Author:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -3641,7 +3617,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   9
             TabPanelIndex   =   1
-            TabStop         =   True
             Text            =   "Presentation:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -3676,7 +3651,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   13
             TabPanelIndex   =   1
-            TabStop         =   True
             Text            =   "Chord/Lyrics:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -3711,7 +3685,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   11
             TabPanelIndex   =   1
-            TabStop         =   True
             Text            =   "Hymn #:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -3746,7 +3719,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   15
             TabPanelIndex   =   1
-            TabStop         =   True
             Text            =   "Insert:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -3781,7 +3753,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   1
             TabPanelIndex   =   1
-            TabStop         =   True
             Text            =   "Title:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -3874,7 +3845,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                Selectable      =   False
                TabIndex        =   1
                TabPanelIndex   =   1
-               TabStop         =   True
                Text            =   "Using:"
                TextAlign       =   0
                TextColor       =   &c00000000
@@ -3924,7 +3894,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Alignment       =   0
             AutoDeactivate  =   True
             AutomaticallyCheckSpelling=   True
-            BackColor       =   &cFFFFFF
+            BackColor       =   &cFFFFFF00
             Bold            =   False
             Border          =   True
             DataField       =   ""
@@ -4000,7 +3970,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             ScrollbarHorizontal=   True
             ScrollbarVertical=   True
-            Styled          =   False
+            Styled          =   True
             TabIndex        =   14
             TabPanelIndex   =   1
             TabStop         =   True
@@ -4276,7 +4246,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Alignment       =   0
             AutoDeactivate  =   True
             AutomaticallyCheckSpelling=   True
-            BackColor       =   &cFFFFFF
+            BackColor       =   &cFFFFFF00
             Bold            =   False
             Border          =   True
             DataField       =   ""
@@ -4324,7 +4294,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Alignment       =   0
             AutoDeactivate  =   True
             AutomaticallyCheckSpelling=   True
-            BackColor       =   &cFFFFFF
+            BackColor       =   &cFFFFFF00
             Bold            =   False
             Border          =   True
             DataField       =   ""
@@ -4372,7 +4342,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Alignment       =   0
             AutoDeactivate  =   True
             AutomaticallyCheckSpelling=   True
-            BackColor       =   &cFFFFFF
+            BackColor       =   &cFFFFFF00
             Bold            =   False
             Border          =   True
             DataField       =   ""
@@ -4420,7 +4390,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Alignment       =   0
             AutoDeactivate  =   True
             AutomaticallyCheckSpelling=   True
-            BackColor       =   &cFFFFFF
+            BackColor       =   &cFFFFFF00
             Bold            =   False
             Border          =   True
             DataField       =   ""
@@ -4549,7 +4519,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   26
             TabPanelIndex   =   1
-            TabStop         =   True
             Text            =   "Linked Songs:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -4617,7 +4586,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Alignment       =   0
             AutoDeactivate  =   True
             AutomaticallyCheckSpelling=   True
-            BackColor       =   &cFFFFFF
+            BackColor       =   &cFFFFFF00
             Bold            =   False
             Border          =   True
             DataField       =   ""
@@ -4710,7 +4679,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   21
             TabPanelIndex   =   3
-            TabStop         =   True
             Text            =   "Auto-advance slide(s) every..."
             TextAlign       =   1
             TextColor       =   &c00000000
@@ -4745,7 +4713,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   23
             TabPanelIndex   =   3
-            TabStop         =   True
             Text            =   "seconds"
             TextAlign       =   1
             TextColor       =   &c00000000
@@ -4780,7 +4747,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   17
             TabPanelIndex   =   3
-            TabStop         =   True
             Text            =   "Insert:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -4830,7 +4796,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Alignment       =   0
             AutoDeactivate  =   True
             AutomaticallyCheckSpelling=   True
-            BackColor       =   &cFFFFFF
+            BackColor       =   &cFFFFFF00
             Bold            =   False
             Border          =   True
             DataField       =   ""
@@ -4973,7 +4939,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Alignment       =   0
             AutoDeactivate  =   True
             AutomaticallyCheckSpelling=   True
-            BackColor       =   &cFFFFFF
+            BackColor       =   &cFFFFFF00
             Bold            =   False
             Border          =   True
             DataField       =   ""
@@ -5038,7 +5004,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   13
             TabPanelIndex   =   3
-            TabStop         =   True
             Text            =   "File Folder"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -5073,7 +5038,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   0
             TabPanelIndex   =   3
-            TabStop         =   True
             Text            =   "Custom Slide Editor"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -5108,7 +5072,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   9
             TabPanelIndex   =   3
-            TabStop         =   True
             Text            =   "Custom Presentation Order:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -5143,7 +5106,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   11
             TabPanelIndex   =   3
-            TabStop         =   True
             Text            =   "Original Presentation Order:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -5161,7 +5123,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Alignment       =   0
             AutoDeactivate  =   True
             AutomaticallyCheckSpelling=   True
-            BackColor       =   &cFFFFFF
+            BackColor       =   &cFFFFFF00
             Bold            =   False
             Border          =   True
             DataField       =   ""
@@ -5226,7 +5188,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   5
             TabPanelIndex   =   3
-            TabStop         =   True
             Text            =   "Name:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -5261,7 +5222,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   3
             TabPanelIndex   =   3
-            TabStop         =   True
             Text            =   "Subtitle:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -5296,7 +5256,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   1
             TabPanelIndex   =   3
-            TabStop         =   True
             Text            =   "Title:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -5331,7 +5290,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   7
             TabPanelIndex   =   3
-            TabStop         =   True
             Text            =   "Slides:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -5366,7 +5324,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   26
             TabPanelIndex   =   3
-            TabStop         =   True
             Text            =   "Use Transition"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -5401,7 +5358,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   15
             TabPanelIndex   =   3
-            TabStop         =   True
             Text            =   "Notes:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -5419,7 +5375,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Alignment       =   0
             AutoDeactivate  =   True
             AutomaticallyCheckSpelling=   True
-            BackColor       =   &cFFFFFF
+            BackColor       =   &cFFFFFF00
             Bold            =   False
             Border          =   True
             DataField       =   ""
@@ -5467,7 +5423,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Alignment       =   0
             AutoDeactivate  =   True
             AutomaticallyCheckSpelling=   True
-            BackColor       =   &cFFFFFF
+            BackColor       =   &cFFFFFF00
             Bold            =   False
             Border          =   True
             DataField       =   ""
@@ -5515,7 +5471,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Alignment       =   0
             AutoDeactivate  =   True
             AutomaticallyCheckSpelling=   True
-            BackColor       =   &cFFFFFF
+            BackColor       =   &cFFFFFF00
             Bold            =   False
             Border          =   True
             DataField       =   ""
@@ -5563,7 +5519,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Alignment       =   0
             AutoDeactivate  =   True
             AutomaticallyCheckSpelling=   True
-            BackColor       =   &cFFFFFF
+            BackColor       =   &cFFFFFF00
             Bold            =   False
             Border          =   True
             DataField       =   ""
@@ -5611,7 +5567,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Alignment       =   0
             AutoDeactivate  =   True
             AutomaticallyCheckSpelling=   True
-            BackColor       =   &cFFFFFF
+            BackColor       =   &cFFFFFF00
             Bold            =   False
             Border          =   True
             DataField       =   ""
@@ -5691,7 +5647,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Alignment       =   0
             AutoDeactivate  =   True
             AutomaticallyCheckSpelling=   True
-            BackColor       =   &cFFFFFF
+            BackColor       =   &cFFFFFF00
             Bold            =   False
             Border          =   True
             DataField       =   ""
@@ -5813,7 +5769,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   26
             TabPanelIndex   =   5
-            TabStop         =   True
             Text            =   "seconds"
             TextAlign       =   1
             TextColor       =   &c00000000
@@ -5848,7 +5803,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   18
             TabPanelIndex   =   5
-            TabStop         =   True
             Text            =   "Auto-advance slide(s) every..."
             TextAlign       =   1
             TextColor       =   &c00000000
@@ -5883,7 +5837,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   29
             TabPanelIndex   =   5
-            TabStop         =   True
             Text            =   "Use Transition"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -5950,7 +5903,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   0
             TabPanelIndex   =   5
-            TabStop         =   True
             Text            =   "Image Slide Editor"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -6016,7 +5968,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   6
             TabPanelIndex   =   5
-            TabStop         =   True
             Text            =   "Name:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -6179,7 +6130,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   24
             TabPanelIndex   =   5
-            TabStop         =   True
             Text            =   "Notes:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -6214,7 +6164,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   1
             TabPanelIndex   =   5
-            TabStop         =   True
             Text            =   "Title:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -6249,7 +6198,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   10
             TabPanelIndex   =   5
-            TabStop         =   True
             Text            =   "Insert:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -6331,7 +6279,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Alignment       =   0
             AutoDeactivate  =   True
             AutomaticallyCheckSpelling=   True
-            BackColor       =   &cFFFFFF
+            BackColor       =   &cFFFFFF00
             Bold            =   False
             Border          =   True
             DataField       =   ""
@@ -6396,7 +6344,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   3
             TabPanelIndex   =   5
-            TabStop         =   True
             Text            =   "Subtitle:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -6431,7 +6378,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   8
             TabPanelIndex   =   5
-            TabStop         =   True
             Text            =   "Images:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -6481,7 +6427,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Alignment       =   0
             AutoDeactivate  =   True
             AutomaticallyCheckSpelling=   True
-            BackColor       =   &cFFFFFF
+            BackColor       =   &cFFFFFF00
             Bold            =   False
             Border          =   True
             DataField       =   ""
@@ -6558,7 +6504,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Alignment       =   0
             AutoDeactivate  =   True
             AutomaticallyCheckSpelling=   True
-            BackColor       =   &cFFFFFF
+            BackColor       =   &cFFFFFF00
             Bold            =   False
             Border          =   True
             DataField       =   ""
@@ -6606,7 +6552,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Alignment       =   0
             AutoDeactivate  =   True
             AutomaticallyCheckSpelling=   True
-            BackColor       =   &cFFFFFF
+            BackColor       =   &cFFFFFF00
             Bold            =   False
             Border          =   True
             DataField       =   ""
@@ -6706,7 +6652,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Alignment       =   0
             AutoDeactivate  =   True
             AutomaticallyCheckSpelling=   True
-            BackColor       =   &cFFFFFF
+            BackColor       =   &cFFFFFF00
             Bold            =   False
             Border          =   True
             DataField       =   ""
@@ -6959,7 +6905,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   0
             TabPanelIndex   =   6
-            TabStop         =   True
             Text            =   "External Slide Editor"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -6994,7 +6939,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   1
             TabPanelIndex   =   6
-            TabStop         =   True
             Text            =   "Name:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -7029,7 +6973,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   2
             TabPanelIndex   =   6
-            TabStop         =   True
             Text            =   "Notes:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -7064,7 +7007,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   3
             TabPanelIndex   =   6
-            TabStop         =   True
             Text            =   "Application:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -7114,7 +7056,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Alignment       =   0
             AutoDeactivate  =   True
             AutomaticallyCheckSpelling=   True
-            BackColor       =   &cFFFFFF
+            BackColor       =   &cFFFFFF00
             Bold            =   False
             Border          =   True
             DataField       =   ""
@@ -7162,7 +7104,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Alignment       =   0
             AutoDeactivate  =   True
             AutomaticallyCheckSpelling=   True
-            BackColor       =   &cFFFFFF
+            BackColor       =   &cFFFFFF00
             Bold            =   False
             Border          =   True
             DataField       =   ""
@@ -7319,7 +7261,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   10
             TabPanelIndex   =   6
-            TabStop         =   True
             Top             =   146
             Value           =   2
             Visible         =   True
@@ -7437,7 +7378,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Selectable      =   False
                   TabIndex        =   2
                   TabPanelIndex   =   2
-                  TabStop         =   True
                   Text            =   "Presentation filename"
                   TextAlign       =   0
                   TextColor       =   &c00000000
@@ -7559,7 +7499,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Selectable      =   False
                   TabIndex        =   6
                   TabPanelIndex   =   2
-                  TabStop         =   True
                   Text            =   "Which application should be used to run the presentation?"
                   TextAlign       =   0
                   TextColor       =   &c00000000
@@ -7674,7 +7613,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Selectable      =   False
                   TabIndex        =   9
                   TabPanelIndex   =   2
-                  TabStop         =   True
                   Text            =   "For full control over your PowerPoint presentation an installation of Microsoft Office is required."
                   TextAlign       =   0
                   TextColor       =   &c00000000
@@ -7709,7 +7647,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Selectable      =   False
                   TabIndex        =   10
                   TabPanelIndex   =   2
-                  TabStop         =   True
                   Text            =   "For showing your PowerPoint presentation without interaction, you can use the free Microsoft PowerPoint Viewer. OpenSong tries to detect it. You can set a specific viewer in the general settings."
                   TextAlign       =   0
                   TextColor       =   &c00000000
@@ -7744,7 +7681,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Selectable      =   False
                   TabIndex        =   11
                   TabPanelIndex   =   2
-                  TabStop         =   True
                   Text            =   "For full control of an Impress or PowerPoint presentation the free OpenOffice.org suite is required."
                   TextAlign       =   0
                   TextColor       =   &c00000000
@@ -7807,7 +7743,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Selectable      =   False
                   TabIndex        =   0
                   TabPanelIndex   =   1
-                  TabStop         =   True
                   Text            =   "Select an application to use as source for this slides content."
                   TextAlign       =   1
                   TextColor       =   &c00000000
@@ -7870,7 +7805,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Selectable      =   False
                   TabIndex        =   0
                   TabPanelIndex   =   4
-                  TabStop         =   True
                   Text            =   "Application parameters"
                   TextAlign       =   0
                   TextColor       =   &c00000000
@@ -7905,7 +7839,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Selectable      =   False
                   TabIndex        =   1
                   TabPanelIndex   =   4
-                  TabStop         =   True
                   Text            =   "Path to application executable"
                   TextAlign       =   0
                   TextColor       =   &c00000000
@@ -8280,7 +8213,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Alignment       =   0
                   AutoDeactivate  =   True
                   AutomaticallyCheckSpelling=   True
-                  BackColor       =   &cFFFFFF
+                  BackColor       =   &cFFFFFF00
                   Bold            =   False
                   Border          =   True
                   DataField       =   ""
@@ -8374,7 +8307,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Selectable      =   False
                   TabIndex        =   6
                   TabPanelIndex   =   3
-                  TabStop         =   True
                   Text            =   "Path to media file to play"
                   TextAlign       =   0
                   TextColor       =   &c00000000
@@ -8409,7 +8341,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Selectable      =   False
                   TabIndex        =   7
                   TabPanelIndex   =   3
-                  TabStop         =   True
                   Text            =   "Use the following preset with parameters"
                   TextAlign       =   0
                   TextColor       =   &c00000000
@@ -8444,7 +8375,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Selectable      =   False
                   TabIndex        =   8
                   TabPanelIndex   =   3
-                  TabStop         =   True
                   Text            =   "Manually adjusted parameters (use %d for display number, %s for mediafile)"
                   TextAlign       =   0
                   TextColor       =   &c00000000
@@ -8462,7 +8392,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Alignment       =   0
                   AutoDeactivate  =   True
                   AutomaticallyCheckSpelling=   True
-                  BackColor       =   &cFFFFFF
+                  BackColor       =   &cFFFFFF00
                   Bold            =   False
                   Border          =   True
                   DataField       =   ""
@@ -8616,14 +8546,17 @@ Begin Window MainWindow Implements ScriptureReceiver
       Width           =   846
    End
    Begin Timer tmr_lookup
-      Enabled         =   True
+      Height          =   32
       Index           =   -2147483648
       InitialParent   =   ""
+      Left            =   804
       LockedInPosition=   False
       Mode            =   2
       Period          =   1500
       Scope           =   0
       TabPanelIndex   =   0
+      Top             =   6
+      Width           =   32
    End
 End
 #tag EndWindow
@@ -8631,7 +8564,6 @@ End
 #tag WindowCode
 	#tag Event
 		Sub Activate()
-		  '++JRC
 		  App.DebugWriter.Write "Begin MainWindow.Activate:"
 		  
 		  If Globals.Status_Presentation Or Status_Presentation Then
@@ -8640,16 +8572,32 @@ End
 		    #endif
 		    
 		    If PresentWindow.HelperActive Then
-		      App.RestoreWindow(PresentHelperWindow)
-		      App.SetForeground(PresentHelperWindow)
+		      #if Not TargetWin32
+		        App.RestoreWindow(PresentHelperWindow)
+		        App.SetForeground(PresentHelperWindow)
+		      #else
+		        If PresentHelperWindow.IsCollapsed Then
+		          App.ShowWin(PresentHelperWindow,App.SW_RESTORE)
+		        Else
+		          App.ShowWin(PresentHelperWindow,App.SW_SHOW)
+		        End If
+		      #endif
 		    Else
 		      If Not SetML.IsExternal(PresentWindow.XCurrentSlide) Then
-		        App.RestoreWindow(PresentWindow)
-		        App.SetForeground(PresentWindow)
+		        #if Not TargetWin32
+		          App.RestoreWindow(PresentWindow)
+		          App.SetForeground(PresentWindow)
+		        #else
+		          IF PresentWindow.IsCollapsed Then
+		            App.ShowWin(PresentWindow,App.SW_RESTORE)
+		          Else
+		            App.ShowWin(PresentWindow,App.SW_RESTORE)
+		          End If
+		        #endif
 		      End If
 		    End If
 		  End If
-		  '--
+		  
 		  If App.SplashShowing Then Splash.Show
 		  
 		  App.DebugWriter.Write "End MainWindow.Activate:"
@@ -8709,16 +8657,18 @@ End
 		  
 		  if asc(key) = 204 Then 'F5
 		    mode = SmartML.GetValueN(App.MyPresentSettings.DocumentElement, "presentation_mode/@code")
-		    if Status_SongOpen Then
+		    if Status_SongOpen And (Status_CurrentMode = 0 Or Not Status_SetOpen) Then
 		      'Ask if user wants to save
 		      If NOT ActionSongAskSave Then Return True 'User Canceled
 		      
 		      ActionSongPresent mode
+		      Return True
 		    elseif Status_SetOpen then
 		      'Ask if user wants to save
 		      If NOT ActionSetAskSave Then Return True  'User Canceled
 		      
 		      ActionSetPresent mode
+		      Return True
 		    end if
 		  end if
 		  
@@ -9399,18 +9349,18 @@ End
 			
 			file.MoveFileTo App.AppFolder.Child(toChild)
 			If file.LastErrorCode <> 0 Then
-			InputBox.Message App.T.Translate("module/move_error", App.AppFolder.Child(toChild).NativePath) + " (" + Str(file.LastErrorCode) + ")"
+			InputBox.Message App.T.Translate("module/move_error", App.AppFolder.Child(toChild).AbsolutePath) + " (" + Str(file.LastErrorCode) + ")"
 			Return False
 			End If
 			file = App.AppFolder.Child(toChild).Child(file.Name)
 			If file = Nil Then
-			InputBox.Message App.T.Translate("module/move_error", App.AppFolder.Child(toChild).NativePath) + " (0)"
+			InputBox.Message App.T.Translate("module/move_error", App.AppFolder.Child(toChild).AbsolutePath) + " (0)"
 			Return False
 			End If
 			
 			If InStr(file.Name, ".") > 0 Then file.Name = Left(file.Name, StringUtils.InStrReverse(file.Name, ".") - 1)
 			If file.LastErrorCode <> 0 Then
-			InputBox.Message App.T.Translate("module/rename_error", App.AppFolder.Child(toChild).NativePath)
+			InputBox.Message App.T.Translate("module/rename_error", App.AppFolder.Child(toChild).AbsolutePath)
 			Return False
 			End If
 			
@@ -9422,7 +9372,7 @@ End
 			App.MouseCursor = System.Cursors.Wait
 			If Not newBible.LoadBible(file) Then
 			App.MouseCursor = Nil
-			InputBox.Message(App.T.Translate("module/generate_error", file.NativePath))
+			InputBox.Message(App.T.Translate("module/generate_error", file.AbsolutePath))
 			Return True
 			End If
 			End If
@@ -9478,7 +9428,7 @@ End
 			Status_SongChanged = False
 			Globals.OldFolderSel = -1 // If this isn't invalidated, the list box doesn't get rebuilt unless we are on a child folder
 			If Not Songs.RefreshCache Then
-			InputBox.Message App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", App.DocsFolder.Child("Songs").NativePath)
+			InputBox.Message App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", App.DocsFolder.Child("Songs").AbsolutePath)
 			End If
 			If UBound(Songs.GetFolders(pop_songs_song_folders)) = 0 Then
 			End If
@@ -9711,8 +9661,8 @@ End
 		    ' Create the new slides
 		    xslides = xgroup.AppendChild(CurrentSet.CreateElement("slides"))
 		    str = edt_slide_slides.Text
-		    Dim bgpath As String = App.DocsFolder.Child("Backgrounds").NativePath
-		    Dim docpath As String = App.DocsFolder.NativePath
+		    Dim bgpath As String = App.DocsFolder.Child("Backgrounds").AbsolutePath
+		    Dim docpath As String = App.DocsFolder.AbsolutePath
 		    
 		    For i = 0 To lst_image_images.ListCount()-1
 		      xslide = xslides.AppendChild(CurrentSet.CreateElement("slide"))
@@ -9750,10 +9700,10 @@ End
 		            
 		            chk_external_embed_presentation.Enabled = False
 		          Else
-		            SmartML.SetValue xgroup, "@filename",  f.NativePath
+		            SmartML.SetValue xgroup, "@filename",  f.AbsolutePath
 		          End If
 		        Else
-		          MsgBox(App.T.Translate("errors/fileutils/filenotfound", f.NativePath))
+		          MsgBox(App.T.Translate("errors/fileutils/filenotfound", f.AbsolutePath))
 		          Return False
 		        End If
 		      Else
@@ -9784,10 +9734,10 @@ End
 		            
 		            chk_external_embed_mediafile.Enabled = False
 		          Else
-		            SmartML.SetValue xgroup, "@filename",  f.NativePath
+		            SmartML.SetValue xgroup, "@filename",  f.AbsolutePath
 		          End If
 		        Else
-		          MsgBox(App.T.Translate("errors/fileutils/filenotfound", f.NativePath))
+		          MsgBox(App.T.Translate("errors/fileutils/filenotfound", f.AbsolutePath))
 		          Return False
 		        End If
 		      Else
@@ -9812,9 +9762,9 @@ End
 		    ElseIf btn_external_application.GetStuck() Then
 		      Dim f As FolderItem = GetFolderItem(edt_external_application_filename.Text)
 		      If f.Exists() Then
-		        SmartML.SetValue xgroup, "@app_filename", f.NativePath
+		        SmartML.SetValue xgroup, "@app_filename", f.AbsolutePath
 		      Else
-		        MsgBox(App.T.Translate("errors/fileutils/filenotfound", f.NativePath))
+		        MsgBox(App.T.Translate("errors/fileutils/filenotfound", f.AbsolutePath))
 		        Return False
 		      End If
 		      
@@ -9929,7 +9879,7 @@ End
 		  '++JRC Check if we have a songs folder if not try to create one
 		  If App.CheckDocumentFolders(App.SONGS_FOLDER) = App.NO_FOLDER Then
 		    If  App.DocsFolder <> Nil Then
-		      InputBox.Message App.T.Translate("errors/create_songs_folder", App.DocsFolder.NativePath + App.STR_SONGS)
+		      InputBox.Message App.T.Translate("errors/create_songs_folder", App.DocsFolder.AbsolutePath + App.STR_SONGS)
 		    Else
 		      InputBox.Message App.T.Translate("errors/no_docs_folder", "")
 		    End If
@@ -9980,8 +9930,8 @@ End
 		    // of the same song name in a parent/child folder relationship will never find the song
 		    // in the child folder.
 		    //
-		    SongPath = f.Parent.NativePath
-		    FolderPath = MainWindow.Songs.GetRootFolder.NativePath
+		    SongPath = f.Parent.AbsolutePath
+		    FolderPath = MainWindow.Songs.GetRootFolder.AbsolutePath
 		    SongPath = Mid(SongPath, Len(FolderPath) + 1) //Take off the leading path separator
 		    // Change path separator to forward slant "/" to match separator in FolderDB
 		    // This is platform specific
@@ -10111,7 +10061,7 @@ End
 		  '++JRC Check if we have a sets folder if not offer to create one
 		  If App.CheckDocumentFolders(App.SETS_FOLDER) = App.NO_FOLDER Then
 		    If App.DocsFolder <> Nil Then
-		      InputBox.Message App.T.Translate("errors/create_sets_folder", App.DocsFolder.NativePath + App.STR_SETS)
+		      InputBox.Message App.T.Translate("errors/create_sets_folder", App.DocsFolder.AbsolutePath + App.STR_SETS)
 		    Else
 		      MsgBox App.T.Translate("errors/no_docs_folder", "")
 		    End If
@@ -10172,7 +10122,7 @@ End
 		  
 		  App.MainPreferences.SetValueFI(Prefs.kSetsLastExportFolder, targetFolder)
 		  
-		  targetFolderPath = targetFolder.NativePath
+		  targetFolderPath = targetFolder.AbsolutePath
 		  
 		  if not targetFolder.Exists then
 		    return
@@ -10183,14 +10133,14 @@ End
 		  
 		  If Not songFolder.Exists Then
 		    If Not FileUtils.CreateFolder(songFolder) Then
-		      InputBox.Message songFolder.NativePath + ": " + EndOfLine + FileUtils.LastError
+		      InputBox.Message songFolder.AbsolutePath + ": " + EndOfLine + FileUtils.LastError
 		      Return
 		    End If
 		  End If
 		  
 		  If Not setFolder.Exists Then
 		    If Not FileUtils.CreateFolder(setFolder) Then
-		      InputBox.Message setFolder.NativePath + ": " + EndOfLine + FileUtils.LastError
+		      InputBox.Message setFolder.AbsolutePath + ": " + EndOfLine + FileUtils.LastError
 		      Return
 		    End If
 		  End If
@@ -10198,7 +10148,7 @@ End
 		  '++JRC Check if we have a sets folder if not offer to create one
 		  If App.CheckDocumentFolders(App.SETS_FOLDER) = App.NO_FOLDER Then
 		    If App.DocsFolder <> Nil Then
-		      InputBox.Message App.T.Translate("errors/create_sets_folder", App.DocsFolder.NativePath + App.STR_SETS)
+		      InputBox.Message App.T.Translate("errors/create_sets_folder", App.DocsFolder.AbsolutePath + App.STR_SETS)
 		    Else
 		      MsgBox App.T.Translate("errors/no_docs_folder", "")
 		    End If
@@ -10243,7 +10193,7 @@ End
 		  '++JRC
 		  setFile = App.DocsFolder.Child(App.STR_SETS).Child(CurrentSetName)
 		  If setFile = Nil Or NOT setFile.Exists Then
-		    InputBox.Message App.T.Translate("errors/no_such_set", App.DocsFolder.Child(App.STR_SETS).NativePath + CurrentSetName)
+		    InputBox.Message App.T.Translate("errors/no_such_set", App.DocsFolder.Child(App.STR_SETS).AbsolutePath + CurrentSetName)
 		    Return
 		  End If
 		  '--
@@ -10295,7 +10245,7 @@ End
 		  dim sourcePathParts() As String
 		  dim folderDelimiter As String
 		  
-		  folderDelimiter = FileUtils.NativePathSeparator()
+		  folderDelimiter = FileUtils.AbsolutePathSeparator()
 		  For i = 1 To fileCount
 		    //Split the path up and create each folder if needed
 		    targetPath = RelFiles(i)
@@ -10316,7 +10266,7 @@ End
 		    //Create or delete the actual file.
 		    currentFolderItem = Songs.GetFile(RelFiles(i))
 		    if not IsNull(targetFile) then
-		      App.DebugWriter.Write("targetFile At " + targetFile.NativePath, 1)
+		      App.DebugWriter.Write("targetFile At " + targetFile.AbsolutePath, 1)
 		      If Not FileUtils.CopyFile(currentFolderItem, targetFile, FileUtils.Replace.Newer) Then
 		        InputBox.Message FileUtils.LastError
 		      End If
@@ -10364,7 +10314,7 @@ End
 		  '++JRC Check if we have a sets folder if not offer to create one
 		  If App.CheckDocumentFolders(App.SETS_FOLDER) = App.NO_FOLDER Then
 		    If App.DocsFolder <> Nil Then
-		      InputBox.Message App.T.Translate("errors/create_sets_folder", App.DocsFolder.NativePath + App.STR_SETS)
+		      InputBox.Message App.T.Translate("errors/create_sets_folder", App.DocsFolder.AbsolutePath + App.STR_SETS)
 		    Else
 		      MsgBox App.T.Translate("errors/no_docs_folder", "")
 		    End If
@@ -10381,7 +10331,7 @@ End
 		    
 		    f = App.DocsFolder.Child("Sets").Child(t)
 		    If f.Exists Then
-		      InputBox.Message App.T.Translate("errors/already_exists", f.NativePath)
+		      InputBox.Message App.T.Translate("errors/already_exists", f.AbsolutePath)
 		      Return
 		    End If
 		    
@@ -10620,7 +10570,7 @@ End
 		  '++JRC Check if we have a sets folder if not try to create one
 		  If App.CheckDocumentFolders(App.SETS_FOLDER) = App.NO_FOLDER Then
 		    If App.DocsFolder <> Nil Then
-		      InputBox.Message App.T.Translate("errors/create_sets_folder", App.DocsFolder.NativePath +  App.STR_SETS)
+		      InputBox.Message App.T.Translate("errors/create_sets_folder", App.DocsFolder.AbsolutePath +  App.STR_SETS)
 		    Else
 		      MsgBox App.T.Translate("errors/no_docs_folder", "")
 		    End If
@@ -10640,14 +10590,14 @@ End
 		    f = App.DocsFolder.Child("Sets").Child(t)
 		    If f <> Nil Then
 		      If f.Exists Then
-		        InputBox.Message App.T.Translate("folderdb_errors/error[@code=3]", f.NativePath) ' already exists
+		        InputBox.Message App.T.Translate("folderdb_errors/error[@code=3]", f.AbsolutePath) ' already exists
 		        Exit
 		      End If
 		    End If
 		    
 		    f = App.DocsFolder.Child("Sets").Child(old)
 		    If f = Nil Or Not f.Exists Then
-		      InputBox.Message App.T.Translate("folderdb_errors/error[@code=8]", f.NativePath) ' could not find file
+		      InputBox.Message App.T.Translate("folderdb_errors/error[@code=8]", f.AbsolutePath) ' could not find file
 		      Exit
 		    End If
 		    
@@ -10686,7 +10636,7 @@ End
 		  '++JRC Check if we have a sets folder if not try to create one
 		  If App.CheckDocumentFolders(App.SETS_FOLDER) = App.NO_FOLDER Then
 		    If App.DocsFolder <> Nil Then
-		      InputBox.Message App.T.Translate("errors/create_sets_folder", App.DocsFolder.NativePath +  App.STR_SETS)
+		      InputBox.Message App.T.Translate("errors/create_sets_folder", App.DocsFolder.AbsolutePath +  App.STR_SETS)
 		    Else
 		      MsgBox App.T.Translate("errors/no_docs_folder", "")
 		    End If
@@ -10773,13 +10723,13 @@ End
 		  
 		  'check if song is already in the list, if it is return
 		  For i  = 0 To lst_song_linked.ListCount - 1
-		    If f.NativePath().Mid(Songs.GetRootFolder().NativePath().Len + 1) = lst_song_linked.List(i) Then
+		    If f.AbsolutePath().Mid(Songs.GetRootFolder().AbsolutePath().Len + 1) = lst_song_linked.List(i) Then
 		      InputBox.Message(App.T.Translate("errors/linked_song/exists"))
 		      Return
 		    End If
 		  Next i
 		  
-		  fullpath = f.NativePath().Mid(Songs.GetRootFolder().NativePath().Len + 1)
+		  fullpath = f.AbsolutePath().Mid(Songs.GetRootFolder().AbsolutePath().Len + 1)
 		  
 		  lst_song_linked.AddRow(fullpath)
 		  
@@ -10849,7 +10799,7 @@ End
 		  '++JRC Check if we have a songs folder if not try to create one
 		  If App.CheckDocumentFolders(App.SONGS_FOLDER) = App.NO_FOLDER Then
 		    If  App.DocsFolder <> Nil Then
-		      InputBox.Message App.T.Translate("errors/create_songs_folder", App.DocsFolder.NativePath + App.STR_SONGS)
+		      InputBox.Message App.T.Translate("errors/create_songs_folder", App.DocsFolder.AbsolutePath + App.STR_SONGS)
 		    Else
 		      InputBox.Message App.T.Translate("errors/no_docs_folder", "")
 		    End If
@@ -10986,7 +10936,7 @@ End
 		  '++JRC Check if we have a songs folder if not try to create one
 		  If App.CheckDocumentFolders(App.SONGS_FOLDER) = App.NO_FOLDER Then
 		    If  App.DocsFolder <> Nil Then
-		      InputBox.Message App.T.Translate("errors/create_songs_folder", App.DocsFolder.NativePath + App.STR_SONGS)
+		      InputBox.Message App.T.Translate("errors/create_songs_folder", App.DocsFolder.AbsolutePath + App.STR_SONGS)
 		    Else
 		      InputBox.Message App.T.Translate("errors/no_docs_folder", "")
 		    End If
@@ -11074,7 +11024,7 @@ End
 		    '++JRC Check if we have a songs folder if not try to create one
 		    If App.CheckDocumentFolders(App.SONGS_FOLDER) = App.NO_FOLDER Then
 		      If  App.DocsFolder <> Nil Then
-		        InputBox.Message App.T.Translate("errors/create_songs_folder", App.DocsFolder.NativePath + App.STR_SONGS)
+		        InputBox.Message App.T.Translate("errors/create_songs_folder", App.DocsFolder.AbsolutePath + App.STR_SONGS)
 		      Else
 		        InputBox.Message App.T.Translate("errors/no_docs_folder", "")
 		      End If
@@ -11122,7 +11072,7 @@ End
 		    '++JRC Check if we have a songs folder if not try to create one
 		    If App.CheckDocumentFolders(App.SONGS_FOLDER) = App.NO_FOLDER Then
 		      If  App.DocsFolder <> Nil Then
-		        InputBox.Message App.T.Translate("errors/create_songs_folder", App.DocsFolder.NativePath + App.STR_SONGS)
+		        InputBox.Message App.T.Translate("errors/create_songs_folder", App.DocsFolder.AbsolutePath + App.STR_SONGS)
 		      Else
 		        InputBox.Message App.T.Translate("errors/no_docs_folder", "")
 		      End If
@@ -11166,7 +11116,7 @@ End
 		  '++JRC Check if we have a songs folder if not try to create one
 		  If App.CheckDocumentFolders(App.SONGS_FOLDER) = App.NO_FOLDER Then
 		    If  App.DocsFolder <> Nil Then
-		      InputBox.Message App.T.Translate("errors/create_songs_folder", App.DocsFolder.NativePath + App.STR_SONGS)
+		      InputBox.Message App.T.Translate("errors/create_songs_folder", App.DocsFolder.AbsolutePath + App.STR_SONGS)
 		    Else
 		      InputBox.Message App.T.Translate("errors/no_docs_folder", "")
 		    End If
@@ -11335,7 +11285,7 @@ End
 		      Globals.OldSongSel = Loc
 		    Else
 		      If App.DocsFolder <> Nil Then
-		        InputBox.Message App.T.Translate("errors/create_songs_folder",  App.DocsFolder.NativePath + App.STR_SONGS)
+		        InputBox.Message App.T.Translate("errors/create_songs_folder",  App.DocsFolder.AbsolutePath + App.STR_SONGS)
 		      Else
 		        InputBox.Message App.T.Translate("errors/no_docs_folder", "")
 		      End If
@@ -11351,35 +11301,25 @@ End
 
 	#tag Method, Flags = &h0
 		Sub ActionSongPresent(mode As Integer, ItemNumber As Integer = 0)
-		  
 		  'Ask if user wants to save
-		  If NOT ActionSongAskSave Then Return 'User Canceled, Don't Present
-		  
-		  Dim setDoc As XmlDocument
-		  Dim sDoc() As XmlDocument
-		  Dim song As XmlNode
-		  Dim slideGroups As XmlNode
-		  Dim StyleNode As XmlNode
-		  Dim i As Integer
+		  If Not ActionSongAskSave Then Return 'User Canceled, Don't Present
 		  
 		  App.MouseCursor = System.Cursors.Wait
-		  setDoc = New XmlDocument
-		  song = setDoc.AppendChild(setDoc.CreateElement("set"))
+		  
+		  Dim setDoc As XmlDocument = New XmlDocument
+		  Dim song As XmlNode = setDoc.AppendChild(setDoc.CreateElement("set"))
 		  song = song.AppendChild(setDoc.CreateElement("slide_groups"))
-		  '++JRC
-		  Dim Answer As Boolean
-		  slideGroups = song
-		  '--
+		  
 		  song = song.AppendChild(setDoc.CreateElement("TEMP"))
 		  song = SmartML.ReplaceWithImportNode(song, CurrentSong.DocumentElement)
-		  StyleNode = SmartML.GetNode(song, "style")
-		  //++
-		  // If this looks weird, it's because I don't want to go chase down the other
-		  // places ToSetML is called and fix the style nodes that get passed in to start
-		  // at //style instead of the node above...Ed 19 Dec 2006
-		  //--
-		  If StyleNode <> Nil Then StyleNode = StyleNode.Parent
-		  SongML.ToSetML song, StyleNode
+		  
+		  
+		  ' Can be used by an external renderer.
+		  Dim pathnode as XmlNode = song.AppendChild(setDoc.CreateElement("path"))
+		  pathnode.AppendChild(setDoc.CreateTextNode(edt_songs_curr_folder.Text))
+		  
+		  Dim SongStyleNode As XmlNode = SmartML.GetNode(song, "style")
+		  SongML.ToSetML song, SongStyleNode
 		  
 		  '++JRC Assign an index for this set item
 		  Dim item As Integer = 1
@@ -11388,21 +11328,25 @@ End
 		  App.MouseCursor = Nil
 		  
 		  Status_Presentation = True
-		  
 		  Globals.Status_Presentation = True
 		  
 		  '++JRC Log song presentation
 		  
+		  Dim AddToLogAnswer As Boolean = False
+		  
 		  'Don't log in preview mode
-		  If App.MainPreferences.GetValueB(App.kActivityLog, True) And Globals.SongActivityLog <> Nil And Mode <> PresentWindow.MODE_PREVIEW Then
-		    '++JRC Added option to prompt before adding presented songs to the activity log
+		  If App.MainPreferences.GetValueB(App.kActivityLog, True) And _
+		    Globals.SongActivityLog <> Nil And _
+		    Mode <> PresentWindow.MODE_PREVIEW Then
 		    
-		    Answer = True
+		    AddToLogAnswer = True
+		    
+		    '++JRC Added option to prompt before adding presented songs to the activity log
 		    If App.MainPreferences.GetValueB(App.kPromptBeforePresenting, True) Then
-		      Answer = InputBox.AskYN(App.T.Translate("questions/activity_log/@caption"))
+		      AddToLogAnswer = InputBox.AskYN(App.T.Translate("questions/activity_log/@caption"))
 		    End If
 		    
-		    if Answer Then
+		    If AddToLogAnswer Then
 		      Dim d As New Date
 		      
 		      ActLog.Append(New LogEntry(Globals.SongActivityLog))
@@ -11423,20 +11367,19 @@ End
 		      'End If
 		    End If
 		  End If
-		  '--
-		  Globals.AddToLog = Answer
 		  
-		  '++JRC
+		  Globals.AddToLog = AddToLogAnswer
+		  Dim sDoc() As XmlDocument = AddLinkedSongs(song, AddToLogAnswer)
 		  
-		  sDoc = AddLinkedSongs(song, Answer)
-		  
+		  Dim AddLinkedSongsAnswer As Boolean = True
 		  If UBound(sDoc) >= 0 And SmartML.GetValueB(App.MyMainSettings.DocumentElement, "linked_songs/@prompt", True) Then
-		    Answer = InputBox.AskYN(App.T.Translate("questions/linked_songs/@caption"))
+		    AddLinkedSongsAnswer = InputBox.AskYN(App.T.Translate("questions/linked_songs/@caption"))
 		  End If
 		  
-		  If Answer Then
+		  If AddLinkedSongsAnswer Then
+		    Dim slideGroups As XmlNode = song.Parent
 		    
-		    For i = 0 To UBound(sDoc)
+		    For i As Integer = 0 To UBound(sDoc)
 		      
 		      item = item + 1
 		      song = slideGroups
@@ -11444,12 +11387,9 @@ End
 		      song = SmartML.ReplaceWithImportNode(song, sDoc(i).DocumentElement)
 		      '++JRC Assign an index for this set item
 		      SmartML.SetValueN(song, "@ItemNumber", item)
-		      StyleNode = SmartML.GetNode(song, "style")
-		      If StyleNode <> Nil Then StyleNode = StyleNode.Parent
-		      SongML.ToSetML song, StyleNode
+		      SongML.ToSetML song, SongStyleNode
 		      
 		    Next i
-		    
 		  End If
 		  '--
 		  
@@ -11553,7 +11493,7 @@ End
 		    '++JRC Check if we have a songs folder if not try to create one
 		    If App.CheckDocumentFolders(App.SONGS_FOLDER) = App.NO_FOLDER Then
 		      If  App.DocsFolder <> Nil Then
-		        InputBox.Message App.T.Translate("errors/create_songs_folder", App.DocsFolder.NativePath + App.STR_SONGS)
+		        InputBox.Message App.T.Translate("errors/create_songs_folder", App.DocsFolder.AbsolutePath + App.STR_SONGS)
 		      Else
 		        InputBox.Message App.T.Translate("errors/no_docs_folder", "")
 		      End If
@@ -11637,7 +11577,7 @@ End
 		  '++JRC Check if we have a songs folder if not try to create one
 		  If App.CheckDocumentFolders(App.SONGS_FOLDER) = App.NO_FOLDER Then
 		    If  App.DocsFolder <> Nil Then
-		      InputBox.Message App.T.Translate("errors/create_songs_folder", App.DocsFolder.NativePath + App.STR_SONGS)
+		      InputBox.Message App.T.Translate("errors/create_songs_folder", App.DocsFolder.AbsolutePath + App.STR_SONGS)
 		    Else
 		      InputBox.Message App.T.Translate("errors/no_docs_folder", "")
 		    End If
@@ -11743,7 +11683,7 @@ End
 		    '++JRC Check if we have a songs folder if not try to create one
 		    If App.CheckDocumentFolders(App.SONGS_FOLDER) = App.NO_FOLDER Then
 		      If  App.DocsFolder <> Nil Then
-		        InputBox.Message App.T.Translate("errors/create_songs_folder", App.DocsFolder.NativePath + App.STR_SONGS)
+		        InputBox.Message App.T.Translate("errors/create_songs_folder", App.DocsFolder.AbsolutePath + App.STR_SONGS)
 		      Else
 		        InputBox.Message App.T.Translate("errors/no_docs_folder", "")
 		      End If
@@ -11824,6 +11764,7 @@ End
 		    
 		  End If
 		  
+		  ColorizeBilingualSongtext()
 		End Sub
 	#tag EndMethod
 
@@ -11870,7 +11811,7 @@ End
 		    '++JRC Check if we have a songs folder if not try to create one
 		    If App.CheckDocumentFolders(App.SONGS_FOLDER) = App.NO_FOLDER Then
 		      If  App.DocsFolder <> Nil Then
-		        InputBox.Message App.T.Translate("errors/create_songs_folder", App.DocsFolder.NativePath + App.STR_SONGS)
+		        InputBox.Message App.T.Translate("errors/create_songs_folder", App.DocsFolder.AbsolutePath + App.STR_SONGS)
 		      Else
 		        InputBox.Message App.T.Translate("errors/no_docs_folder", "")
 		      End If
@@ -11907,10 +11848,8 @@ End
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Function AddLinkedSongs(song As XmlNode, AddToLog As Boolean) As XmlDocument()
+		Function AddLinkedSongs(song As XmlNode, AddToLog As Boolean, recursing As Boolean = False) As XmlDocument()
 		  '++JRC
-		  Dim LinkedSongs() As String
-		  Dim s As String
 		  Dim i, j As Integer
 		  Dim f As FolderItem
 		  Dim sDoc As XmlDocument
@@ -11918,6 +11857,12 @@ End
 		  Dim nodesSub() As XmlDocument
 		  Dim d As New Date
 		  Dim index As Integer
+		  Dim songId As String
+		  Static songIds As Dictionary
+		  
+		  If Not recursing Then
+		    songIds = New Dictionary
+		  End If
 		  
 		  'sanity check
 		  If song = Nil Then
@@ -11926,15 +11871,12 @@ End
 		  
 		  Dim xlinked_songs As XmlNode = SmartML.GetNode( song, "linked_songs", True)
 		  
-		  '
-		  's = SmartML.GetValue(song, "linked_songs", True)
-		  
-		  'LinkedSongs = Split(s, ";")
-		  
-		  
 		  For i = 0 To xlinked_songs.ChildCount()-1
 		    
-		    f = Songs.GetFile(xlinked_songs.Child(i).GetText())
+		    songId = xlinked_songs.Child(i).GetText()
+		    If SongIds.HasKey(songId) Then Continue
+		    songIDs.Value(songId) = Nil
+		    f = Songs.GetFile(songId)
 		    If f = Nil Then
 		      InputBox.Message App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", xlinked_songs.Child(i).GetText() )
 		      Continue
@@ -11966,7 +11908,7 @@ End
 		    End If
 		    
 		    'recurse
-		    nodesSub = AddLinkedSongs(sDoc.DocumentElement, AddToLog)
+		    nodesSub = AddLinkedSongs(sDoc.DocumentElement, AddToLog, True)
 		    For j = 0 To UBound(nodesSub)
 		      nodes.Append(nodesSub(j))
 		    Next j
@@ -11980,10 +11922,8 @@ End
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Function AddLinkedSongsFolderItem(song As XmlNode, AddToLog As Boolean) As FolderItem()
+		Function AddLinkedSongsFolderItem(song As XmlNode, AddToLog As Boolean, recursing As Boolean = False) As FolderItem()
 		  '++JRC
-		  Dim LinkedSongs() As String
-		  Dim s As String
 		  Dim i, j As Integer
 		  Dim f As FolderItem
 		  Dim sDoc As XmlDocument
@@ -11991,6 +11931,12 @@ End
 		  Dim nodesSub() As FolderItem
 		  Dim d As New Date
 		  Dim index As Integer
+		  Dim songId As String
+		  Static songIds As Dictionary
+		  
+		  If Not recursing Then
+		    songIds = New Dictionary
+		  End If
 		  
 		  'sanity check
 		  If song = Nil Then
@@ -11999,14 +11945,12 @@ End
 		  
 		  Dim xlinked_songs As XmlNode = SmartML.GetNode( song, "linked_songs", True)
 		  
-		  's = SmartML.GetValue(song, "linked_songs", True)
-		  
-		  'LinkedSongs = Split(s, ";")
-		  
-		  
 		  For i = 0 To xlinked_songs.ChildCount()-1
 		    
-		    f = Songs.GetFile(xlinked_songs.Child(i).GetText())
+		    songId = xlinked_songs.Child(i).GetText()
+		    If SongIds.HasKey(songId) Then Continue
+		    songIDs.Value(songId) = Nil
+		    f = Songs.GetFile(songId)
 		    If f = Nil Then
 		      InputBox.Message App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", xlinked_songs.Child(i).GetText() )
 		      Continue
@@ -12030,7 +11974,7 @@ End
 		      ActLog(index).CCLISongNumber = edt_song_ccli.Text
 		      ActLog(index).SongFileName =  f.Parent.Name + "\" + f.Name
 		      ActLog(index).DateAndTime = d
-		      ActLog(index).HasChords = ActLog(1).CheckLyricsForChords(edf_song_lyrics.Text)
+		      ActLog(index).HasChords = ActLog(index).CheckLyricsForChords(edf_song_lyrics.Text)
 		      ActLog(index).Presented = True
 		      ActLog(index).SetItemNumber = i+1 'Assign an  index to this song
 		      ActLog(index).Displayed = false 'Set this to true if user displays this song
@@ -12038,7 +11982,7 @@ End
 		    End If
 		    
 		    'recurse
-		    nodesSub = AddLinkedSongsFolderItem(sDoc.DocumentElement, AddToLog)
+		    nodesSub = AddLinkedSongsFolderItem(sDoc.DocumentElement, AddToLog, True)
 		    For j = 0 To UBound(nodesSub)
 		      nodes.Append(nodesSub(j))
 		    Next j
@@ -12085,7 +12029,7 @@ End
 	#tag EndMethod
 
 	#tag Method, Flags = &h1
-		Protected Sub CheckLyricLines(edfLyrics As SEditField)
+		Protected Sub CheckLyricLines(edfLyrics As TextArea)
 		  //+
 		  // Revised version of CheckLyricLines works on the edit field instead of a string
 		  // Goal: maintain cursor position while changing contents of the field
@@ -12175,7 +12119,7 @@ End
 		          If embedFile.Exists() Then
 		            
 		            'Doublecheck this is a temporary file
-		            If embedFile.NativePath().StartsWith( SpecialFolder.Temporary.NativePath() ) Then
+		            If embedFile.AbsolutePath().StartsWith( SpecialFolder.Temporary.AbsolutePath() ) Then
 		              embedFile.Delete()
 		            End If
 		          End If
@@ -12202,6 +12146,47 @@ End
 		  #If TargetWin32 Then
 		    WinAPI.Animation = m_oldAnimationsEnabled
 		  #EndIf
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Private Sub ColorizeBilingualSongtext()
+		  'Bilingual presentation feature (for sections ending with "L") - highlight every second line in the editor
+		  
+		  Dim lines() As String = Split(edf_song_lyrics.Text, SmartML.Newline.Left(1))
+		  Dim section As String = ""
+		  Dim k, start As Integer = 0
+		  
+		  // set TextFont and TextSize taken from settings
+		  Dim f As FontFace = SmartML.GetValueF(App.MyMainSettings.DocumentElement, "fonts/fixed_width")
+		  edf_song_lyrics.TextFont = f.Name
+		  edf_song_lyrics.TextSize = f.Size
+		  
+		  Dim st As StyledText = edf_song_lyrics.StyledText
+		  st.TextColor(0,edf_song_lyrics.Text.Len) = RGB(0,0,0) //reset color
+		  
+		  For j As Integer = 0 To UBound(lines)
+		    If Left(lines(j), 1) = "[" Then
+		      section = Mid(lines(j), 2, Instr(2, lines(j), "]") - 2)
+		      k = 0
+		    End If
+		    
+		    If SetML.IsBilingualSection(section) Then //bilingual section
+		      If Left(lines(j), 1) = " " Then //no Chord, no comment, no multiline, no page layout command -> lyric line
+		        
+		        //print every second line in a different color
+		        If k = 0 Then
+		          st.TextColor(start, lines(j).Len) = RGB(0,50,200)
+		          k = 1
+		        Else
+		          st.TextColor(start, lines(j).Len) = RGB(200,150,0)
+		          k = 0
+		        End If
+		      End If
+		    End If
+		    start = start + lines(j).Len + 1
+		  Next j
+		  
 		End Sub
 	#tag EndMethod
 
@@ -12499,7 +12484,7 @@ End
 		            outputStream.Write DecodeBase64(embedFiledata)
 		            outputStream.Close
 		            
-		            SmartML.SetValue slide_group, "@_localfilename", presFile.NativePath()
+		            SmartML.SetValue slide_group, "@_localfilename", presFile.AbsolutePath()
 		          Catch
 		            InputBox.Message App.T.Translate("errors/fileutils/temporaryfailed", presFileName)
 		          End Try
@@ -12520,7 +12505,7 @@ End
 		              presHost = PresentationHost.OpenOffice
 		            End Select
 		            
-		            Dim oExtPres As iPresentation = PresentationFactory.GetOrCreate( presFile.NativePath, presHost )
+		            Dim oExtPres As iPresentation = PresentationFactory.GetOrCreate( presFile.AbsolutePath, presHost )
 		            If Not IsNull( oExtPres ) Then
 		              
 		              If oExtPres.CanControl() Then
@@ -12546,11 +12531,11 @@ End
 		              End If
 		              
 		            Else
-		              InputBox.Message App.T.Translate("errors/presentations/load_failed", presFile.NativePath)
+		              InputBox.Message App.T.Translate("errors/presentations/load_failed", presFile.AbsolutePath)
 		            End If
 		            
 		          Else
-		            InputBox.Message App.T.Translate("errors/fileutils/filenotfound", presFile.NativePath)
+		            InputBox.Message App.T.Translate("errors/fileutils/filenotfound", presFile.AbsolutePath)
 		          End If
 		        End If
 		        
@@ -12573,7 +12558,7 @@ End
 		              outputStream.Write DecodeBase64(embedFiledata)
 		              outputStream.Close
 		              
-		              SmartML.SetValue slide_group, "@_localfilename", mediaFile.NativePath()
+		              SmartML.SetValue slide_group, "@_localfilename", mediaFile.AbsolutePath()
 		            Catch
 		              InputBox.Message App.T.Translate("errors/fileutils/temporaryfailed", mediaFileName)
 		            End Try
@@ -12905,7 +12890,8 @@ End
 		  End If
 		  Status_InSongLoading = True
 		  
-		  Dim fullpath As String = f.NativePath().Mid(Songs.GetRootFolder().NativePath().Len + 1)
+		  Dim fullpath As String = f.AbsolutePath().Mid(Songs.GetRootFolder().AbsolutePath().Len + 1)
+		  Dim index As Integer = -1
 		  
 		  If f <> Nil And f.Exists Then
 		    App.MouseCursor = System.Cursors.Wait
@@ -12913,7 +12899,6 @@ End
 		    Dim folderPath As String = fullpath.Mid(1, fullpath.Len() - f.Name().Len() - 1)
 		    folderPath = ReplaceAll(folderPath, "\", "/")
 		    
-		    Dim index As Integer = -1
 		    If folderPath = "" Then
 		      If pop_songs_song_folders.Text = Songs.GetFilterAll() Or _
 		        pop_songs_song_folders.Text = Songs.GetFilterMain() Then
@@ -13017,6 +13002,12 @@ End
 		  Status_InSongLoading = False
 		  UpdateMenuItems
 		  
+		  // CHANGE-PJ: Second language feature (for sections ending with "L") - coloring every second line to different color in editor (was not working inside LoadSongFields directly, so I put it here)
+		  If f <> Nil And f.Exists And index > -1 Then
+		    ColorizeBilingualSongtext
+		  End If
+		  
+		  
 		  Return result
 		End Function
 	#tag EndMethod
@@ -13037,15 +13028,11 @@ End
 		    For i = 0 To xbacks.ChildCount - 1
 		      Dim image As StyleImage = new StyleImage()
 		      Dim s As String = SmartML.GetValue(xbacks.Child(i), "filename")
-		      
-		      If imageLink And s<>"" Then
-		        If s.StartsWith("/") or s.StartsWith("\\") or s.Mid(2, 1)=":" Then
-		          Call image.SetImageFromFileName( s )
-		        Else
-		          Call image.SetImageFromFileName( App.DocsFolder.Child("Backgrounds").NativePath + s )
-		        End If
+		      Dim imagestring As String = SmartML.GetValue(xbacks.Child(i), "image")
+		      If imagestring = "" Then
+		        Call image.SetImageFromFileName( s )
 		      Else
-		        Call image.SetImageAsString( SmartML.GetValue(xbacks.Child(i), "image") )
+		        Call image.SetImageAsString( imagestring )
 		      End If
 		      
 		      verseDict.Value( SmartML.GetValue(xbacks.Child(i), "@verse") ) = image
@@ -13145,8 +13132,8 @@ End
 		  pop_song_time_sig.ListIndex = found
 		  
 		  edf_song_lyrics.Text = ""
-		  'edf_song_lyrics..ScrollBarVertical = False
-		  edf_song_lyrics.Text = SmartML.GetValue(CurrentSong.DocumentElement, "lyrics", True).FormatLocalEndOfLine
+		  edf_song_lyrics.StyledText.Text = SmartML.GetValue(CurrentSong.DocumentElement, "lyrics", True).FormatLocalEndOfLine
+		  
 		  'edf_song_lyrics.ScrollBarVertical = True
 		  
 		  If SmartML.GetNode(CurrentSong.DocumentElement, "style", False) = Nil Then
@@ -13517,8 +13504,8 @@ End
 		      Dim img As StyleImage = lst_song_backgrounds.GetImage( i )
 		      
 		      If chk_song_store_as_link.Value And img.GetImageFilename()<>"" Then
-		        If img.GetImageFilename().StartsWith(App.DocsFolder.Child("Backgrounds").NativePath) And ImageDefaults.ExcludeBackgroundsImages() Then
-		          SmartML.SetValue xback, "filename", img.GetImageFilename().Mid(App.DocsFolder.Child("Backgrounds").NativePath().Len()+1)
+		        If img.GetImageFilename().StartsWith(App.DocsFolder.Child("Backgrounds").AbsolutePath) And ImageDefaults.ExcludeBackgroundsImages() Then
+		          SmartML.SetValue xback, "filename", img.GetImageFilename().Mid(App.DocsFolder.Child("Backgrounds").AbsolutePath().Len()+1)
 		        Else
 		          SmartML.SetValue xback, "filename", img.GetImageFilename()
 		        End If
@@ -13553,7 +13540,7 @@ End
 		  btn_song_present.DeletePopup
 		  btn_song_present.AddPopupRow App.T.Translate("songs_mode/selected_song/present/single_screen/@caption")
 		  
-		  if OSScreenCount() > 1 Then
+		  If OSScreenCount() > 1 Then
 		    btn_song_present.AddPopupRow App.T.Translate("songs_mode/selected_song/present/dual_screen/@caption")
 		  End If
 		  
@@ -14413,7 +14400,7 @@ End
 		      'Check if we have a songs folder if not try to create one
 		      If App.CheckDocumentFolders(App.SONGS_FOLDER) = App.NO_FOLDER Then
 		        If App.DocsFolder <> Nil Then
-		          InputBox.Message App.T.Translate("errors/create_songs_folder", App.DocsFolder.Child(App.STR_SONGS).NativePath)
+		          InputBox.Message App.T.Translate("errors/create_songs_folder", App.DocsFolder.Child(App.STR_SONGS).AbsolutePath)
 		        Else
 		          MsgBox App.T.Translate("errors/no_docs_folder", "")
 		        End If
@@ -14425,7 +14412,7 @@ End
 		      
 		    Else
 		      If App.DocsFolder <> Nil Then
-		        If InputBox.AskYN(App.T.Translate("questions/no_folder/@caption", App.DocsFolder.Child(App.STR_SONGS).NativePath + "\" + ReplaceAll(Me.Text, "/", "\"))) Then
+		        If InputBox.AskYN(App.T.Translate("questions/no_folder/@caption", App.DocsFolder.Child(App.STR_SONGS).AbsolutePath + "\" + ReplaceAll(Me.Text, "/", "\"))) Then
 		          If NOT FileUtils.CreateFolderTree(App.DocsFolder.Child(App.STR_SONGS), Me.Text) Then
 		            Me.ListIndex = -1
 		            Globals.OldFolderSel = -1
@@ -14523,6 +14510,20 @@ End
 	#tag Event
 		Sub Open()
 		  Me.SetIcon backgroundpic, backgroundmask
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub ConstructPopupMenu()
+		  Me.DeletePopup
+		  Me.AddPopupRow App.T.Translate("songs_mode/selected_song/present/single_screen/@caption")
+		  
+		  if OSScreenCount() > 1 Then
+		    Me.AddPopupRow App.T.Translate("songs_mode/selected_song/present/dual_screen/@caption")
+		  End If
+		  
+		  Me.AddPopupSeparator
+		  Me.AddPopupRow App.T.Translate("songs_mode/selected_song/present/preview_dual_screen/@caption")
+		  
 		End Sub
 	#tag EndEvent
 #tag EndEvents
@@ -15026,7 +15027,7 @@ End
 		  '++JRC Check if we have a sets folder if not try to create one
 		  If App.CheckDocumentFolders(App.SETS_FOLDER) = App.NO_FOLDER Then
 		    If App.DocsFolder <> Nil Then
-		      InputBox.Message App.T.Translate("errors/create_sets_folder", App.DocsFolder.Child(App.STR_SETS).NativePath)
+		      InputBox.Message App.T.Translate("errors/create_sets_folder", App.DocsFolder.Child(App.STR_SETS).AbsolutePath)
 		      Me.ListIndex = -1
 		      CurrentSetIndex = -1
 		      Return
@@ -15293,6 +15294,20 @@ End
 		  Me.SetIcon backgroundpic, backgroundmask
 		End Sub
 	#tag EndEvent
+	#tag Event
+		Sub ConstructPopupMenu()
+		  Me.DeletePopup
+		  Me.AddPopupRow App.T.Translate("sets_mode/current_set/present/single_screen/@caption")
+		  
+		  if OSScreenCount() > 1 Then
+		    Me.AddPopupRow App.T.Translate("sets_mode/selected_song/present/dual_screen/@caption")
+		  End If
+		  
+		  Me.AddPopupSeparator
+		  Me.AddPopupRow App.T.Translate("sets_mode/current_set/present/preview_dual_screen/@caption")
+		  
+		End Sub
+	#tag EndEvent
 #tag EndEvents
 #tag Events btn_set_delete
 	#tag Event
@@ -15345,6 +15360,20 @@ End
 	#tag Event
 		Sub Open()
 		  Me.SetIcon backgroundpic, backgroundmask
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub ConstructPopupMenu()
+		  Me.DeletePopup
+		  Me.AddPopupRow App.T.Translate("sets_mode/current_set/present/single_screen/@caption")
+		  
+		  if OSScreenCount() > 1 Then
+		    Me.AddPopupRow App.T.Translate("sets_mode/selected_song/present/dual_screen/@caption")
+		  End If
+		  
+		  Me.AddPopupSeparator
+		  Me.AddPopupRow App.T.Translate("sets_mode/current_set/present/preview_dual_screen/@caption")
+		  
 		End Sub
 	#tag EndEvent
 #tag EndEvents
@@ -15454,13 +15483,13 @@ End
 		    
 		    f = App.DocsFolder.Child("Sets").Child(t)
 		    If f.Exists Then
-		      InputBox.Message App.T.Translate("folderdb_errors/error[@code=3]", f.NativePath) ' already exists
+		      InputBox.Message App.T.Translate("folderdb_errors/error[@code=3]", f.AbsolutePath) ' already exists
 		      Exit
 		    End If
 		    
 		    oldf = App.DocsFolder.Child("Sets").Child(old)
 		    If Not oldf.Exists Then
-		      InputBox.Message App.T.Translate("folderdb_errors/error[@code=8]", oldf.NativePath) ' could not find file
+		      InputBox.Message App.T.Translate("folderdb_errors/error[@code=8]", oldf.AbsolutePath) ' could not find file
 		      Exit
 		    End If
 		    MainWindow.MouseCursor = System.Cursors.Wait
@@ -15736,6 +15765,7 @@ End
 		  Dim xgroup As XmlNode
 		  Dim xslides As XmlNode
 		  Dim s As String
+		  Dim imagestring As String
 		  Dim i As Integer
 		  Dim groupType As String
 		  
@@ -15916,15 +15946,11 @@ End
 		    For i = 0 To xslides.ChildCount - 1
 		      image = new StyleImage()
 		      s = SmartML.GetValue(xslides.Child(i), "filename")
-		      If imageLink And s<>"" Then
-		        If s.StartsWith("/") or s.StartsWith("\\") or s.Mid(2, 1)=":" Then
-		          Call image.SetImageFromFileName( s )
-		        Else
-		          Call image.SetImageFromFileName( App.DocsFolder.Child("Backgrounds").NativePath + s )
-		        End If
-		        
+		      imagestring = SmartML.GetValue(xslides.Child(i), "image")
+		      If imagestring = "" Then
+		        Call image.SetImageFromFileName( s )
 		      Else
-		        Call image.SetImageAsString( SmartML.GetValue(xslides.Child(i), "image") )
+		        Call image.SetImageAsString( imagestring )
 		      End If
 		      lst_image_images.AddImage( image )
 		      lst_image_images.Cell( lst_image_images.LastIndex(), 1 ) = SmartML.GetValue(xslides.Child(i), "description")
@@ -16950,6 +16976,20 @@ End
 		  End If
 		End Sub
 	#tag EndEvent
+	#tag Event
+		Sub LostFocus()
+		  ColorizeBilingualSongtext
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub KeyUp(Key As String)
+		  Select Case Asc(key)
+		  Case 10, 13
+		    ColorizeBilingualSongtext
+		  End Select
+		  
+		End Sub
+	#tag EndEvent
 #tag EndEvents
 #tag Events btn_song_ins_section
 	#tag Event
@@ -17352,7 +17392,7 @@ End
 		    End if
 		    
 		    Dim path As String = Me.Cell(Me.ListIndex(), 0)
-		    Dim f As FolderItem = GetFolderItem(Songs.GetRootFolder().NativePath()).Child(path)
+		    Dim f As FolderItem = GetFolderItem(Songs.GetRootFolder().AbsolutePath()).Child(path)
 		    
 		    Call LoadSong(f, True)
 		  End If
@@ -18324,7 +18364,7 @@ End
 		  If Not IsNull(f) Then
 		    
 		    Self.MouseCursor = System.Cursors.Wait
-		    Dim oExtPres As iPresentation = PresentationFactory.GetOrCreate( f.NativePath, PresentationHost.Automatic, False )
+		    Dim oExtPres As iPresentation = PresentationFactory.GetOrCreate( f.AbsolutePath, PresentationHost.Automatic, False )
 		    If Not IsNull( oExtPres ) Then
 		      
 		      If oExtPres.CanPreview() Then
@@ -18355,7 +18395,7 @@ End
 		      End If
 		      
 		    Else
-		      MsgBox(App.T.Translate("errors/presentations/load_failed", f.NativePath ))
+		      MsgBox(App.T.Translate("errors/presentations/load_failed", f.AbsolutePath ))
 		    End If
 		    Self.MouseCursor = System.Cursors.StandardPointer
 		    
@@ -18614,7 +18654,7 @@ End
 		  
 		  f = dlg.ShowModal()
 		  If Not IsNull(f) Then
-		    edt_external_presentation_file.Text = f.NativePath()
+		    edt_external_presentation_file.Text = f.AbsolutePath()
 		  End If
 		  
 		End Sub
@@ -18704,7 +18744,7 @@ End
 		  
 		  f = dlg.ShowModal()
 		  If Not IsNull(f) Then
-		    edt_external_application_filename.Text = f.NativePath()
+		    edt_external_application_filename.Text = f.AbsolutePath()
 		    
 		    If Status_InSetEditable Then
 		      Status_InSetChanged = True
@@ -18819,7 +18859,7 @@ End
 		  
 		  f = dlg.ShowModal()
 		  If Not IsNull(f) Then
-		    edt_external_videolan_mediafilename.Text = f.NativePath()
+		    edt_external_videolan_mediafilename.Text = f.AbsolutePath()
 		    
 		    If Status_InSetEditable Then
 		      Status_InSetChanged = True
@@ -18914,28 +18954,28 @@ End
 	#tag ViewProperty
 		Name="BackColor"
 		Visible=true
-		Group="Background"
+		Group="Appearance"
 		InitialValue="&hFFFFFF"
 		Type="Color"
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="Backdrop"
 		Visible=true
-		Group="Background"
+		Group="Appearance"
 		Type="Picture"
 		EditorType="Picture"
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="CloseButton"
 		Visible=true
-		Group="Frame"
+		Group="Appearance"
 		InitialValue="True"
 		Type="Boolean"
 		EditorType="Boolean"
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="Composite"
-		Group="OS X (Carbon)"
+		Group="Appearance"
 		InitialValue="False"
 		Type="Boolean"
 	#tag EndViewProperty
@@ -18952,7 +18992,7 @@ End
 	#tag ViewProperty
 		Name="Frame"
 		Visible=true
-		Group="Frame"
+		Group="Appearance"
 		InitialValue="0"
 		Type="Integer"
 		EditorType="Enum"
@@ -18967,12 +19007,13 @@ End
 			"7 - Global Floating Window"
 			"8 - Sheet Window"
 			"9 - Metal Window"
+			"10 - Drawer Window"
 			"11 - Modeless Dialog"
 		#tag EndEnumValues
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="FullScreen"
-		Group="Behavior"
+		Group="Appearance"
 		InitialValue="False"
 		Type="Boolean"
 		EditorType="Boolean"
@@ -18980,7 +19021,7 @@ End
 	#tag ViewProperty
 		Name="FullScreenButton"
 		Visible=true
-		Group="Frame"
+		Group="Appearance"
 		InitialValue="False"
 		Type="Boolean"
 		EditorType="Boolean"
@@ -18988,21 +19029,21 @@ End
 	#tag ViewProperty
 		Name="HasBackColor"
 		Visible=true
-		Group="Background"
+		Group="Appearance"
 		InitialValue="False"
 		Type="Boolean"
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="Height"
 		Visible=true
-		Group="Size"
+		Group="Position"
 		InitialValue="400"
 		Type="Integer"
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="ImplicitInstance"
 		Visible=true
-		Group="Behavior"
+		Group="Appearance"
 		InitialValue="True"
 		Type="Boolean"
 		EditorType="Boolean"
@@ -19017,28 +19058,28 @@ End
 	#tag ViewProperty
 		Name="LiveResize"
 		Visible=true
-		Group="Behavior"
+		Group="Appearance"
 		InitialValue="True"
 		Type="Boolean"
 		EditorType="Boolean"
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="MacProcID"
-		Group="OS X (Carbon)"
+		Group="Appearance"
 		InitialValue="0"
 		Type="Integer"
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="MaxHeight"
 		Visible=true
-		Group="Size"
+		Group="Position"
 		InitialValue="32000"
 		Type="Integer"
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="MaximizeButton"
 		Visible=true
-		Group="Frame"
+		Group="Appearance"
 		InitialValue="True"
 		Type="Boolean"
 		EditorType="Boolean"
@@ -19046,20 +19087,20 @@ End
 	#tag ViewProperty
 		Name="MaxWidth"
 		Visible=true
-		Group="Size"
+		Group="Position"
 		InitialValue="32000"
 		Type="Integer"
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="MenuBar"
 		Visible=true
-		Group="Menus"
+		Group="Appearance"
 		Type="MenuBar"
 		EditorType="MenuBar"
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="MenuBarVisible"
-		Group="Behavior"
+		Group="Appearance"
 		InitialValue="True"
 		Type="Boolean"
 		EditorType="Boolean"
@@ -19067,14 +19108,14 @@ End
 	#tag ViewProperty
 		Name="MinHeight"
 		Visible=true
-		Group="Size"
+		Group="Position"
 		InitialValue="64"
 		Type="Integer"
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="MinimizeButton"
 		Visible=true
-		Group="Frame"
+		Group="Appearance"
 		InitialValue="True"
 		Type="Boolean"
 		EditorType="Boolean"
@@ -19082,7 +19123,7 @@ End
 	#tag ViewProperty
 		Name="MinWidth"
 		Visible=true
-		Group="Size"
+		Group="Position"
 		InitialValue="64"
 		Type="Integer"
 	#tag EndViewProperty
@@ -19096,7 +19137,7 @@ End
 	#tag ViewProperty
 		Name="Placement"
 		Visible=true
-		Group="Behavior"
+		Group="Position"
 		InitialValue="0"
 		Type="Integer"
 		EditorType="Enum"
@@ -19116,7 +19157,7 @@ End
 	#tag ViewProperty
 		Name="Resizeable"
 		Visible=true
-		Group="Frame"
+		Group="Appearance"
 		InitialValue="True"
 		Type="Boolean"
 		EditorType="Boolean"
@@ -19156,14 +19197,14 @@ End
 	#tag ViewProperty
 		Name="Title"
 		Visible=true
-		Group="Frame"
+		Group="Appearance"
 		InitialValue="Untitled"
 		Type="String"
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="Visible"
 		Visible=true
-		Group="Behavior"
+		Group="Appearance"
 		InitialValue="True"
 		Type="Boolean"
 		EditorType="Boolean"
@@ -19171,7 +19212,7 @@ End
 	#tag ViewProperty
 		Name="Width"
 		Visible=true
-		Group="Size"
+		Group="Position"
 		InitialValue="600"
 		Type="Integer"
 	#tag EndViewProperty

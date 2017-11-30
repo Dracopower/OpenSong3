@@ -146,8 +146,9 @@ Module SongML
 	#tag EndMethod
 
 	#tag Method, Flags = &h1
-		Protected Function DeflateString(lyrics As String) As String
-		  Return ReplaceAll(ReplaceAll(lyrics, "_", ""), "|", Chr(10)).CleanSpaces
+		Protected Function DeflateString(lyrics As String, separationMark As String = "") As String
+		  // CHANGE-PJ: Second language feature - add separationMark taken as parameter (only applied for bilingual sections) -> needed to differentiate between a "real" second line and just an manual linebreak chosen by the user
+		  Return ReplaceAll(ReplaceAll(lyrics, "_", ""), "|", Chr(10)+separationMark).CleanSpaces
 		End Function
 	#tag EndMethod
 
@@ -306,7 +307,7 @@ Module SongML
 		      
 		      ' -------------- LYRICS W/O CHORDS --------------
 		      temp = lines(l)
-		      ElementHeight = Draw_SoloLyricLine(g, x+leftEdge, runningBase, zoom, section, temp, ColumnWidth, Page)
+		      ElementHeight = Draw_SoloLyricLine(g, x+leftEdge, runningBase, zoom, section, temp, ColumnWidth, Page) // TODO-PJ: when is this called? Is there a need to add here the secondlanguage feature as well?
 		      LastLine = l
 		    End If
 		    
@@ -2177,7 +2178,7 @@ Module SongML
 		          Dim sfile As String = SmartML.GetValue(xbackground, "filename")
 		          If SmartML.GetValueB(xbacks, "@link", False) = True And sfile<>"" Then
 		            If Not (sfile.StartsWith("/") or sfile.StartsWith("\\") or sfile.Mid(2, 1)=":") Then
-		              sfile = App.DocsFolder.Child("Backgrounds").NativePath + sfile
+		              sfile = App.DocsFolder.Child("Backgrounds").AbsolutePath + sfile
 		            End If
 		            
 		            Dim file As FolderItem = GetFolderItem(sfile)
@@ -2192,10 +2193,18 @@ Module SongML
 		        End If
 		      End If
 		      
+		      // CHANGE-PJ: Second language feature - if last character of section name = "L" for "L"anguage -> activate separationMark (detect linebreaks inserted by algorithm)
+		      Dim separationMark As String
+		      If SetML.IsBilingualSection(section) Then
+		        separationMark = SetML.SeparationMarkBilingual
+		      Else
+		        separationMark = ""
+		      End If
+		      
 		      sub_sections = Split(dict.Value(section), "||")
 		      For Each sub_section In sub_sections
 		        slide = SmartML.InsertChild(slides, "slide", slides.ChildCount)
-		        SmartML.SetValue(slide, "body", DeflateString(StringUtils.Trim(sub_section, StringUtils.WhiteSpaces)))
+		        SmartML.SetValue(slide, "body", DeflateString(StringUtils.Trim(sub_section, StringUtils.WhiteSpaces), separationMark)) // CHANGE-PJ: added parameter separationMark (makes only a difference for bilingual sections)
 		        If section = "default" Then
 		          SmartML.SetValue(slide, "@id", "")
 		        Else

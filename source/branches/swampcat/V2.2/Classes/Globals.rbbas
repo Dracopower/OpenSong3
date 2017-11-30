@@ -121,13 +121,6 @@ Protected Module Globals
 		End Sub
 	#tag EndMethod
 
-	#tag Method, Flags = &h1
-		Protected Function Operator_Convert(Extends f As Xojo.IO.Folderitem) As FolderItem
-		  Return GetFolderItem(f.Path, FolderItem.PathTypeShell)
-		End Function
-	#tag EndMethod
-
-
 	#tag Note, Name = Audio!
 		A property deleted from this module
 		was "SXMSAudio As SXMS"
