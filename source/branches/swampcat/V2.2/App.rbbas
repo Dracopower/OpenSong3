@@ -85,8 +85,16 @@ Inherits Application
 		  'RB insists on outputing the executable in a subfolder (sigh)
 		  #If DebugBuild And Not TargetMacOS And RBVersion<=2012.51
 		    AppFolder = GetFolderItem("").Parent
-		  #ElseIf TargetMacOS
-		    AppFolder = GetFolderItem(Xojo.IO.SpecialFolder.GetResource("OpenSong Defaults").Parent.Path, FolderItem.PathTypeShell)
+		  #ElseIf RBVersion >= 2015.02
+		    #Pragma BreakOnExceptions Off
+		    Try
+		      AppFolder = GetFolderItem(Xojo.IO.SpecialFolder.GetResource("OpenSong Defaults").Parent.Path, FolderItem.PathTypeShell)
+		    Catch rtex
+		      System.DebugLog "App.Open: GetResource failed due to '" + rtex.Reason + "'"
+		      'Use the old way, maybe it's in the same folder as the executable
+		        AppFolder = GetFolderItem("")
+		    End Try
+		    #Pragma BreakOnExceptions Default
 		  #Else
 		    AppFolder = GetFolderItem("")
 		  #Endif
