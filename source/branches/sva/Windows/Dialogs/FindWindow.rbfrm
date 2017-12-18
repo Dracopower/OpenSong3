@@ -46,6 +46,7 @@ Begin Window FindWindow
       Selectable      =   False
       TabIndex        =   0
       TabPanelIndex   =   0
+      TabStop         =   True
       Text            =   "Enter search string:"
       TextAlign       =   0
       TextColor       =   0
@@ -185,6 +186,7 @@ Begin Window FindWindow
       Scope           =   0
       TabIndex        =   4
       TabPanelIndex   =   0
+      TabStop         =   True
       TextFont        =   "Arial"
       TextSize        =   10
       TextUnit        =   0
@@ -852,6 +854,7 @@ Begin Window FindWindow
          Selectable      =   False
          TabIndex        =   20
          TabPanelIndex   =   0
+         TabStop         =   True
          Text            =   "Key"
          TextAlign       =   0
          TextColor       =   &h000000
@@ -886,6 +889,7 @@ Begin Window FindWindow
          Selectable      =   False
          TabIndex        =   21
          TabPanelIndex   =   0
+         TabStop         =   True
          Text            =   "Form"
          TextAlign       =   0
          TextColor       =   &h000000

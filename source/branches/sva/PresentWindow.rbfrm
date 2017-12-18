@@ -47,7 +47,6 @@ Begin Window PresentWindow Implements ScriptureReceiver
       TabPanelIndex   =   0
       TabStop         =   True
       Top             =   0
-      Transparent     =   True
       UseFocusRing    =   False
       Visible         =   True
       Width           =   300

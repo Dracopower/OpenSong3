@@ -245,6 +245,7 @@ Begin Window InputBox
       Selectable      =   False
       TabIndex        =   4
       TabPanelIndex   =   0
+      TabStop         =   True
       Text            =   "Label"
       TextAlign       =   0
       TextColor       =   0
