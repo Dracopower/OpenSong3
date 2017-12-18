@@ -3,7 +3,6 @@ Class App
 Inherits Application
 	#tag Event
 		Sub Activate()
-		  '++JRC
 		  DebugWriter.Write "Begin App.Activate"
 		  
 		  If Globals.Status_Presentation Then
@@ -12,20 +11,36 @@ Inherits Application
 		    #endif
 		    
 		    If PresentWindow.HelperActive Then
-		      App.RestoreWindow(PresentHelperWindow)
-		      App.SetForeground(PresentHelperWindow)
-		      PresentHelperWindow.SetFocus
+		      #if Not TargetWin32
+		        App.RestoreWindow(PresentHelperWindow)
+		        App.SetForeground(PresentHelperWindow)
+		        PresentHelperWindow.SetFocus
+		      #else
+		        If PresentHelperWindow.IsCollapsed Then
+		          App.ShowWin(PresentHelperWindow,SW_RESTORE)
+		        Else
+		          App.ShowWin(PresentHelperWindow,SW_SHOW)
+		        End If
+		      #endif
 		    Else
 		      If Not SetML.IsExternal(PresentWindow.XCurrentSlide) Then
-		        App.RestoreWindow(PresentWindow)
-		        App.SetForeground(PresentWindow)
-		        PresentWindow.SetFocus()
+		        #if Not TargetWin32
+		          App.RestoreWindow(PresentWindow)
+		          App.SetForeground(PresentWindow)
+		          PresentWindow.SetFocus
+		        #else
+		          If PresentWindow.IsCollapsed Then
+		            App.ShowWin(PresentWindow,SW_RESTORE)
+		          Else
+		            App.ShowWin(PresentWindow,SW_SHOW)
+		          End If
+		        #endif
 		      End If
 		    End If
 		  End If
 		  
 		  DebugWriter.Write "End App.Activate"
-		  '--
+		  
 		End Sub
 	#tag EndEvent
 
@@ -1892,6 +1907,9 @@ Inherits Application
 	#tag EndConstant
 
 	#tag Constant, Name = SW_NORMAL, Type = Integer, Dynamic = False, Default = \"1", Scope = Public
+	#tag EndConstant
+
+	#tag Constant, Name = SW_RESTORE, Type = Double, Dynamic = False, Default = \"9", Scope = Public
 	#tag EndConstant
 
 	#tag Constant, Name = SW_SHOW, Type = Integer, Dynamic = False, Default = \"5", Scope = Public

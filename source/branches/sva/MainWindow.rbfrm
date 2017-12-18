@@ -8402,7 +8402,6 @@ End
 #tag WindowCode
 	#tag Event
 		Sub Activate()
-		  '++JRC
 		  App.DebugWriter.Write "Begin MainWindow.Activate:"
 		  
 		  If Globals.Status_Presentation Or Status_Presentation Then
@@ -8411,16 +8410,32 @@ End
 		    #endif
 		    
 		    If PresentWindow.HelperActive Then
-		      App.RestoreWindow(PresentHelperWindow)
-		      App.SetForeground(PresentHelperWindow)
+		      #if Not TargetWin32
+		        App.RestoreWindow(PresentHelperWindow)
+		        App.SetForeground(PresentHelperWindow)
+		      #else
+		        If PresentHelperWindow.IsCollapsed Then
+		          App.ShowWin(PresentHelperWindow,App.SW_RESTORE)
+		        Else
+		          App.ShowWin(PresentHelperWindow,App.SW_SHOW)
+		        End If
+		      #endif
 		    Else
 		      If Not SetML.IsExternal(PresentWindow.XCurrentSlide) Then
-		        App.RestoreWindow(PresentWindow)
-		        App.SetForeground(PresentWindow)
+		        #if Not TargetWin32
+		          App.RestoreWindow(PresentWindow)
+		          App.SetForeground(PresentWindow)
+		        #else
+		          IF PresentWindow.IsCollapsed Then
+		            App.ShowWin(PresentWindow,App.SW_RESTORE)
+		          Else
+		            App.ShowWin(PresentWindow,App.SW_RESTORE)
+		          End If
+		        #endif
 		      End If
 		    End If
 		  End If
-		  '--
+		  
 		  If App.SplashShowing Then Splash.Show
 		  
 		  App.DebugWriter.Write "End MainWindow.Activate:"
@@ -8480,16 +8495,18 @@ End
 		  
 		  if asc(key) = 204 Then 'F5
 		    mode = SmartML.GetValueN(App.MyPresentSettings.DocumentElement, "presentation_mode/@code")
-		    if Status_SongOpen Then
+		    if Status_SongOpen And (Status_CurrentMode = 0 Or Not Status_SetOpen) Then
 		      'Ask if user wants to save
 		      If NOT ActionSongAskSave Then Return True 'User Canceled
 		      
 		      ActionSongPresent mode
+		      Return True
 		    elseif Status_SetOpen then
 		      'Ask if user wants to save
 		      If NOT ActionSetAskSave Then Return True  'User Canceled
 		      
 		      ActionSetPresent mode
+		      Return True
 		    end if
 		  end if
 		  
@@ -11211,7 +11228,7 @@ End
 		  End If
 		  
 		  If AddLinkedSongsAnswer Then
-		    Dim slideGroups As XmlNode = song
+		    Dim slideGroups As XmlNode = song.Parent
 		    
 		    For i As Integer = 0 To UBound(sDoc)
 		      
@@ -11682,10 +11699,8 @@ End
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Function AddLinkedSongs(song As XmlNode, AddToLog As Boolean) As XmlDocument()
+		Function AddLinkedSongs(song As XmlNode, AddToLog As Boolean, recursing As Boolean = False) As XmlDocument()
 		  '++JRC
-		  Dim LinkedSongs() As String
-		  Dim s As String
 		  Dim i, j As Integer
 		  Dim f As FolderItem
 		  Dim sDoc As XmlDocument
@@ -11693,6 +11708,12 @@ End
 		  Dim nodesSub() As XmlDocument
 		  Dim d As New Date
 		  Dim index As Integer
+		  Dim songId As String
+		  Static songIds As Dictionary
+		  
+		  If Not recursing Then
+		    songIds = New Dictionary
+		  End If
 		  
 		  'sanity check
 		  If song = Nil Then
@@ -11701,15 +11722,12 @@ End
 		  
 		  Dim xlinked_songs As XmlNode = SmartML.GetNode( song, "linked_songs", True)
 		  
-		  '
-		  's = SmartML.GetValue(song, "linked_songs", True)
-		  
-		  'LinkedSongs = Split(s, ";")
-		  
-		  
 		  For i = 0 To xlinked_songs.ChildCount()-1
 		    
-		    f = Songs.GetFile(xlinked_songs.Child(i).GetText())
+		    songId = xlinked_songs.Child(i).GetText()
+		    If SongIds.HasKey(songId) Then Continue
+		    songIDs.Value(songId) = Nil
+		    f = Songs.GetFile(songId)
 		    If f = Nil Then
 		      InputBox.Message App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", xlinked_songs.Child(i).GetText() )
 		      Continue
@@ -11741,7 +11759,7 @@ End
 		    End If
 		    
 		    'recurse
-		    nodesSub = AddLinkedSongs(sDoc.DocumentElement, AddToLog)
+		    nodesSub = AddLinkedSongs(sDoc.DocumentElement, AddToLog, True)
 		    For j = 0 To UBound(nodesSub)
 		      nodes.Append(nodesSub(j))
 		    Next j
@@ -11755,10 +11773,8 @@ End
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Function AddLinkedSongsFolderItem(song As XmlNode, AddToLog As Boolean) As FolderItem()
+		Function AddLinkedSongsFolderItem(song As XmlNode, AddToLog As Boolean, recursing As Boolean = False) As FolderItem()
 		  '++JRC
-		  Dim LinkedSongs() As String
-		  Dim s As String
 		  Dim i, j As Integer
 		  Dim f As FolderItem
 		  Dim sDoc As XmlDocument
@@ -11766,6 +11782,12 @@ End
 		  Dim nodesSub() As FolderItem
 		  Dim d As New Date
 		  Dim index As Integer
+		  Dim songId As String
+		  Static songIds As Dictionary
+		  
+		  If Not recursing Then
+		    songIds = New Dictionary
+		  End If
 		  
 		  'sanity check
 		  If song = Nil Then
@@ -11774,14 +11796,12 @@ End
 		  
 		  Dim xlinked_songs As XmlNode = SmartML.GetNode( song, "linked_songs", True)
 		  
-		  's = SmartML.GetValue(song, "linked_songs", True)
-		  
-		  'LinkedSongs = Split(s, ";")
-		  
-		  
 		  For i = 0 To xlinked_songs.ChildCount()-1
 		    
-		    f = Songs.GetFile(xlinked_songs.Child(i).GetText())
+		    songId = xlinked_songs.Child(i).GetText()
+		    If SongIds.HasKey(songId) Then Continue
+		    songIDs.Value(songId) = Nil
+		    f = Songs.GetFile(songId)
 		    If f = Nil Then
 		      InputBox.Message App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", xlinked_songs.Child(i).GetText() )
 		      Continue
@@ -11805,7 +11825,7 @@ End
 		      ActLog(index).CCLISongNumber = edt_song_ccli.Text
 		      ActLog(index).SongFileName =  f.Parent.Name + "\" + f.Name
 		      ActLog(index).DateAndTime = d
-		      ActLog(index).HasChords = ActLog(1).CheckLyricsForChords(edf_song_lyrics.Text)
+		      ActLog(index).HasChords = ActLog(index).CheckLyricsForChords(edf_song_lyrics.Text)
 		      ActLog(index).Presented = True
 		      ActLog(index).SetItemNumber = i+1 'Assign an  index to this song
 		      ActLog(index).Displayed = false 'Set this to true if user displays this song
@@ -11813,7 +11833,7 @@ End
 		    End If
 		    
 		    'recurse
-		    nodesSub = AddLinkedSongsFolderItem(sDoc.DocumentElement, AddToLog)
+		    nodesSub = AddLinkedSongsFolderItem(sDoc.DocumentElement, AddToLog, True)
 		    For j = 0 To UBound(nodesSub)
 		      nodes.Append(nodesSub(j))
 		    Next j
@@ -12884,11 +12904,11 @@ End
 		    For i = 0 To xbacks.ChildCount - 1
 		      Dim image As StyleImage = new StyleImage()
 		      Dim s As String = SmartML.GetValue(xbacks.Child(i), "filename")
-		      
-		      If imageLink And s<>"" Then
+		      Dim imagestring As String = SmartML.GetValue(xbacks.Child(i), "image")
+		      If imagestring = "" Then
 		        Call image.SetImageFromFileName( s )
 		      Else
-		        Call image.SetImageAsString( SmartML.GetValue(xbacks.Child(i), "image") )
+		        Call image.SetImageAsString( imagestring )
 		      End If
 		      
 		      verseDict.Value( SmartML.GetValue(xbacks.Child(i), "@verse") ) = image
@@ -13396,7 +13416,7 @@ End
 		  btn_song_present.DeletePopup
 		  btn_song_present.AddPopupRow App.T.Translate("songs_mode/selected_song/present/single_screen/@caption")
 		  
-		  if OSScreenCount() > 1 Then
+		  If OSScreenCount() > 1 Then
 		    btn_song_present.AddPopupRow App.T.Translate("songs_mode/selected_song/present/dual_screen/@caption")
 		  End If
 		  
@@ -14368,6 +14388,20 @@ End
 		  Me.SetIcon backgroundpic, backgroundmask
 		End Sub
 	#tag EndEvent
+	#tag Event
+		Sub ConstructPopupMenu()
+		  Me.DeletePopup
+		  Me.AddPopupRow App.T.Translate("songs_mode/selected_song/present/single_screen/@caption")
+		  
+		  if OSScreenCount() > 1 Then
+		    Me.AddPopupRow App.T.Translate("songs_mode/selected_song/present/dual_screen/@caption")
+		  End If
+		  
+		  Me.AddPopupSeparator
+		  Me.AddPopupRow App.T.Translate("songs_mode/selected_song/present/preview_dual_screen/@caption")
+		  
+		End Sub
+	#tag EndEvent
 #tag EndEvents
 #tag Events btn_song_save
 	#tag Event
@@ -15136,6 +15170,20 @@ End
 		  Me.SetIcon backgroundpic, backgroundmask
 		End Sub
 	#tag EndEvent
+	#tag Event
+		Sub ConstructPopupMenu()
+		  Me.DeletePopup
+		  Me.AddPopupRow App.T.Translate("sets_mode/current_set/present/single_screen/@caption")
+		  
+		  if OSScreenCount() > 1 Then
+		    Me.AddPopupRow App.T.Translate("sets_mode/selected_song/present/dual_screen/@caption")
+		  End If
+		  
+		  Me.AddPopupSeparator
+		  Me.AddPopupRow App.T.Translate("sets_mode/current_set/present/preview_dual_screen/@caption")
+		  
+		End Sub
+	#tag EndEvent
 #tag EndEvents
 #tag Events btn_set_delete
 	#tag Event
@@ -15188,6 +15236,20 @@ End
 	#tag Event
 		Sub Open()
 		  Me.SetIcon backgroundpic, backgroundmask
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub ConstructPopupMenu()
+		  Me.DeletePopup
+		  Me.AddPopupRow App.T.Translate("sets_mode/current_set/present/single_screen/@caption")
+		  
+		  if OSScreenCount() > 1 Then
+		    Me.AddPopupRow App.T.Translate("sets_mode/selected_song/present/dual_screen/@caption")
+		  End If
+		  
+		  Me.AddPopupSeparator
+		  Me.AddPopupRow App.T.Translate("sets_mode/current_set/present/preview_dual_screen/@caption")
+		  
 		End Sub
 	#tag EndEvent
 #tag EndEvents
@@ -15579,6 +15641,7 @@ End
 		  Dim xgroup As XmlNode
 		  Dim xslides As XmlNode
 		  Dim s As String
+		  Dim imagestring As String
 		  Dim i As Integer
 		  Dim groupType As String
 		  
@@ -15759,10 +15822,11 @@ End
 		    For i = 0 To xslides.ChildCount - 1
 		      image = new StyleImage()
 		      s = SmartML.GetValue(xslides.Child(i), "filename")
-		      If imageLink And s<>"" Then
+		      imagestring = SmartML.GetValue(xslides.Child(i), "image")
+		      If imagestring = "" Then
 		        Call image.SetImageFromFileName( s )
 		      Else
-		        Call image.SetImageAsString( SmartML.GetValue(xslides.Child(i), "image") )
+		        Call image.SetImageAsString( imagestring )
 		      End If
 		      lst_image_images.AddImage( image )
 		      lst_image_images.Cell( lst_image_images.LastIndex(), 1 ) = SmartML.GetValue(xslides.Child(i), "description")

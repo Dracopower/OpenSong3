@@ -133,7 +133,7 @@ End
 		      If PresentHelperWindow.IsCollapsed Then
 		        App.RestoreWindow(PresentHelperWindow)
 		      Else
-		        PresentHelperWindow.SetFocus
+		        App.SetForeground(PresentHelperWindow)
 		      End If
 		    Else
 		      If Not SetML.IsExternal(XCurrentSlide) Then
@@ -145,7 +145,6 @@ End
 		      End If
 		    End If
 		    Me.MenuBarVisible = (Not Me.FullScreen) Or (PresentScreen <> 0) // Make assumption that screen 0 has the menu; not always true
-		    Me.SetFocus
 		  End If
 		  
 		  App.DebugWriter.Write "PresentWindow.Activate: Exit"
@@ -193,7 +192,7 @@ End
 		Sub Deactivate()
 		  App.DebugWriter.Write("PresentWindow.Deactivate: Enter")
 		  
-		  App.DebugWriter.Write("PresentWindow.Deactivate: Enter")
+		  App.DebugWriter.Write("PresentWindow.Deactivate: Exit")
 		End Sub
 	#tag EndEvent
 
@@ -1385,7 +1384,8 @@ End
 		    Command = ACTION_NEXT_SLIDE
 		  End Select
 		  
-		  Return PerformAction(Command)
+		  Call PerformAction(Command) ' sets LastCommandHandled as a side effect
+		  Return LastCommandHandled
 		End Function
 	#tag EndMethod
 
@@ -1403,6 +1403,9 @@ End
 
 	#tag Method, Flags = &h0
 		Function PerformAction(Action As Integer, param As Variant = Nil) As Boolean
+		  'KeyDown needs to know, if the command das been handled, not necessarily if it has been successful
+		  'assume the command is valid until prooven otherwise
+		  LastCommandHandled = True
 		  
 		  'Constants added for clarity EMP 9/30/04
 		  Const ASC_KEY_LEFT = 28
@@ -1612,6 +1615,7 @@ End
 		  ElseIf Lowercase(Key) = "m" Then
 		    Return DoSwapFullScreen
 		  Else
+		    LastCommandHandled = False
 		    Return False
 		  End If
 		  
@@ -1637,6 +1641,8 @@ End
 		    ResetPaint XCurrentSlide
 		  End If
 		  
+		  'Unless a condition threw an error, the command was valid; it just failed to execute
+		  LastCommandHandled = True
 		  Return False // Show that it failed
 		  //--EMP 15 Jan 06
 		End Function
@@ -1682,6 +1688,17 @@ End
 		  
 		  cnvSlide.Visible = False 'Prevent the canvas to redraw itself for all size changes below
 		  'System.DebugLog "Determine correct PresentMode"
+		  
+		  Select Case PresentMode
+		  Case MODE_SINGLE_SCREEN, MODE_DUAL_SCREEN, MODE_PREVIEW
+		    ' PresentMode is known
+		  Else
+		    If PresentScreen <> ControlScreen Then
+		      PresentMode = MODE_DUAL_SCREEN
+		    Else
+		      PresentMode = MODE_PREVIEW
+		    End If
+		  End Select
 		  If PresentMode = MODE_SINGLE_SCREEN Then ' Single Screen
 		    presentScreen = controlScreen
 		    HelperActive = False
@@ -2619,6 +2636,10 @@ End
 
 	#tag Property, Flags = &h0
 		HelperActive As Boolean
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
+		Private LastCommandHandled As Boolean = True
 	#tag EndProperty
 
 	#tag Property, Flags = &h0

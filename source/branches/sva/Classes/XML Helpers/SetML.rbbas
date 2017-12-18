@@ -91,13 +91,17 @@ Protected Module SetML
 		    Profiler.BeginProfilerEntry "DrawSlide>ImageSlide-Fullscreen" ' --------------------------------------------------
 		    Dim img As StyleImage
 		    Dim sImageFile As String
+		    dim imagestring As String
+		    Dim scale as Double
+		    Dim Left, Top As Integer
 		    
 		    img = new StyleImage()
+		    imagestring = SmartML.GetValue(xslide, "image")
 		    sImageFile = SmartML.GetValue(xslide, "filename")
-		    If SmartML.GetValueB(xslide.Parent.Parent, "@link", False) = True And sImageFile<>"" Then
+		    If imagestring = "" Then
 		      Call img.SetImageFromFileName( sImageFile )
 		    Else
-		      Call img.SetImageAsString( SmartML.GetValue(xslide, "image") )
+		      Call img.SetImageAsString( imagestring )
 		    End If
 		    
 		    pic = img.GetImage()

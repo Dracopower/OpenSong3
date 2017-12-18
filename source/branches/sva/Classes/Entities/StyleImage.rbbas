@@ -301,9 +301,9 @@ Protected Class StyleImage
 		      If Not Globals.Status_Presentation Then
 		        InputBox.Message App.T.Translate("errors/unreadable_image", Filename)
 		      End If
+		    Else
+		      result = SetImageFromFile(f)
 		    End If
-		  Else
-		    result = SetImageFromFile(f)
 		  End If
 		  
 		  Return result
