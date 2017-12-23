@@ -14,7 +14,7 @@ Protected Module SetML
 		  
 		  Dim zoom As Double
 		  Dim background As Picture
-		  Dim bodyStyle, titleStyle, subtitleStyle As FontFace
+		  Dim bodyFont, titleFont, subtitleFont As FontFace
 		  Dim gWidth, gHeight As  Integer
 		  Dim MainHeight As Integer
 		  Dim scale as Double
@@ -37,9 +37,9 @@ Protected Module SetML
 		  End If
 		  
 		  If Style <> Nil Then 'TODO: What if it's NIL?  Ain't gonna be pretty...
-		    bodyStyle = Style.BodyFont
-		    titleStyle = Style.TitleFont
-		    subtitleStyle = Style.SubtitleFont
+		    bodyFont = Style.BodyFont
+		    titleFont = Style.TitleFont
+		    subtitleFont = Style.SubtitleFont
 		    
 		    titleMargins = Style.TitleMargins
 		    subtitleMargins = Style.SubtitleMargins
@@ -51,9 +51,9 @@ Protected Module SetML
 		  gHeight = g.Height
 		  
 		  zoom = gWidth / 640.0
-		  bodyStyle.Size = bodyStyle.Size * zoom
-		  titleStyle.Size = titleStyle.Size * zoom
-		  subtitleStyle.Size = subtitleStyle.Size * zoom
+		  bodyFont.Size = bodyFont.Size * zoom
+		  titleFont.Size = titleFont.Size * zoom
+		  subtitleFont.Size = subtitleFont.Size * zoom
 		  ZoomMargins(titleMargins, zoom)
 		  ZoomMargins(subtitleMargins, zoom)
 		  ZoomMargins(bodyMargins, zoom)
@@ -169,17 +169,17 @@ Protected Module SetML
 		  If Style.TitleVAlign = "top" Then
 		    '++JRC
 		    If Style.TitleEnable Then
-		      HeaderSize = HeaderSize + DrawSlideTitle(g, xslide, Style, 0, 0, titleStyle, RealBorder, HeaderSize, FooterSize, titleMargins)
+		      HeaderSize = HeaderSize + DrawSlideTitle(g, xslide, Style, 0, 0, titleFont, RealBorder, HeaderSize, FooterSize, titleMargins)
 		    End If
 		    '--
 		    'Draw subtitles
 		    For i = 0 to UBound(Subtitles)
 		      If Style.SubtitleVAlign = "top" Then
 		        HeaderSize = HeaderSize + DrawFontString(g, subtitles(i), _
-		        0, 0, subtitleStyle, RealBorder, HeaderSize, FooterSize, subtitleMargins, g.Width, Style.SubtitleAlign, g.Height, Style.SubtitleVAlign)
+		        0, 0, subtitleFont, RealBorder, HeaderSize, FooterSize, subtitleMargins, g.Width, Style.SubtitleAlign, g.Height, Style.SubtitleVAlign)
 		      Else
 		        FooterSize = FooterSize + DrawFontString(g, subtitles(Ubound(Subtitles) - i), _
-		        0, 0, subtitleStyle, RealBorder, HeaderSize, FooterSize, subtitleMargins, g.Width, Style.SubtitleAlign, g.Height, Style.SubtitleVAlign)
+		        0, 0, subtitleFont, RealBorder, HeaderSize, FooterSize, subtitleMargins, g.Width, Style.SubtitleAlign, g.Height, Style.SubtitleVAlign)
 		      End If
 		    Next
 		  Else
@@ -187,15 +187,15 @@ Protected Module SetML
 		    For i = 0 to UBound(Subtitles)
 		      If Style.SubtitleVAlign = "top" Then
 		        HeaderSize = HeaderSize + DrawFontString(g, subtitles(i), _
-		        0, 0, subtitleStyle, RealBorder, HeaderSize, FooterSize, subtitleMargins, g.Width, Style.SubtitleAlign, g.Height, Style.SubtitleVAlign)
+		        0, 0, subtitleFont, RealBorder, HeaderSize, FooterSize, subtitleMargins, g.Width, Style.SubtitleAlign, g.Height, Style.SubtitleVAlign)
 		      Else
 		        FooterSize = FooterSize + DrawFontString(g, subtitles(Ubound(subtitles) - i), _
-		        0, 0, subtitleStyle, RealBorder, HeaderSize, FooterSize, subtitleMargins, g.Width, Style.SubtitleAlign, g.Height, Style.SubtitleVAlign)
+		        0, 0, subtitleFont, RealBorder, HeaderSize, FooterSize, subtitleMargins, g.Width, Style.SubtitleAlign, g.Height, Style.SubtitleVAlign)
 		      End If
 		    Next i
 		    '++JRC
 		    If Style.TitleEnable Then
-		      FooterSize = FooterSize + DrawSlideTitle(g, xslide, Style, 0, 0, titleStyle, RealBorder, HeaderSize, FooterSize, titleMargins)
+		      FooterSize = FooterSize + DrawSlideTitle(g, xslide, Style, 0, 0, titleFont, RealBorder, HeaderSize, FooterSize, titleMargins)
 		    End If
 		    '--
 		  End If
@@ -203,7 +203,7 @@ Protected Module SetML
 		  Profiler.EndProfilerEntry
 		  Profiler.BeginProfilerEntry "DrawSlide>Declare 3" ' --------------------------------------------------
 		  
-		  bodyStyle.OntoGraphics g
+		  bodyFont.OntoGraphics g
 		  
 		  If HeaderSize < bodyMargins.Top Then
 		    HeaderSize = bodyMargins.Top
@@ -263,7 +263,7 @@ Protected Module SetML
 		  
 		  If slideType <> "image" Then
 		    If SmartML.GetValueB(xslide, "@emphasize", False) And Style.HighlightChorus Then
-		      bodyStyle.Italic = Not bodyStyle.Italic
+		      bodyFont.Italic = Not bodyFont.Italic
 		    End If
 		    
 		    Dim line, lines(0) As String
@@ -283,7 +283,7 @@ Protected Module SetML
 		    If slideType = "song" And _
 		      SmartML.GetValueB(xslide.Parent.Parent, "@background_as_text", False, False) And _
 		      pic IsA Picture Then
-		      drawBody = fALSE
+		      drawBody = False
 		    End If
 		    
 		    If drawBody Then
@@ -329,7 +329,7 @@ Protected Module SetML
 		    'Skip all text size adjustments; we don't want to skip all code below, as wrapping will be required.
 		    If style.BodyScale Then
 		      HWrapPercent = Min(UsableWidth / MaxLineLen, 1.0)
-		      VWrapPercent = Min(MainHeight / (UBound(lines) * GraphicsX.FontFaceHeight(g, bodyStyle)) , 1.0)
+		      VWrapPercent = Min(MainHeight / (UBound(lines) * GraphicsX.FontFaceHeight(g, bodyFont)) , 1.0)
 		      WrapPercent = Min(HWrapPercent, VWrapPercent) // Consensus number
 		      If WrapPercent > .85 Then // arbitrary, but that means 32pt wouldn't go less than ~28pt
 		        g.TextSize = Floor(g.TextSize * WrapPercent) //TextSize is an Integer; keep from hanging on one number
@@ -347,7 +347,7 @@ Protected Module SetML
 		    '--
 		    
 		    If style.BodyScale Then
-		      While (g.StringWidth(line) / UsableWidth) * GraphicsX.FontFaceHeight(g, bodyStyle) > MainHeight * .85 ' last number offsets the non-perfectness of this guessing
+		      While (g.StringWidth(line) / UsableWidth) * GraphicsX.FontFaceHeight(g, bodyFont) > MainHeight * .85 ' last number offsets the non-perfectness of this guessing
 		        g.TextSize = Floor(g.TextSize * .95)
 		        if g.textsize <=0 then exit
 		      Wend
@@ -458,7 +458,7 @@ Protected Module SetML
 		    Profiler.BeginProfilerEntry "DrawSlide>Post-shrink" ' --------------------------------------------------
 		    
 		    ' Post-shrink - we did our best, this is just in case.
-		    While UBound(lines) * GraphicsX.FontFaceHeight(g, bodyStyle) > MainHeight
+		    While UBound(lines) * GraphicsX.FontFaceHeight(g, bodyFont) > MainHeight
 		      ' FUTURE PROBLEM: When we size it down, we should rewrap it all
 		      g.TextSize = Floor(g.TextSize * .95)
 		      if g.textsize <=0 then exit 'gp
@@ -467,20 +467,83 @@ Protected Module SetML
 		    'If automatic scaling of the body text is not enabled, the bodySize should not be altered.
 		    'Other adjustments, like line wrapping do need to be applied (the code above should be executed)
 		    If style.BodyScale Then
-		      bodyStyle.Size = g.TextSize
+		      bodyFont.Size = g.TextSize
 		    End If
 		    
 		    Profiler.EndProfilerEntry
 		    Profiler.BeginProfilerEntry "DrawSlide>Draw Text" ' --------------------------------------------------
 		    
-		    line = ""
-		    For i = 1 To UBound(lines)
-		      line = line + lines(i) + Chr(10)
-		    Next i
-		    line = RTrim(line)
+		    ////////////////////////////////////////////////
+		    Lines.Remove(0)
 		    
-		    // CHANGE-PJ: Second language feature - if last character of section name = "L" for "L"anguage -> "section" and "Style" parameter added
-		    Call DrawFontString(g, line, 0, HeaderSize, bodyStyle, RealBorder, 0, 0, bodyMargins, g.Width, Style.BodyAlign, MainHeight, Style.BodyVAlign, bodyTabs, insertafterbreak, section, Style) 'EMP 09/05
+		    If section = SectionMode.Bilingual Then
+		      Dim BodyTextHeight As Integer = 0
+		      Dim secondLanguage As Boolean
+		      Dim lineHeightPerLanguage(2) As Integer
+		      Dim f, secondLanguageFont As FontFace
+		      
+		      secondLanguageFont = bodyFont.Clone
+		      secondLanguageFont.Italic = Not secondLanguageFont.Italic // show second language has italic reversed
+		      secondLanguageFont.Size = Floor(secondLanguageFont.Size * Style.MultilanguageSize/100) // taken from style setting window
+		      secondLanguageFont.ForeColor = Style.MultilanguageColor // taken from style setting window
+		      secondLanguageFont.OntoGraphics g
+		      lineHeightPerLanguage(2) = FontFaceHeight(g, secondLanguageFont)
+		      bodyFont.OntoGraphics g
+		      lineHeightPerLanguage(1) = FontFaceHeight(g, bodyFont)
+		      lineHeightPerLanguage(0) = (bodyFont.Size - secondLanguageFont.Size) / 4
+		      
+		      If Style.BodyVAlign <> "top" Then
+		        secondLanguage = True
+		        For i = 0 To UBound(lines)
+		          line = lines(i)
+		          
+		          If Not line.StartsWith(separationMark) Then
+		            secondLanguage = Not secondLanguage
+		            If secondLanguage Then
+		              BodyTextHeight = BodyTextHeight + lineHeightPerLanguage(0)
+		            End If
+		          End If
+		          If secondLanguage Then
+		            BodyTextHeight = BodyTextHeight + lineHeightPerLanguage(2)
+		          Else
+		            BodyTextHeight = BodyTextHeight + lineHeightPerLanguage(1)
+		          End If
+		        Next
+		      End If
+		      
+		      x = bodyMargins.Left + RealBorder
+		      y = HeaderSize + RealBorder
+		      If Style.BodyVAlign = "middle" Then
+		        y = y + (MainHeight - bodyTextHeight) / 2
+		      ElseIf Style.BodyVAlign = "bottom" Then
+		        y = y + MainHeight - bodyTextHeight
+		      End If
+		      
+		      secondLanguage = True
+		      For i = 0 To UBound(lines)
+		        line = lines(i)
+		        
+		        If Not line.StartsWith(separationMark) Then
+		          secondLanguage = Not secondLanguage
+		          If secondLanguage Then
+		            f = secondLanguageFont
+		          Else
+		            f = bodyFont
+		            If i > 0 Then
+		              y = y + lineHeightPerLanguage(0)
+		            End If
+		          End If
+		        Else
+		          line = Mid(line, separationMark.Len + 1)
+		        End If
+		        y = y + DrawFontString(g, line, x, y, f, UsableWidth, Style.BodyAlign, MainHeight - y, "top", bodyTabs, insertafterbreak)
+		        
+		        If y >= gHeight - FooterSize Then Exit  // don't draw another line if in footer area
+		      Next
+		    Else
+		      line = Join(Lines, Chr(10))
+		      Call DrawFontString(g, line, 0, HeaderSize, bodyFont, RealBorder, 0, 0, bodyMargins, g.Width, Style.BodyAlign, MainHeight, Style.BodyVAlign, bodyTabs, insertafterbreak) 'EMP 09/05
+		    End If
 		  End If
 		  
 		  Profiler.EndProfilerEntry
@@ -1095,7 +1158,8 @@ Protected Module SetML
 	#tag Method, Flags = &h0
 		Function SeparationMarkBilingual() As String
 		  'This actually is a const, however Xojo unfortunately does not support constant expressions
-		  Return Chr(244)
+		  'Return Chr(244)
+		  Return &u00F4 ' hopefully get an UTF-8 string
 		End Function
 	#tag EndMethod
 
