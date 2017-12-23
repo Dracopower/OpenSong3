@@ -499,7 +499,7 @@ Protected Module SetML
 		          
 		          If Not line.StartsWith(separationMark) Then
 		            secondLanguage = Not secondLanguage
-		            If secondLanguage Then
+		            If Not secondLanguage And i > 0 Then
 		              BodyTextHeight = BodyTextHeight + lineHeightPerLanguage(0)
 		            End If
 		          End If
