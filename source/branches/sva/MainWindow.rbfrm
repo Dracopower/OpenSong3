@@ -12438,14 +12438,12 @@ End
 		            End Try
 		          End If
 		          
-		          If IsNull(mediaFile) Then
-		            If mediaFileName = "" Then
-		              Dim videoLanParams As String = SmartML.GetValue(slide_group, "@videolan_parameters", False)
-		              If videoLanParams.InStrB("%s") > 0 Then
-		                InputBox.Message App.T.Translate("errors/videolan/no_medium_in_slide", GetSlideGroupCaption(slide_group))
-		              End If
+		          If mediaFileName = "" Then
+		            Dim videoLanParams As String = SmartML.GetValue(slide_group, "@videolan_parameters", False)
+		            If videoLanParams.InStrB("%s") > 0 Then
+		              InputBox.Message App.T.Translate("errors/videolan/no_medium_in_slide", GetSlideGroupCaption(slide_group))
 		            End If
-		          ElseIf Not mediaFile.Exists() Then
+		          ElseIf IsNull(mediaFile) Or Not mediaFile.Exists() Then
 		            InputBox.Message App.T.Translate("errors/fileutils/filenotfound", mediaFileName)
 		          End If
 		        Else
