@@ -31,7 +31,7 @@ Protected Class FontFace
 		Sub OntoGraphics(g As Graphics, zoom As Double = 1.0)
 		  g.ForeColor = ForeColor
 		  g.TextFont = Name
-		  g.TextSize = Round(Size * zoom)
+		  g.TextSize = Size * zoom
 		  g.TextUnit = FontUnits.Pixel
 		  g.Bold = Bold
 		  g.Italic = Italic
@@ -48,7 +48,7 @@ Protected Class FontFace
 		  //--
 		  
 		  s.TextFont = Name
-		  s.TextSize = Round(Size * Zoom)
+		  s.TextSize = Size * Zoom
 		  s.TextUnit = FontUnits.Pixel
 		  s.Bold = Bold
 		  s.FillColor = ForeColor
@@ -56,8 +56,8 @@ Protected Class FontFace
 		  s.Underline = Underline
 		  
 		  if Border Then
-		    s.Border = 0
-		    s.BorderWidth = 1
+		    s.Border = 100
+		    s.BorderWidth = Max(0.5, s.TextSize * ThicknessFactor / 40)
 		    s.BorderColor = BorderColor
 		  End If
 		End Sub
@@ -146,7 +146,7 @@ Protected Class FontFace
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
-		Size As Integer
+		Size As Single
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
