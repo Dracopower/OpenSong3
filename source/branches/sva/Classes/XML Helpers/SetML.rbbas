@@ -92,8 +92,6 @@ Protected Module SetML
 		    Dim img As StyleImage
 		    Dim sImageFile As String
 		    dim imagestring As String
-		    Dim scale as Double
-		    Dim Left, Top As Integer
 		    
 		    img = new StyleImage()
 		    imagestring = SmartML.GetValue(xslide, "image")
