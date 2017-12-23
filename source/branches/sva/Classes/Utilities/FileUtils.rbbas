@@ -178,7 +178,7 @@ Protected Module FileUtils
 		  App.DebugWriter.Write "FileUtils.CreateFolderTree: count of leaf nodes is " + CStr(count), 5
 		  
 		  'first create the root folder (if it doesn't exist)
-		  If NOT CreateFolder(Root) Then 
+		  If NOT CreateFolder(Root) Then
 		    SetLastError(Root)
 		    Return False
 		  End If
@@ -192,7 +192,7 @@ Protected Module FileUtils
 		      Root = Root.Child(folder)
 		      If Root = Nil Then Return False
 		      
-		      If NOT CreateFolder(Root) Then 
+		      If NOT CreateFolder(Root) Then
 		        SetLastError(Root)
 		        Return False
 		      End If
@@ -370,7 +370,7 @@ Protected Module FileUtils
 		  
 		  f = GetFolderItem(Path, FolderItem.PathTypeAbsolute)
 		  
-		  Return True
+		  Return f <> Nil
 		  
 		Catch e
 		  Return False

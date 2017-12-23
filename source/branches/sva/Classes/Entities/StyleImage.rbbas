@@ -286,24 +286,22 @@ Protected Class StyleImage
 		  Try
 		    If Filename = "" Then
 		      ' don't try to load the current folder
-		    ElseIf FileName.StartsWith("/") or FileName.StartsWith("\\") or FileName.Mid(2, 1)=":" Then
-		      f = new FolderItem(FileName)
+		    ElseIf FileUtils.IsPathAbsolute(FileName) Then
+		      f = GetFolderItem(FileName)
 		    Else
-		      f = new FolderItem( App.DocsFolder.Child("Backgrounds").AbsolutePath + Filename )
+		      f = GetFolderItem(App.DocsFolder.Child("Backgrounds").AbsolutePath + Filename)
 		    End If
 		  Catch excpt As RuntimeException
 		    App.DebugWriter.Write "Exception in " + CurrentMethodName + "(" + Filename + ") : " + Introspection.GetType(excpt).FullName + "->" + excpt.message
 		    f = nil
 		  End Try
 		  
-		  If IsNull(f) Then
-		    If Filename <> "" Then
-		      If Not Globals.Status_Presentation Then
-		        InputBox.Message App.T.Translate("errors/unreadable_image", Filename)
-		      End If
-		    Else
-		      result = SetImageFromFile(f)
+		  If f = Nil Or Not f.Exists() Then
+		    If Filename <> "" And Not Globals.Status_Presentation Then
+		      InputBox.Message App.T.Translate("errors/unreadable_image", Filename)
 		    End If
+		  Else
+		    result = SetImageFromFile(f)
 		  End If
 		  
 		  Return result

@@ -1927,7 +1927,7 @@ Begin Window MainWindow Implements ScriptureReceiver
       TabIndex        =   5
       TabPanelIndex   =   0
       Top             =   34
-      Value           =   4
+      Value           =   0
       Visible         =   True
       Width           =   591
       Begin Canvas cnv_editor_style_change
@@ -12903,12 +12903,9 @@ End
 		    
 		    For i = 0 To xbacks.ChildCount - 1
 		      Dim image As StyleImage = new StyleImage()
-		      Dim s As String = SmartML.GetValue(xbacks.Child(i), "filename")
-		      Dim imagestring As String = SmartML.GetValue(xbacks.Child(i), "image")
-		      If imagestring = "" Then
-		        Call image.SetImageFromFileName( s )
-		      Else
-		        Call image.SetImageAsString( imagestring )
+		      Dim fileName As String = SmartML.GetValue(xbacks.Child(i), "filename")
+		      If fileName = "" Or Not image.SetImageFromFileName(fileName) Then
+		        Call image.SetImageAsString(SmartML.GetValue(xbacks.Child(i), "image"))
 		      End If
 		      
 		      verseDict.Value( SmartML.GetValue(xbacks.Child(i), "@verse") ) = image
@@ -15641,7 +15638,6 @@ End
 		  Dim xgroup As XmlNode
 		  Dim xslides As XmlNode
 		  Dim s As String
-		  Dim imagestring As String
 		  Dim i As Integer
 		  Dim groupType As String
 		  
@@ -15822,14 +15818,11 @@ End
 		    For i = 0 To xslides.ChildCount - 1
 		      image = new StyleImage()
 		      s = SmartML.GetValue(xslides.Child(i), "filename")
-		      imagestring = SmartML.GetValue(xslides.Child(i), "image")
-		      If imagestring = "" Then
-		        Call image.SetImageFromFileName( s )
-		      Else
-		        Call image.SetImageAsString( imagestring )
+		      If s = "" Or Not image.SetImageFromFileName(s) Then
+		        Call image.SetImageAsString(SmartML.GetValue(xslides.Child(i), "image"))
 		      End If
-		      lst_image_images.AddImage( image )
-		      lst_image_images.Cell( lst_image_images.LastIndex(), 1 ) = SmartML.GetValue(xslides.Child(i), "description")
+		      lst_image_images.AddImage(image)
+		      lst_image_images.Cell(lst_image_images.LastIndex(), 1) = SmartML.GetValue(xslides.Child(i), "description")
 		    Next i
 		    
 		    edt_image_name.Text = SmartML.GetValue(xgroup, "@name")

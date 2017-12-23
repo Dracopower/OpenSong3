@@ -2158,7 +2158,9 @@ Module SongML
 		  ChorusNr = 0 'GP
 		  
 		  Dim xbacks As XmlNode = SmartML.GetNode(songElement, "backgrounds", True)
+		  Dim xlist As XmlNodeList = Nil
 		  Dim xbackground As XmlNode = Nil
+		  Dim xbackIndex As Integer
 		  
 		  For Each section In sections
 		    PresentationIndex = PresentationIndex + 1
@@ -2168,16 +2170,15 @@ Module SongML
 		      End If
 		      
 		      'Check if a background is available for this verse
-		      xbackground = Nil
 		      If (xbacks.ChildCount() > 0) Then
-		        Dim xlist As XmlNodeList = xbacks.Xql("background[@verse='" + Lowercase(section) + "' or @verse='" + Uppercase(section) + "']")
-		        If xlist.Length()>0 Then
-		          xbackground = xlist.Item(0)
+		        xlist = xbacks.Xql("background[@verse='" + Lowercase(section) + "' or @verse='" + Uppercase(section) + "']")
+		        For i As Integer = 0 To xlist.Length() - 1
+		          xbackground = xlist.Item(i)
 		          
 		          'Check if the image file exists
 		          Dim sfile As String = SmartML.GetValue(xbackground, "filename")
-		          If SmartML.GetValueB(xbacks, "@link", False) = True And sfile<>"" Then
-		            If Not (sfile.StartsWith("/") or sfile.StartsWith("\\") or sfile.Mid(2, 1)=":") Then
+		          If SmartML.GetValueB(xbacks, "@link", False) = True And sfile <> "" Then
+		            If Not FileUtils.IsPathAbsolute(sfile) Then
 		              sfile = App.DocsFolder.Child("Backgrounds").AbsolutePath + sfile
 		            End If
 		            
@@ -2194,8 +2195,7 @@ Module SongML
 		              xbackground = Nil
 		            End If
 		          End If
-		          
-		        End If
+		        Next
 		      End If
 		      
 		      // CHANGE-PJ: Second language feature - if last character of section name = "L" for "L"anguage -> activate separationMark (detect linebreaks inserted by algorithm)
@@ -2207,6 +2207,7 @@ Module SongML
 		      End If
 		      
 		      sub_sections = Split(dict.Value(section), "||")
+		      xbackIndex = 0
 		      For Each sub_section In sub_sections
 		        slide = SmartML.InsertChild(slides, "slide", slides.ChildCount)
 		        SmartML.SetValue(slide, "body", DeflateString(StringUtils.Trim(sub_section, StringUtils.WhiteSpaces), separationMark)) // CHANGE-PJ: added parameter separationMark (makes only a difference for bilingual sections)
@@ -2222,14 +2223,20 @@ Module SongML
 		        SmartML.SetValueN(slide, "@PresentationIndex", PresentationIndex) 'GP
 		        
 		        'Assign the background to the verse slide
-		        If Not IsNull(xbackground) Then
-		          SmartML.CloneChildren(xbackground, slide)
+		        If xlist <> Nil And xlist.Length > 0 Then
+		          xbackground = xlist.Item(xbackIndex)
+		          If Not IsNull(xbackground) Then
+		            SmartML.CloneChildren(xbackground, slide)
+		          End If
+		          IF xbackIndex < xlist.Length() - 1 Then
+		            xbackIndex = xbackIndex + 1
+		          End If
 		        End If
 		      Next
 		    End If
 		  Next
 		  
-		  If (xbacks.ChildCount() > 0) Then
+		  If xbacks.ChildCount() > 0 Then
 		    'Assign background image handling attribute to the song
 		    SmartML.CloneAttributes(xbacks, songElement)
 		    SmartML.SetValue(songElement, "@subtype", "image")

@@ -238,7 +238,6 @@ Protected Class SlideStyle
 		  Dim tab As StyleTabsType
 		  Dim tabs() As StyleTabsType
 		  Dim fileName As String
-		  Dim imagestring As String
 		  
 		  BodyFont = SmartML.GetValueF(xStyle, "body")
 		  BodyAlign = SmartML.GetValue(xStyle, "body/@align")
@@ -311,11 +310,8 @@ Protected Class SlideStyle
 		  SubtitleEnable = SmartML.GetValueB(xStyle, "subtitle/@enabled", true, true)
 		  
 		  fileName = SmartML.GetValue(xstyle, "background/@filename", False)
-		  imagestring = SmartML.GetValue(xstyle, "background", False)
-		  If imagestring = "" Then
-		    Call Background.SetImageFromFileName( fileName )
-		  Else
-		    Call Background.SetImageAsString(imagestring)
+		  If fileName = "" Or Not Background.SetImageFromFileName(fileName) Then
+		    Call Background.SetImageAsString(SmartML.GetValue(xstyle, "background", False))
 		  End If
 		  If Not SmartML.GetValueC(xstyle, "background/@color", BGColor, False) Then
 		    BGColor = defaultBGColor
