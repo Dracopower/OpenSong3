@@ -650,7 +650,7 @@ Protected Module GraphicsX
 		  ' Make sure the fontface is applied to the graphics object first
 		  Dim height As Integer = g.TextHeight
 		  If f = Nil Then Return height
-		  If f.Border Then height = height + CalcBorderSize(g)
+		  If f.Border Then height = height + 2 * CalcBorderSize(g)
 		  If f.Shadow Then height = height + CalcShadowSize(g)
 		  Return height
 		End Function
@@ -661,7 +661,7 @@ Protected Module GraphicsX
 		  ' Make sure the fontface is applied to the graphics object first
 		  Dim width As Integer = g.StringWidth(str)
 		  If f = Nil Then Return width
-		  If f.Border Then width = width + CalcBorderSize(g)
+		  If f.Border Then width = width + 2 * CalcBorderSize(g)
 		  If f.Shadow Then width = width + CalcShadowSize(g)
 		  Return width
 		End Function
