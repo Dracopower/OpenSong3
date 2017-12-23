@@ -29,6 +29,7 @@ Protected Module GraphicsX
 	#tag Method, Flags = &h0
 		Sub DrawFontSingleLine(g As Graphics, thisLine As String, xx As Integer, yy As Integer, f As FontFace)
 		  Dim dx, dy As Integer
+		  Dim b2 As Integer
 		  Dim shadowSize, borderSize As Integer = 0
 		  
 		  ' --- Draw decoration ---
@@ -40,7 +41,7 @@ Protected Module GraphicsX
 		    
 		    If f.Fill Then
 		      g.ForeColor = f.FillColor
-		      g.FillRect xx-borderSize, yy-g.TextAscent, GraphicsX.FontFaceWidth(g, thisLine, f)+borderSize*2, g.TextHeight
+		      g.FillRect xx-borderSize, yy-FontFaceAscent(g, f), FontFaceWidth(g, thisLine, f), FontFaceHeight(g, f)
 		    End If
 		    
 		    If f.Shadow Then
@@ -63,20 +64,21 @@ Protected Module GraphicsX
 		      g.ForeColor = f.BorderColor
 		      
 		      dy = -borderSize
+		      b2 = borderSize \ 2
 		      'Sides
-		      For dx = -borderSize/2 To borderSize/2
-		        g.DrawString thisLine, xx+Round(dx), yy-borderSize ' Top
-		        g.DrawString thisLine, xx+Round(dx), yy+borderSize ' Bottom
-		        g.DrawString thisLine, xx-borderSize, yy+Round(dx) ' Left
-		        g.DrawString thisLine, xx+borderSize, yy+Round(dx) ' Right
+		      For dx = -b2 To b2
+		        g.DrawString thisLine, xx+dx, yy-borderSize ' Top
+		        g.DrawString thisLine, xx+dx, yy+borderSize ' Bottom
+		        g.DrawString thisLine, xx-borderSize, yy+dx ' Left
+		        g.DrawString thisLine, xx+borderSize, yy+dx ' Right
 		      Next
 		      'Corners
-		      dy = -borderSize
-		      For dx = borderSize/2 To borderSize
-		        g.DrawString thisLine, xx+Round(dx), yy+dy ' Top-Left
-		        g.DrawString thisLine, xx+Round(dx), yy-dy ' Bottom-Left
-		        g.DrawString thisLine, xx-Round(dx), yy+dy ' Top-Right
-		        g.DrawString thisLine, xx-Round(dx), yy-dy ' Bottom-Right
+		      dy = -borderSize+1
+		      For dx = b2+1 To borderSize-1
+		        g.DrawString thisLine, xx+dx, yy+dy ' Top-Left
+		        g.DrawString thisLine, xx+dx, yy-dy ' Bottom-Left
+		        g.DrawString thisLine, xx-dx, yy+dy ' Top-Right
+		        g.DrawString thisLine, xx-dx, yy-dy ' Bottom-Right
 		        dy = dy + 1
 		      Next
 		    End If
