@@ -12,17 +12,15 @@ Protected Module SetML
 		  
 		  Profiler.BeginProfilerEntry "DrawSlide>Declare 1" ' --------------------------------------------------
 		  
-		  Dim zoom As Double
+		  Dim zoom, bodyZoom As Double
 		  Dim background As Picture
-		  Dim bodyFont, titleFont, subtitleFont As FontFace
+		  Dim bodyFont, secondLanguageFont, titleFont, subtitleFont As FontFace
 		  Dim gWidth, gHeight As  Integer
 		  Dim MainHeight As Integer
 		  Dim scale as Double
 		  Dim Top, Left As Integer
 		  Dim Subtitles() As String
 		  Dim i As Integer
-		  Dim isWrapped As Boolean
-		  Dim d2 As String
 		  Dim titleMargins, subtitleMargins, bodyMargins as StyleMarginType
 		  Dim bodyTabs() As StyleTabsType
 		  
@@ -38,6 +36,7 @@ Protected Module SetML
 		  
 		  If Style <> Nil Then 'TODO: What if it's NIL?  Ain't gonna be pretty...
 		    bodyFont = Style.BodyFont
+		    secondLanguageFont = Style.SecondLanguageFont
 		    titleFont = Style.TitleFont
 		    subtitleFont = Style.SubtitleFont
 		    
@@ -51,13 +50,11 @@ Protected Module SetML
 		  gHeight = g.Height
 		  
 		  zoom = gWidth / 640.0
-		  bodyFont.Size = bodyFont.Size * zoom
 		  titleFont.Size = titleFont.Size * zoom
 		  subtitleFont.Size = subtitleFont.Size * zoom
 		  ZoomMargins(titleMargins, zoom)
 		  ZoomMargins(subtitleMargins, zoom)
 		  ZoomMargins(bodyMargins, zoom)
-		  ZoomTabs(bodyTabs, zoom)
 		  
 		  Profiler.EndProfilerEntry
 		  Profiler.BeginProfilerEntry "DrawSlide>Background" ' --------------------------------------------------
@@ -72,8 +69,6 @@ Protected Module SetML
 		  If background <> Nil Then
 		    Style.Background().Draw(g)
 		  End If
-		  
-		  Profiler.EndProfilerEntry
 		  
 		  If xslide = Nil Then Return
 		  
@@ -133,10 +128,11 @@ Protected Module SetML
 		    Profiler.EndProfilerEntry
 		  End If
 		  
+		  Profiler.EndProfilerEntry
+		  
 		  Profiler.BeginProfilerEntry "DrawSlide>Declare 2" ' --------------------------------------------------
 		  Dim RealBorder, HeaderSize, FooterSize As Integer
 		  Dim x, y, z As Integer
-		  Dim d As String
 		  Dim multiwrap As Boolean
 		  Dim UsableWidth As Integer 'Max body width after margins are taken out (EMP 09/05)
 		  
@@ -203,8 +199,6 @@ Protected Module SetML
 		  Profiler.EndProfilerEntry
 		  Profiler.BeginProfilerEntry "DrawSlide>Declare 3" ' --------------------------------------------------
 		  
-		  bodyFont.OntoGraphics g
-		  
 		  If HeaderSize < bodyMargins.Top Then
 		    HeaderSize = bodyMargins.Top
 		  End If
@@ -215,309 +209,270 @@ Protected Module SetML
 		  MainHeight = g.Height - HeaderSize - FooterSize - (2 * RealBorder)
 		  UsableWidth = g.Width - (2 * RealBorder) - bodyMargins.Left - bodyMargins.Right ' This just comes up again and again in the calcs & won't change (EMP 09/05)
 		  
+		  Profiler.EndProfilerEntry
+		  
 		  If hasImage Then
 		    'The image was already prepared in the preparation before drawing (sub)title
 		    If pic IsA Picture Then
+		      
 		      If resize = "screen" Then
 		        'Image was drawn before the (sub)titles
-		      ElseIf resize = "body" Then
+		      Else
 		        
-		        If keepaspect Then
-		          UsableWidth =  UsableWidth + (2 * RealBorder)
-		          
-		          If pic.Width / UsableWidth > pic.Height / MainHeight Then
-		            scale = UsableWidth / pic.Width
+		        Profiler.BeginProfilerEntry "DrawSlide>Background picture (not full screen)" ' --------------------------------------------------
+		        
+		        If resize = "body" Then
+		          If keepaspect Then
+		            UsableWidth =  UsableWidth + (2 * RealBorder)
+		            
+		            If pic.Width / UsableWidth > pic.Height / MainHeight Then
+		              scale = UsableWidth / pic.Width
+		            Else
+		              scale = MainHeight / pic.Height
+		            End If
+		            
+		            Select Case Style.BodyAlign
+		            Case "right"
+		              Left = bodyMargins.Left + UsableWidth - (pic.Width * scale)
+		            Case "center"
+		              Left = bodyMargins.Left + ((UsableWidth - (pic.Width * scale)) / 2)
+		            Case Else
+		              Left = bodyMargins.Left
+		            End Select
+		            
+		            Select Case Style.BodyVAlign
+		            Case "bottom"
+		              Top = HeaderSize + MainHeight - pic.Height * scale
+		            Case "middle"
+		              Top = HeaderSize + ((MainHeight - (pic.Height * scale)) / 2)
+		            Case Else
+		              Top = HeaderSize
+		            End Select
+		            
+		            g.DrawPicture( pic, Left, Top, pic.Width * scale, pic.Height * scale, 0, 0, pic.Width, pic.Height )
 		          Else
-		            scale = MainHeight / pic.Height
+		            g.DrawPicture( pic, bodyMargins.Left, HeaderSize, UsableWidth + (2 * RealBorder), MainHeight, 0, 0, pic.Width, pic.Height )
 		          End If
 		          
-		          Select Case Style.BodyAlign
-		          Case "right"
-		            Left = bodyMargins.Left + UsableWidth - (pic.Width * scale)
-		          Case "center"
-		            Left = bodyMargins.Left + ((UsableWidth - (pic.Width * scale)) / 2)
-		          Case Else
-		            Left = bodyMargins.Left
-		          End Select
-		          
-		          Select Case Style.BodyVAlign
-		          Case "bottom"
-		            Top = HeaderSize + MainHeight - pic.Height * scale
-		          Case "middle"
-		            Top = HeaderSize + ((MainHeight - (pic.Height * scale)) / 2)
-		          Case Else
-		            Top = HeaderSize
-		          End Select
-		          
-		          g.DrawPicture( pic, Left, Top, pic.Width * scale, pic.Height * scale, 0, 0, pic.Width, pic.Height )
 		        Else
-		          g.DrawPicture( pic, bodyMargins.Left, HeaderSize, UsableWidth + (2 * RealBorder), MainHeight, 0, 0, pic.Width, pic.Height )
+		          g.DrawPicture( pic, (g.Width / 2) - (pic.Width / 2), (g.Height / 2) - (pic.Height / 2), pic.Width, pic.Height, 0, 0, pic.Width, pic.Height )
 		        End If
 		        
-		      Else
-		        g.DrawPicture( pic, (g.Width / 2) - (pic.Width / 2), (g.Height / 2) - (pic.Height / 2), pic.Width, pic.Height, 0, 0, pic.Width, pic.Height )
+		        Profiler.EndProfilerEntry
+		        
 		      End If
-		      
 		    End If
 		  End If
 		  
-		  If slideType <> "image" Then
+		  Profiler.BeginProfilerEntry "DrawSlide -> Draw body content"
+		  
+		  // check for body  ---------------------------------------------------------------------------------
+		  Dim drawBody As Boolean = Style.BodyEnable
+		  If slideType = "image" Or slideType = "blank" Then drawBody = False
+		  If slideType = "song" And _
+		    SmartML.GetValueB(xslide.Parent.Parent, "@background_as_text", False, False) And _
+		    pic IsA Picture Then
+		    drawBody = False
+		  End If
+		  
+		  If drawBody Then
+		    
+		    Profiler.BeginProfilerEntry "DrawSlide -> prepare body text"  '-------------------------------------
+		    
+		    Dim s As string
+		    Dim line, lines(0) As String
+		    Dim MaxLineLen As Integer
+		    Dim MaxLenLang As Boolean
+		    Dim bodyTextHeight As Integer
+		    Dim HWrapPercent, VWrapPercent As Double
+		    Dim secondLanguage As Boolean = (section = SectionMode.Bilingual)
+		    Dim lineCountPerLanguage(2) As Integer
+		    Dim lineHightPerLanguage(2) As Integer
+		    Dim lineWidth As Integer
+		    Dim maxLineWidthAtZoom1 As Integer
+		    Dim f As FontFace
+		    
 		    If SmartML.GetValueB(xslide, "@emphasize", False) And Style.HighlightChorus Then
 		      bodyFont.Italic = Not bodyFont.Italic
 		    End If
 		    
-		    Dim line, lines(0) As String
-		    
-		    Profiler.EndProfilerEntry
-		    //++EMP 09/05
 		    // Take a pass at the slide to see if the lines will fit reasonably as they are.
 		    // Hopefully in most cases this will be all we need
-		    Profiler.BeginProfilerEntry "DrawSlide -> BestCaseBodyWrap"
-		    Dim MaxLineLen As Integer
-		    Dim WrapPercent, HWrapPercent, VWrapPercent As Double
-		    MaxLineLen = 0
+		    bodyZoom = 1.0
 		    
-		    '++JRC:
-		    Dim s As string
-		    Dim drawBody As Boolean = Style.BodyEnable
-		    If slideType = "song" And _
-		      SmartML.GetValueB(xslide.Parent.Parent, "@background_as_text", False, False) And _
-		      pic IsA Picture Then
-		      drawBody = False
+		    s = SmartML.GetValue(xslide, "body", True).FormatUnixEndOfLine
+		    s = StringUtils.Trim(s, StringUtils.WhiteSpaces)
+		    
+		    ' make sure the first line does not start with a separationMark
+		    While s.StartsWith(SeparationMarkBilingual)
+		      s = s.Mid(SeparationMarkBilingual.Len + 1)
+		    Wend
+		    
+		    Dim smartWrapped As Boolean
+		    Dim wrapAnew As Boolean
+		    Dim splitWidth As Integer
+		    Dim stopZoomingOut As Boolean
+		    Dim kSplitThreshold As Double = 0.85 // maximum zoom without wrapping
+		    wrapAnew = True
+		    multiwrap = False
+		    smartWrapped = False
+		    maxLineWidthAtZoom1 = 0
+		    stopZoomingOut = Not style.BodyScale
+		    If Val(Left(s, 2)) > 0 Then multiwrap = True ' If the slide starts with a number, it is probably a verse; lets force multiwrap
+		    If style.BodyScale Then
+		      splitWidth = 0
+		    Else
+		      splitWidth = UsableWidth
 		    End If
 		    
-		    If drawBody Then
-		      s = SmartML.GetValue(xslide, "body", True).FormatUnixEndOfLine
-		      SplitToArray(StringUtils.Trim(s, StringUtils.WhiteSpaces), lines, Chr(10))
+		    Do
+		      secondLanguage = (section = SectionMode.Bilingual)
+		      MaxLineLen = 0
+		      bodyTextHeight = 0
+		      lineCountPerLanguage = Array(0,0,0)
+		      If bodyZoom = 1 Then maxLineWidthAtZoom1 = 0
 		      
-		      // CHANGE-PJ: Second language feature - save original text size
-		      Dim origTextSize As Integer
-		      origTextSize = g.TextSize
+		      If Not secondLanguage Then
+		        f = bodyFont
+		        f.OntoGraphics(g, zoom * bodyZoom)
+		      End If
 		      
-		      ' Find the longest line
-		      For i = 0 to UBound(lines)
+		      If wrapAnew Then
+		        SplitToArray(s, lines, Chr(10))
+		        wrapAnew = False
+		      End If
+		      
+		      For i = 1 to UBound(lines)
 		        
-		        // CHANGE-PJ START: Second language feature - calculate character length with different font size, change every second line
+		        // Second language feature: calculate character length with different font size, change every second line
 		        If section = SectionMode.Bilingual Then
-		          If InStr(lines(i), separationMark) <> 1 Then //only change style if not line break inserted automatically before
-		            If g.TextSize = origTextSize And i > 1 Then // stay in first line to f style (body style)
-		              g.TextSize = Floor(g.TextSize * Style.MultilanguageSize/100) // taken from style settings window
-		            ElseIf g.TextSize <> origTextSize Then
-		              g.TextSize = origTextSize
+		          If Not lines(i).StartsWith(separationMark) Then //only change style if not line break inserted automatically before
+		            secondLanguage = Not secondLanguage
+		            If secondLanguage Then
+		              f = secondLanguageFont
+		            Else
+		              f = bodyFont
+		              lineCountPerLanguage(0) = lineCountPerLanguage(0) + 1 // count transitions from 2nd to 1st language for interline gap
 		            End If
+		            f.OntoGraphics(g, zoom * bodyZoom)
 		          End If
 		        End If
-		        // CHANGE-PJ END
+		        If secondLanguage Then
+		          lineCountPerLanguage(2) = lineCountPerLanguage(2) + 1
+		        Else
+		          lineCountPerLanguage(1) = lineCountPerLanguage(1) + 1
+		        End If
 		        
-		        If g.StringWidth(lines(i)) > MaxLineLen Then
-		          MaxLineLen = g.StringWidth(lines(i))
+		        If splitWidth > 0 Then
+		          Dim oldMultiWrap As Boolean = multiwrap
+		          lineWidth = SplitLine(lines, i, splitWidth, multiwrap, smartWrapped, lineCountPerLanguage, MaxLineLen, section = SectionMode.Bilingual, MaxLenLang, g, zoom * bodyZoom, bodyFont, secondLanguageFont, secondLanguage, separationMark)
+		          If oldMultiWrap <> multiwrap Then
+		            wrapAnew = True
+		            Continue Do
+		          End If
+		        Else
+		          If separationMark <> "" And lines(i).StartsWith(separationMark) Then
+		            z = separationMark.Len + 1
+		          Else
+		            z = 1
+		          End If
+		          lineWidth = FontFaceWidth(g, lines(i).Mid(z), f)
+		        End If
+		        If lineWidth > MaxLineLen Then
+		          MaxLineLen = lineWidth
+		          MaxLenLang = secondLanguage
+		        End If
+		        If bodyZoom = 1 And MaxLineLen > maxLineWidthAtZoom1 Then
+		          maxLineWidthAtZoom1 = lineWidth
 		        End If
 		      Next i
 		      
-		      // CHANGE-PJ: Second language feature - revert back to original text size
-		      g.TextSize = origTextSize
-		      
-		    End If
-		    '--
-		    
-		    // Within reasonable wrapping limits?
-		    If MaxLineLen = 0 Then
-		      Profiler.EndProfilerEntry
-		      GoTo DrawText // Don't need to check any wrapping, but still draw header and footer (Bug [1453812])
-		    End If
-		    
-		    'Skip all text size adjustments; we don't want to skip all code below, as wrapping will be required.
-		    If style.BodyScale Then
-		      HWrapPercent = Min(UsableWidth / MaxLineLen, 1.0)
-		      VWrapPercent = Min(MainHeight / (UBound(lines) * GraphicsX.FontFaceHeight(g, bodyFont)) , 1.0)
-		      WrapPercent = Min(HWrapPercent, VWrapPercent) // Consensus number
-		      If WrapPercent > .85 Then // arbitrary, but that means 32pt wouldn't go less than ~28pt
-		        g.TextSize = Floor(g.TextSize * WrapPercent) //TextSize is an Integer; keep from hanging on one number
-		        Profiler.EndProfilerEntry
-		        GoTo DrawText // I know, but the alternatives are a HUGE Else clause or put everything below in a new method
-		      End If
-		    End If
-		    Profiler.EndProfilerEntry
-		    
-		    Profiler.BeginProfilerEntry "DrawSlide>Pre-shrink 1" ' --------------------------------------------------
-		    
-		    ' Round Pre-1: Pre-guess shrinkage based on perfect wrapping
-		    '++JRC:
-		    line = ReplaceAll(StringUtils.Trim(s, StringUtils.WhiteSpaces), Chr(10), "")
-		    '--
-		    
-		    If style.BodyScale Then
-		      While (g.StringWidth(line) / UsableWidth) * GraphicsX.FontFaceHeight(g, bodyFont) > MainHeight * .85 ' last number offsets the non-perfectness of this guessing
-		        g.TextSize = Floor(g.TextSize * .95)
-		        if g.textsize <=0 then exit
-		      Wend
-		    End If
-		    
-		    Profiler.EndProfilerEntry
-		    Profiler.BeginProfilerEntry "DrawSlide>Pre-shrink 2 / Wrap" ' --------------------------------------------------
-		    
-		    '++JRC:
-		    SplitToArray(StringUtils.Trim(s, StringUtils.WhiteSpaces), lines, Chr(10))
-		    '--
-		    
-		    // CHANGE-PJ: Second language feature - save original text size
-		    Dim origTextSize As Integer
-		    origTextSize = g.TextSize
-		    
-		    If Val(Left(lines(1), 2)) > 0 Then multiwrap = True ' If the slide starts with a number, it is probably a verse; lets force multiwrap
-		    ' Round 1: Fit to size (pre-wrap)
-		    For i = 1 To UBound(lines)
-		      
-		      // CHANGE-PJ START: Second language feature - calculate character length with different font size, change every second line
+		      // calculate resulting bodyTextHeight  -------------------------------------------------------------
+		      bodyTextHeight = 0
 		      If section = SectionMode.Bilingual Then
-		        If InStr(lines(i), separationMark) <> 1 Then //only change style if not line break inserted automatically before
-		          If g.TextSize = origTextSize And i > 1 Then // stay in first line to f style (body style)
-		            g.TextSize = Floor(g.TextSize * Style.MultilanguageSize/100) // taken from style settings window
-		          ElseIf g.TextSize <> origTextSize Then
-		            g.TextSize = origTextSize
-		          End If
+		        lineCountPerLanguage(0) = lineCountPerLanguage(0) - 1
+		        lineHightPerLanguage(0) = Ceil(Style.BiLanguageInterline(g, zoom * bodyZoom))
+		        bodyTextHeight = lineCountPerLanguage(0) * lineHightPerLanguage(0)
+		        If Not secondLanguage Then
+		          secondLanguageFont.OntoGraphics(g, zoom * bodyZoom)
 		        End If
+		        lineHightPerLanguage(2) = FontFaceHeight(g, secondLanguageFont)
+		        bodyTextHeight = bodyTextHeight + lineCountPerLanguage(2) * lineHightPerLanguage(2)
+		        bodyFont.OntoGraphics(g, zoom * bodyZoom)
 		      End If
-		      // CHANGE-PJ END
+		      lineHightPerLanguage(1) = FontFaceHeight(g, bodyFont)
+		      bodyTextHeight = bodyTextHeight + lineCountPerLanguage(1) * lineHightPerLanguage(1)
 		      
-		      If (g.StringWidth(lines(i)) > UsableWidth * 2) Or (multiwrap And g.StringWidth(lines(i)) > UsableWidth) Then
-		        ' this line is more than twice as long: multiple-wrapping
-		        ' or this line is too long and this slide has already been multiwrapped
-		        multiwrap = True
-		        line = lines(i)
-		        x = 1
-		        y = 2
-		        ' add character by character until we are too long...
-		        While y <= Len(line) And g.StringWidth(Mid(line, x, y-x)) < UsableWidth 'EMP 09/05
-		          y = y + 1
-		        Wend
-		        y = y - 1
-		        ' back off until we fit...
-		        isWrapped = False
-		        For z = y DownTo x
-		          d = Mid(line, z, 1)
-		          If d = " " and z <> 2 Then ' wrap it here
-		            lines(i) = Mid(line, x, z-x)
-		            lines.Insert i+1, InsertAfterBreak+ separationMark + Mid(line, z+1) // CHANGE-PJ: Second language feature - add separationMark in case of a bilingual section to identify auto linebreak by algorithm
-		            isWrapped = True
-		            Exit
+		      // Check used width and height and decide what to do next  -----------------------------------------
+		      splitWidth = 0
+		      If style.BodyScale Then
+		        If bodyTextHeight > MainHeight Then
+		          If stopZoomingOut Then Exit
+		          VWrapPercent = MainHeight / bodyTextHeight
+		          If MaxLineLen * bodyZoom * VWrapPercent > UsableWidth Then
+		            If MaxLenLang Then i = 2 Else i = 1
+		            y = Floor(MaxLineLen * bodyZoom * VWrapPercent / UsableWidth)
+		            lineCountPerLanguage(i) = lineCountPerLanguage(i) + y
 		          End If
-		          //++
-		          // For CJK characters, it is perfectly ok to wrap before or after
-		          // a CJK character (Unicode codepoint between 4E00 and 9FBF)
-		          // (Additional fix for 1530629 added after section outside "For z" loop was inserted)
-		          //--
-		          If (z <> y) Then
-		            d2 = Mid(line, z-1, 1)
-		            If (d.Asc >= &h4E00 and d.Asc <= &h9FBF) or _
-		              (d2.Asc >= &h4E00 and d2.Asc <= &h9FBF) Then
-		              lines(i) = Mid(line, x, z-x)
-		              lines.Insert i+1,insertafterbreak+ separationMark + Mid(line, z) // CHANGE-PJ: Second language feature - add separationMark in case of a bilingual section to identify auto linebreak by algorithm
-		              isWrapped = True
-		              Exit
+		          VWrapPercent = bodyZoom
+		          bodyZoom = FindVerticalZoomFactor(g, Style, zoom, bodyZoom, lineCountPerLanguage, lineHightPerLanguage, MainHeight, stopZoomingOut)
+		          If bodyZoom >= VWrapPercent Then Exit
+		          wrapAnew = True
+		          splitWidth = UsableWidth
+		        ElseIf MaxLineLen > UsableWidth Then
+		          If bodyZoom > kSplitThreshold Then
+		            HWrapPercent = UsableWidth / MaxLineLen
+		            If bodyZoom * HWrapPercent >= kSplitThreshold Then
+		              bodyZoom = bodyZoom * HWrapPercent
+		              wrapAnew = True
+		              splitWidth = UsableWidth
+		            ElseIf bodyZoom < 1 And bodyZoom > kSplitThreshold Then
+		              bodyZoom = kSplitThreshold
+		            Else
+		              wrapAnew = bodyZoom <> 1
+		              bodyZoom = 1
+		              splitWidth = maxLineWidthAtZoom1 - 1
+		            End If
+		          Else
+		            If MaxLenLang Then i = 2 Else i = 1
+		            If bodyTextHeight + lineHightPerLanguage(i) > MainHeight Then
+		              HWrapPercent = UsableWidth / MaxLineLen
+		              bodyZoom = bodyZoom * HWrapPercent
+		              wrapAnew = True
+		              splitWidth = UsableWidth
+		            Else
+		              splitWidth = MaxLineLen - 1
 		            End If
 		          End If
-		        Next z
-		        
-		        //++
-		        // Fix added for wrapping Chinese characters [1530629]
-		        // May also affect other multi-byte character sets
-		        // Corrects issue where the line is too long but there isn't
-		        // a space character anywhere to be found.  Just wrap the midpoint.
-		        //--
-		        If Not isWrapped Then
-		          lines(i) = Mid(line, x, y-x)
-		          lines.Insert i + 1, insertafterbreak+ separationMark + Mid(line, y) // CHANGE-PJ: Second language feature - add separationMark in case of a bilingual section to identify auto linebreak by algorithm
+		        Else
+		          Exit
 		        End If
-		      ElseIf g.StringWidth(lines(i)) > UsableWidth Then ' this line is less than twice as long, but still too long: smart wrap it (EMP 09/05)
-		        ' FUTURE PROBLEM: If a later longer line would end up shrinking the text, we may not have had to wrap a prior line
-		        line = lines(i)
-		        lines.Insert i+1, insertafterbreak+ separationMark + SmartWrap(line) // CHANGE-PJ: Second language feature - add separationMark in case of a bilingual section to identify auto linebreak by algorithm
-		        lines(i) = line
-		        'While g.StringWidth(lines(i)) > g.Width - (2*RealBorder)
-		        While g.StringWidth(lines(i)) > UsableWidth 'EMP 09/05
-		          g.TextSize = Floor(g.TextSize * .95)
-		          if g.textsize <=0 then exit 'gp
-		        Wend
-		        'While g.StringWidth(lines(i+1)) > g.Width - (2*RealBorder)
-		        While g.StringWidth(lines(i+1)) > UsableWidth 'EMP 09/05
-		          g.TextSize = Floor(g.TextSize * .95)
-		          if g.textsize <=0 then exit 'gp
-		        Wend
-		        i = i + 1 ' skip the extra
+		      Else
+		        Exit
 		      End If
-		    Next i
+		    Loop
 		    
-		    // CHANGE-PJ: Second language feature - revert back to original text size
-		    g.TextSize = origTextSize
-		    
-		    Profiler.EndProfilerEntry
-		    
-		    DrawText: 'EMP 09/05
-		    
-		    Profiler.BeginProfilerEntry "DrawSlide>Post-shrink" ' --------------------------------------------------
-		    
-		    ' Post-shrink - we did our best, this is just in case.
-		    While UBound(lines) * GraphicsX.FontFaceHeight(g, bodyFont) > MainHeight
-		      ' FUTURE PROBLEM: When we size it down, we should rewrap it all
-		      g.TextSize = Floor(g.TextSize * .95)
-		      if g.textsize <=0 then exit 'gp
-		    Wend
-		    
-		    'If automatic scaling of the body text is not enabled, the bodySize should not be altered.
-		    'Other adjustments, like line wrapping do need to be applied (the code above should be executed)
-		    If style.BodyScale Then
-		      bodyFont.Size = g.TextSize
-		    End If
+		    ' Post-shrink
 		    
 		    Profiler.EndProfilerEntry
-		    Profiler.BeginProfilerEntry "DrawSlide>Draw Text" ' --------------------------------------------------
+		    Profiler.BeginProfilerEntry "DrawSlide>Draw body text" ' --------------------------------------------------
 		    
-		    ////////////////////////////////////////////////
+		    bodyFont.Size = bodyFont.Size * zoom * bodyZoom
+		    secondLanguageFont.Size = secondLanguageFont.Size * zoom * bodyZoom
+		    ZoomTabs(bodyTabs, zoom * bodyZoom)
+		    
 		    Lines.Remove(0)
 		    
 		    If section = SectionMode.Bilingual Then
-		      Dim BodyTextHeight As Integer = 0
-		      Dim secondLanguage As Boolean
-		      Dim lineHeightPerLanguage(2) As Integer
-		      Dim f, secondLanguageFont As FontFace
-		      
-		      secondLanguageFont = bodyFont.Clone
-		      secondLanguageFont.Italic = Not secondLanguageFont.Italic // show second language has italic reversed
-		      secondLanguageFont.Size = Floor(secondLanguageFont.Size * Style.MultilanguageSize/100) // taken from style setting window
-		      secondLanguageFont.ForeColor = Style.MultilanguageColor // taken from style setting window
-		      secondLanguageFont.OntoGraphics g
-		      lineHeightPerLanguage(2) = FontFaceHeight(g, secondLanguageFont)
-		      bodyFont.OntoGraphics g
-		      lineHeightPerLanguage(1) = FontFaceHeight(g, bodyFont)
-		      lineHeightPerLanguage(0) = (bodyFont.Size - secondLanguageFont.Size) / 4
-		      
-		      If Style.BodyVAlign <> "top" Then
-		        secondLanguage = True
-		        For i = 0 To UBound(lines)
-		          line = lines(i)
-		          
-		          If Not line.StartsWith(separationMark) Then
-		            secondLanguage = Not secondLanguage
-		            If Not secondLanguage And i > 0 Then
-		              BodyTextHeight = BodyTextHeight + lineHeightPerLanguage(0)
-		            End If
-		          End If
-		          If secondLanguage Then
-		            BodyTextHeight = BodyTextHeight + lineHeightPerLanguage(2)
-		          Else
-		            BodyTextHeight = BodyTextHeight + lineHeightPerLanguage(1)
-		          End If
-		        Next
-		      End If
-		      
 		      x = bodyMargins.Left + RealBorder
 		      y = HeaderSize + RealBorder
+              If bodyTextHeight > MainHeight Then bodyTextHeight = MainHeight  // confine the drawn text to the body area
 		      If Style.BodyVAlign = "middle" Then
 		        y = y + (MainHeight - bodyTextHeight) / 2
 		      ElseIf Style.BodyVAlign = "bottom" Then
 		        y = y + MainHeight - bodyTextHeight
 		      End If
+		      lineHightPerLanguage(0) = Ceil(Style.BiLanguageInterline(g, zoom * bodyZoom))
 		      
 		      secondLanguage = True
 		      For i = 0 To UBound(lines)
@@ -530,7 +485,7 @@ Protected Module SetML
 		          Else
 		            f = bodyFont
 		            If i > 0 Then
-		              y = y + lineHeightPerLanguage(0)
+		              y = y + lineHightPerLanguage(0)
 		            End If
 		          End If
 		        Else
@@ -544,6 +499,9 @@ Protected Module SetML
 		      line = Join(Lines, Chr(10))
 		      Call DrawFontString(g, line, 0, HeaderSize, bodyFont, RealBorder, 0, 0, bodyMargins, g.Width, Style.BodyAlign, MainHeight, Style.BodyVAlign, bodyTabs, insertafterbreak) 'EMP 09/05
 		    End If
+		    
+		    Profiler.EndProfilerEntry
+		    
 		  End If
 		  
 		  Profiler.EndProfilerEntry
@@ -859,6 +817,117 @@ Protected Module SetML
 	#tag EndMethod
 
 	#tag Method, Flags = &h1
+		Protected Function FindVerticalZoomFactor(g As Graphics, Style As SlideStyle, zoom As Double, bodyZoom As Double, lineCountPerLanguage() As Integer, lineHightPerLanguage() As Integer, MainHeight As Integer, ByRef minimumReached As Boolean) As Double
+		  ' return bodyZoom scaled such that vertical space is well used but not overused
+		  ' non-linear scaling of border and shadow and gc.TextHeight messes things up a little ...
+		  
+		  Dim gc As Graphics
+		  Dim bodyHeight1, bodyHeight2 As Integer
+		  Dim lh2(3) As Integer
+		  Dim bilingual As Boolean
+		  Dim oldFactor, factor As Double
+		  Dim bodyFont, l2Font As FontFace
+		  Dim maxTextHeight As Integer
+		  Dim kScrew As Double = 100
+		  
+		  gc = g.Clip(0,0,g.Width,g.Height)
+		  
+		  bilingual = lineCountPerLanguage(2) > 0
+		  minimumReached = False
+		  
+		  If Not bilingual Then
+		    bodyFont = Style.BodyFont
+		    maxTextHeight = Floor(MainHeight / lineCountPerLanguage(1))
+		    bodyHeight1 = lineCountPerLanguage(1) * lineHightPerLanguage(1)
+		    factor = zoom * bodyZoom * MainHeight / bodyHeight1
+		    oldFactor = zoom * bodyZoom
+		    bodyFont.OntoGraphics(gc, oldFactor)
+		    If gc.TextHeight <= 4 Or gc.TextSize <=1 Then
+		      minimumReached = True
+		      Return (bodyZoom)
+		    End If
+		    Do
+		      bodyFont.OntoGraphics(gc, factor)
+		      lh2(1) = FontFaceHeight(gc, bodyFont)
+		      If lh2(1) <= maxTextHeight Then Exit
+		      If gc.TextHeight <= 4 Or gc.TextSize <=1 Then
+		        minimumReached = True
+		        Exit
+		      End If
+		      factor = factor * (1 - 1 / (lh2(1) * kScrew))
+		    Loop
+		    If lh2(1) < maxTextHeight Then
+		      Do
+		        oldFactor = factor
+		        factor = factor * (1 + 1 / (maxTextHeight * kScrew))
+		        bodyFont.OntoGraphics(gc, factor)
+		        lh2(1) = FontFaceHeight(gc, bodyFont)
+		        If lh2(1) > maxTextHeight Then
+		          factor = oldFactor
+		          Exit
+		        End
+		      Loop
+		    End If
+		  Else
+		    bodyHeight1 = _
+		    lineCountPerLanguage(0) * lineHightPerLanguage(0) + _
+		    lineCountPerLanguage(1) * lineHightPerLanguage(1) + _
+		    lineCountPerLanguage(2) * lineHightPerLanguage(2)
+		    factor = zoom * bodyZoom * MainHeight / bodyHeight1
+		    bodyFont = Style.BodyFont
+		    l2Font = Style.SecondLanguageFont
+		    oldFactor = zoom * bodyZoom
+		    bodyFont.OntoGraphics(gc, oldFactor)
+		    If gc.TextHeight <= 4 Or gc.TextSize <=1 Then
+		      minimumReached = True
+		      Return (bodyZoom)
+		    End If
+		    l2Font.OntoGraphics(gc, oldFactor)
+		    If gc.TextHeight <= 4 Or gc.TextSize <=1 Then
+		      minimumReached = True
+		      Return (bodyZoom)
+		    End If
+		    Do
+		      bodyFont.OntoGraphics(gc, factor)
+		      If gc.TextHeight <= 4 Or gc.TextSize <=1 Then minimumReached = True
+		      lh2(1) = FontFaceHeight(gc, bodyFont)
+		      l2Font.OntoGraphics(gc, factor)
+		      lh2(2) = FontFaceHeight(gc, l2Font)
+		      lh2(0) = Ceil(Style.BiLanguageInterline(gc, factor))
+		      bodyHeight2 = _
+		      lineCountPerLanguage(0) * lh2(0) + _
+		      lineCountPerLanguage(1) * lh2(1) + _
+		      lineCountPerLanguage(2) * lh2(2)
+		      If bodyHeight2 <= MainHeight Then Exit
+		      If gc.TextHeight <= 4 Or gc.TextSize <=1 Then minimumReached = True
+		      If minimumReached Then Exit
+		      factor = factor * (1 - 1 / (Max(lh2(0),lh2(1),lh2(2)) * kScrew))
+		    Loop
+		    If bodyHeight2 < MainHeight Then
+		      Do
+		        oldFactor = factor
+		        factor = factor * (1 + 1 / (Max(lh2(0),lh2(1),lh2(2)) * kScrew))
+		        bodyFont.OntoGraphics(gc, factor)
+		        lh2(1) = FontFaceHeight(gc, bodyFont)
+		        l2Font.OntoGraphics(gc, factor)
+		        lh2(2) = FontFaceHeight(gc, l2Font)
+		        lh2(0) = Ceil(Style.BiLanguageInterline(gc, factor))
+		        bodyHeight2 = _
+		        lineCountPerLanguage(0) * lh2(0) + _
+		        lineCountPerLanguage(1) * lh2(1) + _
+		        lineCountPerLanguage(2) * lh2(2)
+		        If bodyHeight2 > MainHeight Then
+		          factor = oldFactor
+		          Exit
+		        End If
+		      Loop
+		    End If
+		  End If
+		  Return (factor / zoom)
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h1
 		Protected Function FloorMinMax(d As Double, min As Integer, max As Integer) As Integer
 		  ' Rounds, but if it ends up 0, it jumps to 1.
 		  Dim i As Integer
@@ -1110,7 +1179,7 @@ Protected Module SetML
 		Function InsertAfterBreak() As String
 		  'gp start
 		  if slidetype = "song" then
-		    if  SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "style/@insping_after_break", True, True) then
+		    if  SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "style/@insping_after_break", True, True) then // there's no GUI for this option
 		      Return "   "
 		    end if
 		  end if
@@ -1164,12 +1233,10 @@ Protected Module SetML
 		Protected Function SmartWrap(ByRef str As String) As String
 		  // Truncates the passed string at the wrap point and returns the second line of the string
 		  
-		  Dim temp,c As String
-		  Dim back, i, center, quarter, breakpoint As Integer
-		  Const Punctuation = ",.;?!)""" 'EMP 09/05
-		  Const PunctuationAndSpace = ",.;?!)"" "
+		  Dim temp, c As String
+		  Dim i, center, quarter, breakpoint As Integer
+		  Const Punctuation = ",.;:?!)""" 'EMP 09/05
 		  
-		  back = 1
 		  center = Len(str)/2
 		  quarter = Len(str)/4
 		  breakpoint = 0
@@ -1177,18 +1244,21 @@ Protected Module SetML
 		  For i = quarter To 3*quarter
 		    c = Mid(str, i, 1)
 		    If c = "," Or c = ":" Or c = ";" Or c = "." Or c = "?" Or c = "!" Or c = ")" Then
-		      If Abs(i - center) < Abs(breakpoint - center) Then breakpoint = i
+		      If Abs(i - center) <= Abs(breakpoint - center) Then breakpoint = i Else Exit
 		    End If
 		  Next i
 		  If breakpoint = 0 Then
 		    For i = 1 To Len(str)
 		      c = Mid(str, i, 1)
 		      If c = "," Or c = ":" Or c = ";" Or c = "." Or c = "?" Or c = "!" Or c = ")" Or c = " " Then
-		        If Abs(i - center) < Abs(breakpoint - center) Then breakpoint = i
+		        If Abs(i - center) <= Abs(breakpoint - center) Then breakpoint = i Else Exit
 		      End If
 		    Next i
 		    If breakpoint = 0 Then Return ""
 		  End If
+		  
+		  If breakpoint = 0 Then breakpoint = center
+		  
 		  //++EMP 09/05
 		  'Take care of a corner case with this....since the loop counts upward, it can miss
 		  ' the case where two or more punctuation marks immediately follow each other
@@ -1219,6 +1289,135 @@ Protected Module SetML
 		  // in  the future.
 		  //--
 		  Return SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "song_style_preferred", True, True)
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Private Function SplitLine(ByRef lines() As String, ByRef i As Integer, splitWidth As Integer, ByRef multiwrap As Boolean, ByRef smartWrapped As Boolean, ByRef lineCountPerLanguage() As Integer, ByRef MaxLineLen As Integer, isBilingual As Boolean, ByRef MaxLenLang As Boolean, g As Graphics, zoom As Double, bodyFont As FontFace, secondLanguageFont As FontFace, ByRef secondLanguage As Boolean, separationMark As String) As Integer
+		  // this is basically part of DrawSlide, outsourced here to hopefully get a better overview.
+		  // On the other hand, there are a lot of parameters, most of which are even ByRef, because they may change
+		  //
+		  // The line lines(i) is split to fit within the width of splitWidth
+		  // Parameters should support for splitting the corresponding line of the alternate language in sync with line i. This is not done yet.
+		  
+		  Dim lineLen As Integer
+		  Dim x, y, z As Integer
+		  Dim Line As String
+		  Dim d, d2 As String
+		  Dim lineSepMark As String
+		  Dim f As FontFace
+		  
+		  If secondLanguage Then
+		    f = secondLanguageFont
+		  Else
+		    f = bodyFont
+		  End If
+		  
+		  line = lines(i)
+		  If separationMark <> "" And line.StartsWith(separationMark) Then
+		    line = line.Mid(separationMark.Len + 1)
+		    lineSepMark = separationMark
+		  Else
+		    lineSepMark = ""
+		  End If
+		  
+		  lineLen = FontFaceWidth(g, line, f)
+		  If (lineLen >  splitWidth * 2) Or (multiwrap And lineLen >  splitWidth) Then
+		    ' this line is more than twice as long: multiple-wrapping
+		    ' or this line is too long and this slide has already been multiwrapped
+		    If Not multiwrap Then
+		      multiwrap = True
+		      If smartWrapped Then Return lineLen ' restart, don't change mid through
+		    End If
+		    ' find what fits on the line
+		    ' estimate the number of characters thet fit on the line (y) and choose a character count (x) to start the search with
+		    y = line.Len() / (lineLen /  splitWidth) / 0.85
+		    x = y \ 5
+		    If x = 0 Then x = 1
+		    lineLen = FontFaceWidth(g, line.Left(y), f)
+		    If lineLen <  splitWidth Then
+		      Do
+		        y = y + x
+		      Loop Until FontFaceWidth(g, line.Left(y), f) >=  splitWidth
+		      x = -x \ 2
+		      z = -1
+		    ElseIf lineLen >  splitWidth Then
+		      Do
+		        y = y - x
+		      Loop Until FontFaceWidth(g, line.Left(y), f) <=  splitWidth
+		      x = x \ 2
+		      z = 1
+		    Else
+		      x = 0
+		    End If
+		    ' binary search for limit of what fits on the line, y: len, x: increment, z: direction (+/-)
+		    While x > 0
+		      If z > 0 Then
+		        y = y + x
+		      Else
+		        y = y - x
+		      End If
+		      lineLen = FontFaceWidth(g, line.Left(y), f)
+		      If lineLen >  splitWidth Then
+		        z = -1
+		      ElseIf lineLen <  splitWidth Then
+		        z = 1
+		      Else
+		        x = 0
+		      End If
+		    Wend
+		    If lineLen >  splitWidth Then y = y - 1
+		    
+		    ' back off until we fit...
+		    For z = y DownTo 2
+		      d = Mid(line, z, 1)
+		      If d = " " and z <> 2 Then ' wrap it here
+		        y = z
+		        Exit
+		      End If
+		      //++
+		      // For CJK characters, it is perfectly ok to wrap before or after
+		      // a CJK character (Unicode codepoint between 4E00 and 9FBF)
+		      // (Additional fix for 1530629 added after section outside "For z" loop was inserted)
+		      //--
+		      d2 = Mid(line, z-1, 1)
+		      If (d.Asc >= &h4E00 and d.Asc <= &h9FBF) or _
+		        (d2.Asc >= &h4E00 and d2.Asc <= &h9FBF) Then
+		        y = z
+		        Exit
+		      End If
+		    Next z
+		    
+		    // If we did not alter y in the back off loop above, we just wrap at the end of splitWidth
+		    lines(i) = lineSepMark + line.Left(y)
+		    lines.Insert(i+1, separationMark + insertafterbreak + Mid(line, y+1))
+		    z = lineSepMark.Len + 1
+		    lineLen = FontFaceWidth(g, lines(i).Mid(z), f)
+		  ElseIf lineLen >  splitWidth Then ' this line is less than twice as long, but still too long: smart wrap it (EMP 09/05)
+		    lines.Insert i+1, separationMark + insertafterbreak + SmartWrap(line) // CHANGE-PJ: Second language feature - add separationMark in case of a bilingual section to identify auto linebreak by algorithm
+		    lineLen = FontFaceWidth(g, line, f)
+		    If lineLen > MaxLineLen Then
+		      MaxLineLen = lineLen
+		      MaxLenLang = secondLanguage
+		    End If
+		    lines(i) = lineSepMark + line
+		    z = separationMark.Len + 1
+		    lineLen = FontFaceWidth(g, lines(i+1).Mid(z), f)
+		    i = i + 1 ' skip the extra
+		    smartWrapped = True
+		    If secondLanguage Then
+		      lineCountPerLanguage(2) = lineCountPerLanguage(2) + 1
+		    Else
+		      lineCountPerLanguage(1) = lineCountPerLanguage(1) + 1
+		    End If
+		  End If
+		  
+		  If lineLen > MaxLineLen Then
+		    MaxLineLen = lineLen
+		    MaxLenLang = secondLanguage
+		  End If
+		  
+		  Return lineLen
 		End Function
 	#tag EndMethod
 

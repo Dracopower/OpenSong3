@@ -27,6 +27,15 @@ Protected Class SlideStyle
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
+		Function BiLanguageInterline(g As Graphics, zoom As Double = 1.0) As Single
+		  Dim g2 As Graphics
+		  g2 = g.Clip(0,0,g.Width,g.Height)
+		  SecondLanguageFont.OntoGraphics(g2, zoom)
+		  Return (FontFaceHeight(g2, SecondLanguageFont) * 0.2)
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
 		Function BodyAlign() As String
 		  Dim A As String
 		  A = Lowercase(BodyAlign)
@@ -399,6 +408,18 @@ Protected Class SlideStyle
 		Sub MultilanguageSize(Assigns Size As Integer)
 		  MultilanguageSize = Size
 		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function SecondLanguageFont() As FontFace
+		  Dim f As FontFace
+		  f = BodyFont.Clone
+		  f.Italic = Not f.Italic // show second language as italic if f is not italic and the other way round
+		  f.Size = Floor(f.Size * MultilanguageSize/100) // taken from style setting window
+		  f.ForeColor = MultilanguageColor // taken from style setting window
+		  
+		  Return f
+		End Function
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
