@@ -12002,11 +12002,12 @@ End
 
 	#tag Method, Flags = &h21
 		Private Sub ColorizeBilingualSongtext()
-		  'Bilingual presentation feature (for sections ending with "L") - highlight every second line in the editor
+		  'Bilingual presentation feature (for sections marked accordingly) - highlight every second line in the editor
 		  
 		  Dim lines() As String = Split(edf_song_lyrics.Text, SmartML.Newline.Left(1))
 		  Dim section As String = ""
 		  Dim k, start As Integer = 0
+		  Dim isBilingual As Boolean = False
 		  
 		  // set TextFont and TextSize taken from settings
 		  Dim f As FontFace = SmartML.GetValueF(App.MyMainSettings.DocumentElement, "fonts/fixed_width")
@@ -12019,11 +12020,12 @@ End
 		  For j As Integer = 0 To UBound(lines)
 		    If Left(lines(j), 1) = "[" Then
 		      section = Mid(lines(j), 2, Instr(2, lines(j), "]") - 2)
+		      isBilingual = IsBilingualSection(lines(j))
 		      k = 0
 		    End If
 		    
-		    If SetML.IsBilingualSection(section) Then //bilingual section
-		      If Left(lines(j), 1) = " " Then //no Chord, no comment, no multiline, no page layout command -> lyric line
+		    If isBilingual Then
+		      If Left(lines(j), 1) = " " Then //no chord, no comment, no multiline, no page layout command -> lyric line
 		        
 		        //print every second line in a different color
 		        If k = 0 Then
@@ -12876,7 +12878,8 @@ End
 		  Status_InSongLoading = False
 		  UpdateMenuItems
 		  
-		  // CHANGE-PJ: Second language feature (for sections ending with "L") - coloring every second line to different color in editor (was not working inside LoadSongFields directly, so I put it here)
+		  // CHANGE-PJ: Second language feature (for sections marked accordingly) - coloring every second line to different color in editor
+		  // (was not working inside LoadSongFields directly, so I put it here)
 		  If f <> Nil And f.Exists And index > -1 Then
 		    ColorizeBilingualSongtext
 		  End If
@@ -12890,8 +12893,9 @@ End
 		Sub LoadSongFields()
 		  Dim i As Integer
 		  Dim verseDict As New Dictionary
+		  Dim isBilingualDict As New Dictionary
 		  Dim order As String
-		  SongML.LyricsToSections CurrentSong.DocumentElement, verseDict, order
+		  SongML.LyricsToSections(CurrentSong.DocumentElement, verseDict, order, isBilingualDict)
 		  
 		  Dim imageLink As Boolean = ImageDefaults.ExcludeBackgroundsImages()
 		  Dim xbacks As XmlNode = SmartML.GetNode(CurrentSong.DocumentElement, "backgrounds", False)

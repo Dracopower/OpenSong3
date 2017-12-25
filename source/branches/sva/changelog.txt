@@ -16,7 +16,7 @@
 - Render individual sheets and provide the image to show.
 - Add sheets after the current sheet during the presentation.
 * Add new feature for bilingual songs: rendering a second language in a different style (thanks philipp)
-- Different styles will be applied to every second song line when the song section name ends with 'L'
+- Different styles will be applied to every second line in a song when the song section has the Option 'L' like so: [V1](L)
 - The size and color can be adjusted in the presentation styles
 - The song editor highlights the different languages in the song text editor
 * Added automatic conversion of path separators for image files when presentations made on one OS A are presented on OS B. 

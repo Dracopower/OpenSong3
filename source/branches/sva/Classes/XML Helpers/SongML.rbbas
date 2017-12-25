@@ -172,7 +172,6 @@ Module SongML
 		  
 		  Dim Pages As Group2D
 		  Dim Page As Group2D
-		  Dim NewPage As Group2D
 		  Dim Multicolumn As Boolean = False
 		  Dim ColumnLeft As Integer // Left point for the second column
 		  Dim ColumnWidth As Integer // Width of a column
@@ -1324,6 +1323,28 @@ Module SongML
 		End Function
 	#tag EndMethod
 
+	#tag Method, Flags = &h0
+		Function IsBilingualSection(section As String) As boolean
+		  Dim s As String
+		  Dim options() As String
+		  Dim p, x, y As Integer
+		  
+		  p = -1
+		  For Each s In Array("[","]","(",")")
+		    p = section.InStr(p+1, s)
+		    If p <= 0 Then Return(False)
+		    x = y
+		    y = p
+		  Next
+		  options = section.Mid(x + 1, y - x - 1).Split(";")
+		  For Each s In options
+		    If s.Trim = "L" Then Return(True)
+		  Next
+		  Return(False)
+		  
+		End Function
+	#tag EndMethod
+
 	#tag Method, Flags = &h1
 		Protected Function LinesToSlices(ByRef lines() As String, chordLineIndex As Integer, ByRef slices() As String, stripPrefix As Boolean = False) As Integer
 		  ' line(chordLineIndex) better be chords
@@ -1447,12 +1468,14 @@ Module SongML
 	#tag EndMethod
 
 	#tag Method, Flags = &h1
-		Protected Sub LyricsToSections(songElement As XmlNode, ByRef dict As Dictionary, ByRef order As String)
+		Protected Sub LyricsToSections(songElement As XmlNode, ByRef dict As Dictionary, ByRef order As String, ByRef isBilingual As Dictionary)
 		  Dim st, x, strlen As Integer
 		  Dim lyrics, line, section, subsection As String
 		  Dim len As integer
+		  Dim sectionAdded As Boolean = True
 		  
 		  section = "default"
+		  isBilingual.Value(section) = False
 		  
 		  lyrics = SmartML.GetValue(songElement, "lyrics", True)
 		  lyrics = RemoveSpecialChars(lyrics)
@@ -1460,43 +1483,65 @@ Module SongML
 		  
 		  If strlen > 0 Then
 		    lyrics = lyrics + Chr(10)
-		    '++JRC We should update the lengh ;)
+		    ' JRC We should update the lengh ;)
 		    strlen = strlen + 1
-		    '--
 		    
 		    st = 1
 		    For x = 1 To strlen
 		      If Mid(lyrics, x, 1) = Chr(10) Then
-		        '++JRC: Fixed, RTrim thinks "à" is a whitespace character?
+		        ' JRC: Fixed, RTrim thinks "à" is a whitespace character?
 		        line = StringUtils.RTrim(Mid(lyrics, st, x-st), StringUtils.WhiteSpaces)
-		        '--
 		        If Left(line, 1) = "[" Then
-		          section = Mid(line, 2, Instr(2, line, "]") - 2)
+		          ' add a previous empty section unless done already
+		          If Not sectionAdded Then
+		            If Not dict.HasKey(section) Then
+		              dict.Value(section) = ""
+		              order = order + section + " "
+		            End If
+		          End If
+		          section = Trim(Mid(line, 2, Instr(2, line, "]") - 2))
+		          sectionAdded = False
+		          If IsBilingualSection(line) Then
+		            isBilingual.Value(section) = True
+		          Else
+		            IF Not isBilingual.HasKey(section) Then
+		              isBilingual.Value(section) = False
+		            End If
+		          End If
 		        ElseIf Left(line, 1) = "." Then // Chord
 		        ElseIf Left(line, 1) = ";" Then // Comment
 		        ElseIf Left(line, 1) = "-" Then // Page layout command [Bug 1515605]
 		        Else
 		          subsection = Trim(Left(line, 1))
 		          If Len(subsection) > 0 And section = "default" Then
+		            subsection = "V" + subsection
 		          Else
 		            subsection = section + subsection
 		          End If
-		          '++JRC: Same Here
+		          If subsection <> section Then
+		            isBilingual.Value(subsection) = isBilingual.Value(section)
+		          End If
 		          line = StringUtils.Trim(Mid(line, 2), StringUtils.WhiteSpaces)
-		          '--
 		          If Len(line) > 0 Then
 		            If dict.HasKey(subsection) Then
 		              dict.Value(subsection) = dict.Value(subsection) + Chr(10) + line
 		            Else
 		              dict.Value(subsection) = line
-		              order = order + subsection + "|"
+		              order = order + subsection + " "
 		            End If
+		            sectionAdded = True
 		          End If
 		        End If
 		        st = x + 1
 		      End If
 		    Next x
-		    order = Left(order, Len(order)-1) //This deletes the trailing vertical bar
+		    If Not sectionAdded Then
+		      If Not dict.HasKey(section) Then
+		        dict.Value(section) = ""
+		        order = order + section + " "
+		      End If
+		    End If
+		    order = Left(order, Len(order)-1) // This deletes the trailing seperator
 		  End If
 		End Sub
 	#tag EndMethod
@@ -2106,13 +2151,11 @@ Module SongML
 
 	#tag Method, Flags = &h0
 		Sub ToSetML(songElement As XmlNode, style As XmlNode = Nil)
-		  '++JRC: now function has two parameters
-		  '--
 		  Dim slides, slide As XmlNode
 		  Dim order As String
 		  Dim SubtitleText As String
 		  
-		  ' This routine makes an in-place change of a song XML encoding to slides for use in a set.  The
+		  'This routine makes an in-place change of a song XML encoding to slides for use in a set.  The
 		  'XML node that we are passed is modified in-place instead of creating a new one.  That way,
 		  'if it is part of a larger grouping (i.e., a set), the node doesn't have to be replaced and the processing time
 		  'for repairing the XML linked lists is avoided.
@@ -2122,37 +2165,27 @@ Module SongML
 		  SmartML.SetValue songElement, "@type", "song"
 		  
 		  Call SmartML.InsertChild(songElement, "subtitle", 0)
-		  
 		  SubtitleText = BuildSubtitle(songElement, style)
-		  
 		  App.DebugWriter.Write(Chr(9) + "Subtitle Text: '" + SubtitleText + "'")
-		  
-		  'Update subtitle
 		  SmartML.SetValue(songElement, "subtitle", SubtitleText)
-		  //--
+		  
 		  slides = SmartML.GetNode(songElement, "slides", True)
 		  
 		  Dim dict As New Dictionary
+		  Dim isBilingual As New Dictionary
 		  Dim sub_section, sub_sections(), section, sections() As String
 		  
-		  LyricsToSections songElement, dict, order
+		  LyricsToSections(songElement, dict, order, isBilingual)
 		  
 		  Dim presentation As string
-		  
 		  presentation = SmartML.GetValue(songElement, "presentation", True)
-		  'sections = Split(Trim(SmartML.GetValue(songElement, "presentation", True)), " ")
 		  sections = Split(Trim(presentation), " ")
 		  
 		  If UBound(sections) < 0 Then
-		    '++JRC
-		    ' If there is no presentation defined, we just do the sections in order
-		    'modified to pull the presentation order from the lyrics
-		    order = Trim(order)
-		    order = ReplaceAll(order, "|", " ")
+		    'If there is no presentation defined, we just do the sections in order
 		    SmartML.SetValue(songElement, "presentation", order)
 		    sections = Split(order, " ")
 		  End If
-		  '--
 		  
 		  Dim ChorusNr, PresentationIndex as integer 'GP
 		  ChorusNr = 0 'GP
@@ -2166,7 +2199,7 @@ Module SongML
 		    PresentationIndex = PresentationIndex + 1
 		    If dict.HasKey(section) Then
 		      If Lowercase(Left(section, 1)) = "c" Then
-		        ChorusNr = ChorusNr+ 1 'GP
+		        ChorusNr = ChorusNr + 1
 		      End If
 		      
 		      'Check if a background is available for this verse
@@ -2200,7 +2233,7 @@ Module SongML
 		      
 		      // CHANGE-PJ: Second language feature - if last character of section name = "L" for "L"anguage -> activate separationMark (detect linebreaks inserted by algorithm)
 		      Dim separationMark As String
-		      If SetML.IsBilingualSection(section) Then
+		      If isBilingual.Value(section) Then
 		        separationMark = SetML.SeparationMarkBilingual
 		      Else
 		        separationMark = ""
@@ -2221,6 +2254,7 @@ Module SongML
 		          SmartML.SetValueN(slide, "@ChorusNr", ChorusNr) 'GP
 		        End If
 		        SmartML.SetValueN(slide, "@PresentationIndex", PresentationIndex) 'GP
+		        SmartML.SetValueB(slide, "@bilingual", isBilingual.Value(section))
 		        
 		        'Assign the background to the verse slide
 		        If xlist <> Nil And xlist.Length > 0 Then

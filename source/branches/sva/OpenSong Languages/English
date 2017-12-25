@@ -905,7 +905,7 @@ If the presentation field is empty, then the Presenter will order the slides bas
       <style caption="Style variations for the second language:"/>
       <size caption="Size [10-100%]"/>
       <color caption="Color"/>
-      <note caption="Usage: append -L in section name e.g. [V1-L]"/>
+      <note caption="Usage: append (L) to the section marker e.g. [V1](L)"/>
     </bilingual>
     <options caption="Textual options">
       <subtitles caption="Song Subtitles"/>

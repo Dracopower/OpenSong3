@@ -962,7 +962,7 @@ Liedteilmarken im Textfeld des Liededitors erscheinen.
       <style caption="Für zweite Sprache gleicher Stil aber"/>
       <size caption="Größe [10-100%]"/>
       <color caption="Farbe"/>
-      <note caption="Verwendung: -L bei Abschnitts-Namen anhängen z.B. [V1-L]"/>
+      <note caption="Verwendung: L in runden Klammern an die Liedteilmarke anfügen z.B. [V1](L)"/>
     </bilingual>
     <options caption="Darstellungsoptionen">
       <subtitles caption="Untertitel"/>
@@ -1460,7 +1460,7 @@ auf Sourceforge.net). Das OpenSong Entwicklungsteam bedauert die Unannehmlichkei
     <videolan_app_missing>Der VLC Media Player ist nicht richtig eingerichtet. Bitte konfigurieren Sie in OpenSong den VLC Media Player in den Allgemeinen Einstellungen auf der Karteikarte Dateipfade.</videolan_app_missing>
     <videolan>
       <no_medium>Sie haben kein Medium zum abspielen angegeben</no_medium>
-      <no_medium_in_slide>Sie haben kein Medium zum Abspielen angegeben im Set Eintrag %1</no_medium_in_slide>
+      <no_medium_in_slide>Sie haben kein Medium zum Abspielen angegeben im Set-Eintrag %1</no_medium_in_slide>
     </videolan>
     <linked_song>
        <current>Sie können ein Lied nicht mit sich selbst verknüpfen.</current>

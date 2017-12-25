@@ -29,9 +29,9 @@ Protected Module SetML
 		  // Second language feature -> show second language (every second line) in different style
 		  Dim section As SectionMode = SectionMode.Normal
 		  Dim separationMark As String
-		  If IsBilingualSection(SmartML.GetValue(xslide, "@id")) Then
+		  If SmartML.GetValueB(xslide, "@bilingual") Then
 		    section = SectionMode.Bilingual
-		    separationMark = SetML.SeparationMarkBilingual
+		    separationMark = SeparationMarkBilingual
 		  Else
 		    separationMark = ""
 		  End If
@@ -1121,12 +1121,6 @@ Protected Module SetML
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Function IsBilingualSection(section As String) As boolean
-		  Return Trim(section).Right(1) = "L"
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
 		Function IsExternal(slide As XmlNode) As Boolean
 		  Dim slideType As String
 		  Dim external As Boolean = False
@@ -1152,14 +1146,6 @@ Protected Module SetML
 		  End Try
 		  
 		  Return external
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Function SeparationMarkBilingual() As String
-		  'This actually is a const, however Xojo unfortunately does not support constant expressions
-		  'Return Chr(244)
-		  Return &u00F4 ' hopefully get an UTF-8 string
 		End Function
 	#tag EndMethod
 
@@ -1297,7 +1283,19 @@ Protected Module SetML
 	#tag EndMethod
 
 
+	#tag ComputedProperty, Flags = &h1
+		#tag Getter
+			Get
+			  Return(&u200C) 'ZERO WIDTH NON-JOINER
+			End Get
+		#tag EndGetter
+		Protected SeparationMarkBilingual As String
+	#tag EndComputedProperty
+
 	#tag Property, Flags = &h0
+		#tag Note
+			// only used in InsertAfterBreak, but never set!
+		#tag EndNote
 		SlideType As String
 	#tag EndProperty
 
