@@ -147,8 +147,53 @@ Module SongML
 
 	#tag Method, Flags = &h1
 		Protected Function DeflateString(lyrics As String, separationMark As String = "") As String
-		  // CHANGE-PJ: Second language feature - add separationMark taken as parameter (only applied for bilingual sections) -> needed to differentiate between a "real" second line and just an manual linebreak chosen by the user
-		  Return ReplaceAll(ReplaceAll(lyrics, "_", ""), "|", Chr(10)+separationMark).CleanSpaces
+		  // For bilingual sections, lines are initially interleaved. If lines are split using "|", this might get messed up.
+		  // -> we try to keep them properly interleaved where possible, or else mark a second line for the same language
+		  // with a separationMark
+		  Dim bodytext as String
+		  
+		  bodytext = ReplaceAll(lyrics, "_", "")
+		  If (separationMark <> "") AND lyrics.Contains("|") Then
+		    Dim lines() As String = Split(bodytext, Chr(10))
+		    Dim i As Integer = 0
+		    Dim barpos1, barpos2 As Integer
+		    
+		    // ensure even number of lines to begin with
+		    If Lines.Ubound() Mod 2 = 0 Then
+		      lines.Append("")
+		    End If
+		    // if lines have to be split either split both or add in a separationMark
+		    While i <= lines.Ubound()
+		      barpos1 = InStr(lines(i), "|")
+		      barpos2 = InStr(lines(i+1), "|")
+		      If barpos1 > 0 Then
+		        If barpos2 > 0 Then
+		          lines.Insert(i+2, Mid(lines(i), barpos1+1))
+		          lines(i) = Left(lines(i), barpos1-1)
+		          lines.Insert(i+3, Mid(Lines(i+1), barpos2+1))
+		          lines(i+1) = Left(lines(i+1), barpos2-1)
+		          i = i + 2
+		        Else
+		          lines.Insert(i+1, separationMark + Mid(lines(i), barpos1+1))
+		          lines(i) = Left(lines(i), barpos1-1)
+		          i = i + 1
+		        End If
+		      Else
+		        If barpos2 > 0 Then
+		          lines.Insert(i+2, separationMark + Mid(lines(i+1), barpos2+1))
+		          lines(i+1) = Left(lines(i+1), barpos2-1)
+		          i = i + 1
+		        Else
+		          i = i + 2
+		        End If
+		      End If
+		    Wend
+		    bodytext = Join(lines, Chr(10))
+		  Else
+		    bodytext = ReplaceAll(bodytext, "|", Chr(10))
+		  End If
+		  
+		  Return bodytext.CleanSpaces
 		End Function
 	#tag EndMethod
 
