@@ -21,9 +21,52 @@ Protected Class FontFace
 
 	#tag Method, Flags = &h0
 		Sub Constructor()
-		  Name = "Arial"
-		  Size = 10
+		  Name = "System"
+		  Size = 0
 		  ForeColor = &c000000
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Shared Function IsFontAvailable(fontname As String) As Boolean
+		  Dim fc As Integer
+		  fc = FontCount-1
+		  If fc <> UBound(AvailableFontNames) Then
+		    LoadAvailableFonts
+		  End If
+		  fc = UBound(AvailableFontNames) - 1
+		  For i As Integer = 0 To fc
+		    If Font(i) = FontName Then
+		      Return True
+		    End If
+		  Next
+		  //++
+		  // Check for two "pseudo" fonts: System and SmallSystem
+		  // These are defined within Xojo as platform-specific GUI fonts
+		  //--
+		  If fontname = "System" Or fontname = "SmallSystem" Then
+		    Return True
+		  End If
+		  App.DebugWriter.Write "FontFace.IsFontAvailable: Cannot find font named '" + fontname + "'", 3
+		  Return False
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Private Shared Sub LoadAvailableFonts()
+		  //++
+		  // Load local cache of font names
+		  // Keep a local cache to save overhead of enumerating fonts
+		  // from the system every time a font name is set
+		  //--
+		  Dim fc As Integer
+		  fc = FontCount
+		  Redim AvailableFontNames(-1)
+		  fc = fc - 1
+		  For i As Integer = 0 To fc
+		    AvailableFontNames.Append Font(i)
+		  Next
+		  Return
 		End Sub
 	#tag EndMethod
 
@@ -48,7 +91,7 @@ Protected Class FontFace
 		  //--
 		  
 		  s.TextFont = Name
-		  s.TextSize = Round(Size * Zoom)
+		  s.TextSize = Size * Zoom
 		  s.TextUnit = FontUnits.Pixel
 		  s.Bold = Bold
 		  s.FillColor = ForeColor
@@ -80,9 +123,10 @@ Protected Class FontFace
 		  Dim s As String = ""
 		  Dim tab As String = "    "
 		  
-		  s = s + tab + "font-family: """ + Name + """;" + EndOfLine
+		  // Check for System and SmallSystem and convert to generic sans-serif, else return the font name
+		  s = s + tab + "font-family: """ + If(Name = "System" Or Name = "SmallSystem", "sans-serif", Name) + """;" + EndOfLine
 		  s = s + tab + "color: " + ColorToCSS(ForeColor) + ";" + EndOfLine
-		  s = s + tab + "font-size: " + CStr(Size) + "pt;" + EndOfLine
+		  s = s + tab + "font-size: " + If(Size=0, "10pt;", CStr(Size) + "pt;") + EndOfLine
 		  
 		  If Italic Then
 		    s = s + tab + "font-style: italic;" + EndOfLine
@@ -104,6 +148,10 @@ Protected Class FontFace
 		End Function
 	#tag EndMethod
 
+
+	#tag Property, Flags = &h1
+		Protected Shared AvailableFontNames() As String
+	#tag EndProperty
 
 	#tag Property, Flags = &h0
 		Bold As Boolean
@@ -133,9 +181,31 @@ Protected Class FontFace
 		Italic As Boolean
 	#tag EndProperty
 
-	#tag Property, Flags = &h0
-		Name As String
+	#tag Property, Flags = &h21
+		Private mName As String
 	#tag EndProperty
+
+	#tag ComputedProperty, Flags = &h0
+		#tag Getter
+			Get
+			  return mName
+			End Get
+		#tag EndGetter
+		#tag Setter
+			Set
+			  //++
+			  // Verify the font exists in the system
+			  // Set to "System" (default font for platform) if it does not
+			  //--
+			  If Not IsFontAvailable(value) Then
+			    mName = "System"
+			  Else
+			    mName = value
+			  End If
+			End Set
+		#tag EndSetter
+		Name As String
+	#tag EndComputedProperty
 
 	#tag Property, Flags = &h0
 		Shadow As Boolean
@@ -196,7 +266,7 @@ Protected Class FontFace
 			Visible=true
 			Group="ID"
 			InitialValue="-2147483648"
-			InheritedFrom="Object"
+			Type="Integer"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Italic"
@@ -209,14 +279,13 @@ Protected Class FontFace
 			Visible=true
 			Group="Position"
 			InitialValue="0"
-			InheritedFrom="Object"
+			Type="Integer"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="Name"
+			Name="mName"
 			Visible=true
 			Group="ID"
 			Type="String"
-			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Shadow"
@@ -240,14 +309,14 @@ Protected Class FontFace
 			Name="Super"
 			Visible=true
 			Group="ID"
-			InheritedFrom="Object"
+			Type="String"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Top"
 			Visible=true
 			Group="Position"
 			InitialValue="0"
-			InheritedFrom="Object"
+			Type="Integer"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Underline"
