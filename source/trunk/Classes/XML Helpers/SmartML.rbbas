@@ -160,13 +160,30 @@ Protected Module SmartML
 		Protected Function GetValueC(xnode As XmlNode, childPath As String, ByRef c As Color, create As Boolean = True) As Boolean
 		  Dim s As String
 		  s = GetValue(xnode, childPath, create)
-		  If Left(s, 1) <> "#" Or Len(s) <> 7 Then Return False
-		  
-		  c = RGB( _
-		  Val("&H" + (Mid(s, 2, 2))), _
-		  Val("&H" + (Mid(s, 4, 2))), _
-		  Val("&H" + (Mid(s, 6, 2))))
-		  
+		  //
+		  // Update to support the RGBA string as well as legacy RGB
+		  //
+		  If Len(s) = 0 Then Return False
+		  If Left(s, 1) <> "#" Then
+		    App.DebugWriter.Write "SmartML::GetValueC, invalid color string '" + s + "'", 1
+		    Return False
+		  End If
+		  Select Case Len(s)
+		  Case 7
+		    c = Color.RGB( _
+		    Val("&H" + (Mid(s, 2, 2))), _
+		    Val("&H" + (Mid(s, 4, 2))), _
+		    Val("&H" + (Mid(s, 6, 2))))
+		  Case 9
+		    c = Color.RGBA(_
+		    Val("&H" + (Mid(s,2,2))), _
+		    Val("&H" + (Mid(s,4,2))), _
+		    Val("&H" + (Mid(s,6,2))), _
+		    Val("&H" + (Mid(s,8,2))))
+		  Case Else
+		    App.DebugWriter.Write "SmartML::GetValueC, invalid color string '" + s + "'", 1
+		    Return False
+		  End Select
 		  Return True
 		End Function
 	#tag EndMethod
@@ -454,16 +471,13 @@ Protected Module SmartML
 
 	#tag Method, Flags = &h1
 		Protected Sub SetValueC(xnode As XmlNode, childPath As String, c As Color)
-		  Dim r, g, b As String
-		  
-		  r = Hex(c.red)
-		  If c.red < 16 Then r = "0" + r
-		  g = Hex(c.green)
-		  If c.green < 16 Then g = "0" + g
-		  b = Hex(c.blue)
-		  If c.blue < 16 Then b = "0" + b
-		  
-		  SetValue xnode, childPath, "#" + r + g + b
+		  // Updated to include alpha value
+		  SetValue xnode, childPath, "#" _
+		  + c.Red.ToHex(2) _
+		  + c.Green.ToHex(2) _
+		  + c.Blue.ToHex(2) _
+		  + c.Alpha.ToHex(2)
+		  Return
 		End Sub
 	#tag EndMethod
 
@@ -608,10 +622,10 @@ Protected Module SmartML
 		          ' the xml declaration says it is UTF-8, so convert it to be so
 		          s = s.ConvertEncoding(Encodings.UTF8)
 		          FixSongFile = True
-		        End If 
+		        End If
 		      End If
 		      d.LoadXml(s)
-		      If FixSongFile Then 
+		      If FixSongFile Then
 		        FixSongFile = XDocToFile(d, f) ' try to write the file in the correct encoding, ignoring errors
 		      End If
 		      Return d
