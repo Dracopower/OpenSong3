@@ -26,103 +26,68 @@ Protected Module GraphicsX
 		End Function
 	#tag EndMethod
 
-	#tag Method, Flags = &h1
-		Protected Sub DrawFontBorder(g As Graphics, xx As Integer, yy As Integer, f As FontFace, borderSize as Integer, thisLine As String)
-		  Dim dx, dy As Integer
-		  f.OntoGraphics g
-		  g.ForeColor = f.BorderColor
+	#tag Method, Flags = &h0
+		Sub DrawFontSingleLine(g As Graphics, thisLine As String, xx As Integer, yy As Integer, f As FontFace)
+		  ' selects the used version of the text drawing algorithm
+		  Dim selectedVersion As String
 		  
-		  dy = -borderSize
-		  'Sides
-		  For dx = -borderSize/2 To borderSize/2
-		    g.DrawString thisLine, xx+Round(dx), yy-borderSize ' Top
-		    g.DrawString thisLine, xx+Round(dx), yy+borderSize ' Bottom
-		    g.DrawString thisLine, xx-borderSize, yy+Round(dx) ' Left
-		    g.DrawString thisLine, xx+borderSize, yy+Round(dx) ' Right
-		  Next
-		  'Corners
-		  dy = -borderSize
-		  For dx = borderSize/2 To borderSize
-		    g.DrawString thisLine, xx+Round(dx), yy+dy ' Top-Left
-		    g.DrawString thisLine, xx+Round(dx), yy-dy ' Bottom-Left
-		    g.DrawString thisLine, xx-Round(dx), yy+dy ' Top-Right
-		    g.DrawString thisLine, xx-Round(dx), yy-dy ' Bottom-Right
-		    dy = dy + 1
-		  Next
-		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h1
-		Protected Sub DrawFontBorderBlit(g As Graphics, xx As Integer, yy As Integer, f As FontFace, borderSize As Integer, thisLine As String)
-		  //
-		  // Implements drawing the border around the text by creating a temporary, transparent Picture
-		  // the text is written to this in the border color, then that picture is drawn in the Graphics object
-		  // passed in using the same method as the original version (DrawFontBorder). This avoids the
-		  // high overhead of drawing the text 12 times if the borderSize is set to the default value  of 2.
-		  //
-		  Dim borderPic As Picture
-		  Dim borderG As Graphics
-		  Dim dx, dy As Integer
-		  borderPic = New Picture(GraphicsX.FontFaceWidth(g, thisLine, f)+borderSize*2, g.TextHeight)
-		  borderG = borderPic.Graphics
-		  f.OntoGraphics borderG
-		  borderG.ForeColor = f.BorderColor
-		  borderG.ClearRect 0, 0, borderG.Width, borderG.Height
-		  borderG.DrawString thisLine, 0, g.TextAscent
-		  'g.ForeColor = f.BorderColor
+		  selectedVersion = "directDraw"
+		  selectedVersion = "blit3"
 		  
-		  dy = -borderSize
-		  'Sides
-		  Dim yyy As Integer
-		  yyy = yy - borderG.TextAscent
-		  For dx = -borderSize/2 To borderSize/2
-		    g.DrawPicture borderPic, xx + Round(dx), yyy - borderSize 'Top
-		    g.DrawPicture borderPic, xx + Round(dx), yyy + borderSize 'Bottom
-		    g.DrawPicture borderPic, xx - borderSize, yyy + Round(dx) 'Left
-		    g.DrawPicture borderPic, xx + borderSize, yyy + Round(dx) 'Right
-		  Next
-		  'Corners
-		  dy = -borderSize
-		  For dx = borderSize/2 To borderSize
-		    g.DrawPicture borderPic, xx + Round(dx), yyy + dy 'Top-Left
-		    g.DrawPicture borderPic, xx + Round(dx), yyy - dy 'Bottom-Left
-		    g.DrawPicture borderPic, xx - Round(dx), yyy + dy 'Top-Right
-		    g.DrawPicture borderPic, xx - Round(dx), yyy - dy 'Bottom-Right
-		    dy = dy + 1
-		  Next
-		  borderPic = Nil
+		  Select Case selectedVersion
+		  Case "vector"
+		    #If TargetWin32
+		      app.UseGDIPlus = True
+		    #EndIf
+		    
+		    g.DrawObject(DrawFontSingleLineV(thisLine,xx,yy,f))
+		    
+		    #If TargetWin32
+		      app.UseGDIPlus = False
+		    #EndIf
+		  Case "directDraw"
+		    DrawFontSingleLine0(g,thisLine,xx,yy,f)
+		  Case "mask"
+		    DrawFontSingleLine1(g,thisLine,xx,yy,f)
+		  Case "blit"
+		    DrawFontSingleLine2(g,thisLine,xx,yy,f)
+		  Case "blit2"
+		    DrawFontSingleLine3(g,thisLine,xx,yy,f)
+		  Case "blit3"
+		    DrawFontSingleLine4(g,thisLine,xx,yy,f)
+		  End Select
+		  
 		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub DrawFontSingleLine(g As Graphics, thisLine As String, xx As Integer, yy As Integer, f As FontFace, borderSize As Integer, shadowFace As FontFace, shadowSize As Integer)
+		Sub DrawFontSingleLine0(g As Graphics, thisLine As String, xx As Integer, yy As Integer, f As FontFace)
 		  Dim dx, dy As Integer
+		  Dim b2 As Integer
+		  Dim shadowSize, borderSize As Integer = 0
 		  
 		  ' --- Draw decoration ---
 		  
 		  If f <> Nil Then
-		    // CHANGE-PJ IMPROVEMENT: No impact but needed for Second language feature (for sections ending with "L") -> recopy f on g
 		    f.OntoGraphics g
+		    
+		    If f.Border Then borderSize = CalcBorderSize(g)
 		    
 		    If f.Fill Then
 		      g.ForeColor = f.FillColor
-		      g.FillRect xx-borderSize, yy-g.TextAscent, GraphicsX.FontFaceWidth(g, thisLine, f)+borderSize*2, g.TextHeight
+		      g.FillRect xx-borderSize, yy-FontFaceAscent(g, f), FontFaceWidth(g, thisLine, f), FontFaceHeight(g, f)
 		    End If
 		    
-		    // CHANGE-PJ IMPROVEMENT: recalculate shadowSize and borderSize (taken from DrawFontString) - makes more sense to calculate here instead of using own parameters
-		    shadowSize = CalcShadowSize(g)
-		    borderSize = CalcBorderSize(g)
-		    
 		    If f.Shadow Then
+		      shadowSize = CalcShadowSize(g)
 		      If f.Border Then
-		        // CHANGE-PJ IMPROVEMENT: recalculate shadowFace (taken from DrawFontString) - makes more sense to calculate here instead of using own parameters
-		        shadowFace = f.Clone
+		        Dim shadowFace As FontFace = f.Clone
 		        shadowFace.ForeColor = shadowFace.ShadowColor
 		        shadowFace.BorderColor = shadowFace.ShadowColor
 		        shadowFace.Fill = False
 		        shadowFace.Shadow = False
 		        
-		        Call DrawFontString(g, thisLine, xx + shadowSize, yy + shadowSize, shadowFace, 0, "left", 0, "bottom") // TODO-PJ: do we have some issues here?
+		        Call DrawFontSingleLine(g, thisLine, xx + shadowSize, yy + shadowSize, shadowFace)
 		      Else
 		        g.ForeColor = f.ShadowColor
 		        g.DrawString thisLine, xx + shadowSize, yy + shadowSize
@@ -130,12 +95,26 @@ Protected Module GraphicsX
 		    End If
 		    
 		    If f.Border Then
-		      // The "Blit" version is faster, but only works properly on later versions of Xojo
-		      #If XojoVersion < 2016.04
-		        DrawFontBorder(g, xx, yy, f, borderSize, thisLine)
-		      #Else
-		        DrawFontBorderBlit(g, xx, yy, f, borderSize, thisLine)
-		      #Endif
+		      g.ForeColor = f.BorderColor
+		      
+		      dy = -borderSize
+		      b2 = borderSize \ 2
+		      'Sides
+		      For dx = -b2 To b2
+		        g.DrawString thisLine, xx+dx, yy-borderSize ' Top
+		        g.DrawString thisLine, xx+dx, yy+borderSize ' Bottom
+		        g.DrawString thisLine, xx-borderSize, yy+dx ' Left
+		        g.DrawString thisLine, xx+borderSize, yy+dx ' Right
+		      Next
+		      'Corners
+		      dy = -borderSize+1
+		      For dx = b2+1 To borderSize-1
+		        g.DrawString thisLine, xx+dx, yy+dy ' Top-Left
+		        g.DrawString thisLine, xx+dx, yy-dy ' Bottom-Left
+		        g.DrawString thisLine, xx-dx, yy+dy ' Top-Right
+		        g.DrawString thisLine, xx-dx, yy-dy ' Bottom-Right
+		        dy = dy + 1
+		      Next
 		    End If
 		  End If
 		  
@@ -147,12 +126,482 @@ Protected Module GraphicsX
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
+		Sub DrawFontSingleLine1(g As Graphics, thisLine As String, xx As Integer, yy As Integer, f As FontFace)
+		  ' Mask version
+		  ' Pseudocode in case border is needed:
+		  ' Create a new picture with a fully transparent mask and draw the text once onto the mask, fully opaque (black)
+		  ' Fill the foreground with black
+		  ' Create a new picture with a fully transparent mask and draw the first picture onto the mask several times
+		  '   to create a mask for the shadow or text with border respectively
+		  ' if shadow is needed fill the foreground with the shadow color and draw that picture onto the window graphics
+		  ' fill the foreground with the border color
+		  ' draw the text onto the picture (in foreground color)
+		  ' draw that picture (bordered text with transparent background) onto the window graphics (over the shadow)
+		  
+		  
+		  Dim dx, dy As Integer
+		  Dim shadowSize, borderSize As Integer = 0
+		  Dim textAscent, textWidth, textHeight As Integer
+		  
+		  ' --- Draw decoration ---
+		  
+		  If f <> Nil Then
+		    f.OntoGraphics g
+		    
+		    If f.Shadow Then shadowSize = CalcShadowSize(g)
+		    If f.Border Then borderSize = CalcBorderSize(g)
+		    textAscent = FontFaceAscent(g, f)
+		    textWidth = FontFaceWidth(g, thisLine, f)
+		    textHeight = FontFaceHeight(g, f)
+		    
+		    If f.Fill Then
+		      g.ForeColor = f.FillColor
+		      g.FillRect xx-borderSize, yy-textAscent, textWidth, textHeight
+		    End If
+		    
+		    If f.Border Then
+		      Dim textPic, shadowMask, decoratedTextPic As Picture
+		      Dim gg As Graphics
+		      Dim x, y, picWidth, picHeight As Integer
+		      
+		      ' choose a size to accomodate the text. It might not be confined to FontfaceHeight and FontFaceWidth, so add some margin
+		      picWidth = textWidth + 4 * textHeight
+		      picHeight = 2 * textHeight
+		      x = 2 * textHeight
+		      y = 2 * textAscent
+		      
+		      textPic = New Picture(picWidth, picHeight, 32)
+		      textPic.ApplyMask(textPic) ' make the whole picture transparent
+		      gg = textPic.Mask.Graphics
+		      f.OntoGraphics gg
+		      gg.ForeColor = &c000000
+		      gg.DrawString thisLine, x, y
+		      
+		      gg = textPic.Graphics
+		      gg.ForeColor = &c000000
+		      gg.FillRect 0, 0, picWidth, picHeight
+		      
+		      shadowMask = New Picture(picWidth, picHeight, 32)
+		      shadowMask.ApplyMask(shadowMask)
+		      gg = shadowMask.Mask.Graphics
+		      Dim b2 As Integer = borderSize \ 2
+		      'Sides
+		      For dx = -b2 To b2
+		        gg.DrawPicture textPic,  dx, -borderSize ' Top
+		        gg.DrawPicture textPic,  dx,  borderSize ' Bottom
+		        gg.DrawPicture textPic, -borderSize,  dx ' Left
+		        gg.DrawPicture textPic,  borderSize,  dx ' Right
+		      Next
+		      'Corners (bevel)
+		      dy = -borderSize+1
+		      For dx = b2+1 To borderSize-1
+		        gg.DrawPicture textPic,  dx,  dy ' Top-Left
+		        gg.DrawPicture textPic,  dx, -dy ' Bottom-Left
+		        gg.DrawPicture textPic, -dx,  dy ' Top-Right
+		        gg.DrawPicture textPic, -dx, -dy ' Bottom-Right
+		        dy = dy + 1
+		      Next
+		      
+		      gg = shadowMask.Graphics
+		      
+		      If f.Shadow Then
+		        gg.ForeColor = f.ShadowColor
+		        gg.FillRect 0, 0, gg.Width, gg.Height
+		        
+		        g.DrawPicture shadowMask, xx-x+shadowSize, yy-y+shadowSize, gg.Width, gg.Height
+		      End If
+		      
+		      gg.ForeColor = f.BorderColor
+		      gg.FillRect 0, 0, gg.Width, gg.Height
+		      
+		      f.OntoGraphics gg
+		      gg.DrawString  thisLine, x, y
+		      g.DrawPicture shadowMask, xx-x, yy-y, gg.Width, gg.Height
+		    ElseIf f.Shadow Then
+		      g.ForeColor = f.ShadowColor
+		      g.DrawString thisLine, xx + shadowSize, yy + shadowSize
+		    End If
+		  End If
+		  
+		  '--- Draw string ---
+		  If f <> Nil Then g.ForeColor = f.ForeColor
+		  If Not f.Border Then g.DrawString thisLine, xx, yy
+		  
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub DrawFontSingleLine2(g As Graphics, thisLine As String, xx As Integer, yy As Integer, f As FontFace)
+		  ' Blit version (using GDI+)
+		  ' create a transparent pic and draw the text onto it (in forground color, but only the alpha channel is used later)
+		  ' create a second transparent pic and draw the first pic multiple times onto it to form the shape of the shadow or text with border
+		  ' create a picture with a mask and copy the alpha channel of the shadow shape into it's mask
+		  ' if shadow fill the forground of the masked picture with the shadow color and draw it onto the window
+		  ' fill the forground of the masked picture with the border color, draw the text in foreground color onto it and draw that pic onto the window
+		  
+		  Dim dx, dy As Integer
+		  Dim shadowSize, borderSize As Integer = 0
+		  Dim textAscent, textWidth, textHeight As Integer
+		  
+		  ' --- Draw decoration ---
+		  
+		  If f <> Nil Then
+		    f.OntoGraphics g
+		    
+		    If f.Shadow Then shadowSize = CalcShadowSize(g)
+		    If f.Border Then borderSize = CalcBorderSize(g)
+		    textAscent = FontFaceAscent(g, f)
+		    textWidth = FontFaceWidth(g, thisLine, f)
+		    textHeight = FontFaceHeight(g, f)
+		    
+		    If f.Fill Then
+		      g.ForeColor = f.FillColor
+		      g.FillRect xx-borderSize, yy-textAscent, textWidth, textHeight
+		    End If
+		    
+		    If f.Border Then
+		      Dim textPic, shadowMask, decoratedTextPic As Picture
+		      Dim gg As Graphics
+		      Dim x, y, picWidth, picHeight As Integer
+		      
+		      ' choose a size to accomodate the text. It might not be confined to FontfaceHeight and FontFaceWidth, so add some margin
+		      picWidth = textWidth + 4 * textHeight
+		      picHeight = 2 * textHeight
+		      x = 2 * textHeight
+		      y = 2 * textAscent
+		      
+		      #If TargetWin32
+		        app.UseGDIPlus = True
+		      #EndIf
+		      
+		      textPic = New Picture(picWidth, picHeight)
+		      gg = textPic.Graphics
+		      f.OntoGraphics gg
+		      gg.DrawString thisLine, x, y
+		      
+		      shadowMask = New Picture(picWidth, picHeight)
+		      gg = shadowMask.Graphics
+		      Dim b2 As Integer = borderSize \ 2
+		      'Sides
+		      For dx = -b2 To b2
+		        gg.DrawPicture textPic,  dx, -borderSize ' Top
+		        gg.DrawPicture textPic,  dx,  borderSize ' Bottom
+		        gg.DrawPicture textPic, -borderSize,  dx ' Left
+		        gg.DrawPicture textPic,  borderSize,  dx ' Right
+		      Next
+		      'Corners (bevel)
+		      dy = -borderSize+1
+		      For dx = b2+1 To borderSize-1
+		        gg.DrawPicture textPic,  dx,  dy ' Top-Left
+		        gg.DrawPicture textPic,  dx, -dy ' Bottom-Left
+		        gg.DrawPicture textPic, -dx,  dy ' Top-Right
+		        gg.DrawPicture textPic, -dx, -dy ' Bottom-Right
+		        dy = dy + 1
+		      Next
+		      
+		      decoratedTextPic = New Picture(picWidth, picHeight, 32)
+		      decoratedTextPic.ApplyMask(shadowMask.CopyMask)
+		      gg = decoratedTextPic.Graphics
+		      
+		      If f.Shadow Then
+		        gg.ForeColor = f.ShadowColor
+		        gg.FillRect 0, 0, picWidth, picHeight
+		        
+		        g.DrawPicture decoratedTextPic, xx-x+shadowSize, yy-y+shadowSize, picWidth, picHeight
+		      End If
+		      
+		      gg.ForeColor = f.BorderColor
+		      gg.FillRect 0, 0, picWidth, picHeight
+		      
+		      gg.DrawPicture textPic, 0, 0, picWidth, picHeight
+		      g.DrawPicture decoratedTextPic, xx-x, yy-y, picWidth, picHeight
+		      
+		      #If TargetWin32
+		        app.UseGDIPlus = False
+		      #EndIf
+		    ElseIf f.Shadow Then
+		      g.ForeColor = f.ShadowColor
+		      g.DrawString thisLine, xx + shadowSize, yy + shadowSize
+		    End If
+		  End If
+		  
+		  '--- Draw string ---
+		  If f <> Nil Then g.ForeColor = f.ForeColor
+		  If Not f.Border Then g.DrawString thisLine, xx, yy
+		  
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub DrawFontSingleLine3(g As Graphics, thisLine As String, xx As Integer, yy As Integer, f As FontFace)
+		  ' alternative Blit version (using GDI+)
+		  ' create a transparent pic and draw the text in black onto it
+		  ' create a second transparent pic and draw the first pic multiple times onto it to form the shape of the shadow or text with border
+		  ' create a third (transparent) pic, fill it with the border color
+		  ' create a mask from the alpha channel of the second pic and apply this mask to the alpha channel of the third (cutting out of the plane the shape of the shadow)
+		  ' now draw the text in foreground color onto this pic
+		  ' if border
+		  '   create a fourth transparent picture and draw the second one onto it, moved to where the shadow needs to be
+		  '   recycle the first picture and fill it with the shadow color
+		  '   create a mask from the alpha channel of the fourth pic and apply this mask to the alpha channel of the recicled one (cutting out of the plane the shape of the shadow)
+		  '   draw the recicled pic onto the window
+		  ' draw the third pic onto the window
+		  
+		  Dim dx, dy As Integer
+		  Dim shadowSize, borderSize As Integer = 0
+		  Dim textAscent, textWidth, textHeight As Integer
+		  
+		  ' --- Draw decoration ---
+		  
+		  If f <> Nil Then
+		    f.OntoGraphics g
+		    
+		    If f.Shadow Then shadowSize = CalcShadowSize(g)
+		    If f.Border Then borderSize = CalcBorderSize(g)
+		    textAscent = FontFaceAscent(g, f)
+		    textWidth = FontFaceWidth(g, thisLine, f)
+		    textHeight = FontFaceHeight(g, f)
+		    
+		    If f.Fill Then
+		      g.ForeColor = f.FillColor
+		      g.FillRect xx-borderSize, yy-textAscent, textWidth, textHeight
+		    End If
+		    
+		    If f.Border Then
+		      Dim textPic, borderMask, shadowMask, decoratedTextPic As Picture
+		      Dim gg As Graphics
+		      Dim x, y, picWidth, picHeight As Integer
+		      
+		      ' choose a size to accomodate the text. It might not be confined to FontfaceHeight and FontFaceWidth, so add some margin
+		      picWidth = textWidth + 4 * textHeight
+		      picHeight = 2 * textHeight
+		      x = 2 * textHeight
+		      y = 2 * textAscent
+		      
+		      #If TargetWin32
+		        app.UseGDIPlus = True
+		      #EndIf
+		      
+		      ' render the text as a template
+		      textPic = New Picture(picWidth, picHeight)
+		      gg = textPic.Graphics
+		      f.OntoGraphics gg
+		      ' gg.ForeColor = &cffffffff // fully transparent white in the hope to see something in the debugger
+		      ' gg.FillRect(0,0,picWidth,picHeight)
+		      gg.ForeColor = &c000000
+		      gg.DrawString thisLine, x, y
+		      
+		      ' create a mask for the border
+		      borderMask = New Picture(picWidth, picHeight)
+		      gg = borderMask.Graphics
+		      
+		      Dim b2 As Integer = borderSize \ 2
+		      'Sides
+		      For dx = -b2 To b2
+		        gg.DrawPicture textPic,  dx, -borderSize ' Top
+		        gg.DrawPicture textPic,  dx,  borderSize ' Bottom
+		        gg.DrawPicture textPic, -borderSize,  dx ' Left
+		        gg.DrawPicture textPic,  borderSize,  dx ' Right
+		      Next
+		      'Corners (bevel)
+		      dy = -borderSize+1
+		      For dx = b2+1 To borderSize-1
+		        gg.DrawPicture textPic,  dx,  dy ' Top-Left
+		        gg.DrawPicture textPic,  dx, -dy ' Bottom-Left
+		        gg.DrawPicture textPic, -dx,  dy ' Top-Right
+		        gg.DrawPicture textPic, -dx, -dy ' Bottom-Right
+		        dy = dy + 1
+		      Next
+		      
+		      ' cut out the border from a plane using the mask
+		      decoratedTextPic = New Picture(picWidth, picHeight)
+		      gg = decoratedTextPic.Graphics
+		      gg.ForeColor = f.BorderColor
+		      gg.FillRect(0,0,picWidth,picHeight)
+		      decoratedTextPic.ApplyMask(borderMask.CopyMask)
+		      
+		      f.OntoGraphics gg
+		      gg.DrawString thisLine, x, y
+		      
+		      If f.Shadow Then
+		        ' shadow is just the border moved and in ShadowColor
+		        shadowMask = New Picture(picWidth, picHeight)
+		        gg = shadowMask.Graphics
+		        gg.DrawPicture borderMask, shadowSize, shadowSize
+		        
+		        gg = textPic.Graphics
+		        gg.ForeColor = f.ShadowColor
+		        gg.FillRect(0,0,picWidth,picHeight)
+		        textPic.ApplyMask(ShadowMask.CopyMask)
+		        
+		        g.DrawPicture textPic, xx-x, yy-y ' shadow
+		      End If
+		      g.DrawPicture decoratedTextPic, xx-x, yy-y ' border
+		      
+		      #If TargetWin32
+		        app.UseGDIPlus = False
+		      #EndIf
+		    ElseIf f.Shadow Then
+		      g.ForeColor = f.ShadowColor
+		      g.DrawString thisLine, xx + shadowSize, yy + shadowSize
+		    End If
+		  End If
+		  
+		  '--- Draw string ---
+		  If f <> Nil Then g.ForeColor = f.ForeColor
+		  If Not f.Border Then g.DrawString thisLine, xx, yy
+		  
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub DrawFontSingleLine4(g As Graphics, thisLine As String, xx As Integer, yy As Integer, f As FontFace)
+		  ' alternative Blit version (using GDI+) (draw border directly)
+		  ' create a transparent pic and draw the text in border color onto it
+		  ' create a second transparent pic and draw the first pic multiple times onto it to form the shape of the text with border
+		  ' draw the text in foreground color onto this pic
+		  ' if border
+		  '   create a third transparent picture and fill it with the shadow color
+		  '   create a mask from the alpha channel of the 2nd pic and apply this mask to the alpha channel of the 3rd one (cutting out of the plane the shape of the shadow)
+		  '   draw the 3rd pic onto the window moved to where the shadow should be
+		  ' draw the 2nd pic onto the window
+		  
+		  Dim dx, dy As Integer
+		  Dim shadowSize, borderSize As Integer = 0
+		  Dim textAscent, textWidth, textHeight As Integer
+		  
+		  ' --- Draw decoration ---
+		  
+		  If f <> Nil Then
+		    f.OntoGraphics g
+		    
+		    If f.Shadow Then shadowSize = CalcShadowSize(g)
+		    If f.Border Then borderSize = CalcBorderSize(g)
+		    textAscent = FontFaceAscent(g, f)
+		    textWidth = FontFaceWidth(g, thisLine, f)
+		    textHeight = FontFaceHeight(g, f)
+		    
+		    If f.Fill Then
+		      g.ForeColor = f.FillColor
+		      g.FillRect xx-borderSize, yy-textAscent, textWidth, textHeight
+		    End If
+		    
+		    If f.Border Then
+		      Dim textPic, borderPic, shadowPic As Picture
+		      Dim gg As Graphics
+		      Dim x, y, picWidth, picHeight As Integer
+		      
+		      ' choose a size to accomodate the text. It might not be confined to FontfaceHeight and FontFaceWidth, so add some margin
+		      picWidth = textWidth + 4 * textHeight
+		      picHeight = 2 * textHeight
+		      x = 2 * textHeight
+		      y = 2 * textAscent
+		      
+		      #If TargetWin32
+		        app.UseGDIPlus = True
+		      #EndIf
+		      
+		      ' render the text as a template
+		      textPic = New Picture(picWidth, picHeight)
+		      gg = textPic.Graphics
+		      f.OntoGraphics gg
+		      gg.ForeColor = f.BorderColor
+		      gg.DrawString thisLine, x, y
+		      
+		      ' create a mask for the border
+		      borderPic = New Picture(picWidth, picHeight)
+		      gg = borderPic.Graphics
+		      
+		      Dim b2 As Integer = borderSize \ 2
+		      'Sides
+		      For dx = -b2 To b2
+		        gg.DrawPicture textPic,  dx, -borderSize ' Top
+		        gg.DrawPicture textPic,  dx,  borderSize ' Bottom
+		        gg.DrawPicture textPic, -borderSize,  dx ' Left
+		        gg.DrawPicture textPic,  borderSize,  dx ' Right
+		      Next
+		      'Corners (bevel)
+		      dy = -borderSize+1
+		      For dx = b2+1 To borderSize-1
+		        gg.DrawPicture textPic,  dx,  dy ' Top-Left
+		        gg.DrawPicture textPic,  dx, -dy ' Bottom-Left
+		        gg.DrawPicture textPic, -dx,  dy ' Top-Right
+		        gg.DrawPicture textPic, -dx, -dy ' Bottom-Right
+		        dy = dy + 1
+		      Next
+		      
+		      f.OntoGraphics gg
+		      gg.DrawString thisLine, x, y
+		      
+		      If f.Shadow Then
+		        ' shadow is just the border moved and in ShadowColor
+		        shadowPic = New Picture(picWidth, picHeight)
+		        gg = shadowPic.Graphics
+		        gg.ForeColor = f.ShadowColor
+		        gg.FillRect(0,0,picWidth,picHeight)
+		        shadowPic.ApplyMask(borderPic.CopyMask)
+		        
+		        g.DrawPicture shadowPic, xx-x+shadowSize, yy-y+shadowSize ' shadow
+		      End If
+		      g.DrawPicture borderPic, xx-x, yy-y ' border
+		      
+		      #If TargetWin32
+		        app.UseGDIPlus = False
+		      #EndIf
+		    ElseIf f.Shadow Then
+		      g.ForeColor = f.ShadowColor
+		      g.DrawString thisLine, xx + shadowSize, yy + shadowSize
+		    End If
+		  End If
+		  
+		  '--- Draw string ---
+		  If f <> Nil Then g.ForeColor = f.ForeColor
+		  If Not f.Border Then g.DrawString thisLine, xx, yy
+		  
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function DrawFontSingleLineV(thisLine As String, xx As Integer, yy As Integer, f As FontFace) As Group2D
+		  Dim FontLine As New Group2D
+		  Dim ss As StringShape
+		  Dim shadowSize As Integer
+		  
+		  If f.Shadow Then
+		    ss = New StringShape
+		    f.OntoStringShape ss
+		    ss.BorderColor = f.ShadowColor
+		    ss.FillColor = f.ShadowColor
+		    shadowSize = ss.BorderWidth * 40 / 50
+		    ss.X = xx + shadowSize
+		    ss.Y = yy + shadowSize
+		    ss.Text = thisLine
+		    ss.HorizontalAlignment = StringShape.Alignment.Left
+		    ss.VerticalAlignment = StringShape.Alignment.BaseLine
+		    FontLine.Append ss
+		  End If
+		  
+		  ss = New StringShape
+		  f.OntoStringShape ss
+		  ss.X = xx
+		  ss.Y = yy
+		  ss.Text = thisLine
+		  ss.HorizontalAlignment = StringShape.Alignment.Left
+		  ss.VerticalAlignment = StringShape.Alignment.BaseLine
+		  ss.Fill = 100
+		  FontLine.Append ss
+		  
+		  Return FontLine
+		  
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
 		Function DrawFontString(g As Graphics, str As String, x As Integer, y As Integer, f As FontFace, width As Integer = 0, ByRef Page As Group2D, align As String = "left", height As Integer = 0, valign As String = "top") As Integer
 		  // Vector graphics version
 		  // x, y is top left of bounding box if valign = "top"
 		  // x, y is left center of bounding box (half the text is above, half below) if valign = "middle"
 		  // x, y is bottom left of bounding box if valign = "bottom"
-		  // TODO-PJ: second language feature not implemented here - is this anywhere used?
 		  
 		  Profiler.BeginProfilerEntry "DrawFontString (" + str + ")"
 		  Dim dx, dy, xx, yy, i As Integer
@@ -340,48 +789,18 @@ Protected Module GraphicsX
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Function DrawFontString(g As Graphics, str As String, x As Integer, y As Integer, f As FontFace, width As Integer = 0, align As String = "left", height As Integer = 0, valign As String = "top", tabs() As StyleTabsType = Nil, InsertAfterBreak as string = "", section As SectionMode = SectionMode.Normal, Style as SlideStyle = Nil) As Integer
+		Function DrawFontString(g As Graphics, str As String, x As Integer, y As Integer, f As FontFace, width As Integer = 0, align As String = "left", height As Integer = 0, valign As String = "top", tabs() As StyleTabsType = Nil, InsertAfterBreak as string = "") As Integer
 		  Profiler.BeginProfilerEntry "DrawFontString (" + str + ")"
-		  Dim dx, dy, xx, yy, i, j As Integer
+		  Dim xx, yy, i, j As Integer
 		  Dim lineCount, lineHeight, lineAscent, thisWidth As Integer
 		  Dim thisLine, thisChar As String
-		  Dim shadowFace As FontFace
-		  Dim shadowSize, borderSize As Integer
 		  Dim hasTabs As Boolean
 		  Dim tabCount as Integer
 		  
 		  If ThicknessFactor <= 0 Then ThicknessFactor = 1
 		  
-		  // CHANGE-PJ START: Second language feature (for sections ending with "L") - change every second line to different style
-		  Dim tmpStyle, secondLanguageStyle As FontFace
-		  Dim countLinesSecond As Integer
-		  Dim separationMark As String = ""
-		  
-		  secondLanguageStyle = f.Clone // take same style as f but some small adaptations as follows
-		  tmpStyle = f
-		  countLinesSecond = 1
-		  
-		  If section = SectionMode.Bilingual Then //add separationMark to identify auto linebreaks by algorithm
-		    separationMark = SetML.SeparationMarkBilingual
-		    secondLanguageStyle.Italic = Not f.Italic // show second language as italic if f is not italic and the other way round
-		    secondLanguageStyle.Size = Floor(f.Size * Style.MultilanguageSize/100) // taken from style setting window
-		    secondLanguageStyle.ForeColor = Style.MultilanguageColor // taken from style setting window
-		  Else
-		    separationMark = "" //neutral for non bilingual sections
-		  End If
-		  // CHANGE-PJ END
-		  
 		  If f <> Nil Then
 		    f.OntoGraphics g
-		    shadowSize = CalcShadowSize(g)
-		    borderSize = CalcBorderSize(g)
-		    If f.Border And f.Shadow Then
-		      shadowFace = f.Clone
-		      shadowFace.ForeColor = shadowFace.ShadowColor
-		      shadowFace.BorderColor = shadowFace.ShadowColor
-		      shadowFace.Fill = False
-		      shadowFace.Shadow = False
-		    End If
 		  End If
 		  
 		  lineHeight = FontFaceHeight(g, f) 'g.TextHeight
@@ -398,11 +817,6 @@ Protected Module GraphicsX
 		  End If
 		  
 		  If width > 0 Then
-		    
-		    // CHANGE-PJ: Second language feature - save original text size
-		    Dim origTextSize As Integer
-		    origTextSize = g.TextSize
-		    
 		    ' wrap
 		    xx = 1
 		    yy = 1
@@ -414,17 +828,6 @@ Protected Module GraphicsX
 		        xx = yy + 1
 		        yy = yy + 1
 		        thisWidth = 0
-		        
-		        // CHANGE-PJ START: Second language feature - calculate character length with different font size, change every second line
-		        If section = SectionMode.Bilingual And _
-		          Mid(str, yy, 1) <> separationMark Then // second line detected only if first character is not equal to the separationMark
-		          If g.TextSize = origTextSize Then
-		            g.TextSize = secondLanguageStyle.Size
-		          Else
-		            g.TextSize = origTextSize
-		          End If
-		        End If
-		        
 		      ElseIf thisWidth > width Then ' if we get longer than the width...
 		        i = yy ' remember yy in case we can't find a space
 		        While yy > 1 And thisChar <> " " ' we need to backup to a space
@@ -432,20 +835,14 @@ Protected Module GraphicsX
 		          thisChar = Mid(str, yy, 1)
 		        Wend
 		        If yy <= 1 Then yy = i ' we didn't find a space; go back where we were and split there; ugly, but we have to.
-		        
-		        // CHANGE-PJ: Second language feature - add separationMark if another linebreak needs to be inserted
-		        str = Left(str, yy-1) + Chr(10) + InsertAfterBreak + separationMark + Mid(str, yy+1)'gpgpgpgpgp als regel afbreekt, dan 3 spaties, zodat duidelker is dat regel doorloopt 'gp
-		        
-		        xx = yy + 1
-		        yy = yy + 1
+		        xx = str.Left(yy-1).RTrim.Len
+		        str = str.Left(xx) + Chr(10) + InsertAfterBreak + str.Mid(yy).LTrim
+		        xx = xx + 1
+		        yy = xx
 		        thisWidth = 0
 		      End If
 		      yy = yy + 1
 		    Wend
-		    
-		    // CHANGE-PJ: Second language feature - revert back to original text size
-		    g.TextSize = origTextSize
-		    
 		  End If
 		  
 		  lineCount = CountFields(str, Chr(10))
@@ -460,8 +857,8 @@ Protected Module GraphicsX
 		      yy = y + lineAscent + lineHeight * (i-1)
 		    End If
 		    
-		    tabCount = CountFields(thisLine, Chr(9))
-		    If tabCount > 0 And hasTabs And align="left" Then
+		    tabCount = CountFields(thisLine, Chr(9)) - 1
+		    If tabCount > 0 And hasTabs And align = "left" Then
 		      
 		      Dim k, l As Integer
 		      Dim tab As StyleTabsType
@@ -472,19 +869,19 @@ Protected Module GraphicsX
 		      spaceWidth = g.StringWidth(" ")
 		      lastTabIdx = -1
 		      
-		      For j = 1 to tabCount
+		      For j = 1 to tabCount + 1
 		        
 		        linePart = NthField(thisLine, Chr(9), j)
 		        
-		        If j=1 Then
+		        If j = 1 Then
 		          tab = tabs(0)
-		          xx=x
+		          xx = x
 		        End If
 		        
 		        If j > 1 Or _
-		          (j=1 And tab.Align = StyleHAlignEnum.Char And InStr(linePart, tab.AlignChar) > 0) Then
+		          (j = 1 And tab.Align = StyleHAlignEnum.Char And InStr(linePart, tab.AlignChar) > 0) Then
 		          
-		          For k = lastTabIdx+1 to UBound(tabs)
+		          For k = lastTabIdx + 1 to UBound(tabs)
 		            tab = tabs(k)
 		            
 		            If tab.Align = StyleHAlignEnum.Left Then
@@ -546,7 +943,7 @@ Protected Module GraphicsX
 		          
 		        End If
 		        
-		        DrawFontSingleLine(g, linePart, xx, yy, f, borderSize, shadowFace, shadowSize)
+		        DrawFontSingleLine(g, linePart, xx, yy, f)
 		        
 		        For k = 1 to Len(linePart)
 		          xx = xx + g.StringWidth(Mid(linePart, k, 1))
@@ -559,53 +956,30 @@ Protected Module GraphicsX
 		        thisLine = ReplaceAll(thisLine, Chr(9), " ")
 		      End If
 		      
-		      // CHANGE-PJ START: Second language feature - change every second line to different style
-		      If section = SectionMode.Bilingual Then
-		        If InStr(thisLine, separationMark) <> 1 Then // only change style if not line break inserted automatically above (indicated by separationMark)
-		          If tmpStyle = f And i <> 1 Then // stay in first line to f style (original body style)
-		            tmpStyle = secondLanguageStyle
-		          ElseIf tmpStyle = secondLanguageStyle Then
-		            countLinesSecond = 1
-		            tmpStyle = f
-		          End If
-		        Else
-		          thisLine = ReplaceAll(StringUtils.Trim(thisLine, StringUtils.WhiteSpaces), separationMark, "") // replace all sepatrationMarks with ""
-		        End If
-		      Else
-		        tmpStyle = f
-		      End If
-		      
-		      If tmpStyle = secondLanguageStyle Then // reduce line height according to smaller font size + add a small offset that second language stays a little away from main language
-		        yy = yy + (- f.Size + tmpStyle.Size) * countLinesSecond + (f.Size - tmpStyle.Size) / 4
-		        countLinesSecond = countLinesSecond + 1
-		      End If
-		      
-		      tmpStyle.OntoGraphics g // tmpStyle needs to be applied for g to calculate the rest correct
-		      // CHANGE-PJ END
-		      
 		      ' --- Setup position ---
 		      If align = "center" Then
-		        xx = x + Round((width - FontFaceWidth(g, thisLine, tmpStyle))/2)
+		        thisWidth = FontFaceWidth(g, thisLine, f)
+		        xx = x + Round((width - thisWidth) / 2)
 		      ElseIf align = "right" Then
-		        xx = x + width - FontFaceWidth(g, thisLine, tmpStyle)
+		        thisWidth = FontFaceWidth(g, thisLine, f)
+		        xx = x + width - thisWidth
 		      Else ' left?
 		        xx = x
 		      End If
 		      
-		      // CHANGE-PJ ADAPTATION: No impact but needed for Second language feature - tmpStyle instead of f used
-		      DrawFontSingleLine(g, thisLine, xx, yy, tmpStyle, borderSize, shadowFace, shadowSize)
+		      DrawFontSingleLine(g, thisLine, xx, yy, f)
 		    End If
 		    
 		  Next i
 		  Profiler.EndProfilerEntry
 		  
 		  If lineCount = 0 Then lineCount = 1
-		  Return FontFaceHeight(g, f) * lineCount // TODO-PJ: LineHeight not taken into account for Second language Feature - makes not much sense anyway!
+		  Return FontFaceHeight(g, f) * lineCount
 		End Function
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Function DrawFontString(g As Graphics, str As String, x As Integer, y As Integer, f As FontFace, borderSize as Integer, headerSize as Integer, footerSize as Integer, margins as StyleMarginType, width As Integer, align As String, height As Integer, valign As String, tabs() As StyleTabsType = Nil, InsertAfterBreak as string = "", section as SectionMode = SectionMode.Normal, Style as SlideStyle = Nil) As Integer
+		Function DrawFontString(g As Graphics, str As String, x As Integer, y As Integer, f As FontFace, borderSize as Integer, headerSize as Integer, footerSize as Integer, margins as StyleMarginType, width As Integer, align As String, height As Integer, valign As String, tabs() As StyleTabsType = Nil, InsertAfterBreak as string = "") As Integer
 		  Dim drawHeight as Integer
 		  
 		  If x < margins.Left Then
@@ -630,7 +1004,7 @@ Protected Module GraphicsX
 		  align, _
 		  height - (borderSize * 2) - headerSize - footerSize, _
 		  valign, _
-		  tabs, InsertAfterBreak, section, Style) 'gp // CHANGE-PJ: Second language feature - added "section" and "Style" parameter
+		  tabs, InsertAfterBreak)
 		  
 		  If valign = "top" Then
 		    drawHeight = drawHeight
@@ -705,7 +1079,7 @@ Protected Module GraphicsX
 		  ' Make sure the fontface is applied to the graphics object first
 		  Dim height As Integer = g.TextHeight
 		  If f = Nil Then Return height
-		  If f.Border Then height = height + CalcBorderSize(g)
+		  If f.Border Then height = height + 2 * CalcBorderSize(g)
 		  If f.Shadow Then height = height + CalcShadowSize(g)
 		  Return height
 		End Function
@@ -716,7 +1090,7 @@ Protected Module GraphicsX
 		  ' Make sure the fontface is applied to the graphics object first
 		  Dim width As Integer = g.StringWidth(str)
 		  If f = Nil Then Return width
-		  If f.Border Then width = width + CalcBorderSize(g)
+		  If f.Border Then width = width + 2 * CalcBorderSize(g)
 		  If f.Shadow Then width = width + CalcShadowSize(g)
 		  Return width
 		End Function
@@ -758,26 +1132,26 @@ Protected Module GraphicsX
 			Visible=true
 			Group="ID"
 			InitialValue="-2147483648"
-			Type="Integer"
+			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Left"
 			Visible=true
 			Group="Position"
 			InitialValue="0"
-			Type="Integer"
+			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Name"
 			Visible=true
 			Group="ID"
-			Type="String"
+			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Super"
 			Visible=true
 			Group="ID"
-			Type="String"
+			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="ThicknessFactor"
@@ -790,7 +1164,7 @@ Protected Module GraphicsX
 			Visible=true
 			Group="Position"
 			InitialValue="0"
-			Type="Integer"
+			InheritedFrom="Object"
 		#tag EndViewProperty
 	#tag EndViewBehavior
 End Module
