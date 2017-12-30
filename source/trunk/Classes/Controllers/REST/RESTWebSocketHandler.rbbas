@@ -307,7 +307,13 @@ Implements REST.RESTProtocolHandler,iStatusNotifier
 		Sub SendData(ByRef response As REST.RESTResponse)
 		  // Part of the REST.RESTProtocolHandler interface.
 		  
-		  m_restSocket.Write(EncodeRFC6455(response.response))
+		  Dim mode As OpCode = OpCode.Text
+		  If response.headers.HasKey(REST.kHeaderContentType) And _
+		    response.headers.Value(REST.kHeaderContentType) = REST.kContentTypeJpeg Then
+		    mode = OpCode.Binary
+		  End If
+		  
+		  m_restSocket.Write(EncodeRFC6455(response.response, mode))
 		End Sub
 	#tag EndMethod
 

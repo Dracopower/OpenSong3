@@ -1,4 +1,5 @@
 ﻿-= Version 2.2 RC =-
+* Fix bug in REST API to send correct OpCode (for Binary) when transferring JPEG
 * Fix issues with transferring control between windows on Windows where the active control lost focus or a maximised presentation helper window was restored.
 * Fix an issue with no presentation mode set while starting the presentation with F5.
 * Fix starting presentation with F5: The current main window mode (song or set mode) helps determining whether the current song or current set is presented.

@@ -147,9 +147,6 @@ Protected Module REST
 	#tag Constant, Name = kAccessControlRequestMethod, Type = String, Dynamic = False, Default = \"Access-Control-Request-Method", Scope = Public
 	#tag EndConstant
 
-	#tag Constant, Name = kContentType, Type = String, Dynamic = False, Default = \"Content-Type", Scope = Public
-	#tag EndConstant
-
 	#tag Constant, Name = kContentTypeHtml, Type = String, Dynamic = False, Default = \"text/html", Scope = Public
 	#tag EndConstant
 
@@ -169,6 +166,9 @@ Protected Module REST
 	#tag EndConstant
 
 	#tag Constant, Name = kHeaderContentLength, Type = String, Dynamic = False, Default = \"Content-Length", Scope = Public
+	#tag EndConstant
+
+	#tag Constant, Name = kHeaderContentType, Type = String, Dynamic = False, Default = \"Content-Type", Scope = Public
 	#tag EndConstant
 
 	#tag Constant, Name = kHeaderOrigin, Type = String, Dynamic = False, Default = \"Origin", Scope = Public
