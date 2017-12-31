@@ -300,7 +300,9 @@ Inherits Canvas
 		    
 		    'Just for grins, let's make the text different than the other buttons
 		    g.Bold = not g.Bold
-		    g.TextSize = g.TextSize + 1
+		    If g.TextSize <> 0 Then g.TextSize = g.TextSize + 1
+		    g.ForeColor = Font.ForeColor
+		    
 		    
 		  ElseIf IsMouseOver Or HasFocus Then
 		    'g.ForeColor = DarkTingeColor
@@ -333,7 +335,7 @@ Inherits Canvas
 		    g.DrawRect 0, 0, Width, Height
 		    
 		    g.Bold = not g.Bold
-		    g.TextSize = g.TextSize + 1
+		    If g.TextSize <> 0 Then g.TextSize = g.TextSize + 1
 		    
 		  Else
 		    ' Looks better on Mac OS X without, but doesn't work on Windows with False clear refreshes
