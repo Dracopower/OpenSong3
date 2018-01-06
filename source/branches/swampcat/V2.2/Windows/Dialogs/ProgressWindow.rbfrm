@@ -42,7 +42,7 @@ Begin Window ProgressWindow
       LockRight       =   False
       LockTop         =   True
       Maximum         =   100
-      TabIndex        =   "0"
+      TabIndex        =   0
       TabPanelIndex   =   0
       TabStop         =   True
       TextFont        =   "System"
@@ -78,7 +78,7 @@ Begin Window ProgressWindow
       TabStop         =   True
       Text            =   ""
       TextAlign       =   0
-      TextColor       =   
+      TextColor       =   &c00000000
       TextFont        =   "Arial"
       TextSize        =   11.0
       TextUnit        =   0
@@ -114,7 +114,7 @@ Begin Window ProgressWindow
       TabStop         =   True
       Text            =   ""
       TextAlign       =   0
-      TextColor       =   
+      TextColor       =   &c00000000
       TextFont        =   "Arial"
       TextSize        =   10.0
       TextUnit        =   0

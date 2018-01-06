@@ -326,7 +326,7 @@ Begin Window PrintWindow
          TabStop         =   True
          Text            =   "888 of 888"
          TextAlign       =   1
-         TextColor       =   
+         TextColor       =   &c00000000
          TextFont        =   "Arial"
          TextSize        =   11.0
          TextUnit        =   0
@@ -440,7 +440,7 @@ Begin Window PrintWindow
          Alignment       =   3
          AutoDeactivate  =   True
          AutomaticallyCheckSpelling=   False
-         BackColor       =   
+         BackColor       =   &cFFFFFF00
          BehaviorIndex   =   13
          Bold            =   False
          Border          =   True
@@ -474,7 +474,7 @@ Begin Window PrintWindow
          TabPanelIndex   =   1
          TabStop         =   True
          Text            =   "100%"
-         TextColor       =   
+         TextColor       =   &c00000000
          TextFont        =   "Arial"
          TextSize        =   11.0
          TextUnit        =   0

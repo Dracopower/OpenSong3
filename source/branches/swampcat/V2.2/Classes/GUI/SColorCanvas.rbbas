@@ -3,6 +3,8 @@ Protected Class SColorCanvas
 Inherits Canvas
 	#tag Event
 		Function MouseDown(X As Integer, Y As Integer) As Boolean
+		  #Pragma Unused X
+		  #Pragma Unused Y
 		  Dim c As Color
 		  
 		  If Enabled Then
@@ -10,10 +12,10 @@ Inherits Canvas
 		      If InputBox.Ask(App.T.Translate("questions/clear/@caption")) Then
 		        IsColorSet = False
 		        Action
-		        Repaint
+		        Invalidate True
 		        Return True
 		      Else
-		        Repaint
+		        Invalidate True
 		        Return False
 		      End If
 		    Else
@@ -23,7 +25,7 @@ Inherits Canvas
 		        Action
 		        Return True
 		      Else
-		        Repaint
+		        Invalidate True
 		        Return False
 		      End If
 		    End If
@@ -59,7 +61,7 @@ Inherits Canvas
 
 	#tag Method, Flags = &h0
 		Sub Repaint(g As Graphics = Nil)
-		  If g = Nil then g = Graphics
+		  If g = Nil Then g = Graphics
 		  
 		  If IsColorSet Then
 		    g.ForeColor = MyColor
@@ -83,7 +85,7 @@ Inherits Canvas
 		Sub SetColor(c As Color)
 		  IsColorSet = True
 		  MyColor = c
-		  Repaint
+		  Me.Invalidate True
 		End Sub
 	#tag EndMethod
 
@@ -98,7 +100,7 @@ Inherits Canvas
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
-		MyColor As Color
+		MyColor As Color = &c00000000
 	#tag EndProperty
 
 

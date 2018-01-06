@@ -31,8 +31,9 @@ Protected Module GraphicsX
 		  ' selects the used version of the text drawing algorithm
 		  Dim selectedVersion As String
 		  
-		  selectedVersion = "directDraw"
-		  selectedVersion = "blit3"
+		  'selectedVersion = "directDraw"
+		  'selectedVersion = "blit3"
+		  selectedVersion = "vector"
 		  
 		  Select Case selectedVersion
 		  Case "vector"
@@ -498,7 +499,9 @@ Protected Module GraphicsX
 		      y = 2 * textAscent
 		      
 		      #If TargetWin32
-		        app.UseGDIPlus = True
+		        #If XojoVersion < 2017.03
+		          app.UseGDIPlus = True
+		        #EndIf
 		      #EndIf
 		      
 		      ' render the text as a template
@@ -546,7 +549,9 @@ Protected Module GraphicsX
 		      g.DrawPicture borderPic, xx-x, yy-y ' border
 		      
 		      #If TargetWin32
-		        app.UseGDIPlus = False
+		        #If XojoVersion < 2017.03
+		          app.UseGDIPlus = False
+		        #EndIf
 		      #EndIf
 		    ElseIf f.Shadow Then
 		      g.ForeColor = f.ShadowColor
@@ -565,31 +570,55 @@ Protected Module GraphicsX
 		Function DrawFontSingleLineV(thisLine As String, xx As Integer, yy As Integer, f As FontFace) As Group2D
 		  Dim FontLine As New Group2D
 		  Dim ss As StringShape
+		  Dim textString As StringShape
 		  Dim shadowSize As Integer
 		  
+		  textString = New StringShape
+		  f.OntoStringShape textString
 		  If f.Shadow Then
-		    ss = New StringShape
-		    f.OntoStringShape ss
-		    ss.BorderColor = f.ShadowColor
-		    ss.FillColor = f.ShadowColor
-		    shadowSize = ss.BorderWidth * 40 / 50
-		    ss.X = xx + shadowSize
-		    ss.Y = yy + shadowSize
-		    ss.Text = thisLine
-		    ss.HorizontalAlignment = StringShape.Alignment.Left
-		    ss.VerticalAlignment = StringShape.Alignment.BaseLine
-		    FontLine.Append ss
+		    shadowSize = textString.BorderWidth * 2
+		    Dim start As Integer = 1
+		    If f.Border Then start = -textString.BorderWidth
+		    For offset As Integer = start To shadowSize
+		      ss = New StringShape
+		      f.OntoStringShape ss
+		      ss.BorderColor = f.ShadowColor
+		      ss.FillColor = f.ShadowColor
+		      ss.X = xx + offset
+		      ss.Y = yy + Abs(start) + offset
+		      ss.Text = thisLine
+		      ss.HorizontalAlignment = StringShape.Alignment.Left
+		      ss.VerticalAlignment = StringShape.Alignment.BaseLine
+		      FontLine.Append ss
+		    Next
 		  End If
 		  
-		  ss = New StringShape
-		  f.OntoStringShape ss
-		  ss.X = xx
-		  ss.Y = yy
-		  ss.Text = thisLine
-		  ss.HorizontalAlignment = StringShape.Alignment.Left
-		  ss.VerticalAlignment = StringShape.Alignment.BaseLine
-		  ss.Fill = 100
-		  FontLine.Append ss
+		  If f.Border Then
+		    For x As Integer = -1 to 1
+		      for y as integer = -1 to 1
+		        If x = 0 And y = 0 Then Continue
+		        ss = New StringShape
+		        f.OntoStringShape ss
+		        ss.FillColor = f.BorderColor
+		        ss.Text = thisLine
+		        ss.x = (x * ss.BorderWidth) + xx
+		        ss.y = (y * ss.BorderWidth) + yy
+		        ss.HorizontalAlignment = StringShape.Alignment.Left
+		        ss.VerticalAlignment = StringShape.Alignment.BaseLine
+		        FontLine.Append ss
+		      Next
+		    Next
+		  End If
+		  
+		  'ss = New StringShape
+		  'f.OntoStringShape ss
+		  textString.X = xx
+		  textString.Y = yy
+		  textString.Text = thisLine
+		  textString.HorizontalAlignment = StringShape.Alignment.Left
+		  textString.VerticalAlignment = StringShape.Alignment.BaseLine
+		  textString.Fill = 100
+		  FontLine.Append textString
 		  
 		  Return FontLine
 		  
@@ -1132,26 +1161,26 @@ Protected Module GraphicsX
 			Visible=true
 			Group="ID"
 			InitialValue="-2147483648"
-			InheritedFrom="Object"
+			Type="Integer"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Left"
 			Visible=true
 			Group="Position"
 			InitialValue="0"
-			InheritedFrom="Object"
+			Type="Integer"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Name"
 			Visible=true
 			Group="ID"
-			InheritedFrom="Object"
+			Type="String"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Super"
 			Visible=true
 			Group="ID"
-			InheritedFrom="Object"
+			Type="String"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="ThicknessFactor"
@@ -1164,7 +1193,7 @@ Protected Module GraphicsX
 			Visible=true
 			Group="Position"
 			InitialValue="0"
-			InheritedFrom="Object"
+			Type="Integer"
 		#tag EndViewProperty
 	#tag EndViewBehavior
 End Module

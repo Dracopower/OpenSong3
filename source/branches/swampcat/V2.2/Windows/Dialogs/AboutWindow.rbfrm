@@ -79,6 +79,7 @@ Begin Window AboutWindow
       Selectable      =   False
       TabIndex        =   2
       TabPanelIndex   =   0
+      TabStop         =   True
       Text            =   "OpenSong V2.1"
       TextAlign       =   0
       TextColor       =   &c00000000
@@ -113,6 +114,7 @@ Begin Window AboutWindow
       Selectable      =   False
       TabIndex        =   3
       TabPanelIndex   =   0
+      TabStop         =   True
       Text            =   "Copyright (c) 2003, 2004, 2005, 2006 Sean Lickfold"
       TextAlign       =   0
       TextColor       =   &c00000000
@@ -147,6 +149,7 @@ Begin Window AboutWindow
       Selectable      =   False
       TabIndex        =   4
       TabPanelIndex   =   0
+      TabStop         =   True
       Text            =   "Licensed under the GNU Public License V2.1"
       TextAlign       =   0
       TextColor       =   &c00000000
@@ -181,6 +184,7 @@ Begin Window AboutWindow
       Selectable      =   False
       TabIndex        =   5
       TabPanelIndex   =   0
+      TabStop         =   True
       Text            =   "http://www.opensong.org"
       TextAlign       =   0
       TextColor       =   &c0000FF00
@@ -215,6 +219,7 @@ Begin Window AboutWindow
       Selectable      =   False
       TabIndex        =   6
       TabPanelIndex   =   0
+      TabStop         =   True
       Text            =   "Joshua Coley, Ed Palmer, Gareth Evans, Joseph Dol, Sebastian Schöps, Rüdiger Greeb, Martyn Eggleton, Ben Henny, Matt Gillies, Jon Wright, Dean Whisnant, Ewout Voogt, Gerrit Prins, Tim Howard, Ng Oon-Ee, Caleb, Patrick van Beem, Philipp Jahn"
       TextAlign       =   0
       TextColor       =   &c00000000
@@ -297,6 +302,7 @@ Begin Window AboutWindow
       Selectable      =   False
       TabIndex        =   8
       TabPanelIndex   =   0
+      TabStop         =   True
       Text            =   "Compiler"
       TextAlign       =   2
       TextColor       =   &c00000000
@@ -331,6 +337,7 @@ Begin Window AboutWindow
       Selectable      =   False
       TabIndex        =   9
       TabPanelIndex   =   0
+      TabStop         =   True
       Text            =   "Memory"
       TextAlign       =   2
       TextColor       =   &c00000000
@@ -365,6 +372,7 @@ Begin Window AboutWindow
       Selectable      =   False
       TabIndex        =   10
       TabPanelIndex   =   0
+      TabStop         =   True
       Text            =   "Object Count"
       TextAlign       =   2
       TextColor       =   &c00000000
@@ -399,6 +407,7 @@ Begin Window AboutWindow
       Selectable      =   False
       TabIndex        =   11
       TabPanelIndex   =   0
+      TabStop         =   True
       Text            =   "Build"
       TextAlign       =   2
       TextColor       =   &c00000000
@@ -433,6 +442,7 @@ Begin Window AboutWindow
       Selectable      =   False
       TabIndex        =   12
       TabPanelIndex   =   0
+      TabStop         =   True
       Text            =   "English: Sean Lickfold"
       TextAlign       =   0
       TextColor       =   &c00000000
@@ -583,7 +593,6 @@ End
 			"7 - Global Floating Window"
 			"8 - Sheet Window"
 			"9 - Metal Window"
-			"10 - Drawer Window"
 			"11 - Modeless Dialog"
 		#tag EndEnumValues
 	#tag EndViewProperty
@@ -629,6 +638,7 @@ End
 		Visible=true
 		Group="ID"
 		Type="String"
+		EditorType="String"
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="LiveResize"
@@ -708,6 +718,7 @@ End
 		Visible=true
 		Group="ID"
 		Type="String"
+		EditorType="String"
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="Placement"
@@ -737,6 +748,7 @@ End
 		Visible=true
 		Group="ID"
 		Type="String"
+		EditorType="String"
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="Title"

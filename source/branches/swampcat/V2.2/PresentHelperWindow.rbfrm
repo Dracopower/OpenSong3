@@ -7,6 +7,7 @@ Begin Window PresentHelperWindow
    Composite       =   False
    Frame           =   0
    FullScreen      =   False
+   FullScreenButton=   False
    HasBackColor    =   False
    Height          =   480
    ImplicitInstance=   True
@@ -61,6 +62,7 @@ Begin Window PresentHelperWindow
       ScrollbarHorizontal=   False
       ScrollBarVertical=   True
       SelectionType   =   0
+      ShowDropIndicator=   False
       TabIndex        =   0
       TabPanelIndex   =   0
       TabStop         =   True
@@ -122,6 +124,7 @@ Begin Window PresentHelperWindow
          LockLeft        =   False
          LockRight       =   True
          LockTop         =   True
+         MenuItem        =   ""
          Scope           =   0
          StickyBevel     =   False
          TabIndex        =   0
@@ -153,6 +156,7 @@ Begin Window PresentHelperWindow
          LockLeft        =   False
          LockRight       =   True
          LockTop         =   True
+         MenuItem        =   ""
          Scope           =   0
          StickyBevel     =   False
          TabIndex        =   1
@@ -184,6 +188,7 @@ Begin Window PresentHelperWindow
          LockLeft        =   False
          LockRight       =   True
          LockTop         =   True
+         MenuItem        =   ""
          Scope           =   0
          StickyBevel     =   False
          TabIndex        =   2
@@ -215,6 +220,7 @@ Begin Window PresentHelperWindow
          LockLeft        =   False
          LockRight       =   True
          LockTop         =   True
+         MenuItem        =   ""
          Scope           =   0
          StickyBevel     =   False
          TabIndex        =   3
@@ -246,6 +252,7 @@ Begin Window PresentHelperWindow
          LockLeft        =   False
          LockRight       =   True
          LockTop         =   True
+         MenuItem        =   ""
          Scope           =   0
          StickyBevel     =   False
          TabIndex        =   4
@@ -277,6 +284,7 @@ Begin Window PresentHelperWindow
          LockLeft        =   False
          LockRight       =   True
          LockTop         =   True
+         MenuItem        =   ""
          Scope           =   0
          StickyBevel     =   False
          TabIndex        =   5
@@ -339,6 +347,7 @@ Begin Window PresentHelperWindow
       Selectable      =   False
       TabIndex        =   3
       TabPanelIndex   =   0
+      TabStop         =   True
       Text            =   "- Arrows: -\r\nDown: Next Slide\r\nUp: Previous Slide\r\nRight: Next Section\r\nLeft: Previous Section\r\n- Jump To: -\r\n1-9: Verse\r\nC: Chorus\r\nP: Pre-chorus\r\nB: Bridge\r\nT: Tag"
       TextAlign       =   0
       TextColor       =   &c00000000
@@ -398,6 +407,7 @@ Begin Window PresentHelperWindow
          LockLeft        =   False
          LockRight       =   True
          LockTop         =   True
+         MenuItem        =   ""
          Scope           =   0
          StickyBevel     =   False
          TabIndex        =   0
@@ -429,6 +439,7 @@ Begin Window PresentHelperWindow
          LockLeft        =   False
          LockRight       =   True
          LockTop         =   True
+         MenuItem        =   ""
          Scope           =   0
          StickyBevel     =   False
          TabIndex        =   1
@@ -460,6 +471,7 @@ Begin Window PresentHelperWindow
          LockLeft        =   False
          LockRight       =   True
          LockTop         =   True
+         MenuItem        =   ""
          Scope           =   0
          StickyBevel     =   False
          TabIndex        =   2
@@ -491,6 +503,7 @@ Begin Window PresentHelperWindow
          LockLeft        =   False
          LockRight       =   True
          LockTop         =   True
+         MenuItem        =   ""
          Scope           =   0
          StickyBevel     =   False
          TabIndex        =   3
@@ -522,6 +535,7 @@ Begin Window PresentHelperWindow
          LockLeft        =   False
          LockRight       =   True
          LockTop         =   True
+         MenuItem        =   ""
          Scope           =   0
          StickyBevel     =   False
          TabIndex        =   4
@@ -632,6 +646,7 @@ Begin Window PresentHelperWindow
       Selectable      =   False
       TabIndex        =   7
       TabPanelIndex   =   0
+      TabStop         =   True
       Text            =   "Current slide preview"
       TextAlign       =   0
       TextColor       =   &c00000000
@@ -666,6 +681,7 @@ Begin Window PresentHelperWindow
       Selectable      =   False
       TabIndex        =   8
       TabPanelIndex   =   0
+      TabStop         =   True
       Text            =   "Next slide preview"
       TextAlign       =   0
       TextColor       =   &c00000000
@@ -746,7 +762,7 @@ End
 		      m_screenRatio = 3.0/4.0
 		    End If
 		  End If
-
+		  
 		  If SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "monitors/@force_16_9_preview", False, False) Then
 		    If m_screenRatio > 1.0 Then
 		      m_screenRatio = 16.0/9.0
@@ -754,7 +770,7 @@ End
 		      m_screenRatio = 9.0/16.0
 		    End If
 		  End If
-
+		  
 		  cnv_preview.Width = cnv_preview.Height * m_screenRatio
 		  marginLeft = cnv_preview.Left + cnv_preview.Width + 10
 		  Me.MinWidth = marginLeft + grp_presentation_actions.Width + 10
@@ -946,6 +962,16 @@ End
 	#tag Method, Flags = &h0
 		Sub ScrollTo(index As Integer)
 		  lst_all_slides.ListIndex = index - 1
+		  //
+		  // Set the scroll position so the line is visible
+		  //
+		  Dim nRows As Integer
+		  Dim newPos As Integer
+		  nRows = lst_all_slides.Height \ lst_all_slides.RowHeight
+		  
+		  newPos = Max((index) - (nRows \ 2), 0)
+		  
+		  lst_all_slides.ScrollPosition = newPos
 		End Sub
 	#tag EndMethod
 
@@ -1365,8 +1391,8 @@ End
 		  g.PenWidth = 1
 		  g.DrawRect 0, 0, g.Width, g.Height
 		  
-		Catch ex
-		  System.DebugLog "PresentHelperWindow.cnv_preview.Paint: Exception caught"
+		  Catch ex
+		    System.DebugLog "PresentHelperWindow.cnv_preview.Paint: Exception caught"
 		End Sub
 	#tag EndEvent
 	#tag Event
@@ -1511,7 +1537,6 @@ End
 		Group="Appearance"
 		InitialValue="&hFFFFFF"
 		Type="Color"
-		InheritedFrom="Window"
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="Backdrop"
@@ -1519,7 +1544,6 @@ End
 		Group="Appearance"
 		Type="Picture"
 		EditorType="Picture"
-		InheritedFrom="Window"
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="CloseButton"
@@ -1528,7 +1552,6 @@ End
 		InitialValue="True"
 		Type="Boolean"
 		EditorType="Boolean"
-		InheritedFrom="Window"
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="Composite"
@@ -1536,7 +1559,6 @@ End
 		Group="Appearance"
 		InitialValue="False"
 		Type="Boolean"
-		InheritedFrom="Window"
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="Frame"
@@ -1545,7 +1567,6 @@ End
 		InitialValue="0"
 		Type="Integer"
 		EditorType="Enum"
-		InheritedFrom="Window"
 		#tag EnumValues
 			"0 - Document"
 			"1 - Movable Modal"
@@ -1557,7 +1578,6 @@ End
 			"7 - Global Floating Window"
 			"8 - Sheet Window"
 			"9 - Metal Window"
-			"10 - Drawer Window"
 			"11 - Modeless Dialog"
 		#tag EndEnumValues
 	#tag EndViewProperty
@@ -1568,7 +1588,14 @@ End
 		InitialValue="False"
 		Type="Boolean"
 		EditorType="Boolean"
-		InheritedFrom="Window"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="FullScreenButton"
+		Visible=true
+		Group="Frame"
+		InitialValue="False"
+		Type="Boolean"
+		EditorType="Boolean"
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="HasBackColor"
@@ -1576,7 +1603,6 @@ End
 		Group="Appearance"
 		InitialValue="False"
 		Type="Boolean"
-		InheritedFrom="Window"
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="Height"
@@ -1584,7 +1610,6 @@ End
 		Group="Position"
 		InitialValue="400"
 		Type="Integer"
-		InheritedFrom="Window"
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="ImplicitInstance"
@@ -1593,14 +1618,13 @@ End
 		InitialValue="True"
 		Type="Boolean"
 		EditorType="Boolean"
-		InheritedFrom="Window"
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="Interfaces"
 		Visible=true
 		Group="ID"
 		Type="String"
-		InheritedFrom="Window"
+		EditorType="String"
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="LiveResize"
@@ -1609,7 +1633,6 @@ End
 		InitialValue="True"
 		Type="Boolean"
 		EditorType="Boolean"
-		InheritedFrom="Window"
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="MacProcID"
@@ -1617,7 +1640,6 @@ End
 		Group="Appearance"
 		InitialValue="0"
 		Type="Integer"
-		InheritedFrom="Window"
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="MaxHeight"
@@ -1625,7 +1647,6 @@ End
 		Group="Position"
 		InitialValue="32000"
 		Type="Integer"
-		InheritedFrom="Window"
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="MaximizeButton"
@@ -1634,7 +1655,6 @@ End
 		InitialValue="False"
 		Type="Boolean"
 		EditorType="Boolean"
-		InheritedFrom="Window"
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="MaxWidth"
@@ -1642,7 +1662,6 @@ End
 		Group="Position"
 		InitialValue="32000"
 		Type="Integer"
-		InheritedFrom="Window"
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="MenuBar"
@@ -1650,7 +1669,6 @@ End
 		Group="Appearance"
 		Type="MenuBar"
 		EditorType="MenuBar"
-		InheritedFrom="Window"
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="MenuBarVisible"
@@ -1659,7 +1677,6 @@ End
 		InitialValue="True"
 		Type="Boolean"
 		EditorType="Boolean"
-		InheritedFrom="Window"
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="MinHeight"
@@ -1667,7 +1684,6 @@ End
 		Group="Position"
 		InitialValue="64"
 		Type="Integer"
-		InheritedFrom="Window"
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="MinimizeButton"
@@ -1676,7 +1692,6 @@ End
 		InitialValue="True"
 		Type="Boolean"
 		EditorType="Boolean"
-		InheritedFrom="Window"
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="MinWidth"
@@ -1684,14 +1699,13 @@ End
 		Group="Position"
 		InitialValue="64"
 		Type="Integer"
-		InheritedFrom="Window"
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="Name"
 		Visible=true
 		Group="ID"
 		Type="String"
-		InheritedFrom="Window"
+		EditorType="String"
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="Placement"
@@ -1700,7 +1714,6 @@ End
 		InitialValue="0"
 		Type="Integer"
 		EditorType="Enum"
-		InheritedFrom="Window"
 		#tag EnumValues
 			"0 - Default"
 			"1 - Parent Window"
@@ -1716,14 +1729,13 @@ End
 		InitialValue="True"
 		Type="Boolean"
 		EditorType="Boolean"
-		InheritedFrom="Window"
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="Super"
 		Visible=true
 		Group="ID"
 		Type="String"
-		InheritedFrom="Window"
+		EditorType="String"
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="Title"
@@ -1731,7 +1743,6 @@ End
 		Group="Appearance"
 		InitialValue="Untitled"
 		Type="String"
-		InheritedFrom="Window"
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="Visible"
@@ -1740,7 +1751,6 @@ End
 		InitialValue="True"
 		Type="Boolean"
 		EditorType="Boolean"
-		InheritedFrom="Window"
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="Width"
@@ -1748,6 +1758,5 @@ End
 		Group="Position"
 		InitialValue="600"
 		Type="Integer"
-		InheritedFrom="Window"
 	#tag EndViewProperty
 #tag EndViewBehavior

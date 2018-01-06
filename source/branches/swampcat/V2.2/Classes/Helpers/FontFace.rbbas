@@ -55,9 +55,11 @@ Protected Class FontFace
 		  s.Italic = Italic
 		  s.Underline = Underline
 		  
-		  if Border Then
-		    s.Border = 0
-		    s.BorderWidth = 1
+		  // None of this seems to have any affect on the appearance of the StringShape
+		  // on MacOS in Xojo 2017r3
+		  If Border Then
+		    s.Border = 0. 'Opacity
+		    s.BorderWidth = graphicsx.ThicknessFactor
 		    s.BorderColor = BorderColor
 		  End If
 		End Sub
@@ -196,7 +198,7 @@ Protected Class FontFace
 			Visible=true
 			Group="ID"
 			InitialValue="-2147483648"
-			InheritedFrom="Object"
+			Type="Integer"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Italic"
@@ -209,14 +211,13 @@ Protected Class FontFace
 			Visible=true
 			Group="Position"
 			InitialValue="0"
-			InheritedFrom="Object"
+			Type="Integer"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Name"
 			Visible=true
 			Group="ID"
 			Type="String"
-			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Shadow"
@@ -240,14 +241,14 @@ Protected Class FontFace
 			Name="Super"
 			Visible=true
 			Group="ID"
-			InheritedFrom="Object"
+			Type="String"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Top"
 			Visible=true
 			Group="Position"
 			InitialValue="0"
-			InheritedFrom="Object"
+			Type="Integer"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Underline"

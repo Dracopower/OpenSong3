@@ -370,12 +370,6 @@ Inherits TCPSocket
 			EditorType="Integer"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="Left"
-			Visible=true
-			Group="Position"
-			Type="Integer"
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="mTimeout"
 			Group="Behavior"
 			InitialValue="3000"
@@ -401,12 +395,6 @@ Inherits TCPSocket
 			Group="ID"
 			Type="String"
 			EditorType="String"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="Top"
-			Visible=true
-			Group="Position"
-			Type="Integer"
 		#tag EndViewProperty
 	#tag EndViewBehavior
 End Class
