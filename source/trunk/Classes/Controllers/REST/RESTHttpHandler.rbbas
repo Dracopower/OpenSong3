@@ -52,19 +52,19 @@ Implements REST.RESTProtocolHandler
 		End Function
 	#tag EndMethod
 
-	#tag Method, Flags = &h21
-		Private Sub Constructor()
-		  'The constructor without parameters is hidden because it is not allowed to call this constructor
+	#tag Method, Flags = &h0
+		Sub Close(ByRef restSocket As REST.RESTSocket)
+		  // Part of the REST.RESTProtocolHandler interface.
+		  
+		  //No action needed - HTTP connections don't require sending a closing message
 		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub Constructor(restSocket AS REST.RESTSocket)
+		Sub Constructor()
 		  m_reqHeaders = New Dictionary()
 		  m_sendHeaders = New Dictionary()
 		  m_parameters = New Dictionary()
-		  
-		  m_restSocket = restSocket
 		End Sub
 	#tag EndMethod
 
@@ -113,7 +113,7 @@ Implements REST.RESTProtocolHandler
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Function ParseRequest(data As String) As Boolean
+		Function ParseRequest(ByRef restSocket As REST.RESTSocket) As Boolean
 		  // Part of the REST.RESTProtocolHandler interface.
 		  
 		  Dim success As Boolean = True
@@ -126,6 +126,8 @@ Implements REST.RESTProtocolHandler
 		  m_action = ""
 		  m_identifier = ""
 		  m_parameters.Clear()
+		  
+		  Dim data As String = restSocket.ReadAll()
 		  
 		  If data.Len()>0 Then
 		    Dim arrData(-1) As String = data.Split(REST.CrLf())
@@ -199,21 +201,21 @@ Implements REST.RESTProtocolHandler
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub SendData(ByRef response As REST.RESTResponse)
+		Sub SendData(ByRef restSocket As REST.RESTSocket, ByRef response As REST.RESTResponse)
 		  // Part of the REST.RESTProtocolHandler interface.
 		  
 		  For Each key As Variant In response.headers.Keys
 		    AddHeader(key.StringValue, response.headers.Value(key))
 		  Next
 		  
-		  SendData(response.response, response.status)
+		  SendData(restSocket, response.response, response.status)
 		  
 		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
-		Private Sub SendData(data As String, status As HttpStatus = HttpStatus.Ok)
-		  m_restSocket.Write "HTTP/1.1 " + StatusStr(status) + REST.CrLf()
+		Private Sub SendData(ByRef restSocket As REST.RESTSocket, data As String, status As HttpStatus = HttpStatus.Ok)
+		  restSocket.Write "HTTP/1.1 " + StatusStr(status) + REST.CrLf()
 		  
 		  Dim origin as Variant = Header(REST.kHeaderOrigin)
 		  If origin <> Nil Then
@@ -247,26 +249,18 @@ Implements REST.RESTProtocolHandler
 		  AddHeader(REST.kHeaderContentLength, LenB(data))
 		  
 		  For iHeader As Integer = 0 To m_sendHeaders.Count() -1
-		    m_restSocket.Write m_sendHeaders.Key(iHeader).StringValue + ": " + m_sendHeaders.Value(m_sendHeaders.Key(iHeader).StringValue).StringValue + REST.CrLf()
+		    restSocket.Write m_sendHeaders.Key(iHeader).StringValue + ": " + m_sendHeaders.Value(m_sendHeaders.Key(iHeader).StringValue).StringValue + REST.CrLf()
 		  Next
 		  
-		  m_restSocket.Write REST.CrLf()
+		  restSocket.Write REST.CrLf()
 		  
 		  If data <> "" And _
 		    Method() <> HttpMethod.Head Then
-		    m_restSocket.Write data
+		    restSocket.Write data
 		  End If
 		  
 		  m_sendHeaders.Clear()
 		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Function Socket() As REST.RESTSocket
-		  // Part of the REST.RESTProtocolHandler interface.
-		  
-		  Return m_restSocket
-		End Function
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
@@ -329,10 +323,6 @@ Implements REST.RESTProtocolHandler
 
 	#tag Property, Flags = &h21
 		Private m_resourceName As String
-	#tag EndProperty
-
-	#tag Property, Flags = &h21
-		Private m_restSocket As REST.RESTSocket
 	#tag EndProperty
 
 	#tag Property, Flags = &h21

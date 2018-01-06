@@ -1402,43 +1402,57 @@ Inherits Application
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub StatusNotifierSubscribe(subject As String, client As iStatusNotifier)
-		  Dim notifiers() As iStatusNotifier
-		  If m_statusNotifiers.HasKey(subject) Then
-		    notifiers = m_statusNotifiers.Value(subject)
+		Function StatusNotifierSubscribe(subject As String, clientId As String) As Boolean
+		  Dim notifiers() As String
+		  Dim success as Boolean = False
+		  
+		  If m_ControlServer.HasResource(subject) Then
+		    If m_statusNotifiers.HasKey(subject) Then
+		      notifiers = m_statusNotifiers.Value(subject)
+		    End If
+		    
+		    If notifiers.IndexOf(clientId) < 0 Then
+		      notifiers.Append(clientId)
+		      m_statusNotifiers.Value(subject) = notifiers
+		      success = True
+		      
+		      m_ControlServer.StatusNotification(clientId, subject, "subscribe")
+		    End If
 		  End If
 		  
-		  If notifiers.IndexOf(client) < 0 Then
-		    notifiers.Append(client)
-		    m_statusNotifiers.Value(subject) = notifiers
-		    
-		    client.StatusNotification(subject, "subscribe")
-		  End If
-		End Sub
+		  Return success
+		End Function
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub StatusNotifierUnsubscribe(subject As String, client As iStatusNotifier)
-		  Dim notifiers() As iStatusNotifier
-		  If m_statusNotifiers.HasKey(subject) Then
-		    notifiers = m_statusNotifiers.Value(subject)
+		Function StatusNotifierUnsubscribe(subject As String, clientId As String) As Boolean
+		  Dim notifiers() As String
+		  Dim success As Boolean = False
+		  
+		  If m_ControlServer.HasResource(subject) Then
+		    If m_statusNotifiers.HasKey(subject) Then
+		      notifiers = m_statusNotifiers.Value(subject)
+		    End If
+		    
+		    Dim i As Integer = notifiers.IndexOf(clientId)
+		    If i >= 0 Then
+		      notifiers.Remove(i)
+		      m_statusNotifiers.Value(subject) = notifiers
+		      success = True
+		    End If
 		  End If
 		  
-		  Dim i As Integer = notifiers.IndexOf(client)
-		  If i >= 0 Then
-		    notifiers.Remove(i)
-		    m_statusNotifiers.Value(subject) = notifiers
-		  End If
-		End Sub
+		  return success
+		End Function
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
 		Sub StatusNotifierUpdate(subject As String, info As String)
 		  If m_statusNotifiers.HasKey(subject) Then
-		    Dim notifiers() As iStatusNotifier = m_statusNotifiers.Value(subject)
+		    Dim notifiers() As String = m_statusNotifiers.Value(subject)
 		    
-		    For Each client As iStatusNotifier in notifiers
-		      client.StatusNotification(subject, info)
+		    For Each clientId As String In notifiers
+		      m_ControlServer.StatusNotification(clientId, subject, info)
 		    Next
 		  End If
 		End Sub

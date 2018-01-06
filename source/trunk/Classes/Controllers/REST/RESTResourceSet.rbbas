@@ -216,7 +216,7 @@ Implements REST.RESTResource
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Function Process(protocolHandler As REST.RESTProtocolHandler) As REST.RESTresponse
+		Function Process(ByRef restSocket As REST.RESTSocket, protocolHandler As REST.RESTProtocolHandler) As REST.RESTresponse
 		  // Part of the REST.RESTResource interface.
 		  Dim result As REST.RESTresponse = Nil
 		  

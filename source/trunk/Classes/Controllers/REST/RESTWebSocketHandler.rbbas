@@ -1,6 +1,6 @@
 #tag Class
 Protected Class RESTWebSocketHandler
-Implements REST.RESTProtocolHandler,iStatusNotifier
+Implements REST.RESTProtocolHandler
 	#tag Method, Flags = &h0
 		Function Action() As String
 		  // Part of the REST.RESTProtocolHandler interface.
@@ -19,22 +19,27 @@ Implements REST.RESTProtocolHandler,iStatusNotifier
 		End Function
 	#tag EndMethod
 
-	#tag Method, Flags = &h21
-		Private Sub Constructor()
-		  'The constructor without parameters is hidden because it is not allowed to call this constructor
+	#tag Method, Flags = &h0
+		Sub Close(ByRef restSocket As REST.RESTSocket)
+		  If m_open Then
+		    If Not IsNull(restSocket) Then
+		      SendClose(restSocket, StatusCode.GoingAway)
+		    End If
+		    
+		    m_open = false
+		  End If
 		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub Constructor(restSocket AS REST.RESTSocket, protocol As Integer = kProtocolRFC6455)
-		  m_restSocket = restSocket
+		Sub Constructor(protocol As Integer = kProtocolRFC6455)
 		  m_parameters = New Dictionary()
 		  m_open = true
 		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
-		Private Function DecodeRFC6455(payload As String) As Boolean
+		Private Function DecodeRFC6455(ByRef restSocket As REST.RESTSocket, payload As String) As Boolean
 		  Dim success As Boolean = False
 		  Dim mode As OpCode = OpCode.Close
 		  Dim masked As Boolean = False
@@ -102,28 +107,16 @@ Implements REST.RESTProtocolHandler,iStatusNotifier
 		  
 		  If success Then
 		    If mode = OpCode.Close Then
-		      SendClose(StatusCode.NormalClosure)
-		      m_restSocket.Close()
+		      SendClose(restSocket, StatusCode.NormalClosure)
+		      restSocket.Close()
 		    End If
 		  ElseIf Not success or Not masked Then
-		    SendClose(StatusCode.ProtocolError)
-		    m_restSocket.Close()
+		    SendClose(restSocket, StatusCode.ProtocolError)
+		    restSocket.Close()
 		  End If
 		  
 		  Return success
 		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Sub Destructor()
-		  If m_open Then
-		    
-		    If Not IsNull(m_restSocket) Then
-		      SendClose(StatusCode.GoingAway)
-		    End If
-		    m_open = false
-		  End If
-		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
@@ -260,7 +253,7 @@ Implements REST.RESTProtocolHandler,iStatusNotifier
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Function ParseRequest(data As String) As Boolean
+		Function ParseRequest(ByRef restSocket As REST.RESTSocket) As Boolean
 		  // Part of the REST.RESTProtocolHandler interface.
 		  
 		  Dim success As Boolean = False
@@ -270,7 +263,9 @@ Implements REST.RESTProtocolHandler,iStatusNotifier
 		  m_identifier = ""
 		  m_parameters.Clear()
 		  
-		  success = DecodeRFC6455(data)
+		  Dim data As string = restSocket.ReadAll()
+		  
+		  success = DecodeRFC6455(restSocket, data)
 		  If  success Then
 		    If m_reqData.Len()>0 Then
 		      Dim reqdata As String = m_reqData
@@ -295,16 +290,16 @@ Implements REST.RESTProtocolHandler,iStatusNotifier
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
-		Private Sub SendClose(closeCode As StatusCode)
+		Private Sub SendClose(ByRef restSocket As REST.RESTSocket, closeCode As StatusCode)
 		  Dim closing As String = Str(closeCode) + Chr(0) + Chr(0)
 		  
-		  m_restSocket.Write(EncodeRFC6455(closing, OpCode.Close))
+		  restSocket.Write(EncodeRFC6455(closing, OpCode.Close))
 		  
 		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub SendData(ByRef response As REST.RESTResponse)
+		Sub SendData(ByRef restSocket As REST.RESTSocket, ByRef response As REST.RESTResponse)
 		  // Part of the REST.RESTProtocolHandler interface.
 		  
 		  Dim mode As OpCode = OpCode.Text
@@ -313,61 +308,8 @@ Implements REST.RESTProtocolHandler,iStatusNotifier
 		    mode = OpCode.Binary
 		  End If
 		  
-		  m_restSocket.Write(EncodeRFC6455(response.response, mode))
+		  restSocket.Write(EncodeRFC6455(response.response, mode))
 		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Function Socket() As REST.RESTSocket
-		  // Part of the REST.RESTProtocolHandler interface.
-		  
-		  Return m_restSocket
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Sub StatusNotification(subject As String, info As String)
-		  // Part of the iStatusNotifier interface.
-		  
-		  Select Case subject
-		  Case "presentation"
-		    Dim resource As New RESTResourcePresent()
-		    Dim response As REST.RESTResponse = resource.GetStatus()
-		    SendData response
-		  End Select
-		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Function SubscribeNotifier(context As String) As Boolean
-		  Dim success As Boolean = True
-		  
-		  context = Lowercase(context)
-		  Select Case context
-		  Case "presentation"
-		    App.StatusNotifierSubscribe(context, me)
-		  Else
-		    success = False
-		  End Select
-		  
-		  Return success
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Function UnsubscribeNotifier(context As String) As Boolean
-		  Dim success As Boolean = True
-		  
-		  context = Lowercase(context)
-		  Select Case context
-		  Case "presentation"
-		    App.StatusNotifierUnsubscribe(context, me)
-		  Else
-		    success = False
-		  End Select
-		  
-		  Return success
-		End Function
 	#tag EndMethod
 
 
@@ -397,10 +339,6 @@ Implements REST.RESTProtocolHandler,iStatusNotifier
 
 	#tag Property, Flags = &h21
 		Private m_resourceName As String
-	#tag EndProperty
-
-	#tag Property, Flags = &h21
-		Private m_restSocket As REST.RESTSocket
 	#tag EndProperty
 
 

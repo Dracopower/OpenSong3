@@ -7,7 +7,7 @@ Protected Interface RESTResource
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Function Process(protocolHandler As REST.RESTProtocolHandler) As REST.RESTresponse
+		Function Process(ByRef restSocket As REST.RESTSocket, protocolHandler As REST.RESTProtocolHandler) As REST.RESTresponse
 		  
 		End Function
 	#tag EndMethod
@@ -19,33 +19,33 @@ Protected Interface RESTResource
 			Visible=true
 			Group="ID"
 			InitialValue="-2147483648"
-			InheritedFrom="Object"
+			Type="Integer"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Left"
 			Visible=true
 			Group="Position"
 			InitialValue="0"
-			InheritedFrom="Object"
+			Type="Integer"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Name"
 			Visible=true
 			Group="ID"
-			InheritedFrom="Object"
+			Type="String"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Super"
 			Visible=true
 			Group="ID"
-			InheritedFrom="Object"
+			Type="String"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Top"
 			Visible=true
 			Group="Position"
 			InitialValue="0"
-			InheritedFrom="Object"
+			Type="Integer"
 		#tag EndViewProperty
 	#tag EndViewBehavior
 End Interface
