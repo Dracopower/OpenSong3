@@ -15300,7 +15300,7 @@ End
 		  Me.AddPopupRow App.T.Translate("sets_mode/current_set/present/single_screen/@caption")
 		  
 		  if OSScreenCount() > 1 Then
-		    Me.AddPopupRow App.T.Translate("sets_mode/selected_song/present/dual_screen/@caption")
+		    Me.AddPopupRow App.T.Translate("sets_mode/current_set/present/dual_screen/@caption")
 		  End If
 		  
 		  Me.AddPopupSeparator
@@ -15367,8 +15367,8 @@ End
 		  Me.DeletePopup
 		  Me.AddPopupRow App.T.Translate("sets_mode/current_set/present/single_screen/@caption")
 		  
-		  if OSScreenCount() > 1 Then
-		    Me.AddPopupRow App.T.Translate("sets_mode/selected_song/present/dual_screen/@caption")
+		  If OSScreenCount() > 1 Then
+		    Me.AddPopupRow App.T.Translate("sets_mode/current_set/present/dual_screen/@caption")
 		  End If
 		  
 		  Me.AddPopupSeparator
