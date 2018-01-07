@@ -62,7 +62,7 @@ Inherits Listbox
 		    Next
 		  Next
 		  
-		  result = DragOverRow( x, y, obj, action, Me.currentDropRow )
+		  result = DragOverRowX( x, y, obj, action, Me.currentDropRow )
 		  Return result
 		End Function
 	#tag EndEvent
@@ -197,7 +197,7 @@ Inherits Listbox
 
 
 	#tag Hook, Flags = &h0
-		Event DragOverRow(x As Integer, y As Integer, obj As DragItem, action As Integer, row as Integer) As Boolean
+		Event DragOverRowX(x As Integer, y As Integer, obj As DragItem, action As Integer, row as Integer) As Boolean
 	#tag EndHook
 
 	#tag Hook, Flags = &h0
