@@ -946,6 +946,16 @@ End
 	#tag Method, Flags = &h0
 		Sub ScrollTo(index As Integer)
 		  lst_all_slides.ListIndex = index - 1
+		  //
+		  // Set the scroll position so the line is visible
+		  //
+		  Dim nRows As Integer
+		  Dim newPos As Integer
+		  nRows = lst_all_slides.Height \ lst_all_slides.RowHeight
+		  
+		  newPos = Max((index) - (nRows \ 2), 0)
+		  
+		  lst_all_slides.ScrollPosition = newPos
 		End Sub
 	#tag EndMethod
 
@@ -1212,13 +1222,13 @@ End
 #tag Events btn_mode_black
 	#tag Event
 		Sub Action()
-		  If PresentWindow.KeyDownX("k") Then
-		  End If
+		  Call PresentWindow.KeyDownX("k")
 		End Sub
 	#tag EndEvent
 	#tag Event
 		Sub Open()
 		  Me.SetIcon blackbackgroundpic, blackbackgroundmask
+		  Me.SetToggle(True)
 		End Sub
 	#tag EndEvent
 #tag EndEvents
@@ -1232,6 +1242,7 @@ End
 	#tag Event
 		Sub Open()
 		  Me.SetIcon whitebackgroundpic, whitebackgroundmask
+		  Me.SetToggle(True)
 		End Sub
 	#tag EndEvent
 #tag EndEvents
@@ -1245,6 +1256,7 @@ End
 	#tag Event
 		Sub Open()
 		  Me.SetIcon backgroundpic, backgroundmask
+		  Me.SetToggle(True)
 		End Sub
 	#tag EndEvent
 #tag EndEvents
@@ -1258,6 +1270,7 @@ End
 	#tag Event
 		Sub Open()
 		  Me.SetIcon logobackgroundpic, logobackgroundmask
+		  Me.SetToggle(True)
 		End Sub
 	#tag EndEvent
 #tag EndEvents
@@ -1271,6 +1284,7 @@ End
 	#tag Event
 		Sub Open()
 		  Me.SetIcon pausebackgroundpic, pausebackgroundmask
+		  Me.SetToggle(True)
 		End Sub
 	#tag EndEvent
 #tag EndEvents

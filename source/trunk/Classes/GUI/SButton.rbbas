@@ -30,7 +30,7 @@ Inherits Canvas
 
 	#tag Event
 		Function MouseDown(X As Integer, Y As Integer) As Boolean
-		  If IsStuck Then Return False
+		  If IsStuck And Not IsToggle Then Return False
 		  IsMouseDown = True
 		  MenuItem = ""
 		  If Enabled Then
@@ -235,6 +235,12 @@ Inherits Canvas
 	#tag Method, Flags = &h0
 		Function GetStuck() As Boolean
 		  Return IsStuck
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function GetToggle() As Boolean
+		  Return IsToggle
 		End Function
 	#tag EndMethod
 
@@ -509,6 +515,13 @@ Inherits Canvas
 		End Sub
 	#tag EndMethod
 
+	#tag Method, Flags = &h0
+		Sub SetToggle(toggle As Boolean)
+		  IsToggle = toggle
+		  Refresh
+		End Sub
+	#tag EndMethod
+
 
 	#tag Hook, Flags = &h0
 		Event Action()
@@ -560,6 +573,10 @@ Inherits Canvas
 
 	#tag Property, Flags = &h1
 		Protected IsStuck As Boolean
+	#tag EndProperty
+
+	#tag Property, Flags = &h1
+		Protected IsToggle As Boolean = False
 	#tag EndProperty
 
 	#tag Property, Flags = &h1
