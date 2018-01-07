@@ -64,6 +64,19 @@ Inherits TCPSocket
 		End Function
 	#tag EndMethod
 
+	#tag Method, Flags = &h0
+		Sub Close()
+		  'Actively remove all protocalhandlers from the list of handlers (should only contain one handler)
+		  'This will trigger the destructor, allowing the handler to do closing activities
+		  While(m_protocolHandler.Ubound()>1)
+		    Dim hander As REST.RESTProtocolHandler = m_protocolHandler.Pop()
+		    hander.Close(self)
+		  Wend
+		  
+		  Super.Close()
+		End Sub
+	#tag EndMethod
+
 	#tag Method, Flags = &h1021
 		Private Sub Constructor()
 		  'The constructor without parameters is hidden because it is not allowed to call this constructor
@@ -87,12 +100,10 @@ Inherits TCPSocket
 
 	#tag Method, Flags = &h0
 		Sub Destructor()
-		  'Actively remove all protocalhandlers from the list of handlers (should only contain one handler)
-		  'This will trigger the destructor, allowing the handler to do closing activities
-		  While(m_protocolHandler.Ubound()>1)
-		    Dim hander As REST.RESTProtocolHandler = m_protocolHandler.Pop()
-		    hander.Close(self)
-		  Wend
+		  If Me.IsConnected() Then
+		    Close()
+		  End If
+		  
 		End Sub
 	#tag EndMethod
 

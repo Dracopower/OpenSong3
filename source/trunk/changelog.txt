@@ -1,4 +1,5 @@
 ﻿-= Version 2.2 RC =-
+* Add configuration item to set the maximum number of API connections (defaults to 25).  The is no UI entry, only a configuration item in the MainSettings file. Add an attribute 'max_connections' to the 'rcserver' node and set it to the desired value.
 * Fix memory leak in REST API (bug #458) and cleaned up notification spaghetti.
 * Fix bug in REST API to send correct OpCode (for Binary) when transferring JPEG
 * Fix issues with transferring control between windows on Windows where the active control lost focus or a maximised presentation helper window was restored.

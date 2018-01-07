@@ -537,8 +537,6 @@ Inherits Application
 		  m_ControlServer.AddResource(New REST.RESTResourceSet)
 		  m_ControlServer.AddResource(New REST.RESTResourcePresent)
 		  m_ControlServer.AddResource(New REST.RESTResourceWebSocket)
-		  m_ControlServer.MinimumSocketsAvailable = 2
-		  m_ControlServer.MaximumSocketsConnected = 25
 		  InitControlServer()
 		  
 		  MainWindow.Show
@@ -975,15 +973,30 @@ Inherits Application
 	#tag Method, Flags = &h0
 		Sub InitControlServer()
 		  If (SmartML.GetValueB(App.MyMainSettings.DocumentElement, "rcserver/@enable", False)) Then
-		    If SmartML.GetValueN(App.MyMainSettings.DocumentElement, "rcserver/@port")>0 Then
-		      m_ControlServer.Port = SmartML.GetValueN(App.MyMainSettings.DocumentElement, "rcserver/@port")
+		    Dim port As Integer = SmartML.GetValueN(App.MyMainSettings.DocumentElement, "rcserver/@port")
+		    If port >0 Then
+		      m_ControlServer.Port = port
 		    Else
 		      m_ControlServer.Port = 8080
 		    End If
+		    
+		    m_ControlServer.MinimumSocketsAvailable = 2
+		    
+		    Dim max_connections As Integer = SmartML.GetValueN(App.MyMainSettings.DocumentElement, "rcserver/@max_connections", False)
+		    If max_connections > 0 Then
+		      m_ControlServer.MaximumSocketsConnected = max_connections
+		    Else
+		      m_ControlServer.MaximumSocketsConnected = 25
+		    End If
+		    
 		    m_ControlServer.Key(SmartML.GetValue(App.MyMainSettings.DocumentElement, "rcserver/key"))
 		    m_ControlServer.Listen()
 		  Else
 		    m_ControlServer.StopListening()
+		    For Each socket As TCPSocket In m_ControlServer.ActiveConnections()
+		      Dim restSocket As REST.RESTSocket = REST.RESTSocket(socket)
+		      restSocket.Disconnect()
+		    Next
 		  End If
 		End Sub
 	#tag EndMethod
