@@ -71,7 +71,7 @@ Inherits ServerSocket
 		    
 		    For Each socket As TCPSocket In Me.ActiveConnections()
 		      Dim restSocket As REST.RESTSocket = REST.RESTSocket(socket)
-		      If clientId =restSocket.Handle.ToText() Then
+		      If clientId = CStr(restSocket.Handle) Then
 		        wsHandler.SendData(restSocket, response)
 		        restSocket.Flush()
 		      End If

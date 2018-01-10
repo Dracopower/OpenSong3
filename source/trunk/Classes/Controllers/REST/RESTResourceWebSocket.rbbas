@@ -50,9 +50,9 @@ Implements REST.RESTResource
 		    
 		    Select Case action
 		    Case "subscribe"
-		      success = App.StatusNotifierSubscribe(resource, restSocket.Handle.ToText())
+		      success = App.StatusNotifierSubscribe(resource, CStr(restSocket.Handle))
 		    Case "unsubscribe"
-		      success = App.StatusNotifierUnsubscribe(resource, restSocket.Handle.ToText())
+		      success = App.StatusNotifierUnsubscribe(resource, CStr(restSocket.Handle))
 		    End Select
 		    
 		    If success Then

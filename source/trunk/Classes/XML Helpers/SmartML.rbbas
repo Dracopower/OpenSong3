@@ -170,12 +170,12 @@ Protected Module SmartML
 		  End If
 		  Select Case Len(s)
 		  Case 7
-		    c = Color.RGB( _
+		    c = RGB( _ ' modified for backward compatibility: Color.RGB( _
 		    Val("&H" + (Mid(s, 2, 2))), _
 		    Val("&H" + (Mid(s, 4, 2))), _
 		    Val("&H" + (Mid(s, 6, 2))))
 		  Case 9
-		    c = Color.RGBA(_
+		    c = RGB( _ ' modified for backward compatibility: Color.RGBA(_
 		    Val("&H" + (Mid(s,2,2))), _
 		    Val("&H" + (Mid(s,4,2))), _
 		    Val("&H" + (Mid(s,6,2))), _
@@ -472,11 +472,19 @@ Protected Module SmartML
 	#tag Method, Flags = &h1
 		Protected Sub SetValueC(xnode As XmlNode, childPath As String, c As Color)
 		  // Updated to include alpha value
-		  SetValue xnode, childPath, "#" _
-		  + c.Red.ToHex(2) _
-		  + c.Green.ToHex(2) _
-		  + c.Blue.ToHex(2) _
-		  + c.Alpha.ToHex(2)
+		  #if RBVersion>2015 then
+		    SetValue xnode, childPath, "#" _
+		    + c.Red.ToHex(2) _
+		    + c.Green.ToHex(2) _
+		    + c.Blue.ToHex(2) _
+		    + c.Alpha.ToHex(2)
+		  #else
+		    SetValue xnode, childPath, "#" _
+		    + StringUtils.PadLeft(Hex(c.Red),2,"0") _
+		    + StringUtils.PadLeft(Hex(c.Green),2,"0") _
+		    + StringUtils.PadLeft(Hex(c.Blue),2,"0") _
+		    + StringUtils.PadLeft(Hex(c.Alpha),2,"0")
+		  #endif
 		  Return
 		End Sub
 	#tag EndMethod
