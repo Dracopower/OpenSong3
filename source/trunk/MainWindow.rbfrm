@@ -15297,14 +15297,14 @@ End
 	#tag Event
 		Sub ConstructPopupMenu()
 		  Me.DeletePopup
-		  Me.AddPopupRow App.T.Translate("sets_mode/current_set/present/single_screen/@caption")
+		  Me.AddPopupRow App.T.Translate("sets_mode/current_item/presentitem/single_screen/@caption")
 		  
 		  if OSScreenCount() > 1 Then
-		    Me.AddPopupRow App.T.Translate("sets_mode/current_set/present/dual_screen/@caption")
+		    Me.AddPopupRow App.T.Translate("sets_mode/current_item/presentitem/dual_screen/@caption")
 		  End If
 		  
 		  Me.AddPopupSeparator
-		  Me.AddPopupRow App.T.Translate("sets_mode/current_set/present/preview_dual_screen/@caption")
+		  Me.AddPopupRow App.T.Translate("sets_mode/current_item/presentitem/preview_dual_screen/@caption")
 		  
 		End Sub
 	#tag EndEvent
