@@ -122,11 +122,14 @@ Protected Class FontFace
 		  
 		  Dim s As String = ""
 		  Dim tab As String = "    "
+		  Dim fontFamily, fontSize As String
 		  
 		  // Check for System and SmallSystem and convert to generic sans-serif, else return the font name
-		  s = s + tab + "font-family: """ + If(Name = "System" Or Name = "SmallSystem", "sans-serif", Name) + """;" + EndOfLine
+		  If Name = "System" Or Name = "SmallSystem" Then fontFamily = "sans-serif" Else fontFamily = Name
+		  If Size = 0 Then fontSize = "10pt;" Else fontSize = CStr(Size) + "pt;"
+		  s = s + tab + "font-family: """ + fontFamily + """;" + EndOfLine
 		  s = s + tab + "color: " + ColorToCSS(ForeColor) + ";" + EndOfLine
-		  s = s + tab + "font-size: " + If(Size=0, "10pt;", CStr(Size) + "pt;") + EndOfLine
+		  s = s + tab + "font-size: " + fontSize + EndOfLine
 		  
 		  If Italic Then
 		    s = s + tab + "font-style: italic;" + EndOfLine
