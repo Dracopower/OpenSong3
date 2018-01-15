@@ -90,7 +90,7 @@ Implements REST.RESTResource
 		  
 		  If Not IsNull(imageData) Then
 		    result = New REST.RESTResponse(imageData)
-		    result.headers.Value(REST.kContentType) = REST.kContentTypeJpeg
+		    result.headers.Value(REST.kHeaderContentType) = REST.kContentTypeJpeg
 		    result.headers.Value("Expires") = "Tue, 09 Feb 2011 14:02:00 GMT"    // a certain date in the past ...
 		    result.headers.Value("Cache-Control") = "no-cache, must-revalidate"  // HTTP/1.1
 		    result.headers.Value("Pragma") = "no-cache"
@@ -584,7 +584,7 @@ Implements REST.RESTResource
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Function Process(protocolHandler As REST.RESTProtocolHandler) As REST.RESTresponse
+		Function Process(ByRef restSocket As REST.RESTSocket, protocolHandler As REST.RESTProtocolHandler) As REST.RESTresponse
 		  // Part of the REST.RESTResource interface.
 		  
 		  Dim result As REST.RESTresponse

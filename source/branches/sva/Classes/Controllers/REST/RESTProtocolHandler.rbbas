@@ -13,6 +13,12 @@ Protected Interface RESTProtocolHandler
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
+		Sub Close(ByRef restSocket As REST.RESTSocket)
+		  
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
 		Function Header(name As Variant, defaultValue As Variant) As Variant
 		  
 		End Function
@@ -37,7 +43,7 @@ Protected Interface RESTProtocolHandler
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Function ParseRequest(data As String) As Boolean
+		Function ParseRequest(ByRef restSocket As REST.RESTSocket) As Boolean
 		  
 		End Function
 	#tag EndMethod
@@ -49,15 +55,9 @@ Protected Interface RESTProtocolHandler
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub SendData(ByRef response As REST.RESTResponse)
+		Sub SendData(ByRef restSocket As REST.RESTSocket, ByRef response As REST.RESTResponse)
 		  
 		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Function Socket() As REST.RESTSocket
-		  
-		End Function
 	#tag EndMethod
 
 

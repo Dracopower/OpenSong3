@@ -1,4 +1,7 @@
 ﻿-= Version 2.2 RC =-
+* Add configuration item to set the maximum number of API connections (defaults to 25).  The is no UI entry, only a configuration item in the MainSettings file. Add an attribute 'max_connections' to the 'rcserver' node and set it to the desired value.
+* Fix memory leak in REST API (bug #458) and cleaned up notification spaghetti.
+* Fix bug in REST API to send correct OpCode (for Binary) when transferring JPEG
 * Allow to leave the media file textbox blank for VLC external slides. Remove the %s from the manual parameter list and provide the media resource there.
 * Fix issues with transferring control between windows on Windows where the active control lost focus or a maximised presentation helper window was restored.
 * Fix an issue with no presentation mode set while starting the presentation with F5.

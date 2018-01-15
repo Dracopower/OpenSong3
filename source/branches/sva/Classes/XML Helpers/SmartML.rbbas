@@ -160,13 +160,30 @@ Protected Module SmartML
 		Protected Function GetValueC(xnode As XmlNode, childPath As String, ByRef c As Color, create As Boolean = True) As Boolean
 		  Dim s As String
 		  s = GetValue(xnode, childPath, create)
-		  If Left(s, 1) <> "#" Or Len(s) <> 7 Then Return False
-		  
-		  c = RGB( _
-		  Val("&H" + (Mid(s, 2, 2))), _
-		  Val("&H" + (Mid(s, 4, 2))), _
-		  Val("&H" + (Mid(s, 6, 2))))
-		  
+		  //
+		  // Update to support the RGBA string as well as legacy RGB
+		  //
+		  If Len(s) = 0 Then Return False
+		  If Left(s, 1) <> "#" Then
+		    App.DebugWriter.Write "SmartML::GetValueC, invalid color string '" + s + "'", 1
+		    Return False
+		  End If
+		  Select Case Len(s)
+		  Case 7
+		    c = RGB( _ ' modified for backward compatibility: Color.RGB( _
+		    Val("&H" + (Mid(s, 2, 2))), _
+		    Val("&H" + (Mid(s, 4, 2))), _
+		    Val("&H" + (Mid(s, 6, 2))))
+		  Case 9
+		    c = RGB( _ ' modified for backward compatibility: Color.RGBA(_
+		    Val("&H" + (Mid(s,2,2))), _
+		    Val("&H" + (Mid(s,4,2))), _
+		    Val("&H" + (Mid(s,6,2))), _
+		    Val("&H" + (Mid(s,8,2))))
+		  Case Else
+		    App.DebugWriter.Write "SmartML::GetValueC, invalid color string '" + s + "'", 1
+		    Return False
+		  End Select
 		  Return True
 		End Function
 	#tag EndMethod
@@ -466,16 +483,21 @@ Protected Module SmartML
 
 	#tag Method, Flags = &h1
 		Protected Sub SetValueC(xnode As XmlNode, childPath As String, c As Color)
-		  Dim r, g, b As String
-		  
-		  r = Hex(c.red)
-		  If c.red < 16 Then r = "0" + r
-		  g = Hex(c.green)
-		  If c.green < 16 Then g = "0" + g
-		  b = Hex(c.blue)
-		  If c.blue < 16 Then b = "0" + b
-		  
-		  SetValue xnode, childPath, "#" + r + g + b
+		  // Updated to include alpha value
+		  #if RBVersion>2015 then
+		    SetValue xnode, childPath, "#" _
+		    + c.Red.ToHex(2) _
+		    + c.Green.ToHex(2) _
+		    + c.Blue.ToHex(2) _
+		    + c.Alpha.ToHex(2)
+		  #else
+		    SetValue xnode, childPath, "#" _
+		    + StringUtils.PadLeft(Hex(c.Red),2,"0") _
+		    + StringUtils.PadLeft(Hex(c.Green),2,"0") _
+		    + StringUtils.PadLeft(Hex(c.Blue),2,"0") _
+		    + StringUtils.PadLeft(Hex(c.Alpha),2,"0")
+		  #endif
+		  Return
 		End Sub
 	#tag EndMethod
 

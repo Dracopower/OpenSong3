@@ -107,20 +107,27 @@ Protected Module REST
 		This module and underlying classes provide a RESTful API to OpenSong.
 		This API enables remote control and user interface implementations on
 		other platforms than those supported by RealBasic.
-		For al full description of the API itself, see http://www.opensong.org/d/api
+		For al full description of the API itself, see http://www.opensong.org/home/api
+		For details on REST, https://en.wikipedia.org/wiki/Representational_state_transfer is a good start.
 		
 		Architecture description
+		-------------------------
+		
+		REST
 		The REST module provides several utility functions and contants.
 		It primarily acts as container and namespace for the REST functional classes.
 		
-		The RESTServer is the entry point for all requests. This object acts as server that accepts connections and manages resources.
-		A resource must implement the RESTResource interface. A RESTResource implementation needs to be registered to the RESTServer.
+		RESTServer
+		The RESTServer is a web server with support for the HTTP and Websocket protocol. It is the entry point for all requests. The object acts as server that accepts connections and manages resources.
+		A resource is the first part of the url accepted by the OpenSong webserver, e.g. '/presentation' or '/song'. A resource handling object must implement the RESTResource interface. 
+		Each RESTResource implementation needs to be registered to the RESTServer using the AddResource call.
 		There is no limitation to the number of resources that can be used as long as each resource has a unique name.
 		
-		The RESTServer creates a RESTSocket object for each connection that is established. The RESTSocket handles basic data communication
-		over a TCPSocket. The communicated protocol is not encoded in RESTSocket, but is dispatched to a RESTProtocolHandler implementation.
-		The supported protocols are HTTP and WebSocket, implemented in RESTHttpHandler and RESTWebSocketHandler.
-		The initial protocol used by the RESTSocket is HTTP. The protocol can be switched by calling the ProtocolUpgrade method.
+		The RESTServer maintains a pool of RESTSocket instances, for handling of incomming connections. The RESTSocket handles basic data communication over a TCPSocket.
+		The communicated protocol is not encoded in RESTSocket, but is dispatched to a RESTProtocolHandler implementation.
+		There are two protocols available: HTTP, implemented by RESTHttpHandler and WebSocket, implemented by RESTWebSocketHandler.
+		
+		The initial protocol used by the RESTSocket is HTTP. The protocol can be switched to WebSocket by calling the ProtocolUpgrade method, which is according the WebSocket protocol.
 		The upgrade is executed right after completion of the handing of the incoming data.
 		
 		Credits:
@@ -147,9 +154,6 @@ Protected Module REST
 	#tag Constant, Name = kAccessControlRequestMethod, Type = String, Dynamic = False, Default = \"Access-Control-Request-Method", Scope = Public
 	#tag EndConstant
 
-	#tag Constant, Name = kContentType, Type = String, Dynamic = False, Default = \"Content-Type", Scope = Public
-	#tag EndConstant
-
 	#tag Constant, Name = kContentTypeHtml, Type = String, Dynamic = False, Default = \"text/html", Scope = Public
 	#tag EndConstant
 
@@ -169,6 +173,9 @@ Protected Module REST
 	#tag EndConstant
 
 	#tag Constant, Name = kHeaderContentLength, Type = String, Dynamic = False, Default = \"Content-Length", Scope = Public
+	#tag EndConstant
+
+	#tag Constant, Name = kHeaderContentType, Type = String, Dynamic = False, Default = \"Content-Type", Scope = Public
 	#tag EndConstant
 
 	#tag Constant, Name = kHeaderOrigin, Type = String, Dynamic = False, Default = \"Origin", Scope = Public

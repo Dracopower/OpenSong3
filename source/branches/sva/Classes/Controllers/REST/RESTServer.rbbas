@@ -48,8 +48,35 @@ Inherits ServerSocket
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
+		Function HasResource(resourceName As String) As Boolean
+		  return m_resources.HasKey(LowerCase(resourceName))
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
 		Sub Key(key As String)
 		  m_key = key
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub StatusNotification(clientId As String, subject As String, info As String)
+		  // Part of the iStatusNotifier interface.
+		  
+		  Select Case LowerCase(subject)
+		  Case "presentation"
+		    Dim resource As New RESTResourcePresent()
+		    Dim response As REST.RESTResponse = resource.GetStatus()
+		    Dim wsHandler As New REST.RESTWebSocketHandler()
+		    
+		    For Each socket As TCPSocket In Me.ActiveConnections()
+		      Dim restSocket As REST.RESTSocket = REST.RESTSocket(socket)
+		      If clientId = CStr(restSocket.Handle) Then
+		        wsHandler.SendData(restSocket, response)
+		        restSocket.Flush()
+		      End If
+		    Next
+		  End Select
 		End Sub
 	#tag EndMethod
 
@@ -68,14 +95,14 @@ Inherits ServerSocket
 			Name="Index"
 			Visible=true
 			Group="ID"
-			InheritedFrom="ServerSocket"
+			Type="Integer"
+			EditorType="Integer"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Left"
 			Visible=true
 			Group="Position"
 			Type="Integer"
-			InheritedFrom="ServerSocket"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="MaximumSocketsConnected"
@@ -83,7 +110,6 @@ Inherits ServerSocket
 			Group="Behavior"
 			InitialValue="10"
 			Type="Integer"
-			InheritedFrom="ServerSocket"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="MinimumSocketsAvailable"
@@ -91,13 +117,13 @@ Inherits ServerSocket
 			Group="Behavior"
 			InitialValue="2"
 			Type="Integer"
-			InheritedFrom="ServerSocket"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Name"
 			Visible=true
 			Group="ID"
-			InheritedFrom="ServerSocket"
+			Type="String"
+			EditorType="String"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Port"
@@ -105,20 +131,19 @@ Inherits ServerSocket
 			Group="Behavior"
 			InitialValue="0"
 			Type="Integer"
-			InheritedFrom="ServerSocket"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Super"
 			Visible=true
 			Group="ID"
-			InheritedFrom="ServerSocket"
+			Type="String"
+			EditorType="String"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Top"
 			Visible=true
 			Group="Position"
 			Type="Integer"
-			InheritedFrom="ServerSocket"
 		#tag EndViewProperty
 	#tag EndViewBehavior
 End Class

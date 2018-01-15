@@ -3,14 +3,14 @@ Protected Class RESTResponse
 	#tag Method, Flags = &h0
 		Sub Constructor()
 		  me.headers = new Dictionary()
-		  me.headers.Value(REST.kContentType) = REST.kContentTypeText
+		  me.headers.Value(REST.kHeaderContentType) = REST.kContentTypeText
 		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
 		Sub Constructor(response As String, status as HttpStatus = HttpStatus.OK, contentType As String = REST.kContentTypeText)
 		  me.headers = new Dictionary()
-		  me.headers.Value(REST.kContentType) = contentType
+		  me.headers.Value(REST.kHeaderContentType) = contentType
 		  me.response = response
 		  me.status = status
 		End Sub
@@ -34,7 +34,7 @@ Protected Class RESTResponse
 		    root.SetAttribute("identifier", identifier)
 		  End If
 		  
-		  headers.Value(REST.kContentType) = REST.kContentTypeXml
+		  headers.Value(REST.kHeaderContentType) = REST.kContentTypeXml
 		  
 		  Return xml
 		End Function
@@ -60,20 +60,20 @@ Protected Class RESTResponse
 			Visible=true
 			Group="ID"
 			InitialValue="-2147483648"
-			InheritedFrom="Object"
+			Type="Integer"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Left"
 			Visible=true
 			Group="Position"
 			InitialValue="0"
-			InheritedFrom="Object"
+			Type="Integer"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Name"
 			Visible=true
 			Group="ID"
-			InheritedFrom="Object"
+			Type="String"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="response"
@@ -82,17 +82,35 @@ Protected Class RESTResponse
 			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="status"
+			Group="Behavior"
+			InitialValue="HTTPStatus.OK"
+			Type="HttpStatus"
+			EditorType="Enum"
+			#tag EnumValues
+				"200 - OK"
+				"101 - SwitchingProtocols"
+				"400 - BadRequest"
+				"401 - Unauthorized"
+				"403 - Forbidden"
+				"404 - NotFound"
+				"405 - MethodNotAllowed"
+				"500 - InternalServerError"
+				"501 - NotImplemented"
+			#tag EndEnumValues
+		#tag EndViewProperty
+		#tag ViewProperty
 			Name="Super"
 			Visible=true
 			Group="ID"
-			InheritedFrom="Object"
+			Type="String"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Top"
 			Visible=true
 			Group="Position"
 			InitialValue="0"
-			InheritedFrom="Object"
+			Type="Integer"
 		#tag EndViewProperty
 	#tag EndViewBehavior
 End Class

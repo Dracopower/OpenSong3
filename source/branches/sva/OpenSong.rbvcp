@@ -241,7 +241,6 @@ Module=Hexify;Classes/Utilities/Hexify.rbbas;&h6E1EFFFF;&hBD47E01A;false
 Interface=RESTProtocolHandler;Classes/Controllers/REST/RESTProtocolHandler.rbbas;&h281D87FF;&h3C5B2FFF;false
 Class=RESTHttpHandler;Classes/Controllers/REST/RESTHttpHandler.rbbas;&h2C8DAFFF;&h3C5B2FFF;false
 Class=RESTWebSocketHandler;Classes/Controllers/REST/RESTWebSocketHandler.rbbas;&h5075DFFF;&h3C5B2FFF;false
-Interface=iStatusNotifier;Classes/Interfaces/iStatusNotifier.rbbas;&h7E1537FF;&h227B4962;false
 Class=ExternalRenderer;Classes/Controllers/ExternalRenderer.rbbas;&h43F1CFFF;&h6B93A7F1;false
 BuildSteps=Build Automation;Build Automation.rbbas;&h48CAB32;&h0;false
 AppMenuBar=MainMenu

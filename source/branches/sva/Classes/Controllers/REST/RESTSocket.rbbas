@@ -8,7 +8,7 @@ Inherits TCPSocket
 		  Dim authenticated As Boolean = True
 		  
 		  Try
-		    If handler.ParseRequest(Me.readAll()) Then
+		    If handler.ParseRequest(self) Then
 		      
 		      If Not IsNull(handler.AuthenticationKey()) Then
 		        If handler.Method() = HttpMethod.Post Then
@@ -21,7 +21,7 @@ Inherits TCPSocket
 		        m_server.DispatchRequest(handler.Resource())
 		        
 		        If Not IsNull(resource) Then
-		          response = resource.Process(handler)
+		          response = resource.Process(self, handler)
 		        Else
 		          response = New REST.RESTResponse("The requested resource could not be found", HttpStatus.NotFound)
 		        End If
@@ -41,9 +41,11 @@ Inherits TCPSocket
 		  
 		  If Not IsNull(response) Then
 		    If Me.IsConnected() Then
-		      handler.SendData(response)
+		      handler.SendData(self, response)
 		    End If
 		  End If
+		  
+		  Me.Flush()
 		  
 		  'Resources that call ProtocolUpgrade() will insert new handlers in a stack (as first item)
 		  'Inserted handlers will be removed in such way that the last inserted handler
@@ -62,6 +64,19 @@ Inherits TCPSocket
 		End Function
 	#tag EndMethod
 
+	#tag Method, Flags = &h0
+		Sub Close()
+		  'Actively remove all protocalhandlers from the list of handlers (should only contain one handler)
+		  'This will trigger the destructor, allowing the handler to do closing activities
+		  While(m_protocolHandler.Ubound()>1)
+		    Dim hander As REST.RESTProtocolHandler = m_protocolHandler.Pop()
+		    hander.Close(self)
+		  Wend
+		  
+		  Super.Close()
+		End Sub
+	#tag EndMethod
+
 	#tag Method, Flags = &h1021
 		Private Sub Constructor()
 		  'The constructor without parameters is hidden because it is not allowed to call this constructor
@@ -77,7 +92,7 @@ Inherits TCPSocket
 		  // Constructor() -- From SocketCore
 		  Super.Constructor
 		  
-		  m_protocolHandler.Append(New REST.RESTHttpHandler(self))
+		  m_protocolHandler.Append(New REST.RESTHttpHandler())
 		  m_server = server
 		  
 		End Sub
@@ -85,11 +100,10 @@ Inherits TCPSocket
 
 	#tag Method, Flags = &h0
 		Sub Destructor()
-		  'Actively remove all protocalhandlers from the list of handlers (should only contain one handler)
-		  'This will trigger the destructor, allowing the handler to do closing activities
-		  While(m_protocolHandler.Ubound()>1)
-		    Call m_protocolHandler.Pop()
-		  Wend
+		  If Me.IsConnected() Then
+		    Close()
+		  End If
+		  
 		End Sub
 	#tag EndMethod
 
@@ -124,6 +138,7 @@ Inherits TCPSocket
 			Visible=true
 			Group="ID"
 			InheritedFrom="TCPSocket"
+			EditorType="Integer"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Left"
@@ -137,6 +152,7 @@ Inherits TCPSocket
 			Visible=true
 			Group="ID"
 			InheritedFrom="TCPSocket"
+			EditorType="String"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Port"
@@ -151,6 +167,7 @@ Inherits TCPSocket
 			Visible=true
 			Group="ID"
 			InheritedFrom="TCPSocket"
+			EditorType="String"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Top"

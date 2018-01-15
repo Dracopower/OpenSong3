@@ -10,7 +10,7 @@ Implements REST.RESTResource
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Function Process(protocolHandler As REST.RESTProtocolHandler) As REST.RESTresponse
+		Function Process(ByRef restSocket As REST.RESTSocket, protocolHandler As REST.RESTProtocolHandler) As REST.RESTresponse
 		  // Part of the REST.RESTResource interface.
 		  
 		  Dim response As REST.RESTResponse = Nil
@@ -32,8 +32,7 @@ Implements REST.RESTResource
 		        response.headers.Value("Connection") = "Upgrade"
 		        response.headers.Value("Sec-WebSocket-Accept") = serverKey
 		        
-		        protocolHandler.Socket.ProtocolUpgrade(New REST.RESTWebSocketHandler(protocolHandler.Socket))
-		        
+		        restSocket.ProtocolUpgrade(New REST.RESTWebSocketHandler())
 		      Else
 		        response = New REST.RESTResponse("WebSocket version not supported", HttpStatus.BadRequest)
 		        response.headers.Value("Sec-WebSocket-Version") = RESTWebSocketHandler.kProtocolRFC6455
@@ -44,15 +43,16 @@ Implements REST.RESTResource
 		    End If
 		  ElseIf protocolHandler IsA RESTWebSocketHandler Then
 		    
-		    Dim wsHandler As RESTWebSocketHandler = RESTWebSocketHandler(protocolHandler)
 		    Dim success As Boolean = False
 		    
 		    'Process WebSocket actions
+		    Dim resource As String = LowerCase(protocolHandler.Identifier())
+		    
 		    Select Case action
 		    Case "subscribe"
-		      success = wsHandler.SubscribeNotifier(wsHandler.Identifier())
+		      success = App.StatusNotifierSubscribe(resource, CStr(restSocket.Handle))
 		    Case "unsubscribe"
-		      success = wsHandler.UnsubscribeNotifier(wsHandler.Identifier())
+		      success = App.StatusNotifierUnsubscribe(resource, CStr(restSocket.Handle))
 		    End Select
 		    
 		    If success Then
