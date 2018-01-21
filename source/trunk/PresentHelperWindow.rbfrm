@@ -946,16 +946,6 @@ End
 	#tag Method, Flags = &h0
 		Sub ScrollTo(index As Integer)
 		  lst_all_slides.ListIndex = index - 1
-		  //
-		  // Set the scroll position so the line is visible
-		  //
-		  Dim nRows As Integer
-		  Dim newPos As Integer
-		  nRows = lst_all_slides.Height \ lst_all_slides.RowHeight
-		  
-		  newPos = Max((index) - (nRows \ 2), 0)
-		  
-		  lst_all_slides.ScrollPosition = newPos
 		End Sub
 	#tag EndMethod
 
