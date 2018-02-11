@@ -93,7 +93,6 @@ Inherits Canvas
 	#tag Event
 		Sub Open()
 		  Font = New FontFace
-		  Enabled = True
 		  //++EMP, 12/05
 		  // Select which visual to use (Paint event handler)
 		  '++JRC Prevent NilObject Exception if MainSettings is Nil
