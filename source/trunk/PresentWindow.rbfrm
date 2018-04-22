@@ -1138,6 +1138,7 @@ End
 		  Dim sDoc() As FolderItem
 		  Dim j As Integer = 0
 		  '--
+		  Dim xSongStyle, xCustomStyle As XmlNode
 		  
 		  If atSlide < 0 Then
 		    atSlide = Me.CurrentSlide
@@ -1208,7 +1209,29 @@ End
 		        SmartML.SetValue(s.DocumentElement, "presentation", presentation)
 		      End If
 		      
-		      SongML.ToSetML s.DocumentElement
+		      ' we need the proper style in order to format the subtitle correctly
+		      ' we also might have to know whether this style is a custom style, i.e. comes from a style slide
+		      xNewSlide = SmartML.GetNode(newGroup, "slides/slide", True)
+		      SmartML.SetValue(newGroup, "@type", "song")
+		      xSongStyle = SmartML.GetNode(s.DocumentElement, "style")
+		      If xSongStyle <> Nil Then
+		        xCustomStyle = SetML.GetCustomStyle(xNewSlide)
+		        If xCustomStyle <> Nil And Not SetML.SongStylePreferred(xNewSlide) Then
+		          SmartML.RemoveChild(s.DocumentElement, xSongStyle)
+		          xSongStyle = xCustomStyle
+		        Else
+		          Dim tempSlideStyle As New SlideStyle(xSongStyle)
+		          // We'll just use the dictionary index as the key; this makes it unique if unimaginative
+		          StyleDict.Value(str(StyleDict.Count)) = tempSlideStyle
+		          // replace the style node with a new one containing only the index attribute
+		          Dim newStyleNode As XmlNode = s.CreateElement("style")
+		          newStyleNode.SetAttribute "index", Str(StyleDict.Count - 1)
+		          newStyleNode = SmartML.ReplaceWithImportNode(xSongStyle, newStyleNode)
+		        End If
+		      Else
+		        xSongStyle = SetML.GetStyle(xNewSlide)
+		      End If
+		      SongML.ToSetML(s.DocumentElement, xSongStyle)
 		      If SmartML.GetNode(s.DocumentElement, "slides").ChildCount < 1 Then
 		        App.MouseCursor = Nil
 		        If showErrorPopup Then
@@ -1219,7 +1242,6 @@ End
 		      End If
 		      
 		      newGroup = SmartML.ReplaceWithImportNode(newGroup, s.DocumentElement)
-		      SmartML.RemoveNode(newGroup, "style/@index") // fix leaked index
 		      '++JRC
 		      SmartML.SetValueN(newgroup, "@ItemNumber", NumberOfItems)
 		      SmartML.SetValueB(newgroup, "@LiveInsertion", True)

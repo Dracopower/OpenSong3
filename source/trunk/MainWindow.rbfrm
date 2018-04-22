@@ -12679,11 +12679,12 @@ End
 		  Dim Presentation As String
 		  '++JRC
 		  Dim ActiveCustomStyle As XmlNode = Nil
+		  Dim CustomStyles() As XmlNode
 		  Dim ItemNumber As Integer
 		  Dim i As Integer
 		  '--
 		  Dim Transition As Integer
-		  Dim SongStyle, SlideSongStyle As XmlNode
+		  Dim SongStyle, SetItemStyle As XmlNode
 		  Dim SongPath As String
 		  
 		  App.MouseCursor = System.Cursors.Wait
@@ -12728,7 +12729,7 @@ End
 		        End If
 		        '--
 		        
-		        SlideSongStyle = SmartML.GetNode(slide_group, "style")
+		        SetItemStyle = SmartML.GetNode(slide_group, "style")
 		        slide_group = SmartML.ReplaceWithImportNode(slide_group, songDoc.DocumentElement)
 		        '++JRC Assign an index for this set item
 		        SmartML.SetValueN(slide_group, "@ItemNumber", ItemNumber)
@@ -12743,21 +12744,20 @@ End
 		        
 		        SongStyle = SmartML.GetNode(slide_group, "style", False)
 		        'Check if there is an overide for the song style in this slide
-		        If SlideSongStyle <> Nil Then
+		        If SetItemStyle <> Nil Then
 		          If SongStyle <> Nil Then
 		            SmartML.RemoveChild(slide_group, SongStyle)
 		          End If
-		          Call SmartML.InsertChildNode(slide_group, SlideSongStyle, slide_group.ChildCount())
-		          SongML.ToSetML slide_group, SlideSongStyle
+		          Call SmartML.InsertChildNode(slide_group, SetItemStyle, slide_group.ChildCount())
+		          SongML.ToSetML slide_group, SetItemStyle
 		        Else
 		          '++JRC: Pass ActiveCustomStyle
 		          ' But check for an override first!
 		          '++Vwout: The better place to do this is SetML
-		          If ActiveCustomStyle <> Nil Then
+		          If ActiveCustomStyle <> Nil And Not SetML.SongStylePreferred(Nil) Then
 		            If SongStyle <> Nil Then
 		              SmartML.RemoveChild(slide_group, SongStyle)
 		            End If
-		            Call SmartML.InsertChildNode(slide_group, ActiveCustomStyle, slide_group.ChildCount())
 		            SongStyle = ActiveCustomStyle
 		          End If
 		          SongML.ToSetML slide_group, SongStyle
@@ -12781,10 +12781,15 @@ End
 		      '++JRC: Save Current Style
 		    Elseif SmartML.GetValue(slide_group, "@type", True) = "style"  Then
 		      if SmartML.GetValue(slide_group, "@action", True) = "new" then
+		        CustomStyles.Append(ActiveCustomStyle)
 		        ActiveCustomStyle = SmartML.GetNode(slide_group, "style", False)
 		      else
 		        'reverting to previous style
-		        ActiveCustomStyle = Nil
+		        If CustomStyles.Ubound >= 0 Then
+		          ActiveCustomStyle = CustomStyles.Pop
+		        Else
+		          ActiveCustomStyle = Nil
+		        End If
 		      end if
 		      slide_group  = slide_group.NextSibling
 		    Else
