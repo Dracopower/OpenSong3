@@ -1219,6 +1219,7 @@ End
 		      End If
 		      
 		      newGroup = SmartML.ReplaceWithImportNode(newGroup, s.DocumentElement)
+		      SmartML.RemoveNode(newGroup, "style/@index") // fix leaked index
 		      '++JRC
 		      SmartML.SetValueN(newgroup, "@ItemNumber", NumberOfItems)
 		      SmartML.SetValueB(newgroup, "@LiveInsertion", True)
@@ -1762,12 +1763,10 @@ End
 		  StyleNode = SmartML.GetNode(de, "scripture_style")
 		  tempSlideStyle = New SlideStyle(StyleNode)
 		  StyleDict.Value("scripture_style") = tempSlideStyle
-		  SmartML.SetValue de, "scripture_style/@index", "scripture_style"
 		  'System.DebugLog "Completed scripture_style"
 		  StyleNode = SmartML.GetNode(de, "default_style")
 		  tempSlideStyle = New SlideStyle(StyleNode)
 		  StyleDict.Value("default_style") = tempSlideStyle
-		  SmartML.SetValue de, "default_style/@index", "default_style"
 		  'System.DebugLog "Completed default_style"
 		  //--
 		  

@@ -477,7 +477,8 @@ Inherits Application
 		    End If
 		  End If
 		  // Move some XML around in MyPresentSettings to align with V1.0 BL13 changes.
-		  UpdateDefaultStyle
+		  UpdatePresentSettings
+		  
 		  ' --- BUILD CAPO LIST ---
 		  CapoList.Append "1"
 		  CapoList.Append "2"
@@ -1214,46 +1215,6 @@ Inherits Application
 		End Function
 	#tag EndMethod
 
-	#tag Method, Flags = &h1
-		Protected Sub RemoveNode(root As XmlNode, childname As String)
-		  Dim ChildNode As XmlNode
-		  Dim ChildPath() As String
-		  Dim CurChild As String
-		  
-		  If root = Nil Then Return
-		  
-		  ChildPath = Split(childname, "/")
-		  If UBound(ChildPath) = -1 Then Return
-		  
-		  CurChild = ChildPath(0)
-		  ChildPath.Remove 0
-		  
-		  // Are we looking for an attribute or a node?
-		  If Left(CurChild,1) = "@" Then
-		    CurChild = Mid(CurChild, 2)
-		    If Ubound(ChildPath) > -1 Then Return // Illegal path passed (can't have /something/@att/something)
-		    XmlElement(root).RemoveAttribute CurChild
-		    Return
-		  End If
-		  
-		  ChildNode = root.FirstChild
-		  
-		  While ChildNode <> Nil
-		    If ChildNode.Name = CurChild Then // We've found it
-		      If UBound(ChildPath) > -1 Then // But we have more to go
-		        App.RemoveNode(ChildNode, Join(ChildPath, "/"))
-		        Return
-		      Else
-		        root.RemoveChild ChildNode
-		        Return
-		      End If // If Ubound...
-		    End If // If ChildNode.Name ...
-		    ChildNode = ChildNode.NextSibling
-		  Wend
-		  Return
-		End Sub
-	#tag EndMethod
-
 	#tag Method, Flags = &h0
 		Sub RestoreWindow(Wnd As Window)
 		  Dim status As Integer
@@ -1560,50 +1521,62 @@ Inherits Application
 	#tag EndMethod
 
 	#tag Method, Flags = &h1
-		Protected Sub UpdateDefaultStyle()
-		  //++
-		  // Ed Palmer, November 2006 (V1.0 BL13)
-		  //
-		  // Change the layout of the PresentSettings XML to move certain slide-level
-		  // elements (subtitles, descriptive captions, emphasize choruses) to the
-		  // <default_style> section of the XML document.
-		  //
-		  // This helps fix a problem with song-level styles not properly displaying
-		  // the subtitles selected for the song instead of the default style.
-		  // Actually, it makes the code easier to deal with by making <default_style>
-		  // look like any other <style> section, simplifying those areas of the code.
-		  //
-		  // Also, insert a document-level version number to flag that this is updated.
-		  //
-		  //--
+		Protected Sub UpdatePresentSettings()
 		  Dim settings As XmlElement
+		  Dim version, currentVersion As Double
 		  
 		  If MyPresentSettings.DocumentElement = Nil Then Return
 		  
 		  settings = MyPresentSettings.DocumentElement // save typing
 		  
-		  If SmartML.GetValueN(settings, "@version") >= 1.0 Then Return // Already at current version
+		  version = SmartML.GetValueN(settings, "@version")
+		  currentVersion = 1.1
+		  If version >= currentVersion Then Return // Already at current version
 		  
-		  If SmartML.GetValue(settings, "style/@song_subtitles", False) <> "" Then
-		    SmartML.SetValue(settings, "default_style/song_subtitle", SmartML.GetValue(settings, "style/@song_subtitles"))
-		    App.RemoveNode(settings, "style/@song_subtitles")
+		  If version < 1.1 Then
+		    // these might accidentally have leeked from their internal use during presentation into the settings
+		    // if they did, they may migrate by style settings into songs or set items and disrupt proper style handling 
+		    SmartML.RemoveNode(settings, "default_style/@index")
+		    SmartML.RemoveNode(settings, "scripture_style/@index")
 		  End If
 		  
-		  If SmartML.GetValue(settings, "style/@descriptive_subtitle_info", False) <> "" Then
-		    SmartML.SetValue(settings, "default_style/subtitle/@descriptive", SmartML.GetValue(settings, "style/@descriptive_subtitle_info", False))
-		    App.RemoveNode(settings, "style/@descriptive_subtitle_info")
+		  If version < 1.0 Then
+		    //++
+		    // Ed Palmer, November 2006 (V1.0 BL13)
+		    //
+		    // Change the layout of the PresentSettings XML to move certain slide-level
+		    // elements (subtitles, descriptive captions, emphasize choruses) to the
+		    // <default_style> section of the XML document.
+		    //
+		    // This helps fix a problem with song-level styles not properly displaying
+		    // the subtitles selected for the song instead of the default style.
+		    // Actually, it makes the code easier to deal with by making <default_style>
+		    // look like any other <style> section, simplifying those areas of the code.
+		    //
+		    // Also, insert a document-level version number to flag that this is updated.
+		    //
+		    //--
+		    If SmartML.GetValue(settings, "style/@song_subtitles", False) <> "" Then
+		      SmartML.SetValue(settings, "default_style/song_subtitle", SmartML.GetValue(settings, "style/@song_subtitles"))
+		      SmartML.RemoveNode(settings, "style/@song_subtitles")
+		    End If
+		    
+		    If SmartML.GetValue(settings, "style/@descriptive_subtitle_info", False) <> "" Then
+		      SmartML.SetValue(settings, "default_style/subtitle/@descriptive", SmartML.GetValue(settings, "style/@descriptive_subtitle_info", False))
+		      SmartML.RemoveNode(settings, "style/@descriptive_subtitle_info")
+		    End If
+		    
+		    If SmartML.GetValue(settings, "style/@highlight_chorus") <> "" Then
+		      SmartML.SetValue(settings, "default_style/body/@highlight_chorus", SmartML.GetValue(settings, "style/@highlight_chorus"))
+		      SmartML.RemoveNode(settings, "style/@highlight_chorus")
+		    End If
+		    
+		    SmartML.SetValueB(MyPresentSettings.DocumentElement, "song_style_preferred", True)
+		    
+		    If Not SmartML.XDocToFile(App.MyPresentSettings, App.DocsFolder.Child("Settings").Child("PresentSettings")) Then SmartML.DisplayError
 		  End If
 		  
-		  If SmartML.GetValue(settings, "style/@highlight_chorus") <> "" Then
-		    SmartML.SetValue(settings, "default_style/body/@highlight_chorus", SmartML.GetValue(settings, "style/@highlight_chorus"))
-		    App.RemoveNode(settings, "style/@highlight_chorus")
-		  End If
-		  
-		  SmartML.SetValueN(settings, "@version", 1.0)
-		  
-		  SmartML.SetValueB(MyPresentSettings.DocumentElement, "song_style_preferred", True)
-		  
-		  If Not SmartML.XDocToFile(App.MyPresentSettings, App.DocsFolder.Child("Settings").Child("PresentSettings")) Then SmartML.DisplayError
+		  SmartML.SetValueN(settings, "@version", currentVersion)
 		  
 		  Return
 		End Sub

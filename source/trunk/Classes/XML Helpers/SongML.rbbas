@@ -133,7 +133,7 @@ Module SongML
 		Sub CloneStyle(fromNode As XmlNode, toNode As XmlNode)
 		  SmartML.CloneAttributes fromNode, toNode
 		  SmartML.CloneChildren fromNode, toNode
-		  
+		  SmartML.RemoveNode(toNode, "@index")
 		End Sub
 	#tag EndMethod
 
