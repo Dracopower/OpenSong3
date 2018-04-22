@@ -1254,15 +1254,15 @@ Liedteilmarken im Textfeld des Liededitors erscheinen.
 
   <style_preview>
     <slide_groups>
-      <slide_group name="Beispieltitel" type="custom" seconds="0" loop="false">
+      <slide_group name="Stil-Vorschau" type="custom" seconds="0" loop="false">
         <title>Beispieltitel</title>
         <subtitle>Beispiel-Untertitel</subtitle>
         <notes>Lorem ipsum dolor sit amet consectetuer dui penatibus …</notes>
         <slides>
           <slide>
-            <body>Dies ist ein Beispiel.
-Hier sehen Sie den Standardtext.
-Klicken Sie auf dieses Feld, um einen eigenen Stil zu definieren.</body>
+            <body>Hier sehen Sie den Textkörper.
+Dies ist ein Beispiel.
+Klicken Sie auf dieses Feld, um diesen Stil anzupassen.</body>
           </slide>
         </slides>
       </slide_group>
