@@ -536,7 +536,7 @@ Protected Module SetML
 		    line = RTrim(line)
 		    
 		    // CHANGE-PJ: Second language feature - if last character of section name = "L" for "L"anguage -> "section" and "Style" parameter added
-		    Call DrawFontString(g, line, 0, HeaderSize, bodyStyle, RealBorder, 0, 0, bodyMargins, g.Width, Style.BodyAlign, MainHeight, Style.BodyVAlign, bodyTabs, insertafterbreak, section, Style) 'EMP 09/05
+		    Call DrawFontString(g, line, 0, HeaderSize, bodyStyle, RealBorder, 0, 0, bodyMargins, g.Width, Style.BodyAlign, g.Height - HeaderSize - FooterSize, Style.BodyVAlign, bodyTabs, insertafterbreak, section, Style) 'EMP 09/05
 		  End If
 		  
 		  Profiler.EndProfilerEntry

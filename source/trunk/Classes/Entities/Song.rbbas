@@ -179,14 +179,14 @@ Protected Class Song
 	#tag Method, Flags = &h0
 		Sub LinkedSongs(Assigns newSongs() as String)
 		  Dim i As Integer
-		  Dim numThemes As Integer
+		  Dim numSongs As Integer
 		  
-		  numThemes = UBound(newSongs)
+		  numSongs = UBound(newSongs)
 		  
-		  ReDim SongThemes(numThemes)
+		  ReDim LinkedSongs(numSongs)
 		  
 		  i = 0
-		  Do Until i > numThemes
+		  Do Until i > numSongs
 		    LinkedSongs(i) = newSongs(i)
 		    i = i + 1
 		  Loop
@@ -1240,6 +1240,12 @@ Protected Class Song
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="LinkedSongList"
+			Group="Behavior"
+			Type="String"
+			EditorType="MultiLineEditor"
+		#tag EndViewProperty
+		#tag ViewProperty
 			Name="Lyrics"
 			Group="Behavior"
 			Type="String"
@@ -1278,6 +1284,7 @@ Protected Class Song
 			Name="ThemeList"
 			Group="Behavior"
 			Type="String"
+			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="TimeSignature"

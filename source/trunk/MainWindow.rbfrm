@@ -14411,10 +14411,6 @@ End
 		Protected TempSet As XmlDocument
 	#tag EndProperty
 
-	#tag Property, Flags = &h1
-		Protected Untitled As Integer
-	#tag EndProperty
-
 
 #tag EndWindowCode
 

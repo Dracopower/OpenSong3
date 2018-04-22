@@ -2563,7 +2563,7 @@ Module StringUtils
 		  // Replaces all characters in from_chars to the corresponding character in to_chars
 		  // If from_chars contains more characters than to_chars then the characters that have no matching translation value, will be translated to the last character in to_chars
 		  // If to_chars is empty the behaviour is equal to Remove(s, from_chars)
-		  // Translate("test", "ts", "fz") = "fezd".
+		  // Translate("test", "ts", "fz") = "fezf".
 		  
 		  
 		  Dim i As Integer
