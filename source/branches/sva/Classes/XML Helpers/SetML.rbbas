@@ -502,6 +502,14 @@ Protected Module SetML
 		    
 		    Profiler.EndProfilerEntry
 		    
+		    line = ""
+		    For i = 1 To UBound(lines)
+		      line = line + lines(i) + Chr(10)
+		    Next i
+		    line = RTrim(line)
+		    
+		    // CHANGE-PJ: Second language feature - if last character of section name = "L" for "L"anguage -> "section" and "Style" parameter added
+		    Call DrawFontString(g, line, 0, HeaderSize, bodyStyle, RealBorder, 0, 0, bodyMargins, g.Width, Style.BodyAlign, g.Height - HeaderSize - FooterSize, Style.BodyVAlign, bodyTabs, insertafterbreak, section, Style) 'EMP 09/05
 		  End If
 		  
 		  Profiler.EndProfilerEntry
@@ -938,6 +946,43 @@ Protected Module SetML
 		End Function
 	#tag EndMethod
 
+	#tag Method, Flags = &h0
+		Function GetCustomStyle(xSlide As XmlNode) As XmlNode
+		  Dim SlideGroup, prev_group As XmlNode
+		  Dim reverting As Integer
+		  
+		  If xSlide = Nil Then Return Nil
+		  If xSlide.Parent = Nil Then Return Nil
+		  SlideGroup = xSlide.Parent.Parent
+		  If SlideGroup = Nil Then Return Nil
+		  
+		  reverting = 0
+		  
+		  prev_group = SlideGroup.PreviousSibling
+		  While prev_group <> Nil
+		    If SmartML.GetValue(prev_group, "@type") = "style" Then
+		      If SmartML.GetValue(prev_group, "@action") = "new" Then
+		        If reverting > 0 Then
+		          If reverting > 0 Then reverting = reverting - 1
+		          prev_group = prev_group.PreviousSibling
+		        Else
+		          Return SmartML.GetNode(prev_group, "style", False)
+		        End If
+		      ElseIf SmartML.GetValue(prev_group, "@action") = "revert" Then
+		        reverting = reverting + 1
+		        prev_group = prev_group.PreviousSibling
+		      Else ' unknown action type
+		        prev_group = prev_group.PreviousSibling
+		      End If
+		    Else ' not a style group
+		      prev_group = prev_group.PreviousSibling
+		    End If
+		  Wend
+		  
+		  Return Nil
+		End Function
+	#tag EndMethod
+
 	#tag Method, Flags = &h1
 		Protected Function GetNextSlide(xSlide As XmlNode) As XmlNode
 		  Dim slide_group As XmlNode
@@ -1090,46 +1135,22 @@ Protected Module SetML
 		Protected Function GetStyle(xSlide As XmlNode) As XmlNode
 		  //++EMP 09/05
 		  
-		  Dim prev_group, neighbor_slide, style As XmlNode
+		  Dim neighbor_slide, style As XmlNode
 		  Dim GetNext As Boolean
 		  Dim SlideType As String
 		  Dim SlideGroup As XmlNode
 		  
-		  GetNext = SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "style/@blank_uses_next", True, True)
 		  SlideGroup = xSlide.Parent.Parent
-		  SlideType = SmartML.GetValue(SlideGroup, "@type", False)
 		  
 		  ' Check for a directly defined override style
 		  style = SmartML.GetNode(SlideGroup, "style", False)
-		  //++
-		  // February 2007: Songs can either take on the style defined by the song
-		  // or by a style change.  The behavior prior to BL14 was that the song style
-		  // prevailed always.  In BL15, introduce a "hidden" control for this, allowing a style
-		  // change to control the song's appearance (which seems to me to be the
-		  // "path of least astonishment" after spending hours to chase down what I thought
-		  // was a bug -- EMP)
-		  //--
-		  If style <> Nil Then
-		    If SlideType <> "song" Then Return style
-		    //++
-		    // Only need to determine if the song style or the set style has precedence if there
-		    // is a style change affecting the song.
-		    //--
-		    If (Not StyleChangeActive(SlideGroup)) Or (SongStylePreferred(SlideGroup)) Then Return Style
-		  End If
+		  If style <> Nil Then Return style
 		  
-		  ' If we are on a blank, and there is another slide after, we'll search for it's style instead.
-		  ' Or, if we're at the end and we're blank (name), then we'll use the previous
-		  ' TODO: Make this a selectable feature
-		  '
-		  'Changed (Joshua)
-		  ' Or custom slide that the user forgot to name(Yes I've done this)
-		  ' Incorporated into Ed's version by adding a condition to the outer If
-		  //++
-		  // February 2007: take advantage of the addition of a "blank" type.
-		  //--
+		  SlideType = SmartML.GetValue(SlideGroup, "@type", False)
 		  
+		  ' Determine the style for blank slides
 		  If SlideType = "blank" Then
+		    GetNext = SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "style/@blank_uses_next", True, True)
 		    If GetNext Then
 		      neighbor_slide = GetNextSlide(xSlide)
 		      If neighbor_slide <> Nil Then Return GetStyle(neighbor_slide)
@@ -1142,29 +1163,8 @@ Protected Module SetML
 		  //++
 		  // Chase back to find possible style changes
 		  //--
-		  Dim reverting As Boolean
-		  reverting = False
-		  
-		  prev_group = SlideGroup.PreviousSibling
-		  While prev_group <> Nil
-		    If SmartML.GetValue(prev_group, "@type") = "style" Then
-		      If SmartML.GetValue(prev_group, "@action") = "new" Then
-		        If reverting Then
-		          reverting = False
-		          prev_group = prev_group.PreviousSibling
-		        Else
-		          Return SmartML.GetNode(prev_group, "style", False)
-		        End If
-		      ElseIf SmartML.GetValue(prev_group, "@action") = "revert" Then
-		        reverting = True
-		        prev_group = prev_group.PreviousSibling
-		      Else ' unknown action type
-		        prev_group = prev_group.PreviousSibling
-		      End If
-		    Else ' not a style group
-		      prev_group = prev_group.PreviousSibling
-		    End If
-		  Wend
+		  style = GetCustomStyle(xSlide)
+		  If style <> Nil Then Return style
 		  
 		  ' No directly connected styles, and no overrides, so...
 		  If SlideType = "scripture" Then

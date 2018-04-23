@@ -387,6 +387,46 @@ Protected Module SmartML
 	#tag EndMethod
 
 	#tag Method, Flags = &h1
+		Protected Sub RemoveNode(root As XmlNode, childname As String)
+		  Dim ChildNode As XmlNode
+		  Dim ChildPath() As String
+		  Dim CurChild As String
+		  
+		  If root = Nil Then Return
+		  
+		  ChildPath = Split(childname, "/")
+		  If UBound(ChildPath) = -1 Then Return
+		  
+		  CurChild = ChildPath(0)
+		  ChildPath.Remove 0
+		  
+		  // Are we looking for an attribute or a node?
+		  If Left(CurChild,1) = "@" Then
+		    CurChild = Mid(CurChild, 2)
+		    If Ubound(ChildPath) > -1 Then Return // Illegal path passed (can't have /something/@att/something)
+		    XmlElement(root).RemoveAttribute CurChild
+		    Return
+		  End If
+		  
+		  ChildNode = root.FirstChild
+		  
+		  While ChildNode <> Nil
+		    If ChildNode.Name = CurChild Then // We've found it
+		      If UBound(ChildPath) > -1 Then // But we have more to go
+		        RemoveNode(ChildNode, Join(ChildPath, "/"))
+		        Return
+		      Else
+		        root.RemoveChild ChildNode
+		        Return
+		      End If // If Ubound...
+		    End If // If ChildNode.Name ...
+		    ChildNode = ChildNode.NextSibling
+		  Wend
+		  Return
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h1
 		Protected Sub RemoveSelf(xnode As XmlNode)
 		  If xnode = Nil Then Return
 		  If xnode.Parent <> Nil Then

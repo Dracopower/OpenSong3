@@ -115,7 +115,7 @@ Begin Window MainSettingsWindow
       TextUnit        =   0
       Top             =   7
       Underline       =   False
-      Value           =   3
+      Value           =   1
       Visible         =   True
       Width           =   623
       Begin GroupBox grp_settings_general
@@ -167,6 +167,7 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   0
             TabPanelIndex   =   1
+            TabStop         =   True
             Text            =   "Church CCLI License"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -276,6 +277,7 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   3
             TabPanelIndex   =   1
+            TabStop         =   True
             Text            =   "Language:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -369,6 +371,7 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   0
             TabPanelIndex   =   1
+            TabStop         =   True
             Text            =   "User Defined 1:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -451,6 +454,7 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   2
             TabPanelIndex   =   1
+            TabStop         =   True
             Text            =   "User Defined 2:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -533,6 +537,7 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   4
             TabPanelIndex   =   1
+            TabStop         =   True
             Text            =   "User Defined 3:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -760,6 +765,7 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   0
             TabPanelIndex   =   4
+            TabStop         =   True
             Text            =   "Log level (0-10)"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -917,6 +923,7 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   0
             TabPanelIndex   =   4
+            TabStop         =   True
             Text            =   "Server:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -951,6 +958,7 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   2
             TabPanelIndex   =   4
+            TabStop         =   True
             Text            =   "Port:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -1259,6 +1267,7 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   2
             TabPanelIndex   =   2
+            TabStop         =   True
             Text            =   "\\"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -1324,6 +1333,7 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   4
             TabPanelIndex   =   2
+            TabStop         =   True
             Text            =   "(use with caution; forces restart)"
             TextAlign       =   0
             TextColor       =   &cFF000000
@@ -1418,6 +1428,7 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   0
             TabPanelIndex   =   2
+            TabStop         =   True
             Text            =   "Location of Powerpoint Viewer"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -1557,6 +1568,7 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   4
             TabPanelIndex   =   2
+            TabStop         =   True
             Text            =   "Location of Videolan client"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -1662,6 +1674,7 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   0
             TabPanelIndex   =   5
+            TabStop         =   True
             Text            =   "Headings:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -1696,6 +1709,7 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   1
             TabPanelIndex   =   5
+            TabStop         =   True
             Text            =   "Labels:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -1730,6 +1744,7 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   2
             TabPanelIndex   =   5
+            TabStop         =   True
             Text            =   "Text Fields:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -1764,6 +1779,7 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   3
             TabPanelIndex   =   5
+            TabStop         =   True
             Text            =   "Fixed-width Text:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -1828,6 +1844,7 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   5
             TabPanelIndex   =   5
+            TabStop         =   True
             Text            =   "Buttons:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -1892,6 +1909,7 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   7
             TabPanelIndex   =   5
+            TabStop         =   True
             Text            =   "Large Headings:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -2136,6 +2154,7 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   2
             TabPanelIndex   =   5
+            TabStop         =   True
             Text            =   "Song, verse"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -2170,6 +2189,7 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   3
             TabPanelIndex   =   5
+            TabStop         =   True
             Text            =   "Song, bridge"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -2234,6 +2254,7 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   5
             TabPanelIndex   =   5
+            TabStop         =   True
             Text            =   "Song, pre-chorus"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -2298,6 +2319,7 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   7
             TabPanelIndex   =   5
+            TabStop         =   True
             Text            =   "Song, chorus"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -2362,6 +2384,7 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   9
             TabPanelIndex   =   5
+            TabStop         =   True
             Text            =   "Song, tag"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -2426,6 +2449,7 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   11
             TabPanelIndex   =   5
+            TabStop         =   True
             Text            =   "Scripture"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -2490,6 +2514,7 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   13
             TabPanelIndex   =   5
+            TabStop         =   True
             Text            =   "Custom slide"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -2554,6 +2579,7 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   15
             TabPanelIndex   =   5
+            TabStop         =   True
             Text            =   "Style change"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -2618,6 +2644,7 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   17
             TabPanelIndex   =   5
+            TabStop         =   True
             Text            =   "Image"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -2682,6 +2709,7 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   19
             TabPanelIndex   =   5
+            TabStop         =   True
             Text            =   "External application"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -2746,6 +2774,7 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   21
             TabPanelIndex   =   5
+            TabStop         =   True
             Text            =   "Blank (inserted)"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -2870,6 +2899,7 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   1
             TabPanelIndex   =   4
+            TabStop         =   True
             Text            =   "Authentication key:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -2904,6 +2934,7 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   3
             TabPanelIndex   =   4
+            TabStop         =   True
             Text            =   "Port:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -3094,6 +3125,7 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   0
             TabPanelIndex   =   3
+            TabStop         =   True
             Text            =   "OpenSong tries to store the images that are used in a set in JPEG format. The items below control the quality and behaviour of image storage. The quality slider below will be disabled if QuickTime is not installed as OpenSong depends on that for storing JPEG images in user selectable quality."
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -3128,6 +3160,7 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   2
             TabPanelIndex   =   3
+            TabStop         =   True
             Text            =   "Image compression:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -3501,6 +3534,7 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   3
             TabPanelIndex   =   4
+            TabStop         =   True
             Text            =   "Port:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -3535,6 +3569,7 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   1
             TabPanelIndex   =   4
+            TabStop         =   True
             Text            =   "Server:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -3713,6 +3748,7 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   5
             TabPanelIndex   =   4
+            TabStop         =   True
             Text            =   "Timeout (in ms):"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -4530,8 +4566,35 @@ End
 		  Dim NewVideolanLocation As FolderItem = dlg.ShowModal
 		  If NewVideolanLocation = Nil Then Return // User cancelled
 		  
+		  #If TargetMacOS
+		    // The user will have selected the application bundle, but we
+		    // really need to have the path to the executable image inside the bundle
+		    // otherwise command-line arguments will fail
+		    Dim ExeLocation As FolderItem = NewVideolanLocation
+		    #Pragma BreakOnExceptions False
+		    Try
+		      If ExeLocation.NativePath.Right(4) = ".app" Then
+		        ExeLocation = ExeLocation.Child("Contents").Child("MacOS").Child("VLC")
+		        If ExeLocation.exists Then
+		          NewVideolanLocation = ExeLocation
+		        End If
+		      End If
+		    Catch ex As NilObjectException
+		      // Can safely ignore this error. It means that one of the children of the selected FolderItem
+		      // doesn't exist, so we take the original FolderItem at face value. Log it for debug purposes in case
+		      // this is a bad assumption.
+		      App.DebugWriter.Write "MainSettingsWindow.btn_applications_videolan_browse.Action:" + _
+		      " Caught NilObjectException trying to locate VLC executable for " +_
+		      NewVideolanLocation.NativePath, 10
+		    End Try
+		    #Pragma BreakOnExceptions Default
+		  #EndIf
 		  VideolanLocation = NewVideolanLocation
-		  edt_applications_videolan.Text = VideolanLocation.AbsolutePath()
+		  #If TargetMacOS
+		    edt_applications_videolan.Text = VideolanLocation.NativePath()
+		  #Else
+		    edt_applications_videolan.Text = VideolanLocation.AbsolutePath()
+		  #EndIf
 		  
 		End Sub
 	#tag EndEvent

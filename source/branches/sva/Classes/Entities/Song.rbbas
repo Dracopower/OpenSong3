@@ -179,14 +179,14 @@ Protected Class Song
 	#tag Method, Flags = &h0
 		Sub LinkedSongs(Assigns newSongs() as String)
 		  Dim i As Integer
-		  Dim numThemes As Integer
+		  Dim numSongs As Integer
 		  
-		  numThemes = UBound(newSongs)
+		  numSongs = UBound(newSongs)
 		  
-		  ReDim SongThemes(numThemes)
+		  ReDim LinkedSongs(numSongs)
 		  
 		  i = 0
-		  Do Until i > numThemes
+		  Do Until i > numSongs
 		    LinkedSongs(i) = newSongs(i)
 		    i = i + 1
 		  Loop

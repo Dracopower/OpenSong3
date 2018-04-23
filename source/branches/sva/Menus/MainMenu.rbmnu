@@ -77,13 +77,6 @@ Begin Menu MainMenu
             AutoEnable = False
             Visible = True
          End
-         Begin MenuItem Untitled0
-            SpecialMenu = 0
-            Text = ""
-            Index = -2147483648
-            AutoEnable = True
-            Visible = True
-         End
       End
       Begin MenuItem mnu_file_pagesetup
          SpecialMenu = 0

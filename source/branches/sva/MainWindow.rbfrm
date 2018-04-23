@@ -108,6 +108,7 @@ Begin Window MainWindow Implements ScriptureReceiver
       Selectable      =   False
       TabIndex        =   3
       TabPanelIndex   =   0
+      TabStop         =   True
       Text            =   ""
       TextAlign       =   0
       TextColor       =   "&c00000000"
@@ -417,7 +418,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                AutoDeactivate  =   True
                Backdrop        =   0
                DoubleBuffer    =   False
-               Enabled         =   True
+               Enabled         =   False
                EraseBackground =   True
                HasFocus        =   False
                Height          =   24
@@ -736,6 +737,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   6
             TabPanelIndex   =   1
+            TabStop         =   True
             Text            =   "Folders:"
             TextAlign       =   0
             TextColor       =   "&c00000000"
@@ -770,6 +772,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   7
             TabPanelIndex   =   1
+            TabStop         =   True
             Text            =   "Songs:"
             TextAlign       =   0
             TextColor       =   "&c00000000"
@@ -835,6 +838,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   9
             TabPanelIndex   =   1
+            TabStop         =   True
             Text            =   "Containing Folder:"
             TextAlign       =   0
             TextColor       =   "&c00000000"
@@ -914,6 +918,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             ScrollbarHorizontal=   False
             ScrollBarVertical=   True
             SelectionType   =   0
+            ShowDropIndicator=   False
             TabIndex        =   8
             TabPanelIndex   =   1
             TabStop         =   True
@@ -938,7 +943,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Border          =   True
             DataField       =   ""
             DataSource      =   ""
-            Enabled         =   True
+            Enabled         =   False
             Format          =   ""
             Height          =   20
             HelpTag         =   ""
@@ -1631,6 +1636,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   4
             TabPanelIndex   =   2
+            TabStop         =   True
             Text            =   "Items In Set:"
             TextAlign       =   0
             TextColor       =   "&c00000000"
@@ -1892,6 +1898,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             ScrollbarHorizontal=   False
             ScrollBarVertical=   True
             SelectionType   =   0
+            ShowDropIndicator=   False
             TabIndex        =   5
             TabPanelIndex   =   2
             TabStop         =   True
@@ -1927,7 +1934,7 @@ Begin Window MainWindow Implements ScriptureReceiver
       TabIndex        =   5
       TabPanelIndex   =   0
       Top             =   34
-      Value           =   0
+      Value           =   4
       Visible         =   True
       Width           =   591
       Begin Canvas cnv_editor_style_change
@@ -1978,6 +1985,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   0
             TabPanelIndex   =   4
+            TabStop         =   True
             Text            =   "Style Change"
             TextAlign       =   0
             TextColor       =   "&c00000000"
@@ -2125,6 +2133,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   12
             TabPanelIndex   =   2
+            TabStop         =   True
             Text            =   "AKA:"
             TextAlign       =   0
             TextColor       =   "&c00000000"
@@ -2159,6 +2168,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   1
             TabPanelIndex   =   2
+            TabStop         =   True
             Text            =   "Themes:"
             TextAlign       =   0
             TextColor       =   "&c00000000"
@@ -2193,6 +2203,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   3
             TabPanelIndex   =   2
+            TabStop         =   True
             Text            =   "Capo:"
             TextAlign       =   0
             TextColor       =   "&c00000000"
@@ -2227,6 +2238,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   14
             TabPanelIndex   =   2
+            TabStop         =   True
             Text            =   "Key Line:"
             TextAlign       =   0
             TextColor       =   "&c00000000"
@@ -2250,7 +2262,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             DataField       =   ""
             DataSource      =   ""
             DefaultRowHeight=   -1
-            Enabled         =   True
+            Enabled         =   False
             EnableDrag      =   False
             EnableDragReorder=   False
             GridLinesHorizontal=   0
@@ -2275,6 +2287,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             ScrollbarHorizontal=   False
             ScrollBarVertical=   True
             SelectionType   =   0
+            ShowDropIndicator=   False
             TabIndex        =   2
             TabPanelIndex   =   2
             TabStop         =   True
@@ -2342,6 +2355,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   6
             TabPanelIndex   =   2
+            TabStop         =   True
             Text            =   "Key:"
             TextAlign       =   0
             TextColor       =   "&c00000000"
@@ -2376,6 +2390,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   8
             TabPanelIndex   =   2
+            TabStop         =   True
             Text            =   "Time Signature:"
             TextAlign       =   0
             TextColor       =   "&c00000000"
@@ -2441,6 +2456,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   18
             TabPanelIndex   =   2
+            TabStop         =   True
             Text            =   "User Defined 2:"
             TextAlign       =   0
             TextColor       =   "&c00000000"
@@ -2475,6 +2491,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   10
             TabPanelIndex   =   2
+            TabStop         =   True
             Text            =   "Tempo:"
             TextAlign       =   0
             TextColor       =   "&c00000000"
@@ -2509,6 +2526,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   20
             TabPanelIndex   =   2
+            TabStop         =   True
             Text            =   "User Defined 3:"
             TextAlign       =   0
             TextColor       =   "&c00000000"
@@ -2559,7 +2577,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Caption         =   "Print"
             DataField       =   ""
             DataSource      =   ""
-            Enabled         =   True
+            Enabled         =   False
             Height          =   20
             HelpTag         =   ""
             Index           =   -2147483648
@@ -2621,7 +2639,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Bold            =   False
             DataField       =   ""
             DataSource      =   ""
-            Enabled         =   True
+            Enabled         =   False
             Height          =   25
             HelpTag         =   ""
             Index           =   -2147483648
@@ -2653,7 +2671,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             AutoDeactivate  =   True
             Backdrop        =   0
             DoubleBuffer    =   False
-            Enabled         =   True
+            Enabled         =   False
             EraseBackground =   True
             Height          =   77
             HelpTag         =   ""
@@ -2685,7 +2703,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Border          =   True
             DataField       =   ""
             DataSource      =   ""
-            Enabled         =   True
+            Enabled         =   False
             Format          =   ""
             Height          =   20
             HelpTag         =   ""
@@ -2731,7 +2749,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Border          =   True
             DataField       =   ""
             DataSource      =   ""
-            Enabled         =   True
+            Enabled         =   False
             Format          =   ""
             Height          =   20
             HelpTag         =   ""
@@ -2772,7 +2790,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Bold            =   False
             DataField       =   ""
             DataSource      =   ""
-            Enabled         =   True
+            Enabled         =   False
             Height          =   25
             HelpTag         =   ""
             Index           =   -2147483648
@@ -2808,7 +2826,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Border          =   True
             DataField       =   ""
             DataSource      =   ""
-            Enabled         =   True
+            Enabled         =   False
             Format          =   ""
             Height          =   20
             HelpTag         =   ""
@@ -2866,6 +2884,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   16
             TabPanelIndex   =   2
+            TabStop         =   True
             Text            =   "User Defined 1:"
             TextAlign       =   0
             TextColor       =   "&c00000000"
@@ -2900,6 +2919,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   0
             TabPanelIndex   =   2
+            TabStop         =   True
             Text            =   "Song Editor"
             TextAlign       =   0
             TextColor       =   "&c00000000"
@@ -2922,7 +2942,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Border          =   True
             DataField       =   ""
             DataSource      =   ""
-            Enabled         =   True
+            Enabled         =   False
             Format          =   ""
             Height          =   30
             HelpTag         =   ""
@@ -2968,7 +2988,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Border          =   True
             DataField       =   ""
             DataSource      =   ""
-            Enabled         =   True
+            Enabled         =   False
             Format          =   ""
             Height          =   30
             HelpTag         =   ""
@@ -3014,7 +3034,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Border          =   True
             DataField       =   ""
             DataSource      =   ""
-            Enabled         =   True
+            Enabled         =   False
             Format          =   ""
             Height          =   30
             HelpTag         =   ""
@@ -3072,6 +3092,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   26
             TabPanelIndex   =   2
+            TabStop         =   True
             Text            =   "Verse specific backgrounds:"
             TextAlign       =   0
             TextColor       =   "&c00000000"
@@ -3095,7 +3116,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             DataField       =   ""
             DataSource      =   ""
             DefaultRowHeight=   120
-            Enabled         =   True
+            Enabled         =   False
             EnableDrag      =   False
             EnableDragReorder=   False
             GridLinesHorizontal=   0
@@ -3122,6 +3143,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             ScrollbarHorizontal=   False
             ScrollBarVertical=   True
             SelectionType   =   0
+            ShowDropIndicator=   False
             TabIndex        =   27
             TabPanelIndex   =   2
             TabStop         =   True
@@ -3142,7 +3164,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             AutoDeactivate  =   True
             Backdrop        =   0
             DoubleBuffer    =   False
-            Enabled         =   True
+            Enabled         =   False
             EraseBackground =   True
             HasFocus        =   False
             Height          =   20
@@ -3173,7 +3195,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             AutoDeactivate  =   True
             Backdrop        =   0
             DoubleBuffer    =   False
-            Enabled         =   True
+            Enabled         =   False
             EraseBackground =   True
             HasFocus        =   False
             Height          =   20
@@ -3204,7 +3226,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Caption         =   "Resize images to fit the screen"
             DataField       =   ""
             DataSource      =   ""
-            Enabled         =   True
+            Enabled         =   False
             Height          =   20
             HelpTag         =   ""
             Index           =   -2147483648
@@ -3236,7 +3258,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Caption         =   "Resize images to fit the body area"
             DataField       =   ""
             DataSource      =   ""
-            Enabled         =   True
+            Enabled         =   False
             Height          =   20
             HelpTag         =   ""
             Index           =   -2147483648
@@ -3268,7 +3290,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Caption         =   "Keep aspect ratio when resizing images"
             DataField       =   ""
             DataSource      =   ""
-            Enabled         =   True
+            Enabled         =   False
             Height          =   20
             HelpTag         =   ""
             Index           =   -2147483648
@@ -3300,7 +3322,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Caption         =   "Do not store the image in the song, use a link"
             DataField       =   ""
             DataSource      =   ""
-            Enabled         =   True
+            Enabled         =   False
             Height          =   20
             HelpTag         =   ""
             Index           =   -2147483648
@@ -3332,7 +3354,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Caption         =   "Show the background instead of the verse text"
             DataField       =   ""
             DataSource      =   ""
-            Enabled         =   True
+            Enabled         =   False
             Height          =   20
             HelpTag         =   ""
             Index           =   -2147483648
@@ -3407,6 +3429,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   0
             TabPanelIndex   =   1
+            TabStop         =   True
             Text            =   "Song Editor"
             TextAlign       =   0
             TextColor       =   "&c00000000"
@@ -3441,6 +3464,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   7
             TabPanelIndex   =   1
+            TabStop         =   True
             Text            =   "CCLI #:"
             TextAlign       =   0
             TextColor       =   "&c00000000"
@@ -3475,6 +3499,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   5
             TabPanelIndex   =   1
+            TabStop         =   True
             Text            =   "Copyright:"
             TextAlign       =   0
             TextColor       =   "&c00000000"
@@ -3509,6 +3534,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   3
             TabPanelIndex   =   1
+            TabStop         =   True
             Text            =   "Author:"
             TextAlign       =   0
             TextColor       =   "&c00000000"
@@ -3543,6 +3569,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   9
             TabPanelIndex   =   1
+            TabStop         =   True
             Text            =   "Presentation:"
             TextAlign       =   0
             TextColor       =   "&c00000000"
@@ -3577,6 +3604,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   13
             TabPanelIndex   =   1
+            TabStop         =   True
             Text            =   "Chord/Lyrics:"
             TextAlign       =   0
             TextColor       =   "&c00000000"
@@ -3611,6 +3639,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   11
             TabPanelIndex   =   1
+            TabStop         =   True
             Text            =   "Hymn #:"
             TextAlign       =   0
             TextColor       =   "&c00000000"
@@ -3645,6 +3674,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   15
             TabPanelIndex   =   1
+            TabStop         =   True
             Text            =   "Insert:"
             TextAlign       =   0
             TextColor       =   "&c00000000"
@@ -3679,6 +3709,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   1
             TabPanelIndex   =   1
+            TabStop         =   True
             Text            =   "Title:"
             TextAlign       =   0
             TextColor       =   "&c00000000"
@@ -3695,7 +3726,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             AutoDeactivate  =   True
             Bold            =   False
             Caption         =   "Transpose"
-            Enabled         =   True
+            Enabled         =   False
             Height          =   100
             HelpTag         =   ""
             Index           =   -2147483648
@@ -3770,6 +3801,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                Selectable      =   False
                TabIndex        =   1
                TabPanelIndex   =   1
+               TabStop         =   True
                Text            =   "Using:"
                TextAlign       =   0
                TextColor       =   "&c00000000"
@@ -3824,7 +3856,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Border          =   True
             DataField       =   ""
             DataSource      =   ""
-            Enabled         =   True
+            Enabled         =   False
             Format          =   ""
             Height          =   20
             HelpTag         =   ""
@@ -3870,7 +3902,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Border          =   True
             DataField       =   ""
             DataSource      =   ""
-            Enabled         =   True
+            Enabled         =   False
             Format          =   ""
             Height          =   400
             HelpTag         =   ""
@@ -3912,7 +3944,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             AutoDeactivate  =   True
             Backdrop        =   0
             DoubleBuffer    =   False
-            Enabled         =   True
+            Enabled         =   False
             EraseBackground =   True
             HasFocus        =   False
             Height          =   20
@@ -3943,7 +3975,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             AutoDeactivate  =   True
             Backdrop        =   0
             DoubleBuffer    =   False
-            Enabled         =   True
+            Enabled         =   False
             EraseBackground =   True
             HasFocus        =   False
             Height          =   20
@@ -3974,7 +4006,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             AutoDeactivate  =   True
             Backdrop        =   0
             DoubleBuffer    =   False
-            Enabled         =   True
+            Enabled         =   False
             EraseBackground =   True
             HasFocus        =   False
             Height          =   20
@@ -4005,7 +4037,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             AutoDeactivate  =   True
             Backdrop        =   0
             DoubleBuffer    =   False
-            Enabled         =   True
+            Enabled         =   False
             EraseBackground =   True
             HasFocus        =   False
             Height          =   20
@@ -4036,7 +4068,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             AutoDeactivate  =   True
             Backdrop        =   0
             DoubleBuffer    =   False
-            Enabled         =   True
+            Enabled         =   False
             EraseBackground =   True
             HasFocus        =   False
             Height          =   20
@@ -4067,7 +4099,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             AutoDeactivate  =   True
             Backdrop        =   0
             DoubleBuffer    =   False
-            Enabled         =   True
+            Enabled         =   False
             EraseBackground =   True
             HasFocus        =   False
             Height          =   20
@@ -4164,7 +4196,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Border          =   True
             DataField       =   ""
             DataSource      =   ""
-            Enabled         =   True
+            Enabled         =   False
             Format          =   ""
             Height          =   20
             HelpTag         =   ""
@@ -4210,7 +4242,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Border          =   True
             DataField       =   ""
             DataSource      =   ""
-            Enabled         =   True
+            Enabled         =   False
             Format          =   ""
             Height          =   20
             HelpTag         =   ""
@@ -4256,7 +4288,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Border          =   True
             DataField       =   ""
             DataSource      =   ""
-            Enabled         =   True
+            Enabled         =   False
             Format          =   ""
             Height          =   20
             HelpTag         =   ""
@@ -4302,7 +4334,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Border          =   True
             DataField       =   ""
             DataSource      =   ""
-            Enabled         =   True
+            Enabled         =   False
             Format          =   ""
             Height          =   20
             HelpTag         =   ""
@@ -4422,6 +4454,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   26
             TabPanelIndex   =   1
+            TabStop         =   True
             Text            =   "Linked Songs:"
             TextAlign       =   0
             TextColor       =   "&c00000000"
@@ -4445,7 +4478,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             DataField       =   ""
             DataSource      =   ""
             DefaultRowHeight=   -1
-            Enabled         =   True
+            Enabled         =   False
             EnableDrag      =   False
             EnableDragReorder=   False
             GridLinesHorizontal=   0
@@ -4470,6 +4503,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             ScrollbarHorizontal=   False
             ScrollBarVertical=   True
             SelectionType   =   0
+            ShowDropIndicator=   False
             TabIndex        =   27
             TabPanelIndex   =   1
             TabStop         =   True
@@ -4494,7 +4528,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Border          =   True
             DataField       =   ""
             DataSource      =   ""
-            Enabled         =   True
+            Enabled         =   False
             Format          =   ""
             Height          =   19
             HelpTag         =   ""
@@ -4579,6 +4613,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   21
             TabPanelIndex   =   3
+            TabStop         =   True
             Text            =   "Auto-advance slide(s) every..."
             TextAlign       =   1
             TextColor       =   "&c00000000"
@@ -4613,6 +4648,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   23
             TabPanelIndex   =   3
+            TabStop         =   True
             Text            =   "seconds"
             TextAlign       =   1
             TextColor       =   "&c00000000"
@@ -4647,6 +4683,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   17
             TabPanelIndex   =   3
+            TabStop         =   True
             Text            =   "Insert:"
             TextAlign       =   0
             TextColor       =   "&c00000000"
@@ -4900,6 +4937,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   13
             TabPanelIndex   =   3
+            TabStop         =   True
             Text            =   "File Folder"
             TextAlign       =   0
             TextColor       =   "&c00000000"
@@ -4934,6 +4972,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   0
             TabPanelIndex   =   3
+            TabStop         =   True
             Text            =   "Custom Slide Editor"
             TextAlign       =   0
             TextColor       =   "&c00000000"
@@ -4968,6 +5007,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   9
             TabPanelIndex   =   3
+            TabStop         =   True
             Text            =   "Custom Presentation Order:"
             TextAlign       =   0
             TextColor       =   "&c00000000"
@@ -5002,6 +5042,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   11
             TabPanelIndex   =   3
+            TabStop         =   True
             Text            =   "Original Presentation Order:"
             TextAlign       =   0
             TextColor       =   "&c00000000"
@@ -5082,6 +5123,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   5
             TabPanelIndex   =   3
+            TabStop         =   True
             Text            =   "Name:"
             TextAlign       =   0
             TextColor       =   "&c00000000"
@@ -5116,6 +5158,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   3
             TabPanelIndex   =   3
+            TabStop         =   True
             Text            =   "Subtitle:"
             TextAlign       =   0
             TextColor       =   "&c00000000"
@@ -5150,6 +5193,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   1
             TabPanelIndex   =   3
+            TabStop         =   True
             Text            =   "Title:"
             TextAlign       =   0
             TextColor       =   "&c00000000"
@@ -5184,6 +5228,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   7
             TabPanelIndex   =   3
+            TabStop         =   True
             Text            =   "Slides:"
             TextAlign       =   0
             TextColor       =   "&c00000000"
@@ -5218,6 +5263,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   26
             TabPanelIndex   =   3
+            TabStop         =   True
             Text            =   "Use Transition"
             TextAlign       =   0
             TextColor       =   "&c00000000"
@@ -5252,6 +5298,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   15
             TabPanelIndex   =   3
+            TabStop         =   True
             Text            =   "Notes:"
             TextAlign       =   0
             TextColor       =   "&c00000000"
@@ -5648,6 +5695,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   26
             TabPanelIndex   =   5
+            TabStop         =   True
             Text            =   "seconds"
             TextAlign       =   1
             TextColor       =   "&c00000000"
@@ -5682,6 +5730,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   18
             TabPanelIndex   =   5
+            TabStop         =   True
             Text            =   "Auto-advance slide(s) every..."
             TextAlign       =   1
             TextColor       =   "&c00000000"
@@ -5716,6 +5765,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   29
             TabPanelIndex   =   5
+            TabStop         =   True
             Text            =   "Use Transition"
             TextAlign       =   0
             TextColor       =   "&c00000000"
@@ -5782,6 +5832,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   0
             TabPanelIndex   =   5
+            TabStop         =   True
             Text            =   "Image Slide Editor"
             TextAlign       =   0
             TextColor       =   "&c00000000"
@@ -5847,6 +5898,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   6
             TabPanelIndex   =   5
+            TabStop         =   True
             Text            =   "Name:"
             TextAlign       =   0
             TextColor       =   "&c00000000"
@@ -6009,6 +6061,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   24
             TabPanelIndex   =   5
+            TabStop         =   True
             Text            =   "Notes:"
             TextAlign       =   0
             TextColor       =   "&c00000000"
@@ -6043,6 +6096,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   1
             TabPanelIndex   =   5
+            TabStop         =   True
             Text            =   "Title:"
             TextAlign       =   0
             TextColor       =   "&c00000000"
@@ -6077,6 +6131,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   10
             TabPanelIndex   =   5
+            TabStop         =   True
             Text            =   "Insert:"
             TextAlign       =   0
             TextColor       =   "&c00000000"
@@ -6221,6 +6276,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   3
             TabPanelIndex   =   5
+            TabStop         =   True
             Text            =   "Subtitle:"
             TextAlign       =   0
             TextColor       =   "&c00000000"
@@ -6255,6 +6311,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   8
             TabPanelIndex   =   5
+            TabStop         =   True
             Text            =   "Images:"
             TextAlign       =   0
             TextColor       =   "&c00000000"
@@ -6503,6 +6560,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             ScrollbarHorizontal=   False
             ScrollBarVertical=   True
             SelectionType   =   1
+            ShowDropIndicator=   False
             TabIndex        =   9
             TabPanelIndex   =   5
             TabStop         =   True
@@ -6767,6 +6825,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   0
             TabPanelIndex   =   6
+            TabStop         =   True
             Text            =   "External Slide Editor"
             TextAlign       =   0
             TextColor       =   "&c00000000"
@@ -6801,6 +6860,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   1
             TabPanelIndex   =   6
+            TabStop         =   True
             Text            =   "Name:"
             TextAlign       =   0
             TextColor       =   "&c00000000"
@@ -6835,6 +6895,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   2
             TabPanelIndex   =   6
+            TabStop         =   True
             Text            =   "Notes:"
             TextAlign       =   0
             TextColor       =   "&c00000000"
@@ -6869,6 +6930,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   3
             TabPanelIndex   =   6
+            TabStop         =   True
             Text            =   "Application:"
             TextAlign       =   0
             TextColor       =   "&c00000000"
@@ -7231,6 +7293,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Selectable      =   False
                   TabIndex        =   2
                   TabPanelIndex   =   2
+                  TabStop         =   True
                   Text            =   "Presentation filename"
                   TextAlign       =   0
                   TextColor       =   "&c00000000"
@@ -7352,6 +7415,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Selectable      =   False
                   TabIndex        =   6
                   TabPanelIndex   =   2
+                  TabStop         =   True
                   Text            =   "Which application should be used to run the presentation?"
                   TextAlign       =   0
                   TextColor       =   "&c00000000"
@@ -7464,6 +7528,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Selectable      =   False
                   TabIndex        =   9
                   TabPanelIndex   =   2
+                  TabStop         =   True
                   Text            =   "For full control over your PowerPoint presentation an installation of Microsoft Office is required."
                   TextAlign       =   0
                   TextColor       =   "&c00000000"
@@ -7498,6 +7563,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Selectable      =   False
                   TabIndex        =   10
                   TabPanelIndex   =   2
+                  TabStop         =   True
                   Text            =   "For showing your PowerPoint presentation without interaction, you can use the free Microsoft PowerPoint Viewer. OpenSong tries to detect it. You can set a specific viewer in the general settings."
                   TextAlign       =   0
                   TextColor       =   "&c00000000"
@@ -7532,6 +7598,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Selectable      =   False
                   TabIndex        =   11
                   TabPanelIndex   =   2
+                  TabStop         =   True
                   Text            =   "For full control of an Impress or PowerPoint presentation the free OpenOffice.org suite is required."
                   TextAlign       =   0
                   TextColor       =   "&c00000000"
@@ -7593,6 +7660,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Selectable      =   False
                   TabIndex        =   0
                   TabPanelIndex   =   1
+                  TabStop         =   True
                   Text            =   "Select an application to use as source for this slides content."
                   TextAlign       =   1
                   TextColor       =   "&c00000000"
@@ -7654,6 +7722,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Selectable      =   False
                   TabIndex        =   0
                   TabPanelIndex   =   4
+                  TabStop         =   True
                   Text            =   "Application parameters"
                   TextAlign       =   0
                   TextColor       =   "&c00000000"
@@ -7688,6 +7757,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Selectable      =   False
                   TabIndex        =   1
                   TabPanelIndex   =   4
+                  TabStop         =   True
                   Text            =   "Path to application executable"
                   TextAlign       =   0
                   TextColor       =   "&c00000000"
@@ -7976,6 +8046,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   ScrollbarHorizontal=   False
                   ScrollBarVertical=   True
                   SelectionType   =   0
+                  ShowDropIndicator=   False
                   TabIndex        =   1
                   TabPanelIndex   =   3
                   TabStop         =   True
@@ -8147,6 +8218,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Selectable      =   False
                   TabIndex        =   6
                   TabPanelIndex   =   3
+                  TabStop         =   True
                   Text            =   "Path to media file to play"
                   TextAlign       =   0
                   TextColor       =   "&c00000000"
@@ -8181,6 +8253,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Selectable      =   False
                   TabIndex        =   7
                   TabPanelIndex   =   3
+                  TabStop         =   True
                   Text            =   "Use the following preset with parameters"
                   TextAlign       =   0
                   TextColor       =   "&c00000000"
@@ -8215,6 +8288,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Selectable      =   False
                   TabIndex        =   8
                   TabPanelIndex   =   3
+                  TabStop         =   True
                   Text            =   "Manually adjusted parameters (use %d for display number, %s for mediafile)"
                   TextAlign       =   0
                   TextColor       =   "&c00000000"
@@ -8384,17 +8458,13 @@ Begin Window MainWindow Implements ScriptureReceiver
       Width           =   846
    End
    Begin Timer tmr_lookup
-      Height          =   32
       Index           =   -2147483648
       InitialParent   =   ""
-      Left            =   804
       LockedInPosition=   False
       Mode            =   2
       Period          =   1500
       Scope           =   0
       TabPanelIndex   =   0
-      Top             =   6
-      Width           =   32
    End
 End
 #tag EndWindow
@@ -12489,12 +12559,13 @@ End
 		  Dim Presentation As String
 		  '++JRC
 		  Dim ActiveCustomStyle As XmlNode = Nil
+		  Dim CustomStyles() As XmlNode
 		  Dim ItemNumber As Integer
 		  Dim StyleGroupCount As Integer = 0
 		  Dim i As Integer
 		  '--
 		  Dim Transition As Integer
-		  Dim SongStyle, SlideSongStyle As XmlNode
+		  Dim SongStyle, SetItemStyle As XmlNode
 		  Dim SongPath As String
 		  
 		  App.MouseCursor = System.Cursors.Wait
@@ -12539,7 +12610,7 @@ End
 		        End If
 		        '--
 		        
-		        SlideSongStyle = SmartML.GetNode(slide_group, "style")
+		        SetItemStyle = SmartML.GetNode(slide_group, "style")
 		        slide_group = SmartML.ReplaceWithImportNode(slide_group, songDoc.DocumentElement)
 		        '++JRC Assign an index for this set item
 		        SmartML.SetValueN(slide_group, "@ItemNumber", ItemNumber)
@@ -12554,22 +12625,20 @@ End
 		        
 		        SongStyle = SmartML.GetNode(slide_group, "style", False)
 		        'Check if there is an overide for the song style in this slide
-		        'SvA: Todo: compare this to the 2 fn SetML.SongStylePreferred and SetML.StyleChangeActive used there. Tidy up and unite
-		        If SlideSongStyle <> Nil Then
+		        If SetItemStyle <> Nil Then
 		          If SongStyle <> Nil Then
 		            SmartML.RemoveChild(slide_group, SongStyle)
 		          End If
-		          Call SmartML.InsertChildNode(slide_group, SlideSongStyle, slide_group.ChildCount())
-		          SongML.ToSetML slide_group, SlideSongStyle
+		          Call SmartML.InsertChildNode(slide_group, SetItemStyle, slide_group.ChildCount())
+		          SongML.ToSetML slide_group, SetItemStyle
 		        Else
 		          '++JRC: Pass ActiveCustomStyle
 		          ' But check for an override first!
 		          '++Vwout: The better place to do this is SetML
-		          If ActiveCustomStyle <> Nil Then
+		          If ActiveCustomStyle <> Nil And Not SetML.SongStylePreferred(Nil) Then
 		            If SongStyle <> Nil Then
 		              SmartML.RemoveChild(slide_group, SongStyle)
 		            End If
-		            Call SmartML.InsertChildNode(slide_group, ActiveCustomStyle, slide_group.ChildCount())
 		            SongStyle = ActiveCustomStyle
 		          End If
 		          SongML.ToSetML slide_group, SongStyle
@@ -12593,10 +12662,15 @@ End
 		      '++JRC: Save Current Style
 		    Elseif SmartML.GetValue(slide_group, "@type", True) = "style"  Then
 		      if SmartML.GetValue(slide_group, "@action", True) = "new" then
+		        CustomStyles.Append(ActiveCustomStyle)
 		        ActiveCustomStyle = SmartML.GetNode(slide_group, "style", False)
 		      else
 		        'reverting to previous style
-		        ActiveCustomStyle = Nil
+		        If CustomStyles.Ubound >= 0 Then
+		          ActiveCustomStyle = CustomStyles.Pop
+		        Else
+		          ActiveCustomStyle = Nil
+		        End If
 		      end if
 		      slide_group  = slide_group.NextSibling
 		      StyleGroupCount = StyleGroupCount + 1
@@ -13507,6 +13581,7 @@ End
 		      ' EDITOR FIELDS
 		      
 		      edf_song_lyrics.Enabled = True
+		      grp_song_transpose.Enabled = True
 		      pop_song_transpose.Enabled = True
 		      pop_song_accidentals.Enabled = True
 		      edt_song_title.Enabled = True
@@ -13530,6 +13605,8 @@ End
 		      btn_song_add_link.Enabled = True
 		      btn_song_remove_link.Enabled = True
 		      lst_song_linked.Enabled = True
+		      btn_song_add_link.Enabled = True
+		      btn_song_remove_link.Enabled = lst_song_linked.ListIndex > -1
 		      '--
 		      
 		      chk_song_style.Enabled = True
@@ -13579,6 +13656,7 @@ End
 		      ' EDITOR FIELDS
 		      
 		      edf_song_lyrics.Enabled = False
+		      grp_song_transpose.Enabled = False
 		      pop_song_transpose.Enabled = False
 		      pop_song_accidentals.Enabled = False
 		      edt_song_title.Enabled = False
@@ -14205,10 +14283,6 @@ End
 
 	#tag Property, Flags = &h1
 		Protected TempSet As XmlDocument
-	#tag EndProperty
-
-	#tag Property, Flags = &h1
-		Protected Untitled As Integer
 	#tag EndProperty
 
 
@@ -17270,6 +17344,11 @@ End
 		  
 		End Sub
 	#tag EndEvent
+	#tag Event
+		Sub Change()
+		  btn_song_remove_link.Enabled = Me.ListIndex > -1
+		End Sub
+	#tag EndEvent
 #tag EndEvents
 #tag Events edt_song_hymn_number
 	#tag Event
@@ -18821,3 +18900,269 @@ End
 		End Sub
 	#tag EndEvent
 #tag EndEvents
+#tag ViewBehavior
+	#tag ViewProperty
+		Name="BackColor"
+		Visible=true
+		Group="Appearance"
+		InitialValue="&hFFFFFF"
+		Type="Color"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="Backdrop"
+		Visible=true
+		Group="Appearance"
+		Type="Picture"
+		EditorType="Picture"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="CloseButton"
+		Visible=true
+		Group="Appearance"
+		InitialValue="True"
+		Type="Boolean"
+		EditorType="Boolean"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="Composite"
+		Group="Appearance"
+		InitialValue="False"
+		Type="Boolean"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="DontUpdateSetItem"
+		Group="Behavior"
+		Type="Boolean"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="FindFocus"
+		Group="Behavior"
+		Type="Integer"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="Frame"
+		Visible=true
+		Group="Appearance"
+		InitialValue="0"
+		Type="Integer"
+		EditorType="Enum"
+		#tag EnumValues
+			"0 - Document"
+			"1 - Movable Modal"
+			"2 - Modal Dialog"
+			"3 - Floating Window"
+			"4 - Plain Box"
+			"5 - Shadowed Box"
+			"6 - Rounded Window"
+			"7 - Global Floating Window"
+			"8 - Sheet Window"
+			"9 - Metal Window"
+			"11 - Modeless Dialog"
+		#tag EndEnumValues
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="FullScreen"
+		Group="Appearance"
+		InitialValue="False"
+		Type="Boolean"
+		EditorType="Boolean"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="FullScreenButton"
+		Visible=true
+		Group="Appearance"
+		InitialValue="False"
+		Type="Boolean"
+		EditorType="Boolean"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="HasBackColor"
+		Visible=true
+		Group="Appearance"
+		InitialValue="False"
+		Type="Boolean"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="Height"
+		Visible=true
+		Group="Position"
+		InitialValue="400"
+		Type="Integer"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="ImplicitInstance"
+		Visible=true
+		Group="Appearance"
+		InitialValue="True"
+		Type="Boolean"
+		EditorType="Boolean"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="Interfaces"
+		Visible=true
+		Group="ID"
+		Type="String"
+		EditorType="String"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="LiveResize"
+		Visible=true
+		Group="Appearance"
+		InitialValue="True"
+		Type="Boolean"
+		EditorType="Boolean"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="MacProcID"
+		Group="Appearance"
+		InitialValue="0"
+		Type="Integer"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="MaxHeight"
+		Visible=true
+		Group="Position"
+		InitialValue="32000"
+		Type="Integer"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="MaximizeButton"
+		Visible=true
+		Group="Appearance"
+		InitialValue="True"
+		Type="Boolean"
+		EditorType="Boolean"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="MaxWidth"
+		Visible=true
+		Group="Position"
+		InitialValue="32000"
+		Type="Integer"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="MenuBar"
+		Visible=true
+		Group="Appearance"
+		Type="MenuBar"
+		EditorType="MenuBar"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="MenuBarVisible"
+		Group="Appearance"
+		InitialValue="True"
+		Type="Boolean"
+		EditorType="Boolean"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="MinHeight"
+		Visible=true
+		Group="Position"
+		InitialValue="64"
+		Type="Integer"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="MinimizeButton"
+		Visible=true
+		Group="Appearance"
+		InitialValue="True"
+		Type="Boolean"
+		EditorType="Boolean"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="MinWidth"
+		Visible=true
+		Group="Position"
+		InitialValue="64"
+		Type="Integer"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="Name"
+		Visible=true
+		Group="ID"
+		Type="String"
+		EditorType="String"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="Placement"
+		Visible=true
+		Group="Position"
+		InitialValue="0"
+		Type="Integer"
+		EditorType="Enum"
+		#tag EnumValues
+			"0 - Default"
+			"1 - Parent Window"
+			"2 - Main Screen"
+			"3 - Parent Window Screen"
+			"4 - Stagger"
+		#tag EndEnumValues
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="PPT"
+		Group="Behavior"
+		Type="Integer"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="Resizeable"
+		Visible=true
+		Group="Appearance"
+		InitialValue="True"
+		Type="Boolean"
+		EditorType="Boolean"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="SongChangesMade"
+		Group="Behavior"
+		Type="Boolean"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="Status_Presentation"
+		Group="Behavior"
+		Type="Boolean"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="Status_SetChanged"
+		Group="Behavior"
+		Type="Boolean"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="Status_SongChanged"
+		Group="Behavior"
+		Type="Boolean"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="Status_SongOpen"
+		Group="Behavior"
+		Type="Boolean"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="Super"
+		Visible=true
+		Group="ID"
+		Type="String"
+		EditorType="String"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="Title"
+		Visible=true
+		Group="Appearance"
+		InitialValue="Untitled"
+		Type="String"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="Visible"
+		Visible=true
+		Group="Appearance"
+		InitialValue="True"
+		Type="Boolean"
+		EditorType="Boolean"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="Width"
+		Visible=true
+		Group="Position"
+		InitialValue="600"
+		Type="Integer"
+	#tag EndViewProperty
+#tag EndViewBehavior

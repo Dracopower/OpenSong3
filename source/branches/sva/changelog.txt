@@ -1,4 +1,10 @@
 ﻿-= Version 2.2 RC =-
+* Fix issues with styles: in some circumstances the wrong style had been applied. Also allow arbitrarily deep nesting of custom styles using style change set items of type "Change style to this" and "Revert to previous style"
+* Use Build Automation for the MacOS build to place the support folders in the Resources area of the app package. Adjust App.Open to look for it there when running under MacOS. This uses Xojo.IO.SpecialFolder.GetResource, which was not reliable on all three desktop platforms until Xojo 2016r1.1. (swampcat)
+* Add the default logo files to the Backgrounds folder. Previously they were only stored in encoded format in the default PresentationSettings file. (swampcat)
+* FontFace defaults to System instead of Arial and validates the font name when set. (swampcat)
+* Add icons for 256, 512, and 1024 sizes. (swampcat)
+* Update SmartML.GetValueC/SetValueC to properly handle colors with alpha values. (swampcat)
 * Add configuration item to set the maximum number of API connections (defaults to 25).  The is no UI entry, only a configuration item in the MainSettings file. Add an attribute 'max_connections' to the 'rcserver' node and set it to the desired value.
 * Fix memory leak in REST API (bug #458) and cleaned up notification spaghetti.
 * Fix bug in REST API to send correct OpCode (for Binary) when transferring JPEG
