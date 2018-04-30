@@ -502,14 +502,6 @@ Protected Module SetML
 		    
 		    Profiler.EndProfilerEntry
 		    
-		    line = ""
-		    For i = 1 To UBound(lines)
-		      line = line + lines(i) + Chr(10)
-		    Next i
-		    line = RTrim(line)
-		    
-		    // CHANGE-PJ: Second language feature - if last character of section name = "L" for "L"anguage -> "section" and "Style" parameter added
-		    Call DrawFontString(g, line, 0, HeaderSize, bodyStyle, RealBorder, 0, 0, bodyMargins, g.Width, Style.BodyAlign, g.Height - HeaderSize - FooterSize, Style.BodyVAlign, bodyTabs, insertafterbreak, section, Style) 'EMP 09/05
 		  End If
 		  
 		  Profiler.EndProfilerEntry
@@ -1067,6 +1059,26 @@ Protected Module SetML
 		  Wend
 		  
 		  Return slides.Child(index)
+		  
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h1
+		Protected Function GetSlideGroupCaption(SlideGroup As XmlNode) As String
+		  Dim set_item_name As String = SmartML.GetValue(slideGroup, "@name", True)
+		  Dim set_item_type As String = SmartML.GetValue(slideGroup, "@type", True)
+		  If set_item_type = "style" Then
+		    If SmartML.GetValue(slideGroup, "@action", True) = "revert" Then
+		      set_item_type = "revert"
+		    End If
+		  End If
+		  
+		  Dim set_item_caption As String = App.T.Translate("sets_mode/items/"+set_item_type+"/@caption")
+		  If set_item_type = "" or set_item_caption = "" Then // unknown slide type
+		    App.DebugWriter.Write "MainWindow.ActionInSetAddSlide.Change: Unknown slide type '" + set_item_type + "/@caption" + "'", 1
+		    set_item_caption = "*ERROR*"
+		  End If
+		  Return set_item_name + " " + set_item_caption
 		  
 		End Function
 	#tag EndMethod

@@ -9356,10 +9356,10 @@ End
 		    Dim set_item_index As Integer = 0
 		    
 		    If lst_set_items.ListIndex >= 0 Then
-		      lst_set_items.InsertRow lst_set_items.ListIndex + 1, GetSlideGroupCaption(xslide)
+		      lst_set_items.InsertRow lst_set_items.ListIndex + 1, SetML.GetSlideGroupCaption(xslide)
 		      set_item_index = lst_set_items.ListIndex + 1
 		    Else
-		      lst_set_items.AddRow GetSlideGroupCaption(xslide)
+		      lst_set_items.AddRow SetML.GetSlideGroupCaption(xslide)
 		      set_item_index = lst_set_items.ListCount - 1
 		    End If
 		    
@@ -9582,7 +9582,7 @@ End
 		    Next i
 		    
 		    can_image_style.PreviewSlide = SmartML.GetNode(xgroup, "slides/slide")
-		    lst_set_items.List(CurrentInSetItem) = GetSlideGroupCaption(xgroup)
+		    lst_set_items.List(CurrentInSetItem) = SetML.GetSlideGroupCaption(xgroup)
 		    
 		  Case "external"
 		    If btn_external_presentation.GetStuck() Then
@@ -9643,7 +9643,7 @@ End
 		        Dim f As FolderItem
 		        If Trim(edt_external_videolan_mediafilename.Text) = "" Then
 		          If videoLanPresetParams.InStrB("%s") <> 0 Then
-		            MsgBox(App.T.Translate("errors/videolan/no_medium", GetSlideGroupCaption(xgroup)))
+		            MsgBox(App.T.Translate("errors/videolan/no_medium", SetML.GetSlideGroupCaption(xgroup)))
 		            Return False
 		          End If
 		        Else
@@ -9704,7 +9704,7 @@ End
 		    SmartML.SetValue xgroup, "notes", edt_external_notes.Text
 		    SmartML.SetValueB xgroup, "@loop", chk_external_loop.Value
 		    
-		    lst_set_items.List(CurrentInSetItem) = GetSlideGroupCaption(xgroup)
+		    lst_set_items.List(CurrentInSetItem) = SetML.GetSlideGroupCaption(xgroup)
 		    
 		  Case "style"
 		    
@@ -9733,7 +9733,7 @@ End
 		      SmartML.SetValue xslide, "body", StringUtils.Trim(bodies(i), StringUtils.WhiteSpaces)
 		    Next i
 		    
-		    lst_set_items.List(CurrentInSetItem) = GetSlideGroupCaption(xgroup)
+		    lst_set_items.List(CurrentInSetItem) = SetML.GetSlideGroupCaption(xgroup)
 		  End Select
 		  
 		  Status_InSetChanged = False
@@ -12337,26 +12337,6 @@ End
 	#tag EndMethod
 
 	#tag Method, Flags = &h1
-		Protected Function GetSlideGroupCaption(SlideGroup As XmlNode) As String
-		  Dim set_item_name As String = SmartML.GetValue(slideGroup, "@name", True)
-		  Dim set_item_type As String = SmartML.GetValue(slideGroup, "@type", True)
-		  If set_item_type = "style" Then
-		    If SmartML.GetValue(slideGroup, "@action", True) = "revert" Then
-		      set_item_type = "revert"
-		    End If
-		  End If
-		  
-		  Dim set_item_caption As String = App.T.Translate("sets_mode/items/"+set_item_type+"/@caption")
-		  If set_item_type = "" or set_item_caption = "" Then // unknown slide type
-		    App.DebugWriter.Write "MainWindow.ActionInSetAddSlide.Change: Unknown slide type '" + set_item_type + "/@caption" + "'", 1
-		    set_item_caption = "*ERROR*"
-		  End If
-		  Return set_item_name + " " + set_item_caption
-		  
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h1
 		Protected Function GetSongFolderPath(FolderName As String) As String
 		  //++EMP 18 Feb 2006
 		  // This was added to clear up a problem in lst_songs_songs where
@@ -12513,7 +12493,7 @@ End
 		          If mediaFileName = "" Then
 		            Dim videoLanParams As String = SmartML.GetValue(slide_group, "@videolan_parameters", False)
 		            If videoLanParams.InStrB("%s") > 0 Then
-		              InputBox.Message App.T.Translate("errors/videolan/no_medium_in_slide", GetSlideGroupCaption(slide_group))
+		              InputBox.Message App.T.Translate("errors/videolan/no_medium_in_slide", SetML.GetSlideGroupCaption(slide_group))
 		            End If
 		          ElseIf IsNull(mediaFile) Or Not mediaFile.Exists() Then
 		            InputBox.Message App.T.Translate("errors/fileutils/filenotfound", mediaFileName)
@@ -12761,7 +12741,7 @@ End
 		    If Not IsNull(slide_groups)Then
 		      xchild = slide_groups.FirstChild
 		      While xchild <> Nil
-		        lst_set_items.AddRow GetSlideGroupCaption(xchild)
+		        lst_set_items.AddRow SetML.GetSlideGroupCaption(xchild)
 		        lst_set_items.CellTag(lst_set_items.ListCount-1, 0) = xchild.GetAttribute("type")
 		        xchild = xchild.NextSibling
 		      Wend
