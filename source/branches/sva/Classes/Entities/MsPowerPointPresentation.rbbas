@@ -91,12 +91,14 @@ Implements iPresentation
 		  Call PresentationFactory.UnregisterPresentation( self )
 		  
 		  If Not IsNull(m_oPpt) Then
+		    #pragma BreakOnExceptions Off
 		    Try
 		      m_oPpt.Saved = True
 		      m_oPpt.Close()
 		    Catch
 		      'The actual PowerPoint object must have been destroyed without our knowing ...
 		    End Try
+		    #pragma BreakOnExceptions Default
 		  End If
 		End Sub
 	#tag EndMethod
@@ -249,12 +251,14 @@ Implements iPresentation
 		  Dim result As Boolean = False
 		  
 		  If Not IsNull(m_oPpt) Then
+		    #pragma BreakOnExceptions Off
 		    Try
 		      If Not IsNull(m_oPpt.SlideShowWindow) Then
 		        result = Not IsNull( m_oPpt.SlideShowWindow.View )
 		      End If
 		    Catch
 		    End Try
+		    #pragma BreakOnExceptions Default
 		  End If
 		  
 		  Return result

@@ -466,7 +466,7 @@ Protected Module SetML
 		    If section = SectionMode.Bilingual Then
 		      x = bodyMargins.Left + RealBorder
 		      y = HeaderSize + RealBorder
-              If bodyTextHeight > MainHeight Then bodyTextHeight = MainHeight  // confine the drawn text to the body area
+		      If bodyTextHeight > MainHeight Then bodyTextHeight = MainHeight  // confine the drawn text to the body area
 		      If Style.BodyVAlign = "middle" Then
 		        y = y + (MainHeight - bodyTextHeight) / 2
 		      ElseIf Style.BodyVAlign = "bottom" Then
@@ -1342,7 +1342,7 @@ Protected Module SetML
 		      If smartWrapped Then Return lineLen ' restart, don't change mid through
 		    End If
 		    ' find what fits on the line
-		    ' estimate the number of characters thet fit on the line (y) and choose a character count (x) to start the search with
+		    ' estimate the number of characters that fit on the line (y) and choose a character count (x) to start the search with
 		    y = line.Len() / (lineLen /  splitWidth) / 0.85
 		    x = y \ 5
 		    If x = 0 Then x = 1
@@ -1377,6 +1377,7 @@ Protected Module SetML
 		      Else
 		        x = 0
 		      End If
+		      x = x \ 2
 		    Wend
 		    If lineLen >  splitWidth Then y = y - 1
 		    

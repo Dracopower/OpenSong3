@@ -8555,7 +8555,7 @@ End
 
 	#tag Event
 		Function KeyDown(Key As String) As Boolean
-		  Dim Mode as Integer
+		  Dim presentationMode as Integer
 		  
 		  If Globals.Status_Presentation Then
 		    App.DebugWriter.Write "MainWindow.KeyDown: Got a '" + Key + "' in Presentation Mode"
@@ -8564,18 +8564,18 @@ End
 		  End If
 		  
 		  if asc(key) = 204 Then 'F5
-		    mode = SmartML.GetValueN(App.MyPresentSettings.DocumentElement, "presentation_mode/@code")
+		    presentationMode = SmartML.GetValueN(App.MyPresentSettings.DocumentElement, "presentation_mode/@code")
 		    if Status_SongOpen And (Status_CurrentMode = 0 Or Not Status_SetOpen) Then
 		      'Ask if user wants to save
 		      If NOT ActionSongAskSave Then Return True 'User Canceled
 		      
-		      ActionSongPresent mode
+		      ActionSongPresent presentationMode
 		      Return True
 		    elseif Status_SetOpen then
 		      'Ask if user wants to save
 		      If NOT ActionSetAskSave Then Return True  'User Canceled
 		      
-		      ActionSetPresent mode
+		      ActionSetPresent presentationMode
 		      Return True
 		    end if
 		  end if
@@ -10291,7 +10291,7 @@ End
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub ActionSetPresent(mode As Integer, ItemNumber As Integer = - 1)
+		Sub ActionSetPresent(screenMode As Integer, ItemNumber As Integer = - 1)
 		  Dim i As Integer
 		  Dim lastType As String
 		  'this is our working copy of the set's XML Doc
@@ -10310,7 +10310,7 @@ End
 		  Import = True
 		  
 		  'Don't log in preview mode
-		  If mode <> PresentWindow.MODE_PREVIEW And App.MainPreferences.GetValueB(App.kActivityLog, True) And Globals.SongActivityLog <> Nil  Then
+		  If screenMode <> PresentWindow.MODE_PREVIEW And App.MainPreferences.GetValueB(App.kActivityLog, True) And Globals.SongActivityLog <> Nil  Then
 		    If App.MainPreferences.GetValueB(App.kPromptBeforePresenting, True) Then
 		      Import = InputBox.AskYN(App.T.Translate("questions/activity_log/@caption"))
 		    End If
@@ -10323,7 +10323,7 @@ End
 		  App.MouseCursor = System.Cursors.Wait
 		  
 		  ImportSongs setDoc, Import
-		  ImportExternals setDoc, Mode
+		  ImportExternals setDoc, screenMode
 		  
 		  If SetML.GetSlide(setDoc, 1) = Nil Then
 		    InputBox.Message App.T.Translate("sets_mode/current_set/present/no_slides")
@@ -10337,7 +10337,7 @@ End
 		  PreparePresentation
 		  
 		  'App.MinimizeWindow(Self)
-		  PresentWindow.Present setDoc, Mode, ItemNumber
+		  PresentWindow.Present setDoc, screenMode, ItemNumber
 		  
 		  '++JRC reset cursor
 		  App.MouseCursor = Nil
@@ -11221,7 +11221,7 @@ End
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub ActionSongPresent(mode As Integer, ItemNumber As Integer = 0)
+		Sub ActionSongPresent(screenMode As Integer, ItemNumber As Integer = 0)
 		  'Ask if user wants to save
 		  If Not ActionSongAskSave Then Return 'User Canceled, Don't Present
 		  
@@ -11258,7 +11258,7 @@ End
 		  'Don't log in preview mode
 		  If App.MainPreferences.GetValueB(App.kActivityLog, True) And _
 		    Globals.SongActivityLog <> Nil And _
-		    Mode <> PresentWindow.MODE_PREVIEW Then
+		    screenMode <> PresentWindow.MODE_PREVIEW Then
 		    
 		    AddToLogAnswer = True
 		    
@@ -11323,7 +11323,7 @@ End
 		  setDoc.DocumentElement.SetAttribute("NumberOfItems",Str(item) )
 		  '--
 		  
-		  PresentWindow.Present setDoc, Mode, ItemNumber
+		  PresentWindow.Present setDoc, screenMode, ItemNumber
 		  
 		  'Self.Hide
 		  

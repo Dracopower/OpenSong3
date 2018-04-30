@@ -1860,8 +1860,6 @@ End
 #tag Events pop_background_position
 	#tag Event
 		Sub Change()
-		  'can_background_image.SetImagePosition Me.ListIndex + 1
-		  'workingStyle.Position = Me.ListIndex + 1
 		  Dim fitInt As Integer
 		  Dim fit As StyleImage.ObjectFit
 		  fitInt = Me.RowTag(Me.ListIndex)
