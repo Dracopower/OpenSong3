@@ -9851,16 +9851,7 @@ End
 		    // of the same song name in a parent/child folder relationship will never find the song
 		    // in the child folder.
 		    //
-		    SongPath = f.Parent.AbsolutePath
-		    FolderPath = MainWindow.Songs.GetRootFolder.AbsolutePath
-		    SongPath = Mid(SongPath, Len(FolderPath) + 1) //Take off the leading path separator
-		    // Change path separator to forward slant "/" to match separator in FolderDB
-		    // This is platform specific
-		    #If TargetWin32
-		      SongPath = ReplaceAll(SongPath, "\", "/")
-		    #ElseIf TargetMacOS
-		      SongPath = ReplaceAll(SongPath, ":", "/")
-		    #EndIf
+		    SongPath = Songs.DBPathFromFolderItem(f.Parent)
 		    SmartML.SetValue newGroup, "@path", SongPath
 		    //--
 		    
@@ -11819,7 +11810,7 @@ End
 		      ActLog(index).Title = SmartML.GetValue(sDoc.DocumentElement, "title", True)
 		      ActLog(index).Author = SmartML.GetValue(sDoc.DocumentElement, "author", True)
 		      ActLog(index).CCLISongNumber = edt_song_ccli.Text
-		      ActLog(index).SongFileName =  f.Parent.Name + "\" + f.Name
+		      ActLog(index).SongFileName =  Songs.DBPathFromFolderItem(f)
 		      ActLog(index).DateAndTime = d
 		      ActLog(index).HasChords = ActLog(index).CheckLyricsForChords(edf_song_lyrics.Text)
 		      ActLog(index).Presented = True
@@ -11893,7 +11884,7 @@ End
 		      ActLog(index).Title = SmartML.GetValue(sDoc.DocumentElement, "title", True)
 		      ActLog(index).Author = SmartML.GetValue(sDoc.DocumentElement, "author", True)
 		      ActLog(index).CCLISongNumber = edt_song_ccli.Text
-		      ActLog(index).SongFileName =  f.Parent.Name + "\" + f.Name
+		      ActLog(index).SongFileName =  Songs.DBPathFromFolderItem(f)
 		      ActLog(index).DateAndTime = d
 		      ActLog(index).HasChords = ActLog(index).CheckLyricsForChords(edf_song_lyrics.Text)
 		      ActLog(index).Presented = True

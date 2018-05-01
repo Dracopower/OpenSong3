@@ -1218,7 +1218,7 @@ End
 		        ActLog(i).Title = SmartML.GetValue(s.DocumentElement, "title", True)
 		        ActLog(i).Author = SmartML.GetValue(s.DocumentElement, "author", True)
 		        ActLog(i).CCLISongNumber = SmartML.GetValue(s.DocumentElement, "ccli", True)  //The song's CCLI number
-		        ActLog(i).SongFileName =  song.Parent.Name + "/" +  song.Name 'Should we use AbsolutePath?
+		        ActLog(i).SongFileName =  MainWindow.Songs.DBPathFromFolderItem(song) 'Should we use AbsolutePath?
 		        ActLog(i).DateAndTime = d
 		        ActLog(i).HasChords =ActLog(i).CheckLyricsForChords( SmartML.GetValue(s.DocumentElement, "lyrics", True))
 		        ActLog(i).Presented = True

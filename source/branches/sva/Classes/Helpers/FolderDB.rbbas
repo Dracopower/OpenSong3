@@ -249,6 +249,26 @@ Protected Class FolderDB
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
+		Function DBPathFromFolderItem(f As FolderItem) As String
+		  // Returns the relative path of the FolderItem within the FolderDB with '/' as folder separator
+		  // If f is not within the FolderDB, then the system specific absolute path is returned instead
+		  
+		  Dim Path As String
+		  
+		  If f = Nil Then Return ""
+		  
+		  Path = f.AbsolutePath
+		  If Path.StartsWith(Folder.AbsolutePath) Then
+		    Path = Path.Mid(Folder.AbsolutePath.Len + 1)
+		  Else
+		    Return Path  'TODO: should this be a platform independent path?
+		  End If
+		  
+		  Return Path.Translate("\:","/")
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
 		Function DeleteFile(path As String) As Boolean
 		  Dim f As FolderItem
 		  path = CleanPath(path)
