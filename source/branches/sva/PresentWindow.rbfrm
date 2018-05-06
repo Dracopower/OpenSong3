@@ -252,10 +252,6 @@ End
 		  App.DebugWriter.Write("PresentWindow.Open: Enter")
 		  Dim time As Integer
 		  
-		  '++JRC
-		  numBlanks = 0
-		  numStyles = 0
-		  '--
 		  time = SmartML.GetValueN(App.MyPresentSettings.DocumentElement, "style/@transition_time", False)
 		  If time = 0 Then Time = 100 'Set a reasonable default
 		  TransitionFrames = SmartML.GetValueN(App.MyPresentSettings.DocumentElement, "style/@transition_frames", False)
@@ -897,42 +893,46 @@ End
 
 	#tag Method, Flags = &h1
 		Protected Function GoSetItem(Item As Integer) As Boolean
-		  '++JRC, 2 Apr 2009
-		  'This function will advance the presentation to the set item indicated by Item
+		  'This function will position the presentation to the set item indicated by Item
 		  Dim Result As Boolean = True
 		  
 		  IF Item = -1 Then
-		    Return GoFirstSlide
+		    Result = GoFirstSlide
 		  ElseIf Item < 0 Then
 		    Result = False
 		  Else
-		    Dim xNewSlide As XmlNode = XCurrentSlide
-		    Dim newSlide As Integer = CurrentSlide
+		    Dim xNewSlide As XmlNode = SetML.GetSlide(CurrentSet, 1)
+		    Dim newSlide As Integer = 1
 		    
-		    Dim newItem As Integer = Item - numStyles 'SvA: ToDo: Eliminate numStyles
-		    Dim newSlideItemNumber As Integer = 0
-		    Do
+		    Item = Item + 1  // we made @set_list_index 1-based
+		    While Item > SmartML.GetValueN(xNewSlide.Parent.Parent, "@set_list_index", False)
 		      newSlide = newSlide + 1
 		      xNewSlide = SetML.GetNextSlide(xNewSlide)
-		      
-		      If xNewSlide <> Nil Then
-		        newSlideItemNumber = SmartML.GetValueN(xNewSlide.Parent.Parent, "@ItemNumber", False)
-		      Else
-		        Exit Do
+		      If xNewSlide = Nil Then
+		        Exit While
 		      End If
-		      
-		    Loop Until newItem < newSlideItemNumber
+		    Wend
 		    
-		    If xNewSlide <> Nil Then
+		    If xNewSlide = Nil Then
+		      Result = False
+		    Else
+		      
 		      CurrentSlide = newSlide
 		      xCurrentSlide = xNewSlide
+		      
+		      If HelperActive Then
+		        PresentHelperWindow.ScrollTo CurrentSlide
+		      Else
+		        ResetPaint XCurrentSlide
+		      End If
+		      Result = True
 		    End If
-		    
-		    If HelperActive Then
-		      PresentHelperWindow.ScrollTo CurrentSlide
-		    Else
-		      ResetPaint XCurrentSlide
-		    End If
+		  End If
+		  
+		  If xCurrentSlide = Nil Then
+		    Call GoFirstSlide
+		    // that's not what was suposed to be happening, so return false
+		    Result = False
 		  End If
 		  
 		  Return Result
@@ -1069,9 +1069,6 @@ End
 		      
 		      'treat a very first style slide as style for the first blank slide, even if it takes the style of the previous slide
 		      If SmartML.GetValue(slide_group, "@type") = "style" Then
-		        If i <= Item Then
-		          numStyles = numStyles + 1
-		        End If
 		        prevSlideGroup = slide_group
 		        slide_group = slide_group.NextSibling
 		        i = i + 1
@@ -1083,14 +1080,8 @@ End
 		      End If
 		      SmartML.SetValue newSlideGroup, "@type", "blank"
 		      SmartML.SetValue newSlideGroup, "slides/slide/body", ""
-		      If i <= Item Then
-		        numBlanks = numBlanks + 1
-		      End If
 		      
 		      While SmartML.GetValue(slide_group, "@type") = "style"
-		        If i <= Item Then
-		          numStyles = numStyles + 1
-		        End If
 		        slide_group = slide_group.NextSibling
 		        i = i + 1
 		      Wend
@@ -1106,18 +1097,12 @@ End
 		        slide_group = slide_group.NextSibling
 		        i = i + 1
 		        If SmartML.GetValue(slide_group, "@type") = "style" Then
-		          If i <= Item Then
-		            numStyles = numStyles + 1
-		          End If
 		        ElseIf insertBlanks Then
 		          slideGroupName = SmartML.GetValue(slide_group, "@name")
 		          If slideGroupName <> prevSlideGroupName Or slide_group = Nil Then
 		            newSlideGroup = SmartML.InsertAfter(prevSlideGroup, "slide_group")
 		            SmartML.SetValue newSlideGroup, "@type", "blank"
 		            SmartML.SetValue newSlideGroup, "slides/slide/body", ""
-		            If i < Item Then
-		              numBlanks = numBlanks + 1
-		            End If
 		          End If
 		          prevSlideGroup = slide_group
 		          prevSlideGroupName = slideGroupName
@@ -1153,16 +1138,9 @@ End
 		          SmartML.SetValue slide_group, "slides/slide/body", ""
 		        End If
 		        //--
-		        If i < Item Then
-		          numBlanks = numBlanks + 1
-		        End If
 		      End If
 		      
 		    End If ' for inserting blanks
-		    
-		    If SmartML.GetValue(slide_group, "@type") =  "style" And i < Item Then
-		      numStyles = numStyles + 1
-		    End If
 		    
 		    i = i + 1
 		    slide_group = slide_group.NextSibling
@@ -2700,14 +2678,6 @@ End
 
 	#tag Property, Flags = &h0
 		NumberOfItems As Integer
-	#tag EndProperty
-
-	#tag Property, Flags = &h1
-		Protected numBlanks As Integer
-	#tag EndProperty
-
-	#tag Property, Flags = &h1
-		Protected numStyles As Integer
 	#tag EndProperty
 
 	#tag Property, Flags = &h1

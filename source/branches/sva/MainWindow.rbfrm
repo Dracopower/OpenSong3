@@ -12585,7 +12585,7 @@ End
 		        slide_group = SmartML.ReplaceWithImportNode(slide_group, songDoc.DocumentElement)
 		        '++JRC Assign an index for this set item
 		        SmartML.SetValueN(slide_group, "@ItemNumber", ItemNumber)
-		        'ItemNumber = ItemNumber + 1
+		        SmartML.SetValueN(slide_group, "@set_list_index", ItemNumber + StyleGroupCount)
 		        
 		        If Presentation <> "" Then 'Override the song's default presentation
 		          SmartML.SetValue(slide_group, "presentation", presentation)
@@ -12603,9 +12603,6 @@ End
 		          Call SmartML.InsertChildNode(slide_group, SetItemStyle, slide_group.ChildCount())
 		          SongML.ToSetML slide_group, SetItemStyle
 		        Else
-		          '++JRC: Pass ActiveCustomStyle
-		          ' But check for an override first!
-		          '++Vwout: The better place to do this is SetML
 		          If ActiveCustomStyle <> Nil And Not SetML.SongStylePreferred(Nil) Then
 		            If SongStyle <> Nil Then
 		              SmartML.RemoveChild(slide_group, SongStyle)
@@ -12629,9 +12626,8 @@ End
 		      End If
 		      
 		      ItemNumber = ItemNumber + 1
-		      
-		      '++JRC: Save Current Style
 		    Elseif SmartML.GetValue(slide_group, "@type", True) = "style"  Then
+		      '++JRC: Save Current Style
 		      if SmartML.GetValue(slide_group, "@action", True) = "new" then
 		        CustomStyles.Append(ActiveCustomStyle)
 		        ActiveCustomStyle = SmartML.GetNode(slide_group, "style", False)
@@ -12643,14 +12639,15 @@ End
 		          ActiveCustomStyle = Nil
 		        End If
 		      end if
+
 		      slide_group  = slide_group.NextSibling
 		      StyleGroupCount = StyleGroupCount + 1
 		    Else
 		      '++JRC Assign an index for this set item
 		      SmartML.SetValueN(slide_group, "@ItemNumber", ItemNumber)
+		      SmartML.SetValueN(slide_group, "@set_list_index", ItemNumber + StyleGroupCount)
 		      
 		      slide_group  = slide_group.NextSibling
-		      
 		      ItemNumber = ItemNumber + 1
 		    End If
 		    
