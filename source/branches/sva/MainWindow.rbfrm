@@ -9581,7 +9581,7 @@ End
 		      SmartML.SetValue xslide, "description", lst_image_images.Cell( i, 1 )
 		    Next i
 		    
-		    can_image_style.PreviewSlide = SmartML.GetNode(xgroup, "slides/slide")
+		    can_image_style.PreviewSlide = GetImageSlideStylePreviewSlide(SmartML.GetNode(xgroup, "slides/slide"))
 		    lst_set_items.List(CurrentInSetItem) = SetML.GetSlideGroupCaption(xgroup)
 		    
 		  Case "external"
@@ -12325,6 +12325,32 @@ End
 		  App.DebugWriter.Write("MainWindow.FindNext: Exit")
 		  Return
 		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Private Function GetImageSlideStylePreviewSlide(xSlide As XmlNode) As XmlNode
+		  Dim xPreviewDoc As XmlDocument = New XmlDocument
+		  Dim xNode As XmlNode
+		  xPreviewDoc.AppendChild(xPreviewDoc.ImportNode(App.StylePreview, True))
+		  xNode = SmartML.GetNode(xPreviewDoc.DocumentElement, "slide_groups/slide_group")
+		  // there's unfortunately no easy way to distinguish no node and node with value "" (i.e. element with no textnode) using SamartML
+		  If SmartML.GetNode(xSlide.Parent.Parent, "title") <> Nil Then
+		    SmartML.SetValue(xNode, "title", SmartML.GetValue(xSlide.Parent.Parent, "title", False))
+		  End If
+		  If SmartML.GetNode(xSlide.Parent.Parent, "subtitle") <> Nil Then
+		    SmartML.SetValue(xNode, "subtitle", SmartML.GetValue(xSlide.Parent.Parent, "subtitle", False))
+		  End If
+		  SmartML.SetValue(xNode, "slides/slide/description", SmartML.GetValue(xSlide, "description", False, SmartML.GetValue(xNode, "description", False)))
+		  SmartML.SetValue(xNode, "@descriptions_in_subtitle", SmartML.GetValue(xSlide.Parent.Parent, "@descriptions_in_subtitle", False, SmartML.GetValue(xNode, "@descriptions_in_subtitle", False)))
+		  SmartML.SetValue(xNode, "@resize", SmartML.GetValue(xSlide.Parent.Parent, "@resize", False, SmartML.GetValue(xNode, "@resize", False)))
+		  SmartML.SetValue(xNode, "@keep_aspect", SmartML.GetValue(xSlide.Parent.Parent, "@keep_aspect", False, SmartML.GetValue(xNode, "@keep_aspect", False)))
+		  SmartML.SetValue(xNode, "slides/slide/body", "")
+		  SmartML.SetValue(xNode, "@type", "image")
+		  
+		  xNode = SmartML.GetNode(xNode, "slides/slide", False)
+		  Return xNode
+		  
+		End Function
 	#tag EndMethod
 
 	#tag Method, Flags = &h1
@@ -15886,7 +15912,7 @@ End
 		      can_image_style.ClearPreviewSlide
 		    Else
 		      chk_image_style.Value = True
-		      can_image_style.PreviewSlide = SmartML.GetNode(xgroup, "slides/slide")
+		      can_image_style.PreviewSlide = GetImageSlideStylePreviewSlide(SmartML.GetNode(xgroup, "slides/slide"))
 		      can_image_style.SetStyleNode SmartML.GetNode(xgroup, "style")
 		    End If
 		    
@@ -17696,7 +17722,7 @@ End
 		  If Status_InSetEditable Then
 		    xgroup = SmartML.GetNode(CurrentSet.DocumentElement, "slide_groups", True).Child(lst_set_items.ListIndex)
 		    If Me.Value Then
-		      can_image_style.PreviewSlide = SmartML.GetNode(xgroup, "slides/slide")
+		      can_image_style.PreviewSlide = GetImageSlideStylePreviewSlide(SmartML.GetNode(xgroup, "slides/slide"))
 		      
 		      xnode = SmartML.GetNode(xgroup, "style", True)
 		      If Lowercase(SmartML.GetValue(xgroup, "@type")) = "scripture" Then
