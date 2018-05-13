@@ -1150,13 +1150,13 @@ End
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Function InsertSongIntoSet(song As Folderitem, atSlide As Integer, presentation As String, CheckLinked As Boolean, showErrorPopup As Boolean) As Boolean
+		Function InsertSongIntoSet(fSong As Folderitem, atSlide As Integer, presentation As String, CheckLinked As Boolean, showErrorPopup As Boolean) As Boolean
 		  Dim success As Boolean = True
 		  Dim xNewSlide As XmlNode
 		  Dim newSlide As Integer
 		  '++JRC
 		  Dim InsertLinkedSongs As Boolean = False
-		  Dim sDoc() As FolderItem
+		  Dim fSongs() As FolderItem
 		  Dim j As Integer = 0
 		  '--
 		  Dim xSongStyle, xCustomStyle As XmlNode
@@ -1168,13 +1168,13 @@ End
 		  Dim atXSlide As XmlNode = SetML.GetSlide(Me.CurrentSet, atSlide)
 		  If atXSlide <> Nil Then
 		    
-		    While song <> Nil
-		      Dim s As XmlDocument = SmartML.XDocFromFile(song)
+		    While fSong <> Nil
+		      Dim s As XmlDocument = SmartML.XDocFromFile(fSong)
 		      If s = Nil Then
 		        If showErrorPopup Then
 		          SmartML.DisplayError
 		        End If
-		        song = Nil
+		        fSong = Nil
 		        Continue
 		      End If
 		      
@@ -1185,7 +1185,7 @@ End
 		      'Don't log in preview mode
 		      NumberOfItems = NumberOfItems + 1
 		      
-		      If  App.MainPreferences.GetValueB(App.kActivityLog, True) And _
+		      If App.MainPreferences.GetValueB(App.kActivityLog, True) And _
 		        Globals.SongActivityLog <> Nil And _
 		        PresentationMode <> MODE_PREVIEW And _
 		        Globals.AddToLog Then
@@ -1196,17 +1196,17 @@ End
 		        ActLog(i).Title = SmartML.GetValue(s.DocumentElement, "title", True)
 		        ActLog(i).Author = SmartML.GetValue(s.DocumentElement, "author", True)
 		        ActLog(i).CCLISongNumber = SmartML.GetValue(s.DocumentElement, "ccli", True)  //The song's CCLI number
-		        ActLog(i).SongFileName =  MainWindow.Songs.DBPathFromFolderItem(song) 'Should we use AbsolutePath?
+		        ActLog(i).SongFileName = MainWindow.Songs.DBPathFromFolderItem(fSong) 'Should we use AbsolutePath?
 		        ActLog(i).DateAndTime = d
-		        ActLog(i).HasChords =ActLog(i).CheckLyricsForChords( SmartML.GetValue(s.DocumentElement, "lyrics", True))
+		        ActLog(i).HasChords = ActLog(i).CheckLyricsForChords(SmartML.GetValue(s.DocumentElement, "lyrics", True))
 		        ActLog(i).Presented = True
 		        ActLog(i).SetItemNumber = NumberOfItems  'Assign an index to this song
-		        ActLog(i).Displayed = false 'Set this to true if user displays this song
+		        ActLog(i).Displayed = False 'Set this to true if user displays this song
 		      End If
 		      
 		      If CheckLinked Then
-		        sDoc = MainWindow.AddLinkedSongsFolderItem(s.DocumentElement, False)
-		        If UBound(sDoc) >= 0 Then
+		        fSongs = MainWindow.AddLinkedSongsFolderItem(fSong, s.DocumentElement)
+		        If UBound(fSongs) >= 0 Then
 		          If showErrorPopup Then
 		            If SmartML.GetValueB(App.MyMainSettings.DocumentElement, "linked_songs/@prompt", True) Then
 		              App.MouseCursor = Nil
@@ -1221,7 +1221,6 @@ End
 		            InsertLinkedSongs = True
 		          End If
 		        End If
-		        
 		        CheckLinked = False
 		      End If
 		      '--
@@ -1306,12 +1305,12 @@ End
 		      End If
 		      
 		      
-		      If j <= UBound(sDoc) And InsertLinkedSongs Then
-		        song = sDoc(j)
+		      If j <= UBound(fSongs) And InsertLinkedSongs Then
+		        fSong = fSongs(j)
 		        j = j + 1
 		        presentation = ""
 		      Else
-		        song = Nil
+		        fSong = Nil
 		      End If
 		      
 		      atSlide = atSlide + 1

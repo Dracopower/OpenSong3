@@ -9865,7 +9865,7 @@ End
 		        ReDim songFiles(-1)
 		        i = 0
 		      Else
-		        songFiles = AddLinkedSongsFolderItem(sDoc.DocumentElement, False)
+		        songFiles = AddLinkedSongsFolderItem(f, sDoc.DocumentElement, False)
 		        If Ubound(songFiles) >= 0 And  SmartML.GetValueB(App.MyMainSettings.DocumentElement, "linked_songs/@prompt", True) Then
 		          If InputBox.AskYN(App.T.Translate("questions/linked_songs/@caption")) Then
 		            i = 0
@@ -11834,8 +11834,7 @@ End
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Function AddLinkedSongsFolderItem(song As XmlNode, AddToLog As Boolean, recursing As Boolean = False) As FolderItem()
-		  '++JRC
+		Function AddLinkedSongsFolderItem(fSong As FolderItem, xSong As XmlNode, recursing As Boolean = False) As FolderItem()
 		  Dim i, j As Integer
 		  Dim f As FolderItem
 		  Dim sDoc As XmlDocument
@@ -11846,22 +11845,36 @@ End
 		  Dim songId As String
 		  Static songIds As Dictionary
 		  
-		  If Not recursing Then
-		    songIds = New Dictionary
+		  If fSong = Nil Then Return nodes
+		  If xSong = Nil Then
+		    sDoc = SmartML.XDocFromFile(fSong)
+		    If sDoc <> Nil Then
+		      xSong = sDoc.DocumentElement
+		    End If
 		  End If
 		  
 		  'sanity check
-		  If song = Nil Then
-		    Return Nil
+		  If xSong = Nil Then
+		    Return nodes
 		  End If
 		  
-		  Dim xlinked_songs As XmlNode = SmartML.GetNode( song, "linked_songs", True)
+		  If Not recursing Then
+		    songIds = New Dictionary
+		    'Add the initial song so as to not recurse back to it
+		    songIds.Value(Songs.DBPathFromFolderItem(fSong)) = Nil
+		  End If
 		  
-		  For i = 0 To xlinked_songs.ChildCount()-1
+		  Dim xlinked_songs As XmlNode = SmartML.GetNode(xSong, "linked_songs", True)
+		  
+		  i = 0
+		  While i < xlinked_songs.ChildCount()
 		    
-		    songId = xlinked_songs.Child(i).GetText()
-		    If SongIds.HasKey(songId) Then Continue
-		    songIDs.Value(songId) = Nil
+		    songId = xlinked_songs.Child(i).GetText().Translate("\:","/")
+		    If SongIds.HasKey(songId) Then
+		      i = i + 1
+		      Continue
+		    End If
+		    songIds.Value(songId) = Nil
 		    f = Songs.GetFile(songId)
 		    If f = Nil Then
 		      InputBox.Message App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", xlinked_songs.Child(i).GetText() )
@@ -11876,33 +11889,16 @@ End
 		    
 		    nodes.Append(f)
 		    
-		    If AddToLog Then
-		      
-		      
-		      ActLog.Append(New LogEntry(Globals.SongActivityLog))
-		      index = Ubound(ActLog)
-		      ActLog(index).Title = SmartML.GetValue(sDoc.DocumentElement, "title", True)
-		      ActLog(index).Author = SmartML.GetValue(sDoc.DocumentElement, "author", True)
-		      ActLog(index).CCLISongNumber = edt_song_ccli.Text
-		      ActLog(index).SongFileName =  Songs.DBPathFromFolderItem(f)
-		      ActLog(index).DateAndTime = d
-		      ActLog(index).HasChords = ActLog(index).CheckLyricsForChords(edf_song_lyrics.Text)
-		      ActLog(index).Presented = True
-		      ActLog(index).SetItemNumber = i+1 'Assign an  index to this song
-		      ActLog(index).Displayed = false 'Set this to true if user displays this song
-		      
-		    End If
-		    
 		    'recurse
-		    nodesSub = AddLinkedSongsFolderItem(sDoc.DocumentElement, AddToLog, True)
+		    nodesSub = AddLinkedSongsFolderItem(f, sDoc.DocumentElement, True)
 		    For j = 0 To UBound(nodesSub)
-		      nodes.Append(nodesSub(j))
+		      nodes.Insert(i+j,nodesSub(j)) // Insert rather than Append to do depth first recursion
 		    Next j
 		    
-		  Next i
+		    i = i + 1
+		  Wend
 		  
 		  Return nodes
-		  '--
 		  
 		End Function
 	#tag EndMethod
