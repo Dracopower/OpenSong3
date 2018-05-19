@@ -95,14 +95,14 @@ Inherits ServerSocket
 			Name="Index"
 			Visible=true
 			Group="ID"
-			Type="Integer"
-			EditorType="Integer"
+			InheritedFrom="ServerSocket"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Left"
 			Visible=true
 			Group="Position"
 			Type="Integer"
+			InheritedFrom="ServerSocket"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="MaximumSocketsConnected"
@@ -110,6 +110,7 @@ Inherits ServerSocket
 			Group="Behavior"
 			InitialValue="10"
 			Type="Integer"
+			InheritedFrom="ServerSocket"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="MinimumSocketsAvailable"
@@ -117,13 +118,13 @@ Inherits ServerSocket
 			Group="Behavior"
 			InitialValue="2"
 			Type="Integer"
+			InheritedFrom="ServerSocket"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Name"
 			Visible=true
 			Group="ID"
-			Type="String"
-			EditorType="String"
+			InheritedFrom="ServerSocket"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Port"
@@ -131,19 +132,20 @@ Inherits ServerSocket
 			Group="Behavior"
 			InitialValue="0"
 			Type="Integer"
+			InheritedFrom="ServerSocket"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Super"
 			Visible=true
 			Group="ID"
-			Type="String"
-			EditorType="String"
+			InheritedFrom="ServerSocket"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Top"
 			Visible=true
 			Group="Position"
 			Type="Integer"
+			InheritedFrom="ServerSocket"
 		#tag EndViewProperty
 	#tag EndViewBehavior
 End Class

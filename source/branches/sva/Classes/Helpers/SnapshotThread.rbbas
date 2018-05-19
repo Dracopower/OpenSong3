@@ -232,15 +232,20 @@ Inherits Thread
 			Name="Index"
 			Visible=true
 			Group="ID"
+			InheritedFrom="Thread"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Left"
+			Visible=true
+			Group="Position"
 			Type="Integer"
-			EditorType="Integer"
+			InheritedFrom="Thread"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Name"
 			Visible=true
 			Group="ID"
-			Type="String"
-			EditorType="String"
+			InheritedFrom="Thread"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Priority"
@@ -248,6 +253,7 @@ Inherits Thread
 			Group="Behavior"
 			InitialValue="5"
 			Type="Integer"
+			InheritedFrom="Thread"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="StackSize"
@@ -255,13 +261,20 @@ Inherits Thread
 			Group="Behavior"
 			InitialValue="0"
 			Type="Integer"
+			InheritedFrom="Thread"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Super"
 			Visible=true
 			Group="ID"
-			Type="String"
-			EditorType="String"
+			InheritedFrom="Thread"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Top"
+			Visible=true
+			Group="Position"
+			Type="Integer"
+			InheritedFrom="Thread"
 		#tag EndViewProperty
 	#tag EndViewBehavior
 End Class
