@@ -29,12 +29,22 @@ Inherits Thread
 		  m_lock = New CriticalSection
 		  
 		  Me.Priority = Me.LowestPriority
+		  
+		  Snapshot_Filename = SmartML.GetValue(App.MyPresentSettings.DocumentElement, "snapshot/filename", False)
+		  Export_Live_Insertions = SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "snapshot/@export_live_insertions", False, True)
+		  Export_Metadata = SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "snapshot/@export_metadata", False, True)
+		  
+		  
 		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub Export(currentslideIndex As Integer, image As Picture, slide As XmlNode, style As XmlNode)
-		  Dim data As New SnapshotData(currentslideIndex, image, slide, style)
+		Sub Export(currentslideIndex As Integer, image As Picture, slide As XmlNode, style As SlideStyle)
+		  Dim xStyle As XmlNode
+		  If Export_Metadata And style <> Nil Then
+		    xStyle = style.ToXML
+		  End
+		  Dim data As New SnapshotData(currentslideIndex, image, slide, xStyle)
 		  
 		  m_lock.Enter
 		  'Insert the new snapshot at the beginning of the listl
@@ -54,10 +64,6 @@ Inherits Thread
 
 	#tag Method, Flags = &h21
 		Private Sub ExportSnapshot(data As SnapshotData)
-		  Dim snapshot_filename As String = SmartML.GetValue(App.MyPresentSettings.DocumentElement, "snapshot/filename", False)
-		  Dim export_live_insertions As Boolean = SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "snapshot/@export_live_insertions", False, True)
-		  Dim export_metadata As Boolean = SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "snapshot/@export_metadata", False, True)
-		  
 		  If SmartML.GetValue(data.slide.Parent.Parent, "@type") = "blank" Then
 		    'Blank slides will not be exported as snapshot
 		    Return
@@ -200,12 +206,24 @@ Inherits Thread
 	#tag EndMethod
 
 
+	#tag Property, Flags = &h1
+		Protected Export_Live_Insertions As Boolean
+	#tag EndProperty
+
+	#tag Property, Flags = &h1
+		Protected Export_Metadata As Boolean
+	#tag EndProperty
+
 	#tag Property, Flags = &h21
 		Private m_lock As CriticalSection
 	#tag EndProperty
 
 	#tag Property, Flags = &h21
 		Private m_snapshots() As SnapshotData
+	#tag EndProperty
+
+	#tag Property, Flags = &h1
+		Protected Snapshot_Filename As String
 	#tag EndProperty
 
 

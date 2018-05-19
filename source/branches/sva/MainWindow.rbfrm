@@ -139,6 +139,7 @@ Begin Window MainWindow Implements ScriptureReceiver
       Scope           =   0
       TabIndex        =   4
       TabPanelIndex   =   0
+      TabStop         =   True
       Top             =   35
       Value           =   1
       Visible         =   True
@@ -219,6 +220,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   0
             TabPanelIndex   =   1
+            TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   11.0
             TextUnit        =   0
@@ -525,6 +527,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   5
             TabPanelIndex   =   1
+            TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   11.0
             TextUnit        =   0
@@ -645,6 +648,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   4
             TabPanelIndex   =   1
+            TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   11.0
             TextUnit        =   0
@@ -1025,6 +1029,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   0
             TabPanelIndex   =   2
+            TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   11.0
             TextUnit        =   0
@@ -1114,6 +1119,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   3
             TabPanelIndex   =   2
+            TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   11.0
             TextUnit        =   0
@@ -1358,6 +1364,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   1
             TabPanelIndex   =   2
+            TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   11.0
             TextUnit        =   0
@@ -1668,6 +1675,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   2
             TabPanelIndex   =   2
+            TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   11.0
             TextUnit        =   0
@@ -1933,6 +1941,7 @@ Begin Window MainWindow Implements ScriptureReceiver
       Scope           =   0
       TabIndex        =   5
       TabPanelIndex   =   0
+      TabStop         =   True
       Top             =   34
       Value           =   4
       Visible         =   True
@@ -3741,6 +3750,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   22
             TabPanelIndex   =   1
+            TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   11.0
             TextUnit        =   0
@@ -7178,6 +7188,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   10
             TabPanelIndex   =   6
+            TabStop         =   True
             Top             =   146
             Value           =   2
             Visible         =   True
@@ -7201,6 +7212,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                Scope           =   0
                TabIndex        =   0
                TabPanelIndex   =   2
+               TabStop         =   True
                TextFont        =   "Arial"
                TextSize        =   11.0
                TextUnit        =   0
@@ -7631,6 +7643,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                Scope           =   0
                TabIndex        =   0
                TabPanelIndex   =   1
+               TabStop         =   True
                TextFont        =   "Arial"
                TextSize        =   11.0
                TextUnit        =   0
@@ -7693,6 +7706,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                Scope           =   0
                TabIndex        =   0
                TabPanelIndex   =   4
+               TabStop         =   True
                TextFont        =   "Arial"
                TextSize        =   11.0
                TextUnit        =   0
@@ -8003,6 +8017,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                Scope           =   0
                TabIndex        =   0
                TabPanelIndex   =   3
+               TabStop         =   True
                TextFont        =   "Arial"
                TextSize        =   11.0
                TextUnit        =   0
@@ -8458,13 +8473,17 @@ Begin Window MainWindow Implements ScriptureReceiver
       Width           =   846
    End
    Begin Timer tmr_lookup
+      Enabled         =   True
       Index           =   -2147483648
       InitialParent   =   ""
       LockedInPosition=   False
       Mode            =   2
       Period          =   1500
       Scope           =   0
+      TabIndex        =   7
       TabPanelIndex   =   0
+      TabStop         =   True
+      Visible         =   True
    End
 End
 #tag EndWindow
@@ -8491,7 +8510,7 @@ End
 		        End If
 		      #endif
 		    Else
-		      If Not SetML.IsExternal(PresentWindow.XCurrentSlide) Then
+		      If Not (PresentWindow.XCurrentSlide = Nil Or SetML.IsExternal(PresentWindow.XCurrentSlide)) Then
 		        #if Not TargetWin32
 		          App.RestoreWindow(PresentWindow)
 		          App.SetForeground(PresentWindow)
@@ -9784,18 +9803,8 @@ End
 	#tag Method, Flags = &h1000
 		Sub ActionSetAddSong()
 		  Dim f As FolderItem
-		  Dim SongPath As String
-		  Dim FolderPath As String
 		  Dim Where As Integer
 		  Dim presentation As String
-		  Dim xgroups, newGroup As XmlNode
-		  
-		  '++JRC
-		  Dim sDoc As XmlDocument
-		  Dim songFiles() As FolderItem
-		  Dim i As Integer = 0
-		  Dim CheckLinked As Boolean = True
-		  '--
 		  
 		  '++JRC Check if we have a songs folder if not try to create one
 		  If App.CheckDocumentFolders(App.SONGS_FOLDER) = App.NO_FOLDER Then
@@ -9822,77 +9831,22 @@ End
 		    End If
 		  End If
 		  
-		  xgroups = SmartML.GetNode(CurrentSet.DocumentElement, "slide_groups", True)
-		  
-		  Where = lst_set_items.ListIndex
+		  If lst_set_items.ListIndex >= 0 Then
+		    Where = lst_set_items.ListIndex + 1
+		  Else
+		    Where = lst_set_items.ListCount
+		  End If
 		  
 		  f = SongPickerWindow.Popup(presentation)
-		  If f <> Nil Then
+		  While f <> Nil
+		    AddSongFolderItemToSet(f, CurrentSet, Where, presentation, True)
 		    Status_SetChanged = True
 		    'Status_InSetChanged = False
 		    ' No need to EnableMenuItems, since the following selection change will call it
-		  End If
-		  
-		  While f <> Nil
-		    If lst_set_items.ListIndex >= 0 Then
-		      Where = lst_set_items.ListIndex + 1
-		    Else
-		      Where = lst_set_items.ListCount
-		    End If
-		    
-		    newGroup = SmartML.InsertChild(xgroups, "slide_group", Where)
-		    SmartML.SetValue newGroup, "@name", f.Name
-		    SmartML.SetValue newGroup, "@type", "song"
-		    SmartML.SetValue newGroup, "@presentation", presentation
-		    //++
-		    // EMP, May 2006
-		    //
-		    // Add a path attribute relative to the base songs directory.  Otherwise, two instances
-		    // of the same song name in a parent/child folder relationship will never find the song
-		    // in the child folder.
-		    //
-		    SongPath = Songs.DBPathFromFolderItem(f.Parent)
-		    SmartML.SetValue newGroup, "@path", SongPath
-		    //--
-		    
-		    ActionInSetAddSlide newGroup
-		    
-		    '++JRC
-		    If CheckLinked Then
-		      sDoc = SmartML.XDocFromFile(f)
-		      If sDoc = Nil Then
-		        'SmartML.DisplayError
-		        ReDim songFiles(-1)
-		        i = 0
-		      Else
-		        songFiles = AddLinkedSongsFolderItem(f, sDoc.DocumentElement, False)
-		        If Ubound(songFiles) >= 0 And  SmartML.GetValueB(App.MyMainSettings.DocumentElement, "linked_songs/@prompt", True) Then
-		          If InputBox.AskYN(App.T.Translate("questions/linked_songs/@caption")) Then
-		            i = 0
-		          Else
-		            i = UBound(songFiles) + 1
-		          End If
-		        Else
-		          i = 0
-		        End If
-		        
-		      End If
-		      
-		      CheckLinked = False
-		    End If
-		    
-		    If i <= UBound(songFiles) Then
-		      f = songFiles(i)
-		      i = i + 1
-		      Continue
-		    End If
-		    '--
 		    
 		    f = SongPickerWindow.Popup(presentation)
-		    '++JRC
-		    CheckLinked = True
-		    '--
 		  Wend
+		  
 		  lst_set_items.ListIndex = Where
 		  lst_set_items.SetFocus
 		  
@@ -10127,12 +10081,7 @@ End
 		    // get paths for the individual slide groups
 		    //Should be a call to SlideGroup.GetChildFolderItems
 		    If SmartML.GetValue(slide_group, "@type", True) = "song" Then
-		      SongPath = SmartML.GetValue(slide_group, "@path", False)
-		      If SongPath <> "" Then
-		        SongPath = SongPath + SmartML.GetValue(slide_group, "@name")
-		      Else
-		        SongPath = SmartML.GetValue(slide_group, "@name")
-		      End If
+		      SongPath = SmartML.GetValue(slide_group, "@path", False) + SmartML.GetValue(slide_group, "@name")
 		      f = Songs.GetFile(SongPath)
 		      If f = Nil Then
 		        InputBox.Message App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", SmartML.GetValue(slide_group, "@name", True))
@@ -10283,57 +10232,19 @@ End
 
 	#tag Method, Flags = &h0
 		Sub ActionSetPresent(screenMode As Integer, ItemNumber As Integer = - 1)
-		  Dim i As Integer
-		  Dim lastType As String
-		  'this is our working copy of the set's XML Doc
-		  'not to be confused with any of our other copies
-		  'hope the user has losts of RAM eh!
-		  Dim setDoc As New XmlDocument
-		  Dim slide_groups As XmlNode
-		  
 		  'Ask if user wants to save
-		  If NOT ActionSetAskSave Then Return 'User Canceled
-		  
-		  setDoc.AppendChild setDoc.ImportNode(CurrentSet.DocumentElement, True)
-		  
-		  '++JRC Added option to prompt before adding presented songs to the activity log
-		  Dim Import As Boolean
-		  Import = True
-		  
-		  'Don't log in preview mode
-		  If screenMode <> PresentWindow.MODE_PREVIEW And App.MainPreferences.GetValueB(App.kActivityLog, True) And Globals.SongActivityLog <> Nil  Then
-		    If App.MainPreferences.GetValueB(App.kPromptBeforePresenting, True) Then
-		      Import = InputBox.AskYN(App.T.Translate("questions/activity_log/@caption"))
-		    End If
-		  Else
-		    Import =  false
-		  End If
-		  
-		  Globals.AddToLog = Import
-		  
-		  App.MouseCursor = System.Cursors.Wait
-		  
-		  ImportSongs setDoc, Import
-		  ImportExternals setDoc, screenMode
-		  
-		  If SetML.GetSlide(setDoc, 1) = Nil Then
-		    InputBox.Message App.T.Translate("sets_mode/current_set/present/no_slides")
-		    Return
-		  End If
+		  If Not ActionSetAskSave Then Return 'User Canceled
 		  
 		  Status_Presentation = True
 		  Globals.Status_Presentation = True
-		  'Self.Hide
 		  
 		  PreparePresentation
 		  
-		  'App.MinimizeWindow(Self)
-		  PresentWindow.Present setDoc, screenMode, ItemNumber
+		  PresentWindow.Present CurrentSet, screenMode, ItemNumber
 		  
-		  '++JRC reset cursor
+		  'reset cursor
 		  App.MouseCursor = Nil
-		  'Me.MouseCursor = Nil
-		  '--
+		  
 		End Sub
 	#tag EndMethod
 
@@ -11218,105 +11129,21 @@ End
 		  
 		  App.MouseCursor = System.Cursors.Wait
 		  
+		  'Create a temporary set document
 		  Dim setDoc As XmlDocument = New XmlDocument
-		  Dim song As XmlNode = setDoc.AppendChild(setDoc.CreateElement("set"))
-		  song = song.AppendChild(setDoc.CreateElement("slide_groups"))
+		  Dim xNode As XmlNode = setDoc.AppendChild(setDoc.CreateElement("set"))
 		  
-		  song = song.AppendChild(setDoc.CreateElement("TEMP"))
-		  song = SmartML.ReplaceWithImportNode(song, CurrentSong.DocumentElement)
-		  
-		  
-		  ' Can be used by an external renderer.
-		  Dim pathnode as XmlNode = song.AppendChild(setDoc.CreateElement("path"))
-		  pathnode.AppendChild(setDoc.CreateTextNode(edt_songs_curr_folder.Text))
-		  
-		  Dim SongStyleNode As XmlNode = SmartML.GetNode(song, "style")
-		  SongML.ToSetML song, SongStyleNode
-		  
-		  '++JRC Assign an index for this set item
-		  Dim item As Integer = 1
-		  SmartML.SetValueN(song, "@ItemNumber", item)
-		  
-		  App.MouseCursor = Nil
+		  Dim f As FolderItem
+		  Dim where As Integer = 0
+		  If Songs <> Nil Then f = Songs.GetFile(Globals.OldSongFileName)
+		  AddSongFolderItemToSet(f, setDoc, where)
 		  
 		  Status_Presentation = True
 		  Globals.Status_Presentation = True
 		  
-		  '++JRC Log song presentation
-		  
-		  Dim AddToLogAnswer As Boolean = False
-		  
-		  'Don't log in preview mode
-		  If App.MainPreferences.GetValueB(App.kActivityLog, True) And _
-		    Globals.SongActivityLog <> Nil And _
-		    screenMode <> PresentWindow.MODE_PREVIEW Then
-		    
-		    AddToLogAnswer = True
-		    
-		    '++JRC Added option to prompt before adding presented songs to the activity log
-		    If App.MainPreferences.GetValueB(App.kPromptBeforePresenting, True) Then
-		      AddToLogAnswer = InputBox.AskYN(App.T.Translate("questions/activity_log/@caption"))
-		    End If
-		    
-		    If AddToLogAnswer Then
-		      Dim d As New Date
-		      
-		      ActLog.Append(New LogEntry(Globals.SongActivityLog))
-		      ActLog(1).Title = edt_song_title.Text
-		      ActLog(1).Author = edt_song_author.Text
-		      ActLog(1).CCLISongNumber = edt_song_ccli.Text
-		      ActLog(1).SongFileName =  lst_songs_songs.CellTag(lst_songs_songs.ListIndex, 0)  + lst_songs_songs.Text
-		      ActLog(1).DateAndTime = d
-		      ActLog(1).HasChords = ActLog(1).CheckLyricsForChords(edf_song_lyrics.Text)
-		      ActLog(1).Presented = True
-		      ActLog(1).SetItemNumber = 1 'Assign an  index to this song
-		      ActLog(1).Displayed = false 'Set this to true if user displays this song
-		      
-		      'If NOT Log.AddLogEntry Then
-		      'InputBox.Message App.T.Translate("errors/adding_entry") '++JRC Translated
-		      'Else
-		      'Log.UpdateNumEntries(Globals.SongActivityLog)
-		      'End If
-		    End If
-		  End If
-		  
-		  Globals.AddToLog = AddToLogAnswer
-		  Dim sDoc() As XmlDocument = AddLinkedSongs(song, AddToLogAnswer)
-		  
-		  Dim AddLinkedSongsAnswer As Boolean = True
-		  If UBound(sDoc) >= 0 And SmartML.GetValueB(App.MyMainSettings.DocumentElement, "linked_songs/@prompt", True) Then
-		    AddLinkedSongsAnswer = InputBox.AskYN(App.T.Translate("questions/linked_songs/@caption"))
-		  End If
-		  
-		  If AddLinkedSongsAnswer Then
-		    Dim slideGroups As XmlNode = song.Parent
-		    
-		    For i As Integer = 0 To UBound(sDoc)
-		      
-		      item = item + 1
-		      song = slideGroups
-		      song = slideGroups.AppendChild(setDoc.CreateElement("TEMP"))
-		      song = SmartML.ReplaceWithImportNode(song, sDoc(i).DocumentElement)
-		      '++JRC Assign an index for this set item
-		      SmartML.SetValueN(song, "@ItemNumber", item)
-		      SongML.ToSetML song, SongStyleNode
-		      
-		    Next i
-		  End If
-		  '--
-		  
 		  PreparePresentation
 		  
-		  '++JRC Fix issue were PresentWindow wasn't getting focus
-		  MainWindow.SetFocus
-		  
-		  '++JRC Update Number of set items
-		  setDoc.DocumentElement.SetAttribute("NumberOfItems",Str(item) )
-		  '--
-		  
 		  PresentWindow.Present setDoc, screenMode, ItemNumber
-		  
-		  'Self.Hide
 		  
 		  App.MouseCursor = Nil
 		End Sub
@@ -11937,6 +11764,66 @@ End
 	#tag EndMethod
 
 	#tag Method, Flags = &h1
+		Protected Sub AddSongFolderItemToSet(f As FolderItem, setDoc As XmlDocument, ByRef Where As Integer, presentation As String = "", registerInItemListControl As Boolean = False)
+		  Dim SongPath As String
+		  Dim xgroups, newGroup As XmlNode
+		  Dim sDoc As XmlDocument
+		  Dim songFiles() As FolderItem
+		  Dim i As Integer = 0
+		  Dim CheckLinked As Boolean = True
+		  
+		  xgroups = SmartML.GetNode(setDoc.DocumentElement, "slide_groups", True)
+		  
+		  While f <> Nil
+		    newGroup = SmartML.InsertChild(xgroups, "slide_group", Where)
+		    SmartML.SetValue newGroup, "@name", f.Name
+		    SmartML.SetValue newGroup, "@type", "song"
+		    If presentation <> "" Then SmartML.SetValue(newGroup, "@presentation", presentation)
+		    
+		    // Add a path attribute relative to the base songs directory.  Otherwise, two instances
+		    // of the same song name in a parent/child folder relationship will never find the song
+		    // in the child folder.
+		    SongPath = Songs.DBPathFromFolderItem(f.Parent)
+		    SmartML.SetValue newGroup, "@path", SongPath
+		    
+		    If registerInItemListControl Then ActionInSetAddSlide newGroup
+		    
+		    Where = Where + 1
+		    
+		    If CheckLinked Then
+		      sDoc = SmartML.XDocFromFile(f)
+		      If sDoc = Nil Then
+		        ReDim songFiles(-1)
+		        i = 0
+		      Else
+		        songFiles = AddLinkedSongsFolderItem(f, sDoc.DocumentElement)
+		        If Ubound(songFiles) >= 0 And  SmartML.GetValueB(App.MyMainSettings.DocumentElement, "linked_songs/@prompt", True) Then
+		          If InputBox.AskYN(App.T.Translate("questions/linked_songs/@caption")) Then
+		            i = 0
+		          Else
+		            i = UBound(songFiles) + 1
+		          End If
+		        Else
+		          i = 0
+		        End If
+		        
+		      End If
+		      
+		      CheckLinked = False
+		    End If
+		    
+		    If i <= UBound(songFiles) Then
+		      f = songFiles(i)
+		      i = i + 1
+		    Else
+		      f = Nil
+		    End If
+		  Wend
+		  
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h1
 		Protected Sub CheckLyricLines(edfLyrics As TextArea)
 		  //+
 		  // Revised version of CheckLyricLines works on the edit field instead of a string
@@ -12367,320 +12254,6 @@ End
 		  
 		  Return RealPath
 		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h1
-		Protected Sub ImportExternals(byRef setDoc As XmlDocument, PresentMode As Integer)
-		  Dim slide_group, slide_groups, temp As XmlNode
-		  Dim songDoc As XmlDocument
-		  Dim Presentation As String
-		  '++JRC
-		  Dim CurStyle As XmlNode
-		  '--
-		  Dim Transition As Integer
-		  Dim SongStyle, SlideSongStyle As XmlNode
-		  Dim SongPath As String
-		  Dim slidesCount As Integer = 0
-		  Dim embeddedFilesBase As FolderItem = GetTemporaryFolderItem()
-		  Try
-		    embeddedFilesBase.Delete()
-		    embeddedFilesBase.CreateAsFolder()
-		  Catch
-		  End Try
-		  
-		  App.MouseCursor = System.Cursors.Wait
-		  
-		  slide_groups = SmartML.GetNode(setDoc.DocumentElement, "slide_groups", True)
-		  
-		  ProgressWindow.lbl_status.Text = App.T.Translate("progress_status/load_externals") + "..."
-		  ProgressWindow.SetMaximum( slide_groups.ChildCount() )
-		  ProgressWindow.SetProgress(slidesCount)
-		  ProgressWindow.CanCancel False
-		  ProgressWindow.SetStatus( "" )
-		  ProgressWindow.Show()
-		  
-		  slide_group = slide_groups.FirstChild
-		  While slide_group <> Nil
-		    slidesCount = slidesCount + 1
-		    If SmartML.GetValue(slide_group, "@type", True) = "external" Then
-		      ProgressWindow.SetStatus( slide_group.GetAttribute("name") )
-		      
-		      Select Case SmartML.GetValue(slide_group, "@application")
-		      Case "presentation"
-		        
-		        Dim presFileName As String = SmartML.GetValue(slide_group, "@filename")
-		        Dim presFile As FolderItem = GetFolderItem( presFileName )
-		        
-		        Dim embedFiledata As String = SmartML.GetValue(slide_group, "file", False)
-		        If embedFiledata.Len() > 0 Then
-		          Try
-		            presFile = embeddedFilesBase.Child(presFileName)
-		            
-		            Dim outputStream As BinaryStream = BinaryStream.Create(presFile, True)
-		            outputStream.Write DecodeBase64(embedFiledata)
-		            outputStream.Close
-		            
-		            SmartML.SetValue slide_group, "@_localfilename", presFile.AbsolutePath()
-		          Catch
-		            InputBox.Message App.T.Translate("errors/fileutils/temporaryfailed", presFileName)
-		          End Try
-		        End If
-		        
-		        Dim presFileOk As Boolean = False
-		        If Not IsNull(presFile) Then
-		          If presFile.Exists() Then
-		            
-		            presFileOk = True
-		            Dim presHost As PresentationHost = PresentationHost.Automatic
-		            Select Case SmartML.GetValue(slide_group, "@host")
-		            Case "ppt"
-		              presHost = PresentationHost.PowerPoint
-		            Case "pptview"
-		              presHost = PresentationHost.PowerPointViewer
-		            Case "impress"
-		              presHost = PresentationHost.OpenOffice
-		            End Select
-		            
-		            Dim oExtPres As iPresentation = PresentationFactory.GetOrCreate( presFile.AbsolutePath, presHost )
-		            If Not IsNull( oExtPres ) Then
-		              
-		              If oExtPres.CanControl() Then
-		                Dim img As StyleImage
-		                Dim i As Integer
-		                
-		                Dim presSlides As XmlNode = SmartML.InsertChild( slide_group, "slides", 0 )
-		                For i = 1 to oExtPres.SlideCount()
-		                  
-		                  If Not oExtPres.IsHidden(i) Then
-		                    Dim presSlide As XmlNode = SmartML.InsertChild( presSlides, "slide", presSlides.ChildCount() )
-		                    SmartML.SetValueN( presSlide, "@id", i )
-		                    SmartML.SetValue( presSlide, "description", oExtPres.SlideName(i) )
-		                    
-		                    If (PresentMode <> PresentWindow.MODE_SINGLE_SCREEN) And oExtPres.CanPreview() Then
-		                      img = New StyleImage()
-		                      img.SetImage( oExtPres.PreviewSlide( i, 320, 240 ) )
-		                      SmartML.SetValue(presSlide, "preview", img.GetImageAsString())
-		                    End If
-		                  End If
-		                  
-		                Next
-		              End If
-		              
-		            Else
-		              InputBox.Message App.T.Translate("errors/presentations/load_failed", presFile.AbsolutePath)
-		            End If
-		            
-		          Else
-		            InputBox.Message App.T.Translate("errors/fileutils/filenotfound", presFile.AbsolutePath)
-		          End If
-		        End If
-		        
-		        If Not presFileOk Then
-		          InputBox.Message App.T.Translate("errors/fileutils/destdoesnotexisterror", presFileName)
-		        End If
-		        
-		      Case "videolan"
-		        Dim videolanLocation As FolderItem = App.MainPreferences.GetValueFI(Prefs.kVideolanLocation, Nil, False)
-		        If Not IsNull(videolanLocation) And videolanLocation.Exists Then
-		          Dim mediaFileName As String = Trim(SmartML.GetValue(slide_group, "@filename"))
-		          Dim mediaFile As FolderItem
-		          If mediaFileName <> "" Then
-		            mediaFile = GetFolderItem( mediaFileName )
-		          End If
-		          
-		          Dim embedFiledata As String = SmartML.GetValue(slide_group, "file", False)
-		          If embedFiledata.Len() > 0 Then
-		            Try
-		              mediaFile = embeddedFilesBase.Child(mediaFileName)
-		              
-		              Dim outputStream As BinaryStream = BinaryStream.Create(mediaFile, True)
-		              outputStream.Write DecodeBase64(embedFiledata)
-		              outputStream.Close
-		              
-		              SmartML.SetValue slide_group, "@_localfilename", mediaFile.AbsolutePath()
-		            Catch
-		              InputBox.Message App.T.Translate("errors/fileutils/temporaryfailed", mediaFileName)
-		            End Try
-		          End If
-		          
-		          If mediaFileName = "" Then
-		            Dim videoLanParams As String = SmartML.GetValue(slide_group, "@videolan_parameters", False)
-		            If videoLanParams.InStrB("%s") > 0 Then
-		              InputBox.Message App.T.Translate("errors/videolan/no_medium_in_slide", SetML.GetSlideGroupCaption(slide_group))
-		            End If
-		          ElseIf IsNull(mediaFile) Or Not mediaFile.Exists() Then
-		            InputBox.Message App.T.Translate("errors/fileutils/filenotfound", mediaFileName)
-		          End If
-		        Else
-		          InputBox.Message App.T.Translate("errors/videolan_app_missing")
-		        End If
-		        
-		      Case "launch"
-		        'No action required here
-		        'As early warning, we will check if the application that is to be started does exist
-		        
-		        Dim appFileName As String = SmartML.GetValue(slide_group, "@app_filename")
-		        Dim appFile As FolderItem = GetFolderItem( appFileName )
-		        Dim appFileOk As Boolean = False
-		        If Not IsNull( appFile ) Then
-		          If appFile.Exists() Then
-		            appFileOk = True
-		          End If
-		        End If
-		        
-		        If Not appFileOk Then
-		          InputBox.Message App.T.Translate("errors/fileutils/destdoesnotexisterror", appFileName)
-		        End If
-		        
-		      End Select
-		    End If
-		    
-		    slide_group  = slide_group.NextSibling
-		    ProgressWindow.SetProgress( slidesCount )
-		  Wend
-		  
-		  ProgressWindow.Close()
-		  App.MouseCursor = Nil
-		  
-		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h1
-		Protected Sub ImportSongs(setDoc As XmlDocument, AddToLog As Boolean)
-		  Dim slide_group, slide_groups As XmlNode
-		  Dim songDoc As XmlDocument
-		  Dim Presentation As String
-		  '++JRC
-		  Dim ActiveCustomStyle As XmlNode = Nil
-		  Dim CustomStyles() As XmlNode
-		  Dim ItemNumber As Integer
-		  Dim StyleGroupCount As Integer = 0
-		  Dim i As Integer
-		  '--
-		  Dim Transition As Integer
-		  Dim SongStyle, SetItemStyle As XmlNode
-		  Dim SongPath As String
-		  
-		  App.MouseCursor = System.Cursors.Wait
-		  slide_groups = SmartML.GetNode(setDoc.DocumentElement, "slide_groups", True)
-		  slide_group = slide_groups.FirstChild
-		  
-		  ProgressWindow.lbl_status.Text = App.T.Translate("progress_status/load_songs") + "..."
-		  ProgressWindow.SetMaximum( slide_groups.ChildCount() )
-		  ProgressWindow.SetProgress(ItemNumber)
-		  ProgressWindow.CanCancel False
-		  ProgressWindow.SetStatus( "" )
-		  ProgressWindow.Show()
-		  
-		  ItemNumber = 1
-		  i = 1
-		  While slide_group <> Nil
-		    If SmartML.GetValue(slide_group, "@type", True) = "song" Then
-		      ProgressWindow.SetStatus( slide_group.GetAttribute("name") )
-		      
-		      Presentation = SmartML.GetValue(slide_group, "@presentation", False)
-		      Transition = SmartML.GetValueN(slide_group, "@transition", False)
-		      
-		      songDoc = SetML.GetSong( slide_group, Songs, songPath )
-		      If songDoc <> Nil Then
-		        '++JRC get song info for logging
-		        If AddToLog Then
-		          Dim d As New Date
-		          
-		          ActLog.Append(New LogEntry(Globals.SongActivityLog))
-		          
-		          ActLog(i).Title = SmartML.GetValue(SongDoc.DocumentElement, "title", True)
-		          ActLog(i).Author = SmartML.GetValue(SongDoc.DocumentElement, "author", True)
-		          ActLog(i).CCLISongNumber = SmartML.GetValue(SongDoc.DocumentElement, "ccli", True)  //The song's CCLI number
-		          ActLog(i).SongFileName = songPath + SmartML.GetValue(slide_group, "@name", False)
-		          ActLog(i).DateAndTime = d
-		          ActLog(i).HasChords = ActLog(i).CheckLyricsForChords(edf_song_lyrics.Text)
-		          ActLog(i).Presented = True
-		          ActLog(i).SetItemNumber = ItemNumber 'Assign an index to this song
-		          ActLog(i).Displayed = false 'Set this to true if user displays this song
-		          
-		          i = i + 1
-		        End If
-		        '--
-		        
-		        SetItemStyle = SmartML.GetNode(slide_group, "style")
-		        slide_group = SmartML.ReplaceWithImportNode(slide_group, songDoc.DocumentElement)
-		        '++JRC Assign an index for this set item
-		        SmartML.SetValueN(slide_group, "@ItemNumber", ItemNumber)
-		        SmartML.SetValueN(slide_group, "@set_list_index", ItemNumber + StyleGroupCount)
-		        
-		        If Presentation <> "" Then 'Override the song's default presentation
-		          SmartML.SetValue(slide_group, "presentation", presentation)
-		        End If
-		        If Transition <> 0 Then 'Override the song's transition
-		          SmartML.SetValueN(slide_group, "@transition", Transition)
-		        End If
-		        
-		        SongStyle = SmartML.GetNode(slide_group, "style", False)
-		        'Check if there is an overide for the song style in this slide
-		        If SetItemStyle <> Nil Then
-		          If SongStyle <> Nil Then
-		            SmartML.RemoveChild(slide_group, SongStyle)
-		          End If
-		          Call SmartML.InsertChildNode(slide_group, SetItemStyle, slide_group.ChildCount())
-		          SongML.ToSetML slide_group, SetItemStyle
-		        Else
-		          If ActiveCustomStyle <> Nil And Not SetML.SongStylePreferred(Nil) Then
-		            If SongStyle <> Nil Then
-		              SmartML.RemoveChild(slide_group, SongStyle)
-		            End If
-		            SongStyle = ActiveCustomStyle
-		          End If
-		          SongML.ToSetML slide_group, SongStyle
-		        End If
-		        
-		        slide_group  = slide_group.NextSibling
-		      Else
-		        InputBox.Message App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", SmartML.GetValue(slide_group, "@name", True))
-		        
-		        If slide_group.NextSibling <> Nil Then
-		          slide_group = slide_group.NextSibling
-		          slide_group.Parent.RemoveChild slide_group.PreviousSibling
-		        Else
-		          slide_group.Parent.RemoveChild slide_group
-		          slide_group = slide_group.NextSibling
-		        End If
-		      End If
-		      
-		      ItemNumber = ItemNumber + 1
-		    Elseif SmartML.GetValue(slide_group, "@type", True) = "style"  Then
-		      '++JRC: Save Current Style
-		      if SmartML.GetValue(slide_group, "@action", True) = "new" then
-		        CustomStyles.Append(ActiveCustomStyle)
-		        ActiveCustomStyle = SmartML.GetNode(slide_group, "style", False)
-		      else
-		        'reverting to previous style
-		        If CustomStyles.Ubound >= 0 Then
-		          ActiveCustomStyle = CustomStyles.Pop
-		        Else
-		          ActiveCustomStyle = Nil
-		        End If
-		      end if
-
-		      slide_group  = slide_group.NextSibling
-		      StyleGroupCount = StyleGroupCount + 1
-		    Else
-		      '++JRC Assign an index for this set item
-		      SmartML.SetValueN(slide_group, "@ItemNumber", ItemNumber)
-		      SmartML.SetValueN(slide_group, "@set_list_index", ItemNumber + StyleGroupCount)
-		      
-		      slide_group  = slide_group.NextSibling
-		      ItemNumber = ItemNumber + 1
-		    End If
-		    
-		    ProgressWindow.SetProgress(ItemNumber + StyleGroupCount)
-		  Wend
-		  '++JRC
-		  setDoc.DocumentElement.SetAttribute("NumberOfItems",Str(ItemNumber))
-		  ProgressWindow.Close()
-		  
-		  App.MouseCursor = Nil
-		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
@@ -18890,269 +18463,3 @@ End
 		End Sub
 	#tag EndEvent
 #tag EndEvents
-#tag ViewBehavior
-	#tag ViewProperty
-		Name="BackColor"
-		Visible=true
-		Group="Appearance"
-		InitialValue="&hFFFFFF"
-		Type="Color"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="Backdrop"
-		Visible=true
-		Group="Appearance"
-		Type="Picture"
-		EditorType="Picture"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="CloseButton"
-		Visible=true
-		Group="Appearance"
-		InitialValue="True"
-		Type="Boolean"
-		EditorType="Boolean"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="Composite"
-		Group="Appearance"
-		InitialValue="False"
-		Type="Boolean"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="DontUpdateSetItem"
-		Group="Behavior"
-		Type="Boolean"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="FindFocus"
-		Group="Behavior"
-		Type="Integer"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="Frame"
-		Visible=true
-		Group="Appearance"
-		InitialValue="0"
-		Type="Integer"
-		EditorType="Enum"
-		#tag EnumValues
-			"0 - Document"
-			"1 - Movable Modal"
-			"2 - Modal Dialog"
-			"3 - Floating Window"
-			"4 - Plain Box"
-			"5 - Shadowed Box"
-			"6 - Rounded Window"
-			"7 - Global Floating Window"
-			"8 - Sheet Window"
-			"9 - Metal Window"
-			"11 - Modeless Dialog"
-		#tag EndEnumValues
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="FullScreen"
-		Group="Appearance"
-		InitialValue="False"
-		Type="Boolean"
-		EditorType="Boolean"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="FullScreenButton"
-		Visible=true
-		Group="Appearance"
-		InitialValue="False"
-		Type="Boolean"
-		EditorType="Boolean"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="HasBackColor"
-		Visible=true
-		Group="Appearance"
-		InitialValue="False"
-		Type="Boolean"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="Height"
-		Visible=true
-		Group="Position"
-		InitialValue="400"
-		Type="Integer"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="ImplicitInstance"
-		Visible=true
-		Group="Appearance"
-		InitialValue="True"
-		Type="Boolean"
-		EditorType="Boolean"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="Interfaces"
-		Visible=true
-		Group="ID"
-		Type="String"
-		EditorType="String"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="LiveResize"
-		Visible=true
-		Group="Appearance"
-		InitialValue="True"
-		Type="Boolean"
-		EditorType="Boolean"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="MacProcID"
-		Group="Appearance"
-		InitialValue="0"
-		Type="Integer"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="MaxHeight"
-		Visible=true
-		Group="Position"
-		InitialValue="32000"
-		Type="Integer"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="MaximizeButton"
-		Visible=true
-		Group="Appearance"
-		InitialValue="True"
-		Type="Boolean"
-		EditorType="Boolean"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="MaxWidth"
-		Visible=true
-		Group="Position"
-		InitialValue="32000"
-		Type="Integer"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="MenuBar"
-		Visible=true
-		Group="Appearance"
-		Type="MenuBar"
-		EditorType="MenuBar"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="MenuBarVisible"
-		Group="Appearance"
-		InitialValue="True"
-		Type="Boolean"
-		EditorType="Boolean"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="MinHeight"
-		Visible=true
-		Group="Position"
-		InitialValue="64"
-		Type="Integer"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="MinimizeButton"
-		Visible=true
-		Group="Appearance"
-		InitialValue="True"
-		Type="Boolean"
-		EditorType="Boolean"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="MinWidth"
-		Visible=true
-		Group="Position"
-		InitialValue="64"
-		Type="Integer"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="Name"
-		Visible=true
-		Group="ID"
-		Type="String"
-		EditorType="String"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="Placement"
-		Visible=true
-		Group="Position"
-		InitialValue="0"
-		Type="Integer"
-		EditorType="Enum"
-		#tag EnumValues
-			"0 - Default"
-			"1 - Parent Window"
-			"2 - Main Screen"
-			"3 - Parent Window Screen"
-			"4 - Stagger"
-		#tag EndEnumValues
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="PPT"
-		Group="Behavior"
-		Type="Integer"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="Resizeable"
-		Visible=true
-		Group="Appearance"
-		InitialValue="True"
-		Type="Boolean"
-		EditorType="Boolean"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="SongChangesMade"
-		Group="Behavior"
-		Type="Boolean"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="Status_Presentation"
-		Group="Behavior"
-		Type="Boolean"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="Status_SetChanged"
-		Group="Behavior"
-		Type="Boolean"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="Status_SongChanged"
-		Group="Behavior"
-		Type="Boolean"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="Status_SongOpen"
-		Group="Behavior"
-		Type="Boolean"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="Super"
-		Visible=true
-		Group="ID"
-		Type="String"
-		EditorType="String"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="Title"
-		Visible=true
-		Group="Appearance"
-		InitialValue="Untitled"
-		Type="String"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="Visible"
-		Visible=true
-		Group="Appearance"
-		InitialValue="True"
-		Type="Boolean"
-		EditorType="Boolean"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="Width"
-		Visible=true
-		Group="Position"
-		InitialValue="600"
-		Type="Integer"
-	#tag EndViewProperty
-#tag EndViewBehavior

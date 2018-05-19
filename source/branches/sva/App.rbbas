@@ -23,7 +23,7 @@ Inherits Application
 		        End If
 		      #endif
 		    Else
-		      If Not SetML.IsExternal(PresentWindow.XCurrentSlide) Then
+		      If Not (PresentWindow.XCurrentSlide = Nil Or SetML.IsExternal(PresentWindow.XCurrentSlide)) Then
 		        #if Not TargetWin32
 		          App.RestoreWindow(PresentWindow)
 		          App.SetForeground(PresentWindow)
@@ -1541,7 +1541,7 @@ Inherits Application
 		  
 		  If version < 1.1 Then
 		    // these might accidentally have leeked from their internal use during presentation into the settings
-		    // if they did, they may migrate by style settings into songs or set items and disrupt proper style handling 
+		    // if they did, they may migrate by style settings into songs or set items and disrupt proper style handling
 		    SmartML.RemoveNode(settings, "default_style/@index")
 		    SmartML.RemoveNode(settings, "scripture_style/@index")
 		  End If

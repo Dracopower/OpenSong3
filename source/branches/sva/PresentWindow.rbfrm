@@ -283,6 +283,22 @@ End
 
 
 	#tag Method, Flags = &h1
+		Protected Function AddNodeToStyleDict(StyleNode as XmlNode, Key As String = "") As String
+		  Dim tempSlideStyle As SlideStyle
+		  
+		  If StyleNode = Nil Then Return ""
+		  
+		  tempSlideStyle = New SlideStyle(StyleNode)
+		  If Key = "" Then
+		    // We'll just use the dictionary index as the key; this makes it unique if unimaginative
+		    Key = str(StyleDict.Count)
+		  End If
+		  StyleDict.Value(Key) = tempSlideStyle
+		  Return Key
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h1
 		Protected Function DoClosePresentation(confirmClose As Boolean = True) As Boolean
 		  Dim messagebox As New MessageDialog
 		  Dim msgboxbutton As MessageDialogButton
@@ -593,6 +609,7 @@ End
 		  // September 2005
 		  // Returns the SlideStyle referenced by the key
 		  //
+		  If Not StyleDict.HasKey(Key) Then Return Nil
 		  Return StyleDict.Value(Key)
 		  //--EMP
 		End Function
@@ -1043,284 +1060,639 @@ End
 	#tag EndMethod
 
 	#tag Method, Flags = &h1
-		Protected Sub InsertBlanksIntoSet(ByRef Set As XmlDocument, ByRef Item As Integer)
-		  Dim slide_group As XmlNode
-		  Dim slide_groups As XmlNode
-		  Dim i As Integer
-		  Dim insertBlanks As Boolean
+		Protected Sub ImportExternals(byRef setDoc As XmlDocument, PresentMode As Integer)
+		  Dim slide_group, slide_groups, temp As XmlNode
+		  Dim songDoc As XmlDocument
+		  Dim Presentation As String
+		  '++JRC
+		  Dim CurStyle As XmlNode
+		  '--
+		  Dim Transition As Integer
+		  Dim SongStyle, SlideSongStyle As XmlNode
+		  Dim SongPath As String
+		  Dim slidesCount As Integer = 0
+		  Dim embeddedFilesBase As FolderItem = GetTemporaryFolderItem()
+		  Try
+		    embeddedFilesBase.Delete()
+		    embeddedFilesBase.CreateAsFolder()
+		  Catch
+		  End Try
 		  
-		  insertBlanks = SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "style/@blanks")
-		  slide_groups = SmartML.GetNode(Set.DocumentElement, "slide_groups")
-		  If slide_groups <> Nil Then
-		    slide_group = slide_groups.FirstChild
-		  Else
-		    Return
-		  End If
+		  App.MouseCursor = System.Cursors.Wait
 		  
-		  i = 0
-		  If True Then 'SvA: Todo: Cleanup when thoroughly tested
-		    If slide_group <> Nil Then
-		      Dim slideGroupName, prevSlideGroupName As String
-		      Dim slideGroupType As String
-		      Dim prevSlideGroup, newSlideGroup As XmlNode
+		  slide_groups = SmartML.GetNode(setDoc.DocumentElement, "slide_groups", True)
+		  
+		  ProgressWindow.lbl_status.Text = App.T.Translate("progress_status/load_externals") + "..."
+		  ProgressWindow.SetMaximum( slide_groups.ChildCount() )
+		  ProgressWindow.SetProgress(slidesCount)
+		  ProgressWindow.CanCancel False
+		  ProgressWindow.SetStatus( "" )
+		  ProgressWindow.Show()
+		  
+		  slide_group = slide_groups.FirstChild
+		  While slide_group <> Nil
+		    slidesCount = slidesCount + 1
+		    If SmartML.GetValue(slide_group, "@type", True) = "external" Then
+		      ProgressWindow.SetStatus( slide_group.GetAttribute("name") )
 		      
-		      'add a blank at the beginning and after each sequence of slide_groups with equal name
-		      'ignoring intermittent style slides
-		      
-		      'treat a very first style slide as style for the first blank slide, even if it takes the style of the previous slide
-		      If SmartML.GetValue(slide_group, "@type") = "style" Then
-		        prevSlideGroup = slide_group
-		        slide_group = slide_group.NextSibling
-		        i = i + 1
-		      End If
-		      If slide_group Is Nil Then
-		        newSlideGroup = SmartML.InsertAfter(prevSlideGroup, "slide_group")
-		      Else
-		        newSlideGroup = SmartML.InsertBefore(slide_group, "slide_group")
-		      End If
-		      SmartML.SetValue newSlideGroup, "@type", "blank"
-		      SmartML.SetValue newSlideGroup, "slides/slide/body", ""
-		      
-		      While SmartML.GetValue(slide_group, "@type") = "style"
-		        slide_group = slide_group.NextSibling
-		        i = i + 1
-		      Wend
-		      
-		      'place the remaining blanks before style changes.
-		      'This way they have the right position if they take the style from the previous
-		      'There is no way they can have the right position if they take the style of the next; the style has to propagate back
-		      slideGroupName = SmartML.GetValue(slide_group, "@name")
-		      prevSlideGroup = slide_group
-		      prevSlideGroupName = slideGroupName
-		      
-		      Do
-		        slide_group = slide_group.NextSibling
-		        i = i + 1
-		        If SmartML.GetValue(slide_group, "@type") = "style" Then
-		        ElseIf insertBlanks Then
-		          slideGroupName = SmartML.GetValue(slide_group, "@name")
-		          If slideGroupName <> prevSlideGroupName Or slide_group = Nil Then
-		            newSlideGroup = SmartML.InsertAfter(prevSlideGroup, "slide_group")
-		            SmartML.SetValue newSlideGroup, "@type", "blank"
-		            SmartML.SetValue newSlideGroup, "slides/slide/body", ""
-		          End If
-		          prevSlideGroup = slide_group
-		          prevSlideGroupName = slideGroupName
+		      Select Case SmartML.GetValue(slide_group, "@application")
+		      Case "presentation"
+		        
+		        Dim presFileName As String = SmartML.GetValue(slide_group, "@filename")
+		        Dim presFile As FolderItem = GetFolderItem( presFileName )
+		        
+		        Dim embedFiledata As String = SmartML.GetValue(slide_group, "file", False)
+		        If embedFiledata.Len() > 0 Then
+		          Try
+		            presFile = embeddedFilesBase.Child(presFileName)
+		            
+		            Dim outputStream As BinaryStream = BinaryStream.Create(presFile, True)
+		            outputStream.Write DecodeBase64(embedFiledata)
+		            outputStream.Close
+		            
+		            SmartML.SetValue slide_group, "@_localfilename", presFile.AbsolutePath()
+		          Catch
+		            InputBox.Message App.T.Translate("errors/fileutils/temporaryfailed", presFileName)
+		          End Try
 		        End If
 		        
-		      Loop Until slide_group Is Nil
+		        Dim presFileOk As Boolean = False
+		        If Not IsNull(presFile) Then
+		          If presFile.Exists() Then
+		            
+		            presFileOk = True
+		            Dim presHost As PresentationHost = PresentationHost.Automatic
+		            Select Case SmartML.GetValue(slide_group, "@host")
+		            Case "ppt"
+		              presHost = PresentationHost.PowerPoint
+		            Case "pptview"
+		              presHost = PresentationHost.PowerPointViewer
+		            Case "impress"
+		              presHost = PresentationHost.OpenOffice
+		            End Select
+		            
+		            Dim oExtPres As iPresentation = PresentationFactory.GetOrCreate( presFile.AbsolutePath, presHost )
+		            If Not IsNull( oExtPres ) Then
+		              
+		              If oExtPres.CanControl() Then
+		                Dim img As StyleImage
+		                Dim i As Integer
+		                
+		                Dim presSlides As XmlNode = SmartML.InsertChild( slide_group, "slides", 0 )
+		                For i = 1 to oExtPres.SlideCount()
+		                  
+		                  If Not oExtPres.IsHidden(i) Then
+		                    Dim presSlide As XmlNode = SmartML.InsertChild( presSlides, "slide", presSlides.ChildCount() )
+		                    SmartML.SetValueN( presSlide, "@id", i )
+		                    SmartML.SetValue( presSlide, "description", oExtPres.SlideName(i) )
+		                    
+		                    If (PresentMode <> PresentWindow.MODE_SINGLE_SCREEN) And oExtPres.CanPreview() Then
+		                      img = New StyleImage()
+		                      img.SetImage( oExtPres.PreviewSlide( i, 320, 240 ) )
+		                      SmartML.SetValue(presSlide, "preview", img.GetImageAsString())
+		                    End If
+		                  End If
+		                  
+		                Next
+		              End If
+		              
+		            Else
+		              InputBox.Message App.T.Translate("errors/presentations/load_failed", presFile.AbsolutePath)
+		            End If
+		            
+		          Else
+		            InputBox.Message App.T.Translate("errors/fileutils/filenotfound", presFile.AbsolutePath)
+		          End If
+		        End If
+		        
+		        If Not presFileOk Then
+		          InputBox.Message App.T.Translate("errors/fileutils/destdoesnotexisterror", presFileName)
+		        End If
+		        
+		      Case "videolan"
+		        Dim videolanLocation As FolderItem = App.MainPreferences.GetValueFI(Prefs.kVideolanLocation, Nil, False)
+		        If Not IsNull(videolanLocation) And videolanLocation.Exists Then
+		          Dim mediaFileName As String = Trim(SmartML.GetValue(slide_group, "@filename"))
+		          Dim mediaFile As FolderItem
+		          If mediaFileName <> "" Then
+		            mediaFile = GetFolderItem( mediaFileName )
+		          End If
+		          
+		          Dim embedFiledata As String = SmartML.GetValue(slide_group, "file", False)
+		          If embedFiledata.Len() > 0 Then
+		            Try
+		              mediaFile = embeddedFilesBase.Child(mediaFileName)
+		              
+		              Dim outputStream As BinaryStream = BinaryStream.Create(mediaFile, True)
+		              outputStream.Write DecodeBase64(embedFiledata)
+		              outputStream.Close
+		              
+		              SmartML.SetValue slide_group, "@_localfilename", mediaFile.AbsolutePath()
+		            Catch
+		              InputBox.Message App.T.Translate("errors/fileutils/temporaryfailed", mediaFileName)
+		            End Try
+		          End If
+		          
+		          If mediaFileName = "" Then
+		            Dim videoLanParams As String = SmartML.GetValue(slide_group, "@videolan_parameters", False)
+		            If videoLanParams.InStrB("%s") > 0 Then
+		              InputBox.Message App.T.Translate("errors/videolan/no_medium_in_slide", SetML.GetSlideGroupCaption(slide_group))
+		            End If
+		          ElseIf IsNull(mediaFile) Or Not mediaFile.Exists() Then
+		            InputBox.Message App.T.Translate("errors/fileutils/filenotfound", mediaFileName)
+		          End If
+		        Else
+		          InputBox.Message App.T.Translate("errors/videolan_app_missing")
+		        End If
+		        
+		      Case "launch"
+		        'No action required here
+		        'As early warning, we will check if the application that is to be started does exist
+		        
+		        Dim appFileName As String = SmartML.GetValue(slide_group, "@app_filename")
+		        Dim appFile As FolderItem = GetFolderItem( appFileName )
+		        Dim appFileOk As Boolean = False
+		        If Not IsNull( appFile ) Then
+		          If appFile.Exists() Then
+		            appFileOk = True
+		          End If
+		        End If
+		        
+		        If Not appFileOk Then
+		          InputBox.Message App.T.Translate("errors/fileutils/destdoesnotexisterror", appFileName)
+		        End If
+		        
+		      End Select
 		    End If
 		    
-		    Return
+		    slide_group  = slide_group.NextSibling
+		    ProgressWindow.SetProgress( slidesCount )
+		  Wend
+		  
+		  ProgressWindow.Close()
+		  App.MouseCursor = Nil
+		  
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h1
+		Protected Sub ImportSongs(setDoc As XmlDocument, AddToLog As Boolean)
+		  Dim slide_group, slide_groups As XmlNode
+		  Dim songDoc As XmlDocument
+		  Dim Presentation As String
+		  Dim customStyles() As XmlNode = ()
+		  Dim ItemNumber As Integer
+		  Dim StyleGroupCount As Integer = 0
+		  Dim i As Integer
+		  Dim Transition As Integer
+		  Dim SongStyle, SlideSongStyle As XmlNode
+		  Dim songPath As String
+		  Dim prefereSongStyle As Boolean
+		  Dim setListIndex As Integer
+		  
+		  App.MouseCursor = System.Cursors.Wait
+		  slide_groups = SmartML.GetNode(setDoc.DocumentElement, "slide_groups", True)
+		  slide_group = slide_groups.FirstChild
+		  
+		  ProgressWindow.lbl_status.Text = App.T.Translate("progress_status/load_songs") + "..."
+		  ProgressWindow.SetMaximum( slide_groups.ChildCount() )
+		  ProgressWindow.SetProgress(ItemNumber)
+		  ProgressWindow.CanCancel False
+		  ProgressWindow.SetStatus( "" )
+		  ProgressWindow.Show()
+		  
+		  ItemNumber = 1
+		  setListIndex = 0
+		  i = 1
+		  While slide_group <> Nil
+		    setListIndex = setListIndex + 1  // The index of the listbox in the set editor. We start at 1 rather than 0 because SmartML.GetValueN cannot distinguish between "" and "0"
+		    SmartML.SetValueN(slide_group, "@set_list_index", setListIndex)
+		    If SmartML.GetValue(slide_group, "@type", True) = "song" Then
+		      ProgressWindow.SetStatus(SmartML.GetValue(slide_group, "@name", False))
+		      
+		      Presentation = SmartML.GetValue(slide_group, "@presentation", False)
+		      Transition = SmartML.GetValueN(slide_group, "@transition", False)
+		      
+		      songDoc = SetML.GetSong( slide_group, MainWindow.Songs, songPath )
+		      If songDoc <> Nil Then
+		        'get song info for logging
+		        If AddToLog Then
+		          Dim d As New Date
+		          
+		          ActLog.Append(New LogEntry(Globals.SongActivityLog))
+		          
+		          ActLog(i).Title = SmartML.GetValue(SongDoc.DocumentElement, "title", True)
+		          ActLog(i).Author = SmartML.GetValue(SongDoc.DocumentElement, "author", True)
+		          ActLog(i).CCLISongNumber = SmartML.GetValue(SongDoc.DocumentElement, "ccli", True)  //The song's CCLI number
+		          ActLog(i).SongFileName = songPath + SmartML.GetValue(slide_group, "@name", False)
+		          ActLog(i).DateAndTime = d
+		          ActLog(i).HasChords = ActLog(i).CheckLyricsForChords(SmartML.GetValue(songDoc.DocumentElement, "lyrics"))
+		          ActLog(i).Presented = True
+		          ActLog(i).SetItemNumber = ItemNumber 'Assign an index to this song
+		          ActLog(i).Displayed = false 'Set this to true if user displays this song
+		          
+		          i = i + 1
+		        End If
+		        
+		        'save some set item settings before they are overwritten
+		        SlideSongStyle = SmartML.GetNode(slide_group, "style")
+		        prefereSongStyle = SetML.SongStylePreferred(slide_group)
+		        
+		        slide_group = SmartML.ReplaceWithImportNode(slide_group, songDoc.DocumentElement)
+		        SmartML.SetValueN(slide_group, "@ItemNumber", ItemNumber)
+		        SmartML.SetValueN(slide_group, "@set_list_index", setListIndex)
+		        
+		        If Presentation <> "" Then 'Override the song's default presentation
+		          SmartML.SetValue(slide_group, "presentation", presentation)
+		        End If
+		        If Transition <> 0 Then 'Override the song's transition
+		          SmartML.SetValueN(slide_group, "@transition", Transition)
+		        End If
+		        
+		        SongStyle = SmartML.GetNode(slide_group, "style", False)
+		        'Check if there is an overide for the song style in this slide
+		        If SlideSongStyle <> Nil Then
+		          'the set entry style overrides the song style
+		          If SongStyle <> Nil Then
+		            SmartML.RemoveChild(slide_group, SongStyle)
+		          End If
+		          Call SmartML.InsertChildNode(slide_group, SlideSongStyle, slide_group.ChildCount())
+		          SongML.ToSetML slide_group, SlideSongStyle
+		        Else
+		          If customStyles.Ubound >= 0 And Not prefereSongStyle Then
+		            'the custom style takes precedence. Delete the song specific one.
+		            If SongStyle <> Nil Then
+		              SmartML.RemoveChild(slide_group, SongStyle)
+		            End If
+		          End If
+		          SongML.ToSetML slide_group, SongStyle
+		        End If
+		        
+		        slide_group  = slide_group.NextSibling
+		      Else
+		        InputBox.Message App.T.Translate("folderdb_errors/error[@code='"+Str(MainWindow.Songs.ErrorCode)+"']", SmartML.GetValue(slide_group, "@name", True))
+		        
+		        If slide_group.NextSibling <> Nil Then
+		          slide_group = slide_group.NextSibling
+		          slide_group.Parent.RemoveChild slide_group.PreviousSibling
+		        Else
+		          slide_group.Parent.RemoveChild slide_group
+		          slide_group = slide_group.NextSibling
+		        End If
+		      End If
+		      
+		      ItemNumber = ItemNumber + 1
+		      
+		    Elseif SmartML.GetValue(slide_group, "@type", True) = "style"  Then
+		      'currently, the custom style itself is not used here, all that's needed is whether one is active
+		      'use a stack to allow nesting of style slides
+		      if SmartML.GetValue(slide_group, "@action", True) = "new" then
+		        customStyles.Append(SmartML.GetNode(slide_group, "style", False))
+		      else
+		        'reverting to previous style
+		        If customStyles.Ubound >= 0 Then  'pop the current style if any, and discard
+		          ReDim customStyles(customStyles.Ubound-1)
+		        End If
+		      end if
+		      
+		      slide_group  = slide_group.NextSibling
+		      
+		      StyleGroupCount = StyleGroupCount + 1
+		    Else
+		      SmartML.SetValueN(slide_group, "@ItemNumber", ItemNumber)
+		      
+		      slide_group  = slide_group.NextSibling
+		      
+		      ItemNumber = ItemNumber + 1
+		    End If
+		    
+		    ProgressWindow.SetProgress(ItemNumber + StyleGroupCount)
+		  Wend
+		  setDoc.DocumentElement.SetAttribute("NumberOfItems",Str(ItemNumber - 1))
+		  ProgressWindow.Close()
+		  
+		  App.MouseCursor = Nil
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Private Function InsertBlankIntoSet(slide_group As XmlNode, before As Boolean = True) As XmlNode
+		  Dim newSlideGroup, styleSibling As XmlNode
+		  Dim groupIndex, setIndex As String
+		  
+		  If slide_group = Nil Then Return Nil
+		  
+		  If slide_group.Name = "slide_groups" Then
+		    If before Then
+		      newSlideGroup = SmartML.InsertChild(slide_group, "slide_group", 0)
+		    Else
+		      newSlideGroup = SmartML.InsertChild(slide_group, "slide_group", slide_group.ChildCount)
+		    End If
+		  Else
+		    If before Then
+		      newSlideGroup = SmartML.InsertBefore(slide_group, "slide_group")
+		    Else
+		      newSlideGroup = SmartML.InsertAfter(slide_group, "slide_group")
+		    End If
 		  End If
+		  SmartML.SetValue(newSlideGroup, "@type", "blank")
+		  SmartML.SetValue(newSlideGroup, "slides/slide/body", "")
+		  
+		  If SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "style/@blank_uses_next", True, True) Then
+		    styleSibling = newSlideGroup.NextSibling
+		  Else
+		    styleSibling = newSlideGroup.PreviousSibling
+		  End If
+		  If styleSibling = Nil Then styleSibling = slide_group
+		  
+		  groupIndex = SmartML.GetValue(styleSibling, "style/@index", False)
+		  If groupIndex = "" Then groupIndex = SmartML.GetValue(App.MyPresentSettings.DocumentElement, "default_style/@index", False, "default_style")
+		  SmartML.SetValue(newSlideGroup, "style/@index", groupIndex)
+		  
+		  setIndex = SmartML.GetValue(styleSibling, "style/@setIndex", False)
+		  If setIndex = "" Then setIndex = SmartML.GetValue(App.MyPresentSettings.DocumentElement, "default_style/@index", False, "default_style")
+		  SmartML.SetValue(newSlideGroup, "style/@setIndex", setIndex)
+		  
+		  Return newSlideGroup
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h1
+		Protected Sub InsertBlanksIntoSet(Set As XmlDocument)
+		  Dim slide_group As XmlNode
+		  Dim slide_groups As XmlNode
+		  
+		  If Not SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "style/@blanks") Then Return
+		  
+		  slide_groups = SmartML.GetNode(Set.DocumentElement, "slide_groups", True)
+		  slide_group = slide_groups.FirstChild
 		  
 		  While slide_group <> Nil
 		    
-		    If insertBlanks Then
-		      '++JRC Fix corner case where the first item in a set is a style type, which causes two blank items at the beginning of a set
-		      If SmartML.GetValue(slide_group, "@name") <> SmartML.GetValue(slide_group.PreviousSibling, "@name") And _
-		        SmartML.GetValue(slide_group, "@type") <> "style"  And SmartML.GetValue(slide_group, "@type") <> "blank" Or _
-		        slide_group.PreviousSibling = Nil And SmartML.GetValue(slide_group, "@type") <> "style" Then
-		        '--
-		        slide_group = SmartML.InsertBefore(slide_group, "slide_group")
-		        //++EMP, 15 Jan 2006
-		        // Change the type of a blank slide from "song" to "blank"
-		        // Makes moving to a blank much easier in PerformAction
-		        //
-		        'SmartML.SetValue slide_group, "@type", "song"
-		        SmartML.SetValue slide_group, "@type", "blank"
-		        SmartML.SetValue slide_group, "slides/slide/body", ""
+		    If SmartML.GetValue(slide_group, "@type") <> "blank" Then
+		      If (SmartML.GetValue(slide_group, "@name") <> SmartML.GetValue(slide_group.PreviousSibling, "@name")  Or _
+		        slide_group.PreviousSibling = Nil) Then
+		        slide_group = InsertBlankIntoSet(slide_group, True)
 		        slide_group = slide_group.NextSibling
-		        If slide_group.NextSibling = Nil Then ' if we are on the last slide item/group, lets go ahead and add the last blank while we're here.
-		          slide_group = SmartML.InsertAfter(slide_group, "slide_group")
-		          'SmartML.SetValue slide_group, "@type", "song"
-		          SmartML.SetValue slide_group, "@type", "blank"
-		          SmartML.SetValue slide_group, "slides/slide/body", ""
+		        If slide_group.NextSibling = Nil Then
+		          'if we are on the last slide item/group, lets go ahead and add the last blank while we're here.
+		          slide_group = InsertBlankIntoSet(slide_group, False)
 		        End If
-		        //--
 		      End If
-		      
-		    End If ' for inserting blanks
+		    End If
 		    
-		    i = i + 1
 		    slide_group = slide_group.NextSibling
 		  Wend
 		  
 		End Sub
 	#tag EndMethod
 
+	#tag Method, Flags = &h1
+		Protected Function InsertSlideGroupIntoSet(SlideGroupToAdd As XmlNode, AfterPosition As Integer, PositionIsCurrent As Boolean = False, AfterXSlide As XmlNode = Nil) As Integer
+		  // Inserts SlideGroupToAdd into the currently presenting deck after the position given by AfterPosition
+		  // - Adds blank slides before and/or after the new group as needed.
+		  // - if PositionIsCurrent, and that slide is a blank with a style different from the blank needed before the new slides,
+		  //   an addidional blank slide with the style required before the new slides given by SlideGroupToAdd is inserted.
+		  //   You only need to set this to True if you plan on staying there, after the slides have been inserted, and do not wish
+		  //   to have the currently presenting slide change
+		  // - AfterXSlide is ment to be an optimization. If you have the slide corresponding to AfterPosition as an XmlNode, provide
+		  //   it here. If this is Nil, that slide is computed
+		  // - Returns the slide number of the first slide of SlideGroupToAdd. Use it to position the presentation afterwards (subtract 1 for the blank before).
+		  // - inserting a style change slide is not implemented; inserting a blank slide does not add any more blank slides around it
+		  
+		  Dim xSlide, slideGroup, neighborGroup, styleNode as XmlNode
+		  Dim blankUsesNext As Boolean
+		  Dim slideNo, positionOfFirstSlide As Integer
+		  Dim slideType As String
+		  Dim styleIndex, setStyleIndex, defaultStyleIndex As String
+		  
+		  If SmartMl.GetNode(SlideGroupToAdd, "slides/slide", False) = Nil Then Return 0
+		  
+		  If AfterXSlide = Nil Then
+		    AfterXSlide = SetML.GetSlide(CurrentSet, AfterPosition)
+		    If AfterXSlide = Nil Then Return 0
+		  End If
+		  slideGroup = AfterXSlide.Parent
+		  If slideGroup <> Nil Then slideGroup = slideGroup.Parent  // this actually handles the slides node
+		  If slideGroup = Nil Then Return 0
+		  setStyleIndex = SmartML.GetValue(slideGroup, "style/@setIndex", False)
+		  defaultStyleIndex = SmartML.GetValue(App.MyPresentSettings, "default_style/@index", False)
+		  If setStyleIndex = "" Then setStyleIndex = defaultStyleIndex
+		  styleIndex = setStyleIndex
+		  
+		  slideGroup = SmartML.InsertAfter(slideGroup, "slide_group")
+		  slideGroup = SmartML.ReplaceWithImportNode(slideGroup, SlideGroupToAdd)
+		  NumberOfItems = NumberOfItems + 1
+		  SmartML.SetValueN(slideGroup, "@ItemNumber", NumberOfItems)
+		  SmartML.SetValueB(slideGroup, "@LiveInsertion", True)
+		  slideType = SmartMl.GetValue(slideGroup, "@type", False)
+		  styleNode = SmartML.GetNode(slideGroup, "style", False)
+		  If styleNode <> Nil Then
+		    If slideType <> "song" Or _
+		      SetML.SongStylePreferred(slideGroup) Or styleIndex = defaultStyleIndex Then
+		      styleIndex = AddNodeToStyleDict(StyleNode)
+		    Else
+		      styleNode.Parent.RemoveChild(styleNode)
+		    End If
+		  End If
+		  If slideType = "scripture" and styleIndex = defaultStyleIndex Then
+		    styleIndex = SmartML.GetValue(App.MyPresentSettings, "scripture_style/@index", False)
+		  End If
+		  SmartML.SetValue(slideGroup, "style/@setIndex", setStyleIndex)
+		  SmartML.SetValue(slideGroup, "style/@index", styleIndex)
+		  
+		  // find first inserted slide
+		  xSlide = AfterXSlide
+		  slideNo = AfterPosition
+		  While SmartML.GetValueN(xSlide.Parent.Parent, "@ItemNumber", False) <> NumberOfItems
+		    slideNo = slideNo + 1
+		    xSlide = SetML.GetNextSlide(xSlide)
+		  Wend
+		  positionOfFirstSlide = slideNo
+		  If HelperActive Then
+		    While xSlide <> Nil
+		      PresentHelperWindow.InsertItem(xSlide, slideNo - 1)
+		      xSlide = xSlide.NextSibling
+		      slideNo = slideNo + 1
+		    Wend
+		  End If
+		  
+		  // now check blank slides before and after
+		  If slideType = "blank" Then Return positionOfFirstSlide  // this breaks the "subtract 1 for the blank before"-rule, but we're not adding yet another blank
+		  IF Not SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "style/@blanks", False, True) Then Return positionOfFirstSlide
+		  
+		  blankUsesNext = SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "style/@blank_uses_next", False, True)
+		  
+		  neighborGroup = SlideGroup.PreviousSibling
+		  If SmartML.GetValue(neighborGroup, "@type", False) <> "blank" Or _
+		    (PositionIsCurrent And blankUsesNext And _
+		    SmartML.GetValue(neighborGroup, "style/@index", False) <> SmartML.GetValue(SlideGroup, "style/@index", False)) Then
+		    neighborGroup = InsertBlankIntoSet(SlideGroup, True)
+		    If HelperActive Then
+		      xSlide = SmartML.GetNode(neighborGroup, "slides/slide")
+		      PresentHelperWindow.InsertItem(xSlide, positionOfFirstSlide - 1)
+		    End If
+		  End If
+		  
+		  neighborGroup = SlideGroup.NextSibling
+		  If SmartML.GetValue(neighborGroup, "@type", False) <> "blank" Then
+		    neighborGroup = InsertBlankIntoSet(slideGroup, False)
+		    If HelperActive Then
+		      xSlide = SmartML.GetNode(neighborGroup, "slides/slide")
+		      PresentHelperWindow.InsertItem(xSlide, SlideNo - 1)
+		    End If
+		  Else
+		    If Not blankUsesNext Then
+		      // make sure it takes the style of the inserted one
+		      SmartML.SetValue(neighborGroup, "style/@index",  styleIndex)
+		    End If
+		  End If
+		  
+		  Return positionOfFirstSlide
+		  
+		End Function
+	#tag EndMethod
+
 	#tag Method, Flags = &h0
 		Function InsertSongIntoSet(fSong As Folderitem, atSlide As Integer, presentation As String, CheckLinked As Boolean, showErrorPopup As Boolean) As Boolean
-		  Dim success As Boolean = True
-		  Dim xNewSlide As XmlNode
-		  Dim newSlide As Integer
-		  '++JRC
-		  Dim InsertLinkedSongs As Boolean = False
+		  Dim success As Boolean = False
+		  Dim position As Integer
+		  Dim positionIsCurrent As Boolean
+		  Dim positioning As Integer = 0  // preparation to add this as a parameter/config setting; 0=stay,1=first section of song,2=blank before song
+		  Dim newCurrentSlide As Integer = 0
+		  Dim InsertLinkedSongs As Boolean
 		  Dim fSongs() As FolderItem
-		  Dim j As Integer = 0
-		  '--
-		  Dim xSongStyle, xCustomStyle As XmlNode
+		  Dim j As Integer
+		  Dim xSlide As XmlNode
 		  
 		  If atSlide < 0 Then
 		    atSlide = Me.CurrentSlide
 		  End If
+		  position = atSlide
+		  positionIsCurrent = (atSlide = CurrentSlide)
 		  
-		  Dim atXSlide As XmlNode = SetML.GetSlide(Me.CurrentSet, atSlide)
-		  If atXSlide <> Nil Then
+		  If positioning = 2 Then
+		    If Not SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "style/@blanks", False) Then
+		      positioning = 0
+		    End If
+		  End If
+		  
+		  fSongs.Append(fSong)
+		  j = 0
+		  While j <= fSongs.Ubound
+		    fSong = fSongs(j)
+		    Dim s As XmlDocument = SmartML.XDocFromFile(fSong)
+		    If s = Nil Then
+		      If showErrorPopup Then
+		        SmartML.DisplayError
+		      End If
+		      j = j + 1
+		      Continue
+		    End If
 		    
-		    While fSong <> Nil
-		      Dim s As XmlDocument = SmartML.XDocFromFile(fSong)
-		      If s = Nil Then
+		    '++JRC get song info for logging
+		    'Don't log in preview mode
+		    NumberOfItems = NumberOfItems + 1
+		    
+		    If App.MainPreferences.GetValueB(App.kActivityLog, True) And _
+		      Globals.SongActivityLog <> Nil And _
+		      PresentationMode <> MODE_PREVIEW And _
+		      Globals.AddToLog Then
+		      ActLog.Append(New LogEntry(Globals.SongActivityLog))
+		      Dim d As New Date
+		      
+		      Dim i As Integer = UBound(ActLog)
+		      ActLog(i).Title = SmartML.GetValue(s.DocumentElement, "title", True)
+		      ActLog(i).Author = SmartML.GetValue(s.DocumentElement, "author", True)
+		      ActLog(i).CCLISongNumber = SmartML.GetValue(s.DocumentElement, "ccli", True)  //The song's CCLI number
+		      ActLog(i).SongFileName = MainWindow.Songs.DBPathFromFolderItem(fSong) 'Should we use AbsolutePath?
+		      ActLog(i).DateAndTime = d
+		      ActLog(i).HasChords = ActLog(i).CheckLyricsForChords(SmartML.GetValue(s.DocumentElement, "lyrics", True))
+		      ActLog(i).Presented = True
+		      ActLog(i).SetItemNumber = NumberOfItems  'Assign an index to this song
+		      ActLog(i).Displayed = False 'Set this to true if user displays this song
+		    End If
+		    '--
+		    
+		    If CheckLinked Then
+		      fSongs = MainWindow.AddLinkedSongsFolderItem(fSong, s.DocumentElement)
+		      If UBound(fSongs) >= 0 Then
 		        If showErrorPopup Then
-		          SmartML.DisplayError
-		        End If
-		        fSong = Nil
-		        Continue
-		      End If
-		      
-		      ' Get a reference
-		      Dim newGroup As XmlNode = SmartML.InsertAfter(atXSlide.Parent.Parent, "slide_group")
-		      
-		      '++JRC get song info for logging
-		      'Don't log in preview mode
-		      NumberOfItems = NumberOfItems + 1
-		      
-		      If App.MainPreferences.GetValueB(App.kActivityLog, True) And _
-		        Globals.SongActivityLog <> Nil And _
-		        PresentationMode <> MODE_PREVIEW And _
-		        Globals.AddToLog Then
-		        ActLog.Append(New LogEntry(Globals.SongActivityLog))
-		        Dim d As New Date
-		        
-		        Dim i As Integer = UBound(ActLog)
-		        ActLog(i).Title = SmartML.GetValue(s.DocumentElement, "title", True)
-		        ActLog(i).Author = SmartML.GetValue(s.DocumentElement, "author", True)
-		        ActLog(i).CCLISongNumber = SmartML.GetValue(s.DocumentElement, "ccli", True)  //The song's CCLI number
-		        ActLog(i).SongFileName = MainWindow.Songs.DBPathFromFolderItem(fSong) 'Should we use AbsolutePath?
-		        ActLog(i).DateAndTime = d
-		        ActLog(i).HasChords = ActLog(i).CheckLyricsForChords(SmartML.GetValue(s.DocumentElement, "lyrics", True))
-		        ActLog(i).Presented = True
-		        ActLog(i).SetItemNumber = NumberOfItems  'Assign an index to this song
-		        ActLog(i).Displayed = False 'Set this to true if user displays this song
-		      End If
-		      
-		      If CheckLinked Then
-		        fSongs = MainWindow.AddLinkedSongsFolderItem(fSong, s.DocumentElement)
-		        If UBound(fSongs) >= 0 Then
-		          If showErrorPopup Then
-		            If SmartML.GetValueB(App.MyMainSettings.DocumentElement, "linked_songs/@prompt", True) Then
-		              App.MouseCursor = Nil
-		              
-		              InsertLinkedSongs = InputBox.AskYN(App.T.Translate("questions/linked_songs/@caption"))
-		              
-		              App.MouseCursor = System.Cursors.Wait
-		            Else
-		              InsertLinkedSongs = True
-		            End If
+		          If SmartML.GetValueB(App.MyMainSettings.DocumentElement, "linked_songs/@prompt", True) Then
+		            App.MouseCursor = Nil
+		            
+		            InsertLinkedSongs = InputBox.AskYN(App.T.Translate("questions/linked_songs/@caption"))
+		            
+		            App.MouseCursor = System.Cursors.Wait
 		          Else
 		            InsertLinkedSongs = True
 		          End If
-		        End If
-		        CheckLinked = False
-		      End If
-		      '--
-		      
-		      If presentation <> "" Then 'Override the song's default presentation
-		        SmartML.SetValue(s.DocumentElement, "presentation", presentation)
-		      End If
-		      
-		      ' we need the proper style in order to format the subtitle correctly
-		      ' we also might have to know whether this style is a custom style, i.e. comes from a style slide
-		      xNewSlide = SmartML.GetNode(newGroup, "slides/slide", True)
-		      SmartML.SetValue(newGroup, "@type", "song")
-		      xSongStyle = SmartML.GetNode(s.DocumentElement, "style")
-		      If xSongStyle <> Nil Then
-		        xCustomStyle = SetML.GetCustomStyle(xNewSlide)
-		        If xCustomStyle <> Nil And Not SetML.SongStylePreferred(xNewSlide) Then
-		          SmartML.RemoveChild(s.DocumentElement, xSongStyle)
-		          xSongStyle = xCustomStyle
 		        Else
-		          Dim tempSlideStyle As New SlideStyle(xSongStyle)
-		          // We'll just use the dictionary index as the key; this makes it unique if unimaginative
-		          StyleDict.Value(str(StyleDict.Count)) = tempSlideStyle
-		          // replace the style node with a new one containing only the index attribute
-		          Dim newStyleNode As XmlNode = s.CreateElement("style")
-		          newStyleNode.SetAttribute "index", Str(StyleDict.Count - 1)
-		          newStyleNode = SmartML.ReplaceWithImportNode(xSongStyle, newStyleNode)
+		          InsertLinkedSongs = True
 		        End If
+		        If InsertLinkedSongs Then
+		          j = -1
+		        Else
+		          j = fSongs.Ubound
+		        End
+		      End If
+		      CheckLinked = False
+		    End If
+		    
+		    If presentation <> "" Then 'Override the song's default presentation
+		      SmartML.SetValue(s.DocumentElement, "presentation", presentation)
+		    End If
+		    
+		    SongML.ToSetML s.DocumentElement
+		    If SmartML.GetNode(s.DocumentElement, "slides").ChildCount < 1 Then
+		      App.MouseCursor = Nil
+		      If showErrorPopup Then
+		        InputBox.Message App.T.Translate("errors/empty_group", SmartML.GetValue(s.DocumentElement, "@name", True))
+		      End If
+		      j = j + 1
+		      Continue
+		    End If
+		    
+		    position = InsertSlideGroupIntoSet(s.DocumentElement, position, positionIsCurrent)
+		    If newCurrentSlide = 0 Then
+		      Select Case positioning
+		      Case 1
+		        newCurrentSlide = position
+		      Case 2
+		        newCurrentSlide = position - 1
 		      Else
-		        xSongStyle = SetML.GetStyle(xNewSlide)
-		      End If
-		      SongML.ToSetML(s.DocumentElement, xSongStyle)
-		      If SmartML.GetNode(s.DocumentElement, "slides").ChildCount < 1 Then
-		        App.MouseCursor = Nil
-		        If showErrorPopup Then
-		          InputBox.Message App.T.Translate("errors/empty_group", SmartML.GetValue(s.DocumentElement, "@name", True))
-		        End If
-		        newGroup.Parent.RemoveChild newGroup
-		        Return False
-		      End If
-		      
-		      newGroup = SmartML.ReplaceWithImportNode(newGroup, s.DocumentElement)
-		      '++JRC
-		      SmartML.SetValueN(newgroup, "@ItemNumber", NumberOfItems)
-		      SmartML.SetValueB(newgroup, "@LiveInsertion", True)
-		      
-		      ' --- Move to where we need to be ---
-		      Do Until SmartML.GetValueN(atXSlide.Parent.Parent, "@ItemNumber") = NumberOfItems
-		        atSlide = atSlide + 1
-		        atXSlide = SetML.GetSlide(Me.CurrentSet, atSlide)
-		      Loop
-		      
-		      If HelperActive Then
-		        xNewSlide = SmartML.GetNode(newGroup, "slides").FirstChild
-		        Dim i As Integer = 0
-		        While xNewSlide <> Nil
-		          PresentHelperWindow.InsertItem xNewSlide, atSlide + i - 1
-		          xNewSlide = xNewSlide.NextSibling
-		          i = i + 1
-		        Wend
-		      End If
-		      
-		      ' Insert blank slides if needed
-		      If SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "style/@blanks") Then
-		        newSlide = atSlide
-		        xNewSlide = atXSlide
-		        If atXSlide.Parent.Parent.NextSibling = Nil Or SmartML.GetValue(atXSlide.Parent.Parent.NextSibling, "@name") <> "" Then
-		          xNewSlide = SmartML.InsertAfter(atXSlide.Parent.Parent, "slide_group")
-		          xNewSlide = SmartML.GetNode(xNewSlide, "slides/slide", True)
-		          SmartML.SetValue xNewSlide.Parent.Parent, "@type", "blank"
-		          SmartML.SetValue xNewSlide, "body", ""
-		          If HelperActive Then PresentHelperWindow.InsertItem xNewSlide, atSlide + atXSlide.Parent.ChildCount - 1
-		        End If
-		        If atXSlide.Parent.Parent.PreviousSibling = Nil Or SmartML.GetValue(atXSlide.Parent.Parent.PreviousSibling, "@name") <> "" Then
-		          xNewSlide = SmartML.InsertBefore(atXSlide.Parent.Parent, "slide_group")
-		          xNewSlide = SmartML.GetNode(xNewSlide, "slides/slide", True)
-		          SmartML.SetValue xNewSlide.Parent.Parent, "@type", "blank"
-		          SmartML.SetValue xNewSlide, "body", ""
-		          If HelperActive Then PresentHelperWindow.InsertItem xNewSlide, atSlide - 1
-		          atSlide = atSlide + 1
-		          atXSlide = xNewSlide
-		        End If
-		      End If
-		      
-		      
-		      If j <= UBound(fSongs) And InsertLinkedSongs Then
-		        fSong = fSongs(j)
-		        j = j + 1
-		        presentation = ""
-		      Else
-		        fSong = Nil
-		      End If
-		      
-		      atSlide = atSlide + 1
-		      atXSlide = SetML.GetSlide(Me.CurrentSet, atSlide)
-		    Wend
-		  Else
-		    success = False
-		  End If
+		        newCurrentSlide = CurrentSlide
+		      End Select
+		      success = True
+		    End If
+		    
+		    'setup loop initial state for next (linked) song
+		    j = j + 1
+		    presentation = ""
+		  Wend
 		  
-		  return success
+		  If success And positioning = 0 And atSlide < CurrentSlide Then
+		    // we need to adjust for what we inserted
+		    // SvA TODO: this might not give  the right answer if atSlide is a blank
+		    position = position + CurrentSlide - atSlide
+		    xSlide = SetMl.GetSlide(CurrentSet, atSlide)
+		    Do
+		      xSlide = xSlide.NextSibling
+		      If xSlide = Nil Then Exit
+		      position = position - 1
+		    Loop
+		    xSlide = SetMl.GetSlide(CurrentSet, newCurrentSlide)
+		    Do
+		      xSlide = xSlide.NextSibling
+		      If xSlide = Nil Then Exit
+		      position = position + 1
+		    Loop
+		    CurrentSlide = position
+		  elseIf newCurrentSlide <> 0 Then
+		    CurrentSlide = newCurrentSlide
+		  End If
+		  XCurrentSlide = SetML.GetSlide(CurrentSet, CurrentSlide)
+		  Return success
 		End Function
 	#tag EndMethod
 
@@ -1650,10 +2022,13 @@ End
 	#tag Method, Flags = &h0
 		Sub Present(setDoc As XmlDocument, PresentMode As Integer, Item As Integer = 0)
 		  Dim i As Integer
-		  Dim slide_groups, slide_group, slide As XmlNode
+		  Dim slide As XmlNode
 		  Dim de As XmlNode // Holds PresentationSettings Document Element
 		  Dim tmpPic As Picture
 		  Dim availableWidth As Integer 'For screensize calculations adapted to Linux Xinerama in preview dual screen
+		  Dim presentScreenAspect As Single
+		  Dim LogActivity As Boolean
+		  
 		  //++EMP
 		  // September 2005
 		  // Since the changes to pull the style information out of the XML
@@ -1662,21 +2037,12 @@ End
 		  
 		  'CurrentSet = setDoc
 		  //++EMP
-		  Dim StyleNode As XmlNode
-		  Dim NewStyleNode As XmlNode
-		  Dim tempSlideStyle As SlideStyle
 		  
 		  App.MouseCursor = System.Cursors.Wait
-		  PresentationMode = PresentMode
 		  
 		  // Copy the set to a working copy we can change
 		  CurrentSet = New XmlDocument
 		  CurrentSet.AppendChild CurrentSet.ImportNode(setDoc.FirstChild, CopyAllChildren)
-		  
-		  '++JRC
-		  'System.DebugLog "Add blanks and confirm bodies exist"
-		  InsertBlanksIntoSet(CurrentSet, Item)
-		  VerifySlideBodies(CurrentSet)
 		  
 		  'System.DebugLog "Setup monitors"
 		  de = App.MyPresentSettings.DocumentElement
@@ -1689,8 +2055,12 @@ End
 		  'System.DebugLog "Determine correct PresentMode"
 		  
 		  Select Case PresentMode
-		  Case MODE_SINGLE_SCREEN, MODE_DUAL_SCREEN, MODE_PREVIEW
+		  Case MODE_SINGLE_SCREEN, MODE_PREVIEW
 		    ' PresentMode is known
+		  Case MODE_DUAL_SCREEN
+		    If PresentScreen = ControlScreen Then
+		      PresentMode = MODE_SINGLE_SCREEN
+		    End If
 		  Else
 		    If PresentScreen <> ControlScreen Then
 		      PresentMode = MODE_DUAL_SCREEN
@@ -1698,6 +2068,32 @@ End
 		      PresentMode = MODE_PREVIEW
 		    End If
 		  End Select
+		  
+		  'Don't log in preview mode
+		  If PresentMode <> PresentWindow.MODE_PREVIEW And App.MainPreferences.GetValueB(App.kActivityLog, True) And Globals.SongActivityLog <> Nil  Then
+		    If App.MainPreferences.GetValueB(App.kPromptBeforePresenting, True) Then
+		      LogActivity = InputBox.AskYN(App.T.Translate("questions/activity_log/@caption"))
+		    Else
+		      LogActivity =  True
+		    End If
+		  Else
+		    LogActivity =  False
+		  End If
+		  Globals.AddToLog = LogActivity
+		  
+		  ImportSongs CurrentSet, LogActivity
+		  ImportExternals CurrentSet, PresentMode
+		  ProcessStyles(CurrentSet)
+		  InsertBlanksIntoSet(CurrentSet)
+		  VerifySlideBodies(CurrentSet)
+		  
+		  If SetML.GetSlide(CurrentSet, 1) = Nil Then
+		    InputBox.Message App.T.Translate("sets_mode/current_set/present/no_slides")
+		    Close
+		    Return
+		  End If
+		  
+		  PresentationMode = PresentMode
 		  If PresentMode = MODE_SINGLE_SCREEN Then ' Single Screen
 		    presentScreen = controlScreen
 		    HelperActive = False
@@ -1711,28 +2107,34 @@ End
 		  ElseIf PresentMode = MODE_PREVIEW Then ' Split Screen
 		    HelperActive = True
 		    MenuBarVisible = True
+		    presentScreenAspect = OSScreen(presentScreen).AvailableWidth / OSScreen(presentScreen).AvailableHeight
+		    
+		    If SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "monitors/@force_4_3_preview", False, False) Then
+		      If presentScreenAspect >= 1 Then
+		        presentScreenAspect = 4/3
+		      Else
+		        presentScreenAspect = 3/4
+		      End If
+		    End If
+		    
+		    If SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "monitors/@force_16_9_preview", False, False) Then
+		      If presentScreenAspect >= 1 Then
+		        presentScreenAspect = 16/9
+		      Else
+		        presentScreenAspect = 9/16
+		      End If
+		    End If
+		    
 		    presentScreen = controlScreen
 		    Top = OSScreen(presentScreen).AvailableTop + 10
 		    Left = OSScreen(presentScreen).AvailableLeft + 10
 		    availableWidth = OSScreen(presentScreen).AvailableWidth
 		    
 		    Width = availableWidth - PresentHelperWindow.Width - 30
-		    Height = Width * OSScreen(presentScreen).AvailableHeight / availableWidth ' Screen(presentScreen).Height - PresentHelperWindow.Height - 30
-		    
-		    If SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "monitors/@force_4_3_preview", False, False) Then
-		      If Width > Height Then
-		        Width = Height * 4/3
-		      Else
-		        Height = Width * 3/4
-		      End If
-		    End If
-		    
-		    If SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "monitors/@force_16_9_preview", False, False) Then
-		      If Width > Height Then
-		        Width = Height * 16/9
-		      Else
-		        Height = Width * 9/16
-		      End If
+		    Height = Width / presentScreenAspect
+		    If Height > OSScreen(ControlScreen).AvailableHeight Then
+		      Height = OSScreen(ControlScreen).AvailableHeight
+		      Width = Height * presentScreenAspect
 		    End If
 		    
 		    PresentHelperWindow.Left = OSScreen(presentScreen).AvailableLeft + availableWidth - PresentHelperWindow.Width - 10
@@ -1757,60 +2159,7 @@ End
 		  
 		  m_ExternalRenderer.Prepare(CurrentSet, Width, Height)
 		  
-		  StyleDict = New Dictionary
-		  
-		  '++JRC
-		  NumberOfItems = Val(setDoc.DocumentElement.GetAttribute("NumberOfItems"))
-		  
-		  slide_groups = SmartML.GetNode(CurrentSet.DocumentElement, "slide_groups", True)
-		  slide_group = slide_groups.FirstChild
-		  'System.DebugLog "Starting While..."
-		  While slide_group <> Nil
-		    
-		    //++EMP
-		    // If the current group has a style, add it to the style objects dictionary
-		    // N.B.: This WILL break if slide-level styles are ever implemented
-		    // Under RB 5.5.5 I tried to do this outside this While with
-		    // StyleNodes = CurrentSet.Xql("//style") to get them all regardless of depth
-		    // but RB kept throwing an "assertion failed" error both with the debug
-		    // and production builds.
-		    // With the current (V1.0) design, this is a little more efficient anyway
-		    // since we don't keep reparsing the set's XML.
-		    
-		    StyleNode = SmartML.GetNode(slide_group, "style", False)
-		    If StyleNode <> Nil Then
-		      tempSlideStyle = New SlideStyle(StyleNode)
-		      // We'll just use the dictionary index as the key; this makes it unique if unimaginative
-		      StyleDict.Value(str(StyleDict.Count)) = tempSlideStyle
-		      '++JRC unnecessary as we will overwrite StyleNode anyway
-		      'StyleNode.SetAttribute "index", Str(StyleDict.Count - 1)
-		      // Going for broke here: Replace the style node with a new one that just has the index...
-		      NewStyleNode = CurrentSet.CreateElement("style")
-		      NewStyleNode.SetAttribute "index", Str(StyleDict.Count - 1)
-		      StyleNode = SmartML.ReplaceWithImportNode(StyleNode, NewStyleNode)
-		    End If
-		    //--EMP
-		    slide_group = slide_group.NextSibling
-		    'System.DebugLog "Next Slide Group"
-		    If slide_group <> Nil Then
-		      'System.DebugLog "Slide Group is " + smartml.GetValue(slide_group, "@name") + ", a " + SmartML.GetValue(slide_group, "@type")
-		    End If
-		  Wend
-		  
-		  'System.DebugLog "Ending While"
-		  
-		  //++EMP
-		  // Now handle  the default styles...
-		  'System.DebugLog "Acquire Defaults"
-		  StyleNode = SmartML.GetNode(de, "scripture_style")
-		  tempSlideStyle = New SlideStyle(StyleNode)
-		  StyleDict.Value("scripture_style") = tempSlideStyle
-		  'System.DebugLog "Completed scripture_style"
-		  StyleNode = SmartML.GetNode(de, "default_style")
-		  tempSlideStyle = New SlideStyle(StyleNode)
-		  StyleDict.Value("default_style") = tempSlideStyle
-		  'System.DebugLog "Completed default_style"
-		  //--
+		  NumberOfItems = Val(CurrentSet.DocumentElement.GetAttribute("NumberOfItems"))
 		  
 		  //++
 		  // EMP, September 2006
@@ -1821,9 +2170,9 @@ End
 		  //--
 		  'System.DebugLog "Allocate Picture space"
 		  If HelperActive And Width < 320 Then
-		    CurrentPicture = New Picture(320, 240, 32)
-		    LastPicture = New Picture(320, 240, 32)
-		    PreviewPicture = New Picture(320, 240, 32)
+		    CurrentPicture = New Picture(320, 320 / presentScreenAspect, 32)
+		    LastPicture = New Picture(320, 320 / presentScreenAspect, 32)
+		    PreviewPicture = New Picture(320, 320 / presentScreenAspect, 32)
 		  Else
 		    CurrentPicture = New Picture(Width, Height, 32)
 		    LastPicture = New Picture(Width, Height, 32)
@@ -1843,9 +2192,6 @@ End
 		    LogoCache.Mask.Graphics.DrawPicture SmartML.GetValueP(App.MyPresentSettings.DocumentElement, "logo_mask"), 0, 0
 		  End If
 		  
-		  'CurrentSlide = 1
-		  'XCurrentSlide = SetML.GetSlide(CurrentSet, 1)
-		  
 		  UpdateStatusNotifiers "starting"
 		  
 		  If HelperActive Then
@@ -1855,14 +2201,16 @@ End
 		    slide = SetML.GetSlide(CurrentSet, i)
 		    'System.DebugLog "PresentWindow.Present: GetSlide 1 returned a " + SmartML.GetValue(slide.Parent.Parent, "@type") +_
 		    '" with name '" + SmartML.GetValue(slide.Parent.Parent, "@name") + "'"
+		    Dim StyleIndex, prevStyleIndex As String
+		    Dim prevIsStyleChange As Boolean
+		    styleIndex = SmartML.GetValue(slide.Parent.Parent, "style/@setIndex", False)
 		    While slide <> Nil
 		      
-		      Dim prevIsStyleChange As Boolean = False
+		      prevIsStyleChange = False
 		      If slide.PreviousSibling Is Nil Then
-		        Dim xPrevSlideGroup As XmlNode = slide.Parent.Parent.PreviousSibling
-		        If xPrevSlideGroup <> Nil Then
-		          prevIsStyleChange = (SmartML.GetValue(xPrevSlideGroup, "@type", False) = "style")
-		        End If
+		        prevStyleIndex = styleIndex
+		        styleIndex = SmartML.GetValue(slide.Parent.Parent, "style/@setIndex", False)
+		        prevIsStyleChange = (prevStyleIndex <> styleIndex)
 		      End If
 		      
 		      PresentHelperWindow.InsertItem slide, i, prevIsStyleChange
@@ -1892,11 +2240,12 @@ End
 		  If HelperActive Then
 		    PresentHelperWindow.SetMode Me.Mode, False
 		    App.RestoreWindow(PresentHelperWindow)
+		    App.SetForeground(PresentHelperWindow)
 		    PresentHelperWindow.lst_all_slides.SetFocus
 		  Else
-		    '++JRC Bring PresentWindow to front in Singe Screen Mode
+		    'Bring PresentWindow to front in Singe Screen Mode
 		    App.SetForeground(PresentWindow)
-		    '--
+		    
 		    ResetPaint XCurrentSlide
 		  End If
 		  
@@ -1906,11 +2255,7 @@ End
 		  Case "arrow"
 		    Self.MouseCursor = System.Cursors.StandardPointer
 		  Case "cross"
-		    '#If Not TargetLinux
-		    'Self.MouseCursor = cross
-		    '#Else
 		    Self.MouseCursor = System.Cursors.ArrowAllDirections
-		    '#EndIf
 		  Case "hidden"
 		    Self.MouseCursor = System.Cursors.InvisibleCursor
 		  Case "hourglass"
@@ -1929,9 +2274,113 @@ End
 		End Sub
 	#tag EndMethod
 
+	#tag Method, Flags = &h1
+		Protected Sub ProcessStyles(Set As XmlDocument)
+		  // Fills the StyleDict with SlideStyles and assigns the keys to each slide_group's style element
+		  // The style element is created if it does not yet exist and two indices are set as attributes:
+		  // @index to be used by the slides of the group
+		  // @setIndex to be used by new entries inserted on the fly (i.e. quick insert song)
+		  // this way, any slide element's grandparent knows which style to use
+		  // Style slides are no longer used hereafter, so they are removed
+		  
+		  Dim slide_groups, slide_group As XmlNode
+		  Dim styleNode As XmlNode
+		  Dim presentationSettings As XmlNode
+		  Dim setStyles() As String
+		  Dim setIndex, groupIndex As String
+		  Dim slideType As String
+		  
+		  StyleDict = New Dictionary
+		  
+		  // first handle the default styles
+		  presentationSettings = App.MyPresentSettings.DocumentElement
+		  setIndex = AddNodeToStyleDict(SmartML.GetNode(presentationSettings, "default_style"), "default_style")
+		  SmartML.SetValue(presentationSettings, "default_style/@index", setIndex)
+		  setIndex = AddNodeToStyleDict(SmartML.GetNode(presentationSettings, "scripture_style"), "scripture_style")
+		  SmartML.SetValue(presentationSettings, "scripture_style/@index", setIndex)
+		  
+		  // now process the slide deck
+		  If Set = Nil Then Return
+		  slide_groups = SmartML.GetNode(Set.DocumentElement, "slide_groups", True)
+		  
+		  setIndex = "default_style"
+		  slide_group = slide_groups.FirstChild
+		  While slide_group <> Nil
+		    groupIndex = setIndex
+		    StyleNode = SmartML.GetNode(slide_group, "style", False)
+		    If styleNode <> Nil Then
+		      groupIndex = AddNodeToStyleDict(styleNode)
+		      SmartML.SetValue(styleNode, "@index", groupIndex)
+		      // An older implementation of building the StyleDict removed the style node and replaced it with one that had just the index
+		      // This was done after the deck had been sent to the external renderer. Now we do this before and therefore need to keep all setting
+		      // TODO: consider a redesign which adds the style dictionary as an xml section. This breaks compatibility with external renderes, though
+		      // SvA TODO: this now removes the style slides completely, which breaks style for the external renderer anyway
+		    End If
+		    
+		    styleNode = Nil // we re-utilise this to remove style slide_group after we've retrieved the next slide_group
+		    slideType = SmartML.GetValue(slide_group, "@type")
+		    Select Case slideType
+		    Case "style"
+		      Select Case SmartML.GetValue(slide_group, "@action")
+		      Case "new"
+		        setStyles.Append(setIndex)
+		        setIndex = groupIndex
+		      Case "revert"
+		        If setStyles.Ubound >= 0 Then setIndex = setStyles.Pop
+		      Else
+		        If setIndex <> groupIndex Then
+		          setStyles.Append(groupIndex) ' handle as "new", if it has a style; as an alternative; throw an exception
+		        End If
+		      End Select
+		      styleNode = slide_group
+		    Case "blank"
+		      // this is not expected here (ought to be added later). We just ignore it here,
+		      // because wo do not have the style of the next slide yet, in case we need it
+		    Case "scripture"
+		      SmartML.SetValue(slide_group, "style/@setIndex", setIndex)
+		      If setIndex = "default_style" Then
+		        SmartML.SetValue(slide_group, "style/@index", "scripture_style")
+		      Else
+		        SmartML.SetValue(slide_group, "style/@index", groupIndex)
+		      End If
+		    Else
+		      SmartML.SetValue(slide_group, "style/@index", groupIndex)
+		      SmartML.SetValue(slide_group, "style/@setIndex", setIndex)
+		    End Select
+		    
+		    slide_group = slide_group.NextSibling
+		    
+		    If styleNode <> Nil Then
+		      If slide_group = Nil Then
+		        If SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "style/@blank_uses_next", True, True) Then
+		          If SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "style/@blanks") Then
+		            'We might loose the style for the blank, so we insert it here
+		            SmartML.SetValue(styleNode, "style/@index", groupIndex)
+		            SmartML.SetValue(styleNode, "style/@setIndex", setIndex)
+		            slide_group = InsertBlankIntoSet(styleNode, True)
+		            slide_group = Nil
+		          End If
+		        End If
+		      End If
+		      SmartML.RemoveSelf(styleNode)
+		    End If
+		  Wend
+		  
+		  // Handle an edge case where we had a style slide as the only slide, so we don't loose that information:
+		  // Add a blank slide, even if insert blanks is not enabled. We need at least one item to existst for presentation.
+		  If Not SmartMl.HasNode(slide_groups,"slide_group") Then
+		    slide_group = InsertBlankIntoSet(slide_groups, False)
+		    If groupIndex = "" Then groupIndex = setIndex
+		    SmartML.SetValue(slide_group, "style/@index", groupIndex)
+		    SmartML.SetValue(slide_group, "style/@setIndex", setIndex)
+		  End If
+		  
+		End Sub
+	#tag EndMethod
+
 	#tag Method, Flags = &h0
 		Sub ResetPaint(slide As XmlNode)
-		  Dim xStyle As XmlNode
+		  Dim slideStyle As SlideStyle
 		  Dim w, h As Integer
 		  Dim advanceNext As Boolean = False
 		  Dim currAppl As String
@@ -2200,11 +2649,11 @@ End
 		    'xStyle = SetML.GetStyle(XCurrentSlide)
 		    'SetML.DrawSlide PreviewPicture.Graphics, XCurrentSlide, xStyle
 		    ' -- New way --
-		    xStyle = SetML.GetStyle(slide)
+		    slideStyle = SetML.GetSlideStyle(slide)
 		    
 		    Dim external_did_draw as Boolean = m_ExternalRenderer.Render(PreviewPicture.Graphics, slide, PresentWindow.CurrentSlide)
 		    if not external_did_draw then
-		      SetML.DrawSlide PreviewPicture.Graphics, slide, xStyle
+		      SetML.DrawSlide PreviewPicture.Graphics, slide, slideStyle
 		    end if
 		    
 		    curslideTransition = SetML.GetSlideTransition(slide)
@@ -2220,7 +2669,7 @@ End
 		      CurrentPicture.Graphics.ForeColor = RGB(255,255,255)
 		      CurrentPicture.Graphics.FillRect 0, 0, CurrentPicture.Graphics.Width, CurrentPicture.Graphics.Height
 		    ElseIf Mode = "H" Or Mode = "L" Then
-		      SetML.DrawSlide CurrentPicture.Graphics, Nil, xStyle
+		      SetML.DrawSlide CurrentPicture.Graphics, Nil, slideStyle
 		      
 		      If Mode = "L" Then
 		        If LogoCache <> Nil Then
@@ -2241,7 +2690,7 @@ End
 		      CurrentPicture.Graphics.DrawPicture PreviewPicture, 0, 0
 		      'CurrentPicture = CurrentPicture.CXG_Composite(PreviewPicture, 1.0, 0, 0)
 		      If m_Snapshots Then
-		        m_snapshotThread.Export CurrentSlide, PreviewPicture, slide, xStyle
+		        m_snapshotThread.Export CurrentSlide, PreviewPicture, slide, slideStyle
 		      End If
 		    End If
 		    Profiler.EndProfilerEntry
@@ -2293,70 +2742,15 @@ End
 
 	#tag Method, Flags = &h0
 		Sub ScriptureSelected(scripture As XmlNode)
-		  // Part of the ScriptureReceiver interface.
-		  Dim newGroup As XmlNode
-		  Dim newSetItem As XmlNode
-		  Dim tempMode As String
-		  Dim temp As String
-		  Dim xNewSlide As XmlNode
-		  Dim newSlide As Integer
-		  Dim i As Integer
-		  
-		  ' Get a reference
-		  newSetItem = SmartML.InsertAfter(XCurrentSlide.Parent.Parent, "slide_group")
-		  tempMode = Mode
 		  App.MouseCursor = System.Cursors.Wait
-		  newGroup = SmartML.ReplaceWithImportNode(newSetItem, scripture)
 		  
-		  '++JRC
-		  NumberOfItems = NumberOfItems + 1
-		  SmartML.SetValueN(newgroup, "@ItemNumber", NumberOfItems)
-		  SmartML.SetValueB(newgroup, "@LiveInsertion", True)
+		  CurrentSlide = InsertSlideGroupIntoSet(scripture, CurrentSlide, True, XCurrentSlide)
+		  XCurrentSlide = SetML.GetSlide(XCurrentSlide.OwnerDocument, CurrentSlide)
 		  
-		  ' --- Move to where we need to be ---
-		  temp = SmartML.GetValue(newGroup, "@name")
-		  Do Until SmartML.GetValue(XCurrentSlide.Parent.Parent, "@name") = temp
-		    currentSlide = currentSlide + 1
-		    XCurrentSlide = SetML.GetSlide(CurrentSet, currentSlide)
-		  Loop
-		  
+		  App.MouseCursor = Nil
 		  If HelperActive Then
-		    xNewSlide = SmartML.GetNode(newGroup, "slides").FirstChild
-		    i = 0
-		    While xNewSlide <> Nil
-		      PresentHelperWindow.InsertItem xNewSlide, currentSlide + i - 1
-		      xNewSlide = xNewSlide.NextSibling
-		      i = i + 1
-		    Wend
-		  End If
-		  
-		  ' Insert blank slides if needed
-		  If SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "style/@blanks") Then
-		    newSlide = CurrentSlide
-		    xNewSlide = XCurrentSlide
-		    If XCurrentSlide.Parent.Parent.NextSibling = Nil Or SmartML.GetValue(XCurrentSlide.Parent.Parent.NextSibling, "@name") <> "" Then
-		      xNewSlide = SmartML.InsertAfter(XCurrentSlide.Parent.Parent, "slide_group")
-		      xNewSlide = SmartML.GetNode(xNewSlide, "slides/slide", True)
-		      SmartML.SetValue xNewSlide.Parent.Parent, "@type", "song"
-		      SmartML.SetValue xNewSlide, "body", ""
-		      If HelperActive Then PresentHelperWindow.InsertItem xNewSlide, currentSlide + XCurrentSlide.Parent.ChildCount - 1
-		    End If
-		    If XCurrentSlide.Parent.Parent.PreviousSibling = Nil Or SmartML.GetValue(XCurrentSlide.Parent.Parent.PreviousSibling, "@name") <> "" Then
-		      xNewSlide = SmartML.InsertBefore(XCurrentSlide.Parent.Parent, "slide_group")
-		      xNewSlide = SmartML.GetNode(xNewSlide, "slides/slide", True)
-		      SmartML.SetValue xNewSlide.Parent.Parent, "@type", "song"
-		      SmartML.SetValue xNewSlide, "body", ""
-		      If HelperActive Then PresentHelperWindow.InsertItem xNewSlide, currentSlide - 1
-		      CurrentSlide = CurrentSlide + 1
-		      XCurrentSlide = xNewSlide
-		    End If
-		  End If
-		  
-		  If HelperActive Then
-		    App.MouseCursor = Nil
-		    PresentHelperWindow.ScrollTo currentSlide
+		    PresentHelperWindow.ScrollTo CurrentSlide
 		  Else
-		    App.MouseCursor = Nil
 		    ResetPaint XCurrentSlide
 		  End If
 		  Return

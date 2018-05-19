@@ -974,7 +974,11 @@ Protected Module GraphicsX
 		  Profiler.EndProfilerEntry
 		  
 		  If lineCount = 0 Then lineCount = 1
-		  Return FontFaceHeight(g, f) * lineCount
+		  If valign = "middle" Then
+		    Return height
+		  Else
+		    Return FontFaceHeight(g, f) * lineCount
+		  End If
 		End Function
 	#tag EndMethod
 

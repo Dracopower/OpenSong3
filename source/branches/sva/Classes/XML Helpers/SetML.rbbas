@@ -157,17 +157,13 @@ Protected Module SetML
 		    End If
 		  End If
 		  
-		  'title = ReplaceAll(title, "|", Chr(10))
-		  
 		  // Subtitles can now be over one line long.  Split the subtitle string on newlines and iterate
 		  Subtitles = Split(subtitle, Chr(10))
 		  
 		  If Style.TitleVAlign = "top" Then
-		    '++JRC
 		    If Style.TitleEnable Then
 		      HeaderSize = HeaderSize + DrawSlideTitle(g, xslide, Style, 0, 0, titleFont, RealBorder, HeaderSize, FooterSize, titleMargins)
 		    End If
-		    '--
 		    'Draw subtitles
 		    For i = 0 to UBound(Subtitles)
 		      If Style.SubtitleVAlign = "top" Then
@@ -189,21 +185,26 @@ Protected Module SetML
 		        0, 0, subtitleFont, RealBorder, HeaderSize, FooterSize, subtitleMargins, g.Width, Style.SubtitleAlign, g.Height, Style.SubtitleVAlign)
 		      End If
 		    Next i
-		    '++JRC
 		    If Style.TitleEnable Then
 		      FooterSize = FooterSize + DrawSlideTitle(g, xslide, Style, 0, 0, titleFont, RealBorder, HeaderSize, FooterSize, titleMargins)
 		    End If
-		    '--
 		  End If
 		  
 		  Profiler.EndProfilerEntry
 		  Profiler.BeginProfilerEntry "DrawSlide>Declare 3" ' --------------------------------------------------
 		  
+		  Dim picBorderTop, picBorderBottom As Integer ' this is used in case of a background pic with resize=body
 		  If HeaderSize < bodyMargins.Top Then
+		    picBorderTop = Max(HeaderSize + RealBorder - bodyMargins.Top,0)
 		    HeaderSize = bodyMargins.Top
+		  Else
+		    picBorderTop = RealBorder
 		  End If
 		  If FooterSize < bodyMargins.Bottom Then
+		    picBorderBottom = Max(FooterSize + RealBorder + bodyMargins.Bottom,0)
 		    FooterSize = bodyMargins.Bottom
+		  Else
+		    picBorderBottom = RealBorder
 		  End If
 		  
 		  MainHeight = g.Height - HeaderSize - FooterSize - (2 * RealBorder)
@@ -222,38 +223,43 @@ Protected Module SetML
 		        Profiler.BeginProfilerEntry "DrawSlide>Background picture (not full screen)" ' --------------------------------------------------
 		        
 		        If resize = "body" Then
+		          Dim picAreaWidth, picAreaHeight As Integer
+		          picAreaWidth = UsableWidth + (2 * RealBorder)
+		          picAreaHeight = g.Height - HeaderSize - FooterSize - picBorderTop - picBorderBottom
+		          'another border for the text inside the background pic
+		          MainHeight = picAreaHeight - (2 * RealBorder)
+		          HeaderSize = HeaderSize + picBorderTop
+		          FooterSize = FooterSize + picBorderBottom
+		          
 		          If keepaspect Then
-		            UsableWidth =  UsableWidth + (2 * RealBorder)
-		            
-		            If pic.Width / UsableWidth > pic.Height / MainHeight Then
-		              scale = UsableWidth / pic.Width
+		            If pic.Width / picAreaWidth > pic.Height / picAreaHeight Then
+		              scale = picAreaWidth / pic.Width
 		            Else
-		              scale = MainHeight / pic.Height
+		              scale = picAreaHeight / pic.Height
 		            End If
 		            
 		            Select Case Style.BodyAlign
 		            Case "right"
-		              Left = bodyMargins.Left + UsableWidth - (pic.Width * scale)
+		              Left = bodyMargins.Left + picAreaWidth - (pic.Width * scale)
 		            Case "center"
-		              Left = bodyMargins.Left + ((UsableWidth - (pic.Width * scale)) / 2)
+		              Left = bodyMargins.Left + ((picAreaWidth - (pic.Width * scale)) / 2)
 		            Case Else
 		              Left = bodyMargins.Left
 		            End Select
 		            
 		            Select Case Style.BodyVAlign
 		            Case "bottom"
-		              Top = HeaderSize + MainHeight - pic.Height * scale
+		              Top = HeaderSize + picAreaHeight - pic.Height * scale
 		            Case "middle"
-		              Top = HeaderSize + ((MainHeight - (pic.Height * scale)) / 2)
+		              Top = HeaderSize + ((picAreaHeight - (pic.Height * scale)) / 2)
 		            Case Else
 		              Top = HeaderSize
 		            End Select
 		            
 		            g.DrawPicture( pic, Left, Top, pic.Width * scale, pic.Height * scale, 0, 0, pic.Width, pic.Height )
 		          Else
-		            g.DrawPicture( pic, bodyMargins.Left, HeaderSize, UsableWidth + (2 * RealBorder), MainHeight, 0, 0, pic.Width, pic.Height )
+		            g.DrawPicture( pic, bodyMargins.Left, HeaderSize + picBorderTop, picAreaWidth, picAreaHeight, 0, 0, pic.Width, pic.Height )
 		          End If
-		          
 		        Else
 		          g.DrawPicture( pic, (g.Width / 2) - (pic.Width / 2), (g.Height / 2) - (pic.Height / 2), pic.Width, pic.Height, 0, 0, pic.Width, pic.Height )
 		        End If
@@ -463,9 +469,9 @@ Protected Module SetML
 		    
 		    Lines.Remove(0)
 		    
+		    x = bodyMargins.Left + RealBorder
+		    y = HeaderSize + RealBorder
 		    If section = SectionMode.Bilingual Then
-		      x = bodyMargins.Left + RealBorder
-		      y = HeaderSize + RealBorder
 		      If bodyTextHeight > MainHeight Then bodyTextHeight = MainHeight  // confine the drawn text to the body area
 		      If Style.BodyVAlign = "middle" Then
 		        y = y + (MainHeight - bodyTextHeight) / 2
@@ -491,13 +497,13 @@ Protected Module SetML
 		        Else
 		          line = Mid(line, separationMark.Len + 1)
 		        End If
-		        y = y + DrawFontString(g, line, x, y, f, UsableWidth, Style.BodyAlign, MainHeight - y, "top", bodyTabs, insertafterbreak)
+		        y = y + DrawFontString(g, line, x, y, f, UsableWidth, Style.BodyAlign, MainHeight - y + RealBorder, "top", bodyTabs, insertafterbreak)
 		        
 		        If y >= gHeight - FooterSize Then Exit  // don't draw another line if in footer area
 		      Next
 		    Else
 		      line = Join(Lines, Chr(10))
-		      Call DrawFontString(g, line, 0, HeaderSize, bodyFont, RealBorder, 0, 0, bodyMargins, g.Width, Style.BodyAlign, MainHeight, Style.BodyVAlign, bodyTabs, insertafterbreak) 'EMP 09/05
+		      Call DrawFontString(g, line, x, y, bodyFont, UsableWidth, Style.BodyAlign, MainHeight, Style.BodyVAlign, bodyTabs, insertafterbreak)
 		    End If
 		    
 		    Profiler.EndProfilerEntry
@@ -506,44 +512,6 @@ Protected Module SetML
 		  
 		  Profiler.EndProfilerEntry
 		  
-		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h1
-		Protected Sub DrawSlide(g As Graphics, xslide As XmlNode, xstyle As XmlNode)
-		  //++EMP
-		  // September 2005
-		  // Lots of changes here to support the separation of the slide style from the XML
-		  // to speed up slide changes.
-		  //
-		  // This method is mostly gutted and moved to the other DrawSlide method
-		  // (the one that takes a SlideStyle object as its third argument).
-		  // This just sets up the object from xstyle and calls down to the other one.
-		  // Easier maintenance: the bulk of the code isn't repeated.
-		  //
-		  // This routine also assumes that it is called from PresentWindow since
-		  // it makes a callback to get the style from the dictionary held there.
-		  // I debated whether that dictionary should be moved to App level, and
-		  // decided I couldn't state unequivocably that only one Style dictionary
-		  // would ever be required.  If I'm wrong, so be it, but it gets V1 out the door.
-		  
-		  Dim Style As SlideStyle
-		  Dim StyleIndex As String
-		  
-		  StyleIndex = SmartML.GetValue(xstyle, "@index")
-		  If StyleIndex = "" Then 'is the XML a complete style?
-		    Style = New SlideStyle(xstyle)
-		    If Style.BodyFont = Nil Then 'assume if this isn't set, xstyle didn't have all the elements
-		      Style = PresentWindow.GetStyle("default_style")
-		    End If
-		  Else
-		    Style = PresentWindow.GetStyle(StyleIndex)
-		  End If
-		  
-		  // Forwarding...anyone at the new address??
-		  
-		  DrawSlide(g, xslide, Style)
-		  //--EMP
 		End Sub
 	#tag EndMethod
 
@@ -938,43 +906,6 @@ Protected Module SetML
 		End Function
 	#tag EndMethod
 
-	#tag Method, Flags = &h0
-		Function GetCustomStyle(xSlide As XmlNode) As XmlNode
-		  Dim SlideGroup, prev_group As XmlNode
-		  Dim reverting As Integer
-		  
-		  If xSlide = Nil Then Return Nil
-		  If xSlide.Parent = Nil Then Return Nil
-		  SlideGroup = xSlide.Parent.Parent
-		  If SlideGroup = Nil Then Return Nil
-		  
-		  reverting = 0
-		  
-		  prev_group = SlideGroup.PreviousSibling
-		  While prev_group <> Nil
-		    If SmartML.GetValue(prev_group, "@type") = "style" Then
-		      If SmartML.GetValue(prev_group, "@action") = "new" Then
-		        If reverting > 0 Then
-		          If reverting > 0 Then reverting = reverting - 1
-		          prev_group = prev_group.PreviousSibling
-		        Else
-		          Return SmartML.GetNode(prev_group, "style", False)
-		        End If
-		      ElseIf SmartML.GetValue(prev_group, "@action") = "revert" Then
-		        reverting = reverting + 1
-		        prev_group = prev_group.PreviousSibling
-		      Else ' unknown action type
-		        prev_group = prev_group.PreviousSibling
-		      End If
-		    Else ' not a style group
-		      prev_group = prev_group.PreviousSibling
-		    End If
-		  Wend
-		  
-		  Return Nil
-		End Function
-	#tag EndMethod
-
 	#tag Method, Flags = &h1
 		Protected Function GetNextSlide(xSlide As XmlNode) As XmlNode
 		  Dim slide_group As XmlNode
@@ -1084,6 +1015,28 @@ Protected Module SetML
 	#tag EndMethod
 
 	#tag Method, Flags = &h1
+		Protected Function GetSlideStyle(xSlide As XmlNode) As SlideStyle
+		  Dim styleNode As XmlNode
+		  Dim styleIndex As String
+		  
+		  styleNode = SmartML.GetNode(xSlide.Parent.Parent, "style")
+		  styleIndex = SmartML.GetValue(styleNode, "@index", False)
+		  If styleIndex = "" Or PresentWindow.GetStyle(styleIndex) = Nil Then
+		    styleIndex = SmartML.GetValue(App.MyPresentSettings.DocumentElement, "default_style/@index", False, "default_style")
+		    If xSlide <> Nil Then
+		      If xSlide.Parent <> Nil Then
+		        If SmartML.GetValue(xSlide.Parent.Parent, "@type", False) = "scripture" Then
+		          styleIndex = SmartML.GetValue(App.MyPresentSettings.DocumentElement, "scripture_style/@index", False, "scripture_style")
+		        End If
+		      End If
+		    End If
+		  End If
+		  
+		  Return PresentWindow.GetStyle(styleIndex)
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h1
 		Protected Function GetSlideTransition(xSlide As XmlNode) As SlideTransitionEnum
 		  Dim transition As SlideTransitionEnum
 		  Dim slide_group As XmlNode
@@ -1140,50 +1093,6 @@ Protected Module SetML
 		  End If
 		  
 		  Return songDoc
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h1
-		Protected Function GetStyle(xSlide As XmlNode) As XmlNode
-		  //++EMP 09/05
-		  
-		  Dim neighbor_slide, style As XmlNode
-		  Dim GetNext As Boolean
-		  Dim SlideType As String
-		  Dim SlideGroup As XmlNode
-		  
-		  SlideGroup = xSlide.Parent.Parent
-		  
-		  ' Check for a directly defined override style
-		  style = SmartML.GetNode(SlideGroup, "style", False)
-		  If style <> Nil Then Return style
-		  
-		  SlideType = SmartML.GetValue(SlideGroup, "@type", False)
-		  
-		  ' Determine the style for blank slides
-		  If SlideType = "blank" Then
-		    GetNext = SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "style/@blank_uses_next", True, True)
-		    If GetNext Then
-		      neighbor_slide = GetNextSlide(xSlide)
-		      If neighbor_slide <> Nil Then Return GetStyle(neighbor_slide)
-		    Else
-		      neighbor_slide = GetPrevSlide(xSlide)
-		      If neighbor_slide <> Nil Then Return GetStyle(neighbor_slide)
-		    End If
-		  End If
-		  
-		  //++
-		  // Chase back to find possible style changes
-		  //--
-		  style = GetCustomStyle(xSlide)
-		  If style <> Nil Then Return style
-		  
-		  ' No directly connected styles, and no overrides, so...
-		  If SlideType = "scripture" Then
-		    Return SmartML.GetNode(App.MyPresentSettings.DocumentElement, "scripture_style")
-		  Else
-		    Return SmartML.GetNode(App.MyPresentSettings.DocumentElement, "default_style")
-		  End If
 		End Function
 	#tag EndMethod
 
@@ -1293,10 +1202,17 @@ Protected Module SetML
 	#tag Method, Flags = &h1
 		Protected Function SongStylePreferred(SlideGroup As XmlNode) As Boolean
 		  //++
+		  // February 2007: Songs can either take on the style defined by the song
+		  // or by a style change.  The behavior prior to BL14 was that the song style
+		  // prevailed always.  In BL15, introduce a "hidden" control for this, allowing a style
+		  // change to control the song's appearance (which seems to me to be the
+		  // "path of least astonishment" after spending hours to chase down what I thought
+		  // was a bug -- EMP)
+		  //--
+		  //++
 		  // Determine if a song-specific style should be used even
 		  // if a style change is active.
-		  // Current implementation does not use the song's
-		  // slide group passed as argument (looks at PresentationSettings).
+		  //
 		  // Coded this way to allow for this to be handled on a song-by-song basis
 		  // in  the future.
 		  //--
@@ -1450,29 +1366,6 @@ Protected Module SetML
 		    x = InStr(st, str, char)
 		  Wend
 		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Function StyleChangeActive(SlideGroup As XmlNode) As Boolean
-		  //++
-		  // Determine if the passed slide group is affected by an active style change
-		  //--
-		  
-		  Dim prev_group As XmlNode
-		  
-		  prev_group = SlideGroup.PreviousSibling
-		  While prev_group <> Nil
-		    If SmartML.GetValue(prev_group, "@type") = "style" Then
-		      If SmartML.GetValue(prev_group, "@action") = "new" Then
-		        Return True
-		      ElseIf SmartML.GetValue(prev_group, "@action") = "revert" Then
-		        Return False
-		      End If
-		    End If ' not a style group
-		    prev_group = prev_group.PreviousSibling
-		  Wend
-		  
-		End Function
 	#tag EndMethod
 
 	#tag Method, Flags = &h21

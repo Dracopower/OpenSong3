@@ -80,7 +80,7 @@ Implements REST.RESTResource
 		    If Not IsNull(slide) Then
 		      Dim image As Picture = New Picture(width, height, OSScreen(0).Depth)
 		      Try
-		        SetML.DrawSlide image.Graphics, slide, SetML.GetStyle(slide)
+		        SetML.DrawSlide image.Graphics, slide, SetML.GetSlideStyle(slide)
 		        imageData = image.GetData(Picture.FormatJPEG, quality)
 		      Catch e As NilObjectException
 		        imageData = Nil

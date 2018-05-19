@@ -1482,7 +1482,7 @@ End
 		    Try
 		      Dim external_did_draw as Boolean = PresentWindow.m_ExternalRenderer.Render(g, nextSlide, PresentWindow.CurrentSlide + 1)
 		      if not external_did_draw then
-		        SetML.DrawSlide g, nextSlide, SetML.GetStyle(nextSlide)
+		        SetML.DrawSlide g, nextSlide, SetML.GetSlideStyle(nextSlide)
 		      End If
 		    Catch e As NilObjectException
 		      // Just make it black for the moment
