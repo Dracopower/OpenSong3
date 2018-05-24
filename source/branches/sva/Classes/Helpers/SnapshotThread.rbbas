@@ -42,7 +42,7 @@ Inherits Thread
 		Sub Export(currentslideIndex As Integer, image As Picture, slide As XmlNode, style As SlideStyle)
 		  Dim xStyle As XmlNode
 		  If Export_Metadata And style <> Nil Then
-		    xStyle = style.ToXML
+		    xStyle = style.ToXML.DocumentElement
 		  End
 		  Dim data As New SnapshotData(currentslideIndex, image, slide, xStyle)
 		  
@@ -153,7 +153,7 @@ Inherits Thread
 		    snapshot_filename = Left(snapshot_filename, snapshot_filename.Len()-4)
 		  End If
 		  
-		  If IsNull(GetFolderItem(snapshot_filename + ".jpg")) Then
+		  If IsNull(GetFolderItem(snapshot_filename)) Then
 		    Dim base_folder As FolderItem = Nil
 		    Dim folder_element As String
 		    Dim folder_elements() As String = Split(ReplaceAll(snapshot_filename, "\", "/"), "/")
@@ -171,17 +171,25 @@ Inherits Thread
 		    Next
 		  End If
 		  
-		  Dim imageFileName As FolderItem = GetFolderItem(snapshot_filename + ".jpg")
+		  Dim imageFileName As FolderItem = GetFolderItem(snapshot_filename)
+		  Dim fType As String = imageFileName.Type
+		  If fType = "" Then
+		    imageFileName = GetFolderItem(snapshot_filename + ".jpg")
+		  End If
 		  Dim metaFileName As FolderItem = GetFolderItem(snapshot_filename + ".xml")
 		  
 		  If Not IsNull(imageFileName) Then
 		    Try
 		      //Optional parameter for JPG quality added in 2010r5
-		      #If RBVersion < 2010.05
-		        data.image.Save(ImageFileName, 151)
-		      #Else
-		        data.image.Save(ImageFileName, Picture.SaveAsJPEG , 85)
-		      #EndIf
+		      If fType = "PNG Files" Then
+		        data.image.Save(imageFileName, Picture.SaveAsPNG)
+		      Else
+		        #If RBVersion < 2010.05
+		          data.image.Save(ImageFileName, 151)
+		        #Else
+		          data.image.Save(ImageFileName, Picture.SaveAsJPEG , 85)
+		        #EndIf
+		      End If
 		      If export_metadata And Not IsNull(metaFileName) then
 		        Dim metaDoc As New XmlDocument
 		        Dim metaSlide As XmlElement = metaDoc.CreateElement("slide")
