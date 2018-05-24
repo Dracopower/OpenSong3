@@ -32,7 +32,7 @@ Protected Module GraphicsX
 		  Dim selectedVersion As String
 		  
 		  selectedVersion = "directDraw"
-		  selectedVersion = "blit3"
+		  'selectedVersion = "blit3"
 		  
 		  Select Case selectedVersion
 		  Case "vector"
@@ -71,7 +71,10 @@ Protected Module GraphicsX
 		  If f <> Nil Then
 		    f.OntoGraphics g
 		    
-		    If f.Border Then borderSize = CalcBorderSize(g)
+		    If f.Border Then 
+		      borderSize = CalcBorderSize(g)
+		      xx = xx + borderSize
+		    End If
 		    
 		    If f.Fill Then
 		      g.ForeColor = f.FillColor
@@ -153,6 +156,7 @@ Protected Module GraphicsX
 		    textAscent = FontFaceAscent(g, f)
 		    textWidth = FontFaceWidth(g, thisLine, f)
 		    textHeight = FontFaceHeight(g, f)
+		    xx = xx + borderSize
 		    
 		    If f.Fill Then
 		      g.ForeColor = f.FillColor
@@ -253,6 +257,7 @@ Protected Module GraphicsX
 		    textAscent = FontFaceAscent(g, f)
 		    textWidth = FontFaceWidth(g, thisLine, f)
 		    textHeight = FontFaceHeight(g, f)
+		    xx = xx + borderSize
 		    
 		    If f.Fill Then
 		      g.ForeColor = f.FillColor
@@ -361,6 +366,7 @@ Protected Module GraphicsX
 		    textAscent = FontFaceAscent(g, f)
 		    textWidth = FontFaceWidth(g, thisLine, f)
 		    textHeight = FontFaceHeight(g, f)
+		    xx = xx + borderSize
 		    
 		    If f.Fill Then
 		      g.ForeColor = f.FillColor
@@ -480,6 +486,7 @@ Protected Module GraphicsX
 		    textAscent = FontFaceAscent(g, f)
 		    textWidth = FontFaceWidth(g, thisLine, f)
 		    textHeight = FontFaceHeight(g, f)
+		    xx = xx + borderSize
 		    
 		    If f.Fill Then
 		      g.ForeColor = f.FillColor
@@ -852,7 +859,7 @@ Protected Module GraphicsX
 		    If valign = "bottom" Then
 		      yy = y + height - lineHeight*(lineCount-i)
 		    ElseIf valign = "middle" Then
-		      yy = y + Round((height - (lineHeight*lineCount))/2) + lineHeight*(i-1) + lineAscent
+		      yy = y + ((height - (lineHeight*lineCount)) \ 2) + lineHeight * (i-1) + lineAscent
 		    Else ' top?
 		      yy = y + lineAscent + lineHeight * (i-1)
 		    End If
@@ -959,7 +966,7 @@ Protected Module GraphicsX
 		      ' --- Setup position ---
 		      If align = "center" Then
 		        thisWidth = FontFaceWidth(g, thisLine, f)
-		        xx = x + Round((width - thisWidth) / 2)
+		        xx = x + (width - thisWidth) \ 2
 		      ElseIf align = "right" Then
 		        thisWidth = FontFaceWidth(g, thisLine, f)
 		        xx = x + width - thisWidth
