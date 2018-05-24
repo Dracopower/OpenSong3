@@ -417,7 +417,7 @@ Protected Module SetML
 		          VWrapPercent = MainHeight / bodyTextHeight
 		          If MaxLineLen * bodyZoom * VWrapPercent > UsableWidth Then
 		            If MaxLenLang Then i = 2 Else i = 1
-		            y = Floor(MaxLineLen * bodyZoom * VWrapPercent / UsableWidth)
+		            y = Floor(MaxLineLen * Min(bodyZoom * VWrapPercent, kSplitThreshold) / UsableWidth)
 		            lineCountPerLanguage(i) = lineCountPerLanguage(i) + y
 		          End If
 		          VWrapPercent = bodyZoom
