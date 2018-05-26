@@ -1,4 +1,4 @@
-﻿#tag Window
+#tag Window
 Begin Window MainWindow Implements ScriptureReceiver
    BackColor       =   &c40404000
    Backdrop        =   0
