@@ -813,7 +813,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             AutoDeactivate  =   True
             Backdrop        =   0
             DoubleBuffer    =   False
-            Enabled         =   False
+            Enabled         =   True
             EraseBackground =   True
             HasFocus        =   False
             Height          =   23
@@ -880,7 +880,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             AutoDeactivate  =   True
             Backdrop        =   0
             DoubleBuffer    =   False
-            Enabled         =   False
+            Enabled         =   True
             EraseBackground =   True
             HasFocus        =   False
             Height          =   23
@@ -7247,7 +7247,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             AutoDeactivate  =   True
             Backdrop        =   0
             DoubleBuffer    =   False
-            Enabled         =   False
+            Enabled         =   True
             EraseBackground =   True
             HasFocus        =   False
             Height          =   25
@@ -7279,7 +7279,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             AutoDeactivate  =   True
             Backdrop        =   0
             DoubleBuffer    =   False
-            Enabled         =   False
+            Enabled         =   True
             EraseBackground =   True
             HasFocus        =   False
             Height          =   25
