@@ -1,4 +1,4 @@
-#tag Window
+﻿#tag Window
 Begin Window MainWindow Implements ScriptureReceiver
    BackColor       =   &c40404000
    Backdrop        =   0
@@ -1097,7 +1097,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                AutoDeactivate  =   True
                Backdrop        =   0
                DoubleBuffer    =   False
-               Enabled         =   False
+               Enabled         =   True
                EraseBackground =   True
                HasFocus        =   False
                Height          =   23
