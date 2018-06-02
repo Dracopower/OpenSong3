@@ -1455,6 +1455,10 @@ auf Sourceforge.net). Das OpenSong Entwicklungsteam bedauert die Unannehmlichkei
       <load_failed>The Präsentation '%1' konnte nicht geladen werden.</load_failed>
     </presentations>
     <videolan_app_missing>Der VLC Media Player ist nicht richtig eingerichtet. Bitte konfigurieren Sie in OpenSong den VLC Media Player in den Allgemeinen Einstellungen auf der Karteikarte Dateipfade.</videolan_app_missing>
+    <videolan>
+      <no_medium>Sie haben kein Medium zum abspielen angegeben</no_medium>
+      <no_medium_in_slide>Sie haben kein Medium zum Abspielen angegeben im Set-Eintrag %1</no_medium_in_slide>
+    </videolan>
     <linked_song>
        <current>Sie können ein Lied nicht mit sich selbst verknüpfen.</current>
        <exists>Das ausgewählte Lied ist bereits in der Liste der mit diesem Lied verknüpften Lieder.</exists>

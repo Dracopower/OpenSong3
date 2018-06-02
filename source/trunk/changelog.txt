@@ -1,4 +1,6 @@
 ﻿-= Version 2.2 RC =-
+* Prevent NilObjectException in External Slide on presentation, media, and application file
+* Allow URLs and MRLs as Videolan "media file to play".
 * Fix issues with styles: in some circumstances the wrong style had been applied. Also allow arbitrarily deep nesting of custom styles using style change set items of type "Change style to this" and "Revert to previous style"
 * Use Build Automation for the MacOS build to place the support folders in the Resources area of the app package. Adjust App.Open to look for it there when running under MacOS. This uses Xojo.IO.SpecialFolder.GetResource, which was not reliable on all three desktop platforms until Xojo 2016r1.1. (swampcat)
 * Add the default logo files to the Backgrounds folder. Previously they were only stored in encoded format in the default PresentationSettings file. (swampcat)

@@ -1396,6 +1396,10 @@ The OpenSong development team members regret any inconvenience.
       <load_failed>The presentation '%1' could not be opened.</load_failed>
     </presentations>
     <videolan_app_missing>The videolan application is not correctly set. Please specify the videolan client in the General settings dialog on the File locations tab.</videolan_app_missing>
+    <videolan>
+      <no_medium>You did not specify a medium for playing.</no_medium>
+      <no_medium_in_slide>You did not specify a medium for playing in the set entry %1</no_medium_in_slide>
+    </videolan>
     <linked_song>
        <current>Selected Song is the current song.</current>
        <exists>Selected song is already in the list.</exists>

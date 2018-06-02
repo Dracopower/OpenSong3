@@ -9760,8 +9760,12 @@ End
 		  Case "external"
 		    If btn_external_presentation.GetStuck() Then
 		      If chk_external_embed_presentation.Enabled Then
-		        Dim f As FolderItem = GetFolderItem(edt_external_presentation_file.Text)
-		        If f.Exists() Then
+		        Dim f As FolderItem
+		        If Trim(edt_external_presentation_file.Text) <> "" Then f = GetFolderItem(edt_external_presentation_file.Text)
+		        If f = Nil Then
+		          MsgBox(App.T.Translate("errors/fileutils/invalidname", edt_external_presentation_file.Text))
+		          Return False
+		        ElseIf f.Exists() Then
 		          If chk_external_embed_presentation.Value Then
 		            Dim inputStream As BinaryStream = BinaryStream.Open(f, False)
 		            SmartML.SetValue xgroup, "file", EncodeBase64(inputStream.Read(f.Length))
@@ -9793,9 +9797,40 @@ End
 		      SmartML.SetValueB xgroup, "@loop_presentation", chk_external_loop_presentation.Value
 		      
 		    ElseIf btn_external_videolan.GetStuck() Then
+		      SmartML.SetValue xgroup, "@application", "videolan"
+		      
+		      If rad_external_videolan_start.Value Then
+		        SmartML.SetValue xgroup, "@action", "start"
+		      ElseIf rad_external_videolan_stop.Value Then
+		        SmartML.SetValue xgroup, "@action", "stop"
+		      End If
+		      Dim videoLanPresetParams As String
+		      If lst_external_videolan_preset.ListIndex > -1 Then
+		        videoLanPresetParams = App.VideolanPresetList.Lookup(lst_external_videolan_preset.Cell(lst_external_videolan_preset.ListIndex,0), "")
+		      End If
+		      If videoLanPresetParams = "" Then videoLanPresetParams = edt_external_videolan_manual.Text
+		      SmartML.SetValue xgroup, "@videolan_parameters", videoLanPresetParams
+		      SmartML.SetValueB xgroup, "@wait_to_finish", chk_external_wait_for_videolan.Value
+		      
 		      If chk_external_embed_mediafile.Enabled Then
-		        Dim f As FolderItem = GetFolderItem(edt_external_videolan_mediafilename.Text)
-		        If f.Exists() Then
+		        Dim f As FolderItem
+		        If Trim(edt_external_videolan_mediafilename.Text) = "" Then
+		          If videoLanPresetParams.InStrB("%s") <> 0 Then
+		            MsgBox(App.T.Translate("errors/videolan/no_medium", SmartML.GetValue(xgroup, "@name", False) + " " + App.T.Translate("sets_mode/items/"+SmartML.GetValue(xgroup, "@type", False)+"/@caption")))
+		            Return False
+		          End If
+		        Else
+		          f = GetFolderItem(edt_external_videolan_mediafilename.Text)
+		        End If
+		        If f = Nil Then
+		          If chk_external_embed_mediafile.Value Then
+		            MsgBox(App.T.Translate("errors/fileutils/invalidname", edt_external_videolan_mediafilename.Text))
+		            Return False
+		          Else
+		            SmartML.SetValue xgroup, "@filename", edt_external_videolan_mediafilename.Text
+		          End If
+		          ' Else we just ignore it. It might be an URL or a MRL (Media Resource Locator, VLC's stream naming scheme)
+		        ElseIf f.Exists() Then
 		          If chk_external_embed_mediafile.Value Then
 		            Dim inputStream As BinaryStream = BinaryStream.Open(f, False)
 		            SmartML.SetValue xgroup, "file", EncodeBase64(inputStream.Read(f.Length))
@@ -9814,24 +9849,13 @@ End
 		        SmartML.SetValue xgroup, "@filename", edt_external_videolan_mediafilename.Text
 		      End If
 		      
-		      SmartML.SetValue xgroup, "@application", "videolan"
-		      
-		      If rad_external_videolan_start.Value Then
-		        SmartML.SetValue xgroup, "@action", "start"
-		      ElseIf rad_external_videolan_stop.Value Then
-		        SmartML.SetValue xgroup, "@action", "stop"
-		      End If
-		      Dim videoLanPresetParams As String
-		      If lst_external_videolan_preset.ListIndex > -1 Then
-		        videoLanPresetParams = App.VideolanPresetList.Lookup(lst_external_videolan_preset.Cell(lst_external_videolan_preset.ListIndex,0), "")
-		      End If
-		      If videoLanPresetParams = "" Then videoLanPresetParams = edt_external_videolan_manual.Text
-		      SmartML.SetValue xgroup, "@videolan_parameters", videoLanPresetParams
-		      SmartML.SetValueB xgroup, "@wait_to_finish", chk_external_wait_for_videolan.Value
-		      
 		    ElseIf btn_external_application.GetStuck() Then
-		      Dim f As FolderItem = GetFolderItem(edt_external_application_filename.Text)
-		      If f.Exists() Then
+		      Dim f As FolderItem
+		      If Trim(edt_external_application_filename.Text) <> "" Then f = GetFolderItem(edt_external_application_filename.Text)
+		      If f = Nil Then
+		        MsgBox(App.T.Translate("errors/fileutils/invalidname", edt_external_application_filename.Text))
+		        Return False
+		      ElseIf f.Exists() Then
 		        SmartML.SetValue xgroup, "@app_filename", f.AbsolutePath
 		      Else
 		        MsgBox(App.T.Translate("errors/fileutils/filenotfound", f.AbsolutePath))
@@ -12616,8 +12640,8 @@ End
 		      Case "videolan"
 		        Dim videolanLocation As FolderItem = App.MainPreferences.GetValueFI(Prefs.kVideolanLocation, Nil, False)
 		        If Not IsNull(videolanLocation) And videolanLocation.Exists Then
-		          Dim mediaFileName As String = SmartML.GetValue(slide_group, "@filename")
-		          Dim mediaFile As FolderItem = GetFolderItem( mediaFileName )
+		          Dim mediaFileName As String
+		          Dim mediaFile As FolderItem
 		          
 		          Dim embedFiledata As String = SmartML.GetValue(slide_group, "file", False)
 		          If embedFiledata.Len() > 0 Then
@@ -12628,19 +12652,34 @@ End
 		              outputStream.Write DecodeBase64(embedFiledata)
 		              outputStream.Close
 		              
-		              SmartML.SetValue slide_group, "@_localfilename", mediaFile.AbsolutePath()
+		              mediaFileName = mediaFile.AbsolutePath()
+		              SmartML.SetValue slide_group, "@_localfilename", mediaFileName
 		            Catch
 		              InputBox.Message App.T.Translate("errors/fileutils/temporaryfailed", mediaFileName)
+		              mediaFile = Nil
 		            End Try
 		          End If
 		          
-		          If IsNull(mediaFile) Or Not mediaFile.Exists() Then
+		          If mediaFile = Nil Then
+		            mediaFileName = Trim(SmartML.GetValue(slide_group, "@filename"))
+		            If mediaFileName <> "" Then
+		              mediaFile = GetFolderItem( mediaFileName )
+		            End If
+		          End If
+		          
+		          If mediaFileName = "" Then
+		            Dim videoLanParams As String = SmartML.GetValue(slide_group, "@videolan_parameters", False)
+		            If videoLanParams.InStrB("%s") > 0 Then
+		              InputBox.Message App.T.Translate("errors/videolan/no_medium_in_slide", SmartML.GetValue(slide_group, "@name", False) + " " + App.T.Translate("sets_mode/items/"+SmartML.GetValue(slide_group, "@type", False)+"/@caption"))
+		            End If
+		          ElseIf IsNull(mediaFile) Then
+		            ' mediaFileName might be a URL or MRL (Media Resource Locator)
+		          ElseIf Not mediaFile.Exists() Then
 		            InputBox.Message App.T.Translate("errors/fileutils/filenotfound", mediaFileName)
 		          End If
 		        Else
 		          InputBox.Message App.T.Translate("errors/videolan_app_missing")
 		        End If
-		        
 		        
 		      Case "launch"
 		        'No action required here
