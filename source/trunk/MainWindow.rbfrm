@@ -8924,9 +8924,7 @@ End
 		  
 		  HSizer = New HalfSizer(Me)
 		  
-		  '++JRC
 		  HSizer.AddWidth edf_song_lyrics, .85
-		  '--
 		  
 		  HSizer.AddWidth lbl_song_title
 		  HSizer.AddWidth edt_song_title
@@ -8936,14 +8934,11 @@ End
 		  HSizer.AddLeftWidth edt_song_copyright
 		  HSizer.AddLeft lbl_song_ccli
 		  HSizer.AddLeft edt_song_ccli
-		  '++JRC
-		  HSizer.AddLeftWidth lbl_song_hymn_number , .85, .15
-		  HSizer.AddLeft edt_song_hymn_number, .85
-		  '--
 		  HSizer.AddLeftWidth lbl_song_presentation, .5, .5
 		  HSizer.AddLeftWidth edt_song_presentation, .5, .5
 		  
-		  '++JRC
+		  HSizer.AddLeftWidth lbl_song_hymn_number , .85, .15
+		  HSizer.AddLeft edt_song_hymn_number, .85
 		  HSizer.AddLeftWidth lbl_song_insert, .85, .15
 		  HSizer.AddLeft btn_song_ins_column, .85
 		  HSizer.AddLeft btn_song_ins_comment, .85
@@ -8956,8 +8951,7 @@ End
 		  
 		  HSizer.AddTop lbl_song_backgrounds, 1
 		  HSizer.AddHeight lst_song_themes, 1
-		  '--
-		  '++JRC
+		  
 		  HSizer.AddTop lbl_song_linked, .9
 		  HSizer.AddTopHeight lst_song_linked, .9, .1
 		  HSizer.AddTop btn_song_add_link, 1
@@ -8967,10 +8961,10 @@ End
 		  HSizer.AddLeftWidth lst_song_linked, .85, .15
 		  HSizer.AddLeftWidth btn_song_add_link, .85, .075
 		  HSizer.AddLeftWidth btn_song_remove_link, .925, .075
-		  '--
 		  
-		  HSizer.AddLeftTopWidthHeight can_song_style, .6, 0, .4, .4
-		  HSizer.AddLeftTop chk_song_style, .6, .4
+		  ' Style canvas gets scaled seperately to maintain screen proportions; the associated enabler checkbox moves in accordance
+		  ' HSizer.AddLeftTopWidthHeight can_song_style, .6, 0, .4, .4
+		  ' HSizer.AddLeftTop chk_song_style, .6, .4
 		  
 		  HSizer.AddTop lbl_song_capo, .4
 		  HSizer.AddTop pop_song_capo, .4
@@ -9007,9 +9001,7 @@ End
 		  HSizer.AddLeftWidth lbl_image_name, .7, .3
 		  HSizer.AddLeftWidth edt_image_name, .7, .3
 		  
-		  '++JRC Fixed I also moved the control down a little
 		  HSizer.AddLeftTop can_style_style, .5, 0
-		  '--JRC
 		  
 		  TranslateMe
 		  
@@ -9055,20 +9047,14 @@ End
 
 	#tag Event
 		Sub Resized()
-		  If HSizer <> Nil Then HSizer.Resize
-		  Refresh True' False
+		  DoWindowResize
+		  Refresh True
 		End Sub
 	#tag EndEvent
 
 	#tag Event
 		Sub Resizing()
-		  'Dim NewLeft As Integer
-		  If HSizer <> Nil Then HSizer.Resize
-		  'NewLeft = edt_song_ccli.Left + edt_song_ccli.Width + 15
-		  'edt_song_presentation.Left = NewLeft
-		  'lbl_song_presentation.Left = NewLeft
-		  'edt_song_presentation.Width = edt_song_copyright.Width - _
-		  '(NewLeft - edt_song_copyright.Left)
+		  DoWindowResize
 		End Sub
 	#tag EndEvent
 
@@ -12281,6 +12267,27 @@ End
 		    start = start + lines(j).Len + 1
 		  Next j
 		  
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Private Sub doWindowResize()
+		  If HSizer <> Nil Then
+		    Dim width, height As Integer
+		    
+		    HSizer.Resize
+		    
+		    width = lbl_song_aka.Width
+		    height = lbl_song_aka.Top - can_song_style.Top - chk_song_style.Height - 3
+		    width = Min(width,Round(height * PreviewScreenRatio))
+		    height = Round(width / PreviewScreenRatio)
+		    can_song_style.Left = can_song_style.Left + can_song_style.Width - width
+		    can_song_style.Width = width
+		    can_song_style.Height = height
+		    chk_song_style.Left = can_song_style.Left
+		    chk_song_style.Width = width
+		    chk_song_style.Top = can_song_style.Top + height + 3
+		  End If
 		End Sub
 	#tag EndMethod
 
