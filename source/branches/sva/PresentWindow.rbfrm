@@ -2393,9 +2393,11 @@ End
 		  Dim w, h As Integer
 		  Dim advanceNext As Boolean = False
 		  Dim currAppl As String
+		  Dim slideGroup As XmlNode
 		  
 		  If Not IsNull(slide) Then
-		    currAppl = SmartML.GetValue(slide.Parent.Parent, "@application", False)
+		    slideGroup = slide.Parent.Parent
+		    currAppl = SmartML.GetValue(slideGroup, "@application", False)
 		  End If
 		  
 		  If SetML.IsExternal(PreviousSlide) Then
@@ -2414,9 +2416,9 @@ End
 		      'See if the external in the new slide is equal to the current slide.
 		      If Not IsNull(slide) Then
 		        If currAppl <> prevAppl Or _
-		          SmartML.GetValue(slide.Parent.Parent, "@host", False) <> prevHost Or _
-		          (SmartML.GetValue(slide.Parent.Parent, "@_localfilename", False) <> prevFile And _
-		          SmartML.GetValue(slide.Parent.Parent, "@filename", False) <> prevFile) Then
+		          SmartML.GetValue(slideGroup, "@host", False) <> prevHost Or _
+		          (SmartML.GetValue(slideGroup, "@_localfilename", False) <> prevFile And _
+		          SmartML.GetValue(slideGroup, "@filename", False) <> prevFile) Then
 		          bClose = True
 		        End If
 		      End If
@@ -2426,7 +2428,7 @@ End
 		      self._IsClosingExternal = True
 		      
 		      If prevAppl = "presentation" Or prevAppl = "videolan" Then
-		        If currAppl <> "presentation" And currAppl <> "videolan" Then
+		        If currAppl <> "presentation" And currAppl <> "videolan" Or (currAppl = "videolan" And SmartML.GetValue(slideGroup, "@action", False) = "stop") Then
 		          PresentWindow.Restore()
 		          'PresentWindow.Show()
 		          'If PresentWindow.HelperActive Then
@@ -2503,16 +2505,16 @@ End
 		      Case "presentation"
 		        
 		        'First check if there is a 'local' filename (a saved embedded presentation)
-		        Dim presFilename As String = SmartML.GetValue(slide.Parent.Parent, "@_localfilename", False)
+		        Dim presFilename As String = SmartML.GetValue(slideGroup, "@_localfilename", False)
 		        If presFilename.Len() = 0 Then
-		          presFilename = SmartML.GetValue(slide.Parent.Parent, "@filename", False)
+		          presFilename = SmartML.GetValue(slideGroup, "@filename", False)
 		        End If
 		        Dim presFile As FolderItem = GetFolderItem( presFilename )
 		        If Not IsNull(presFile) Then
 		          If presFile.Exists() Then
 		            
 		            Dim presHost As PresentationHost = PresentationHost.Automatic
-		            Select Case SmartML.GetValue(slide.Parent.Parent, "@host", False)
+		            Select Case SmartML.GetValue(slideGroup, "@host", False)
 		            Case "ppt"
 		              If PresentationFactory.PowerPointAvailable() Then
 		                presHost = PresentationHost.PowerPoint
@@ -2538,7 +2540,7 @@ End
 		                If oExtPres.IsShowing() Then
 		                  Call oExtPres.GotoSlide( presIndex )
 		                Else
-		                  Dim loopPresentation As Boolean = SmartML.GetValueB(slide.Parent.Parent, "@loop_presentation", False)
+		                  Dim loopPresentation As Boolean = SmartML.GetValueB(slideGroup, "@loop_presentation", False)
 		                  Call oExtPres.StartShow( loopPresentation )
 		                  
 		                  'Starting a presentation from a different slide (index) than the default (first), breaks the slide preview synchronisation
@@ -2574,14 +2576,14 @@ End
 		      Case "videolan"
 		        m_VideolanController.Stop()
 		        
-		        If SmartML.GetValue(slide.Parent.Parent, "@action") = "start" Then
-		          Dim params As String = SmartML.GetValue(slide.Parent.Parent, "@videolan_parameters")
-		          Dim waitForPlayback As Boolean = SmartML.GetValueB(slide.Parent.Parent, "@wait_to_finish")
+		        If SmartML.GetValue(slideGroup, "@action") = "start" Then
+		          Dim params As String = SmartML.GetValue(slideGroup, "@videolan_parameters")
+		          Dim waitForPlayback As Boolean = SmartML.GetValueB(slideGroup, "@wait_to_finish")
 		          
 		          'First check if there is a 'local' filename (a saved embedded media file)
-		          Dim mediaFilename As String = SmartML.GetValue(slide.Parent.Parent, "@_localfilename", False)
+		          Dim mediaFilename As String = SmartML.GetValue(slideGroup, "@_localfilename", False)
 		          If mediaFilename.Len = 0 Then
-		            mediaFilename = SmartML.GetValue(slide.Parent.Parent, "@filename", False)
+		            mediaFilename = SmartML.GetValue(slideGroup, "@filename", False)
 		          End If
 		          
 		          Dim fullScreen As Boolean = PresentationMode <> MODE_PREVIEW
@@ -2600,9 +2602,9 @@ End
 		        End If
 		        
 		      Case "launch"
-		        Dim launchAppLocation As FolderItem = GetFolderItem(SmartML.GetValue(slide.Parent.Parent, "@app_filename", False))
+		        Dim launchAppLocation As FolderItem = GetFolderItem(SmartML.GetValue(slideGroup, "@app_filename", False))
 		        Dim cmd As String
-		        Dim params As String = SmartML.GetValue(slide.Parent.Parent, "@app_parameters", False)
+		        Dim params As String = SmartML.GetValue(slideGroup, "@app_parameters", False)
 		        
 		        If Not IsNull(launchAppLocation) Then
 		          If launchAppLocation.Exists() Then
@@ -2615,8 +2617,8 @@ End
 		          m_AppLaunchShell.Close()
 		        End If
 		        
-		        If SmartML.GetValue(slide.Parent.Parent, "@action") = "start" Then
-		          If SmartML.GetValueB(slide.Parent.Parent, "@wait_to_finish", False) = True Then
+		        If SmartML.GetValue(slideGroup, "@action") = "start" Then
+		          If SmartML.GetValueB(slideGroup, "@wait_to_finish", False) = True Then
 		            m_AppLaunchShell.Mode = 0 'Synchronous
 		          Else
 		            m_AppLaunchShell.Mode = 1 'Asynchronous
@@ -2640,7 +2642,7 @@ End
 		    _IsSlidechangeExternal = False
 		  Else
 		    
-		    If SmartML.GetValue(slide.Parent.Parent, "@type", False) = "song" Then
+		    If SmartML.GetValue(slideGroup, "@type", False) = "song" Then
 		      '++JRC
 		      SongSetDisplayed(slide)
 		    End If
