@@ -10222,10 +10222,10 @@ End
 		  If Not ActionSetAskSave Then Return 'User Canceled
 		  
 		  Status_Presentation = True
-		  Globals.Status_Presentation = True
 		  
 		  PreparePresentation
 		  
+		  PresentWindow.Hide
 		  PresentWindow.Present CurrentSet, screenMode, ItemNumber
 		  
 		  'reset cursor
@@ -11125,10 +11125,10 @@ End
 		  AddSongFolderItemToSet(f, setDoc, where)
 		  
 		  Status_Presentation = True
-		  Globals.Status_Presentation = True
 		  
 		  PreparePresentation
 		  
+		  PresentWindow.Hide
 		  PresentWindow.Present setDoc, screenMode, ItemNumber
 		  
 		  App.MouseCursor = Nil

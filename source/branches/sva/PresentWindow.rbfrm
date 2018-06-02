@@ -2276,6 +2276,7 @@ End
 		  PresentCursor = Self.MouseCursor
 		  AppCursor = App.MouseCursor
 		  Self.Visible = True
+		  Globals.Status_Presentation = True
 		Catch e
 		  RuntimeException(e).message = "In PresentWindow.Present: " + e.Message
 		  Raise e

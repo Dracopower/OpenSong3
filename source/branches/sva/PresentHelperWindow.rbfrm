@@ -675,7 +675,8 @@ End
 		  If Globals.Status_ScripturePickerOpen Then App.SetForeground(ScripturePickerWindow)
 		  If Globals.Status_SongPickerOpen Then App.SetForeground(SongPickerWindow)
 		  If Globals.Status_InputBoxOpen Then App.SetForeground(InputBox)
-		  App.ShowWin(PresentWindow, App.SW_SHOWNA)
+		  If Globals.Status_Presentation And Not PresentWindow.Visible Then PresentWindow.Show
+		  If PresentWindow.Visible Then App.ShowWin(PresentWindow, App.SW_SHOWNA)
 		  App.DebugWriter.Write "End PresentHelperWindow.Activate:"
 		End Sub
 	#tag EndEvent
@@ -709,7 +710,7 @@ End
 		  Dim marginLeft As Integer
 		  
 		  App.T.TranslateWindow Me, "presentation_helper", App.TranslationFonts
-		  txt_shortcut_keys.Caption = App.T.Translate("presentation_helper/keys")
+		  txt_shortcut_keys.Text = App.T.Translate("presentation_helper/keys")
 		  
 		  
 		  Dim screenWidth As Double = OSScreen(PresentWindow.PresentScreen).Width
@@ -833,8 +834,8 @@ End
 	#tag Method, Flags = &h1
 		Protected Sub RecalcLstAllSlidesColumnWidths()
 		  '
-		  ' After a resize event on the screen (i.e., the FullScreen button was pressed),
-		  'rework the column widths to keep the Verse column from growing too big.
+		  ' After a resize event on the screen (i.e. the FullScreen button was pressed),
+		  ' rework the column widths to keep the Verse column from growing too big.
 		  ' EMP 01/31/05
 		  '
 		  Dim ControlWidth As Integer
@@ -842,7 +843,6 @@ End
 		  Dim WidthString As String
 		  Dim tempWidth As double
 		  dim maxlen As Integer
-		  Dim ems as String
 		  Dim i As Integer
 		  
 		  g = cnv_preview.Graphics
