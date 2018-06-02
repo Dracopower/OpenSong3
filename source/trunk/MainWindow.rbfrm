@@ -14371,6 +14371,10 @@ End
 	#tag EndProperty
 
 	#tag Property, Flags = &h21
+		Private m_PreviewScreenRatio As Double = 0
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
 		Private m_Reordering As Boolean = False
 	#tag EndProperty
 
@@ -14380,6 +14384,41 @@ End
 		#tag EndNote
 		PPT As Integer
 	#tag EndProperty
+
+	#tag ComputedProperty, Flags = &h1
+		#tag Getter
+			Get
+			  If m_PreviewScreenRatio = 0 Then
+			    Dim presentScreen As Integer
+			    Dim width, height As Integer
+			    Dim xPresentSettings As XmlNode
+			    
+			    If App.MyPresentSettings <> Nil Then
+			      xPresentSettings = SmartML.GetNode(App.MyPresentSettings.DocumentElement,"present_settings",False)
+			    End If
+			    
+			    If SmartML.GetValueB(xPresentSettings,"monitors\@force_4_3_preview",False) Then
+			      m_PreviewScreenRatio = 4.0 / 3.0
+			    ElseIf SmartML.GetValueB(xPresentSettings,"monitors\@force_16_9_preview",False) Then
+			      m_PreviewScreenRatio = 16.0 / 9.0
+			    Else
+			      presentScreen = SmartML.GetValueN(xPresentSettings,"monitors\@present",False)
+			      If presentScreen < 0 Or presentScreen > OSScreenCount() - 1 Then presentScreen = 0
+			      width = OSScreen(presentScreen).Width
+			      height = OSScreen(presentScreen).Height
+			      m_PreviewScreenRatio = width / height
+			    End If
+			  End If
+			  Return m_PreviewScreenRatio
+			End Get
+		#tag EndGetter
+		#tag Setter
+			Set
+			  m_PreviewScreenRatio = value
+			End Set
+		#tag EndSetter
+		Protected PreviewScreenRatio As Double
+	#tag EndComputedProperty
 
 	#tag Property, Flags = &h0
 		saWin As SongActivity
