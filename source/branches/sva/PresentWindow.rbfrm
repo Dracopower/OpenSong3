@@ -1172,11 +1172,8 @@ End
 		      Case "videolan"
 		        Dim videolanLocation As FolderItem = App.MainPreferences.GetValueFI(Prefs.kVideolanLocation, Nil, False)
 		        If Not IsNull(videolanLocation) And videolanLocation.Exists Then
-		          Dim mediaFileName As String = Trim(SmartML.GetValue(slide_group, "@filename"))
+		          Dim mediaFileName As String
 		          Dim mediaFile As FolderItem
-		          If mediaFileName <> "" Then
-		            mediaFile = GetFolderItem( mediaFileName )
-		          End If
 		          
 		          Dim embedFiledata As String = SmartML.GetValue(slide_group, "file", False)
 		          If embedFiledata.Len() > 0 Then
@@ -1187,10 +1184,19 @@ End
 		              outputStream.Write DecodeBase64(embedFiledata)
 		              outputStream.Close
 		              
-		              SmartML.SetValue slide_group, "@_localfilename", mediaFile.AbsolutePath()
+		              mediaFileName = mediaFile.AbsolutePath()
+		              SmartML.SetValue slide_group, "@_localfilename", mediaFileName
 		            Catch
 		              InputBox.Message App.T.Translate("errors/fileutils/temporaryfailed", mediaFileName)
+		              mediaFile = Nil
 		            End Try
+		          End If
+		          
+		          If mediaFile = Nil Then
+		            mediaFileName = Trim(SmartML.GetValue(slide_group, "@filename"))
+		            If mediaFileName <> "" Then
+		              mediaFile = GetFolderItem( mediaFileName )
+		            End If
 		          End If
 		          
 		          If mediaFileName = "" Then
@@ -1198,7 +1204,9 @@ End
 		            If videoLanParams.InStrB("%s") > 0 Then
 		              InputBox.Message App.T.Translate("errors/videolan/no_medium_in_slide", SetML.GetSlideGroupCaption(slide_group))
 		            End If
-		          ElseIf IsNull(mediaFile) Or Not mediaFile.Exists() Then
+		          ElseIf IsNull(mediaFile) Then
+		            ' mediaFileName might be a URL or MRL (Media Resource Locator)
+		          ElseIf Not mediaFile.Exists() Then
 		            InputBox.Message App.T.Translate("errors/fileutils/filenotfound", mediaFileName)
 		          End If
 		        Else

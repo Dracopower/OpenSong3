@@ -1,4 +1,6 @@
 ﻿-= Version 2.2 RC =-
+* Prevent NilObjectException in External Slide on presentation, media, and application file
+* Allow URLs and MRLs as Videolan "media file to play".
 * Fix issues with styles: in some circumstances the wrong style had been applied. Also allow arbitrarily deep nesting of custom styles using style change set items of type "Change style to this" and "Revert to previous style"
 * Use Build Automation for the MacOS build to place the support folders in the Resources area of the app package. Adjust App.Open to look for it there when running under MacOS. This uses Xojo.IO.SpecialFolder.GetResource, which was not reliable on all three desktop platforms until Xojo 2016r1.1. (swampcat)
 * Add the default logo files to the Backgrounds folder. Previously they were only stored in encoded format in the default PresentationSettings file. (swampcat)
@@ -16,7 +18,6 @@
 * Fix the failure of loading the (background) image in some cases (when files in the 'background' map are set to never be embedded). Also made failing less dramatic (no application termination)
 * Style background 'Position' renamed to Scaling. This setting now has new options: Cover, Contain, Fill, and None. They are patterned according to CSS's background-position. The old Center method behaved peculiar when used with Trim Bottom. Therefore, this option is retained for old sets and settings that used it.
 * Profiler can be activated from the command line for diagnostic purposes: command line option --profiler
-* Prevent NilObjectException in External Slide on presentation, media, and application file and allow URLs and MRLs as Videolan "media file to play".
 * Fix for override Style does not work correctly in Song preview mode (bug #450) (Vwout)
 * Fixed a bug where the bottom margin was not respected for the body-rendering when no other items were rendered at the bottom of the screen.
 * Added a new feature to allow external renderers to:

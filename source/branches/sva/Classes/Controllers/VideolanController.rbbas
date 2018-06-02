@@ -80,7 +80,7 @@ Inherits Timer
 		  'Send next-slide command to PresentWindow
 		  
 		  If Not PresentWindow.IsClosingExternal() Then
-		    Call PresentWindow.KeyDownX( Chr(29) ) 'ASC_KEY_RIGHT
+		    Call PresentWindow.KeyDownX( Chr(31) ) 'ASC_KEY_DOWN
 		  End If
 		  
 		  m_waitForPlayback = False
@@ -99,22 +99,22 @@ Inherits Timer
 		  End If
 		  
 		  If Not IsNull(videolanLocation) And videolanLocation.Exists() Then
-		    If InStrB(parameters, "%s") <> 0 Then
-		      
-		      If screen < 0 Or screen > OSScreenCount() - 1 Then screen = 0
-		      
-		      If fullScreen Then
-		        VLCparams = VLCparams + " --fullscreen"
-		      Else
-		        VLCparams = VLCparams + " --no-fullscreen"
-		      End If
-		      
-		      parameters = VLCparams + " " + parameters
-		      parameters  = ReplaceAllB(parameters , "%d", Str(screen))
-		      parameters  = ReplaceAllB(parameters, "%x", Str(OSScreen(screen).Left+1))
-		      parameters  = ReplaceAllB(parameters, "%y", Str(OSScreen(screen).Top+1))
-		      
-		      If Trim(mediaFilename) <> "" And Not IsNull(mediaFile) Then
+		    If screen < 0 Or screen > OSScreenCount() - 1 Then screen = 0
+		    
+		    If fullScreen Then
+		      VLCparams = VLCparams + " --fullscreen"
+		    Else
+		      VLCparams = VLCparams + " --no-fullscreen"
+		    End If
+		    
+		    parameters = VLCparams + " " + parameters
+		    parameters  = ReplaceAllB(parameters, "%d", Str(screen))
+		    parameters  = ReplaceAllB(parameters, "%x", Str(OSScreen(screen).Left+1))
+		    parameters  = ReplaceAllB(parameters, "%y", Str(OSScreen(screen).Top+1))
+		    
+		    mediaFilename = Trim(mediaFilename)
+		    If mediaFilename <> "" Then
+		      If Not IsNull(mediaFile) Then
 		        mediaFilename = """" + mediaFile.AbsolutePath() + """"
 		      Else
 		        ' quote for the command line
@@ -127,8 +127,18 @@ Inherits Timer
 		          mediaFilename = ReplaceAll(mediaFilename, "&", "^&")
 		          mediaFilename = ReplaceAll(mediaFilename, "|", "^|")
 		          mediaFilename = ReplaceAll(mediaFilename, "\", "\\")
+		        #else
+		          mediaFilename = ReplaceAll(mediaFilename, "\", "\\")
+		          mediaFilename = ReplaceAll(mediaFilename, "$", "\$")
+		          mediaFilename = ReplaceAll(mediaFilename, "`", "\`")
+		          mediaFilename = ReplaceAll(mediaFilename, """", "\""")
 		        #endif
 		      End If
+		    End If
+		    If InStrB(parameters, "%s") = 0 Then
+		      parameters = parameters + " " + mediaFilename
+		    Else
+		      parameters = ReplaceAllB(parameters, """%s""", "$s")
 		      parameters = ReplaceAllB(parameters, "%s", mediaFilename)
 		    End If
 		    Dim cmd As String = """" + VideolanLocation.AbsolutePath() + """  " + parameters + " vlc://quit"
