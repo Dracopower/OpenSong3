@@ -17,19 +17,23 @@ Protected Module PresentationFactory
 		  'Use MsPowerPointHost for all MsPowerPointPresentation object creations to recieve callbacks!
 		  
 		  Try
+		    #pragma BreakOnExceptions Off
 		    If IsNull( m_MsPowerPointHost ) Then
 		      m_MsPowerPointHost = New MsPowerPointHost()
 		    End If
+		    #pragma BreakOnExceptions Default
 		  Catch
 		    'will raise an exeption if Microsoft PowerPoint (Office installation, not just the viewer) is not installed
 		    m_MsPowerPointHost = Nil
 		  End Try
 		  
 		  Try
+		    #pragma BreakOnExceptions Off
 		    If Not IsNull( m_MsPowerPointHost ) Then
 		      oPpt = m_MsPowerPointHost.Presentations.Open( presentationFile.AbsolutePath(), false, false, false )
 		      oPres = New MsPowerPointPresentation( oPpt )
 		    End If
+		    #pragma BreakOnExceptions Default
 		  Catch
 		    oPres = Nil
 		  End Try
@@ -56,6 +60,7 @@ Protected Module PresentationFactory
 		  Dim oImpressDoc As OLEObject = Nil
 		  
 		  Try
+		    #pragma BreakOnExceptions Off
 		    Dim oServiceManager As OLEObject = New OLEObject("com.sun.star.ServiceManager")
 		    If Not IsNull( oServiceManager ) Then
 		      
@@ -132,6 +137,7 @@ Protected Module PresentationFactory
 		      End If
 		      
 		    End If
+		    #pragma BreakOnExceptions Default
 		  Catch e As RuntimeException
 		    'prevent an application crash, inspect e for debugging.
 		  End Try
@@ -202,6 +208,7 @@ Protected Module PresentationFactory
 		  #If TargetWin32
 		    If IsNull( appl ) Or Not result Then
 		      Try
+		        #pragma BreakOnExceptions Off
 		        Dim PptViewReg As New RegistryItem("HKEY_CLASSES_ROOT\Applications\pptview.exe\shell\Show\command", False)
 		        Dim command As String=CStr(PptViewReg.DefaultValue)
 		        
@@ -214,7 +221,7 @@ Protected Module PresentationFactory
 		            result = True
 		          End If
 		        End If
-		        
+		        #pragma BreakOnExceptions Default
 		      Catch e As  RegistryAccessErrorException
 		        'Key not available
 		      End Try
@@ -224,6 +231,7 @@ Protected Module PresentationFactory
 		  #If TargetWin32
 		    If IsNull( appl ) Or Not result Then
 		      Try
+		        #pragma BreakOnExceptions Off
 		        Dim PptFullReg As New RegistryItem("HKEY_CLASSES_ROOT\Applications\POWERPNT.EXE\shell\Show\command", False)
 		        Dim command As String=CStr(PptFullReg.DefaultValue)
 		        
@@ -236,7 +244,7 @@ Protected Module PresentationFactory
 		            result = True
 		          End If
 		        End If
-		        
+		        #pragma BreakOnExceptions Default
 		      Catch e As  RegistryAccessErrorException
 		        'Key not available
 		      End Try
@@ -244,6 +252,7 @@ Protected Module PresentationFactory
 		    
 		    If IsNull( appl ) Or Not result Then
 		      Try
+		        #pragma BreakOnExceptions Off
 		        Dim PptFullReg As New RegistryItem("HKEY_CLASSES_ROOT\PowerPointViewer.SlideShow.11\shell\Show\command", False)
 		        Dim command As String=CStr(PptFullReg.DefaultValue)
 		        
@@ -256,7 +265,7 @@ Protected Module PresentationFactory
 		            result = True
 		          End If
 		        End If
-		        
+		        #pragma BreakOnExceptions Default
 		      Catch e As  RegistryAccessErrorException
 		        'Key not available
 		      End Try
@@ -264,6 +273,7 @@ Protected Module PresentationFactory
 		    
 		    If IsNull( appl ) Or Not result Then
 		      Try
+		        #pragma BreakOnExceptions Off
 		        Dim PptFullReg As New RegistryItem("HKEY_CLASSES_ROOT\PowerPointViewer.SlideShow.12\shell\Show\command", False)
 		        Dim command As String=CStr(PptFullReg.DefaultValue)
 		        
@@ -276,7 +286,7 @@ Protected Module PresentationFactory
 		            result = True
 		          End If
 		        End If
-		        
+		        #pragma BreakOnExceptions Default
 		      Catch e As  RegistryAccessErrorException
 		        'Key not available
 		      End Try
@@ -367,6 +377,7 @@ Protected Module PresentationFactory
 		    
 		    m_OOoAvailable = Integer(HostAvailable.No)
 		    Try
+		      #pragma BreakOnExceptions Off
 		      Dim oServiceManager as New OLEObject("com.sun.star.ServiceManager")
 		      If Not IsNull( oServiceManager ) Then
 		        
@@ -399,7 +410,7 @@ Protected Module PresentationFactory
 		        End If
 		        
 		      End If
-		      
+		      #pragma BreakOnExceptions Default
 		    Catch
 		      'any...
 		    End Try
@@ -419,10 +430,12 @@ Protected Module PresentationFactory
 		    
 		    m_PptAvailable = Integer(HostAvailable.No)
 		    Try
+		      #pragma BreakOnExceptions Off
 		      Dim ppApp As MsPowerPointHost = New MsPowerPointHost()
 		      If Not IsNull( ppApp ) Then
 		        m_PptAvailable = Integer(HostAvailable.Yes)
 		      End If
+		      #pragma BreakOnExceptions Default
 		    Catch
 		      'catch all
 		    End Try
