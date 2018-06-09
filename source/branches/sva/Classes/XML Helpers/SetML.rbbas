@@ -999,8 +999,12 @@ Protected Module SetML
 		  Dim set_item_name As String = SmartML.GetValue(slideGroup, "@name", True)
 		  Dim set_item_type As String = SmartML.GetValue(slideGroup, "@type", True)
 		  If set_item_type = "style" Then
+		    // style has no user provided name, thus the name needs to be translated; additionally the action goes to the type
 		    If SmartML.GetValue(slideGroup, "@action", True) = "revert" Then
+		      set_item_name = App.T.Translate("sets_mode/items/revert")
 		      set_item_type = "revert"
+		    Else
+		      set_item_name = App.T.Translate("sets_mode/items/style")
 		    End If
 		  End If
 		  

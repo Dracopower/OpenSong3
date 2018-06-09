@@ -15717,7 +15717,7 @@ End
 		    slide_group = SetML.GetSetItem(CurrentSet, lst_set_items.ListIndex+1)
 		    SmartML.SetValue slide_group, "@action", "new"
 		    SmartML.SetValue slide_group, "@name", App.T.Translate("sets_mode/items/style")
-		    lst_set_items.List(lst_set_items.ListIndex) = SmartML.GetValue(slide_group, "@name", True) + " " + App.T.Translate("sets_mode/items/style/@caption")
+		    lst_set_items.List(lst_set_items.ListIndex) = setML.GetSlideGroupCaption(slide_group)
 		    SmartML.SafeImport SmartML.GetNode(App.MyPresentSettings.DocumentElement, "default_style"), SmartML.GetNode(slide_group, "style", True)
 		    can_style_style.SetStyleNode SmartML.GetNode(slide_group, "style")
 		    Status_SetChanged = True
@@ -15747,7 +15747,7 @@ End
 		    slide_group = SetML.GetSetItem(CurrentSet, lst_set_items.ListIndex+1)
 		    SmartML.SetValue slide_group, "@action", "revert"
 		    SmartML.SetValue slide_group, "@name", App.T.Translate("sets_mode/items/revert")
-		    lst_set_items.List(lst_set_items.ListIndex) = SmartML.GetValue(slide_group, "@name", True) + " " + App.T.Translate("sets_mode/items/revert/@caption")
+		    lst_set_items.List(lst_set_items.ListIndex) = SetML.GetSlideGroupCaption(slide_group)
 		    SmartML.RemoveChildren slide_group
 		    
 		    can_style_style.ClearStyleNode
