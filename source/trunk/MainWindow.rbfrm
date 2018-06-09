@@ -10295,12 +10295,7 @@ End
 		    // get paths for the individual slide groups
 		    //Should be a call to SlideGroup.GetChildFolderItems
 		    If SmartML.GetValue(slide_group, "@type", True) = "song" Then
-		      SongPath = SmartML.GetValue(slide_group, "@path", False)
-		      If SongPath <> "" Then
-		        SongPath = SongPath + SmartML.GetValue(slide_group, "@name")
-		      Else
-		        SongPath = SmartML.GetValue(slide_group, "@name")
-		      End If
+		      SongPath = SmartML.GetValue(slide_group, "@path", False) + SmartML.GetValue(slide_group, "@name")
 		      f = Songs.GetFile(SongPath)
 		      If f = Nil Then
 		        InputBox.Message App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", SmartML.GetValue(slide_group, "@name", True))
@@ -11978,7 +11973,7 @@ End
 		      ActLog(index).Title = SmartML.GetValue(sDoc.DocumentElement, "title", True)
 		      ActLog(index).Author = SmartML.GetValue(sDoc.DocumentElement, "author", True)
 		      ActLog(index).CCLISongNumber = edt_song_ccli.Text
-		      ActLog(index).SongFileName =  f.Parent.Name + "\" + f.Name
+		      ActLog(index).SongFileName =  Songs.DBPathFromFolderItem(f)
 		      ActLog(index).DateAndTime = d
 		      ActLog(index).HasChords = ActLog(index).CheckLyricsForChords(edf_song_lyrics.Text)
 		      ActLog(index).Presented = True
@@ -12052,7 +12047,7 @@ End
 		      ActLog(index).Title = SmartML.GetValue(sDoc.DocumentElement, "title", True)
 		      ActLog(index).Author = SmartML.GetValue(sDoc.DocumentElement, "author", True)
 		      ActLog(index).CCLISongNumber = edt_song_ccli.Text
-		      ActLog(index).SongFileName =  f.Parent.Name + "\" + f.Name
+		      ActLog(index).SongFileName =  Songs.DBPathFromFolderItem(f)
 		      ActLog(index).DateAndTime = d
 		      ActLog(index).HasChords = ActLog(index).CheckLyricsForChords(edf_song_lyrics.Text)
 		      ActLog(index).Presented = True
