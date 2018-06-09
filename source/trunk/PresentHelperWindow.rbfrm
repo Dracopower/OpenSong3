@@ -811,10 +811,14 @@ End
 		  And SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "default_style/body/@highlight_chorus", True, True) 'EMP 12/05
 		  
 		  lst_all_slides.Cell(index,1) = SmartML.GetValue(slide, "@id", False)
-		  lst_all_slides.CellAlignment(index, 1) = 2
+		  lst_all_slides.CellAlignment(index, 1) = ListBox.AlignCenter
 		  Select Case SmartML.GetValue(slide.Parent.Parent, "@type", False)
 		  Case "image", "external"
 		    lst_all_slides.Cell(index,2) = Trim(SmartML.GetValue(slide, "description", True)).CleanSpaces
+		  Case "custom"
+		    Dim s As String
+		    s = Join(Array(SmartML.GetValue(slide.Parent.Parent, "title", False),SmartML.GetValue(slide.Parent.Parent, "subtitle", False),SmartML.GetValue(slide, "body", True))," ")
+		    lst_all_slides.Cell(index,2) = Trim(s).Translate(StringUtils.WhiteSpaces+Chr(9)," ").CleanSpaces
 		  Else
 		    lst_all_slides.Cell(index,2) = ReplaceAll(ReplaceAll(Trim(SmartML.GetValue(slide, "body", True)), Chr(10), " "), Chr(9), " ").CleanSpaces
 		  End Select
@@ -842,8 +846,8 @@ End
 	#tag Method, Flags = &h1
 		Protected Sub RecalcLstAllSlidesColumnWidths()
 		  '
-		  ' After a resize event on the screen (i.e., the FullScreen button was pressed),
-		  'rework the column widths to keep the Verse column from growing too big.
+		  ' After a resize event on the screen (i.e. the FullScreen button was pressed),
+		  ' rework the column widths to keep the Verse column from growing too big.
 		  ' EMP 01/31/05
 		  '
 		  Dim ControlWidth As Integer
@@ -851,7 +855,6 @@ End
 		  Dim WidthString As String
 		  Dim tempWidth As double
 		  dim maxlen As Integer
-		  Dim ems as String
 		  Dim i As Integer
 		  
 		  g = cnv_preview.Graphics

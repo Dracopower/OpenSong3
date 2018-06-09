@@ -996,6 +996,30 @@ Protected Module SetML
 	#tag EndMethod
 
 	#tag Method, Flags = &h1
+		Protected Function GetSlideGroupCaption(SlideGroup As XmlNode) As String
+		  Dim set_item_name As String = SmartML.GetValue(slideGroup, "@name", True)
+		  Dim set_item_type As String = SmartML.GetValue(slideGroup, "@type", True)
+		  If set_item_type = "style" Then
+		    // style has no user provided name, thus the name needs to be translated; additionally the action goes to the type
+		    If SmartML.GetValue(slideGroup, "@action", True) = "revert" Then
+		      set_item_name = App.T.Translate("sets_mode/items/revert")
+		      set_item_type = "revert"
+		    Else
+		      set_item_name = App.T.Translate("sets_mode/items/style")
+		    End If
+		  End If
+		  
+		  Dim set_item_caption As String = App.T.Translate("sets_mode/items/"+set_item_type+"/@caption")
+		  If set_item_type = "" or set_item_caption = "" Then // unknown slide type
+		    App.DebugWriter.Write "MainWindow.ActionInSetAddSlide.Change: Unknown slide type '" + set_item_type + "/@caption" + "'", 1
+		    set_item_caption = "*ERROR*"
+		  End If
+		  Return set_item_name + " " + set_item_caption
+		  
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h1
 		Protected Function GetSlideTransition(xSlide As XmlNode) As SlideTransitionEnum
 		  Dim transition As SlideTransitionEnum
 		  Dim slide_group As XmlNode

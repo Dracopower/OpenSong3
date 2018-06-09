@@ -9502,23 +9502,12 @@ End
 		    ' No need to EnableMenuItems, since the following selection change will call it
 		    
 		    Dim set_item_index As Integer = 0
-		    Dim set_item_name As String = SmartML.GetValue(xslide, "@name", True)
-		    Dim set_item_type As String = SmartML.GetValue(xslide, "@type", True)
-		    If set_item_type = "style" Then
-		      set_item_type = SmartML.GetValue(xslide, "@action", True)
-		    End If
-		    
-		    Dim set_item_caption As String = App.T.Translate("sets_mode/items/"+set_item_type+"/@caption")
-		    If set_item_type = "" or set_item_caption = "" Then // unknown slide type
-		      App.DebugWriter.Write "MainWindow.ActionInSetAddSlide.Change: Unknown slide type '" + set_item_type + "/@caption" + "'", 1
-		      set_item_caption = "*ERROR*"
-		    End If
 		    
 		    If lst_set_items.ListIndex >= 0 Then
-		      lst_set_items.InsertRow lst_set_items.ListIndex + 1, set_item_name + " " + set_item_caption
+		      lst_set_items.InsertRow lst_set_items.ListIndex + 1, SetML.GetSlideGroupCaption(xslide)
 		      set_item_index = lst_set_items.ListIndex + 1
 		    Else
-		      lst_set_items.AddRow set_item_name + " " + set_item_caption
+		      lst_set_items.AddRow SetML.GetSlideGroupCaption(xslide)
 		      set_item_index = lst_set_items.ListCount - 1
 		    End If
 		    
@@ -9741,7 +9730,7 @@ End
 		    Next i
 		    
 		    can_image_style.PreviewSlide = SmartML.GetNode(xgroup, "slides/slide")
-		    lst_set_items.List(CurrentInSetItem) = edt_image_name.Text + " " + App.T.Translate("sets_mode/items/" + SmartML.GetValue(xgroup, "@type") + "/@caption")
+		    lst_set_items.List(CurrentInSetItem) = SetML.GetSlideGroupCaption(xgroup)
 		    
 		  Case "external"
 		    If btn_external_presentation.GetStuck() Then
@@ -9802,7 +9791,7 @@ End
 		        Dim f As FolderItem
 		        If Trim(edt_external_videolan_mediafilename.Text) = "" Then
 		          If videoLanPresetParams.InStrB("%s") <> 0 Then
-		            MsgBox(App.T.Translate("errors/videolan/no_medium", SmartML.GetValue(xgroup, "@name", False) + " " + App.T.Translate("sets_mode/items/"+SmartML.GetValue(xgroup, "@type", False)+"/@caption")))
+		            MsgBox(App.T.Translate("errors/videolan/no_medium", SetML.GetSlideGroupCaption(xgroup)))
 		            Return False
 		          End If
 		        Else
@@ -9863,7 +9852,7 @@ End
 		    SmartML.SetValue xgroup, "notes", edt_external_notes.Text
 		    SmartML.SetValueB xgroup, "@loop", chk_external_loop.Value
 		    
-		    lst_set_items.List(CurrentInSetItem) = edt_external_name.Text + " " + App.T.Translate("sets_mode/items/" + SmartML.GetValue(xgroup, "@type") + "/@caption")
+		    lst_set_items.List(CurrentInSetItem) = SetML.GetSlideGroupCaption(xgroup)
 		    
 		  Case "style"
 		    
@@ -9892,7 +9881,7 @@ End
 		      SmartML.SetValue xslide, "body", StringUtils.Trim(bodies(i), StringUtils.WhiteSpaces)
 		    Next i
 		    
-		    lst_set_items.List(CurrentInSetItem) = edt_slide_name.Text + " (" + SmartML.GetValue(xgroup, "@type", True) + ")"
+		    lst_set_items.List(CurrentInSetItem) = SetML.GetSlideGroupCaption(xgroup)
 		  End Select
 		  
 		  Status_InSetChanged = False
@@ -12672,7 +12661,7 @@ End
 		          If mediaFileName = "" Then
 		            Dim videoLanParams As String = SmartML.GetValue(slide_group, "@videolan_parameters", False)
 		            If videoLanParams.InStrB("%s") > 0 Then
-		              InputBox.Message App.T.Translate("errors/videolan/no_medium_in_slide", SmartML.GetValue(slide_group, "@name", False) + " " + App.T.Translate("sets_mode/items/"+SmartML.GetValue(slide_group, "@type", False)+"/@caption"))
+		              InputBox.Message App.T.Translate("errors/videolan/no_medium_in_slide", SetML.GetSlideGroupCaption(slide_group))
 		            End If
 		          ElseIf IsNull(mediaFile) Then
 		            ' mediaFileName might be a URL or MRL (Media Resource Locator)
@@ -12921,13 +12910,7 @@ End
 		    If Not IsNull(slide_groups)Then
 		      xchild = slide_groups.FirstChild
 		      While xchild <> Nil
-		        '++JRC Fix broken set item type displaying in set list
-		        slideType = App.T.Translate("sets_mode/items/" + xchild.GetAttribute("type") + "/@caption")
-		        If slideType = "" Then // unknown slide type
-		          App.DebugWriter.Write "MainWindow.pop_sets_sets.Change: Unknown slide type '" + xchild.GetAttribute("type") + "/@caption" + "'", 1
-		          slideType = "*ERROR*"
-		        End If
-		        lst_set_items.AddRow xchild.GetAttribute("name") + " " + slideType
+		        lst_set_items.AddRow SetML.GetSlideGroupCaption(xchild)
 		        lst_set_items.CellTag(lst_set_items.ListCount-1, 0) = xchild.GetAttribute("type")
 		        xchild = xchild.NextSibling
 		      Wend
@@ -13510,14 +13493,14 @@ End
 		  
 		  pop_songs_song_folders.ListIndex = 0
 		  
-		  Catch ex
-		    If ex IsA OutOfBoundsException Then
-		      If pop_songs_song_folders.ListCount > 0 Then
-		        pop_songs_song_folders.ListIndex = 0
-		      End If
-		    Else
-		      Raise ex
+		Catch ex
+		  If ex IsA OutOfBoundsException Then
+		    If pop_songs_song_folders.ListCount > 0 Then
+		      pop_songs_song_folders.ListIndex = 0
 		    End If
+		  Else
+		    Raise ex
+		  End If
 		End Sub
 	#tag EndMethod
 
@@ -16407,7 +16390,7 @@ End
 		    slide_group = SetML.GetSetItem(CurrentSet, lst_set_items.ListIndex+1)
 		    SmartML.SetValue slide_group, "@action", "new"
 		    SmartML.SetValue slide_group, "@name", App.T.Translate("sets_mode/items/style")
-		    lst_set_items.List(lst_set_items.ListIndex) = SmartML.GetValue(slide_group, "@name", True) + " " + App.T.Translate("sets_mode/items/style/@caption")
+		    lst_set_items.List(lst_set_items.ListIndex) = setML.GetSlideGroupCaption(slide_group)
 		    SmartML.SafeImport SmartML.GetNode(App.MyPresentSettings.DocumentElement, "default_style"), SmartML.GetNode(slide_group, "style", True)
 		    can_style_style.SetStyleNode SmartML.GetNode(slide_group, "style")
 		    Status_SetChanged = True
@@ -16437,7 +16420,7 @@ End
 		    slide_group = SetML.GetSetItem(CurrentSet, lst_set_items.ListIndex+1)
 		    SmartML.SetValue slide_group, "@action", "revert"
 		    SmartML.SetValue slide_group, "@name", App.T.Translate("sets_mode/items/revert")
-		    lst_set_items.List(lst_set_items.ListIndex) = SmartML.GetValue(slide_group, "@name", True) + " " + App.T.Translate("sets_mode/items/revert/@caption")
+		    lst_set_items.List(lst_set_items.ListIndex) = SetML.GetSlideGroupCaption(slide_group)
 		    SmartML.RemoveChildren slide_group
 		    
 		    can_style_style.ClearStyleNode
