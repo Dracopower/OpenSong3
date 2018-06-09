@@ -1559,7 +1559,7 @@ Module SongML
 		        Else
 		          subsection = Trim(Left(line, 1))
 		          If Len(subsection) > 0 And section = "default" Then
-		            subsection = "V" + subsection
+		            ' subsection = "V" + subsection // this would break compatibility
 		          Else
 		            subsection = section + subsection
 		          End If
