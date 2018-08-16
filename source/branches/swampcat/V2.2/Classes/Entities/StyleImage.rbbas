@@ -149,7 +149,8 @@ Protected Class StyleImage
 
 	#tag Method, Flags = &h0
 		Function SetImageFromFileName(Filename As String) As Boolean
-		  #if TargetMacOS then
+		  If Filename = "" Then Return False
+		  #If TargetMacOS Then
 		    Filename = Filename.ReplaceAll("\", "/")
 		    #If XojoVersion >= 2013.1
 		      If InStr(Filename, ":") > 0 Then // We have an old-style AbsolutePath
@@ -173,6 +174,17 @@ Protected Class StyleImage
 		      #Else
 		        f = GetFolderItem(Filename, FolderItem.PathTypeNative)
 		      #EndIf
+		      If f <> Nil And (Not f.Exists And UBound(Split(filename, "/")) = 1) Then //Probably a erroneous leading slash
+		        Dim fullpath As String
+		        
+		        #If XojoVersion < 2013.1
+		          fullpath = App.DocsFolder.Child("Backgrounds").AbsolutePath + Filename
+		          f = GetFolderItem(fullpath, FolderItem.PathTypeAbsolute)
+		        #Else
+		          fullpath = App.DocsFolder.Child("Backgrounds").NativePath + Filename
+		          f = GetFolderItem(fullpath, FolderItem.PathTypeNative)
+		        #EndIf
+		      End If
 		    Else
 		      #If XojoVersion < 2013.1
 		        f = GetFolderItem( App.DocsFolder.Child("Backgrounds").AbsolutePath + Filename )

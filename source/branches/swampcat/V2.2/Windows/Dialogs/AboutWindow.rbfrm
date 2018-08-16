@@ -53,6 +53,7 @@ Begin Window AboutWindow
       TextSize        =   12.0
       TextUnit        =   0
       Top             =   310
+      Transparent     =   False
       Underline       =   False
       Visible         =   True
       Width           =   100
@@ -275,6 +276,7 @@ Begin Window AboutWindow
       TextSize        =   11.0
       TextUnit        =   0
       Top             =   210
+      Transparent     =   False
       Underline       =   False
       UseFocusRing    =   True
       Visible         =   True
@@ -513,7 +515,7 @@ End
 		  
 		  txt_about_memory.Text = Format(Runtime.MemoryUsed, "#,##9")
 		  txt_about_objects.Text = Format(Runtime.ObjectCount, "#,##9")
-		  txt_about_build.Text = Format(App.NonReleaseVersion, "#,##9")
+		  txt_about_build.Text = Format(App.NonReleaseVersion, "#####9")
 		  txt_about_compiler.Text = RBVersionString
 		End Sub
 	#tag EndEvent
