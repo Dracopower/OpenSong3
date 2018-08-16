@@ -995,6 +995,10 @@ Protected Module SetML
 		    songFolder = SmartML.GetValue(slidegroup, "@path", False)
 		    If Songfolder = "" Then
 		      songfolder = "/"
+		    Else
+		      If songfolder.Right(1) <> "/" Then
+		        songfolder = songfolder + "/"
+		      End If
 		    End If
 		    
 		    songf = Songs.GetFile(songFolder + SmartML.GetValue(slidegroup, "@name", False))
