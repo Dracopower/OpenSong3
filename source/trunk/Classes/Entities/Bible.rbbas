@@ -767,15 +767,15 @@ Implements iBible
 		  If Not (wSplash Is Nil) Then wSplash.Show
 		  CanSearch = True
 		  App.DebugWriter.Write "Bible.genindex: Exit"
-		Exception excep
-		  If Not (out Is Nil) Then out.Close
-		  If Not (newFile Is Nil) Then newFile.delete
-		  
-		  InputBox.Message App.T.Translate("bible/errors/index_generation")
-		  CanSearch = False
-		  If wProgress <> Nil Then wProgress = Nil
-		  If Not (wSplash Is Nil) Then wSplash.Show
-		  App.DebugWriter.Write "Bible.genindex: Exit (exception)"
+		  Exception excep
+		    If Not (out Is Nil) Then out.Close
+		    If Not (newFile Is Nil) Then newFile.delete
+		    
+		    InputBox.Message App.T.Translate("bible/errors/index_generation")
+		    CanSearch = False
+		    If wProgress <> Nil Then wProgress = Nil
+		    If Not (wSplash Is Nil) Then wSplash.Show
+		    App.DebugWriter.Write "Bible.genindex: Exit (exception)"
 		End Sub
 	#tag EndMethod
 
@@ -857,7 +857,7 @@ Implements iBible
 		    i = val(xn.item(0).GetAttribute("CHAPTERS"))
 		    
 		  Case XML_ZEFANIA
-		    xn = Scripture.Xql("/XMLBIBLE/BIBLEBOOK[" + Str(bookNumber) + "]/CHAPTER")
+		    xn = Scripture.Xql("/XMLBIBLE/BIBLEBOOK[@bnumber='" + Str(bookNumber) + "']/CHAPTER")
 		    
 		    i = xn.Length
 		    
@@ -1154,6 +1154,7 @@ Implements iBible
 		    For i = 0 to xn.Length - 1
 		      BookNames.Append xn.Item(i).GetAttribute("bname")
 		      BookNumbers.Append CDbl(xn.Item(i).GetAttribute("bnumber"))
+		      xn.Item(i).GetAttribute("bnumber")
 		    Next
 		    
 		  End Select
@@ -1275,7 +1276,7 @@ Implements iBible
 		    reg.ReplacementPattern=""
 		    reg.Options.ReplaceAllMatches=true
 		    
-		    query = "/XMLBIBLE/BIBLEBOOK[@bnumber = '" + CStr(bookNumber) + "']/CHAPTER[@cnumber='" + CStr(chapterNumber)  _
+		    query = "/XMLBIBLE/BIBLEBOOK[@bnumber = '" + CStr(bookNumber) + "']/CHAPTER[@cnumber='" + CStr(chapterNumber) _
 		    + "']/VERS[position() >= " + CStr(startVerseOffset) + " and position() <= " + CStr(endVerseOffset) + "]"
 		    Try
 		      list = Scripture.Xql(query)
@@ -1300,8 +1301,8 @@ Implements iBible
 		        Verse = ""
 		        If embedVerseNumbers Then
 		          Verse = list.Item(i).GetAttribute("vnumber") + list.Item(i).GetAttribute("aix")
-		          If list.Item(i).GetAttribute("enumber") <> "" Then
-		            verse = verse + "-" + list.Item(i).GetAttribute("enumber")
+		          If GetZefEndVerse(list.Item(i)) <> "" Then
+		            verse = verse + "-" + GetZefEndVerse(list.Item(i))
 		          End If
 		          verse = verse + " "
 		        End If
@@ -1461,7 +1462,7 @@ Implements iBible
 		    end if
 		    
 		  Case XML_ZEFANIA
-		    s = "/XMLBIBLE/BIBLEBOOK[" + str(bookNumber) + "]/CHAPTER[" + str(chapterNumber) + "]/VERS"
+		    s = "/XMLBIBLE/BIBLEBOOK[@bnumber='" + str(bookNumber) + "']/CHAPTER[@cnumber='" + str(chapterNumber) + "']/VERS"
 		    xn = Scripture.Xql(s)
 		    i = xn.Length
 		    
@@ -1540,7 +1541,7 @@ Implements iBible
 		    end if
 		    
 		  Case XML_ZEFANIA
-		    s = "/XMLBIBLE/BIBLEBOOK[" + str(bookNumber) + "]/CHAPTER[" + str(chapterNumber) + "]/VERS"
+		    s = "/XMLBIBLE/BIBLEBOOK[@bnumber='" + str(bookNumber) + "']/CHAPTER[" + str(chapterNumber) + "]/VERS"
 		    xn = Scripture.Xql(s)
 		    If xn <> Nil Then
 		      For i = 0 to xn.Length - 1
@@ -1653,7 +1654,7 @@ Implements iBible
 		    End If
 		    
 		  Case XML_ZEFANIA
-		    query = "/XMLBIBLE/BIBLEBOOK[@bnumber = '" + CStr(BookNumber) + "']/CHAPTER[@cnumber='" + CStr(ChapterNumber)  _
+		    query = "/XMLBIBLE/BIBLEBOOK[@bnumber = '" + CStr(BookNumber) + "']/CHAPTER[@cnumber='" + CStr(ChapterNumber) _
 		    + "']/VERS[" + CStr(VerseIndex) + "]"
 		    Try
 		      xn = Scripture.Xql(query)
@@ -1672,6 +1673,7 @@ Implements iBible
 		    If xn.Length > 0 Then
 		      StartVerse = xn.Item(0).GetAttribute("vnumber") + xn.Item(0).GetAttribute("aix")
 		      EndVerse = xn.Item(0).GetAttribute("enumber")
+		      If EndVerse = "" Then EndVerse = xn.Item(0).GetAttribute("e")
 		    Else
 		      StartVerse = ""
 		      EndVerse = ""
@@ -1724,6 +1726,23 @@ Implements iBible
 		  // Do not assume that this method is supported in V1
 		  //
 		  Return WebBooks(num)
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Private Function GetZefEndVerse(xVerseNode As XmlNode) As String
+		  //++
+		  // Zefania 2005 defines 'e' as ending verse number attribute.
+		  // OpenSong also allowed 'enumber' in the initial version of the Bible module.
+		  // This checks both.
+		  //--
+		  Dim s As String
+		  s = xVerseNode.GetAttribute("e")
+		  If s <> "" Then 
+		    Return s
+		  Else
+		    Return xVerseNode.GetAttribute("enumber")
+		  End If
 		End Function
 	#tag EndMethod
 
@@ -1978,19 +1997,19 @@ Implements iBible
 		    Return False
 		  End Select
 		  
-		Exception err
-		  If wSplash <> Nil Then wSplash.Show
-		  If err IsA XmlException Then
-		    ErrorCode = 3
-		    ErrorString = "Error parsing XML: " + file.AbsolutePath + ": Line " + XmlException(err).Line + ": " + XmlException(err).Node
-		    App.DebugWriter.Write "Bible.LoadBible: Caught an XML exception"
-		    Return False
-		  Else
-		    ErrorCode  = err.ErrorNumber
-		    ErrorString = err.Message
-		    App.DebugWriter.Write "Bible.LoadBible: Caught a " + err.ToString
-		    Return False
-		  End If
+		  Exception err
+		    If wSplash <> Nil Then wSplash.Show
+		    If err IsA XmlException Then
+		      ErrorCode = 3
+		      ErrorString = "Error parsing XML: " + file.AbsolutePath + ": Line " + XmlException(err).Line + ": " + XmlException(err).Node
+		      App.DebugWriter.Write "Bible.LoadBible: Caught an XML exception"
+		      Return False
+		    Else
+		      ErrorCode  = err.ErrorNumber
+		      ErrorString = err.Message
+		      App.DebugWriter.Write "Bible.LoadBible: Caught a " + err.ToString
+		      Return False
+		    End If
 		End Function
 	#tag EndMethod
 
@@ -2034,17 +2053,17 @@ Implements iBible
 		  // Add exception block...ran into issue where a 0-length index file
 		  // was left after a debug crash.  Got a OOB exception on the first While
 		  //--
-		Catch ex
-		  If ex Isa OutOfBoundsException Then
-		    filein.Close
-		    file.Delete // Let's kill it for now
-		    Redim index(-1)
-		    Redim notIndexed(-1)
-		    CanSearch = False
-		  Else // Toss it back up the chain
-		    CanSearch = False
-		    Raise ex
-		  End If
+		  Catch ex
+		    If ex Isa OutOfBoundsException Then
+		      filein.Close
+		      file.Delete // Let's kill it for now
+		      Redim index(-1)
+		      Redim notIndexed(-1)
+		      CanSearch = False
+		    Else // Toss it back up the chain
+		      CanSearch = False
+		      Raise ex
+		    End If
 		End Sub
 	#tag EndMethod
 
@@ -2473,33 +2492,33 @@ Implements iBible
 			Visible=true
 			Group="ID"
 			InitialValue="-2147483648"
-			InheritedFrom="Object"
+			Type="Integer"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Left"
 			Visible=true
 			Group="Position"
 			InitialValue="0"
-			InheritedFrom="Object"
+			Type="Integer"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Name"
 			Visible=true
 			Group="ID"
-			InheritedFrom="Object"
+			Type="String"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Super"
 			Visible=true
 			Group="ID"
-			InheritedFrom="Object"
+			Type="String"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Top"
 			Visible=true
 			Group="Position"
 			InitialValue="0"
-			InheritedFrom="Object"
+			Type="Integer"
 		#tag EndViewProperty
 	#tag EndViewBehavior
 End Class
