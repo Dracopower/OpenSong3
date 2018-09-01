@@ -1154,7 +1154,6 @@ Implements iBible
 		    For i = 0 to xn.Length - 1
 		      BookNames.Append xn.Item(i).GetAttribute("bname")
 		      BookNumbers.Append CDbl(xn.Item(i).GetAttribute("bnumber"))
-		      xn.Item(i).GetAttribute("bnumber")
 		    Next
 		    
 		  End Select
