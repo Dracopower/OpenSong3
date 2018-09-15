@@ -1540,7 +1540,7 @@ Implements iBible
 		    end if
 		    
 		  Case XML_ZEFANIA
-		    s = "/XMLBIBLE/BIBLEBOOK[@bnumber='" + str(bookNumber) + "']/CHAPTER[" + str(chapterNumber) + "]/VERS"
+		    s = "/XMLBIBLE/BIBLEBOOK[@bnumber='" + str(bookNumber) + "']/CHAPTER[@cnumber='" + str(chapterNumber) + "']/VERS"
 		    xn = Scripture.Xql(s)
 		    If xn <> Nil Then
 		      For i = 0 to xn.Length - 1
@@ -1597,7 +1597,7 @@ Implements iBible
 		    
 		  Case XML_ZEFANIA
 		    xn = Scripture.Xql("XMLBIBLE/BIBLEBOOK[@bname = '" + BookName +_
-		    "']/CHAPTER[@cnumber = " + Str(ChapterNum) + "]/VERS")
+		    "']/CHAPTER[@cnumber = '" + Str(ChapterNum) + "']/VERS")
 		    For i = 0 to xn.Length - 1
 		      Verses.Append xn.Item(i).GetAttribute("vnumber") +_
 		      xn.Item(i).GetAttribute("aix")
