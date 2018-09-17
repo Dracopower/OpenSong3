@@ -178,9 +178,9 @@ Protected Module OpenSongUtils
 		  
 		  Return result
 		  
-		Catch ex
-		  System.DebugLog "HTMLEntityEncode caught an error converting  '" + s + "'"
-		  Return ""
+		  Catch ex
+		    System.DebugLog "HTMLEntityEncode caught an error converting  '" + s + "'"
+		    Return ""
 		End Function
 	#tag EndMethod
 
@@ -1261,11 +1261,23 @@ Protected Module OpenSongUtils
 	#tag Method, Flags = &h0
 		Function ToString(Extends error As RuntimeException) As String
 		  Dim msg As String
+		  
+		  #If XojoVersion > 2011.01
+		    msg = Introspection.GetType(Error).FullName
+		    If Error.Message <> "" Then
+		      msg = msg + ", error is '" + Error.Message + "'"
+		      If Error.ErrorNumber <> 0 Then
+		        msg = msg + ", number = " + CStr(Error.ErrorNumber)
+		      End If
+		    End If
+		    Return msg
+		  #EndIf
+		  
 		  If error isA IllegalCastException Then
 		    msg = "IllegalCastException"
 		  ElseIf error isA KeyNotFoundException Then
 		    msg = "KeyNotFoundException"
-		  ElseIf error isA NilObjectException Then
+		  ElseIf Error IsA NilObjectException Then
 		    msg = "NilObjectException"
 		  ElseIf error isA OutOfBoundsException Then
 		    msg = "OutOfBoundsException"
@@ -1327,11 +1339,13 @@ Protected Module OpenSongUtils
 		    msg = "MacOSException"
 		  ElseIf error isA InvalidParameterException Then
 		    msg = "InvalidParameterException"
+		  ElseIf Error IsA PlatformNotSupportedException Then
+		    msg = "PlatformNotSupportedException"
 		  Else
 		    msg = "Unknown exception"
 		  End If
 		  
-		  If error.Message <> "" Then
+		  If Error.Message <> "" Then
 		    msg = msg + ", error is '" + error.Message + "'"
 		    If error.ErrorNumber <> 0 Then
 		      msg = msg + ", number = " + CStr(error.ErrorNumber)
@@ -1382,33 +1396,33 @@ Protected Module OpenSongUtils
 			Visible=true
 			Group="ID"
 			InitialValue="2147483648"
-			InheritedFrom="Object"
+			Type="Integer"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Left"
 			Visible=true
 			Group="Position"
 			InitialValue="0"
-			InheritedFrom="Object"
+			Type="Integer"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Name"
 			Visible=true
 			Group="ID"
-			InheritedFrom="Object"
+			Type="String"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Super"
 			Visible=true
 			Group="ID"
-			InheritedFrom="Object"
+			Type="String"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Top"
 			Visible=true
 			Group="Position"
 			InitialValue="0"
-			InheritedFrom="Object"
+			Type="Integer"
 		#tag EndViewProperty
 	#tag EndViewBehavior
 End Module

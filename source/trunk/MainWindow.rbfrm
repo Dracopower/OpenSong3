@@ -144,6 +144,7 @@ Begin Window MainWindow Implements ScriptureReceiver
       TabIndex        =   4
       TabPanelIndex   =   0
       Top             =   35
+      Transparent     =   False
       Value           =   0
       Visible         =   True
       Width           =   250
@@ -201,6 +202,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   11.0
             TextUnit        =   0
             Top             =   299
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   180
@@ -229,6 +231,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   11.0
             TextUnit        =   0
             Top             =   40
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   110
@@ -545,6 +548,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   11.0
             TextUnit        =   0
             Top             =   40
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   110
@@ -669,6 +673,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   11.0
             TextUnit        =   0
             Top             =   145
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   110
@@ -950,6 +955,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   11.0
             TextUnit        =   0
             Top             =   343
+            Transparent     =   False
             Underline       =   False
             UseFocusRing    =   True
             Visible         =   True
@@ -1000,6 +1006,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10.0
             TextUnit        =   0
             Top             =   554
+            Transparent     =   False
             Underline       =   False
             UseFocusRing    =   True
             Visible         =   True
@@ -1057,6 +1064,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   11.0
             TextUnit        =   0
             Top             =   40
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   230
@@ -1087,6 +1095,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                TextSize        =   10.0
                TextUnit        =   0
                Top             =   58
+               Transparent     =   False
                Underline       =   False
                Visible         =   True
                Width           =   185
@@ -1148,6 +1157,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   11.0
             TextUnit        =   0
             Top             =   217
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   111
@@ -1400,6 +1410,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   11.0
             TextUnit        =   0
             Top             =   92
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   230
@@ -1719,6 +1730,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   11.0
             TextUnit        =   0
             Top             =   217
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   110
@@ -1959,6 +1971,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   11.0
             TextUnit        =   0
             Top             =   425
+            Transparent     =   False
             Underline       =   False
             UseFocusRing    =   True
             Visible         =   True
@@ -1987,6 +2000,7 @@ Begin Window MainWindow Implements ScriptureReceiver
       TabIndex        =   5
       TabPanelIndex   =   0
       Top             =   34
+      Transparent     =   False
       Value           =   4
       Visible         =   True
       Width           =   591
@@ -2076,6 +2090,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10.0
             TextUnit        =   0
             Top             =   130
+            Transparent     =   False
             Underline       =   False
             Value           =   False
             Visible         =   True
@@ -2105,6 +2120,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10.0
             TextUnit        =   0
             Top             =   105
+            Transparent     =   False
             Underline       =   False
             Value           =   True
             Visible         =   True
@@ -2351,6 +2367,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10.0
             TextUnit        =   0
             Top             =   105
+            Transparent     =   False
             Underline       =   False
             UseFocusRing    =   True
             Visible         =   True
@@ -2487,6 +2504,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10.0
             TextUnit        =   0
             Top             =   182
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   125
@@ -2623,6 +2641,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10.0
             TextUnit        =   0
             Top             =   185
+            Transparent     =   False
             Underline       =   False
             Value           =   False
             Visible         =   True
@@ -2655,6 +2674,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10.0
             TextUnit        =   0
             Top             =   105
+            Transparent     =   False
             Underline       =   False
             Value           =   False
             Visible         =   True
@@ -2719,6 +2739,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10.0
             TextUnit        =   0
             Top             =   221
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   125
@@ -2795,6 +2816,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10.0
             TextUnit        =   0
             Top             =   146
+            Transparent     =   False
             Underline       =   False
             UseFocusRing    =   True
             Visible         =   True
@@ -2843,6 +2865,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10.0
             TextUnit        =   0
             Top             =   221
+            Transparent     =   False
             Underline       =   False
             UseFocusRing    =   True
             Visible         =   True
@@ -2875,6 +2898,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10.0
             TextUnit        =   0
             Top             =   105
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   55
@@ -2922,6 +2946,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10.0
             TextUnit        =   0
             Top             =   264
+            Transparent     =   False
             Underline       =   False
             UseFocusRing    =   True
             Visible         =   True
@@ -3040,6 +3065,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10.0
             TextUnit        =   0
             Top             =   308
+            Transparent     =   False
             Underline       =   False
             UseFocusRing    =   True
             Visible         =   True
@@ -3088,6 +3114,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10.0
             TextUnit        =   0
             Top             =   353
+            Transparent     =   False
             Underline       =   False
             UseFocusRing    =   True
             Visible         =   True
@@ -3136,6 +3163,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10.0
             TextUnit        =   0
             Top             =   398
+            Transparent     =   False
             Underline       =   False
             UseFocusRing    =   True
             Visible         =   True
@@ -3222,6 +3250,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10.0
             TextUnit        =   0
             Top             =   447
+            Transparent     =   False
             Underline       =   False
             UseFocusRing    =   True
             Visible         =   True
@@ -3320,6 +3349,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10.0
             TextUnit        =   0
             Top             =   456
+            Transparent     =   False
             Underline       =   False
             Value           =   False
             Visible         =   True
@@ -3352,6 +3382,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10.0
             TextUnit        =   0
             Top             =   476
+            Transparent     =   False
             Underline       =   False
             Value           =   False
             Visible         =   True
@@ -3384,6 +3415,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10.0
             TextUnit        =   0
             Top             =   496
+            Transparent     =   False
             Underline       =   False
             Value           =   False
             Visible         =   True
@@ -3416,6 +3448,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10.0
             TextUnit        =   0
             Top             =   516
+            Transparent     =   False
             Underline       =   False
             Value           =   False
             Visible         =   True
@@ -3448,6 +3481,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10.0
             TextUnit        =   0
             Top             =   536
+            Transparent     =   False
             Underline       =   False
             Value           =   False
             Visible         =   True
@@ -3820,6 +3854,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   11.0
             TextUnit        =   0
             Top             =   390
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   135
@@ -3850,6 +3885,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                TextSize        =   10.0
                TextUnit        =   0
                Top             =   427
+               Transparent     =   False
                Underline       =   False
                Visible         =   True
                Width           =   113
@@ -3916,6 +3952,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                TextSize        =   10.0
                TextUnit        =   0
                Top             =   459
+               Transparent     =   False
                Underline       =   False
                Visible         =   True
                Width           =   113
@@ -3964,6 +4001,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10.0
             TextUnit        =   0
             Top             =   140
+            Transparent     =   False
             Underline       =   False
             UseFocusRing    =   True
             Visible         =   True
@@ -4012,6 +4050,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   11.0
             TextUnit        =   0
             Top             =   175
+            Transparent     =   False
             Underline       =   False
             UseFocusRing    =   True
             Visible         =   True
@@ -4316,6 +4355,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10.0
             TextUnit        =   0
             Top             =   140
+            Transparent     =   False
             Underline       =   False
             UseFocusRing    =   True
             Visible         =   True
@@ -4364,6 +4404,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10.0
             TextUnit        =   0
             Top             =   140
+            Transparent     =   False
             Underline       =   False
             UseFocusRing    =   True
             Visible         =   True
@@ -4412,6 +4453,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10.0
             TextUnit        =   0
             Top             =   105
+            Transparent     =   False
             Underline       =   False
             UseFocusRing    =   True
             Visible         =   True
@@ -4460,6 +4502,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10.0
             TextUnit        =   0
             Top             =   105
+            Transparent     =   False
             Underline       =   False
             UseFocusRing    =   True
             Visible         =   True
@@ -4608,6 +4651,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   0.0
             TextUnit        =   0
             Top             =   513
+            Transparent     =   False
             Underline       =   False
             UseFocusRing    =   True
             Visible         =   True
@@ -4658,6 +4702,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   12.0
             TextUnit        =   0
             Top             =   187
+            Transparent     =   False
             Underline       =   False
             UseFocusRing    =   True
             Visible         =   True
@@ -4823,6 +4868,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10.0
             TextUnit        =   0
             Top             =   215
+            Transparent     =   False
             Underline       =   False
             Value           =   False
             Visible         =   True
@@ -4871,6 +4917,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10.0
             TextUnit        =   0
             Top             =   270
+            Transparent     =   False
             Underline       =   False
             UseFocusRing    =   True
             Visible         =   True
@@ -4903,6 +4950,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10.0
             TextUnit        =   0
             Top             =   195
+            Transparent     =   False
             Underline       =   False
             Value           =   False
             Visible         =   True
@@ -4935,6 +4983,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10.0
             TextUnit        =   0
             Top             =   390
+            Transparent     =   False
             Underline       =   False
             Value           =   False
             Visible         =   True
@@ -4967,6 +5016,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10.0
             TextUnit        =   0
             Top             =   435
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   110
@@ -5014,6 +5064,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10.0
             TextUnit        =   0
             Top             =   405
+            Transparent     =   False
             Underline       =   False
             UseFocusRing    =   True
             Visible         =   True
@@ -5202,6 +5253,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10.0
             TextUnit        =   0
             Top             =   405
+            Transparent     =   False
             Underline       =   False
             UseFocusRing    =   True
             Visible         =   True
@@ -5460,6 +5512,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10.0
             TextUnit        =   0
             Top             =   105
+            Transparent     =   False
             Underline       =   False
             UseFocusRing    =   True
             Visible         =   True
@@ -5508,6 +5561,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10.0
             TextUnit        =   0
             Top             =   105
+            Transparent     =   False
             Underline       =   False
             UseFocusRing    =   True
             Visible         =   True
@@ -5556,6 +5610,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10.0
             TextUnit        =   0
             Top             =   105
+            Transparent     =   False
             Underline       =   False
             UseFocusRing    =   True
             Visible         =   True
@@ -5604,6 +5659,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10.0
             TextUnit        =   0
             Top             =   140
+            Transparent     =   False
             Underline       =   False
             UseFocusRing    =   True
             Visible         =   True
@@ -5652,6 +5708,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10.0
             TextUnit        =   0
             Top             =   442
+            Transparent     =   False
             Underline       =   False
             UseFocusRing    =   True
             Visible         =   True
@@ -5732,6 +5789,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10.0
             TextUnit        =   0
             Top             =   476
+            Transparent     =   False
             Underline       =   False
             UseFocusRing    =   True
             Visible         =   True
@@ -5926,6 +5984,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10.0
             TextUnit        =   0
             Top             =   489
+            Transparent     =   False
             Underline       =   False
             Value           =   False
             Visible         =   True
@@ -5993,6 +6052,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10.0
             TextUnit        =   0
             Top             =   536
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   110
@@ -6059,6 +6119,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10.0
             TextUnit        =   0
             Top             =   391
+            Transparent     =   False
             Underline       =   False
             Value           =   False
             Visible         =   True
@@ -6091,6 +6152,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10.0
             TextUnit        =   0
             Top             =   411
+            Transparent     =   False
             Underline       =   False
             Value           =   False
             Visible         =   True
@@ -6123,6 +6185,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10.0
             TextUnit        =   0
             Top             =   451
+            Transparent     =   False
             Underline       =   False
             Value           =   False
             Visible         =   True
@@ -6155,6 +6218,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10.0
             TextUnit        =   0
             Top             =   431
+            Transparent     =   False
             Underline       =   False
             Value           =   False
             Visible         =   True
@@ -6292,6 +6356,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10.0
             TextUnit        =   0
             Top             =   314
+            Transparent     =   False
             Underline       =   False
             Value           =   False
             Visible         =   True
@@ -6324,6 +6389,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10.0
             TextUnit        =   0
             Top             =   294
+            Transparent     =   False
             Underline       =   False
             Value           =   False
             Visible         =   True
@@ -6372,6 +6438,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10.0
             TextUnit        =   0
             Top             =   369
+            Transparent     =   False
             Underline       =   False
             UseFocusRing    =   True
             Visible         =   True
@@ -6474,6 +6541,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10.0
             TextUnit        =   0
             Top             =   126
+            Transparent     =   False
             Underline       =   False
             Value           =   False
             Visible         =   True
@@ -6522,6 +6590,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10.0
             TextUnit        =   0
             Top             =   105
+            Transparent     =   False
             Underline       =   False
             UseFocusRing    =   True
             Visible         =   True
@@ -6599,6 +6668,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10.0
             TextUnit        =   0
             Top             =   105
+            Transparent     =   False
             Underline       =   False
             UseFocusRing    =   True
             Visible         =   True
@@ -6647,6 +6717,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10.0
             TextUnit        =   0
             Top             =   105
+            Transparent     =   False
             Underline       =   False
             UseFocusRing    =   True
             Visible         =   True
@@ -6698,6 +6769,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   0.0
             TextUnit        =   0
             Top             =   160
+            Transparent     =   False
             Underline       =   False
             UseFocusRing    =   True
             Visible         =   True
@@ -6748,6 +6820,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10.0
             TextUnit        =   0
             Top             =   488
+            Transparent     =   False
             Underline       =   False
             UseFocusRing    =   True
             Visible         =   True
@@ -7108,6 +7181,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10.0
             TextUnit        =   0
             Top             =   266
+            Transparent     =   False
             Underline       =   False
             Value           =   False
             Visible         =   True
@@ -7156,6 +7230,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10.0
             TextUnit        =   0
             Top             =   105
+            Transparent     =   False
             Underline       =   False
             UseFocusRing    =   True
             Visible         =   True
@@ -7204,6 +7279,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10.0
             TextUnit        =   0
             Top             =   488
+            Transparent     =   False
             Underline       =   False
             UseFocusRing    =   True
             Visible         =   True
@@ -7324,6 +7400,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabIndex        =   10
             TabPanelIndex   =   6
             Top             =   146
+            Transparent     =   False
             Value           =   2
             Visible         =   True
             Width           =   436
@@ -7351,6 +7428,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                TextSize        =   11.0
                TextUnit        =   0
                Top             =   150
+               Transparent     =   False
                Underline       =   False
                Visible         =   True
                Width           =   426
@@ -7381,6 +7459,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   TextSize        =   10.0
                   TextUnit        =   0
                   Top             =   384
+                  Transparent     =   False
                   Underline       =   False
                   Value           =   False
                   Visible         =   True
@@ -7477,6 +7556,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   TextSize        =   10.0
                   TextUnit        =   0
                   Top             =   295
+                  Transparent     =   False
                   Underline       =   False
                   Value           =   False
                   Visible         =   True
@@ -7506,6 +7586,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   TextSize        =   10.0
                   TextUnit        =   0
                   Top             =   227
+                  Transparent     =   False
                   Underline       =   False
                   Value           =   False
                   Visible         =   True
@@ -7535,6 +7616,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   TextSize        =   10.0
                   TextUnit        =   0
                   Top             =   183
+                  Transparent     =   False
                   Underline       =   False
                   Value           =   False
                   Visible         =   True
@@ -7618,6 +7700,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   TextSize        =   0.0
                   TextUnit        =   0
                   Top             =   360
+                  Transparent     =   False
                   Underline       =   False
                   UseFocusRing    =   True
                   Visible         =   True
@@ -7650,6 +7733,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   TextSize        =   10.0
                   TextUnit        =   0
                   Top             =   404
+                  Transparent     =   False
                   Underline       =   False
                   Value           =   False
                   Visible         =   True
@@ -7785,6 +7869,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                TextSize        =   11.0
                TextUnit        =   0
                Top             =   150
+               Transparent     =   False
                Underline       =   False
                Visible         =   True
                Width           =   426
@@ -7848,6 +7933,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                TextSize        =   11.0
                TextUnit        =   0
                Top             =   150
+               Transparent     =   False
                Underline       =   False
                Visible         =   True
                Width           =   426
@@ -7996,6 +8082,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   TextSize        =   0.0
                   TextUnit        =   0
                   Top             =   212
+                  Transparent     =   False
                   Underline       =   False
                   UseFocusRing    =   True
                   Visible         =   True
@@ -8044,6 +8131,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   TextSize        =   0.0
                   TextUnit        =   0
                   Top             =   256
+                  Transparent     =   False
                   Underline       =   False
                   UseFocusRing    =   True
                   Visible         =   True
@@ -8076,6 +8164,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   TextSize        =   10.0
                   TextUnit        =   0
                   Top             =   281
+                  Transparent     =   False
                   Underline       =   False
                   Value           =   False
                   Visible         =   True
@@ -8105,6 +8194,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   TextSize        =   10.0
                   TextUnit        =   0
                   Top             =   173
+                  Transparent     =   False
                   Underline       =   False
                   Value           =   False
                   Visible         =   True
@@ -8134,6 +8224,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   TextSize        =   10.0
                   TextUnit        =   0
                   Top             =   311
+                  Transparent     =   False
                   Underline       =   False
                   Value           =   False
                   Visible         =   True
@@ -8164,6 +8255,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                TextSize        =   11.0
                TextUnit        =   0
                Top             =   150
+               Transparent     =   False
                Underline       =   False
                Visible         =   True
                Width           =   426
@@ -8211,6 +8303,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   TextSize        =   0.0
                   TextUnit        =   0
                   Top             =   275
+                  Transparent     =   False
                   Underline       =   False
                   UseFocusRing    =   True
                   Visible         =   True
@@ -8242,6 +8335,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   TextSize        =   10.0
                   TextUnit        =   0
                   Top             =   173
+                  Transparent     =   False
                   Underline       =   False
                   Value           =   False
                   Visible         =   True
@@ -8322,6 +8416,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   TextSize        =   0.0
                   TextUnit        =   0
                   Top             =   212
+                  Transparent     =   False
                   Underline       =   False
                   UseFocusRing    =   True
                   Visible         =   True
@@ -8351,6 +8446,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   TextSize        =   10.0
                   TextUnit        =   0
                   Top             =   425
+                  Transparent     =   False
                   Underline       =   False
                   Value           =   False
                   Visible         =   True
@@ -8504,6 +8600,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   TextSize        =   0.0
                   TextUnit        =   0
                   Top             =   382
+                  Transparent     =   False
                   Underline       =   False
                   UseFocusRing    =   True
                   Visible         =   True
@@ -8536,6 +8633,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   TextSize        =   10.0
                   TextUnit        =   0
                   Top             =   405
+                  Transparent     =   False
                   Underline       =   False
                   Value           =   False
                   Visible         =   True
@@ -8568,6 +8666,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   TextSize        =   10.0
                   TextUnit        =   0
                   Top             =   234
+                  Transparent     =   False
                   Underline       =   False
                   Value           =   False
                   Visible         =   True
@@ -8595,6 +8694,7 @@ Begin Window MainWindow Implements ScriptureReceiver
       TabPanelIndex   =   0
       TabStop         =   True
       Top             =   35
+      Transparent     =   False
       Visible         =   True
       Width           =   4
    End
@@ -8616,6 +8716,7 @@ Begin Window MainWindow Implements ScriptureReceiver
       TabPanelIndex   =   0
       TabStop         =   True
       Top             =   32
+      Transparent     =   False
       Visible         =   True
       Width           =   846
    End
@@ -13493,14 +13594,14 @@ End
 		  
 		  pop_songs_song_folders.ListIndex = 0
 		  
-		Catch ex
-		  If ex IsA OutOfBoundsException Then
-		    If pop_songs_song_folders.ListCount > 0 Then
-		      pop_songs_song_folders.ListIndex = 0
+		  Catch ex
+		    If ex IsA OutOfBoundsException Then
+		      If pop_songs_song_folders.ListCount > 0 Then
+		        pop_songs_song_folders.ListIndex = 0
+		      End If
+		    Else
+		      Raise ex
 		    End If
-		  Else
-		    Raise ex
-		  End If
 		End Sub
 	#tag EndMethod
 
@@ -15132,6 +15233,26 @@ End
 	#tag Event
 		Sub DoubleClick()
 		  ActionSongTryChange(True)
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub MouseMove(X As Integer, Y As Integer)
+		  Dim overRow As Integer
+		  
+		  overRow = Me.RowFromXY(X, Y)
+		  
+		  If overRow >= 0 And overRow < Me.ListCount - 1 Then
+		    Me.HelpTag = Me.CellTag(overRow, 0)
+		    If Me.HelpTag <> "" Then
+		      Me.HelpTag = Me.HelpTag.Left(Me.HelpTag.Len - 1)
+		    End If
+		  Else
+		    Me.HelpTag = ""
+		  End If
+		  
+		  Catch
+		    Me.HelpTag = ""
+		    
 		End Sub
 	#tag EndEvent
 #tag EndEvents

@@ -1468,7 +1468,7 @@ Module SongML
 		    For x = 1 To strlen
 		      If Mid(lyrics, x, 1) = Chr(10) Then
 		        '++JRC: Fixed, RTrim thinks "à" is a whitespace character?
-		        line = StringUtils.RTrim(Mid(lyrics, st, x-st), StringUtils.WhiteSpaces)
+		        line = StringUtils.RTrim(Mid(lyrics, st, x - st), StringUtils.WhiteSpaces)
 		        '--
 		        If Left(line, 1) = "[" Then
 		          section = Mid(line, 2, Instr(2, line, "]") - 2)
@@ -1496,7 +1496,7 @@ Module SongML
 		        st = x + 1
 		      End If
 		    Next x
-		    order = Left(order, Len(order)-1) //This deletes the trailing vertical bar
+		    order = Left(order, Len(order) - 1) //This deletes the trailing vertical bar
 		  End If
 		End Sub
 	#tag EndMethod

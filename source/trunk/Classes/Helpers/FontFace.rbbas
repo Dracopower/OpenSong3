@@ -21,8 +21,8 @@ Protected Class FontFace
 
 	#tag Method, Flags = &h0
 		Sub Constructor()
-		  Name = "System"
-		  Size = 0
+		  Name = "Arial"
+		  Size = 10
 		  ForeColor = &c000000
 		End Sub
 	#tag EndMethod

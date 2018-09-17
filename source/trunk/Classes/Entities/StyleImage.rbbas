@@ -149,19 +149,36 @@ Protected Class StyleImage
 
 	#tag Method, Flags = &h0
 		Function SetImageFromFileName(Filename As String) As Boolean
-		  #if TargetMacOS then
+		  #If TargetMacOS Then
 		    Filename = Filename.ReplaceAll("\", "/")
-		  #elseif TargetWin32 then
+		    //++
+		    // MacOS: also check for possible NativePath instead of AbsolutePath
+		    //--
+		    If FileName.Mid(2, 1) <> ":" Then // Assume that the volume name is not going to be one character long
+		      If FileName.InStr(":") = 0 And FileName.InStr("/") > 0 Then // NativePath?
+		        Dim tempF As FolderItem
+		        #Pragma BreakOnExceptions False
+		        Try
+		          tempF = New FolderItem(Filename, FolderItem.PathTypeNative)
+		          If tempF <> Nil Then Filename = tempF.AbsolutePath
+		        End Try
+		        #Pragma BreakOnExceptions Default
+		      End If
+		    End If
+		  #ElseIf TargetWin32 Then
 		    Filename = Filename.ReplaceAll("/", "\")
 		  #elseif TargetLinux then
 		    Filename = Filename.ReplaceAll("\", "/")
 		  #endif
-
+		  
 		  Dim result As Boolean = False
 		  Dim f as FolderItem
 		  
 		  If Filename <> "" Then
-		    If FileName.StartsWith("/") or FileName.StartsWith("\\") or FileName.Mid(2, 1)=":" Then 
+		    //++
+		    // Look for ":" anywhere to capture both the case of the Windows and macOS AbsolutePath
+		    //--
+		    If FileName.StartsWith("/") Or FileName.StartsWith("\\") Or FileName.Instr(":") > 0 Then 
 		      f = GetFolderItem(FileName)
 		    Else
 		      f = GetFolderItem( App.DocsFolder.Child("Backgrounds").AbsolutePath + Filename )
@@ -198,33 +215,33 @@ Protected Class StyleImage
 			Visible=true
 			Group="ID"
 			InitialValue="-2147483648"
-			InheritedFrom="Object"
+			Type="Integer"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Left"
 			Visible=true
 			Group="Position"
 			InitialValue="0"
-			InheritedFrom="Object"
+			Type="Integer"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Name"
 			Visible=true
 			Group="ID"
-			InheritedFrom="Object"
+			Type="String"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Super"
 			Visible=true
 			Group="ID"
-			InheritedFrom="Object"
+			Type="String"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Top"
 			Visible=true
 			Group="Position"
 			InitialValue="0"
-			InheritedFrom="Object"
+			Type="Integer"
 		#tag EndViewProperty
 	#tag EndViewBehavior
 End Class

@@ -56,65 +56,43 @@ Begin Window PresentWindow Implements ScriptureReceiver
    End
    Begin Timer timerAdvance
       Enabled         =   True
-      Height          =   "32"
       Index           =   -2147483648
       InitialParent   =   ""
-      Left            =   249
       LockedInPosition=   False
       Mode            =   0
       Period          =   10000
       Scope           =   0
       TabPanelIndex   =   0
-      Top             =   249
-      Visible         =   True
-      Width           =   "32"
    End
    Begin Timer timerTransition
       Enabled         =   True
-      Height          =   "32"
       Index           =   -2147483648
       InitialParent   =   ""
-      Left            =   205
       LockedInPosition=   False
       Mode            =   0
       Period          =   125
       Scope           =   0
       TabPanelIndex   =   0
-      Top             =   249
-      Visible         =   True
-      Width           =   "32"
    End
    Begin SnapshotThread m_SnapshotThread
       Enabled         =   True
-      Height          =   "32"
       Index           =   -2147483648
       InitialParent   =   ""
-      Left            =   161
       LockedInPosition=   False
       Priority        =   5
       Scope           =   2
       StackSize       =   0
-      TabIndex        =   3
       TabPanelIndex   =   0
-      TabStop         =   True
-      Top             =   249
-      Visible         =   True
-      Width           =   "32"
    End
    Begin Timer timerClick
       Enabled         =   True
-      Height          =   "32"
       Index           =   -2147483648
       InitialParent   =   ""
-      Left            =   0
       LockedInPosition=   False
       Mode            =   1
       Period          =   333
       Scope           =   2
       TabPanelIndex   =   0
-      Top             =   0
-      Visible         =   True
-      Width           =   "32"
    End
 End
 #tag EndWindow
@@ -1602,28 +1580,28 @@ End
 		  // Add a generic exception handler in an attempt to keep from bailing out
 		  // TODO: This needs to log somewhere and notify the operator after the presentation is done.
 		  //
-		Exception ex
-		  // Do something here later.  For now, validate that XCurrentSlide isn't Nil and
-		  // return to the caller.
-		  //
-		  If XCurrentSlide = Nil Then
-		    // Sorry, the only possible valid action is to go back to the first slide, otherwise
-		    // how do you keep XCurrentSlide and CurrentSlide in sync?
-		    // (perhaps look at xNewSlide to get close to the original location?)
-		    CurrentSlide = 1
-		    XCurrentSlide = SetML.GetSlide(CurrentSet, 1)
-		  End If
-		  // Put up wherever we're at now (and pray!)
-		  If HelperActive Then
-		    PresentHelperWindow.SetMode Mode
-		  Else
-		    ResetPaint XCurrentSlide
-		  End If
-		  
-		  'Unless a condition threw an error, the command was valid; it just failed to execute
-		  LastCommandHandled = True
-		  Return False // Show that it failed
-		  //--EMP 15 Jan 06
+		  Exception ex
+		    // Do something here later.  For now, validate that XCurrentSlide isn't Nil and
+		    // return to the caller.
+		    //
+		    If XCurrentSlide = Nil Then
+		      // Sorry, the only possible valid action is to go back to the first slide, otherwise
+		      // how do you keep XCurrentSlide and CurrentSlide in sync?
+		      // (perhaps look at xNewSlide to get close to the original location?)
+		      CurrentSlide = 1
+		      XCurrentSlide = SetML.GetSlide(CurrentSet, 1)
+		    End If
+		    // Put up wherever we're at now (and pray!)
+		    If HelperActive Then
+		      PresentHelperWindow.SetMode Mode
+		    Else
+		      ResetPaint XCurrentSlide
+		    End If
+		    
+		    'Unless a condition threw an error, the command was valid; it just failed to execute
+		    LastCommandHandled = True
+		    Return False // Show that it failed
+		    //--EMP 15 Jan 06
 		End Function
 	#tag EndMethod
 
@@ -1785,10 +1763,12 @@ End
 		  StyleNode = SmartML.GetNode(de, "scripture_style")
 		  tempSlideStyle = New SlideStyle(StyleNode)
 		  StyleDict.Value("scripture_style") = tempSlideStyle
+		  SmartML.SetValue de, "scripture_style/@index", "scripture_style"
 		  'System.DebugLog "Completed scripture_style"
 		  StyleNode = SmartML.GetNode(de, "default_style")
 		  tempSlideStyle = New SlideStyle(StyleNode)
 		  StyleDict.Value("default_style") = tempSlideStyle
+		  SmartML.SetValue de, "default_style/@index", "default_style"
 		  'System.DebugLog "Completed default_style"
 		  //--
 		  
@@ -1898,9 +1878,9 @@ End
 		  PresentCursor = Self.MouseCursor
 		  AppCursor = App.MouseCursor
 		  Self.Visible = True
-		Catch e
-		  RuntimeException(e).message = "In PresentWindow.Present: " + e.Message
-		  Raise e
+		  Catch e
+		    RuntimeException(e).message = "In PresentWindow.Present: " + e.Message
+		    Raise e
 		End Sub
 	#tag EndMethod
 
@@ -2902,10 +2882,10 @@ End
 		  // This corrects an issue seen when changing the SButton style
 		  // after a presentation and for some reason this window is still open
 		  //--
-		Catch ex
-		  App.DebugWriter.Write("PresentWindow.cnvSlide.Paint: Got an exception: " +_
-		  RuntimeException(ex).Message, 1)
-		  Return
+		  Catch ex
+		    App.DebugWriter.Write("PresentWindow.cnvSlide.Paint: Got an exception: " +_
+		    RuntimeException(ex).Message, 1)
+		    Return
 		End Sub
 	#tag EndEvent
 #tag EndEvents
@@ -3022,7 +3002,6 @@ End
 			"7 - Global Floating Window"
 			"8 - Sheet Window"
 			"9 - Metal Window"
-			"10 - Drawer Window"
 			"11 - Modeless Dialog"
 		#tag EndEnumValues
 	#tag EndViewProperty

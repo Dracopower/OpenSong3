@@ -497,6 +497,9 @@ Inherits Canvas
 		  Icon.Mask.Graphics.DrawPicture mask, 0, 0
 		  SetGrayIcon pic, mask
 		  Refresh
+		  
+		  Catch noe As NilObjectException
+		    System.DebugLog CurrentMethodName + " for " + Me.Name + ": NOE"
 		End Sub
 	#tag EndMethod
 
@@ -650,6 +653,7 @@ Inherits Canvas
 			Group="Behavior"
 			InitialValue="True"
 			Type="Boolean"
+			EditorType="Boolean"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="HasFocus"
