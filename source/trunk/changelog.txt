@@ -1,4 +1,9 @@
-﻿-= Version 2.2 RC =-
+﻿-= Version 2.2.7 =-
+* Prevent NilObjectException if the icon or iconmask is Nil (SButton).
+* Make some small changes in filename handling to more intelligently detect the path type. RB/Xojo has complicated this with AbsolutePath/NativePath, but the three supported desktop OSes do not help.
+* Add SmartML.SetValueFI/GetValueFI (FolderItem) for potential future use to provide more intelligent handling of storing file information in our XML.
+* Add intermediate-size icons.
+-= Version 2.2 RC =-
 * Prevent NilObjectException in External Slide on presentation, media, and application file
 * Allow URLs and MRLs as Videolan "media file to play".
 * Fix issues with styles: in some circumstances the wrong style had been applied. Also allow arbitrarily deep nesting of custom styles using style change set items of type "Change style to this" and "Revert to previous style"
