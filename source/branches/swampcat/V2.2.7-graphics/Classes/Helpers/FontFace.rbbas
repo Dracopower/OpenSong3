@@ -21,8 +21,8 @@ Protected Class FontFace
 
 	#tag Method, Flags = &h0
 		Sub Constructor()
-		  Name = "Arial"
-		  Size = 10
+		  Name = "System"
+		  Size = 0
 		  ForeColor = &c000000
 		End Sub
 	#tag EndMethod
@@ -229,6 +229,12 @@ Protected Class FontFace
 
 	#tag ViewBehavior
 		#tag ViewProperty
+			Name="Name"
+			Visible=true
+			Group="ID"
+			Type="String"
+		#tag EndViewProperty
+		#tag ViewProperty
 			Name="Bold"
 			Group="Behavior"
 			InitialValue="0"
@@ -283,12 +289,6 @@ Protected Class FontFace
 			Group="Position"
 			InitialValue="0"
 			Type="Integer"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="mName"
-			Visible=true
-			Group="ID"
-			Type="String"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Shadow"
