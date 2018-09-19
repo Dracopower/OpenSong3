@@ -54,7 +54,7 @@ Begin Window MainWindow Implements ScriptureReceiver
       TabStop         =   True
       Top             =   3
       Transparent     =   True
-      UseFocusRing    =   True
+      UseFocusRing    =   False
       Visible         =   True
       Width           =   200
    End
@@ -86,7 +86,7 @@ Begin Window MainWindow Implements ScriptureReceiver
       TabStop         =   True
       Top             =   3
       Transparent     =   True
-      UseFocusRing    =   True
+      UseFocusRing    =   False
       Visible         =   True
       Width           =   200
    End
@@ -10582,7 +10582,7 @@ End
 		  
 		  'App.MinimizeWindow(Self)
 		  PresentWindow.Present setDoc, Mode, ItemNumber
-		  
+		  PresentWindow.Show
 		  '++JRC reset cursor
 		  App.MouseCursor = Nil
 		  'Me.MouseCursor = Nil
@@ -11568,7 +11568,7 @@ End
 		  '--
 		  
 		  PresentWindow.Present setDoc, Mode, ItemNumber
-		  
+		  PresentWindow.Show
 		  'Self.Hide
 		  
 		  App.MouseCursor = Nil
