@@ -9,7 +9,10 @@
 #    make sure a valid opensong binary is in the project root.
 #    or in the Builds directory created by REALBasic
 #
-# 3. Run this script, it will generate a .deb package.
+# 3. Install fakeroot
+#
+# 4. Run this script, it will generate a .deb package.
+#
 ############
 # History
 # Date        Who         What
@@ -18,6 +21,7 @@
 #                         and new external libraries
 # 2011-01-30  Vwout       Update to automate creation of binary archive
 # 2011-10-19  Vwout       Update to automate creation of source archive
+# 2018-09-24  Vwout       Update script with Gtk3 dependencies
 #
 
 VERSION=`cat ../OpenSong.rbvcp | grep ShortVersion | cut -d = -f 2`
@@ -69,7 +73,7 @@ cp "${BASE_DIR}"/OpenSong\ Settings/style.css opensong/opt/OpenSong/OpenSong\ Se
 
 cp "${BASE_DIR}"/changelog.txt opensong/opt/OpenSong/CHANGES
 cp "${BASE_DIR}"/changelog.txt opensong/DEBIAN/changelog
-cp "${BASE_DIR}"/WindowsInstaller/gpl-en.txt opensong/opt/OpenSong/COPYING
+cp "${BASE_DIR}"/WindowsInstaller/OpenSong\ License/gpl-en.txt opensong/opt/OpenSong/COPYING
 
 chmod +x opensong/opt/OpenSong/opensong
 
@@ -83,7 +87,8 @@ Priority: extra
 Architecture: i386
 Essential: no
 Maintainer: Vwout <vwout@users.sourceforge.net>
-Depends: libc6 (>=2.3), libexpat1 (>=1.95.8), libglib2.0-0 (>=2.2.0), libgtk2.0-0 (>=2.2.0)
+Depends: libc6 (>=2.3), libexpat1 (>=2.0.1), libglib2.0-0 (>=2.32.0), libgtk-3-0 (>=3.22.0)
+Recommends: ttf-mscorefonts-installer
 Installed-Size: $INSTALL_SIZE
 Homepage: http://sourceforge.net/projects/opensong
 Description: managing and presenting worship lyrics, chords and more
