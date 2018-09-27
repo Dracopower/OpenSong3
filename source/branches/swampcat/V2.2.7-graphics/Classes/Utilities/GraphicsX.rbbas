@@ -354,7 +354,7 @@ Protected Module GraphicsX
 		    thisWidth = 0
 		    While yy <= Len(str) ' loop through the string
 		      thisChar = Mid(str, yy, 1)
-		      thisWidth = g.StringWidth(Mid(str, xx, yy))
+		      thisWidth = g.StringWidth(Mid(str, xx, yy-xx+1))
 		      If thisChar = Chr(10) Or thisChar = Chr(13) Then
 		        xx = yy + 1
 		        yy = yy + 1
