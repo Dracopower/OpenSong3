@@ -53,6 +53,7 @@ Begin Window StyleWindow
       TextSize        =   10.0
       TextUnit        =   0
       Top             =   547
+      Transparent     =   False
       Underline       =   False
       Visible         =   True
       Width           =   70
@@ -84,6 +85,7 @@ Begin Window StyleWindow
       TextSize        =   10.0
       TextUnit        =   0
       Top             =   547
+      Transparent     =   False
       Underline       =   False
       Visible         =   True
       Width           =   70
@@ -112,6 +114,7 @@ Begin Window StyleWindow
       TextSize        =   0.0
       TextUnit        =   0
       Top             =   10
+      Transparent     =   False
       Underline       =   False
       Visible         =   True
       Width           =   425
@@ -197,6 +200,7 @@ Begin Window StyleWindow
          Selectable      =   False
          TabIndex        =   2
          TabPanelIndex   =   0
+         TabStop         =   True
          Text            =   "Align:"
          TextAlign       =   1
          TextColor       =   &c00000000
@@ -264,6 +268,7 @@ Begin Window StyleWindow
          TextSize        =   0.0
          TextUnit        =   0
          Top             =   71
+         Transparent     =   False
          Underline       =   False
          Visible         =   True
          Width           =   75
@@ -295,6 +300,7 @@ Begin Window StyleWindow
          TextSize        =   0.0
          TextUnit        =   0
          Top             =   169
+         Transparent     =   False
          Underline       =   False
          Visible         =   True
          Width           =   75
@@ -354,6 +360,7 @@ Begin Window StyleWindow
          TextSize        =   0.0
          TextUnit        =   0
          Top             =   28
+         Transparent     =   False
          Underline       =   False
          Value           =   False
          Visible         =   True
@@ -386,6 +393,7 @@ Begin Window StyleWindow
          TextSize        =   0.0
          TextUnit        =   0
          Top             =   127
+         Transparent     =   False
          Underline       =   False
          Value           =   False
          Visible         =   True
@@ -418,6 +426,7 @@ Begin Window StyleWindow
          TextSize        =   0.0
          TextUnit        =   0
          Top             =   291
+         Transparent     =   False
          Underline       =   False
          Visible         =   True
          Width           =   75
@@ -449,6 +458,7 @@ Begin Window StyleWindow
          TextSize        =   0.0
          TextUnit        =   0
          Top             =   224
+         Transparent     =   False
          Underline       =   False
          Value           =   False
          Visible         =   True
@@ -539,6 +549,7 @@ Begin Window StyleWindow
          TextSize        =   0.0
          TextUnit        =   0
          Top             =   325
+         Transparent     =   False
          Underline       =   False
          Value           =   False
          Visible         =   True
@@ -571,6 +582,7 @@ Begin Window StyleWindow
          TextSize        =   0.0
          TextUnit        =   0
          Top             =   256
+         Transparent     =   False
          Underline       =   False
          Visible         =   True
          Width           =   75
@@ -600,6 +612,7 @@ Begin Window StyleWindow
       TextSize        =   0.0
       TextUnit        =   0
       Top             =   10
+      Transparent     =   False
       Underline       =   False
       Visible         =   True
       Width           =   145
@@ -625,6 +638,7 @@ Begin Window StyleWindow
          Selectable      =   False
          TabIndex        =   0
          TabPanelIndex   =   0
+         TabStop         =   True
          Text            =   "Color:"
          TextAlign       =   2
          TextColor       =   &c00000000
@@ -659,6 +673,7 @@ Begin Window StyleWindow
          Selectable      =   False
          TabIndex        =   2
          TabPanelIndex   =   0
+         TabStop         =   True
          Text            =   "Image:"
          TextAlign       =   1
          TextColor       =   &c00000000
@@ -693,6 +708,7 @@ Begin Window StyleWindow
          Selectable      =   False
          TabIndex        =   4
          TabPanelIndex   =   0
+         TabStop         =   True
          Text            =   "(left-click to change)"
          TextAlign       =   1
          TextColor       =   &c00000000
@@ -727,6 +743,7 @@ Begin Window StyleWindow
          Selectable      =   False
          TabIndex        =   5
          TabPanelIndex   =   0
+         TabStop         =   True
          Text            =   "(right-click to clear)"
          TextAlign       =   1
          TextColor       =   &c00000000
@@ -761,6 +778,7 @@ Begin Window StyleWindow
          Selectable      =   False
          TabIndex        =   6
          TabPanelIndex   =   0
+         TabStop         =   True
          Text            =   "Position:"
          TextAlign       =   1
          TextColor       =   &c00000000
@@ -795,6 +813,7 @@ Begin Window StyleWindow
          Selectable      =   False
          TabIndex        =   8
          TabPanelIndex   =   0
+         TabStop         =   True
          Text            =   "Trim Bottom*:"
          TextAlign       =   1
          TextColor       =   &c00000000
@@ -834,6 +853,7 @@ Begin Window StyleWindow
          TextSize        =   12.0
          TextUnit        =   0
          Top             =   223
+         Transparent     =   False
          Underline       =   False
          Visible         =   True
          Width           =   80
@@ -860,6 +880,7 @@ Begin Window StyleWindow
          Selectable      =   False
          TabIndex        =   9
          TabPanelIndex   =   0
+         TabStop         =   True
          Text            =   "px"
          TextAlign       =   0
          TextColor       =   &c00000000
@@ -978,6 +999,7 @@ Begin Window StyleWindow
          TextSize        =   11.0
          TextUnit        =   0
          Top             =   271
+         Transparent     =   False
          Underline       =   False
          UseFocusRing    =   True
          Visible         =   True
@@ -1006,6 +1028,7 @@ Begin Window StyleWindow
       Selectable      =   False
       TabIndex        =   4
       TabPanelIndex   =   0
+      TabStop         =   True
       Text            =   "*Cuts the bottom of the background to hide watermarks, web site urls, etc. (To avoid distortion, this also trims from the sides to compensate.)"
       TextAlign       =   0
       TextColor       =   &c00000000
@@ -1042,6 +1065,7 @@ Begin Window StyleWindow
       TextSize        =   0.0
       TextUnit        =   0
       Top             =   452
+      Transparent     =   False
       Underline       =   False
       Visible         =   True
       Width           =   425
@@ -1067,6 +1091,7 @@ Begin Window StyleWindow
          Selectable      =   False
          TabIndex        =   0
          TabPanelIndex   =   0
+         TabStop         =   True
          Text            =   "Song Subtitles:"
          TextAlign       =   0
          TextColor       =   &c00000000
@@ -1106,6 +1131,7 @@ Begin Window StyleWindow
          TextSize        =   0.0
          TextUnit        =   0
          Top             =   497
+         Transparent     =   False
          Underline       =   False
          Value           =   False
          Visible         =   True
@@ -1138,6 +1164,7 @@ Begin Window StyleWindow
          TextSize        =   0.0
          TextUnit        =   0
          Top             =   517
+         Transparent     =   False
          Underline       =   False
          Value           =   False
          Visible         =   True
@@ -1170,6 +1197,7 @@ Begin Window StyleWindow
          TextSize        =   0.0
          TextUnit        =   0
          Top             =   537
+         Transparent     =   False
          Underline       =   False
          Value           =   False
          Visible         =   True
@@ -1211,6 +1239,7 @@ Begin Window StyleWindow
          ScrollbarHorizontal=   False
          ScrollBarVertical=   False
          SelectionType   =   0
+         ShowDropIndicator=   False
          TabIndex        =   1
          TabPanelIndex   =   0
          TabStop         =   True
@@ -1218,6 +1247,7 @@ Begin Window StyleWindow
          TextSize        =   11.0
          TextUnit        =   0
          Top             =   487
+         Transparent     =   False
          Underline       =   False
          UseFocusRing    =   True
          Visible         =   True
@@ -1250,6 +1280,7 @@ Begin Window StyleWindow
       TextSize        =   0.0
       TextUnit        =   0
       Top             =   351
+      Transparent     =   False
       Underline       =   False
       Visible         =   True
       Width           =   425
@@ -1305,6 +1336,7 @@ Begin Window StyleWindow
          Selectable      =   False
          TabIndex        =   3
          TabPanelIndex   =   0
+         TabStop         =   True
          Text            =   "Color:"
          TextAlign       =   0
          TextColor       =   &c00000000
@@ -1364,6 +1396,7 @@ Begin Window StyleWindow
          TextSize        =   11.0
          TextUnit        =   0
          Top             =   394
+         Transparent     =   False
          Underline       =   False
          UseFocusRing    =   True
          Visible         =   True
@@ -1391,7 +1424,8 @@ Begin Window StyleWindow
          Selectable      =   False
          TabIndex        =   1
          TabPanelIndex   =   0
-         Text            =   "Size [10-100 %] :"
+         TabStop         =   True
+         Text            =   "Size [10-200 %] :"
          TextAlign       =   0
          TextColor       =   &c00000000
          TextFont        =   "System"
@@ -1425,6 +1459,7 @@ Begin Window StyleWindow
          Selectable      =   False
          TabIndex        =   0
          TabPanelIndex   =   0
+         TabStop         =   True
          Text            =   "Style variations for the second language:"
          TextAlign       =   0
          TextColor       =   &c00000000
@@ -1459,6 +1494,7 @@ Begin Window StyleWindow
          Selectable      =   False
          TabIndex        =   5
          TabPanelIndex   =   0
+         TabStop         =   True
          Text            =   "Usage: append -L in section name [V1-L]"
          TextAlign       =   0
          TextColor       =   &c00000000
@@ -1927,8 +1963,8 @@ End
 		    edt_multilanguage_size.SetValue 70 'standard value
 		  ElseIf Me.Value < 10 Then
 		    edt_multilanguage_size.SetValue 10
-		  ElseIf Me.Value > 100 Then
-		    edt_multilanguage_size.SetValue 100
+		  ElseIf Me.Value > 200 Then
+		    edt_multilanguage_size.SetValue 200
 		  End If
 		  workingStyle.MultilanguageSize = Me.Value
 		End Sub
@@ -1981,7 +2017,6 @@ End
 			"7 - Global Floating Window"
 			"8 - Sheet Window"
 			"9 - Metal Window"
-			"10 - Drawer Window"
 			"11 - Modeless Dialog"
 		#tag EndEnumValues
 	#tag EndViewProperty

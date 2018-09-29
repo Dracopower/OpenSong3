@@ -960,7 +960,7 @@ Liedteilmarken im Textfeld des Liededitors erscheinen.
     </fonts_and_alignment>
     <bilingual caption="Zweisprachige Präsentation">
       <style caption="Für zweite Sprache gleicher Stil aber"/>
-      <size caption="Größe [10-100%]"/>
+      <size caption="Größe [10-200%]"/>
       <color caption="Farbe"/>
       <note caption="Verwendung: -L bei Abschnitts-Namen anhängen z.B. [V1-L]"/>
     </bilingual>

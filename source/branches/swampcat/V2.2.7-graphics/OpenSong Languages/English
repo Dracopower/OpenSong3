@@ -592,6 +592,8 @@
       <blank_prev caption="Previous slide"/>
       <blank_next caption="Next slide"/>
       <initial_mode caption="Initial Presentation Mode"/>
+      <blank_is_slide_change caption="Empty lyric line indicates slide change"
+        helptag="If checked, an empty line in the lyrics (no text) indicates a slide change. Acts like using &quot;||&quot; on the line. Simulates EasyWorship-style behavior."/>
     </style>
     <alerts caption="Alerts">
       <font caption="Font"/>
@@ -903,7 +905,7 @@ If the presentation field is empty, then the Presenter will order the slides bas
     </fonts_and_alignment>
     <bilingual caption="Bilingual presentation">
       <style caption="Style variations for the second language:"/>
-      <size caption="Size [10-100%]"/>
+      <size caption="Size [10-200%]"/>
       <color caption="Color"/>
       <note caption="Usage: append -L in section name e.g. [V1-L]"/>
     </bilingual>
