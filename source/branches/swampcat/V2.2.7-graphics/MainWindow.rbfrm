@@ -15255,6 +15255,71 @@ End
 		    
 		End Sub
 	#tag EndEvent
+	#tag Event
+		Function ConstructContextualMenu(base as MenuItem, x as Integer, y as Integer) As Boolean
+		  //++
+		  // Allow certain actions on the selected song
+		  //--
+		  If Me.SelCount <> 1 Then // Only allow this if a single song is selected
+		    Return True
+		  End If
+		  
+		  Dim mi As MenuItem
+		  
+		  mi = New MenuItem
+		  mi.Text = App.T.Translate("songs_mode/selected_song/rename/@caption")
+		  base.Append mi
+		  
+		  mi = New MenuItem
+		  mi.Text = App.T.Translate("songs_mode/selected_song/move/@caption")
+		  base.Append mi
+		  
+		  mi = New MenuItem
+		  mi.Text = App.T.Translate("songs_mode/selected_song/delete/@caption")
+		  base.Append mi
+		  
+		  mi = New MenuItem
+		  mi.Text = App.T.Translate("songs_mode/selected_song/export/@caption")
+		  base.Append mi
+		  
+		  mi = New MenuItem
+		  mi.Text = App.T.Translate("songs_mode/selected_song/copy/@caption")
+		  base.Append mi
+		  
+		  Return True
+		  
+		End Function
+	#tag EndEvent
+	#tag Event
+		Function ContextualMenuAction(hitItem as MenuItem) As Boolean
+		  Dim ret As Boolean = False
+		  Select Case hitItem.Text
+		    
+		  Case App.T.Translate("songs_mode/selected_song/rename/@caption")
+		    ActionSongRename
+		    ret = True
+		    
+		  Case App.T.Translate("songs_mode/selected_song/move/@caption")
+		    ActionSongMove
+		    ret = True
+		    
+		  Case App.T.Translate("songs_mode/selected_song/delete/@caption")
+		    ActionSongRemove
+		    ret = True
+		    
+		  Case App.T.Translate("songs_mode/selected_song/export/@caption")
+		    ActionSongExport
+		    ret = True
+		    
+		  Case App.T.Translate("songs_mode/selected_song/copy/@caption")
+		    ActionSongCopy
+		    ret = True
+		    
+		  End Select
+		  
+		  Return ret
+		End Function
+	#tag EndEvent
 #tag EndEvents
 #tag Events edt_songs_curr_folder
 	#tag Event
