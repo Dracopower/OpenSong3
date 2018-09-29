@@ -1484,7 +1484,7 @@ Module SongML
 		          '++JRC: Same Here
 		          line = StringUtils.Trim(Mid(line, 2), StringUtils.WhiteSpaces)
 		          '--
-		          If Len(line) > 0 Then
+		          If Len(line) > 0 Or SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "style/@blank_is_slide_change") Then
 		            If dict.HasKey(subsection) Then
 		              dict.Value(subsection) = dict.Value(subsection) + Chr(10) + line
 		            Else
@@ -2199,6 +2199,14 @@ Module SongML
 		        separationMark = SetML.SeparationMarkBilingual
 		      Else
 		        separationMark = ""
+		      End If
+		      
+		      //
+		      // Regularize Line Endings
+		      //
+		      dict.Value(section) = ReplaceAll(dict.Value(section), EndOfLine.Windows, EndOfLine.UNIX)
+		      If SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "style/@blank_is_slide_change") Then
+		        dict.Value(section) = ReplaceAll(dict.Value(section), EndOfLine.UNIX + EndOfLine.UNIX, EndOfLine.UNIX + "||")
 		      End If
 		      
 		      sub_sections = Split(dict.Value(section), "||")
