@@ -104,7 +104,7 @@ Inherits Canvas
 
 	#tag Method, Flags = &h21
 		Private Sub adjustAttachedControls(d as integer, fromBehave as boolean = false)
-		  dim i, pos, size as integer
+		  Dim i, pos, Size As Integer
 		  dim s as string
 		  dim vis as boolean
 		  
@@ -195,7 +195,9 @@ Inherits Canvas
 		      
 		      #if enableDebugCanvasCode then
 		        if debugCanvas <> nil then debugCanvas.markControl attachedControl(i)
-		      #endif
+		      #EndIf
+		      
+		      RaiseEvent AttachedControlChanged(attachedControl(i))
 		      
 		    end if 'attachedControl(i) <> nil
 		    
@@ -1407,7 +1409,9 @@ Inherits Canvas
 		  
 		  if isVertical and c isA PopupMenu then return true
 		  
-		  if c isA GroupBox or c isA PagePanel or c isA TabPanel then return true
+		  If c IsA GroupBox Or c IsA PagePanel Or c IsA TabPanel Then Return True
+		  
+		  If c IsA HTMLViewer Then Return True
 		  
 		  'if c isA SpriteSurface  then return true
 		  
@@ -1519,6 +1523,10 @@ Inherits Canvas
 
 
 	#tag Hook, Flags = &h0
+		Event AttachedControlChanged(c As RectControl)
+	#tag EndHook
+
+	#tag Hook, Flags = &h0
 		Event Close()
 	#tag EndHook
 
@@ -1538,7 +1546,7 @@ Inherits Canvas
 		Event MouseUp(X as Integer, Y as Integer)
 	#tag EndHook
 
-	#tag Hook, Flags = &h0
+	#tag Hook, Flags = &h0, Description = 5468652073706C697474657220686173206265656E206D6F7665642E2054686520706172616D6574657220696E64696361746573207468652064697374616E636520696E20706978656C732E204E656761746976652069732075702F6C6566742C20706F73697469766520697320646F776E2F72696768742E
 		Event Moved(Distance as Integer)
 	#tag EndHook
 
