@@ -490,6 +490,7 @@ Protected Module FileUtils
 		  App.DebugWriter.Write "FileUtils.RelativePathToFolderItem: parent is '" + parent.URLPath + "'", 5
 		  App.DebugWriter.Write "FileUtils.RelativePathToFolderItem: path is '" + path + "'", 5
 		  path = ReplaceAll(path, "\", "/")
+		  path = ReplaceAll(path, ":", "/")
 		  App.DebugWriter.Write "FileUtils.RelativePathToFolderItem: path after ReplaceAll '" + path + "'", 5
 		  count = CountFields(path, "/")
 		  App.DebugWriter.Write "FileUtils.RelativePathToFolderItem: count of leaf nodes is " + CStr(count), 5

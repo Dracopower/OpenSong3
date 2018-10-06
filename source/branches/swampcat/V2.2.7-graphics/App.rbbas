@@ -1083,17 +1083,30 @@ Inherits Application
 	#tag Method, Flags = &h0
 		Sub MaximizeInControlScreen(win As Window)
 		  Dim controlScreen As Integer
+		  Dim theScreen As OpenSongUtils.OS_Screen
 		  If App.MyPresentSettings <> Nil Then
 		    controlScreen = SmartML.GetValueN(App.MyPresentSettings.DocumentElement, "monitors/@control") - 1
 		    If controlScreen < 0 Or controlScreen + 1 > OSScreenCount() Then controlScreen = 0
 		  Else
 		    controlScreen = 0
 		  End If
+		  theScreen = OSScreen(controlScreen)
 		  
-		  win.Width = OSScreen(controlScreen).AvailableWidth - 40
-		  win.Height = OSScreen(controlScreen).AvailableHeight - 115
-		  win.Top = OSScreen(controlScreen).AvailableTop + (OSScreen(controlScreen).AvailableHeight  - win.Height) / 2 + 10
-		  win.Left = OSScreen(controlScreen).AvailableLeft + (OSScreen(controlScreen).AvailableWidth - win.Width) / 2
+		  #If RBVersion < 2012 Or TargetLinux
+		    win.Width = theScreen.AvailableWidth - 40
+		    win.Height = theScreen.AvailableHeight - 115
+		    win.Top = theScreen.AvailableTop + (theScreen.AvailableHeight - win.Height) / 2 + 10
+		    win.Left = theScreen.AvailableLeft + (theScreen.AvailableWidth - win.Width) / 2
+		  #Else
+		    Dim b As New REALbasic.Rect
+		    b.Width = theScreen.AvailableWidth
+		    b.Height = theScreen.AvailableHeight
+		    b.Top = theScreen.AvailableTop
+		    b.Left = theScreen.AvailableLeft
+		    win.Bounds = b
+		  #EndIf
+		  
+		  
 		End Sub
 	#tag EndMethod
 
