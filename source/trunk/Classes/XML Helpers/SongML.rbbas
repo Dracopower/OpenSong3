@@ -1423,6 +1423,28 @@ Module SongML
 	#tag EndMethod
 
 	#tag Method, Flags = &h1
+		Protected Sub LyricsToLines(lyrics As String, arr() As String)
+		  Dim st, x, strlen As Integer
+		  Dim c As String
+		  Redim arr(0)
+		  
+		  strlen = Len(lyrics)
+		  If strlen <= 0 Then Exit
+		  
+		  st = 1
+		  For x = 1 To strlen
+		    c = Mid(lyrics, x, 1)
+		    If c = Chr(10) Then
+		      arr.Append RTrim(Mid(lyrics, st, x-st))
+		      st = x + 1
+		    End If
+		  Next x
+		  x = x + 1
+		  If st <= strlen Then arr.Append RTrim(Mid(lyrics, st, x-st))
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h1
 		Protected Sub LyricsToLines(songDoc As XmlDocument, arr() As String)
 		  Dim st, x, strlen As Integer
 		  Dim c, lyrics As String
@@ -1484,7 +1506,7 @@ Module SongML
 		          '++JRC: Same Here
 		          line = StringUtils.Trim(Mid(line, 2), StringUtils.WhiteSpaces)
 		          '--
-		          If Len(line) > 0 Then
+		          If Len(line) > 0 Or SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "style/@blank_is_slide_change") Then
 		            If dict.HasKey(subsection) Then
 		              dict.Value(subsection) = dict.Value(subsection) + Chr(10) + line
 		            Else
@@ -1965,7 +1987,9 @@ Module SongML
 		  s = s + "  <div id=""presentation"">" + App.T.Translate("general_song_editor/presentation/@caption").HTMLEntityEncode + " " + SmartML.GetValue(songElement, "presentation").HTMLEntityEncode + "</div>" + EndOfLine
 		  '--
 		  Dim slices(0), lines(0) As String
-		  LyricsToLines songElement.OwnerDocument, lines
+		  Dim lyrics As String
+		  lyrics = SmartML.GetValue(songElement, "lyrics")
+		  LyricsToLines lyrics, lines
 		  Dim currSlice, currVerse, lineCount, sliceCount As Integer
 		  
 		  s = s + "<br/>" + EndOfLine
@@ -2111,6 +2135,17 @@ Module SongML
 		  Dim slides, slide As XmlNode
 		  Dim order As String
 		  Dim SubtitleText As String
+		  Dim htmlCode As String
+		  Dim songXmlClone As XmlNode
+		  Dim htmlOptions As New HTMLExportOptions
+		  
+		  htmlOptions.EmbedCSS = True
+		  htmlOptions.StyleSheet = New FolderItem(App.AppFolder.Child("OpenSong Settings").Child("style.css"))
+		  songXmlClone = songElement.Clone(True)
+		  htmlCode = ToHTML(songXmlClone, htmlOptions)
+		  songXmlClone = Nil
+		  songXmlClone = songElement.OwnerDocument.CreateElement("htmldata")
+		  songXmlClone.AppendChild songElement.OwnerDocument.CreateCDATASection(htmlCode)
 		  
 		  ' This routine makes an in-place change of a song XML encoding to slides for use in a set.  The
 		  'XML node that we are passed is modified in-place instead of creating a new one.  That way,
@@ -2120,6 +2155,7 @@ Module SongML
 		  songElement.Name = "slide_group"
 		  SmartML.SetValue songElement, "@name", SmartML.GetValue(songElement, "title", True)
 		  SmartML.SetValue songElement, "@type", "song"
+		  songElement.AppendChild songXmlClone
 		  
 		  Call SmartML.InsertChild(songElement, "subtitle", 0)
 		  
@@ -2182,7 +2218,7 @@ Module SongML
 		            End If
 		            
 		            Dim file As FolderItem = GetFolderItem(sfile)
-		            If Not file.Exists() Then
+		            If file = Nil Or Not file.Exists() Then
 		              InputBox.Message App.T.Translate("errors/fileutils/filenotfound", SmartML.GetValue(xbackground, "filename"))
 		              
 		              xbacks.RemoveChild(xbackground)
@@ -2199,6 +2235,14 @@ Module SongML
 		        separationMark = SetML.SeparationMarkBilingual
 		      Else
 		        separationMark = ""
+		      End If
+		      
+		      //
+		      // Regularize Line Endings
+		      //
+		      dict.Value(section) = ReplaceAll(dict.Value(section), EndOfLine.Windows, EndOfLine.UNIX)
+		      If SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "style/@blank_is_slide_change") Then
+		        dict.Value(section) = ReplaceAll(Trim(dict.Value(section)), EndOfLine.UNIX + EndOfLine.UNIX, EndOfLine.UNIX + "||")  
 		      End If
 		      
 		      sub_sections = Split(dict.Value(section), "||")

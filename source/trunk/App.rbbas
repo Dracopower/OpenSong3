@@ -1083,17 +1083,30 @@ Inherits Application
 	#tag Method, Flags = &h0
 		Sub MaximizeInControlScreen(win As Window)
 		  Dim controlScreen As Integer
+		  Dim theScreen As OpenSongUtils.OS_Screen
 		  If App.MyPresentSettings <> Nil Then
 		    controlScreen = SmartML.GetValueN(App.MyPresentSettings.DocumentElement, "monitors/@control") - 1
 		    If controlScreen < 0 Or controlScreen + 1 > OSScreenCount() Then controlScreen = 0
 		  Else
 		    controlScreen = 0
 		  End If
+		  theScreen = OSScreen(controlScreen)
 		  
-		  win.Width = OSScreen(controlScreen).AvailableWidth - 40
-		  win.Height = OSScreen(controlScreen).AvailableHeight - 115
-		  win.Top = OSScreen(controlScreen).AvailableTop + (OSScreen(controlScreen).AvailableHeight  - win.Height) / 2 + 10
-		  win.Left = OSScreen(controlScreen).AvailableLeft + (OSScreen(controlScreen).AvailableWidth - win.Width) / 2
+		  #If RBVersion < 2012 Or TargetLinux
+		    win.Width = theScreen.AvailableWidth - 40
+		    win.Height = theScreen.AvailableHeight - 115
+		    win.Top = theScreen.AvailableTop + (theScreen.AvailableHeight - win.Height) / 2 + 10
+		    win.Left = theScreen.AvailableLeft + (theScreen.AvailableWidth - win.Width) / 2
+		  #Else
+		    Dim b As New REALbasic.Rect
+		    b.Width = theScreen.AvailableWidth
+		    b.Height = theScreen.AvailableHeight
+		    b.Top = theScreen.AvailableTop
+		    b.Left = theScreen.AvailableLeft
+		    win.Bounds = b
+		  #EndIf
+		  
+		  
 		End Sub
 	#tag EndMethod
 
@@ -1583,7 +1596,7 @@ Inherits Application
 		  
 		  If version < 1.1 Then
 		    // these might accidentally have leeked from their internal use during presentation into the settings
-		    // if they did, they may migrate by style settings into songs or set items and disrupt proper style handling 
+		    // if they did, they may migrate by style settings into songs or set items and disrupt proper style handling
 		    SmartML.RemoveNode(settings, "default_style/@index")
 		    SmartML.RemoveNode(settings, "scripture_style/@index")
 		  End If
@@ -1751,13 +1764,17 @@ Inherits Application
 			    #EndIf
 			  #Else
 			    #Pragma BreakOnExceptions Off
-			    Try
-			      m_AppFolder = GetFolderItem(Xojo.IO.SpecialFolder.GetResource("OpenSong Defaults").Parent.Path, FolderItem.PathTypeShell)
-			    Catch rtex
-			      System.DebugLog "App.Open: GetResource failed due to '" + rtex.Reason + "'"
-			      'Use the old way, maybe it's in the same folder as the executable
-			      m_AppFolder = GetFolderItem("")
-			    End Try
+			    #If XojoVersion > 2015.02
+			      Try
+			        m_AppFolder = GetFolderItem(Xojo.IO.SpecialFolder.GetResource("OpenSong Defaults").Parent.Path, FolderItem.PathTypeShell)
+			      Catch rtex
+			        System.DebugLog "App.Open: GetResource failed due to '" + rtex.Reason + "'"
+			        'Use the old way, maybe it's in the same folder as the executable
+			    #EndIf
+			    m_AppFolder = GetFolderItem("")
+			    #if XojoVersion > 2015.02
+			      End Try
+			    #EndIf
 			    #Pragma BreakOnExceptions Default
 			  #EndIf
 			  

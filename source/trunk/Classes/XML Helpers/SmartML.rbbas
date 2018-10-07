@@ -150,14 +150,24 @@ Protected Module SmartML
 		  
 		  If thePlatform <> SmartML.Platform.Unknown Then Return thePlatform
 		  
-		  #If TargetWindows
-		    thePlatform = SmartML.Platform.Windows
-		  #ElseIf TargetMacOS
-		    thePlatform = SmartML.Platform.macOS
-		  #ElseIf TargetARM
-		    thePlatform = SmartML.Platform.LinuxARM
-		  #ElseIf TargetLinux
-		    thePlatform = SmartML.Platform.Linux
+		  #if XojoVersion < 2015.04
+		    #If TargetWin32
+		      thePlatform = SmartML.Platform.Windows
+		    #ElseIf TargetMacOS
+		      thePlatform = SmartML.Platform.macOS
+		    #ElseIf TargetLinux
+		      thePlatform = SmartML.Platform.Linux
+		    #endif
+		  #Else
+		    #if TargetWindows
+		      thePlatform = SmartML.Platform.Windows
+		    #ElseIf TargetMacOS
+		      thePlatform = SmartML.Platform.macOS
+		    #ElseIf TargetARM
+		      thePlatform = SmartML.Platform.LinuxARM
+		    #ElseIf TargetLinux
+		      thePlatform = SmartML.Platform.Linux
+		    #EndIf
 		  #EndIf
 		  
 		  Return thePlatform
@@ -297,7 +307,7 @@ Protected Module SmartML
 		  // does not exist, this will return Nil.
 		  //
 		  // See companion SetValueFI for a detailed description of what is stored.
-		  // 
+		  //
 		  // Since paths and FolderItem SaveInfo are not portable across platforms, a path saved on
 		  // one platform may not work if the XML is read on another platform. In this case, a
 		  // PlatformNotSupportedException will be raised with the path returned as the
@@ -320,7 +330,7 @@ Protected Module SmartML
 		  Dim sourcePlatformInt As Integer
 		  Dim completeNode As XmlNode
 		  
-		  #If DebugBuild 
+		  #If DebugBuild
 		    Dim xPath As String
 		    xPath = xnode.xPath
 		    If childPath.Left(1) <> "/" Then xPath = xPath + "/"
@@ -373,9 +383,17 @@ Protected Module SmartML
 		    fRelative = App.AppFolder
 		    
 		  Case SmartML.RelativePath.AppSupport
-		    #If TargetWindows
-		      fRelative = SpecialFolder.ApplicationData.Child("OpenSong")
-		    #ElseIf TargetMacOS
+		    #If XojoVersion < 2015.04
+		      #If TargetWin32
+		        fRelative = SpecialFolder.ApplicationData.Child("OpenSong")
+		      #Endif
+		    #else
+		      #If TargetWindows
+		        fRelative = SpecialFolder.ApplicationData.Child("OpenSong")
+		      #endIf
+		    #endIf
+		    
+		    #If TargetMacOS
 		      fRelative = SpecialFolder.ApplicationData.Child("org.opensong.opensong")
 		    #ElseIf TargetLinux
 		      fRelative = SpecialFolder.ApplicationData.Child("opensong")
@@ -733,13 +751,13 @@ Protected Module SmartML
 		  // Save a FolderItem in a somewhat intelligent way
 		  // Prior to this, the FolderItem was stored as a String using the AbsolutePath.
 		  // If the target XML node is an Attribute, this behavior is maintained for backward compatibility.
-		  // 
-		  // This creates numerous issues for xplat usage, and was complicated by the 
+		  //
+		  // This creates numerous issues for xplat usage, and was complicated by the
 		  // deprecation of AbsolutePath by Xojo as of 2015r1.
 		  // This uses a more "Xojo-like" way and increases flexibility by formalizing
 		  // a way to store a relative path to one of the standard folders.
 		  // Here is what we save with this function:
-		  // 1. Text node with AbsolutePath (for backward compatibility; eventually will have to 
+		  // 1. Text node with AbsolutePath (for backward compatibility; eventually will have to
 		  //      change to NativePath when the deprecation is removed totally...see @PathType)
 		  // 2. SaveInfo: Base64 encoded SaveInfo string for the target
 		  // 3. @RelativeTo: Integer version of the SmartML.RelativePath enum
@@ -779,7 +797,7 @@ Protected Module SmartML
 		    created = (targetNode <> Nil)
 		  End If
 		  
-		  // 
+		  //
 		  // Handle standard XmlNode
 		  //
 		  targetNode.SetAttribute(kPathType, CStr(FolderItem.PathTypeAbsolute))
@@ -805,9 +823,17 @@ Protected Module SmartML
 		    saveMode = FolderItem.SaveInfoRelativeMode
 		    
 		  Case SmartML.RelativePath.AppSupport
-		    #If TargetWindows
-		      relativeFolder = SpecialFolder.ApplicationData.Child("OpenSong")
-		    #ElseIf TargetMacOS
+		    #if XojoVersion < 2015.04
+		      #if TargetWin32
+		        relativeFolder = SpecialFolder.ApplicationData.Child("OpenSong")
+		      #endif
+		    #else
+		      #If TargetWindows
+		        relativeFolder = SpecialFolder.ApplicationData.Child("OpenSong")
+		      #endif
+		    #Endif
+		    
+		    #If TargetMacOS
 		      relativeFolder = SpecialFolder.ApplicationData.Child("org.opensong.opensong")
 		    #ElseIf TargetLinux
 		      relativeFolder = SpecialFolder.ApplicationData.Child("opensong")
@@ -1102,7 +1128,7 @@ Protected Module SmartML
 		    xSib = xSib.PreviousSibling
 		  Wend
 		  
-		  myPath = parentPath + "/" 
+		  myPath = parentPath + "/"
 		  If xnode.Type = XmlNodeType.ATTRIBUTE_NODE Then
 		    myPath = myPath + "@"
 		  End If

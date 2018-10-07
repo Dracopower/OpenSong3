@@ -117,8 +117,6 @@ Inherits Canvas
 		    Return
 		  End If
 		  
-		  If g = Nil Then g = Graphics
-		  
 		  If Not Enabled Then
 		    IsMouseDown = False
 		    IsMouseOver = False
@@ -255,7 +253,6 @@ Inherits Canvas
 		  Dim ShadowOffset as Integer
 		  
 		  ShadowOffset = Ceil(ShadowWidth / 2)
-		  If g = Nil Then g = Graphics
 		  
 		  If Not Enabled Then
 		    IsMouseDown = False
@@ -497,9 +494,6 @@ Inherits Canvas
 		  Icon.Mask.Graphics.DrawPicture mask, 0, 0
 		  SetGrayIcon pic, mask
 		  Refresh
-		  
-		  Catch noe As NilObjectException
-		    System.DebugLog CurrentMethodName + " for " + Me.Name + ": NOE"
 		End Sub
 	#tag EndMethod
 
@@ -653,7 +647,6 @@ Inherits Canvas
 			Group="Behavior"
 			InitialValue="True"
 			Type="Boolean"
-			EditorType="Boolean"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="HasFocus"

@@ -55,7 +55,6 @@ Begin Window PresentWindow Implements ScriptureReceiver
       Width           =   300
    End
    Begin Timer timerAdvance
-      Enabled         =   True
       Index           =   -2147483648
       InitialParent   =   ""
       LockedInPosition=   False
@@ -65,7 +64,6 @@ Begin Window PresentWindow Implements ScriptureReceiver
       TabPanelIndex   =   0
    End
    Begin Timer timerTransition
-      Enabled         =   True
       Index           =   -2147483648
       InitialParent   =   ""
       LockedInPosition=   False
@@ -75,7 +73,6 @@ Begin Window PresentWindow Implements ScriptureReceiver
       TabPanelIndex   =   0
    End
    Begin SnapshotThread m_SnapshotThread
-      Enabled         =   True
       Index           =   -2147483648
       InitialParent   =   ""
       LockedInPosition=   False
@@ -85,7 +82,6 @@ Begin Window PresentWindow Implements ScriptureReceiver
       TabPanelIndex   =   0
    End
    Begin Timer timerClick
-      Enabled         =   True
       Index           =   -2147483648
       InitialParent   =   ""
       LockedInPosition=   False
@@ -2852,7 +2848,7 @@ End
 	#tag Event
 		Sub Paint(g As Graphics, areas() As REALbasic.Rect)
 		  If Not Globals.Status_Presentation Then Return
-		  
+		  #Pragma BreakOnExceptions False
 		  '#if DebugBuild then
 		  'App.DebugWriter.Write("PresentWindow.cnvSlide.Paint: Enter")
 		  '#endif
@@ -2876,7 +2872,7 @@ End
 		  '#if DebugBuild Then
 		  'App.DebugWriter.Write("PresentWindow.cnvSlide.Paint: Exit")
 		  '#endif
-		  
+		  #Pragma BreakOnExceptions Default
 		  //++
 		  // EMP: handle any exceptions by ignoring them.
 		  // This corrects an issue seen when changing the SButton style
@@ -2886,6 +2882,7 @@ End
 		    App.DebugWriter.Write("PresentWindow.cnvSlide.Paint: Got an exception: " +_
 		    RuntimeException(ex).Message, 1)
 		    Return
+		    #Pragma BreakOnExceptions Default
 		End Sub
 	#tag EndEvent
 #tag EndEvents
