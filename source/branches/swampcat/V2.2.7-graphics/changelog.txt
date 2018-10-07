@@ -1,4 +1,5 @@
-﻿* Add right-click menu options to the song list for common actions.
+﻿* Save the name of the set and load that set when switching to Sets mode.
+* Add right-click menu options to the song list for common actions.
 * Add new presentation option to use an empty lyric line as a slide change (like using "||" on the line). This mimics the behavior of EasyWorship and other worship presentation utilities.
 * Fix issue where slide body text would get wrapped twice resulting in poor visual appearance including text out of slide boundary.
 * Internal changes to accommodate changes in Xojo language as of Xojo 2018r3.
