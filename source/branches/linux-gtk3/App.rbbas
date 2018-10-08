@@ -68,7 +68,6 @@ Inherits Application
 
 	#tag Event
 		Sub Open()
-		  
 		  Dim OK As Boolean
 		  'Profiler.EnableProfiler
 		  Profiler.BeginProfilerEntry "App::Open"
@@ -78,6 +77,12 @@ Inherits Application
 		  'for a FINAL relase
 		  ReleaseCandidate = 0
 		  '--
+		  
+		  #If TargetLinux Then
+		    modGTK3.initGtkEntryFix
+		    modGTK3.initGtkWidgetHeightFix
+		    modGTK3.InitGlobalGTK3Style
+		  #Endif
 		  
 		  m_statusNotifiers = New Dictionary
 		  

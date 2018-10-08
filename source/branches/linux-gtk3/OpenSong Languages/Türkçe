@@ -1280,7 +1280,7 @@ Biçemini değiştirmek için slaytı tıklayın.</body>
     <web>Daha ayrıntılı bilgi için http://www.opensong.org/ sitesine gidin.</web>
     <translating>OpenSong'u çevirmek için, 'OpenSong Languages' klasöründeki 'English' dosyasını kopyalayın ve adını değiştirin. Yeni dosyada biçim imi ve öznitelik adları dışındaki her şeyi çevirin. Dosyayı Source Forge OpenSong projesi sayfasındaki 'Patches' Tracker bölümüne yükleyin veya opensong-translate@lists.sourceforge.net adresine gönderin. Çeviri resmi sürüme eklenecektir.</translating>
     <created_with_opensong>OpenSong ile yaratıldı</created_with_opensong>
-    <sources>OpenSong StringUtils (http://www.strout.net/info/coding/rb/) HTMLEntityEncode (http://sourceforge.jp/project/php-i18n/) REALbasic Örnekleri (http://www.declaresub.com/Articles/HowDoI.html) iDeclare (http://www.declaresub.com/iDeclare) SmartSplitter by Harry Hooie (http://www.harryhooie.com/source/) den kaynak kodları içermektedir. Arka plan klasöründeki PuffyClouds1.jpg imge dosyası FreeStockPhotos.com telifidir. Açılış ekranı ba1969 tarafından yaratılan stock.xchng imgeleri içermektedir.
+    <sources>OpenSong StringUtils (http://www.strout.net/info/coding/rb/) HTMLEntityEncode (http://sourceforge.jp/project/php-i18n/) REALbasic Örnekleri (http://www.declaresub.com/Articles/HowDoI.html) iDeclare (http://www.declaresub.com/iDeclare) SmartSplitter by Harry Hooie (http://www.harryhooie.com/source/) modGtk3 by Jim McKay (https://bitbucket.org/pidog/modgtk3) den kaynak kodları içermektedir. Arka plan klasöründeki PuffyClouds1.jpg imge dosyası FreeStockPhotos.com telifidir. Açılış ekranı ba1969 tarafından yaratılan stock.xchng imgeleri içermektedir.
     </sources>
   </about>
 
