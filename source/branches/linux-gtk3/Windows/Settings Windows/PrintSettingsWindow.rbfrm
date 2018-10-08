@@ -7,7 +7,7 @@ Begin Window PrintSettingsWindow
    Frame           =   1
    FullScreen      =   False
    HasBackColor    =   False
-   Height          =   3.8e+2
+   Height          =   380
    ImplicitInstance=   True
    LiveResize      =   False
    MacProcID       =   0
@@ -23,7 +23,7 @@ Begin Window PrintSettingsWindow
    Resizeable      =   False
    Title           =   "Print Settings"
    Visible         =   True
-   Width           =   6.76e+2
+   Width           =   676
    Begin PushButton btn_ok
       AutoDeactivate  =   True
       Bold            =   False
@@ -148,7 +148,7 @@ Begin Window PrintSettingsWindow
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   15
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "can_print_fonts"
@@ -211,7 +211,7 @@ Begin Window PrintSettingsWindow
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   15
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "can_print_fonts"
@@ -274,7 +274,7 @@ Begin Window PrintSettingsWindow
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   15
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "can_print_fonts"
@@ -337,7 +337,7 @@ Begin Window PrintSettingsWindow
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   15
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "can_print_fonts"
@@ -400,7 +400,7 @@ Begin Window PrintSettingsWindow
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   15
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "can_print_fonts"
@@ -463,7 +463,7 @@ Begin Window PrintSettingsWindow
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   15
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "can_print_fonts"
@@ -555,7 +555,7 @@ Begin Window PrintSettingsWindow
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   35
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "can_print_fonts"
@@ -925,7 +925,7 @@ Begin Window PrintSettingsWindow
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   15
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "can_print_fonts"
@@ -947,7 +947,7 @@ Begin Window PrintSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10
             TextUnit        =   0
-            Top             =   58
+            Top             =   54
             Transparent     =   False
             Underline       =   False
             Visible         =   True
@@ -959,7 +959,7 @@ Begin Window PrintSettingsWindow
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   15
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "can_print_fonts"
@@ -981,7 +981,7 @@ Begin Window PrintSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10
             TextUnit        =   0
-            Top             =   80
+            Top             =   77
             Transparent     =   False
             Underline       =   False
             Visible         =   True
@@ -993,7 +993,7 @@ Begin Window PrintSettingsWindow
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   15
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "can_print_fonts"
@@ -1015,7 +1015,7 @@ Begin Window PrintSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10
             TextUnit        =   0
-            Top             =   132
+            Top             =   129
             Transparent     =   False
             Underline       =   False
             Visible         =   True
@@ -1027,7 +1027,7 @@ Begin Window PrintSettingsWindow
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   15
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "can_print_fonts"
@@ -1049,7 +1049,7 @@ Begin Window PrintSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10
             TextUnit        =   0
-            Top             =   187
+            Top             =   184
             Transparent     =   False
             Underline       =   False
             Visible         =   True
@@ -1061,7 +1061,7 @@ Begin Window PrintSettingsWindow
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   15
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "can_print_fonts"
@@ -1083,7 +1083,7 @@ Begin Window PrintSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10
             TextUnit        =   0
-            Top             =   243
+            Top             =   240
             Transparent     =   False
             Underline       =   False
             Visible         =   True
@@ -1095,7 +1095,7 @@ Begin Window PrintSettingsWindow
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   15
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "can_print_fonts"
@@ -1117,7 +1117,7 @@ Begin Window PrintSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10
             TextUnit        =   0
-            Top             =   106
+            Top             =   103
             Transparent     =   False
             Underline       =   False
             Visible         =   True
@@ -1129,7 +1129,7 @@ Begin Window PrintSettingsWindow
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   15
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "can_print_fonts"
@@ -1151,7 +1151,7 @@ Begin Window PrintSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10
             TextUnit        =   0
-            Top             =   158
+            Top             =   155
             Transparent     =   False
             Underline       =   False
             Visible         =   True
@@ -1163,7 +1163,7 @@ Begin Window PrintSettingsWindow
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   15
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "can_print_fonts"
@@ -1185,7 +1185,7 @@ Begin Window PrintSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10
             TextUnit        =   0
-            Top             =   213
+            Top             =   210
             Transparent     =   False
             Underline       =   False
             Visible         =   True
@@ -1197,7 +1197,7 @@ Begin Window PrintSettingsWindow
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   15
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "can_print_fonts"
@@ -1219,7 +1219,7 @@ Begin Window PrintSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10
             TextUnit        =   0
-            Top             =   269
+            Top             =   266
             Transparent     =   False
             Underline       =   False
             Visible         =   True
@@ -1258,7 +1258,7 @@ Begin Window PrintSettingsWindow
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   15
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "can_print_layout"
@@ -1280,7 +1280,7 @@ Begin Window PrintSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10
             TextUnit        =   0
-            Top             =   55
+            Top             =   48
             Transparent     =   False
             Underline       =   False
             Visible         =   True
@@ -1298,7 +1298,7 @@ Begin Window PrintSettingsWindow
             DataSource      =   ""
             Enabled         =   True
             Format          =   ""
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "can_print_layout"
@@ -1335,7 +1335,7 @@ Begin Window PrintSettingsWindow
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "can_print_layout"
@@ -1367,7 +1367,7 @@ Begin Window PrintSettingsWindow
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "can_print_layout"
@@ -1401,7 +1401,7 @@ Begin Window PrintSettingsWindow
          DoubleBuffer    =   False
          Enabled         =   True
          EraseBackground =   True
-         Height          =   245
+         Height          =   271
          HelpTag         =   ""
          Index           =   -2147483648
          InitialParent   =   "tab_main_tabs"
@@ -1425,7 +1425,7 @@ Begin Window PrintSettingsWindow
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   15
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "can_print_margins"
@@ -1465,7 +1465,7 @@ Begin Window PrintSettingsWindow
             Enabled         =   True
             EnforceRange    =   False
             Format          =   ""
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             HideSelection   =   True
             Index           =   -2147483648
@@ -1496,7 +1496,7 @@ Begin Window PrintSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10
             TextUnit        =   0
-            Top             =   61
+            Top             =   68
             Underline       =   False
             UseFocusRing    =   True
             Visible         =   True
@@ -1508,7 +1508,7 @@ Begin Window PrintSettingsWindow
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   15
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "can_print_margins"
@@ -1548,7 +1548,7 @@ Begin Window PrintSettingsWindow
             Enabled         =   True
             EnforceRange    =   False
             Format          =   ""
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             HideSelection   =   True
             Index           =   -2147483648
@@ -1579,7 +1579,7 @@ Begin Window PrintSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10
             TextUnit        =   0
-            Top             =   151
+            Top             =   158
             Underline       =   False
             UseFocusRing    =   True
             Visible         =   True
@@ -1591,7 +1591,7 @@ Begin Window PrintSettingsWindow
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   15
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "can_print_margins"
@@ -1631,7 +1631,7 @@ Begin Window PrintSettingsWindow
             Enabled         =   True
             EnforceRange    =   False
             Format          =   ""
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             HideSelection   =   True
             Index           =   -2147483648
@@ -1662,7 +1662,7 @@ Begin Window PrintSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10
             TextUnit        =   0
-            Top             =   256
+            Top             =   263
             Underline       =   False
             UseFocusRing    =   True
             Visible         =   True
@@ -1674,7 +1674,7 @@ Begin Window PrintSettingsWindow
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   15
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "can_print_margins"
@@ -1714,7 +1714,7 @@ Begin Window PrintSettingsWindow
             Enabled         =   True
             EnforceRange    =   False
             Format          =   ""
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             HideSelection   =   True
             Index           =   -2147483648
@@ -1745,7 +1745,7 @@ Begin Window PrintSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10
             TextUnit        =   0
-            Top             =   151
+            Top             =   158
             Underline       =   False
             UseFocusRing    =   True
             Visible         =   True
@@ -1770,7 +1770,7 @@ Begin Window PrintSettingsWindow
             Scope           =   0
             TabIndex        =   8
             TabPanelIndex   =   3
-            Top             =   86
+            Top             =   95
             TopLeftColor    =   0
             Visible         =   True
             Width           =   115
@@ -1780,7 +1780,7 @@ Begin Window PrintSettingsWindow
                DataField       =   ""
                DataSource      =   ""
                Enabled         =   True
-               Height          =   15
+               Height          =   22
                HelpTag         =   ""
                Index           =   -2147483648
                InitialParent   =   "nil_page"
@@ -1802,7 +1802,7 @@ Begin Window PrintSettingsWindow
                TextFont        =   "Arial"
                TextSize        =   10
                TextUnit        =   0
-               Top             =   121
+               Top             =   115
                Transparent     =   False
                Underline       =   False
                Visible         =   True
@@ -1820,7 +1820,7 @@ Begin Window PrintSettingsWindow
                Enabled         =   True
                EnforceRange    =   False
                Format          =   ""
-               Height          =   20
+               Height          =   22
                HelpTag         =   ""
                HideSelection   =   True
                Index           =   -2147483648
@@ -1851,7 +1851,7 @@ Begin Window PrintSettingsWindow
                TextFont        =   "Arial"
                TextSize        =   10
                TextUnit        =   0
-               Top             =   136
+               Top             =   140
                Underline       =   False
                UseFocusRing    =   True
                Visible         =   True
@@ -1863,7 +1863,7 @@ Begin Window PrintSettingsWindow
                DataField       =   ""
                DataSource      =   ""
                Enabled         =   True
-               Height          =   15
+               Height          =   22
                HelpTag         =   ""
                Index           =   -2147483648
                InitialParent   =   "nil_page"
@@ -1885,7 +1885,7 @@ Begin Window PrintSettingsWindow
                TextFont        =   "Arial"
                TextSize        =   10
                TextUnit        =   0
-               Top             =   166
+               Top             =   172
                Transparent     =   False
                Underline       =   False
                Visible         =   True
@@ -1903,7 +1903,7 @@ Begin Window PrintSettingsWindow
                Enabled         =   True
                EnforceRange    =   False
                Format          =   ""
-               Height          =   20
+               Height          =   22
                HelpTag         =   ""
                HideSelection   =   True
                Index           =   -2147483648
@@ -1934,7 +1934,7 @@ Begin Window PrintSettingsWindow
                TextFont        =   "Arial"
                TextSize        =   10
                TextUnit        =   0
-               Top             =   181
+               Top             =   194
                Underline       =   False
                UseFocusRing    =   True
                Visible         =   True
@@ -1973,7 +1973,7 @@ Begin Window PrintSettingsWindow
             Bold            =   False
             Caption         =   "Inches"
             Enabled         =   True
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "grp_page_units"
@@ -2002,7 +2002,7 @@ Begin Window PrintSettingsWindow
             Bold            =   False
             Caption         =   "cm"
             Enabled         =   True
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "grp_page_units"

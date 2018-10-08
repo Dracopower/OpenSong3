@@ -53,7 +53,6 @@ Begin Window PresentSettingsWindow
       TextSize        =   10.0
       TextUnit        =   0
       Top             =   457
-      Transparent     =   False
       Underline       =   False
       Visible         =   True
       Width           =   70
@@ -85,7 +84,6 @@ Begin Window PresentSettingsWindow
       TextSize        =   10.0
       TextUnit        =   0
       Top             =   457
-      Transparent     =   False
       Underline       =   False
       Visible         =   True
       Width           =   69
@@ -116,9 +114,8 @@ Begin Window PresentSettingsWindow
       TextSize        =   12.0
       TextUnit        =   0
       Top             =   14
-      Transparent     =   False
       Underline       =   False
-      Value           =   0
+      Value           =   1
       Visible         =   True
       Width           =   776
       Begin Label lbl_style_default_slides
@@ -127,7 +124,7 @@ Begin Window PresentSettingsWindow
          DataField       =   ""
          DataSource      =   ""
          Enabled         =   True
-         Height          =   15
+         Height          =   22
          HelpTag         =   ""
          Index           =   -2147483648
          InitialParent   =   "tab_present_settings"
@@ -143,14 +140,13 @@ Begin Window PresentSettingsWindow
          Selectable      =   False
          TabIndex        =   0
          TabPanelIndex   =   1
-         TabStop         =   True
          Text            =   "Default Slide Style:"
          TextAlign       =   1
          TextColor       =   &c00000000
          TextFont        =   "Arial"
          TextSize        =   10.0
          TextUnit        =   0
-         Top             =   65
+         Top             =   58
          Transparent     =   False
          Underline       =   False
          Visible         =   True
@@ -207,7 +203,6 @@ Begin Window PresentSettingsWindow
          Selectable      =   False
          TabIndex        =   2
          TabPanelIndex   =   1
-         TabStop         =   True
          Text            =   "(click to change)"
          TextAlign       =   1
          TextColor       =   &c00000000
@@ -226,7 +221,7 @@ Begin Window PresentSettingsWindow
          DataField       =   ""
          DataSource      =   ""
          Enabled         =   True
-         Height          =   15
+         Height          =   22
          HelpTag         =   ""
          Index           =   -2147483648
          InitialParent   =   "tab_present_settings"
@@ -242,14 +237,13 @@ Begin Window PresentSettingsWindow
          Selectable      =   False
          TabIndex        =   3
          TabPanelIndex   =   1
-         TabStop         =   True
          Text            =   "Scripture Slide Style:"
          TextAlign       =   1
          TextColor       =   &c00000000
          TextFont        =   "Arial"
          TextSize        =   10.0
          TextUnit        =   0
-         Top             =   65
+         Top             =   58
          Transparent     =   False
          Underline       =   False
          Visible         =   True
@@ -306,7 +300,6 @@ Begin Window PresentSettingsWindow
          Selectable      =   False
          TabIndex        =   5
          TabPanelIndex   =   1
-         TabStop         =   True
          Text            =   "(click to change)"
          TextAlign       =   1
          TextColor       =   &c00000000
@@ -343,7 +336,6 @@ Begin Window PresentSettingsWindow
          TextSize        =   11.0
          TextUnit        =   0
          Top             =   300
-         Transparent     =   False
          Underline       =   False
          Visible         =   True
          Width           =   400
@@ -353,7 +345,7 @@ Begin Window PresentSettingsWindow
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   15
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "grp_settings_alerts"
@@ -369,14 +361,13 @@ Begin Window PresentSettingsWindow
             Selectable      =   False
             TabIndex        =   0
             TabPanelIndex   =   1
-            TabStop         =   True
             Text            =   "Align:"
             TextAlign       =   1
             TextColor       =   &c00000000
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
-            Top             =   340
+            Top             =   333
             Transparent     =   False
             Underline       =   False
             Visible         =   True
@@ -416,7 +407,7 @@ Begin Window PresentSettingsWindow
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   15
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "grp_settings_alerts"
@@ -432,14 +423,13 @@ Begin Window PresentSettingsWindow
             Selectable      =   False
             TabIndex        =   2
             TabPanelIndex   =   1
-            TabStop         =   True
             Text            =   "Font:"
             TextAlign       =   1
             TextColor       =   &c00000000
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
-            Top             =   321
+            Top             =   313
             Transparent     =   False
             Underline       =   False
             Visible         =   True
@@ -500,7 +490,6 @@ Begin Window PresentSettingsWindow
          TextSize        =   11.0
          TextUnit        =   0
          Top             =   65
-         Transparent     =   False
          Underline       =   False
          Visible         =   True
          Width           =   200
@@ -555,7 +544,6 @@ Begin Window PresentSettingsWindow
             Selectable      =   False
             TabIndex        =   1
             TabPanelIndex   =   1
-            TabStop         =   True
             Text            =   "(click to change)"
             TextAlign       =   1
             TextColor       =   &c00000000
@@ -590,7 +578,6 @@ Begin Window PresentSettingsWindow
             Selectable      =   False
             TabIndex        =   2
             TabPanelIndex   =   1
-            TabStop         =   True
             Text            =   "(right-click to clear)"
             TextAlign       =   1
             TextColor       =   &c00000000
@@ -609,7 +596,7 @@ Begin Window PresentSettingsWindow
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   15
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "grp_option_logo"
@@ -625,14 +612,13 @@ Begin Window PresentSettingsWindow
             Selectable      =   False
             TabIndex        =   3
             TabPanelIndex   =   1
-            TabStop         =   True
             Text            =   "Mask:"
             TextAlign       =   1
             TextColor       =   &c00000000
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
-            Top             =   253
+            Top             =   251
             Transparent     =   False
             Underline       =   False
             Visible         =   True
@@ -689,7 +675,6 @@ Begin Window PresentSettingsWindow
             Selectable      =   False
             TabIndex        =   5
             TabPanelIndex   =   1
-            TabStop         =   True
             Text            =   "(click to change)"
             TextAlign       =   1
             TextColor       =   &c00000000
@@ -724,7 +709,6 @@ Begin Window PresentSettingsWindow
             Selectable      =   False
             TabIndex        =   6
             TabPanelIndex   =   1
-            TabStop         =   True
             Text            =   "(right-click to clear)"
             TextAlign       =   1
             TextColor       =   &c00000000
@@ -762,7 +746,6 @@ Begin Window PresentSettingsWindow
          TextSize        =   11.0
          TextUnit        =   0
          Top             =   52
-         Transparent     =   False
          Underline       =   False
          Visible         =   True
          Width           =   430
@@ -773,7 +756,7 @@ Begin Window PresentSettingsWindow
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "grp_settings_transitions"
@@ -793,7 +776,6 @@ Begin Window PresentSettingsWindow
             TextSize        =   10.0
             TextUnit        =   0
             Top             =   69
-            Transparent     =   False
             Underline       =   False
             Value           =   False
             Visible         =   True
@@ -805,12 +787,12 @@ Begin Window PresentSettingsWindow
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "grp_settings_transitions"
             Italic          =   False
-            Left            =   39
+            Left            =   38
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   True
@@ -821,14 +803,13 @@ Begin Window PresentSettingsWindow
             Selectable      =   False
             TabIndex        =   1
             TabPanelIndex   =   2
-            TabStop         =   True
             Text            =   "Frames"
             TextAlign       =   0
             TextColor       =   &c00000000
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
-            Top             =   89
+            Top             =   95
             Transparent     =   False
             Underline       =   False
             Visible         =   True
@@ -837,11 +818,11 @@ Begin Window PresentSettingsWindow
          Begin Slider sld_style_frames
             AutoDeactivate  =   True
             Enabled         =   True
-            Height          =   16
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "grp_settings_transitions"
-            Left            =   39
+            Left            =   38
             LineStep        =   1
             LiveScroll      =   True
             LockBottom      =   False
@@ -857,11 +838,10 @@ Begin Window PresentSettingsWindow
             TabPanelIndex   =   2
             TabStop         =   True
             TickStyle       =   "0"
-            Top             =   112
-            Transparent     =   False
+            Top             =   117
             Value           =   5
             Visible         =   True
-            Width           =   112
+            Width           =   108
          End
          Begin TextField edt_style_frames
             AcceptTabs      =   False
@@ -876,12 +856,12 @@ Begin Window PresentSettingsWindow
             DataSource      =   ""
             Enabled         =   True
             Format          =   ""
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "grp_settings_transitions"
             Italic          =   False
-            Left            =   163
+            Left            =   162
             LimitText       =   2
             LockBottom      =   False
             LockedInPosition=   False
@@ -900,8 +880,7 @@ Begin Window PresentSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
-            Top             =   108
-            Transparent     =   False
+            Top             =   117
             Underline       =   False
             UseFocusRing    =   True
             Visible         =   True
@@ -913,7 +892,7 @@ Begin Window PresentSettingsWindow
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "grp_settings_transitions"
@@ -929,14 +908,13 @@ Begin Window PresentSettingsWindow
             Selectable      =   False
             TabIndex        =   4
             TabPanelIndex   =   2
-            TabStop         =   True
             Text            =   "Time:"
             TextAlign       =   0
             TextColor       =   &c00000000
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
-            Top             =   124
+            Top             =   142
             Transparent     =   False
             Underline       =   False
             Visible         =   True
@@ -945,11 +923,11 @@ Begin Window PresentSettingsWindow
          Begin Slider sld_style_time
             AutoDeactivate  =   True
             Enabled         =   True
-            Height          =   16
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "grp_settings_transitions"
-            Left            =   40
+            Left            =   39
             LineStep        =   10
             LiveScroll      =   True
             LockBottom      =   False
@@ -965,11 +943,10 @@ Begin Window PresentSettingsWindow
             TabPanelIndex   =   2
             TabStop         =   True
             TickStyle       =   "0"
-            Top             =   148
-            Transparent     =   False
+            Top             =   165
             Value           =   100
             Visible         =   True
-            Width           =   112
+            Width           =   108
          End
          Begin TextField edt_style_time
             AcceptTabs      =   False
@@ -984,12 +961,12 @@ Begin Window PresentSettingsWindow
             DataSource      =   ""
             Enabled         =   True
             Format          =   ""
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "grp_settings_transitions"
             Italic          =   False
-            Left            =   152
+            Left            =   151
             LimitText       =   4
             LockBottom      =   False
             LockedInPosition=   False
@@ -1008,8 +985,7 @@ Begin Window PresentSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
-            Top             =   148
-            Transparent     =   False
+            Top             =   165
             Underline       =   False
             UseFocusRing    =   True
             Visible         =   True
@@ -1026,7 +1002,7 @@ Begin Window PresentSettingsWindow
             Index           =   -2147483648
             InitialParent   =   "grp_settings_transitions"
             Italic          =   False
-            Left            =   227
+            Left            =   202
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   True
@@ -1037,7 +1013,6 @@ Begin Window PresentSettingsWindow
             Selectable      =   False
             TabIndex        =   7
             TabPanelIndex   =   2
-            TabStop         =   True
             Text            =   "*Transitions are greatly affected by screen resolution. If you are experiencing slow transitions, consider decreasing the resolution of the monitor that the presentation resides on. Also, if you notice that transitions are not showing up, it may be because your color levels are too low on the presentation monitor."
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -1048,7 +1023,7 @@ Begin Window PresentSettingsWindow
             Transparent     =   False
             Underline       =   False
             Visible         =   True
-            Width           =   223
+            Width           =   248
          End
       End
       Begin GroupBox grp_settings_style
@@ -1056,7 +1031,7 @@ Begin Window PresentSettingsWindow
          Bold            =   False
          Caption         =   "Style"
          Enabled         =   True
-         Height          =   176
+         Height          =   193
          HelpTag         =   ""
          Index           =   -2147483648
          InitialParent   =   "tab_present_settings"
@@ -1075,7 +1050,6 @@ Begin Window PresentSettingsWindow
          TextSize        =   11.0
          TextUnit        =   0
          Top             =   217
-         Transparent     =   False
          Underline       =   False
          Visible         =   True
          Width           =   430
@@ -1085,7 +1059,7 @@ Begin Window PresentSettingsWindow
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   15
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "grp_settings_style"
@@ -1101,7 +1075,6 @@ Begin Window PresentSettingsWindow
             Selectable      =   False
             TabIndex        =   0
             TabPanelIndex   =   2
-            TabStop         =   True
             Text            =   "Border Thickness:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -1127,7 +1100,7 @@ Begin Window PresentSettingsWindow
             DataSource      =   ""
             Enabled         =   True
             Format          =   ""
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "grp_settings_style"
@@ -1151,8 +1124,7 @@ Begin Window PresentSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
-            Top             =   250
-            Transparent     =   False
+            Top             =   257
             Underline       =   False
             UseFocusRing    =   True
             Visible         =   True
@@ -1164,7 +1136,7 @@ Begin Window PresentSettingsWindow
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   15
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "grp_settings_style"
@@ -1180,14 +1152,13 @@ Begin Window PresentSettingsWindow
             Selectable      =   False
             TabIndex        =   2
             TabPanelIndex   =   2
-            TabStop         =   True
             Text            =   "Initial Mode:"
             TextAlign       =   0
             TextColor       =   &c00000000
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
-            Top             =   278
+            Top             =   282
             Transparent     =   False
             Underline       =   False
             Visible         =   True
@@ -1219,8 +1190,7 @@ Begin Window PresentSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
-            Top             =   289
-            Transparent     =   False
+            Top             =   304
             Underline       =   False
             Visible         =   True
             Width           =   140
@@ -1231,7 +1201,7 @@ Begin Window PresentSettingsWindow
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   15
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "grp_settings_style"
@@ -1247,14 +1217,13 @@ Begin Window PresentSettingsWindow
             Selectable      =   False
             TabIndex        =   4
             TabPanelIndex   =   2
-            TabStop         =   True
             Text            =   "Mouse Cursor:"
             TextAlign       =   0
             TextColor       =   &c00000000
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
-            Top             =   316
+            Top             =   326
             Transparent     =   False
             Underline       =   False
             Visible         =   True
@@ -1267,7 +1236,7 @@ Begin Window PresentSettingsWindow
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   15
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "grp_settings_style"
@@ -1286,8 +1255,7 @@ Begin Window PresentSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
-            Top             =   240
-            Transparent     =   False
+            Top             =   235
             Underline       =   False
             Value           =   False
             Visible         =   True
@@ -1319,8 +1287,7 @@ Begin Window PresentSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
-            Top             =   326
-            Transparent     =   False
+            Top             =   348
             Underline       =   False
             Visible         =   True
             Width           =   140
@@ -1331,7 +1298,7 @@ Begin Window PresentSettingsWindow
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   15
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "grp_settings_style"
@@ -1347,14 +1314,13 @@ Begin Window PresentSettingsWindow
             Selectable      =   False
             TabIndex        =   7
             TabPanelIndex   =   2
-            TabStop         =   True
             Text            =   "between set items"
             TextAlign       =   0
             TextColor       =   &c00000000
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
-            Top             =   255
+            Top             =   256
             Transparent     =   False
             Underline       =   False
             Visible         =   True
@@ -1368,7 +1334,7 @@ Begin Window PresentSettingsWindow
             DoubleBuffer    =   False
             Enabled         =   True
             EraseBackground =   True
-            Height          =   72
+            Height          =   78
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "grp_settings_style"
@@ -1393,12 +1359,12 @@ Begin Window PresentSettingsWindow
                DataField       =   ""
                DataSource      =   ""
                Enabled         =   True
-               Height          =   20
+               Height          =   22
                HelpTag         =   ""
                Index           =   -2147483648
                InitialParent   =   "nil_blanks"
                Italic          =   False
-               Left            =   244
+               Left            =   243
                LockBottom      =   False
                LockedInPosition=   False
                LockLeft        =   True
@@ -1409,25 +1375,24 @@ Begin Window PresentSettingsWindow
                Selectable      =   False
                TabIndex        =   0
                TabPanelIndex   =   2
-               TabStop         =   True
                Text            =   "Blanks take style of:"
                TextAlign       =   0
                TextColor       =   &c00000000
                TextFont        =   "Arial"
                TextSize        =   10.0
                TextUnit        =   0
-               Top             =   282
+               Top             =   289
                Transparent     =   False
                Underline       =   False
                Visible         =   True
-               Width           =   210
+               Width           =   198
             End
             Begin RadioButton rad_style_blank_prev
                AutoDeactivate  =   True
                Bold            =   False
                Caption         =   "Previous slide"
                Enabled         =   True
-               Height          =   20
+               Height          =   22
                HelpTag         =   ""
                Index           =   -2147483648
                InitialParent   =   "nil_blanks"
@@ -1445,8 +1410,7 @@ Begin Window PresentSettingsWindow
                TextFont        =   "Arial"
                TextSize        =   10.0
                TextUnit        =   0
-               Top             =   301
-               Transparent     =   False
+               Top             =   310
                Underline       =   False
                Value           =   False
                Visible         =   True
@@ -1457,7 +1421,7 @@ Begin Window PresentSettingsWindow
                Bold            =   False
                Caption         =   "Next slide"
                Enabled         =   True
-               Height          =   20
+               Height          =   22
                HelpTag         =   ""
                Index           =   -2147483648
                InitialParent   =   "nil_blanks"
@@ -1475,8 +1439,7 @@ Begin Window PresentSettingsWindow
                TextFont        =   "Arial"
                TextSize        =   10.0
                TextUnit        =   0
-               Top             =   324
-               Transparent     =   False
+               Top             =   332
                Underline       =   False
                Value           =   False
                Visible         =   True
@@ -1490,7 +1453,7 @@ Begin Window PresentSettingsWindow
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   20
+            Height          =   22
             HelpTag         =   "If checked, an empty line in the lyrics (no text) indicates a slide change. Acts like using ""||"" on the line. Simulates EasyWorship-style behavior."
             Index           =   -2147483648
             InitialParent   =   "grp_settings_style"
@@ -1509,8 +1472,7 @@ Begin Window PresentSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
-            Top             =   363
-            Transparent     =   False
+            Top             =   384
             Underline       =   False
             Value           =   False
             Visible         =   True
@@ -1522,7 +1484,7 @@ Begin Window PresentSettingsWindow
          Bold            =   False
          Caption         =   "Monitor Settings"
          Enabled         =   True
-         Height          =   223
+         Height          =   269
          HelpTag         =   ""
          Index           =   -2147483648
          InitialParent   =   "tab_present_settings"
@@ -1541,7 +1503,6 @@ Begin Window PresentSettingsWindow
          TextSize        =   11.0
          TextUnit        =   0
          Top             =   52
-         Transparent     =   False
          Underline       =   False
          Visible         =   True
          Width           =   304
@@ -1551,7 +1512,7 @@ Begin Window PresentSettingsWindow
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   15
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "grp_settings_monitor"
@@ -1567,14 +1528,13 @@ Begin Window PresentSettingsWindow
             Selectable      =   False
             TabIndex        =   0
             TabPanelIndex   =   2
-            TabStop         =   True
             Text            =   "Presentation Monitor:"
             TextAlign       =   0
             TextColor       =   &c00000000
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
-            Top             =   108
+            Top             =   112
             Transparent     =   False
             Underline       =   False
             Visible         =   True
@@ -1586,7 +1546,7 @@ Begin Window PresentSettingsWindow
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "grp_settings_monitor"
@@ -1606,8 +1566,7 @@ Begin Window PresentSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
-            Top             =   125
-            Transparent     =   False
+            Top             =   134
             Underline       =   False
             Visible         =   True
             Width           =   40
@@ -1618,7 +1577,7 @@ Begin Window PresentSettingsWindow
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   15
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "grp_settings_monitor"
@@ -1634,14 +1593,13 @@ Begin Window PresentSettingsWindow
             Selectable      =   False
             TabIndex        =   2
             TabPanelIndex   =   2
-            TabStop         =   True
             Text            =   "(1 monitor(s) detected.)"
             TextAlign       =   1
             TextColor       =   &c00000000
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
-            Top             =   153
+            Top             =   160
             Transparent     =   False
             Underline       =   False
             Visible         =   True
@@ -1653,7 +1611,7 @@ Begin Window PresentSettingsWindow
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "grp_settings_monitor"
@@ -1673,8 +1631,7 @@ Begin Window PresentSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
-            Top             =   83
-            Transparent     =   False
+            Top             =   88
             Underline       =   False
             Visible         =   True
             Width           =   40
@@ -1685,7 +1642,7 @@ Begin Window PresentSettingsWindow
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   15
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "grp_settings_monitor"
@@ -1701,7 +1658,6 @@ Begin Window PresentSettingsWindow
             Selectable      =   False
             TabIndex        =   4
             TabPanelIndex   =   2
-            TabStop         =   True
             Text            =   "Control Monitor:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -1720,12 +1676,12 @@ Begin Window PresentSettingsWindow
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   15
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "grp_settings_monitor"
             Italic          =   False
-            Left            =   482
+            Left            =   481
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   True
@@ -1736,14 +1692,13 @@ Begin Window PresentSettingsWindow
             Selectable      =   False
             TabIndex        =   5
             TabPanelIndex   =   2
-            TabStop         =   True
             Text            =   "Default Mode:"
             TextAlign       =   0
             TextColor       =   &c00000000
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
-            Top             =   178
+            Top             =   194
             Transparent     =   False
             Underline       =   False
             Visible         =   True
@@ -1761,7 +1716,7 @@ Begin Window PresentSettingsWindow
             InitialParent   =   "grp_settings_monitor"
             InitialValue    =   ""
             Italic          =   False
-            Left            =   482
+            Left            =   481
             ListIndex       =   0
             LockBottom      =   False
             LockedInPosition=   False
@@ -1775,8 +1730,7 @@ Begin Window PresentSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
-            Top             =   195
-            Transparent     =   False
+            Top             =   218
             Underline       =   False
             Visible         =   True
             Width           =   200
@@ -1788,7 +1742,7 @@ Begin Window PresentSettingsWindow
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "grp_settings_monitor"
@@ -1807,8 +1761,7 @@ Begin Window PresentSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
-            Top             =   226
-            Transparent     =   False
+            Top             =   255
             Underline       =   False
             Value           =   False
             Visible         =   True
@@ -1821,7 +1774,7 @@ Begin Window PresentSettingsWindow
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "grp_settings_monitor"
@@ -1840,8 +1793,7 @@ Begin Window PresentSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
-            Top             =   250
-            Transparent     =   False
+            Top             =   279
             Underline       =   False
             Value           =   False
             Visible         =   True
@@ -1855,7 +1807,7 @@ Begin Window PresentSettingsWindow
          DataField       =   ""
          DataSource      =   ""
          Enabled         =   True
-         Height          =   20
+         Height          =   22
          HelpTag         =   ""
          Index           =   -2147483648
          InitialParent   =   "tab_present_settings"
@@ -1875,7 +1827,6 @@ Begin Window PresentSettingsWindow
          TextSize        =   0.0
          TextUnit        =   0
          Top             =   45
-         Transparent     =   False
          Underline       =   False
          Value           =   False
          Visible         =   True
@@ -1919,7 +1870,6 @@ Begin Window PresentSettingsWindow
          TextSize        =   0.0
          TextUnit        =   0
          Top             =   67
-         Transparent     =   False
          Underline       =   False
          UseFocusRing    =   True
          Visible         =   True
@@ -1964,7 +1914,7 @@ Begin Window PresentSettingsWindow
          DataField       =   ""
          DataSource      =   ""
          Enabled         =   True
-         Height          =   20
+         Height          =   22
          HelpTag         =   ""
          Index           =   -2147483648
          InitialParent   =   "tab_present_settings"
@@ -1984,7 +1934,6 @@ Begin Window PresentSettingsWindow
          TextSize        =   0.0
          TextUnit        =   0
          Top             =   101
-         Transparent     =   False
          Underline       =   False
          Value           =   False
          Visible         =   True
@@ -1997,7 +1946,7 @@ Begin Window PresentSettingsWindow
          DataField       =   ""
          DataSource      =   ""
          Enabled         =   True
-         Height          =   20
+         Height          =   22
          HelpTag         =   ""
          Index           =   -2147483648
          InitialParent   =   "tab_present_settings"
@@ -2017,7 +1966,6 @@ Begin Window PresentSettingsWindow
          TextSize        =   0.0
          TextUnit        =   0
          Top             =   122
-         Transparent     =   False
          Underline       =   False
          Value           =   False
          Visible         =   True
@@ -2030,7 +1978,7 @@ Begin Window PresentSettingsWindow
          DataField       =   ""
          DataSource      =   ""
          Enabled         =   True
-         Height          =   20
+         Height          =   22
          HelpTag         =   ""
          Index           =   -2147483648
          InitialParent   =   "tab_present_settings"
@@ -2050,7 +1998,6 @@ Begin Window PresentSettingsWindow
          TextSize        =   0.0
          TextUnit        =   0
          Top             =   143
-         Transparent     =   False
          Underline       =   False
          Value           =   False
          Visible         =   True
@@ -2078,7 +2025,6 @@ Begin Window PresentSettingsWindow
          Selectable      =   False
          TabIndex        =   6
          TabPanelIndex   =   3
-         TabStop         =   True
          Text            =   "The following parameters can be used in the file name or path:\r\n- %d: The day of the current month (01-31)\r\n- %H: The hour from the current time of day in 24-hour format (00-23)\r\n- %i: The minutes from the current time (00-59)\r\n- %m: The current month (01-12)\r\n- %n: The number of the slide in the current set (with leading zeroes)\r\n- %N: The name of the current slide\r\n- %P: Presentation index for slides during presentation (with leading zeroes)\r\n- %s: The seconds from the current time (00-59)\r\n- %S: The name of the current set\r\n- %T: The title of the current slide\r\n- %V: The verse indicator of the current slide (for songs, empty for other slides)\r\n- %Y: The current year (4 digits)\r\n"
          TextAlign       =   0
          TextColor       =   &c00000000
@@ -2114,8 +2060,7 @@ Begin Window PresentSettingsWindow
          TextFont        =   "Arial"
          TextSize        =   11.0
          TextUnit        =   0
-         Top             =   287
-         Transparent     =   False
+         Top             =   333
          Underline       =   False
          Visible         =   True
          Width           =   304
@@ -2145,8 +2090,7 @@ Begin Window PresentSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
-            Top             =   329
-            Transparent     =   False
+            Top             =   375
             Underline       =   False
             Value           =   False
             Visible         =   True
@@ -2178,8 +2122,7 @@ Begin Window PresentSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
-            Top             =   303
-            Transparent     =   False
+            Top             =   349
             Underline       =   False
             Value           =   False
             Visible         =   True
@@ -2188,13 +2131,17 @@ Begin Window PresentSettingsWindow
       End
    End
    Begin Timer AudioTimer
+      Height          =   32
       Index           =   -2147483648
       InitialParent   =   ""
+      Left            =   0
       LockedInPosition=   False
       Mode            =   2
       Period          =   500
       Scope           =   0
       TabPanelIndex   =   0
+      Top             =   0
+      Width           =   32
    End
    Begin GroupBox grp_settings_audio
       AutoDeactivate  =   True
@@ -2220,7 +2167,6 @@ Begin Window PresentSettingsWindow
       TextSize        =   11.0
       TextUnit        =   0
       Top             =   514
-      Transparent     =   False
       Underline       =   False
       Visible         =   False
       Width           =   200
@@ -2251,7 +2197,6 @@ Begin Window PresentSettingsWindow
          TextSize        =   11.0
          TextUnit        =   0
          Top             =   531
-         Transparent     =   False
          Underline       =   False
          Visible         =   True
          Width           =   69
@@ -2283,7 +2228,6 @@ Begin Window PresentSettingsWindow
          TextSize        =   11.0
          TextUnit        =   0
          Top             =   559
-         Transparent     =   False
          Underline       =   False
          Visible         =   True
          Width           =   70
@@ -2315,7 +2259,6 @@ Begin Window PresentSettingsWindow
          TextSize        =   11.0
          TextUnit        =   0
          Top             =   559
-         Transparent     =   False
          Underline       =   False
          Visible         =   True
          Width           =   70
@@ -2326,7 +2269,7 @@ Begin Window PresentSettingsWindow
          DataField       =   ""
          DataSource      =   ""
          Enabled         =   True
-         Height          =   20
+         Height          =   22
          HelpTag         =   ""
          Index           =   -2147483648
          InitialParent   =   "grp_settings_audio"
@@ -2342,7 +2285,6 @@ Begin Window PresentSettingsWindow
          Selectable      =   False
          TabIndex        =   0
          TabPanelIndex   =   0
-         TabStop         =   True
          Text            =   "File to Play:"
          TextAlign       =   0
          TextColor       =   &c00000000

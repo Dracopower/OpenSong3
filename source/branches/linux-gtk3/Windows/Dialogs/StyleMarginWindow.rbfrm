@@ -204,7 +204,7 @@ Begin Window StyleMarginWindow
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
-      Height          =   20
+      Height          =   22
       HelpTag         =   ""
       Index           =   2147483648
       InitialParent   =   ""
@@ -314,7 +314,7 @@ Begin Window StyleMarginWindow
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
-      Height          =   20
+      Height          =   22
       HelpTag         =   ""
       Index           =   2147483648
       InitialParent   =   ""
@@ -424,7 +424,7 @@ Begin Window StyleMarginWindow
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
-      Height          =   20
+      Height          =   22
       HelpTag         =   ""
       Index           =   2147483648
       InitialParent   =   ""
@@ -458,7 +458,7 @@ Begin Window StyleMarginWindow
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
-      Height          =   20
+      Height          =   22
       HelpTag         =   ""
       Index           =   2147483648
       InitialParent   =   ""
@@ -492,7 +492,7 @@ Begin Window StyleMarginWindow
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
-      Height          =   20
+      Height          =   22
       HelpTag         =   ""
       Index           =   2147483648
       InitialParent   =   ""
@@ -602,7 +602,7 @@ Begin Window StyleMarginWindow
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
-      Height          =   20
+      Height          =   22
       HelpTag         =   ""
       Index           =   2147483648
       InitialParent   =   ""
@@ -623,7 +623,7 @@ Begin Window StyleMarginWindow
       TextColor       =   0
       TextFont        =   "SmallSystem"
       TextSize        =   0
-      Top             =   40
+      Top             =   38
       Underline       =   ""
       Visible         =   True
       Width           =   240
@@ -666,7 +666,7 @@ Begin Window StyleMarginWindow
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
-      Height          =   20
+      Height          =   22
       HelpTag         =   ""
       Index           =   2147483648
       InitialParent   =   ""
@@ -700,7 +700,7 @@ Begin Window StyleMarginWindow
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
-      Height          =   20
+      Height          =   22
       HelpTag         =   ""
       Index           =   2147483648
       InitialParent   =   ""
@@ -734,7 +734,7 @@ Begin Window StyleMarginWindow
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
-      Height          =   20
+      Height          =   22
       HelpTag         =   ""
       Index           =   2147483648
       InitialParent   =   ""

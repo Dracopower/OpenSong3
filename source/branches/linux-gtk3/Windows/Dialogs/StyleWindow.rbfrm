@@ -438,7 +438,7 @@ Begin Window StyleWindow
          DataField       =   ""
          DataSource      =   ""
          Enabled         =   True
-         Height          =   20
+         Height          =   22
          HelpTag         =   ""
          Index           =   -2147483648
          InitialParent   =   "grp_style_fonts_and_alignment"
@@ -529,7 +529,7 @@ Begin Window StyleWindow
          DataField       =   ""
          DataSource      =   ""
          Enabled         =   True
-         Height          =   20
+         Height          =   22
          HelpTag         =   ""
          Index           =   -2147483648
          InitialParent   =   "grp_style_fonts_and_alignment"
@@ -864,7 +864,7 @@ Begin Window StyleWindow
          DataField       =   ""
          DataSource      =   ""
          Enabled         =   True
-         Height          =   20
+         Height          =   22
          HelpTag         =   ""
          Index           =   -2147483648
          InitialParent   =   "grp_style_background"
@@ -965,7 +965,7 @@ Begin Window StyleWindow
          Enabled         =   True
          EnforceRange    =   False
          Format          =   ""
-         Height          =   20
+         Height          =   22
          HelpTag         =   ""
          HideSelection   =   True
          Index           =   -2147483648
@@ -1111,7 +1111,7 @@ Begin Window StyleWindow
          DataField       =   ""
          DataSource      =   ""
          Enabled         =   True
-         Height          =   20
+         Height          =   22
          HelpTag         =   ""
          Index           =   -2147483648
          InitialParent   =   "grp_style_options"
@@ -1144,7 +1144,7 @@ Begin Window StyleWindow
          DataField       =   ""
          DataSource      =   ""
          Enabled         =   True
-         Height          =   20
+         Height          =   22
          HelpTag         =   ""
          Index           =   -2147483648
          InitialParent   =   "grp_style_options"
@@ -1177,7 +1177,7 @@ Begin Window StyleWindow
          DataField       =   ""
          DataSource      =   ""
          Enabled         =   True
-         Height          =   20
+         Height          =   22
          HelpTag         =   ""
          Index           =   -2147483648
          InitialParent   =   "grp_style_options"
@@ -1292,7 +1292,7 @@ Begin Window StyleWindow
          DoubleBuffer    =   False
          Enabled         =   True
          EraseBackground =   True
-         Height          =   20
+         Height          =   22
          HelpTag         =   ""
          Index           =   -2147483648
          InitialParent   =   "grp_style_bilingual"
@@ -1362,7 +1362,7 @@ Begin Window StyleWindow
          Enabled         =   True
          EnforceRange    =   True
          Format          =   ""
-         Height          =   20
+         Height          =   22
          HelpTag         =   ""
          HideSelection   =   True
          Index           =   -2147483648

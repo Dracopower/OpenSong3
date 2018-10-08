@@ -44,7 +44,7 @@ Begin Window PresentHelperWindow
       GridLinesVertical=   0
       HasHeading      =   True
       HeadingIndex    =   -1
-      Height          =   195
+      Height          =   194
       HelpTag         =   ""
       Hierarchical    =   False
       Index           =   -2147483648
@@ -321,7 +321,7 @@ Begin Window PresentHelperWindow
       TabIndex        =   2
       TabPanelIndex   =   0
       TabStop         =   True
-      Top             =   224
+      Top             =   226
       Transparent     =   True
       UseFocusRing    =   True
       Visible         =   True
@@ -622,7 +622,7 @@ Begin Window PresentHelperWindow
       TabIndex        =   6
       TabPanelIndex   =   0
       TabStop         =   True
-      Top             =   224
+      Top             =   226
       Transparent     =   True
       UseFocusRing    =   True
       Visible         =   True
@@ -634,7 +634,7 @@ Begin Window PresentHelperWindow
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
-      Height          =   20
+      Height          =   22
       HelpTag         =   ""
       Index           =   -2147483648
       InitialParent   =   ""
@@ -669,7 +669,7 @@ Begin Window PresentHelperWindow
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
-      Height          =   20
+      Height          =   22
       HelpTag         =   ""
       Index           =   -2147483648
       InitialParent   =   ""

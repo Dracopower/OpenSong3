@@ -7,7 +7,7 @@ Begin Window FindWindow
    Frame           =   1
    FullScreen      =   False
    HasBackColor    =   False
-   Height          =   3.3e+2
+   Height          =   320
    ImplicitInstance=   True
    LiveResize      =   False
    MacProcID       =   0
@@ -23,7 +23,7 @@ Begin Window FindWindow
    Resizeable      =   False
    Title           =   "Song Search"
    Visible         =   True
-   Width           =   4.6e+2
+   Width           =   460
    Begin Label txt_song_search
       AutoDeactivate  =   True
       Bold            =   False
@@ -199,7 +199,7 @@ Begin Window FindWindow
          DataField       =   ""
          DataSource      =   ""
          Enabled         =   True
-         Height          =   20
+         Height          =   22
          HelpTag         =   ""
          Index           =   -2147483648
          InitialParent   =   "grp_search_fields"
@@ -231,7 +231,7 @@ Begin Window FindWindow
          DataField       =   ""
          DataSource      =   ""
          Enabled         =   True
-         Height          =   20
+         Height          =   22
          HelpTag         =   ""
          Index           =   -2147483648
          InitialParent   =   "grp_search_fields"
@@ -263,7 +263,7 @@ Begin Window FindWindow
          DataField       =   ""
          DataSource      =   ""
          Enabled         =   True
-         Height          =   20
+         Height          =   22
          HelpTag         =   ""
          Index           =   -2147483648
          InitialParent   =   "grp_search_fields"
@@ -295,7 +295,7 @@ Begin Window FindWindow
          DataField       =   ""
          DataSource      =   ""
          Enabled         =   True
-         Height          =   20
+         Height          =   22
          HelpTag         =   ""
          Index           =   -2147483648
          InitialParent   =   "grp_search_fields"
@@ -327,7 +327,7 @@ Begin Window FindWindow
          DataField       =   ""
          DataSource      =   ""
          Enabled         =   True
-         Height          =   20
+         Height          =   22
          HelpTag         =   ""
          Index           =   -2147483648
          InitialParent   =   "grp_search_fields"
@@ -359,7 +359,7 @@ Begin Window FindWindow
          DataField       =   ""
          DataSource      =   ""
          Enabled         =   True
-         Height          =   20
+         Height          =   22
          HelpTag         =   ""
          Index           =   -2147483648
          InitialParent   =   "grp_search_fields"
@@ -423,7 +423,7 @@ Begin Window FindWindow
          DataField       =   ""
          DataSource      =   ""
          Enabled         =   True
-         Height          =   20
+         Height          =   22
          HelpTag         =   ""
          Index           =   -2147483648
          InitialParent   =   "grp_search_fields"
@@ -455,7 +455,7 @@ Begin Window FindWindow
          DataField       =   ""
          DataSource      =   ""
          Enabled         =   True
-         Height          =   20
+         Height          =   22
          HelpTag         =   ""
          Index           =   -2147483648
          InitialParent   =   "grp_search_fields"
@@ -487,7 +487,7 @@ Begin Window FindWindow
          DataField       =   ""
          DataSource      =   ""
          Enabled         =   True
-         Height          =   20
+         Height          =   22
          HelpTag         =   ""
          Index           =   -2147483648
          InitialParent   =   "grp_search_fields"
@@ -519,7 +519,7 @@ Begin Window FindWindow
          DataField       =   ""
          DataSource      =   ""
          Enabled         =   True
-         Height          =   20
+         Height          =   22
          HelpTag         =   ""
          Index           =   -2147483648
          InitialParent   =   "grp_search_fields"
@@ -551,7 +551,7 @@ Begin Window FindWindow
          DataField       =   ""
          DataSource      =   ""
          Enabled         =   True
-         Height          =   20
+         Height          =   22
          HelpTag         =   ""
          Index           =   -2147483648
          InitialParent   =   "grp_search_fields"
@@ -583,7 +583,7 @@ Begin Window FindWindow
          DataField       =   ""
          DataSource      =   ""
          Enabled         =   True
-         Height          =   20
+         Height          =   22
          HelpTag         =   ""
          Index           =   -2147483648
          InitialParent   =   "grp_search_fields"
@@ -615,7 +615,7 @@ Begin Window FindWindow
          DataField       =   ""
          DataSource      =   ""
          Enabled         =   True
-         Height          =   20
+         Height          =   22
          HelpTag         =   ""
          Index           =   -2147483648
          InitialParent   =   "grp_search_fields"
@@ -647,7 +647,7 @@ Begin Window FindWindow
          DataField       =   ""
          DataSource      =   ""
          Enabled         =   True
-         Height          =   20
+         Height          =   22
          HelpTag         =   ""
          Index           =   -2147483648
          InitialParent   =   "grp_search_fields"
@@ -679,7 +679,7 @@ Begin Window FindWindow
          DataField       =   ""
          DataSource      =   ""
          Enabled         =   True
-         Height          =   20
+         Height          =   22
          HelpTag         =   ""
          Index           =   -2147483648
          InitialParent   =   "grp_search_fields"
@@ -711,7 +711,7 @@ Begin Window FindWindow
          DataField       =   ""
          DataSource      =   ""
          Enabled         =   True
-         Height          =   20
+         Height          =   22
          HelpTag         =   ""
          Index           =   -2147483648
          InitialParent   =   "grp_search_fields"
@@ -743,7 +743,7 @@ Begin Window FindWindow
          DataField       =   ""
          DataSource      =   ""
          Enabled         =   True
-         Height          =   20
+         Height          =   22
          HelpTag         =   ""
          Index           =   -2147483648
          InitialParent   =   "grp_search_fields"
@@ -794,7 +794,7 @@ Begin Window FindWindow
          TextFont        =   "System"
          TextSize        =   0
          TextUnit        =   0
-         Top             =   277
+         Top             =   280
          Underline       =   ""
          Visible         =   True
          Width           =   50
@@ -825,7 +825,7 @@ Begin Window FindWindow
          TextFont        =   "System"
          TextSize        =   0
          TextUnit        =   0
-         Top             =   277
+         Top             =   280
          Underline       =   ""
          Visible         =   True
          Width           =   126
@@ -836,7 +836,7 @@ Begin Window FindWindow
          DataField       =   ""
          DataSource      =   ""
          Enabled         =   True
-         Height          =   20
+         Height          =   22
          HelpTag         =   ""
          Index           =   -2147483648
          InitialParent   =   "grp_search_fields"
@@ -870,7 +870,7 @@ Begin Window FindWindow
          DataField       =   ""
          DataSource      =   ""
          Enabled         =   True
-         Height          =   20
+         Height          =   22
          HelpTag         =   ""
          Index           =   -2147483648
          InitialParent   =   "grp_search_fields"

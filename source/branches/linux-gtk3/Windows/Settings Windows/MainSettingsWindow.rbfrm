@@ -115,7 +115,7 @@ Begin Window MainSettingsWindow
       TextUnit        =   0
       Top             =   7
       Underline       =   False
-      Value           =   1
+      Value           =   4
       Visible         =   True
       Width           =   623
       Begin GroupBox grp_settings_general
@@ -123,7 +123,7 @@ Begin Window MainSettingsWindow
          Bold            =   False
          Caption         =   "General"
          Enabled         =   True
-         Height          =   145
+         Height          =   156
          HelpTag         =   ""
          Index           =   -2147483648
          InitialParent   =   "tab_general_general"
@@ -151,7 +151,7 @@ Begin Window MainSettingsWindow
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   15
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "grp_settings_general"
@@ -167,7 +167,6 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   0
             TabPanelIndex   =   1
-            TabStop         =   True
             Text            =   "Church CCLI License"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -193,7 +192,7 @@ Begin Window MainSettingsWindow
             DataSource      =   ""
             Enabled         =   True
             Format          =   ""
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "grp_settings_general"
@@ -217,7 +216,7 @@ Begin Window MainSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
-            Top             =   79
+            Top             =   86
             Underline       =   False
             UseFocusRing    =   True
             Visible         =   True
@@ -230,7 +229,7 @@ Begin Window MainSettingsWindow
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "grp_settings_general"
@@ -249,7 +248,7 @@ Begin Window MainSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
-            Top             =   104
+            Top             =   110
             Underline       =   False
             Value           =   False
             Visible         =   True
@@ -261,7 +260,7 @@ Begin Window MainSettingsWindow
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   15
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "grp_settings_general"
@@ -277,7 +276,6 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   3
             TabPanelIndex   =   1
-            TabStop         =   True
             Text            =   "Language:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -302,7 +300,7 @@ Begin Window MainSettingsWindow
             InitialParent   =   "grp_settings_general"
             InitialValue    =   ""
             Italic          =   False
-            Left            =   50
+            Left            =   51
             ListIndex       =   0
             LockBottom      =   False
             LockedInPosition=   False
@@ -316,7 +314,7 @@ Begin Window MainSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
-            Top             =   151
+            Top             =   154
             Underline       =   False
             Visible         =   True
             Width           =   216
@@ -355,7 +353,7 @@ Begin Window MainSettingsWindow
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   15
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "grp_settings_user_defined"
@@ -371,18 +369,17 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   0
             TabPanelIndex   =   1
-            TabStop         =   True
             Text            =   "User Defined 1:"
             TextAlign       =   0
             TextColor       =   &c00000000
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
-            Top             =   65
+            Top             =   64
             Transparent     =   False
             Underline       =   False
             Visible         =   True
-            Width           =   220
+            Width           =   269
          End
          Begin SEditField edt_define_user1
             AcceptTabs      =   False
@@ -396,7 +393,7 @@ Begin Window MainSettingsWindow
             DataSource      =   ""
             Enabled         =   True
             Format          =   ""
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             HideSelection   =   True
             Index           =   -2147483648
@@ -426,7 +423,7 @@ Begin Window MainSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
-            Top             =   80
+            Top             =   86
             Underline       =   False
             UseFocusRing    =   True
             Visible         =   True
@@ -438,7 +435,7 @@ Begin Window MainSettingsWindow
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   15
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "grp_settings_user_defined"
@@ -454,18 +451,17 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   2
             TabPanelIndex   =   1
-            TabStop         =   True
             Text            =   "User Defined 2:"
             TextAlign       =   0
             TextColor       =   &c00000000
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
-            Top             =   105
+            Top             =   108
             Transparent     =   False
             Underline       =   False
             Visible         =   True
-            Width           =   220
+            Width           =   268
          End
          Begin SEditField edt_define_user2
             AcceptTabs      =   False
@@ -479,7 +475,7 @@ Begin Window MainSettingsWindow
             DataSource      =   ""
             Enabled         =   True
             Format          =   ""
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             HideSelection   =   True
             Index           =   -2147483648
@@ -509,7 +505,7 @@ Begin Window MainSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
-            Top             =   120
+            Top             =   130
             Underline       =   False
             UseFocusRing    =   True
             Visible         =   True
@@ -521,7 +517,7 @@ Begin Window MainSettingsWindow
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   15
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "grp_settings_user_defined"
@@ -537,18 +533,17 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   4
             TabPanelIndex   =   1
-            TabStop         =   True
             Text            =   "User Defined 3:"
             TextAlign       =   0
             TextColor       =   &c00000000
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
-            Top             =   145
+            Top             =   152
             Transparent     =   False
             Underline       =   False
             Visible         =   True
-            Width           =   220
+            Width           =   270
          End
          Begin SEditField edt_define_user3
             AcceptTabs      =   False
@@ -562,7 +557,7 @@ Begin Window MainSettingsWindow
             DataSource      =   ""
             Enabled         =   True
             Format          =   ""
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             HideSelection   =   True
             Index           =   -2147483648
@@ -592,7 +587,7 @@ Begin Window MainSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
-            Top             =   160
+            Top             =   174
             Underline       =   False
             UseFocusRing    =   True
             Visible         =   True
@@ -624,7 +619,7 @@ Begin Window MainSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
-            Top             =   201
+            Top             =   208
             Underline       =   False
             Visible         =   True
             Width           =   241
@@ -653,7 +648,7 @@ Begin Window MainSettingsWindow
          TextFont        =   "Arial"
          TextSize        =   11.0
          TextUnit        =   0
-         Top             =   200
+         Top             =   208
          Underline       =   False
          Visible         =   True
          Width           =   250
@@ -662,7 +657,7 @@ Begin Window MainSettingsWindow
             Bold            =   False
             Caption         =   "Songs"
             Enabled         =   True
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "grp_settings_startmode"
@@ -680,7 +675,7 @@ Begin Window MainSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
-            Top             =   220
+            Top             =   228
             Underline       =   False
             Value           =   False
             Visible         =   True
@@ -691,7 +686,7 @@ Begin Window MainSettingsWindow
             Bold            =   False
             Caption         =   "Sets"
             Enabled         =   True
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "grp_settings_startmode"
@@ -709,7 +704,7 @@ Begin Window MainSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
-            Top             =   220
+            Top             =   228
             Underline       =   False
             Value           =   False
             Visible         =   True
@@ -749,7 +744,7 @@ Begin Window MainSettingsWindow
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "grp_settings_logging"
@@ -765,7 +760,6 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   0
             TabPanelIndex   =   4
-            TabStop         =   True
             Text            =   "Log level (0-10)"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -785,7 +779,7 @@ Begin Window MainSettingsWindow
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "grp_settings_logging"
@@ -848,7 +842,7 @@ Begin Window MainSettingsWindow
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "grp_settings_logging"
@@ -879,7 +873,7 @@ Begin Window MainSettingsWindow
          Bold            =   False
          Caption         =   "HTTP Proxy"
          Enabled         =   True
-         Height          =   70
+         Height          =   76
          HelpTag         =   ""
          Index           =   -2147483648
          InitialParent   =   "tab_general_general"
@@ -907,7 +901,7 @@ Begin Window MainSettingsWindow
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   15
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "grp_settings_proxy"
@@ -923,7 +917,6 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   0
             TabPanelIndex   =   4
-            TabStop         =   True
             Text            =   "Server:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -942,7 +935,7 @@ Begin Window MainSettingsWindow
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   15
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "grp_settings_proxy"
@@ -958,7 +951,6 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   2
             TabPanelIndex   =   4
-            TabStop         =   True
             Text            =   "Port:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -983,7 +975,7 @@ Begin Window MainSettingsWindow
             DataSource      =   ""
             Enabled         =   True
             Format          =   ""
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             HideSelection   =   True
             Index           =   -2147483648
@@ -1013,7 +1005,7 @@ Begin Window MainSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
-            Top             =   81
+            Top             =   88
             Underline       =   False
             UseFocusRing    =   True
             Visible         =   True
@@ -1031,7 +1023,7 @@ Begin Window MainSettingsWindow
             DataSource      =   ""
             Enabled         =   True
             Format          =   ""
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             HideSelection   =   True
             Index           =   -2147483648
@@ -1061,7 +1053,7 @@ Begin Window MainSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
-            Top             =   81
+            Top             =   88
             Underline       =   False
             UseFocusRing    =   True
             Visible         =   True
@@ -1102,7 +1094,7 @@ Begin Window MainSettingsWindow
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "grp_activity_log"
@@ -1134,7 +1126,7 @@ Begin Window MainSettingsWindow
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "grp_activity_log"
@@ -1192,7 +1184,7 @@ Begin Window MainSettingsWindow
             Bold            =   False
             Caption         =   "Default"
             Enabled         =   True
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "grp_settings_documents_folder"
@@ -1221,7 +1213,7 @@ Begin Window MainSettingsWindow
             Bold            =   False
             Caption         =   "Custom:"
             Enabled         =   True
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "grp_settings_documents_folder"
@@ -1267,7 +1259,6 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   2
             TabPanelIndex   =   2
-            TabStop         =   True
             Text            =   "\\"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -1333,7 +1324,6 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   4
             TabPanelIndex   =   2
-            TabStop         =   True
             Text            =   "(use with caution; forces restart)"
             TextAlign       =   0
             TextColor       =   &cFF000000
@@ -1353,7 +1343,7 @@ Begin Window MainSettingsWindow
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   False
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "grp_settings_documents_folder"
@@ -1412,7 +1402,7 @@ Begin Window MainSettingsWindow
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "grp_settings_applications"
@@ -1428,7 +1418,6 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   0
             TabPanelIndex   =   2
-            TabStop         =   True
             Text            =   "Location of Powerpoint Viewer"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -1552,7 +1541,7 @@ Begin Window MainSettingsWindow
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "grp_settings_applications"
@@ -1568,7 +1557,6 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   4
             TabPanelIndex   =   2
-            TabStop         =   True
             Text            =   "Location of Videolan client"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -1645,7 +1633,7 @@ Begin Window MainSettingsWindow
          TabIndex        =   5
          TabPanelIndex   =   5
          TabStop         =   True
-         TextFont        =   "Arial"
+         TextFont        =   "System"
          TextSize        =   11.0
          TextUnit        =   0
          Top             =   44
@@ -1658,7 +1646,7 @@ Begin Window MainSettingsWindow
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   15
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "grp_settings_fonts"
@@ -1674,18 +1662,17 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   0
             TabPanelIndex   =   5
-            TabStop         =   True
             Text            =   "Headings:"
             TextAlign       =   0
             TextColor       =   &c00000000
-            TextFont        =   "Arial"
+            TextFont        =   "System"
             TextSize        =   10.0
             TextUnit        =   0
             Top             =   62
             Transparent     =   False
             Underline       =   False
             Visible         =   True
-            Width           =   219
+            Width           =   220
          End
          Begin Label lbl_fonts_labels
             AutoDeactivate  =   True
@@ -1693,7 +1680,7 @@ Begin Window MainSettingsWindow
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   15
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "grp_settings_fonts"
@@ -1709,18 +1696,17 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   1
             TabPanelIndex   =   5
-            TabStop         =   True
             Text            =   "Labels:"
             TextAlign       =   0
             TextColor       =   &c00000000
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
-            Top             =   112
+            Top             =   114
             Transparent     =   False
             Underline       =   False
             Visible         =   True
-            Width           =   219
+            Width           =   220
          End
          Begin Label lbl_fonts_text_fields
             AutoDeactivate  =   True
@@ -1728,7 +1714,7 @@ Begin Window MainSettingsWindow
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   15
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "grp_settings_fonts"
@@ -1744,18 +1730,17 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   2
             TabPanelIndex   =   5
-            TabStop         =   True
             Text            =   "Text Fields:"
             TextAlign       =   0
             TextColor       =   &c00000000
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
-            Top             =   162
+            Top             =   166
             Transparent     =   False
             Underline       =   False
             Visible         =   True
-            Width           =   219
+            Width           =   220
          End
          Begin Label lbl_fonts_fixed_width
             AutoDeactivate  =   True
@@ -1763,7 +1748,7 @@ Begin Window MainSettingsWindow
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   15
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "grp_settings_fonts"
@@ -1779,18 +1764,17 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   3
             TabPanelIndex   =   5
-            TabStop         =   True
             Text            =   "Fixed-width Text:"
             TextAlign       =   0
             TextColor       =   &c00000000
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
-            Top             =   212
+            Top             =   218
             Transparent     =   False
             Underline       =   False
             Visible         =   True
-            Width           =   219
+            Width           =   220
          End
          Begin SFontCanvas can_fonts_headings
             AcceptFocus     =   False
@@ -1816,7 +1800,7 @@ Begin Window MainSettingsWindow
             TabIndex        =   4
             TabPanelIndex   =   5
             TabStop         =   True
-            Top             =   77
+            Top             =   84
             Transparent     =   True
             UseFocusRing    =   True
             Visible         =   True
@@ -1828,7 +1812,7 @@ Begin Window MainSettingsWindow
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   15
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "grp_settings_fonts"
@@ -1844,18 +1828,17 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   5
             TabPanelIndex   =   5
-            TabStop         =   True
             Text            =   "Buttons:"
             TextAlign       =   0
             TextColor       =   &c00000000
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
-            Top             =   262
+            Top             =   270
             Transparent     =   False
             Underline       =   False
             Visible         =   True
-            Width           =   219
+            Width           =   220
          End
          Begin SFontCanvas can_fonts_labels
             AcceptFocus     =   False
@@ -1881,7 +1864,7 @@ Begin Window MainSettingsWindow
             TabIndex        =   6
             TabPanelIndex   =   5
             TabStop         =   True
-            Top             =   127
+            Top             =   136
             Transparent     =   True
             UseFocusRing    =   True
             Visible         =   True
@@ -1893,7 +1876,7 @@ Begin Window MainSettingsWindow
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   15
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "grp_settings_fonts"
@@ -1909,18 +1892,17 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   7
             TabPanelIndex   =   5
-            TabStop         =   True
             Text            =   "Large Headings:"
             TextAlign       =   0
             TextColor       =   &c00000000
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
-            Top             =   311
+            Top             =   322
             Transparent     =   False
             Underline       =   False
             Visible         =   True
-            Width           =   219
+            Width           =   220
          End
          Begin SFontCanvas can_fonts_text_fields
             AcceptFocus     =   False
@@ -1946,7 +1928,7 @@ Begin Window MainSettingsWindow
             TabIndex        =   8
             TabPanelIndex   =   5
             TabStop         =   True
-            Top             =   177
+            Top             =   188
             Transparent     =   True
             UseFocusRing    =   True
             Visible         =   True
@@ -1959,7 +1941,7 @@ Begin Window MainSettingsWindow
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "grp_settings_fonts"
@@ -1978,7 +1960,7 @@ Begin Window MainSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
-            Top             =   378
+            Top             =   395
             Underline       =   False
             Value           =   False
             Visible         =   True
@@ -2008,7 +1990,7 @@ Begin Window MainSettingsWindow
             TabIndex        =   10
             TabPanelIndex   =   5
             TabStop         =   True
-            Top             =   227
+            Top             =   240
             Transparent     =   True
             UseFocusRing    =   True
             Visible         =   True
@@ -2038,7 +2020,7 @@ Begin Window MainSettingsWindow
             TabIndex        =   11
             TabPanelIndex   =   5
             TabStop         =   True
-            Top             =   277
+            Top             =   292
             Transparent     =   True
             UseFocusRing    =   True
             Visible         =   True
@@ -2058,7 +2040,7 @@ Begin Window MainSettingsWindow
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "grp_settings_fonts"
-            Left            =   51
+            Left            =   52
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   False
@@ -2068,7 +2050,7 @@ Begin Window MainSettingsWindow
             TabIndex        =   12
             TabPanelIndex   =   5
             TabStop         =   True
-            Top             =   327
+            Top             =   344
             Transparent     =   True
             UseFocusRing    =   True
             Visible         =   True
@@ -2138,7 +2120,7 @@ Begin Window MainSettingsWindow
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "grp_settings_slidetype_coloring"
@@ -2154,14 +2136,13 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   2
             TabPanelIndex   =   5
-            TabStop         =   True
             Text            =   "Song, verse"
             TextAlign       =   0
             TextColor       =   &c00000000
             TextFont        =   "Arial"
             TextSize        =   11.0
             TextUnit        =   0
-            Top             =   91
+            Top             =   87
             Transparent     =   False
             Underline       =   False
             Visible         =   True
@@ -2173,7 +2154,7 @@ Begin Window MainSettingsWindow
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "grp_settings_slidetype_coloring"
@@ -2189,14 +2170,13 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   3
             TabPanelIndex   =   5
-            TabStop         =   True
             Text            =   "Song, bridge"
             TextAlign       =   0
             TextColor       =   &c00000000
             TextFont        =   "Arial"
             TextSize        =   11.0
             TextUnit        =   0
-            Top             =   121
+            Top             =   117
             Transparent     =   False
             Underline       =   False
             Visible         =   True
@@ -2238,7 +2218,7 @@ Begin Window MainSettingsWindow
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "grp_settings_slidetype_coloring"
@@ -2254,14 +2234,13 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   5
             TabPanelIndex   =   5
-            TabStop         =   True
             Text            =   "Song, pre-chorus"
             TextAlign       =   0
             TextColor       =   &c00000000
             TextFont        =   "Arial"
             TextSize        =   11.0
             TextUnit        =   0
-            Top             =   151
+            Top             =   147
             Transparent     =   False
             Underline       =   False
             Visible         =   True
@@ -2303,7 +2282,7 @@ Begin Window MainSettingsWindow
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "grp_settings_slidetype_coloring"
@@ -2319,14 +2298,13 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   7
             TabPanelIndex   =   5
-            TabStop         =   True
             Text            =   "Song, chorus"
             TextAlign       =   0
             TextColor       =   &c00000000
             TextFont        =   "Arial"
             TextSize        =   11.0
             TextUnit        =   0
-            Top             =   181
+            Top             =   177
             Transparent     =   False
             Underline       =   False
             Visible         =   True
@@ -2368,7 +2346,7 @@ Begin Window MainSettingsWindow
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "grp_settings_slidetype_coloring"
@@ -2384,14 +2362,13 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   9
             TabPanelIndex   =   5
-            TabStop         =   True
             Text            =   "Song, tag"
             TextAlign       =   0
             TextColor       =   &c00000000
             TextFont        =   "Arial"
             TextSize        =   11.0
             TextUnit        =   0
-            Top             =   211
+            Top             =   207
             Transparent     =   False
             Underline       =   False
             Visible         =   True
@@ -2433,7 +2410,7 @@ Begin Window MainSettingsWindow
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "grp_settings_slidetype_coloring"
@@ -2449,14 +2426,13 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   11
             TabPanelIndex   =   5
-            TabStop         =   True
             Text            =   "Scripture"
             TextAlign       =   0
             TextColor       =   &c00000000
             TextFont        =   "Arial"
             TextSize        =   11.0
             TextUnit        =   0
-            Top             =   241
+            Top             =   237
             Transparent     =   False
             Underline       =   False
             Visible         =   True
@@ -2498,7 +2474,7 @@ Begin Window MainSettingsWindow
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "grp_settings_slidetype_coloring"
@@ -2514,14 +2490,13 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   13
             TabPanelIndex   =   5
-            TabStop         =   True
             Text            =   "Custom slide"
             TextAlign       =   0
             TextColor       =   &c00000000
             TextFont        =   "Arial"
             TextSize        =   11.0
             TextUnit        =   0
-            Top             =   271
+            Top             =   267
             Transparent     =   False
             Underline       =   False
             Visible         =   True
@@ -2563,7 +2538,7 @@ Begin Window MainSettingsWindow
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "grp_settings_slidetype_coloring"
@@ -2579,14 +2554,13 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   15
             TabPanelIndex   =   5
-            TabStop         =   True
             Text            =   "Style change"
             TextAlign       =   0
             TextColor       =   &c00000000
             TextFont        =   "Arial"
             TextSize        =   11.0
             TextUnit        =   0
-            Top             =   301
+            Top             =   297
             Transparent     =   False
             Underline       =   False
             Visible         =   True
@@ -2628,7 +2602,7 @@ Begin Window MainSettingsWindow
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "grp_settings_slidetype_coloring"
@@ -2644,14 +2618,13 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   17
             TabPanelIndex   =   5
-            TabStop         =   True
             Text            =   "Image"
             TextAlign       =   0
             TextColor       =   &c00000000
             TextFont        =   "Arial"
             TextSize        =   11.0
             TextUnit        =   0
-            Top             =   331
+            Top             =   327
             Transparent     =   False
             Underline       =   False
             Visible         =   True
@@ -2693,7 +2666,7 @@ Begin Window MainSettingsWindow
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "grp_settings_slidetype_coloring"
@@ -2709,14 +2682,13 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   19
             TabPanelIndex   =   5
-            TabStop         =   True
             Text            =   "External application"
             TextAlign       =   0
             TextColor       =   &c00000000
             TextFont        =   "Arial"
             TextSize        =   11.0
             TextUnit        =   0
-            Top             =   361
+            Top             =   357
             Transparent     =   False
             Underline       =   False
             Visible         =   True
@@ -2758,7 +2730,7 @@ Begin Window MainSettingsWindow
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "grp_settings_slidetype_coloring"
@@ -2774,14 +2746,13 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   21
             TabPanelIndex   =   5
-            TabStop         =   True
             Text            =   "Blank (inserted)"
             TextAlign       =   0
             TextColor       =   &c00000000
             TextFont        =   "Arial"
             TextSize        =   11.0
             TextUnit        =   0
-            Top             =   391
+            Top             =   387
             Transparent     =   False
             Underline       =   False
             Visible         =   True
@@ -2824,7 +2795,7 @@ Begin Window MainSettingsWindow
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "grp_settings_slidetype_coloring"
@@ -2883,7 +2854,7 @@ Begin Window MainSettingsWindow
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   15
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "grp_settings_rcserver"
@@ -2899,7 +2870,6 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   1
             TabPanelIndex   =   4
-            TabStop         =   True
             Text            =   "Authentication key:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -2918,7 +2888,7 @@ Begin Window MainSettingsWindow
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   15
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "grp_settings_rcserver"
@@ -2934,7 +2904,6 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   3
             TabPanelIndex   =   4
-            TabStop         =   True
             Text            =   "Port:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -2959,7 +2928,7 @@ Begin Window MainSettingsWindow
             DataSource      =   ""
             Enabled         =   True
             Format          =   ""
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             HideSelection   =   True
             Index           =   -2147483648
@@ -2989,7 +2958,7 @@ Begin Window MainSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
-            Top             =   187
+            Top             =   194
             Underline       =   False
             UseFocusRing    =   True
             Visible         =   True
@@ -3002,7 +2971,7 @@ Begin Window MainSettingsWindow
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "grp_settings_rcserver"
@@ -3039,7 +3008,7 @@ Begin Window MainSettingsWindow
             DataSource      =   ""
             Enabled         =   True
             Format          =   ""
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             HideSelection   =   True
             Index           =   -2147483648
@@ -3069,7 +3038,7 @@ Begin Window MainSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
-            Top             =   187
+            Top             =   194
             Underline       =   False
             UseFocusRing    =   True
             Visible         =   True
@@ -3125,7 +3094,6 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   0
             TabPanelIndex   =   3
-            TabStop         =   True
             Text            =   "OpenSong tries to store the images that are used in a set in JPEG format. The items below control the quality and behaviour of image storage. The quality slider below will be disabled if QuickTime is not installed as OpenSong depends on that for storing JPEG images in user selectable quality."
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -3144,7 +3112,7 @@ Begin Window MainSettingsWindow
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "grp_settings_imagequality"
@@ -3160,7 +3128,6 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   2
             TabPanelIndex   =   3
-            TabStop         =   True
             Text            =   "Image compression:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -3239,7 +3206,7 @@ Begin Window MainSettingsWindow
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "grp_settings_imagedefaults"
@@ -3271,7 +3238,7 @@ Begin Window MainSettingsWindow
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "grp_settings_imagedefaults"
@@ -3303,7 +3270,7 @@ Begin Window MainSettingsWindow
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "grp_settings_imagedefaults"
@@ -3335,7 +3302,7 @@ Begin Window MainSettingsWindow
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "grp_settings_imagedefaults"
@@ -3367,7 +3334,7 @@ Begin Window MainSettingsWindow
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "grp_settings_imagedefaults"
@@ -3427,7 +3394,7 @@ Begin Window MainSettingsWindow
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "grp_settings_linked"
@@ -3458,7 +3425,7 @@ Begin Window MainSettingsWindow
          Bold            =   False
          Caption         =   "External Renderer"
          Enabled         =   True
-         Height          =   136
+         Height          =   151
          HelpTag         =   ""
          Index           =   -2147483648
          InitialParent   =   "tab_general_general"
@@ -3487,7 +3454,7 @@ Begin Window MainSettingsWindow
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "grp_settings_extrender"
@@ -3518,7 +3485,7 @@ Begin Window MainSettingsWindow
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   15
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "grp_settings_extrender"
@@ -3534,14 +3501,13 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   3
             TabPanelIndex   =   4
-            TabStop         =   True
             Text            =   "Port:"
             TextAlign       =   0
             TextColor       =   &c00000000
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
-            Top             =   287
+            Top             =   288
             Transparent     =   False
             Underline       =   False
             Visible         =   True
@@ -3553,7 +3519,7 @@ Begin Window MainSettingsWindow
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   15
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "grp_settings_extrender"
@@ -3569,7 +3535,6 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   1
             TabPanelIndex   =   4
-            TabStop         =   True
             Text            =   "Server:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -3594,7 +3559,7 @@ Begin Window MainSettingsWindow
             DataSource      =   ""
             Enabled         =   True
             Format          =   ""
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             HideSelection   =   True
             Index           =   -2147483648
@@ -3624,7 +3589,7 @@ Begin Window MainSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
-            Top             =   302
+            Top             =   310
             Underline       =   False
             UseFocusRing    =   True
             Visible         =   True
@@ -3642,7 +3607,7 @@ Begin Window MainSettingsWindow
             DataSource      =   ""
             Enabled         =   True
             Format          =   ""
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             HideSelection   =   True
             Index           =   -2147483648
@@ -3672,7 +3637,7 @@ Begin Window MainSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
-            Top             =   304
+            Top             =   310
             Underline       =   False
             UseFocusRing    =   True
             Visible         =   True
@@ -3690,7 +3655,7 @@ Begin Window MainSettingsWindow
             DataSource      =   ""
             Enabled         =   True
             Format          =   ""
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             HideSelection   =   True
             Index           =   -2147483648
@@ -3720,7 +3685,7 @@ Begin Window MainSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
-            Top             =   345
+            Top             =   358
             Underline       =   False
             UseFocusRing    =   True
             Visible         =   True
@@ -3732,7 +3697,7 @@ Begin Window MainSettingsWindow
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   15
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "grp_settings_extrender"
@@ -3748,14 +3713,13 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   5
             TabPanelIndex   =   4
-            TabStop         =   True
             Text            =   "Timeout (in ms):"
             TextAlign       =   0
             TextColor       =   &c00000000
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
-            Top             =   328
+            Top             =   336
             Transparent     =   False
             Underline       =   False
             Visible         =   True

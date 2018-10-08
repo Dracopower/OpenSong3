@@ -103,7 +103,7 @@ Begin Window SearchWindow
          Bold            =   False
          Caption         =   "Exact word"
          Enabled         =   True
-         Height          =   20
+         Height          =   22
          HelpTag         =   ""
          Index           =   -2147483648
          InitialParent   =   "grp_search_match"
@@ -132,7 +132,7 @@ Begin Window SearchWindow
          Bold            =   False
          Caption         =   "Begins with"
          Enabled         =   True
-         Height          =   20
+         Height          =   22
          HelpTag         =   ""
          Index           =   -2147483648
          InitialParent   =   "grp_search_match"
@@ -188,7 +188,7 @@ Begin Window SearchWindow
          Bold            =   False
          Caption         =   "Any word"
          Enabled         =   True
-         Height          =   20
+         Height          =   22
          HelpTag         =   ""
          Index           =   -2147483648
          InitialParent   =   "grp_search_words"
@@ -425,7 +425,7 @@ Begin Window SearchWindow
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
-      Height          =   20
+      Height          =   22
       HelpTag         =   ""
       Index           =   -2147483648
       InitialParent   =   ""
@@ -459,7 +459,7 @@ Begin Window SearchWindow
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
-      Height          =   20
+      Height          =   22
       HelpTag         =   ""
       Index           =   -2147483648
       InitialParent   =   ""

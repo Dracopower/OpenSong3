@@ -135,7 +135,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          DataField       =   ""
          DataSource      =   ""
          Enabled         =   True
-         Height          =   20
+         Height          =   22
          HelpTag         =   ""
          Index           =   -2147483648
          InitialParent   =   "grp_quick_lookup"
@@ -169,7 +169,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          DataField       =   ""
          DataSource      =   ""
          Enabled         =   True
-         Height          =   20
+         Height          =   22
          HelpTag         =   ""
          Index           =   -2147483648
          InitialParent   =   "grp_quick_lookup"
@@ -390,7 +390,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          TextFont        =   "Arial"
          TextSize        =   11
          TextUnit        =   0
-         Top             =   128
+         Top             =   130
          Underline       =   ""
          UseFocusRing    =   True
          Visible         =   True
@@ -440,7 +440,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          TextFont        =   "Arial"
          TextSize        =   11
          TextUnit        =   0
-         Top             =   128
+         Top             =   130
          Underline       =   ""
          UseFocusRing    =   True
          Visible         =   True
@@ -454,7 +454,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          DataField       =   ""
          DataSource      =   ""
          Enabled         =   True
-         Height          =   20
+         Height          =   22
          HelpTag         =   ""
          Index           =   -2147483648
          InitialParent   =   "grp_books"
@@ -488,7 +488,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          DataField       =   ""
          DataSource      =   ""
          Enabled         =   True
-         Height          =   20
+         Height          =   22
          HelpTag         =   ""
          Index           =   -2147483648
          InitialParent   =   "grp_books"
@@ -559,7 +559,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       TextFont        =   "Arial"
       TextSize        =   11
       TextUnit        =   0
-      Top             =   128
+      Top             =   130
       Underline       =   False
       UseFocusRing    =   True
       Visible         =   True
@@ -714,7 +714,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          Bold            =   False
          Caption         =   "Paragraph"
          Enabled         =   True
-         Height          =   20
+         Height          =   22
          HelpTag         =   ""
          Index           =   -2147483648
          InitialParent   =   "grp_options_format"
@@ -743,7 +743,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          Bold            =   False
          Caption         =   "Verse"
          Enabled         =   True
-         Height          =   20
+         Height          =   22
          HelpTag         =   ""
          Index           =   -2147483648
          InitialParent   =   "grp_options_format"
@@ -775,7 +775,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
-      Height          =   20
+      Height          =   22
       HelpTag         =   ""
       Index           =   -2147483648
       InitialParent   =   ""
@@ -842,7 +842,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       TextFont        =   "Arial"
       TextSize        =   11
       TextUnit        =   0
-      Top             =   128
+      Top             =   130
       Underline       =   False
       UseFocusRing    =   True
       Visible         =   True
@@ -892,7 +892,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       TextFont        =   "Arial"
       TextSize        =   11
       TextUnit        =   0
-      Top             =   128
+      Top             =   130
       Underline       =   False
       UseFocusRing    =   True
       Visible         =   True
@@ -1033,7 +1033,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
-      Height          =   20
+      Height          =   22
       HelpTag         =   ""
       Index           =   -2147483648
       InitialParent   =   ""
@@ -1098,7 +1098,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
-      Height          =   20
+      Height          =   22
       HelpTag         =   ""
       Index           =   -2147483648
       InitialParent   =   ""
@@ -1120,7 +1120,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       TextFont        =   "Arial"
       TextSize        =   11
       TextUnit        =   0
-      Top             =   470
+      Top             =   468
       Transparent     =   False
       Underline       =   ""
       Visible         =   True
@@ -1132,7 +1132,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
-      Height          =   20
+      Height          =   22
       HelpTag         =   ""
       Index           =   -2147483648
       InitialParent   =   ""
@@ -1200,7 +1200,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
-      Height          =   20
+      Height          =   22
       HelpTag         =   ""
       Index           =   -2147483648
       InitialParent   =   ""
@@ -1234,7 +1234,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
-      Height          =   20
+      Height          =   22
       HelpTag         =   ""
       Index           =   -2147483648
       InitialParent   =   ""

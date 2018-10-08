@@ -91,7 +91,7 @@ Begin Window ProgressWindow
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
-      Height          =   20
+      Height          =   22
       HelpTag         =   ""
       Index           =   2147483648
       InitialParent   =   ""

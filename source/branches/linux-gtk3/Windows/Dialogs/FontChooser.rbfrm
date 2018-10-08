@@ -131,7 +131,7 @@ Begin Window FontChooser
       DataSource      =   ""
       Enabled         =   True
       Format          =   ""
-      Height          =   20
+      Height          =   22
       HelpTag         =   ""
       HideSelection   =   True
       Index           =   -2147483648
@@ -260,7 +260,7 @@ Begin Window FontChooser
       DataSource      =   ""
       Enabled         =   True
       Format          =   ""
-      Height          =   20
+      Height          =   22
       HelpTag         =   ""
       HideSelection   =   True
       Index           =   -2147483648
@@ -386,7 +386,7 @@ Begin Window FontChooser
       DoubleBuffer    =   False
       Enabled         =   True
       EraseBackground =   True
-      Height          =   20
+      Height          =   22
       HelpTag         =   ""
       Index           =   -2147483648
       InitialParent   =   ""
@@ -414,7 +414,7 @@ Begin Window FontChooser
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
-      Height          =   20
+      Height          =   22
       HelpTag         =   ""
       Index           =   -2147483648
       InitialParent   =   ""
@@ -446,7 +446,7 @@ Begin Window FontChooser
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
-      Height          =   20
+      Height          =   22
       HelpTag         =   ""
       Index           =   -2147483648
       InitialParent   =   ""
@@ -478,7 +478,7 @@ Begin Window FontChooser
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
-      Height          =   20
+      Height          =   22
       HelpTag         =   ""
       Index           =   -2147483648
       InitialParent   =   ""
@@ -510,7 +510,7 @@ Begin Window FontChooser
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
-      Height          =   20
+      Height          =   22
       HelpTag         =   ""
       Index           =   -2147483648
       InitialParent   =   ""
@@ -543,7 +543,7 @@ Begin Window FontChooser
       DoubleBuffer    =   False
       Enabled         =   True
       EraseBackground =   True
-      Height          =   20
+      Height          =   22
       HelpTag         =   ""
       Index           =   -2147483648
       InitialParent   =   ""
@@ -571,7 +571,7 @@ Begin Window FontChooser
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
-      Height          =   20
+      Height          =   22
       HelpTag         =   ""
       Index           =   -2147483648
       InitialParent   =   ""
@@ -604,7 +604,7 @@ Begin Window FontChooser
       DoubleBuffer    =   False
       Enabled         =   True
       EraseBackground =   True
-      Height          =   20
+      Height          =   22
       HelpTag         =   ""
       Index           =   -2147483648
       InitialParent   =   ""
@@ -632,7 +632,7 @@ Begin Window FontChooser
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
-      Height          =   20
+      Height          =   22
       HelpTag         =   ""
       Index           =   -2147483648
       InitialParent   =   ""
@@ -665,7 +665,7 @@ Begin Window FontChooser
       DoubleBuffer    =   False
       Enabled         =   True
       EraseBackground =   True
-      Height          =   20
+      Height          =   22
       HelpTag         =   ""
       Index           =   -2147483648
       InitialParent   =   ""

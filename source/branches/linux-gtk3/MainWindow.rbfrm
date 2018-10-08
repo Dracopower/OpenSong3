@@ -112,7 +112,6 @@ Begin Window MainWindow Implements ScriptureReceiver
       Selectable      =   False
       TabIndex        =   3
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   ""
       TextAlign       =   0
       TextColor       =   &c00000000
@@ -759,7 +758,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   6
             TabPanelIndex   =   1
-            TabStop         =   True
             Text            =   "Folders:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -794,7 +792,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   7
             TabPanelIndex   =   1
-            TabStop         =   True
             Text            =   "Songs:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -845,7 +842,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "can_controls_songs_mode"
@@ -861,7 +858,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   9
             TabPanelIndex   =   1
-            TabStop         =   True
             Text            =   "Containing Folder:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -942,7 +938,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             ScrollbarHorizontal=   False
             ScrollBarVertical=   True
             SelectionType   =   0
-            ShowDropIndicator=   False
             TabIndex        =   8
             TabPanelIndex   =   1
             TabStop         =   True
@@ -969,7 +964,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             DataSource      =   ""
             Enabled         =   False
             Format          =   ""
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             HideSelection   =   True
             Index           =   -2147483648
@@ -1682,7 +1677,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   4
             TabPanelIndex   =   2
-            TabStop         =   True
             Text            =   "Items In Set:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -1951,7 +1945,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             ScrollbarHorizontal=   False
             ScrollBarVertical=   True
             SelectionType   =   0
-            ShowDropIndicator=   False
             TabIndex        =   5
             TabPanelIndex   =   2
             TabStop         =   True
@@ -1987,7 +1980,7 @@ Begin Window MainWindow Implements ScriptureReceiver
       TabIndex        =   5
       TabPanelIndex   =   0
       Top             =   34
-      Value           =   4
+      Value           =   2
       Visible         =   True
       Width           =   591
       Begin Canvas cnv_editor_style_change
@@ -2039,7 +2032,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   0
             TabPanelIndex   =   4
-            TabStop         =   True
             Text            =   "Style Change"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -2057,7 +2049,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Bold            =   False
             Caption         =   "Change Style to the Following:"
             Enabled         =   True
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "cnv_editor_style_change"
@@ -2086,7 +2078,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Bold            =   False
             Caption         =   "Revert to Previous Style"
             Enabled         =   True
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "cnv_editor_style_change"
@@ -2189,7 +2181,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   12
             TabPanelIndex   =   2
-            TabStop         =   True
             Text            =   "AKA:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -2224,7 +2215,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   1
             TabPanelIndex   =   2
-            TabStop         =   True
             Text            =   "Themes:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -2259,7 +2249,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   3
             TabPanelIndex   =   2
-            TabStop         =   True
             Text            =   "Capo:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -2294,7 +2283,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   14
             TabPanelIndex   =   2
-            TabStop         =   True
             Text            =   "Key Line:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -2343,7 +2331,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             ScrollbarHorizontal=   False
             ScrollBarVertical=   True
             SelectionType   =   0
-            ShowDropIndicator=   False
             TabIndex        =   2
             TabPanelIndex   =   2
             TabStop         =   True
@@ -2412,7 +2399,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   6
             TabPanelIndex   =   2
-            TabStop         =   True
             Text            =   "Key:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -2447,7 +2433,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   8
             TabPanelIndex   =   2
-            TabStop         =   True
             Text            =   "Time Signature:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -2513,7 +2498,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   18
             TabPanelIndex   =   2
-            TabStop         =   True
             Text            =   "User Defined 2:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -2548,7 +2532,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   10
             TabPanelIndex   =   2
-            TabStop         =   True
             Text            =   "Tempo:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -2583,7 +2566,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   20
             TabPanelIndex   =   2
-            TabStop         =   True
             Text            =   "User Defined 3:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -2603,7 +2585,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   False
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "can_editor_advanced_song_editor"
@@ -2635,7 +2617,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   False
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "can_editor_advanced_song_editor"
@@ -2764,7 +2746,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             DataSource      =   ""
             Enabled         =   False
             Format          =   ""
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             HideSelection   =   True
             Index           =   -2147483648
@@ -2812,7 +2794,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             DataSource      =   ""
             Enabled         =   False
             Format          =   ""
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             HideSelection   =   True
             Index           =   -2147483648
@@ -2891,7 +2873,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             DataSource      =   ""
             Enabled         =   False
             Format          =   ""
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             HideSelection   =   True
             Index           =   -2147483648
@@ -2949,7 +2931,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   16
             TabPanelIndex   =   2
-            TabStop         =   True
             Text            =   "User Defined 1:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -2984,7 +2965,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   0
             TabPanelIndex   =   2
-            TabStop         =   True
             Text            =   "Song Editor"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -3163,7 +3143,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   26
             TabPanelIndex   =   2
-            TabStop         =   True
             Text            =   "Verse specific backgrounds:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -3214,7 +3193,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             ScrollbarHorizontal=   False
             ScrollBarVertical=   True
             SelectionType   =   0
-            ShowDropIndicator=   False
             TabIndex        =   27
             TabPanelIndex   =   2
             TabStop         =   True
@@ -3238,7 +3216,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Enabled         =   False
             EraseBackground =   True
             HasFocus        =   False
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "can_editor_advanced_song_editor"
@@ -3270,7 +3248,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Enabled         =   False
             EraseBackground =   True
             HasFocus        =   False
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "can_editor_advanced_song_editor"
@@ -3300,7 +3278,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   False
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "can_editor_advanced_song_editor"
@@ -3332,7 +3310,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   False
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "can_editor_advanced_song_editor"
@@ -3364,7 +3342,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   False
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "can_editor_advanced_song_editor"
@@ -3396,7 +3374,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   False
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "can_editor_advanced_song_editor"
@@ -3428,7 +3406,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   False
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "can_editor_advanced_song_editor"
@@ -3503,7 +3481,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   0
             TabPanelIndex   =   1
-            TabStop         =   True
             Text            =   "Song Editor"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -3538,7 +3515,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   7
             TabPanelIndex   =   1
-            TabStop         =   True
             Text            =   "CCLI #:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -3573,7 +3549,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   5
             TabPanelIndex   =   1
-            TabStop         =   True
             Text            =   "Copyright:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -3608,7 +3583,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   3
             TabPanelIndex   =   1
-            TabStop         =   True
             Text            =   "Author:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -3643,7 +3617,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   9
             TabPanelIndex   =   1
-            TabStop         =   True
             Text            =   "Presentation:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -3678,7 +3651,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   13
             TabPanelIndex   =   1
-            TabStop         =   True
             Text            =   "Chord/Lyrics:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -3713,7 +3685,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   11
             TabPanelIndex   =   1
-            TabStop         =   True
             Text            =   "Hymn #:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -3748,7 +3719,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   15
             TabPanelIndex   =   1
-            TabStop         =   True
             Text            =   "Insert:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -3783,7 +3753,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   1
             TabPanelIndex   =   1
-            TabStop         =   True
             Text            =   "Title:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -3849,7 +3818,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                TextFont        =   "Arial"
                TextSize        =   10.0
                TextUnit        =   0
-               Top             =   427
+               Top             =   428
                Underline       =   False
                Visible         =   True
                Width           =   113
@@ -3860,7 +3829,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                DataField       =   ""
                DataSource      =   ""
                Enabled         =   True
-               Height          =   20
+               Height          =   22
                HelpTag         =   ""
                Index           =   -2147483648
                InitialParent   =   "grp_song_transpose"
@@ -3876,7 +3845,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                Selectable      =   False
                TabIndex        =   1
                TabPanelIndex   =   1
-               TabStop         =   True
                Text            =   "Using:"
                TextAlign       =   0
                TextColor       =   &c00000000
@@ -3915,7 +3883,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                TextFont        =   "Arial"
                TextSize        =   10.0
                TextUnit        =   0
-               Top             =   459
+               Top             =   458
                Underline       =   False
                Visible         =   True
                Width           =   113
@@ -3933,7 +3901,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             DataSource      =   ""
             Enabled         =   False
             Format          =   ""
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             HideSelection   =   True
             Index           =   -2147483648
@@ -4026,7 +3994,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Enabled         =   False
             EraseBackground =   True
             HasFocus        =   False
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "can_editor_general_song_editor"
@@ -4058,7 +4026,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Enabled         =   False
             EraseBackground =   True
             HasFocus        =   False
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "can_editor_general_song_editor"
@@ -4090,7 +4058,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Enabled         =   False
             EraseBackground =   True
             HasFocus        =   False
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "can_editor_general_song_editor"
@@ -4122,7 +4090,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Enabled         =   False
             EraseBackground =   True
             HasFocus        =   False
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "can_editor_general_song_editor"
@@ -4154,7 +4122,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Enabled         =   False
             EraseBackground =   True
             HasFocus        =   False
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "can_editor_general_song_editor"
@@ -4186,7 +4154,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Enabled         =   False
             EraseBackground =   True
             HasFocus        =   False
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "can_editor_general_song_editor"
@@ -4285,7 +4253,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             DataSource      =   ""
             Enabled         =   False
             Format          =   ""
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             HideSelection   =   True
             Index           =   -2147483648
@@ -4333,7 +4301,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             DataSource      =   ""
             Enabled         =   False
             Format          =   ""
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             HideSelection   =   True
             Index           =   -2147483648
@@ -4381,7 +4349,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             DataSource      =   ""
             Enabled         =   False
             Format          =   ""
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             HideSelection   =   True
             Index           =   -2147483648
@@ -4429,7 +4397,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             DataSource      =   ""
             Enabled         =   False
             Format          =   ""
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             HideSelection   =   True
             Index           =   -2147483648
@@ -4535,7 +4503,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "can_editor_general_song_editor"
@@ -4551,7 +4519,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   26
             TabPanelIndex   =   1
-            TabStop         =   True
             Text            =   "Linked Songs:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -4600,7 +4567,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             ScrollbarHorizontal=   False
             ScrollBarVertical=   True
             SelectionType   =   0
-            ShowDropIndicator=   False
             TabIndex        =   27
             TabPanelIndex   =   1
             TabStop         =   True
@@ -4713,7 +4679,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   21
             TabPanelIndex   =   3
-            TabStop         =   True
             Text            =   "Auto-advance slide(s) every..."
             TextAlign       =   1
             TextColor       =   &c00000000
@@ -4748,14 +4713,13 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   23
             TabPanelIndex   =   3
-            TabStop         =   True
             Text            =   "seconds"
             TextAlign       =   1
             TextColor       =   &c00000000
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
-            Top             =   290
+            Top             =   292
             Transparent     =   False
             Underline       =   False
             Visible         =   True
@@ -4783,7 +4747,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   17
             TabPanelIndex   =   3
-            TabStop         =   True
             Text            =   "Insert:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -4803,7 +4766,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "can_editor_slide_editor"
@@ -4840,7 +4803,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             DataSource      =   ""
             Enabled         =   True
             Format          =   ""
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             HideSelection   =   True
             Index           =   -2147483648
@@ -4883,7 +4846,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "can_editor_slide_editor"
@@ -4915,7 +4878,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   False
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "can_editor_slide_editor"
@@ -4983,7 +4946,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             DataSource      =   ""
             Enabled         =   True
             Format          =   ""
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             HideSelection   =   True
             Index           =   -2147483648
@@ -5013,7 +4976,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
-            Top             =   405
+            Top             =   388
             Underline       =   False
             UseFocusRing    =   True
             Visible         =   True
@@ -5025,7 +4988,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   16
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "can_editor_slide_editor"
@@ -5041,14 +5004,13 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   13
             TabPanelIndex   =   3
-            TabStop         =   True
             Text            =   "File Folder"
             TextAlign       =   0
             TextColor       =   &c00000000
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
-            Top             =   427
+            Top             =   410
             Transparent     =   False
             Underline       =   False
             Visible         =   True
@@ -5076,7 +5038,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   0
             TabPanelIndex   =   3
-            TabStop         =   True
             Text            =   "Custom Slide Editor"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -5095,7 +5056,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   16
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "can_editor_slide_editor"
@@ -5111,14 +5072,13 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   9
             TabPanelIndex   =   3
-            TabStop         =   True
             Text            =   "Custom Presentation Order:"
             TextAlign       =   0
             TextColor       =   &c00000000
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
-            Top             =   389
+            Top             =   366
             Transparent     =   False
             Underline       =   False
             Visible         =   True
@@ -5130,7 +5090,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   16
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "can_editor_slide_editor"
@@ -5146,14 +5106,13 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   11
             TabPanelIndex   =   3
-            TabStop         =   True
             Text            =   "Original Presentation Order:"
             TextAlign       =   0
             TextColor       =   &c00000000
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
-            Top             =   389
+            Top             =   366
             Transparent     =   False
             Underline       =   False
             Visible         =   True
@@ -5171,7 +5130,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             DataSource      =   ""
             Enabled         =   True
             Format          =   ""
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             HideSelection   =   True
             Index           =   -2147483648
@@ -5201,7 +5160,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
-            Top             =   405
+            Top             =   388
             Underline       =   False
             UseFocusRing    =   True
             Visible         =   True
@@ -5229,7 +5188,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   5
             TabPanelIndex   =   3
-            TabStop         =   True
             Text            =   "Name:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -5264,7 +5222,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   3
             TabPanelIndex   =   3
-            TabStop         =   True
             Text            =   "Subtitle:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -5299,7 +5256,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   1
             TabPanelIndex   =   3
-            TabStop         =   True
             Text            =   "Title:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -5334,7 +5290,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   7
             TabPanelIndex   =   3
-            TabStop         =   True
             Text            =   "Slides:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -5369,7 +5324,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   26
             TabPanelIndex   =   3
-            TabStop         =   True
             Text            =   "Use Transition"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -5388,7 +5342,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   15
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "can_editor_slide_editor"
@@ -5404,14 +5358,13 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   15
             TabPanelIndex   =   3
-            TabStop         =   True
             Text            =   "Notes:"
             TextAlign       =   0
             TextColor       =   &c00000000
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
-            Top             =   462
+            Top             =   454
             Transparent     =   False
             Underline       =   False
             Visible         =   True
@@ -5429,7 +5382,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             DataSource      =   ""
             Enabled         =   True
             Format          =   ""
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             HideSelection   =   True
             Index           =   -2147483648
@@ -5477,7 +5430,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             DataSource      =   ""
             Enabled         =   True
             Format          =   ""
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             HideSelection   =   True
             Index           =   -2147483648
@@ -5525,7 +5478,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             DataSource      =   ""
             Enabled         =   True
             Format          =   ""
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             HideSelection   =   True
             Index           =   -2147483648
@@ -5573,7 +5526,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             DataSource      =   ""
             Enabled         =   True
             Format          =   ""
-            Height          =   242
+            Height          =   222
             HelpTag         =   ""
             HideSelection   =   True
             Index           =   -2147483648
@@ -5621,7 +5574,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             DataSource      =   ""
             Enabled         =   True
             Format          =   ""
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             HideSelection   =   True
             Index           =   -2147483648
@@ -5651,7 +5604,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
-            Top             =   442
+            Top             =   432
             Underline       =   False
             UseFocusRing    =   True
             Visible         =   True
@@ -5666,7 +5619,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Enabled         =   True
             EraseBackground =   True
             HasFocus        =   False
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "can_editor_slide_editor"
@@ -5816,7 +5769,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   26
             TabPanelIndex   =   5
-            TabStop         =   True
             Text            =   "seconds"
             TextAlign       =   1
             TextColor       =   &c00000000
@@ -5851,7 +5803,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   18
             TabPanelIndex   =   5
-            TabStop         =   True
             Text            =   "Auto-advance slide(s) every..."
             TextAlign       =   1
             TextColor       =   &c00000000
@@ -5886,7 +5837,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   29
             TabPanelIndex   =   5
-            TabStop         =   True
             Text            =   "Use Transition"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -5906,7 +5856,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "can_editor_image_slide"
@@ -5953,7 +5903,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   0
             TabPanelIndex   =   5
-            TabStop         =   True
             Text            =   "Image Slide Editor"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -6019,7 +5968,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   6
             TabPanelIndex   =   5
-            TabStop         =   True
             Text            =   "Name:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -6039,7 +5987,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "can_editor_image_slide"
@@ -6071,7 +6019,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "can_editor_image_slide"
@@ -6103,7 +6051,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "can_editor_image_slide"
@@ -6135,7 +6083,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "can_editor_image_slide"
@@ -6182,7 +6130,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   24
             TabPanelIndex   =   5
-            TabStop         =   True
             Text            =   "Notes:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -6217,7 +6164,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   1
             TabPanelIndex   =   5
-            TabStop         =   True
             Text            =   "Title:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -6252,7 +6198,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   10
             TabPanelIndex   =   5
-            TabStop         =   True
             Text            =   "Insert:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -6272,7 +6217,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   False
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "can_editor_image_slide"
@@ -6304,7 +6249,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "can_editor_image_slide"
@@ -6341,7 +6286,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             DataSource      =   ""
             Enabled         =   True
             Format          =   ""
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             HideSelection   =   True
             Index           =   -2147483648
@@ -6399,7 +6344,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   3
             TabPanelIndex   =   5
-            TabStop         =   True
             Text            =   "Subtitle:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -6434,7 +6378,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   8
             TabPanelIndex   =   5
-            TabStop         =   True
             Text            =   "Images:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -6454,7 +6397,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "can_editor_image_slide"
@@ -6491,7 +6434,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             DataSource      =   ""
             Enabled         =   True
             Format          =   ""
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             HideSelection   =   True
             Index           =   -2147483648
@@ -6568,7 +6511,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             DataSource      =   ""
             Enabled         =   True
             Format          =   ""
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             HideSelection   =   True
             Index           =   -2147483648
@@ -6616,7 +6559,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             DataSource      =   ""
             Enabled         =   True
             Format          =   ""
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             HideSelection   =   True
             Index           =   -2147483648
@@ -6690,7 +6633,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             ScrollbarHorizontal=   False
             ScrollBarVertical=   True
             SelectionType   =   1
-            ShowDropIndicator=   False
             TabIndex        =   9
             TabPanelIndex   =   5
             TabStop         =   True
@@ -6762,7 +6704,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Enabled         =   True
             EraseBackground =   True
             HasFocus        =   False
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "can_editor_image_slide"
@@ -6794,7 +6736,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Enabled         =   True
             EraseBackground =   True
             HasFocus        =   False
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "can_editor_image_slide"
@@ -6826,7 +6768,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Enabled         =   True
             EraseBackground =   True
             HasFocus        =   False
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "can_editor_image_slide"
@@ -6858,7 +6800,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Enabled         =   True
             EraseBackground =   True
             HasFocus        =   False
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "can_editor_image_slide"
@@ -6890,7 +6832,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Enabled         =   True
             EraseBackground =   True
             HasFocus        =   False
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "can_editor_image_slide"
@@ -6963,7 +6905,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   0
             TabPanelIndex   =   6
-            TabStop         =   True
             Text            =   "External Slide Editor"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -6998,7 +6939,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   1
             TabPanelIndex   =   6
-            TabStop         =   True
             Text            =   "Name:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -7033,7 +6973,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   2
             TabPanelIndex   =   6
-            TabStop         =   True
             Text            =   "Notes:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -7068,7 +7007,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   3
             TabPanelIndex   =   6
-            TabStop         =   True
             Text            =   "Application:"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -7088,7 +7026,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "can_editor_external_slide"
@@ -7125,7 +7063,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             DataSource      =   ""
             Enabled         =   True
             Format          =   ""
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             HideSelection   =   True
             Index           =   -2147483648
@@ -7308,7 +7246,7 @@ Begin Window MainWindow Implements ScriptureReceiver
          Begin PagePanel pge_externals
             AutoDeactivate  =   True
             Enabled         =   True
-            Height          =   316
+            Height          =   323
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "can_editor_external_slide"
@@ -7324,7 +7262,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabIndex        =   10
             TabPanelIndex   =   6
             Top             =   146
-            Value           =   2
+            Value           =   1
             Visible         =   True
             Width           =   436
             Begin GroupBox grp_external_presentation_settings
@@ -7332,7 +7270,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                Bold            =   False
                Caption         =   "Presentation settings"
                Enabled         =   True
-               Height          =   300
+               Height          =   307
                HelpTag         =   ""
                Index           =   -2147483648
                InitialParent   =   "pge_externals"
@@ -7361,7 +7299,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   DataField       =   ""
                   DataSource      =   ""
                   Enabled         =   True
-                  Height          =   20
+                  Height          =   22
                   HelpTag         =   ""
                   Index           =   -2147483648
                   InitialParent   =   "grp_external_presentation_settings"
@@ -7380,7 +7318,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   TextFont        =   "Arial"
                   TextSize        =   10.0
                   TextUnit        =   0
-                  Top             =   384
+                  Top             =   396
                   Underline       =   False
                   Value           =   False
                   Visible         =   True
@@ -7395,7 +7333,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Enabled         =   True
                   EraseBackground =   True
                   HasFocus        =   False
-                  Height          =   20
+                  Height          =   22
                   HelpTag         =   ""
                   Index           =   -2147483648
                   InitialParent   =   "grp_external_presentation_settings"
@@ -7412,7 +7350,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   TabIndex        =   1
                   TabPanelIndex   =   2
                   TabStop         =   True
-                  Top             =   339
+                  Top             =   349
                   Transparent     =   True
                   UseFocusRing    =   True
                   Visible         =   True
@@ -7424,7 +7362,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   DataField       =   ""
                   DataSource      =   ""
                   Enabled         =   True
-                  Height          =   20
+                  Height          =   22
                   HelpTag         =   ""
                   Index           =   -2147483648
                   InitialParent   =   "grp_external_presentation_settings"
@@ -7440,14 +7378,13 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Selectable      =   False
                   TabIndex        =   2
                   TabPanelIndex   =   2
-                  TabStop         =   True
                   Text            =   "Presentation filename"
                   TextAlign       =   0
                   TextColor       =   &c00000000
                   TextFont        =   "Arial"
                   TextSize        =   10.0
                   TextUnit        =   0
-                  Top             =   341
+                  Top             =   351
                   Transparent     =   False
                   Underline       =   False
                   Visible         =   True
@@ -7458,7 +7395,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Bold            =   False
                   Caption         =   "OpenOffice.org Impress"
                   Enabled         =   True
-                  Height          =   20
+                  Height          =   22
                   HelpTag         =   ""
                   Index           =   -2147483648
                   InitialParent   =   "grp_external_presentation_settings"
@@ -7487,7 +7424,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Bold            =   False
                   Caption         =   "Microsoft PowerPoint Viewer"
                   Enabled         =   True
-                  Height          =   20
+                  Height          =   22
                   HelpTag         =   ""
                   Index           =   -2147483648
                   InitialParent   =   "grp_external_presentation_settings"
@@ -7516,7 +7453,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Bold            =   False
                   Caption         =   "Microsoft PowerPoint"
                   Enabled         =   True
-                  Height          =   20
+                  Height          =   22
                   HelpTag         =   ""
                   Index           =   -2147483648
                   InitialParent   =   "grp_external_presentation_settings"
@@ -7546,7 +7483,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   DataField       =   ""
                   DataSource      =   ""
                   Enabled         =   True
-                  Height          =   20
+                  Height          =   22
                   HelpTag         =   ""
                   Index           =   -2147483648
                   InitialParent   =   "grp_external_presentation_settings"
@@ -7562,7 +7499,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Selectable      =   False
                   TabIndex        =   6
                   TabPanelIndex   =   2
-                  TabStop         =   True
                   Text            =   "Which application should be used to run the presentation?"
                   TextAlign       =   0
                   TextColor       =   &c00000000
@@ -7617,7 +7553,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   TextFont        =   "System"
                   TextSize        =   0.0
                   TextUnit        =   0
-                  Top             =   360
+                  Top             =   373
                   Underline       =   False
                   UseFocusRing    =   True
                   Visible         =   True
@@ -7630,7 +7566,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   DataField       =   ""
                   DataSource      =   ""
                   Enabled         =   False
-                  Height          =   20
+                  Height          =   22
                   HelpTag         =   ""
                   Index           =   -2147483648
                   InitialParent   =   "grp_external_presentation_settings"
@@ -7649,7 +7585,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   TextFont        =   "Arial"
                   TextSize        =   10.0
                   TextUnit        =   0
-                  Top             =   404
+                  Top             =   418
                   Underline       =   False
                   Value           =   False
                   Visible         =   True
@@ -7677,7 +7613,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Selectable      =   False
                   TabIndex        =   9
                   TabPanelIndex   =   2
-                  TabStop         =   True
                   Text            =   "For full control over your PowerPoint presentation an installation of Microsoft Office is required."
                   TextAlign       =   0
                   TextColor       =   &c00000000
@@ -7712,7 +7647,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Selectable      =   False
                   TabIndex        =   10
                   TabPanelIndex   =   2
-                  TabStop         =   True
                   Text            =   "For showing your PowerPoint presentation without interaction, you can use the free Microsoft PowerPoint Viewer. OpenSong tries to detect it. You can set a specific viewer in the general settings."
                   TextAlign       =   0
                   TextColor       =   &c00000000
@@ -7747,7 +7681,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Selectable      =   False
                   TabIndex        =   11
                   TabPanelIndex   =   2
-                  TabStop         =   True
                   Text            =   "For full control of an Impress or PowerPoint presentation the free OpenOffice.org suite is required."
                   TextAlign       =   0
                   TextColor       =   &c00000000
@@ -7766,7 +7699,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                Bold            =   False
                Caption         =   "No application"
                Enabled         =   True
-               Height          =   300
+               Height          =   307
                HelpTag         =   ""
                Index           =   -2147483648
                InitialParent   =   "pge_externals"
@@ -7794,7 +7727,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   DataField       =   ""
                   DataSource      =   ""
                   Enabled         =   True
-                  Height          =   70
+                  Height          =   77
                   HelpTag         =   ""
                   Index           =   -2147483648
                   InitialParent   =   "grp_external_no_application"
@@ -7810,7 +7743,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Selectable      =   False
                   TabIndex        =   0
                   TabPanelIndex   =   1
-                  TabStop         =   True
                   Text            =   "Select an application to use as source for this slides content."
                   TextAlign       =   1
                   TextColor       =   &c00000000
@@ -7829,7 +7761,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                Bold            =   False
                Caption         =   "Application launcher settings"
                Enabled         =   True
-               Height          =   300
+               Height          =   307
                HelpTag         =   ""
                Index           =   -2147483648
                InitialParent   =   "pge_externals"
@@ -7857,7 +7789,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   DataField       =   ""
                   DataSource      =   ""
                   Enabled         =   True
-                  Height          =   20
+                  Height          =   22
                   HelpTag         =   ""
                   Index           =   -2147483648
                   InitialParent   =   "grp_external_application_settings"
@@ -7873,7 +7805,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Selectable      =   False
                   TabIndex        =   0
                   TabPanelIndex   =   4
-                  TabStop         =   True
                   Text            =   "Application parameters"
                   TextAlign       =   0
                   TextColor       =   &c00000000
@@ -7892,7 +7823,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   DataField       =   ""
                   DataSource      =   ""
                   Enabled         =   True
-                  Height          =   20
+                  Height          =   22
                   HelpTag         =   ""
                   Index           =   -2147483648
                   InitialParent   =   "grp_external_application_settings"
@@ -7908,7 +7839,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Selectable      =   False
                   TabIndex        =   1
                   TabPanelIndex   =   4
-                  TabStop         =   True
                   Text            =   "Path to application executable"
                   TextAlign       =   0
                   TextColor       =   &c00000000
@@ -7930,7 +7860,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Enabled         =   True
                   EraseBackground =   True
                   HasFocus        =   False
-                  Height          =   20
+                  Height          =   22
                   HelpTag         =   ""
                   Index           =   -2147483648
                   InitialParent   =   "grp_external_application_settings"
@@ -8056,7 +7986,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   DataField       =   ""
                   DataSource      =   ""
                   Enabled         =   True
-                  Height          =   20
+                  Height          =   22
                   HelpTag         =   ""
                   Index           =   -2147483648
                   InitialParent   =   "grp_external_application_settings"
@@ -8086,7 +8016,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Bold            =   False
                   Caption         =   "Start an external application"
                   Enabled         =   True
-                  Height          =   20
+                  Height          =   22
                   HelpTag         =   ""
                   Index           =   -2147483648
                   InitialParent   =   "grp_external_application_settings"
@@ -8115,7 +8045,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Bold            =   False
                   Caption         =   "Stop any currently running launched application"
                   Enabled         =   True
-                  Height          =   20
+                  Height          =   22
                   HelpTag         =   ""
                   Index           =   -2147483648
                   InitialParent   =   "grp_external_application_settings"
@@ -8145,7 +8075,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                Bold            =   False
                Caption         =   "Videolan settings"
                Enabled         =   True
-               Height          =   300
+               Height          =   314
                HelpTag         =   ""
                Index           =   -2147483648
                InitialParent   =   "pge_externals"
@@ -8185,7 +8115,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   GridLinesVertical=   0
                   HasHeading      =   False
                   HeadingIndex    =   -1
-                  Height          =   88
+                  Height          =   94
                   HelpTag         =   ""
                   Hierarchical    =   False
                   Index           =   -2147483648
@@ -8203,14 +8133,13 @@ Begin Window MainWindow Implements ScriptureReceiver
                   ScrollbarHorizontal=   False
                   ScrollBarVertical=   True
                   SelectionType   =   0
-                  ShowDropIndicator=   False
                   TabIndex        =   1
                   TabPanelIndex   =   3
                   TabStop         =   True
                   TextFont        =   "System"
                   TextSize        =   0.0
                   TextUnit        =   0
-                  Top             =   275
+                  Top             =   280
                   Underline       =   False
                   UseFocusRing    =   True
                   Visible         =   True
@@ -8223,7 +8152,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Bold            =   False
                   Caption         =   "Launch Videolan"
                   Enabled         =   True
-                  Height          =   20
+                  Height          =   22
                   HelpTag         =   ""
                   Index           =   -2147483648
                   InitialParent   =   "grp_external_videolan_settings"
@@ -8256,7 +8185,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Enabled         =   True
                   EraseBackground =   True
                   HasFocus        =   False
-                  Height          =   20
+                  Height          =   22
                   HelpTag         =   ""
                   Index           =   -2147483648
                   InitialParent   =   "grp_external_videolan_settings"
@@ -8321,7 +8250,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   TextFont        =   "System"
                   TextSize        =   0.0
                   TextUnit        =   0
-                  Top             =   212
+                  Top             =   214
                   Underline       =   False
                   UseFocusRing    =   True
                   Visible         =   True
@@ -8332,7 +8261,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Bold            =   False
                   Caption         =   "Stop any launched instance of Videolan"
                   Enabled         =   True
-                  Height          =   20
+                  Height          =   22
                   HelpTag         =   ""
                   Index           =   -2147483648
                   InitialParent   =   "grp_external_videolan_settings"
@@ -8350,7 +8279,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   TextFont        =   "Arial"
                   TextSize        =   10.0
                   TextUnit        =   0
-                  Top             =   425
+                  Top             =   439
                   Underline       =   False
                   Value           =   False
                   Visible         =   True
@@ -8362,7 +8291,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   DataField       =   ""
                   DataSource      =   ""
                   Enabled         =   True
-                  Height          =   20
+                  Height          =   22
                   HelpTag         =   ""
                   Index           =   -2147483648
                   InitialParent   =   "grp_external_videolan_settings"
@@ -8378,7 +8307,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Selectable      =   False
                   TabIndex        =   6
                   TabPanelIndex   =   3
-                  TabStop         =   True
                   Text            =   "Path to media file to play"
                   TextAlign       =   0
                   TextColor       =   &c00000000
@@ -8397,7 +8325,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   DataField       =   ""
                   DataSource      =   ""
                   Enabled         =   True
-                  Height          =   20
+                  Height          =   22
                   HelpTag         =   ""
                   Index           =   -2147483648
                   InitialParent   =   "grp_external_videolan_settings"
@@ -8413,14 +8341,13 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Selectable      =   False
                   TabIndex        =   7
                   TabPanelIndex   =   3
-                  TabStop         =   True
                   Text            =   "Use the following preset with parameters"
                   TextAlign       =   0
                   TextColor       =   &c00000000
                   TextFont        =   "Arial"
                   TextSize        =   10.0
                   TextUnit        =   0
-                  Top             =   255
+                  Top             =   258
                   Transparent     =   False
                   Underline       =   False
                   Visible         =   True
@@ -8432,7 +8359,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   DataField       =   ""
                   DataSource      =   ""
                   Enabled         =   True
-                  Height          =   20
+                  Height          =   22
                   HelpTag         =   ""
                   Index           =   -2147483648
                   InitialParent   =   "grp_external_videolan_settings"
@@ -8448,14 +8375,13 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Selectable      =   False
                   TabIndex        =   8
                   TabPanelIndex   =   3
-                  TabStop         =   True
                   Text            =   "Manually adjusted parameters (use %d for display number, %s for mediafile)"
                   TextAlign       =   0
                   TextColor       =   &c00000000
                   TextFont        =   "Arial"
                   TextSize        =   10.0
                   TextUnit        =   0
-                  Top             =   363
+                  Top             =   374
                   Transparent     =   False
                   Underline       =   False
                   Visible         =   True
@@ -8503,7 +8429,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   TextFont        =   "System"
                   TextSize        =   0.0
                   TextUnit        =   0
-                  Top             =   382
+                  Top             =   396
                   Underline       =   False
                   UseFocusRing    =   True
                   Visible         =   True
@@ -8516,7 +8442,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   DataField       =   ""
                   DataSource      =   ""
                   Enabled         =   True
-                  Height          =   20
+                  Height          =   22
                   HelpTag         =   ""
                   Index           =   -2147483648
                   InitialParent   =   "grp_external_videolan_settings"
@@ -8535,7 +8461,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   TextFont        =   "Arial"
                   TextSize        =   10.0
                   TextUnit        =   0
-                  Top             =   405
+                  Top             =   419
                   Underline       =   False
                   Value           =   False
                   Visible         =   True
@@ -8548,7 +8474,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   DataField       =   ""
                   DataSource      =   ""
                   Enabled         =   False
-                  Height          =   20
+                  Height          =   22
                   HelpTag         =   ""
                   Index           =   -2147483648
                   InitialParent   =   "grp_external_videolan_settings"
@@ -8567,7 +8493,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   TextFont        =   "Arial"
                   TextSize        =   10.0
                   TextUnit        =   0
-                  Top             =   234
+                  Top             =   236
                   Underline       =   False
                   Value           =   False
                   Visible         =   True
@@ -8620,13 +8546,17 @@ Begin Window MainWindow Implements ScriptureReceiver
       Width           =   846
    End
    Begin Timer tmr_lookup
+      Height          =   32
       Index           =   -2147483648
       InitialParent   =   ""
+      Left            =   0
       LockedInPosition=   False
       Mode            =   2
       Period          =   1500
       Scope           =   0
       TabPanelIndex   =   0
+      Top             =   0
+      Width           =   32
    End
 End
 #tag EndWindow

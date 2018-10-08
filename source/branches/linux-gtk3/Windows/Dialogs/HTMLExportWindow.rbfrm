@@ -55,7 +55,7 @@ Begin Window HTMLExportWindow
          Bold            =   ""
          Caption         =   "Link to style sheet"
          Enabled         =   True
-         Height          =   20
+         Height          =   22
          HelpTag         =   ""
          Index           =   -2147483648
          InitialParent   =   "grp_css_handling"
@@ -84,7 +84,7 @@ Begin Window HTMLExportWindow
          Bold            =   ""
          Caption         =   "Embed style sheet"
          Enabled         =   True
-         Height          =   20
+         Height          =   22
          HelpTag         =   ""
          Index           =   -2147483648
          InitialParent   =   "grp_css_handling"
@@ -140,7 +140,7 @@ Begin Window HTMLExportWindow
          Bold            =   ""
          Caption         =   "Use style sheet based on print settings"
          Enabled         =   True
-         Height          =   20
+         Height          =   22
          HelpTag         =   ""
          Index           =   -2147483648
          InitialParent   =   "grp_css_options"
@@ -169,7 +169,7 @@ Begin Window HTMLExportWindow
          Bold            =   ""
          Caption         =   "Use specified style sheet"
          Enabled         =   True
-         Height          =   20
+         Height          =   22
          HelpTag         =   ""
          Index           =   -2147483648
          InitialParent   =   "grp_css_options"
@@ -225,7 +225,7 @@ Begin Window HTMLExportWindow
          Bold            =   ""
          Caption         =   "Single file for all songs"
          Enabled         =   True
-         Height          =   20
+         Height          =   22
          HelpTag         =   ""
          Index           =   -2147483648
          InitialParent   =   "grp_multiple_export"
@@ -254,7 +254,7 @@ Begin Window HTMLExportWindow
          Bold            =   ""
          Caption         =   "Unique file per song"
          Enabled         =   True
-         Height          =   20
+         Height          =   22
          HelpTag         =   ""
          Index           =   -2147483648
          InitialParent   =   "grp_multiple_export"
@@ -285,7 +285,7 @@ Begin Window HTMLExportWindow
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
-      Height          =   20
+      Height          =   22
       HelpTag         =   ""
       Index           =   -2147483648
       InitialParent   =   ""
@@ -321,7 +321,7 @@ Begin Window HTMLExportWindow
       Caption         =   "OK"
       Default         =   True
       Enabled         =   False
-      Height          =   20
+      Height          =   22
       HelpTag         =   ""
       Index           =   -2147483648
       InitialParent   =   ""
@@ -352,7 +352,7 @@ Begin Window HTMLExportWindow
       Caption         =   "Cancel"
       Default         =   ""
       Enabled         =   True
-      Height          =   20
+      Height          =   22
       HelpTag         =   ""
       Index           =   -2147483648
       InitialParent   =   ""
@@ -381,7 +381,7 @@ Begin Window HTMLExportWindow
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
-      Height          =   20
+      Height          =   22
       HelpTag         =   ""
       Index           =   -2147483648
       InitialParent   =   ""

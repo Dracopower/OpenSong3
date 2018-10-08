@@ -7,7 +7,7 @@ Begin Window HelpWindow
    Frame           =   11
    FullScreen      =   False
    HasBackColor    =   False
-   Height          =   5.28e+2
+   Height          =   528
    ImplicitInstance=   True
    LiveResize      =   False
    MacProcID       =   0
@@ -23,7 +23,7 @@ Begin Window HelpWindow
    Resizeable      =   True
    Title           =   "Help Topics"
    Visible         =   True
-   Width           =   6.95e+2
+   Width           =   695
    Begin TabPanel nil_help_tabs
       AutoDeactivate  =   True
       Bold            =   False
@@ -207,7 +207,7 @@ Begin Window HelpWindow
       Caption         =   "Print..."
       Default         =   False
       Enabled         =   True
-      Height          =   20
+      Height          =   22
       HelpTag         =   ""
       Index           =   -2147483648
       InitialParent   =   ""
@@ -238,7 +238,7 @@ Begin Window HelpWindow
       Caption         =   "Close"
       Default         =   ""
       Enabled         =   True
-      Height          =   20
+      Height          =   22
       HelpTag         =   ""
       Index           =   -2147483648
       InitialParent   =   ""

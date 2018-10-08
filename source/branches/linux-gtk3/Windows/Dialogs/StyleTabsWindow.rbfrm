@@ -132,7 +132,7 @@ Begin Window StyleTabsWindow
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "grp_tabs_properties"
@@ -240,7 +240,7 @@ Begin Window StyleTabsWindow
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "grp_tabs_properties"
@@ -274,7 +274,7 @@ Begin Window StyleTabsWindow
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "grp_tabs_properties"
@@ -307,7 +307,7 @@ Begin Window StyleTabsWindow
             Bold            =   ""
             Caption         =   "Left"
             Enabled         =   True
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "grp_tabs_properties"
@@ -336,7 +336,7 @@ Begin Window StyleTabsWindow
             Bold            =   ""
             Caption         =   "Middle"
             Enabled         =   True
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "grp_tabs_properties"
@@ -365,7 +365,7 @@ Begin Window StyleTabsWindow
             Bold            =   ""
             Caption         =   "Right"
             Enabled         =   True
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "grp_tabs_properties"
@@ -394,7 +394,7 @@ Begin Window StyleTabsWindow
             Bold            =   ""
             Caption         =   "At character"
             Enabled         =   True
-            Height          =   20
+            Height          =   22
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "grp_tabs_properties"
@@ -598,7 +598,7 @@ Begin Window StyleTabsWindow
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
-      Height          =   20
+      Height          =   22
       HelpTag         =   ""
       Index           =   -2147483648
       InitialParent   =   ""
