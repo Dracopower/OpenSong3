@@ -98,4 +98,13 @@
 		Name=special/folder
 	#tag EndFileType
 
+	#tag FileType
+		CodeName=ImageFiles
+		Extension=.bmp; .dib; .jpg; .jpeg; .png; .tif; .tiff; .gif; .pic; .pict
+		Flags=&h0
+		MacCreator=
+		MacType=
+		Name=Image Files
+	#tag EndFileType
+
 #tag EndFileTypeSet

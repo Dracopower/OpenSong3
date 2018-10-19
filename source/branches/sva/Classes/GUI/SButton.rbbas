@@ -459,6 +459,12 @@ Inherits Canvas
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
+		Sub PerformAction()
+		  RaiseEvent Action
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
 		Sub SetEnabled(state As Boolean)
 		  Enabled = state
 		  Refresh

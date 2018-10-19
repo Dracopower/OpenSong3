@@ -95,6 +95,14 @@ Inherits Listbox
 	#tag EndEvent
 
 	#tag Event
+		Sub EnableMenuItems()
+		  If SelectionType = SelectionSingle Then
+		    mnu_edit_selall.Enabled = False
+		  End If
+		End Sub
+	#tag EndEvent
+
+	#tag Event
 		Sub GotFocus()
 		  isFocused = True
 		  GetFocus()
@@ -107,6 +115,15 @@ Inherits Listbox
 		  LostFocus()
 		End Sub
 	#tag EndEvent
+
+
+	#tag MenuHandler
+		Function mnu_edit_selall() As Boolean Handles mnu_edit_selall.Action
+			
+			Return DoSelectAll()
+			
+		End Function
+	#tag EndMenuHandler
 
 
 	#tag Method, Flags = &h0
@@ -123,6 +140,16 @@ Inherits Listbox
 		  End If
 		  
 		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function DoSelectAll() As Boolean
+		  If SelectionType = SelectionSingle Then Return False
+		  For row As Integer = 0 To ListCount
+		    Selected(row) = True
+		  Next
+		  Return True
+		End Function
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
