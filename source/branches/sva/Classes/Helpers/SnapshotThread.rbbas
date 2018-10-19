@@ -78,85 +78,86 @@ Inherits Thread
 		  
 		  Dim re As New RegEx
 		  Dim start As Integer=0
+		  Dim filename As String = snapshot_filename
 		  re.SearchPattern = "(%[dhimnNPsSTVy]{1})"
 		  re.Options.CaseSensitive = True
 		  
-		  Dim match As RegExMatch = re.Search(snapshot_filename)
+		  Dim match As RegExMatch = re.Search(filename)
 		  While match <> Nil
 		    Select Case Asc(Mid(match.SubExpressionString(1), 2, 1))
 		    Case Asc("d")
 		      'The day of the current month (01-31)
 		      Dim sd As String = Str(data.timestamp.Day)
 		      If sd.Len() = 1 Then sd = "0" + sd
-		      snapshot_filename = ReplaceAllB(snapshot_filename, "%d", sd)
+		      filename = ReplaceAllB(filename, "%d", sd)
 		    Case Asc("h")
 		      'The hour from the current time of day in 24-hour format (00-23)
 		      Dim sh As String = Str(data.timestamp.Hour)
 		      If sh.Len() = 1 Then sh = "0" + sh
-		      snapshot_filename = ReplaceAllB(snapshot_filename, "%h", sh)
+		      filename = ReplaceAllB(filename, "%h", sh)
 		    Case Asc("i")
 		      'The minutes from the current time (00-59)
 		      Dim si As String = Str(data.timestamp.Minute)
 		      If si.Len() = 1 Then si = "0" + si
-		      snapshot_filename = ReplaceAllB(snapshot_filename, "%i", si)
+		      filename = ReplaceAllB(filename, "%i", si)
 		    Case Asc("m")
 		      'The current month (01-12)
 		      Dim sm As String = Str(data.timestamp.Month)
 		      If sm.Len() = 1 Then sm = "0" + sm
-		      snapshot_filename = ReplaceAllB(snapshot_filename, "%m", sm)
+		      filename = ReplaceAllB(filename, "%m", sm)
 		    Case Asc("n")
 		      'The number of the slide in the current set (with leading zeroes)
 		      Dim sn As String = Str(SmartML.GetValueN(data.slide.Parent.Parent, "@ItemNumber"))
 		      If sn.Len() = 1 Then sn = "0" + sn
 		      If sn.Len() = 2 Then sn = "0" + sn
-		      snapshot_filename = ReplaceAllB(snapshot_filename, "%n", sn)
+		      filename = ReplaceAllB(filename, "%n", sn)
 		    Case Asc("N")
 		      'The name of the current slide
 		      Dim sN As String = SmartML.GetValue(data.slide.Parent.Parent, "@name")
-		      snapshot_filename = ReplaceAllB(snapshot_filename, "%N", sN)
+		      filename = ReplaceAllB(filename, "%N", sN)
 		    Case Asc("P")
 		      'The name of the current slide
 		      Dim sP As String = Str(data.currentslideIndex)
 		      If sP.Len() = 1 Then sP = "0" + sP
 		      If sP.Len() = 2 Then sP = "0" + sP
-		      snapshot_filename = ReplaceAllB(snapshot_filename, "%P", sP)
+		      filename = ReplaceAllB(filename, "%P", sP)
 		    Case Asc("s")
 		      'The seconds from the current time (00-59)
 		      Dim ss As String = Str(data.timestamp.Second)
 		      If ss.Len() = 1 Then ss = "0" + ss
-		      snapshot_filename = ReplaceAllB(snapshot_filename, "%s", ss)
+		      filename = ReplaceAllB(filename, "%s", ss)
 		    Case Asc("S")
 		      'The name of the current set
 		      Dim sS As String = SmartML.GetValue(data.slide.Parent.Parent.Parent.Parent, "@name")
-		      snapshot_filename = ReplaceAllB(snapshot_filename, "%S", sS)
+		      filename = ReplaceAllB(filename, "%S", sS)
 		    Case Asc("T")
 		      'The title of the current set
 		      Dim sT As String = SmartML.GetValue(data.slide.Parent.Parent, "title")
-		      snapshot_filename = ReplaceAllB(snapshot_filename, "%T", sT)
+		      filename = ReplaceAllB(filename, "%T", sT)
 		    Case Asc("V")
 		      'The title of the current set
 		      Dim sV As String = SmartML.GetValue(data.slide, "@id", False)
-		      snapshot_filename = ReplaceAllB(snapshot_filename, "%V", sV)
+		      filename = ReplaceAllB(filename, "%V", sV)
 		    Case Asc("y")
 		      'The current year (4 digits)
 		      Dim sy As String = Str(data.timestamp.Year)
 		      If sy.Len() = 1 Then sy = "0" + sy
-		      snapshot_filename = ReplaceAllB(snapshot_filename, "%y", sy)
+		      filename = ReplaceAllB(filename, "%y", sy)
 		    Case Else
 		      start = match.SubExpressionStartB(1)+2
 		    End Select
 		    
-		    match = re.Search(snapshot_filename, start)
+		    match = re.Search(filename, start)
 		  Wend
 		  
-		  If snapshot_filename.EndsWith( ".jpg" ) Then
-		    snapshot_filename = Left(snapshot_filename, snapshot_filename.Len()-4)
+		  If filename.EndsWith( ".jpg" ) Then
+		    filename = Left(filename, filename.Len()-4)
 		  End If
 		  
-		  If IsNull(GetFolderItem(snapshot_filename)) Then
+		  If IsNull(GetFolderItem(filename)) Then
 		    Dim base_folder As FolderItem = Nil
 		    Dim folder_element As String
-		    Dim folder_elements() As String = Split(ReplaceAll(snapshot_filename, "\", "/"), "/")
+		    Dim folder_elements() As String = Split(ReplaceAll(filename, "\", "/"), "/")
 		    Call folder_elements.Pop() 'Remove the filename part
 		    
 		    For Each folder_element in folder_elements
@@ -171,12 +172,12 @@ Inherits Thread
 		    Next
 		  End If
 		  
-		  Dim imageFileName As FolderItem = GetFolderItem(snapshot_filename)
+		  Dim imageFileName As FolderItem = GetFolderItem(filename)
 		  Dim fType As String = imageFileName.Type
 		  If fType = "" Then
-		    imageFileName = GetFolderItem(snapshot_filename + ".jpg")
+		    imageFileName = GetFolderItem(filename + ".jpg")
 		  End If
-		  Dim metaFileName As FolderItem = GetFolderItem(snapshot_filename + ".xml")
+		  Dim metaFileName As FolderItem = GetFolderItem(filename + ".xml")
 		  
 		  If Not IsNull(imageFileName) Then
 		    Try
