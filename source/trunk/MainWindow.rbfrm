@@ -125,7 +125,7 @@ Begin Window MainWindow Implements ScriptureReceiver
       Visible         =   True
       Width           =   416
    End
-   Begin PagePanel pge_controls
+   Begin SPagePanel pge_controls
       AutoDeactivate  =   True
       Enabled         =   True
       Height          =   555
@@ -194,7 +194,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockRight       =   False
             LockTop         =   True
             Scope           =   0
-            TabIndex        =   3
+            TabIndex        =   1
             TabPanelIndex   =   1
             TabStop         =   True
             TextFont        =   "Arial"
@@ -222,7 +222,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockRight       =   False
             LockTop         =   True
             Scope           =   0
-            TabIndex        =   2
+            TabIndex        =   0
             TabPanelIndex   =   1
             TabStop         =   True
             TextFont        =   "Arial"
@@ -538,7 +538,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockRight       =   False
             LockTop         =   True
             Scope           =   0
-            TabIndex        =   0
+            TabIndex        =   5
             TabPanelIndex   =   1
             TabStop         =   True
             TextFont        =   "Arial"
@@ -662,7 +662,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockRight       =   False
             LockTop         =   True
             Scope           =   0
-            TabIndex        =   1
+            TabIndex        =   4
             TabPanelIndex   =   1
             TabStop         =   True
             TextFont        =   "Arial"
@@ -757,7 +757,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Multiline       =   False
             Scope           =   0
             Selectable      =   False
-            TabIndex        =   8
+            TabIndex        =   6
             TabPanelIndex   =   1
             TabStop         =   True
             Text            =   "Folders:"
@@ -792,7 +792,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Multiline       =   False
             Scope           =   0
             Selectable      =   False
-            TabIndex        =   9
+            TabIndex        =   7
             TabPanelIndex   =   1
             TabStop         =   True
             Text            =   "Songs:"
@@ -830,7 +830,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             MenuItem        =   ""
             Scope           =   0
             StickyBevel     =   False
-            TabIndex        =   4
+            TabIndex        =   2
             TabPanelIndex   =   1
             TabStop         =   True
             Top             =   300
@@ -859,7 +859,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Multiline       =   False
             Scope           =   0
             Selectable      =   False
-            TabIndex        =   10
+            TabIndex        =   9
             TabPanelIndex   =   1
             TabStop         =   True
             Text            =   "Containing Folder:"
@@ -897,7 +897,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             MenuItem        =   ""
             Scope           =   0
             StickyBevel     =   False
-            TabIndex        =   5
+            TabIndex        =   3
             TabPanelIndex   =   1
             TabStop         =   True
             Top             =   300
@@ -943,7 +943,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             ScrollBarVertical=   True
             SelectionType   =   0
             ShowDropIndicator=   False
-            TabIndex        =   6
+            TabIndex        =   8
             TabPanelIndex   =   1
             TabStop         =   True
             TextFont        =   "Arial"
@@ -991,7 +991,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             ScrollbarHorizontal=   False
             ScrollbarVertical=   False
             Styled          =   True
-            TabIndex        =   7
+            TabIndex        =   10
             TabPanelIndex   =   1
             TabStop         =   False
             Text            =   ""
@@ -1968,7 +1968,7 @@ Begin Window MainWindow Implements ScriptureReceiver
          End
       End
    End
-   Begin PagePanel pge_contents
+   Begin SPagePanel pge_contents
       AutoDeactivate  =   True
       Enabled         =   True
       Height          =   555
@@ -1987,7 +1987,7 @@ Begin Window MainWindow Implements ScriptureReceiver
       TabIndex        =   5
       TabPanelIndex   =   0
       Top             =   34
-      Value           =   4
+      Value           =   5
       Visible         =   True
       Width           =   591
       Begin Canvas cnv_editor_style_change
@@ -7305,7 +7305,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Visible         =   True
             Width           =   115
          End
-         Begin PagePanel pge_externals
+         Begin SPagePanel pge_externals
             AutoDeactivate  =   True
             Enabled         =   True
             Height          =   316
@@ -8703,7 +8703,11 @@ End
 		  SmartML.SetValue App.MyMainSettings.DocumentElement, "geometry/@width", CStr(Width)
 		  SmartML.SetValue App.MyMainSettings.DocumentElement, "geometry/@height", CStr(Height)
 		  SmartML.SetValue App.MyMainSettings.DocumentElement, "songfolder", Globals.CurrentSongFolder
-		  SmartML.SetValue App.MyMainSettings.DocumentElement, "last_open_set", pop_sets_sets.List(pop_sets_sets.ListIndex)
+		  If pop_sets_sets.ListIndex > 0 And pop_sets_sets.ListIndex < pop_sets_sets.ListCount Then
+		    SmartML.SetValue App.MyMainSettings.DocumentElement, "last_open_set", pop_sets_sets.List(pop_sets_sets.ListIndex)
+		  Else
+		    SmartML.SetValue App.MyMainSettings.DocumentElement, "last_open_set", ""
+		  End If
 		  
 		  
 		  App.MouseCursor = Nil
@@ -9630,16 +9634,9 @@ End
 		  Dim slide_groups As XmlNode
 		  Dim listindex As Integer
 		  
-		  'if in a lst_images only delete the selected picture, not the whole slide.
+		  'gp if in a lst_images only delete the selected picture, not the whole slide.
 		  If autoDetectDeleteTarget = True And pge_contents.value = 4 And lst_image_images.HasFocus() Then
-		    If lst_image_images.SelCount > 0 Then
-		      For row As Integer = lst_image_images.ListCount - 1 DownTo 0
-		        If lst_image_images.Selected(row) Then
-		          lst_image_images.RemoveRow(row)
-		          Status_InSetChanged = True
-		        End If
-		      Next
-		    ElseIf lst_image_images.ListIndex > -1 Then
+		    If lst_image_images.ListIndex > -1 Then
 		      lst_image_images.RemoveRow( lst_image_images.ListIndex )
 		      Status_InSetChanged = True
 		    end if
@@ -14098,8 +14095,7 @@ End
 		      chk_image_keepaspect.Enabled = chk_image_fit_to_body.Value Or chk_image_fit_to_screen.Value
 		      chk_image_store_as_link.Enabled = True
 		      edt_image_notes.Enabled = True
-		      btn_image_ins_image.Enabled = Not lst_image_images_multipleRowsSelected
-		      btn_image_imp_image.Enabled = Not lst_image_images_multipleRowsSelected And (PresentationFactory.PowerPointAvailable() or PresentationFactory.OpenOfficeAvailable())
+		      btn_image_ins_image.Enabled = True
 		      btn_image_del_image.Enabled = True
 		      btn_image_move_up.Enabled = True
 		      btn_image_move_down.Enabled = True
@@ -14365,10 +14361,6 @@ End
 
 	#tag Property, Flags = &h1
 		Protected LastSongPane As Integer
-	#tag EndProperty
-
-	#tag Property, Flags = &h21
-		Private lst_image_images_multipleRowsSelected As Boolean
 	#tag EndProperty
 
 	#tag Property, Flags = &h21
@@ -16211,6 +16203,7 @@ End
 		    edt_image_subtitle.Text = SmartML.GetValue(xgroup, "subtitle")
 		    chk_image_descriptions.Value = SmartML.GetValueB(xgroup, "@descriptions_in_subtitle", False)
 		    edt_image_notes.Text = SmartML.GetValue(xgroup, "notes")
+		    btn_image_imp_image.Enabled = PresentationFactory.PowerPointAvailable() or PresentationFactory.OpenOfficeAvailable()
 		    chk_image_loop.Value = SmartML.GetValueB(xgroup, "@loop", False)
 		    chk_image_print.Value = SmartML.GetValueB(xgroup, "@print", True, True)
 		    pop_image_transition.ListIndex = SmartML.GetValueN(xgroup, "@transition", False)
@@ -18443,71 +18436,6 @@ End
 		  Me.ColumnType(1) = ListBox.TypeEditable
 		  Me.Heading(-1) = ""
 		  
-		  lst_image_images_multipleRowsSelected = Me.SelCount > 1
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Function ConstructContextualMenu(base as MenuItem, x as Integer, y as Integer) As Boolean
-		  Dim mnu as MenuItem
-		  If Me.SelCount <= 1 Then
-		    mnu = New MenuItem(App.T.Translate("image_slide/ins_image/@caption"),"ins_image")
-		    base.Append(mnu)
-		    
-		    mnu = New MenuItem(App.T.Translate("image_slide/imp_image/@caption"),"imp_image")
-		    base.Append(mnu)
-		  End If
-		  
-		  If Me.SelCount >= 1 Then
-		    mnu = New MenuItem(App.T.Translate("image_slide/del_image/@caption"),"del_image")
-		    base.Append(mnu)
-		    
-		    mnu = New MenuItem(App.T.Translate("image_slide/move_up/@caption"),"move_up")
-		    base.Append(mnu)
-		    
-		    mnu = New MenuItem(App.T.Translate("image_slide/move_down/@caption"),"move_down")
-		    base.Append(mnu)
-		    
-		    mnu = New MenuItem(App.T.Translate("main_menu/edit/selall/@caption"),"selall")
-		    base.Append(mnu)
-		  End If
-		  
-		  Return True
-		End Function
-	#tag EndEvent
-	#tag Event
-		Function ContextualMenuAction(hitItem as MenuItem) As Boolean
-		  Select Case hitItem.Tag
-		  Case "ins_image"
-		    btn_image_ins_image.PerformAction
-		  Case "imp_image"
-		    btn_image_imp_image.PerformAction
-		  Case "del_image"
-		    btn_image_del_image.PerformAction
-		  Case "move_up"
-		    btn_image_move_up.PerformAction
-		  Case "move_down"
-		    btn_image_move_down.PerformAction
-		  Case "selall"
-		    If Me.DoSelectAll Then
-		    End If
-		  End Select
-		  
-		  Return True
-		End Function
-	#tag EndEvent
-	#tag Event
-		Function MouseDown(x As Integer, y As Integer) As Boolean
-		  If IsContextualClick And Me.Selected(Me.RowFromXY(x, y)) Then
-		    Return True
-		  End If
-		End Function
-	#tag EndEvent
-	#tag Event
-		Sub Change()
-		  If lst_image_images_multipleRowsSelected <> (Me.SelCount > 1) Then
-		    lst_image_images_multipleRowsSelected = Not lst_image_images_multipleRowsSelected
-		    UpdateMenuItems
-		  End If
 		End Sub
 	#tag EndEvent
 #tag EndEvents
@@ -18552,63 +18480,17 @@ End
 		  Dim f As FolderItem
 		  Dim img As StyleImage
 		  
-		  #if TargetWin32
-		    Dim row As Integer
-		    Dim name As String
-		    If App.LastImageFolder <> Nil Then
-		      f = App.LastImageFolder
-		    Else
-		      f = SpecialFolder.Pictures
-		    End If
-		    Dim dlg As OpenDialog
-		    dlg = New OpenDialog
-		    dlg.InitialDirectory = f
-		    dlg.MultiSelect = True
-		    dlg.Filter = FileTypes.ImageFiles + ImageFileTypes.All + FileTypes.AllFiles
-		    
-		    f = dlg.ShowModal
-		    
-		    If f <> Nil Then 
-		      App.LastImageFolder = f.Parent
+		  f = ImageChooserWindow.Lookup()
+		  If f <> Nil Then
+		    img = new StyleImage
+		    If img.SetImageFromFile( f ) Then
+		      lst_image_images.AddImage( img )
+		      lst_image_images.Cell( lst_image_images.LastIndex(), 1 ) = img.GetImageFilename()
 		      
-		      row = lst_image_images.ListIndex
-		      if row = lst_image_images.LastIndex Then row = -1
-		      
-		      For i As Integer = 0 To dlg.Count - 1
-		        img = new StyleImage
-		        f = dlg.Item(i)
-		        If img.SetImageFromFile(f) Then
-		          If row = -1 Then
-		            lst_image_images.AddImage(img)
-		          Else
-		            row = row + 1
-		            lst_image_images.InsertImage(row, img)
-		          End If
-		          name = f.Name
-		          If( name.CountFields(".") > 0 ) Then
-		            name = StringUtils.Chop(name, name.NthField(".", name.CountFields(".")).Len() + 1)
-		          End If
-		          lst_image_images.Cell(lst_image_images.LastIndex(), 1) = name
-		          
-		          Status_InSetChanged = True
-		        End If
-		      Next
-		      
+		      Status_InSetChanged = True
 		      EnableMenuItems
 		    End If
-		  #else
-		    f = ImageChooserWindow.Lookup()
-		    If f <> Nil Then
-		      img = new StyleImage
-		      If img.SetImageFromFile( f ) Then
-		        lst_image_images.AddImage( img )
-		        lst_image_images.Cell( lst_image_images.LastIndex(), 1 ) = img.GetImageFilename()
-		        
-		        Status_InSetChanged = True
-		        EnableMenuItems
-		      End If
-		    End If
-		  #endif
+		  End If
 		End Sub
 	#tag EndEvent
 #tag EndEvents
@@ -18630,19 +18512,12 @@ End
 	#tag EndEvent
 	#tag Event
 		Sub Action()
-		  Dim selCnt As Integer = lst_image_images.SelCount
-		  IF selCnt > 0 Then
-		    For row As Integer = lst_image_images.ListCount - 1 DownTo 0
-		      If lst_image_images.Selected(row) Then
-		        lst_image_images.RemoveRow(row)
-		        selCnt = selCnt - 1
-		        If selCnt = 0 Then Exit
-		      End If
-		    Next
+		  If lst_image_images.ListIndex > -1 Then
+		    lst_image_images.RemoveRow( lst_image_images.ListIndex )
 		    
 		    Status_InSetChanged = True
 		    EnableMenuItems
-		  End If
+		  end if
 		  
 		End Sub
 	#tag EndEvent
@@ -18665,59 +18540,14 @@ End
 	#tag EndEvent
 	#tag Event
 		Sub Action()
-		  ' for a non-consecutive selection, let all non-selected rows up to one below the last selected one bubble up before all selected ones 
-		  Dim focusedIndex As Integer
-		  Dim maxIdx As Integer = -1 'highest idx of an unselected row that needs to move 
-		  Dim idx As Integer
-		  Dim selectedCount As Integer
-		  Dim ok As Boolean
-		  
-		  idx = lst_image_images.ListIndex
-		  selectedCount = lst_image_images.SelCount
-		  While selectedCount > 1
-		    idx = idx + 1
-		    If lst_image_images.Selected(idx) Then
-		      selectedCount = selectedCount - 1
-		    Else
-		      ok = lst_image_images.SwapRows(idx-1,idx)
-		      lst_image_images.Selected(idx) = True
-		      lst_image_images.Selected(idx-1) = False
-		      maxIdx = idx-1
+		  If lst_image_images.ListIndex() < lst_image_images.ListCount()-1 Then
+		    If lst_image_images.SwapRows( lst_image_images.ListIndex(), lst_image_images.ListIndex()+1 ) Then
+		      lst_image_images.ListIndex() = lst_image_images.ListIndex() + 1
+		      
+		      Status_InSetChanged = True
+		      EnableMenuItems
 		    End If
-		  Wend
-		  If idx < lst_image_images.ListCount()-1 Then
-		    ok = lst_image_images.SwapRows(idx,idx+1)
-		    lst_image_images.Selected(idx+1) = True
-		    lst_image_images.Selected(idx) = False
-		    maxIdx = idx
 		  End If
-		  While maxIdx > lst_image_images.ListIndex
-		    For idx = lst_image_images.ListIndex + 1 To maxIdx
-		      If Not lst_image_images.Selected(idx) Then
-		        ok = lst_image_images.SwapRows(idx-1,idx)
-		        lst_image_images.Selected(idx) = True
-		        lst_image_images.Selected(idx-1) = False
-		      End If
-		    Next
-		    maxIdx = maxIdx-1
-		  Wend 
-		  
-		  If maxIdx >= 0 Then
-		    
-		    #If TargetWin32 Then
-		      Const LB_SETCARETINDEX = &H19E
-		      
-		      Declare Sub SendMessageW Lib "user32" (hwnd as Integer, msg as Integer, wParam as Integer, lParam as Boolean)
-		      
-		      ' this message is not handled; additionally, the imput focus should probably stay on the same item (by contents) as before
-		      focusedIndex = lst_image_images.ListIndex
-		      SendMessageW(Me.Handle, LB_SETCARETINDEX, focusedIndex, True)
-		    #endif
-		    
-		    Status_InSetChanged = True
-		    EnableMenuItems
-		  End If
-		  
 		End Sub
 	#tag EndEvent
 #tag EndEvents
@@ -18739,66 +18569,13 @@ End
 	#tag EndEvent
 	#tag Event
 		Sub Action()
-		  ' move the first selected row one up if possible; then move all subsequent selected rows up as far as possible,
-		  ' pushing the non-selected rows to the end of a consecutive span of selected rows
-		  Dim focusedIndex As Integer
-		  Dim idx As Integer
-		  Dim minIdx As Integer = -1 ' lowest index of unselected row that needs to move
-		  Dim maxIdx As Integer ' highest index of selected row
-		  Dim selectedCount As Integer
-		  Dim ok As Boolean = False
-		  Dim idxMove As Boolean
-		  
-		  idx = lst_image_images.ListIndex
-		  selectedCount = lst_image_images.SelCount
-		  minIdx = lst_image_images.LastIndex
-		  If idx > 0 Then
-		    minIdx = idx - 1
-		  End If
-		  While selectedCount > 0
-		    If lst_image_images.Selected(idx) Then
-		      selectedCount = selectedCount - 1
-		      maxIdx = idx
-		    ElseIf minIdx > idx Then
-		      minIdx = idx
+		  If lst_image_images.ListIndex() > 0 Then
+		    If lst_image_images.SwapRows( lst_image_images.ListIndex(), lst_image_images.ListIndex()-1 ) Then
+		      lst_image_images.ListIndex = lst_image_images.ListIndex() - 1
+		      
+		      Status_InSetChanged = True
+		      EnableMenuItems
 		    End If
-		    idx = idx + 1
-		  Wend
-		  While minIdx < maxIdx
-		    idx = minIdx
-		    idxMove = True
-		    While idx < maxIdx
-		      If lst_image_images.Selected(idx + 1) Then
-		        If idxMove Then
-		          ok = lst_image_images.SwapRows(idx,idx+1)
-		          lst_image_images.Selected(idx) = True
-		          lst_image_images.Selected(idx+1) = False
-		          If minIdx = idx Then minIdx = minIdx + 1
-		        Else
-		          idxMove = False
-		        End If
-		      Else
-		        idxMove = True
-		      End If
-		      idx = idx + 1
-		    Wend
-		    If idxMove Then maxIdx = maxIdx - 1
-		  Wend
-		  
-		  If ok Then
-		    
-		    #If TargetWin32 Then
-		      Const LB_SETCARETINDEX = &H19E
-		      
-		      Declare Sub SendMessageW Lib "user32" (hwnd as Integer, msg as Integer, wParam as Integer, lParam as Boolean)
-		      
-		      ' this message is not handled; additionally, the imput focus should probably stay on the same item (by contents) as before
-		      focusedIndex = lst_image_images.ListIndex
-		      SendMessageW(Me.Handle, LB_SETCARETINDEX, focusedIndex, True)
-		    #endif
-		    
-		    Status_InSetChanged = True
-		    EnableMenuItems
 		  End If
 		End Sub
 	#tag EndEvent

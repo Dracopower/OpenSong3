@@ -243,6 +243,7 @@ Class=RESTHttpHandler;Classes/Controllers/REST/RESTHttpHandler.rbbas;&h000000002
 Class=RESTWebSocketHandler;Classes/Controllers/REST/RESTWebSocketHandler.rbbas;&h000000005075DFFF;&h000000003C5B2FFF;false
 Class=ExternalRenderer;Classes/Controllers/ExternalRenderer.rbbas;&h0000000043F1CFFF;&h000000006B93A7F1;false
 BuildSteps=Build Automation;Build Automation.xojo_code;&h00000000048CAB32;&h0000000000000000;false
+Class=SPagePanel;Classes/GUI/SPagePanel.xojo_code;&h000000007BB89FFF;&h000000002F379AB5;false
 AppMenuBar=MainMenu
 MajorVersion=2
 MinorVersion=2
