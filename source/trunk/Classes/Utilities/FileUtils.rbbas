@@ -448,7 +448,7 @@ Protected Module FileUtils
 		  // Decorator method to hide the change from AbsolutePath in Xojo/RB versions prior to 2013r1
 		  // to the NativePath introduced in 2013r1
 		  //--
-		  #If XojoVersion < 2013.1
+		  #If RBVersion < 2013.1
 		    Return f.AbsolutePath
 		  #Else
 		    Return f.NativePath
@@ -462,7 +462,7 @@ Protected Module FileUtils
 		  // Since the developers are on widely disparate versions of Xojo,
 		  // there are issues implementing FolderItem.PathTypeNative,
 		  // introduced in Xojo 2013.1 as a replacement for FolderItem.PathTypeAbsolute.
-		  // On Windows and Linux, the two are effectively equivalent, 
+		  // On Windows and Linux, the two are effectively equivalent,
 		  // but on MacOS, PathTypeNative returns a POSIX-style path and
 		  // PathTypeAbsolute returns the older colon-delimited path. This
 		  // creates issues since a file path may have been stored in PathTypeAbsolute
@@ -474,7 +474,7 @@ Protected Module FileUtils
 		  // the PathType constants are used.
 		  //--
 		  
-		  #If XojoVersion < 2013.1
+		  #If RBVersion < 2013.1
 		    Return FolderItem.PathTypeAbsolute
 		  #Else
 		    Return FolderItem.PathTypeNative

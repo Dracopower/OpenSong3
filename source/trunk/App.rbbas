@@ -68,7 +68,6 @@ Inherits Application
 
 	#tag Event
 		Sub Open()
-		  
 		  Dim OK As Boolean
 		  'Profiler.EnableProfiler
 		  Profiler.BeginProfilerEntry "App::Open"
@@ -1482,26 +1481,27 @@ Inherits Application
 		  Dim xDoc2 As New XmlDocument(xmlOutput)
 		  Dim fi2 As New FolderItem
 		  
-		  fi2 = SmartML.GetValueFI(xDoc2.DocumentElement, "absolute")
-		  If fi2.NativePath <> fi.NativePath Then Break
-		  fi2 = SmartML.GetValueFI(xDoc2.DocumentElement, "relative")
-		  If fi2.NativePath <> fi.NativePath Then Break
-		  fi2 = SmartML.GetValueFI(xDoc2.DocumentElement, "app_parent")
-		  If fi2.NativePath <> fi.NativePath Then Break
-		  fi2 = SmartML.GetValueFI(xDoc2.DocumentElement, "app_support")
-		  If fi2.NativePath <> fi.NativePath Then Break
-		  fi2 = SmartML.GetValueFI(xDoc2.DocumentElement, "mydocuments")
-		  If fi2.NativePath <> fi.NativePath Then Break
-		  fi2 = SmartML.GetValueFI(xDoc2.DocumentElement, "opensongdocuments")
-		  If fi2.NativePath <> fi.NativePath Then Break
-		  fi2 = SmartML.GetValueFI(xDoc2.DocumentElement, "opensongpreferences")
-		  If fi2.NativePath <> fi.NativePath Then Break
-		  fi2 = SmartML.GetValueFI(xDoc2.DocumentElement, "attribute/@filename")
-		  If fi2.NativePath <> fi.NativePath Then Break
-		  fi2 = SmartML.GetValueFI(xDoc2.DocumentElement, "oldstyle")
-		  If fi2.NativePath <> fi.NativePath Then Break
-		  Break
-		  
+		  #If RBVersion >= 2013.1
+		    fi2 = SmartML.GetValueFI(xDoc2.DocumentElement, "absolute")
+		    If fi2.NativePath <> fi.NativePath Then Break
+		    fi2 = SmartML.GetValueFI(xDoc2.DocumentElement, "relative")
+		    If fi2.NativePath <> fi.NativePath Then Break
+		    fi2 = SmartML.GetValueFI(xDoc2.DocumentElement, "app_parent")
+		    If fi2.NativePath <> fi.NativePath Then Break
+		    fi2 = SmartML.GetValueFI(xDoc2.DocumentElement, "app_support")
+		    If fi2.NativePath <> fi.NativePath Then Break
+		    fi2 = SmartML.GetValueFI(xDoc2.DocumentElement, "mydocuments")
+		    If fi2.NativePath <> fi.NativePath Then Break
+		    fi2 = SmartML.GetValueFI(xDoc2.DocumentElement, "opensongdocuments")
+		    If fi2.NativePath <> fi.NativePath Then Break
+		    fi2 = SmartML.GetValueFI(xDoc2.DocumentElement, "opensongpreferences")
+		    If fi2.NativePath <> fi.NativePath Then Break
+		    fi2 = SmartML.GetValueFI(xDoc2.DocumentElement, "attribute/@filename")
+		    If fi2.NativePath <> fi.NativePath Then Break
+		    fi2 = SmartML.GetValueFI(xDoc2.DocumentElement, "oldstyle")
+		    If fi2.NativePath <> fi.NativePath Then Break
+		    Break
+		  #EndIf
 		End Sub
 	#tag EndMethod
 
@@ -1764,7 +1764,7 @@ Inherits Application
 			    #EndIf
 			  #Else
 			    #Pragma BreakOnExceptions Off
-			    #If XojoVersion > 2015.02
+			    #If RBVersion > 2015.02
 			      Try
 			        m_AppFolder = GetFolderItem(Xojo.IO.SpecialFolder.GetResource("OpenSong Defaults").Parent.Path, FolderItem.PathTypeShell)
 			      Catch rtex

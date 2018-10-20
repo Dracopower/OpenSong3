@@ -159,7 +159,9 @@ Protected Class StyleImage
 		        Dim tempF As FolderItem
 		        #Pragma BreakOnExceptions False
 		        Try
-		          tempF = New FolderItem(Filename, FolderItem.PathTypeNative)
+		          #If RBVersion >= 2013.1
+		            tempF = New FolderItem(Filename, FolderItem.PathTypeNative)
+		          #EndIf
 		          If tempF <> Nil Then Filename = tempF.AbsolutePath
 		        End Try
 		        #Pragma BreakOnExceptions Default
@@ -178,7 +180,7 @@ Protected Class StyleImage
 		    //++
 		    // Look for ":" anywhere to capture both the case of the Windows and macOS AbsolutePath
 		    //--
-		    If FileName.StartsWith("/") Or FileName.StartsWith("\\") Or FileName.Instr(":") > 0 Then 
+		    If FileName.StartsWith("/") Or FileName.StartsWith("\\") Or FileName.Instr(":") > 0 Then
 		      f = GetFolderItem(FileName)
 		    Else
 		      f = GetFolderItem( App.DocsFolder.Child("Backgrounds").AbsolutePath + Filename )

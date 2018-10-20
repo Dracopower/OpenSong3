@@ -1262,7 +1262,7 @@ Protected Module OpenSongUtils
 		Function ToString(Extends error As RuntimeException) As String
 		  Dim msg As String
 		  
-		  #If XojoVersion > 2011.01
+		  #If RBVersion > 2011.01
 		    msg = Introspection.GetType(Error).FullName
 		    If Error.Message <> "" Then
 		      msg = msg + ", error is '" + Error.Message + "'"

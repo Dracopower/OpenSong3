@@ -4566,7 +4566,7 @@ End
 		  Dim NewVideolanLocation As FolderItem = dlg.ShowModal
 		  If NewVideolanLocation = Nil Then Return // User cancelled
 		  
-		  #If TargetMacOS
+		  #If TargetMacOS And RBVersion >= 2013.1
 		    // The user will have selected the application bundle, but we
 		    // really need to have the path to the executable image inside the bundle
 		    // otherwise command-line arguments will fail
@@ -4590,7 +4590,7 @@ End
 		    #Pragma BreakOnExceptions Default
 		  #EndIf
 		  VideolanLocation = NewVideolanLocation
-		  #If TargetMacOS
+		  #If TargetMacOS And RBVersion >= 2013.1
 		    edt_applications_videolan.Text = VideolanLocation.NativePath()
 		  #Else
 		    edt_applications_videolan.Text = VideolanLocation.AbsolutePath()

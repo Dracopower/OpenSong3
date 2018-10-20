@@ -48,11 +48,15 @@ Protected Module SmartML
 		    Return FolderItem.PathTypeAbsolute
 		  #EndIf
 		  
-		  If path.Left(1) = "/" Then
-		    Return FolderItem.PathTypeNative
-		  Else
+		  #If RBVersion >= 2013.1
+		    If path.Left(1) = "/" Then
+		      Return FolderItem.PathTypeNative
+		    Else
+		      Return FolderItem.PathTypeAbsolute
+		    End If
+		  #Else
 		    Return FolderItem.PathTypeAbsolute
-		  End If
+		  #EndIf
 		End Function
 	#tag EndMethod
 
@@ -150,7 +154,7 @@ Protected Module SmartML
 		  
 		  If thePlatform <> SmartML.Platform.Unknown Then Return thePlatform
 		  
-		  #if XojoVersion < 2015.04
+		  #if RBVersion < 2015.04
 		    #If TargetWin32
 		      thePlatform = SmartML.Platform.Windows
 		    #ElseIf TargetMacOS
@@ -383,7 +387,7 @@ Protected Module SmartML
 		    fRelative = App.AppFolder
 		    
 		  Case SmartML.RelativePath.AppSupport
-		    #If XojoVersion < 2015.04
+		    #If RBVersion < 2015.04
 		      #If TargetWin32
 		        fRelative = SpecialFolder.ApplicationData.Child("OpenSong")
 		      #Endif
@@ -823,7 +827,7 @@ Protected Module SmartML
 		    saveMode = FolderItem.SaveInfoRelativeMode
 		    
 		  Case SmartML.RelativePath.AppSupport
-		    #if XojoVersion < 2015.04
+		    #if RBVersion < 2015.04
 		      #if TargetWin32
 		        relativeFolder = SpecialFolder.ApplicationData.Child("OpenSong")
 		      #endif
@@ -1140,6 +1144,13 @@ Protected Module SmartML
 		  Return myPath
 		End Function
 	#tag EndMethod
+
+
+	#tag Note, Name = Enum RelativePath
+		Used to identify the relationship between the SaveInfo of the target FolderItem. 
+		"Absolute" is assigned to zero as GetAttribute will return a zero-length string for a missing Attribute. 
+		This gives a reasonable default in the absence of additional information.
+	#tag EndNote
 
 
 	#tag Property, Flags = &h1

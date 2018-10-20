@@ -878,7 +878,7 @@ End
 		  Dim maxlen As Integer
 		  Dim i As Integer
 		  
-		  #If XojoVersion > 2016 Then
+		  #If RBVersion > 2016 Then
 		    pic.Graphics.ScaleX = Self.ScaleFactor
 		    pic.Graphics.ScaleY = Self.ScaleFactor
 		    pic.HorizontalResolution = 72 * Self.ScaleFactor

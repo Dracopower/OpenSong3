@@ -145,4 +145,18 @@
 		Imported=True
 	#tag EndFileType
 
+	#tag FileType
+		CodeName=ImageFiles
+		Extension=.bmp; .dib; .jpg; .jpeg; .png; .tif; .tiff; .gif; .pic; .pict
+		Flags=&h0
+		MacCreator=
+		MacType=
+		Name=Image Files
+		UTI=
+		UTIConformsTo=
+		Description=
+		MimeType=
+		Imported=True
+	#tag EndFileType
+
 #tag EndFileTypeSet
