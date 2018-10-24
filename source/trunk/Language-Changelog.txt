@@ -1,5 +1,6 @@
 -= Version 2.2.? =-
 presentation_settings/style/blank_is_slide_change
+style_editor/bilingual/size (100% -> 200%)
 -= Version 2.2 RC =-
 errors/videolan/no_medium
 errors/videolan/no_medium_in_slide

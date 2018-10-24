@@ -1446,25 +1446,12 @@ Module SongML
 
 	#tag Method, Flags = &h1
 		Protected Sub LyricsToLines(songDoc As XmlDocument, arr() As String)
-		  Dim st, x, strlen As Integer
-		  Dim c, lyrics As String
-		  ReDim arr(0)
+		  Dim lyrics As String
 		  
 		  lyrics = SmartML.GetValue(songDoc.DocumentElement, "lyrics")
 		  
-		  strlen = Len(lyrics)
-		  If strlen <= 0 Then Exit
+		  LyricsToLines(lyrics, arr)
 		  
-		  st = 1
-		  For x = 1 To strlen
-		    c = Mid(lyrics, x, 1)
-		    If c = Chr(10) Then
-		      arr.Append RTrim(Mid(lyrics, st, x-st))
-		      st = x + 1
-		    End If
-		  Next x
-		  x = x + 1
-		  If st <= strlen Then arr.Append RTrim(Mid(lyrics, st, x-st))
 		End Sub
 	#tag EndMethod
 
@@ -1473,25 +1460,26 @@ Module SongML
 		  Dim st, x, strlen As Integer
 		  Dim lyrics, line, section, subsection As String
 		  Dim len As integer
+		  Dim includeBlankLines As Boolean
 		  
-		  section = "default"
+		  dict.Clear
+		  order = ""
 		  
 		  lyrics = SmartML.GetValue(songElement, "lyrics", True)
 		  lyrics = RemoveSpecialChars(lyrics)
 		  strlen = Len(lyrics)
 		  
 		  If strlen > 0 Then
+		    includeBlankLines = SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "style/@blank_is_slide_change")
+		    section = "default"
+		    
 		    lyrics = lyrics + Chr(10)
-		    '++JRC We should update the lengh ;)
 		    strlen = strlen + 1
-		    '--
 		    
 		    st = 1
 		    For x = 1 To strlen
 		      If Mid(lyrics, x, 1) = Chr(10) Then
-		        '++JRC: Fixed, RTrim thinks "à" is a whitespace character?
 		        line = StringUtils.RTrim(Mid(lyrics, st, x - st), StringUtils.WhiteSpaces)
-		        '--
 		        If Left(line, 1) = "[" Then
 		          section = Mid(line, 2, Instr(2, line, "]") - 2)
 		        ElseIf Left(line, 1) = "." Then // Chord
@@ -1503,10 +1491,8 @@ Module SongML
 		          Else
 		            subsection = section + subsection
 		          End If
-		          '++JRC: Same Here
 		          line = StringUtils.Trim(Mid(line, 2), StringUtils.WhiteSpaces)
-		          '--
-		          If Len(line) > 0 Or SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "style/@blank_is_slide_change") Then
+		          If Len(line) > 0 Or includeBlankLines Then
 		            If dict.HasKey(subsection) Then
 		              dict.Value(subsection) = dict.Value(subsection) + Chr(10) + line
 		            Else
@@ -1518,7 +1504,7 @@ Module SongML
 		        st = x + 1
 		      End If
 		    Next x
-		    order = Left(order, Len(order) - 1) //This deletes the trailing vertical bar
+		    order = Left(order, Len(order) - 1) // This deletes the trailing vertical bar
 		  End If
 		End Sub
 	#tag EndMethod
@@ -2130,8 +2116,6 @@ Module SongML
 
 	#tag Method, Flags = &h0
 		Sub ToSetML(songElement As XmlNode, style As XmlNode = Nil)
-		  '++JRC: now function has two parameters
-		  '--
 		  Dim slides, slide As XmlNode
 		  Dim order As String
 		  Dim SubtitleText As String
@@ -2145,17 +2129,17 @@ Module SongML
 		  htmlCode = ToHTML(songXmlClone, htmlOptions)
 		  songXmlClone = Nil
 		  songXmlClone = songElement.OwnerDocument.CreateElement("htmldata")
-		  songXmlClone.AppendChild songElement.OwnerDocument.CreateCDATASection(htmlCode)
+		  songXmlClone.AppendChild(songElement.OwnerDocument.CreateCDATASection(htmlCode))
 		  
-		  ' This routine makes an in-place change of a song XML encoding to slides for use in a set.  The
+		  'This routine makes an in-place change of a song XML encoding to slides for use in a set.  The
 		  'XML node that we are passed is modified in-place instead of creating a new one.  That way,
 		  'if it is part of a larger grouping (i.e., a set), the node doesn't have to be replaced and the processing time
 		  'for repairing the XML linked lists is avoided.
 		  
 		  songElement.Name = "slide_group"
-		  SmartML.SetValue songElement, "@name", SmartML.GetValue(songElement, "title", True)
-		  SmartML.SetValue songElement, "@type", "song"
-		  songElement.AppendChild songXmlClone
+		  SmartML.SetValue(songElement, "@name", SmartML.GetValue(songElement, "title", True))
+		  SmartML.SetValue(songElement, "@type", "song")
+		  songElement.AppendChild(songXmlClone)
 		  
 		  Call SmartML.InsertChild(songElement, "subtitle", 0)
 		  
@@ -2165,30 +2149,26 @@ Module SongML
 		  
 		  'Update subtitle
 		  SmartML.SetValue(songElement, "subtitle", SubtitleText)
-		  //--
+		  
 		  slides = SmartML.GetNode(songElement, "slides", True)
 		  
 		  Dim dict As New Dictionary
 		  Dim sub_section, sub_sections(), section, sections() As String
 		  
-		  LyricsToSections songElement, dict, order
+		  LyricsToSections(songElement, dict, order)
 		  
 		  Dim presentation As string
 		  
 		  presentation = SmartML.GetValue(songElement, "presentation", True)
-		  'sections = Split(Trim(SmartML.GetValue(songElement, "presentation", True)), " ")
 		  sections = Split(Trim(presentation), " ")
 		  
 		  If UBound(sections) < 0 Then
-		    '++JRC
 		    ' If there is no presentation defined, we just do the sections in order
-		    'modified to pull the presentation order from the lyrics
-		    order = Trim(order)
 		    order = ReplaceAll(order, "|", " ")
+		    order = Trim(order)
 		    SmartML.SetValue(songElement, "presentation", order)
 		    sections = Split(order, " ")
 		  End If
-		  '--
 		  
 		  Dim ChorusNr, PresentationIndex as integer 'GP
 		  ChorusNr = 0 'GP
@@ -2212,20 +2192,19 @@ Module SongML
 		          
 		          'Check if the image file exists
 		          Dim sfile As String = SmartML.GetValue(xbackground, "filename")
-		          If SmartML.GetValueB(xbacks, "@link", False) = True And sfile<>"" Then
-		            If Not (sfile.StartsWith("/") or sfile.StartsWith("\\") or sfile.Mid(2, 1)=":") Then
+		          If SmartML.GetValueB(xbacks, "@link", False) = True And sfile <> "" Then
+		            If Not (sfile.StartsWith("/") or sfile.StartsWith("\\") or sfile.Mid(2, 1) = ":") Then
 		              sfile = App.DocsFolder.Child("Backgrounds").AbsolutePath + sfile
 		            End If
 		            
 		            Dim file As FolderItem = GetFolderItem(sfile)
 		            If file = Nil Or Not file.Exists() Then
-		              InputBox.Message App.T.Translate("errors/fileutils/filenotfound", SmartML.GetValue(xbackground, "filename"))
+		              InputBox.Message(App.T.Translate("errors/fileutils/filenotfound", SmartML.GetValue(xbackground, "filename")))
 		              
 		              xbacks.RemoveChild(xbackground)
 		              xbackground = Nil
 		            End If
 		          End If
-		          
 		        End If
 		      End If
 		      
@@ -2237,12 +2216,10 @@ Module SongML
 		        separationMark = ""
 		      End If
 		      
-		      //
 		      // Regularize Line Endings
-		      //
-		      dict.Value(section) = ReplaceAll(dict.Value(section), EndOfLine.Windows, EndOfLine.UNIX)
+		      dict.Value(section) = dict.Value(section).StringValue.FormatUnixEndOfLine
 		      If SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "style/@blank_is_slide_change") Then
-		        dict.Value(section) = ReplaceAll(Trim(dict.Value(section)), EndOfLine.UNIX + EndOfLine.UNIX, EndOfLine.UNIX + "||")  
+		        dict.Value(section) = ReplaceAll(Trim(dict.Value(section)), EndOfLine.UNIX + EndOfLine.UNIX, EndOfLine.UNIX + "||")
 		      End If
 		      
 		      sub_sections = Split(dict.Value(section), "||")
