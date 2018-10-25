@@ -1,4 +1,14 @@
-﻿-= Version 2.2 RC =-
+﻿* Save the name of the set and load that set when switching to Sets mode.
+* Add right-click menu options to the song list for common actions.
+* Add new presentation option to use an empty lyric line as a slide change (like using "||" on the line). This mimics the behavior of EasyWorship and other worship presentation utilities.
+* Fix issue where slide body text would get wrapped twice resulting in poor visual appearance including text out of slide boundary.
+* Internal changes to accommodate changes in Xojo language as of Xojo 2018r3.
+-= Version 2.2.7 =-
+* Prevent NilObjectException if the icon or iconmask is Nil (SButton).
+* Make some small changes in filename handling to more intelligently detect the path type. RB/Xojo has complicated this with AbsolutePath/NativePath, but the three supported desktop OSes do not help.
+* Add SmartML.SetValueFI/GetValueFI (FolderItem) for potential future use to provide more intelligent handling of storing file information in our XML.
+* Add intermediate-size icons.
+-= Version 2.2 RC =-
 * Prevent NilObjectException in External Slide on presentation, media, and application file
 * Allow URLs and MRLs as Videolan "media file to play".
 * Fix issues with styles: in some circumstances the wrong style had been applied. Also allow arbitrarily deep nesting of custom styles using style change set items of type "Change style to this" and "Revert to previous style"

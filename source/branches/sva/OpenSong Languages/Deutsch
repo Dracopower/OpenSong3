@@ -593,6 +593,8 @@
       <blank_prev caption="Stil von vorhergehendem Eintrag"/>
       <blank_next caption="Stil von nächstem Eintrag"/>
       <initial_mode caption="Startmodus"/>
+      <blank_is_slide_change caption="Leere Liedtextzeile trennt Folien"
+        helptag="Eine leere Zeile zwischen Textzeilen in einem Liedteil startet eine neue Folie, so wie es &quot;||&quot; tut."/>
     </style>
     <alerts caption="Meldungen">
       <font caption="Schriftart"/>
@@ -960,7 +962,7 @@ Liedteilmarken im Textfeld des Liededitors erscheinen.
     </fonts_and_alignment>
     <bilingual caption="Zweisprachige Präsentation">
       <style caption="Für zweite Sprache gleicher Stil aber"/>
-      <size caption="Größe [10-100%]"/>
+      <size caption="Größe [10-200%]"/>
       <color caption="Farbe"/>
       <note caption="Verwendung: L in runden Klammern an die Liedteilmarke anfügen z.B. [V1](L)"/>
     </bilingual>

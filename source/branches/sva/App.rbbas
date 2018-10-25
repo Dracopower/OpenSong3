@@ -81,25 +81,18 @@ Inherits Application
 		  m_statusNotifiers = New Dictionary
 		  
 		  DebugWriter = New DebugOutput
-		  '++JRC For compatibilty with RB 2008 debugger
-		  'RB insists on outputing the executable in a subfolder (sigh)
-		  #If Not TargetMacOS
-		    #If DebugBuild And RBVersion<=2012.51
-		      AppFolder = GetFolderItem("").Parent
-		    #Else
-		      AppFolder = GetFolderItem("")
-		    #EndIf
-		  #Else
-		    #Pragma BreakOnExceptions Off
-		    Try
-		      AppFolder = GetFolderItem(Xojo.IO.SpecialFolder.GetResource("OpenSong Defaults").Parent.Path, FolderItem.PathTypeShell)
-		    Catch rtex
-		      System.DebugLog "App.Open: GetResource failed due to '" + rtex.Reason + "'"
-		      'Use the old way, maybe it's in the same folder as the executable
-		      AppFolder = GetFolderItem("")
-		    End Try
-		    #Pragma BreakOnExceptions Default
-		  #EndIf
+		  
+		  If AppFolder = Nil Then
+		    Call MsgBox("AppFolder: """ + AppFolder.Path + """ is Nil", 16, "Find AppFolder")
+		  End If
+		  
+		  If Not AppFolder.Child("OpenSong Settings").Exists Then
+		    Call MsgBox("Folder """ + AppFolder.Child("OpenSong Settings").Path + """ does not exist", 16, "Find OpenSong Settings")
+		  End If
+		  
+		  If Not AppFolder.Child("OpenSong Settings").Child("Globals").Exists Then
+		    Call MsgBox("FolderItem """ + AppFolder.Child("OpenSong Settings").Child("Globals").Path + """ does not exist", 16, "Find Globals")
+		  End If
 		  
 		  'Can't translate this until we've loaded the translator
 		  'Splash.SetStatus "Loading global settings..."
@@ -753,7 +746,7 @@ Inherits Application
 		      f = GetFolderItem(FolderName, FolderItem.PathTypeAbsolute)
 		      If f = Nil Then
 		        // Relative path
-		        For Each Folder in Split(FolderName, FileUtils.AbsolutePathSeparator)
+		        For Each Folder In Split(FolderName, FileUtils.AbsolutePathSeparator)
 		          If Not FileUtils.CreateFolder(f.Child(Folder)) Then
 		            e = New RuntimeException
 		            e.Message = "GetDocsFolder: " + FileUtils.LastError
@@ -1095,17 +1088,30 @@ Inherits Application
 	#tag Method, Flags = &h0
 		Sub MaximizeInControlScreen(win As Window)
 		  Dim controlScreen As Integer
+		  Dim theScreen As OpenSongUtils.OS_Screen
 		  If App.MyPresentSettings <> Nil Then
 		    controlScreen = SmartML.GetValueN(App.MyPresentSettings.DocumentElement, "monitors/@control") - 1
 		    If controlScreen < 0 Or controlScreen + 1 > OSScreenCount() Then controlScreen = 0
 		  Else
 		    controlScreen = 0
 		  End If
+		  theScreen = OSScreen(controlScreen)
 		  
-		  win.Width = OSScreen(controlScreen).AvailableWidth - 40
-		  win.Height = OSScreen(controlScreen).AvailableHeight - 115
-		  win.Top = OSScreen(controlScreen).AvailableTop + (OSScreen(controlScreen).AvailableHeight  - win.Height) / 2 + 10
-		  win.Left = OSScreen(controlScreen).AvailableLeft + (OSScreen(controlScreen).AvailableWidth - win.Width) / 2
+		  #If RBVersion < 2012 Or TargetLinux
+		    win.Width = theScreen.AvailableWidth - 40
+		    win.Height = theScreen.AvailableHeight - 115
+		    win.Top = theScreen.AvailableTop + (theScreen.AvailableHeight - win.Height) / 2 + 10
+		    win.Left = theScreen.AvailableLeft + (theScreen.AvailableWidth - win.Width) / 2
+		  #Else
+		    Dim b As New REALbasic.Rect
+		    b.Width = theScreen.AvailableWidth
+		    b.Height = theScreen.AvailableHeight
+		    b.Top = theScreen.AvailableTop
+		    b.Left = theScreen.AvailableLeft
+		    win.Bounds = b
+		  #EndIf
+		  
+		  
 		End Sub
 	#tag EndMethod
 
@@ -1451,6 +1457,61 @@ Inherits Application
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
+		Sub TestXML()
+		  //++
+		  // Test harness for SetValueFI and GetValueFI
+		  //--
+		  
+		  Dim xdoc As New XmlDocument
+		  Dim xnode As XmlNode
+		  Dim de As XmlNode
+		  Dim fi As FolderItem
+		  Dim xmlOutput As String
+		  
+		  de = xdoc.CreateElement("document")
+		  xdoc.AppendChild de
+		  
+		  fi = New FolderItem(SpecialFolder.Documents.Child("PiwigoExport.log"))
+		  
+		  SmartML.SetValueFI(de, "absolute", fi)
+		  SmartML.SetValueFI(de, "relative", fi, SmartML.RelativePath.UserSpecified, Volume(0))
+		  SmartML.SetValueFI(de, "app_parent", fi, SmartML.RelativePath.AppParent)
+		  SmartML.SetValueFI(de, "app_support", fi, SmartML.RelativePath.AppSupport)
+		  SmartML.SetValueFI(de, "mydocuments", fi, SmartML.RelativePath.MyDocuments)
+		  SmartML.SetValueFI(de, "opensongdocuments", fi, SmartML.RelativePath.OpenSongDocuments)
+		  SmartML.SetValueFI(de, "opensongpreferences", fi, SmartML.RelativePath.OpenSongPreferences)
+		  SmartML.SetValueFI(de, "attribute/@filename", fi)
+		  SmartML.SetValue(de, "oldstyle", fi.AbsolutePath)
+		  xmlOutput = xdoc.Transform(kXmlPrettyPrint)
+		  
+		  Dim xDoc2 As New XmlDocument(xmlOutput)
+		  Dim fi2 As New FolderItem
+		  
+		  #If RBVersion >= 2013.1
+		    fi2 = SmartML.GetValueFI(xDoc2.DocumentElement, "absolute")
+		    If fi2.NativePath <> fi.NativePath Then Break
+		    fi2 = SmartML.GetValueFI(xDoc2.DocumentElement, "relative")
+		    If fi2.NativePath <> fi.NativePath Then Break
+		    fi2 = SmartML.GetValueFI(xDoc2.DocumentElement, "app_parent")
+		    If fi2.NativePath <> fi.NativePath Then Break
+		    fi2 = SmartML.GetValueFI(xDoc2.DocumentElement, "app_support")
+		    If fi2.NativePath <> fi.NativePath Then Break
+		    fi2 = SmartML.GetValueFI(xDoc2.DocumentElement, "mydocuments")
+		    If fi2.NativePath <> fi.NativePath Then Break
+		    fi2 = SmartML.GetValueFI(xDoc2.DocumentElement, "opensongdocuments")
+		    If fi2.NativePath <> fi.NativePath Then Break
+		    fi2 = SmartML.GetValueFI(xDoc2.DocumentElement, "opensongpreferences")
+		    If fi2.NativePath <> fi.NativePath Then Break
+		    fi2 = SmartML.GetValueFI(xDoc2.DocumentElement, "attribute/@filename")
+		    If fi2.NativePath <> fi.NativePath Then Break
+		    fi2 = SmartML.GetValueFI(xDoc2.DocumentElement, "oldstyle")
+		    If fi2.NativePath <> fi.NativePath Then Break
+		    Break
+		  #EndIf
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
 		Sub TranslateMe(splashShowing As Boolean = False)
 		  Dim xnode As XmlNode
 		  Dim i As Integer
@@ -1692,9 +1753,42 @@ Inherits Application
 		AppDocumentsFolderForOpenSong As FolderItem
 	#tag EndComputedProperty
 
-	#tag Property, Flags = &h0
+	#tag ComputedProperty, Flags = &h0
+		#tag Getter
+			Get
+			  If m_AppFolder <> Nil Then
+			    Return m_AppFolder
+			  End If
+			  
+			  '++JRC For compatibilty with RB 2008 debugger
+			  'RB insists on outputing the executable in a subfolder (sigh)
+			  #If Not TargetMacOS
+			    #If DebugBuild And RBVersion <= 2012.51
+			      m_AppFolder = GetFolderItem("").Parent
+			    #Else
+			      m_AppFolder = GetFolderItem("")
+			    #EndIf
+			  #Else
+			    #Pragma BreakOnExceptions Off
+			    #If RBVersion > 2015.02
+			      Try
+			        m_AppFolder = GetFolderItem(Xojo.IO.SpecialFolder.GetResource("OpenSong Defaults").Parent.Path, FolderItem.PathTypeShell)
+			      Catch rtex
+			        System.DebugLog "App.Open: GetResource failed due to '" + rtex.Reason + "'"
+			        'Use the old way, maybe it's in the same folder as the executable
+			    #EndIf
+			    m_AppFolder = GetFolderItem("")
+			    #if XojoVersion > 2015.02
+			      End Try
+			    #EndIf
+			    #Pragma BreakOnExceptions Default
+			  #EndIf
+			  
+			  Return m_AppFolder
+			End Get
+		#tag EndGetter
 		AppFolder As FolderItem
-	#tag EndProperty
+	#tag EndComputedProperty
 
 	#tag ComputedProperty, Flags = &h0
 		#tag Getter
@@ -1797,6 +1891,10 @@ Inherits Application
 	#tag EndProperty
 
 	#tag Property, Flags = &h21
+		Private m_AppFolder As FolderItem = Nil
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
 		Private m_ControlServer As REST.RESTServer
 	#tag EndProperty
 
@@ -1883,6 +1981,9 @@ Inherits Application
 	#tag EndConstant
 
 	#tag Constant, Name = kPromptBeforePresenting, Type = String, Dynamic = False, Default = \"promptbeforepresenting", Scope = Public
+	#tag EndConstant
+
+	#tag Constant, Name = kXmlPrettyPrint, Type = String, Dynamic = False, Default = \"<xsl:stylesheet version\x3D\"1.0\" xmlns:xsl\x3D\"http://www.w3.org/1999/XSL/Transform\">\n    <xsl:preserve-space elements\x3D\"XMLBIBLE BIBLEBOOK CHAPTER VERS bible b c v lyrics\"/>\n    <xsl:output method\x3D\"xml\" indent\x3D\"yes\"/>\n    <xsl:template match\x3D\"/\">\n        <xsl:copy-of select\x3D\".\"/>\n    </xsl:template>\n</xsl:stylesheet>", Scope = Public
 	#tag EndConstant
 
 	#tag Constant, Name = NO_FOLDER, Type = Double, Dynamic = False, Default = \"1", Scope = Public

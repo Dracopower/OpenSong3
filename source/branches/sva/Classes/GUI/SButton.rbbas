@@ -117,8 +117,6 @@ Inherits Canvas
 		    Return
 		  End If
 		  
-		  If g = Nil Then g = Graphics
-		  
 		  If Not Enabled Then
 		    IsMouseDown = False
 		    IsMouseOver = False
@@ -255,7 +253,6 @@ Inherits Canvas
 		  Dim ShadowOffset as Integer
 		  
 		  ShadowOffset = Ceil(ShadowWidth / 2)
-		  If g = Nil Then g = Graphics
 		  
 		  If Not Enabled Then
 		    IsMouseDown = False

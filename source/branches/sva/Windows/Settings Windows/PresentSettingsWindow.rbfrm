@@ -23,7 +23,7 @@ Begin Window PresentSettingsWindow
    Resizeable      =   False
    Title           =   "Presentation Settings"
    Visible         =   True
-   Width           =   700
+   Width           =   796
    Begin PushButton btn_ok
       AutoDeactivate  =   True
       Bold            =   False
@@ -37,7 +37,7 @@ Begin Window PresentSettingsWindow
       Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
-      Left            =   542
+      Left            =   638
       LockBottom      =   True
       LockedInPosition=   False
       LockLeft        =   False
@@ -51,6 +51,7 @@ Begin Window PresentSettingsWindow
       TextSize        =   10.0
       TextUnit        =   0
       Top             =   457
+      Transparent     =   False
       Underline       =   False
       Visible         =   True
       Width           =   70
@@ -68,7 +69,7 @@ Begin Window PresentSettingsWindow
       Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
-      Left            =   622
+      Left            =   718
       LockBottom      =   True
       LockedInPosition=   False
       LockLeft        =   False
@@ -82,6 +83,7 @@ Begin Window PresentSettingsWindow
       TextSize        =   10.0
       TextUnit        =   0
       Top             =   457
+      Transparent     =   False
       Underline       =   False
       Visible         =   True
       Width           =   69
@@ -112,10 +114,11 @@ Begin Window PresentSettingsWindow
       TextSize        =   12.0
       TextUnit        =   0
       Top             =   14
+      Transparent     =   False
       Underline       =   False
-      Value           =   2
+      Value           =   0
       Visible         =   True
-      Width           =   680
+      Width           =   776
       Begin Label lbl_style_default_slides
          AutoDeactivate  =   True
          Bold            =   False
@@ -338,6 +341,7 @@ Begin Window PresentSettingsWindow
          TextSize        =   11.0
          TextUnit        =   0
          Top             =   300
+         Transparent     =   False
          Underline       =   False
          Visible         =   True
          Width           =   400
@@ -480,7 +484,7 @@ Begin Window PresentSettingsWindow
          Index           =   -2147483648
          InitialParent   =   "tab_present_settings"
          Italic          =   False
-         Left            =   470
+         Left            =   566
          LockBottom      =   False
          LockedInPosition=   False
          LockLeft        =   False
@@ -494,6 +498,7 @@ Begin Window PresentSettingsWindow
          TextSize        =   11.0
          TextUnit        =   0
          Top             =   65
+         Transparent     =   False
          Underline       =   False
          Visible         =   True
          Width           =   200
@@ -510,7 +515,7 @@ Begin Window PresentSettingsWindow
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "grp_option_logo"
-            Left            =   490
+            Left            =   586
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   True
@@ -537,7 +542,7 @@ Begin Window PresentSettingsWindow
             Index           =   -2147483648
             InitialParent   =   "grp_option_logo"
             Italic          =   True
-            Left            =   490
+            Left            =   586
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   True
@@ -572,7 +577,7 @@ Begin Window PresentSettingsWindow
             Index           =   -2147483648
             InitialParent   =   "grp_option_logo"
             Italic          =   True
-            Left            =   490
+            Left            =   586
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   True
@@ -607,7 +612,7 @@ Begin Window PresentSettingsWindow
             Index           =   -2147483648
             InitialParent   =   "grp_option_logo"
             Italic          =   False
-            Left            =   490
+            Left            =   586
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   True
@@ -644,7 +649,7 @@ Begin Window PresentSettingsWindow
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "grp_option_logo"
-            Left            =   490
+            Left            =   586
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   True
@@ -671,7 +676,7 @@ Begin Window PresentSettingsWindow
             Index           =   -2147483648
             InitialParent   =   "grp_option_logo"
             Italic          =   True
-            Left            =   490
+            Left            =   586
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   True
@@ -706,7 +711,7 @@ Begin Window PresentSettingsWindow
             Index           =   -2147483648
             InitialParent   =   "grp_option_logo"
             Italic          =   True
-            Left            =   490
+            Left            =   586
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   True
@@ -755,6 +760,7 @@ Begin Window PresentSettingsWindow
          TextSize        =   11.0
          TextUnit        =   0
          Top             =   52
+         Transparent     =   False
          Underline       =   False
          Visible         =   True
          Width           =   430
@@ -785,6 +791,7 @@ Begin Window PresentSettingsWindow
             TextSize        =   10.0
             TextUnit        =   0
             Top             =   69
+            Transparent     =   False
             Underline       =   False
             Value           =   False
             Visible         =   True
@@ -849,6 +856,7 @@ Begin Window PresentSettingsWindow
             TabStop         =   True
             TickStyle       =   0
             Top             =   112
+            Transparent     =   False
             Value           =   5
             Visible         =   True
             Width           =   112
@@ -891,6 +899,7 @@ Begin Window PresentSettingsWindow
             TextSize        =   10.0
             TextUnit        =   0
             Top             =   108
+            Transparent     =   False
             Underline       =   False
             UseFocusRing    =   True
             Visible         =   True
@@ -955,6 +964,7 @@ Begin Window PresentSettingsWindow
             TabStop         =   True
             TickStyle       =   0
             Top             =   148
+            Transparent     =   False
             Value           =   100
             Visible         =   True
             Width           =   112
@@ -997,6 +1007,7 @@ Begin Window PresentSettingsWindow
             TextSize        =   10.0
             TextUnit        =   0
             Top             =   148
+            Transparent     =   False
             Underline       =   False
             UseFocusRing    =   True
             Visible         =   True
@@ -1043,7 +1054,7 @@ Begin Window PresentSettingsWindow
          Bold            =   False
          Caption         =   "Style"
          Enabled         =   True
-         Height          =   147
+         Height          =   176
          HelpTag         =   ""
          Index           =   -2147483648
          InitialParent   =   "tab_present_settings"
@@ -1061,7 +1072,8 @@ Begin Window PresentSettingsWindow
          TextFont        =   "Arial"
          TextSize        =   11.0
          TextUnit        =   0
-         Top             =   208
+         Top             =   217
+         Transparent     =   False
          Underline       =   False
          Visible         =   True
          Width           =   430
@@ -1094,7 +1106,7 @@ Begin Window PresentSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
-            Top             =   226
+            Top             =   235
             Transparent     =   False
             Underline       =   False
             Visible         =   True
@@ -1137,7 +1149,8 @@ Begin Window PresentSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
-            Top             =   241
+            Top             =   250
+            Transparent     =   False
             Underline       =   False
             UseFocusRing    =   True
             Visible         =   True
@@ -1172,7 +1185,7 @@ Begin Window PresentSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
-            Top             =   265
+            Top             =   278
             Transparent     =   False
             Underline       =   False
             Visible         =   True
@@ -1204,7 +1217,8 @@ Begin Window PresentSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
-            Top             =   280
+            Top             =   289
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   140
@@ -1238,7 +1252,7 @@ Begin Window PresentSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
-            Top             =   302
+            Top             =   316
             Transparent     =   False
             Underline       =   False
             Visible         =   True
@@ -1270,11 +1284,12 @@ Begin Window PresentSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
-            Top             =   231
+            Top             =   240
+            Transparent     =   False
             Underline       =   False
             Value           =   False
             Visible         =   True
-            Width           =   176
+            Width           =   210
          End
          Begin PopupMenu pop_style_mouse_cursor
             AutoDeactivate  =   True
@@ -1302,7 +1317,8 @@ Begin Window PresentSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
-            Top             =   317
+            Top             =   326
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   140
@@ -1336,11 +1352,11 @@ Begin Window PresentSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
-            Top             =   246
+            Top             =   255
             Transparent     =   False
             Underline       =   False
             Visible         =   True
-            Width           =   161
+            Width           =   190
          End
          Begin Canvas nil_blanks
             AcceptFocus     =   False
@@ -1364,11 +1380,11 @@ Begin Window PresentSettingsWindow
             TabIndex        =   8
             TabPanelIndex   =   2
             TabStop         =   True
-            Top             =   273
+            Top             =   282
             Transparent     =   True
             UseFocusRing    =   False
             Visible         =   True
-            Width           =   227
+            Width           =   217
             Begin Label lbl_style_blank_style
                AutoDeactivate  =   True
                Bold            =   False
@@ -1398,7 +1414,7 @@ Begin Window PresentSettingsWindow
                TextFont        =   "Arial"
                TextSize        =   10.0
                TextUnit        =   0
-               Top             =   273
+               Top             =   282
                Transparent     =   False
                Underline       =   False
                Visible         =   True
@@ -1427,11 +1443,12 @@ Begin Window PresentSettingsWindow
                TextFont        =   "Arial"
                TextSize        =   10.0
                TextUnit        =   0
-               Top             =   292
+               Top             =   301
+               Transparent     =   False
                Underline       =   False
                Value           =   False
                Visible         =   True
-               Width           =   210
+               Width           =   198
             End
             Begin RadioButton rad_style_blank_next
                AutoDeactivate  =   True
@@ -1456,12 +1473,46 @@ Begin Window PresentSettingsWindow
                TextFont        =   "Arial"
                TextSize        =   10.0
                TextUnit        =   0
-               Top             =   315
+               Top             =   324
+               Transparent     =   False
                Underline       =   False
                Value           =   False
                Visible         =   True
-               Width           =   210
+               Width           =   198
             End
+         End
+         Begin CheckBox chk_style_blank_is_slide_change
+            AutoDeactivate  =   True
+            Bold            =   False
+            Caption         =   "Empty lyric line indicates slide change"
+            DataField       =   ""
+            DataSource      =   ""
+            Enabled         =   True
+            Height          =   20
+            HelpTag         =   "If checked, an empty line in the lyrics (no text) indicates a slide change. Acts like using ""||"" on the line. Simulates EasyWorship-style behavior."
+            Index           =   -2147483648
+            InitialParent   =   "grp_settings_style"
+            Italic          =   False
+            Left            =   39
+            LockBottom      =   False
+            LockedInPosition=   False
+            LockLeft        =   True
+            LockRight       =   False
+            LockTop         =   True
+            Scope           =   0
+            State           =   0
+            TabIndex        =   9
+            TabPanelIndex   =   2
+            TabStop         =   True
+            TextFont        =   "Arial"
+            TextSize        =   10.0
+            TextUnit        =   0
+            Top             =   363
+            Transparent     =   False
+            Underline       =   False
+            Value           =   False
+            Visible         =   True
+            Width           =   411
          End
       End
       Begin GroupBox grp_settings_monitor
@@ -1474,7 +1525,7 @@ Begin Window PresentSettingsWindow
          Index           =   -2147483648
          InitialParent   =   "tab_present_settings"
          Italic          =   False
-         Left            =   480
+         Left            =   472
          LockBottom      =   False
          LockedInPosition=   False
          LockLeft        =   False
@@ -1488,9 +1539,10 @@ Begin Window PresentSettingsWindow
          TextSize        =   11.0
          TextUnit        =   0
          Top             =   52
+         Transparent     =   False
          Underline       =   False
          Visible         =   True
-         Width           =   200
+         Width           =   304
          Begin Label lbl_monitor_presentation
             AutoDeactivate  =   True
             Bold            =   False
@@ -1502,7 +1554,7 @@ Begin Window PresentSettingsWindow
             Index           =   -2147483648
             InitialParent   =   "grp_settings_monitor"
             Italic          =   False
-            Left            =   489
+            Left            =   481
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   True
@@ -1538,7 +1590,7 @@ Begin Window PresentSettingsWindow
             InitialParent   =   "grp_settings_monitor"
             InitialValue    =   "1\r\n2"
             Italic          =   False
-            Left            =   490
+            Left            =   482
             ListIndex       =   1
             LockBottom      =   False
             LockedInPosition=   False
@@ -1553,6 +1605,7 @@ Begin Window PresentSettingsWindow
             TextSize        =   10.0
             TextUnit        =   0
             Top             =   125
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   40
@@ -1568,7 +1621,7 @@ Begin Window PresentSettingsWindow
             Index           =   -2147483648
             InitialParent   =   "grp_settings_monitor"
             Italic          =   True
-            Left            =   489
+            Left            =   481
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   True
@@ -1590,7 +1643,7 @@ Begin Window PresentSettingsWindow
             Transparent     =   False
             Underline       =   False
             Visible         =   True
-            Width           =   179
+            Width           =   197
          End
          Begin PopupMenu pop_monitor_control
             AutoDeactivate  =   True
@@ -1604,7 +1657,7 @@ Begin Window PresentSettingsWindow
             InitialParent   =   "grp_settings_monitor"
             InitialValue    =   "1\r\n2"
             Italic          =   False
-            Left            =   489
+            Left            =   481
             ListIndex       =   0
             LockBottom      =   False
             LockedInPosition=   False
@@ -1619,6 +1672,7 @@ Begin Window PresentSettingsWindow
             TextSize        =   10.0
             TextUnit        =   0
             Top             =   83
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   40
@@ -1634,7 +1688,7 @@ Begin Window PresentSettingsWindow
             Index           =   -2147483648
             InitialParent   =   "grp_settings_monitor"
             Italic          =   False
-            Left            =   489
+            Left            =   481
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   True
@@ -1669,7 +1723,7 @@ Begin Window PresentSettingsWindow
             Index           =   -2147483648
             InitialParent   =   "grp_settings_monitor"
             Italic          =   False
-            Left            =   490
+            Left            =   482
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   True
@@ -1705,7 +1759,7 @@ Begin Window PresentSettingsWindow
             InitialParent   =   "grp_settings_monitor"
             InitialValue    =   ""
             Italic          =   False
-            Left            =   490
+            Left            =   482
             ListIndex       =   0
             LockBottom      =   False
             LockedInPosition=   False
@@ -1720,9 +1774,10 @@ Begin Window PresentSettingsWindow
             TextSize        =   10.0
             TextUnit        =   0
             Top             =   195
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
-            Width           =   182
+            Width           =   200
          End
          Begin CheckBox chk_monitor_force_4_3_preview
             AutoDeactivate  =   True
@@ -1736,7 +1791,7 @@ Begin Window PresentSettingsWindow
             Index           =   -2147483648
             InitialParent   =   "grp_settings_monitor"
             Italic          =   False
-            Left            =   489
+            Left            =   481
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   True
@@ -1751,10 +1806,11 @@ Begin Window PresentSettingsWindow
             TextSize        =   10.0
             TextUnit        =   0
             Top             =   226
+            Transparent     =   False
             Underline       =   False
             Value           =   False
             Visible         =   True
-            Width           =   137
+            Width           =   197
          End
          Begin CheckBox chk_monitor_force_16_9_preview
             AutoDeactivate  =   True
@@ -1768,7 +1824,7 @@ Begin Window PresentSettingsWindow
             Index           =   -2147483648
             InitialParent   =   "grp_settings_monitor"
             Italic          =   False
-            Left            =   489
+            Left            =   481
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   True
@@ -1783,166 +1839,11 @@ Begin Window PresentSettingsWindow
             TextSize        =   10.0
             TextUnit        =   0
             Top             =   250
+            Transparent     =   False
             Underline       =   False
             Value           =   False
             Visible         =   True
-            Width           =   137
-         End
-      End
-      Begin GroupBox grp_settings_audio
-         AutoDeactivate  =   True
-         Bold            =   False
-         Caption         =   "Audio"
-         Enabled         =   True
-         Height          =   75
-         HelpTag         =   ""
-         Index           =   -2147483648
-         InitialParent   =   "tab_present_settings"
-         Italic          =   False
-         Left            =   480
-         LockBottom      =   False
-         LockedInPosition=   False
-         LockLeft        =   False
-         LockRight       =   True
-         LockTop         =   True
-         Scope           =   0
-         TabIndex        =   4
-         TabPanelIndex   =   2
-         TabStop         =   True
-         TextFont        =   "Arial"
-         TextSize        =   11.0
-         TextUnit        =   0
-         Top             =   326
-         Underline       =   False
-         Visible         =   False
-         Width           =   200
-         Begin Label lbl_audio_file_to_play
-            AutoDeactivate  =   True
-            Bold            =   False
-            DataField       =   ""
-            DataSource      =   ""
-            Enabled         =   True
-            Height          =   20
-            HelpTag         =   ""
-            Index           =   -2147483648
-            InitialParent   =   "grp_settings_audio"
-            Italic          =   False
-            Left            =   489
-            LockBottom      =   False
-            LockedInPosition=   False
-            LockLeft        =   True
-            LockRight       =   False
-            LockTop         =   True
-            Multiline       =   False
-            Scope           =   0
-            Selectable      =   False
-            TabIndex        =   0
-            TabPanelIndex   =   2
-            TabStop         =   True
-            Text            =   "File to Play:"
-            TextAlign       =   0
-            TextColor       =   "&c00000000"
-            TextFont        =   "Arial"
-            TextSize        =   11.0
-            TextUnit        =   0
-            Top             =   344
-            Transparent     =   False
-            Underline       =   False
-            Visible         =   True
-            Width           =   109
-         End
-         Begin PushButton btn_audio_browse
-            AutoDeactivate  =   True
-            Bold            =   False
-            ButtonStyle     =   0
-            Cancel          =   False
-            Caption         =   "Browse"
-            Default         =   False
-            Enabled         =   True
-            Height          =   22
-            HelpTag         =   ""
-            Index           =   -2147483648
-            InitialParent   =   "grp_settings_audio"
-            Italic          =   False
-            Left            =   601
-            LockBottom      =   False
-            LockedInPosition=   False
-            LockLeft        =   True
-            LockRight       =   False
-            LockTop         =   True
-            Scope           =   0
-            TabIndex        =   1
-            TabPanelIndex   =   2
-            TabStop         =   True
-            TextFont        =   "Arial"
-            TextSize        =   11.0
-            TextUnit        =   0
-            Top             =   343
-            Underline       =   False
-            Visible         =   True
-            Width           =   69
-         End
-         Begin PushButton btn_audio_play
-            AutoDeactivate  =   True
-            Bold            =   False
-            ButtonStyle     =   0
-            Cancel          =   False
-            Caption         =   "Play"
-            Default         =   False
-            Enabled         =   True
-            Height          =   22
-            HelpTag         =   ""
-            Index           =   -2147483648
-            InitialParent   =   "grp_settings_audio"
-            Italic          =   False
-            Left            =   570
-            LockBottom      =   False
-            LockedInPosition=   False
-            LockLeft        =   True
-            LockRight       =   False
-            LockTop         =   True
-            Scope           =   0
-            TabIndex        =   2
-            TabPanelIndex   =   2
-            TabStop         =   True
-            TextFont        =   "Arial"
-            TextSize        =   11.0
-            TextUnit        =   0
-            Top             =   371
-            Underline       =   False
-            Visible         =   True
-            Width           =   70
-         End
-         Begin PushButton btn_audio_stop
-            AutoDeactivate  =   True
-            Bold            =   False
-            ButtonStyle     =   0
-            Cancel          =   False
-            Caption         =   "Stop"
-            Default         =   False
-            Enabled         =   True
-            Height          =   22
-            HelpTag         =   ""
-            Index           =   -2147483648
-            InitialParent   =   "grp_settings_audio"
-            Italic          =   False
-            Left            =   488
-            LockBottom      =   False
-            LockedInPosition=   False
-            LockLeft        =   True
-            LockRight       =   False
-            LockTop         =   True
-            Scope           =   0
-            TabIndex        =   3
-            TabPanelIndex   =   2
-            TabStop         =   True
-            TextFont        =   "Arial"
-            TextSize        =   11.0
-            TextUnit        =   0
-            Top             =   371
-            Underline       =   False
-            Visible         =   True
-            Width           =   70
+            Width           =   197
          End
       End
       Begin CheckBox chk_settings_export_snapshot
@@ -1972,10 +1873,11 @@ Begin Window PresentSettingsWindow
          TextSize        =   0.0
          TextUnit        =   0
          Top             =   45
+         Transparent     =   False
          Underline       =   False
          Value           =   False
          Visible         =   True
-         Width           =   660
+         Width           =   756
       End
       Begin TextField edt_settings_snapshot_filename
          AcceptTabs      =   False
@@ -2015,10 +1917,11 @@ Begin Window PresentSettingsWindow
          TextSize        =   0.0
          TextUnit        =   0
          Top             =   67
+         Transparent     =   False
          Underline       =   False
          UseFocusRing    =   True
          Visible         =   True
-         Width           =   626
+         Width           =   722
       End
       Begin SButton btn_settings_snapshot_file
          AcceptFocus     =   False
@@ -2034,7 +1937,7 @@ Begin Window PresentSettingsWindow
          Index           =   -2147483648
          InitialParent   =   "tab_present_settings"
          LabelAlign      =   0
-         Left            =   658
+         Left            =   754
          LockBottom      =   False
          LockedInPosition=   False
          LockLeft        =   False
@@ -2079,10 +1982,11 @@ Begin Window PresentSettingsWindow
          TextSize        =   0.0
          TextUnit        =   0
          Top             =   101
+         Transparent     =   False
          Underline       =   False
          Value           =   False
          Visible         =   True
-         Width           =   626
+         Width           =   722
       End
       Begin CheckBox chk_settings_export_live_insertions
          AutoDeactivate  =   True
@@ -2111,10 +2015,11 @@ Begin Window PresentSettingsWindow
          TextSize        =   0.0
          TextUnit        =   0
          Top             =   122
+         Transparent     =   False
          Underline       =   False
          Value           =   False
          Visible         =   True
-         Width           =   626
+         Width           =   722
       End
       Begin CheckBox chk_settings_export_metadata
          AutoDeactivate  =   True
@@ -2143,10 +2048,11 @@ Begin Window PresentSettingsWindow
          TextSize        =   0.0
          TextUnit        =   0
          Top             =   143
+         Transparent     =   False
          Underline       =   False
          Value           =   False
          Visible         =   True
-         Width           =   626
+         Width           =   722
       End
       Begin Label txt_settings_snapshot_parameters
          AutoDeactivate  =   True
@@ -2188,12 +2094,12 @@ Begin Window PresentSettingsWindow
          Bold            =   False
          Caption         =   "Presentation Control"
          Enabled         =   True
-         Height          =   81
+         Height          =   77
          HelpTag         =   ""
          Index           =   -2147483648
          InitialParent   =   "tab_present_settings"
          Italic          =   False
-         Left            =   30
+         Left            =   472
          LockBottom      =   False
          LockedInPosition=   False
          LockLeft        =   True
@@ -2206,10 +2112,11 @@ Begin Window PresentSettingsWindow
          TextFont        =   "Arial"
          TextSize        =   11.0
          TextUnit        =   0
-         Top             =   358
+         Top             =   287
+         Transparent     =   False
          Underline       =   False
          Visible         =   True
-         Width           =   430
+         Width           =   304
          Begin CheckBox chk_style_exit_prompt
             AutoDeactivate  =   True
             Bold            =   False
@@ -2222,7 +2129,7 @@ Begin Window PresentSettingsWindow
             Index           =   -2147483648
             InitialParent   =   "grp_settings_presentation_control"
             Italic          =   False
-            Left            =   40
+            Left            =   482
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   True
@@ -2236,11 +2143,12 @@ Begin Window PresentSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
-            Top             =   400
+            Top             =   329
+            Transparent     =   False
             Underline       =   False
             Value           =   False
             Visible         =   True
-            Width           =   400
+            Width           =   196
          End
          Begin CheckBox chk_style_exit_doubleclick
             AutoDeactivate  =   True
@@ -2254,7 +2162,7 @@ Begin Window PresentSettingsWindow
             Index           =   -2147483648
             InitialParent   =   "grp_settings_presentation_control"
             Italic          =   False
-            Left            =   40
+            Left            =   482
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   True
@@ -2268,11 +2176,12 @@ Begin Window PresentSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10.0
             TextUnit        =   0
-            Top             =   374
+            Top             =   303
+            Transparent     =   False
             Underline       =   False
             Value           =   False
             Visible         =   True
-            Width           =   400
+            Width           =   196
          End
       End
    End
@@ -2289,6 +2198,166 @@ Begin Window PresentSettingsWindow
       TabStop         =   True
       Visible         =   True
    End
+   Begin GroupBox grp_settings_audio
+      AutoDeactivate  =   True
+      Bold            =   False
+      Caption         =   "Audio"
+      Enabled         =   True
+      Height          =   75
+      HelpTag         =   ""
+      Index           =   -2147483648
+      InitialParent   =   ""
+      Italic          =   False
+      Left            =   576
+      LockBottom      =   False
+      LockedInPosition=   False
+      LockLeft        =   False
+      LockRight       =   True
+      LockTop         =   True
+      Scope           =   0
+      TabIndex        =   3
+      TabPanelIndex   =   0
+      TabStop         =   True
+      TextFont        =   "Arial"
+      TextSize        =   11.0
+      TextUnit        =   0
+      Top             =   514
+      Transparent     =   False
+      Underline       =   False
+      Visible         =   False
+      Width           =   200
+      Begin PushButton btn_audio_browse
+         AutoDeactivate  =   True
+         Bold            =   False
+         ButtonStyle     =   "0"
+         Cancel          =   False
+         Caption         =   "Browse"
+         Default         =   False
+         Enabled         =   True
+         Height          =   22
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "grp_settings_audio"
+         Italic          =   False
+         Left            =   697
+         LockBottom      =   False
+         LockedInPosition=   False
+         LockLeft        =   True
+         LockRight       =   False
+         LockTop         =   True
+         Scope           =   0
+         TabIndex        =   1
+         TabPanelIndex   =   0
+         TabStop         =   True
+         TextFont        =   "Arial"
+         TextSize        =   11.0
+         TextUnit        =   0
+         Top             =   531
+         Transparent     =   False
+         Underline       =   False
+         Visible         =   True
+         Width           =   69
+      End
+      Begin PushButton btn_audio_play
+         AutoDeactivate  =   True
+         Bold            =   False
+         ButtonStyle     =   "0"
+         Cancel          =   False
+         Caption         =   "Play"
+         Default         =   False
+         Enabled         =   True
+         Height          =   22
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "grp_settings_audio"
+         Italic          =   False
+         Left            =   666
+         LockBottom      =   False
+         LockedInPosition=   False
+         LockLeft        =   True
+         LockRight       =   False
+         LockTop         =   True
+         Scope           =   0
+         TabIndex        =   2
+         TabPanelIndex   =   0
+         TabStop         =   True
+         TextFont        =   "Arial"
+         TextSize        =   11.0
+         TextUnit        =   0
+         Top             =   559
+         Transparent     =   False
+         Underline       =   False
+         Visible         =   True
+         Width           =   70
+      End
+      Begin PushButton btn_audio_stop
+         AutoDeactivate  =   True
+         Bold            =   False
+         ButtonStyle     =   "0"
+         Cancel          =   False
+         Caption         =   "Stop"
+         Default         =   False
+         Enabled         =   True
+         Height          =   22
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "grp_settings_audio"
+         Italic          =   False
+         Left            =   584
+         LockBottom      =   False
+         LockedInPosition=   False
+         LockLeft        =   True
+         LockRight       =   False
+         LockTop         =   True
+         Scope           =   0
+         TabIndex        =   3
+         TabPanelIndex   =   0
+         TabStop         =   True
+         TextFont        =   "Arial"
+         TextSize        =   11.0
+         TextUnit        =   0
+         Top             =   559
+         Transparent     =   False
+         Underline       =   False
+         Visible         =   True
+         Width           =   70
+      End
+      Begin Label lbl_audio_file_to_play
+         AutoDeactivate  =   True
+         Bold            =   False
+         DataField       =   ""
+         DataSource      =   ""
+         Enabled         =   True
+         Height          =   20
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "grp_settings_audio"
+         Italic          =   False
+         Left            =   585
+         LockBottom      =   False
+         LockedInPosition=   False
+         LockLeft        =   True
+         LockRight       =   False
+         LockTop         =   True
+         Multiline       =   False
+         Scope           =   0
+         Selectable      =   False
+         TabIndex        =   0
+         TabPanelIndex   =   0
+         TabStop         =   True
+         Text            =   "File to Play:"
+         TextAlign       =   0
+         TextColor       =   &c00000000
+         TextFont        =   "Arial"
+         TextSize        =   11.0
+         TextUnit        =   0
+         Top             =   532
+         Transparent     =   False
+         Underline       =   False
+         Visible         =   True
+         Width           =   109
+      End
+   End
 End
 #tag EndWindow
 
@@ -2303,22 +2372,24 @@ End
 
 	#tag Event
 		Sub Open()
-		  dim s as string
+		  Dim s As String
 		  Dim n As Integer 'EMP 09/05
+		  Dim Settings As XmlNode = App.MyPresentSettings.DocumentElement
 		  
 		  App.MouseCursor = System.Cursors.Wait
 		  App.DebugWriter.Write("Opening PresentSettingsWindow")
 		  Me.BackColor = FillColor
 		  
-		  edt_style_border_thickness.Text = SmartML.GetValue(App.MyPresentSettings.DocumentElement, "style/@thickness")
-		  chk_style_use_transitions.Value = SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "style/@transition")
-		  chk_style_blanks.Value = SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "style/@blanks")
+		  edt_style_border_thickness.Text = SmartML.GetValue(Settings, "style/@thickness")
+		  chk_style_use_transitions.Value = SmartML.GetValueB(Settings, "style/@transition")
+		  chk_style_blanks.Value = SmartML.GetValueB(Settings, "style/@blanks")
+		  chk_style_blank_is_slide_change.Value = SmartML.GetValueB(Settings, "style/@blank_is_slide_change")
 		  
-		  chk_style_exit_prompt.Value = SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "style/@exit_prompt")
-		  chk_style_exit_doubleclick.Value = SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "style/@exit_doubleclick")
+		  chk_style_exit_prompt.Value = SmartML.GetValueB(Settings, "style/@exit_prompt")
+		  chk_style_exit_doubleclick.Value = SmartML.GetValueB(Settings, "style/@exit_doubleclick")
 		  '++JRC
 		  Dim file As String
-		  file = SmartML.GetValue(App.MyPresentSettings.DocumentElement, "style/@default_audio")
+		  file = SmartML.GetValue(Settings, "style/@default_audio")
 		  CurrAudioFile = GetFolderItem(file)
 		  If CurrAudioFile <> Nil Then
 		    CurrAudio = CurrAudioFile.OpenAsSound
@@ -2344,24 +2415,24 @@ End
 		    pop_monitor_presentation.AddRow CStr(n)
 		  Next
 		  
-		  pop_monitor_control.ListIndex = SmartML.GetValueN(App.MyPresentSettings.DocumentElement, "monitors/@control") - 1
+		  pop_monitor_control.ListIndex = SmartML.GetValueN(Settings, "monitors/@control") - 1
 		  If pop_monitor_control.ListIndex < 0 Then pop_monitor_control.ListIndex = 0
-		  pop_monitor_presentation.ListIndex = SmartML.GetValueN(App.MyPresentSettings.DocumentElement, "monitors/@present") - 1
+		  pop_monitor_presentation.ListIndex = SmartML.GetValueN(Settings, "monitors/@present") - 1
 		  If pop_monitor_presentation.ListIndex < 0 Then pop_monitor_presentation.ListIndex = 1
-		  chk_monitor_force_4_3_preview.Value = SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "monitors/@force_4_3_preview", True, False)
-		  chk_monitor_force_16_9_preview.Value = SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "monitors/@force_16_9_preview", True, False)
+		  chk_monitor_force_4_3_preview.Value = SmartML.GetValueB(Settings, "monitors/@force_4_3_preview", True, False)
+		  chk_monitor_force_16_9_preview.Value = SmartML.GetValueB(Settings, "monitors/@force_16_9_preview", True, False)
 		  
-		  can_style_default.SetStyleNode SmartML.GetNode(App.MyPresentSettings.DocumentElement, "default_style")
+		  can_style_default.SetStyleNode SmartML.GetNode(Settings, "default_style")
 		  DefaultStyle = New SlideStyle(can_style_default.GetStyleNode)
-		  can_style_scripture.SetStyleNode SmartML.GetNode(App.MyPresentSettings.DocumentElement, "scripture_style")
+		  can_style_scripture.SetStyleNode SmartML.GetNode(Settings, "scripture_style")
 		  ScriptureStyle = New SlideStyle(can_style_scripture.GetStyleNode)
 		  
-		  sal_alerts.SetVAlign SmartML.GetValue(App.MyPresentSettings.DocumentElement, "alert/@valign")
-		  sal_alerts.SetHAlign SmartML.GetValue(App.MyPresentSettings.DocumentElement, "alert/@align")
-		  can_alerts_font.SetFont SmartML.GetValueF(App.MyPresentSettings.DocumentElement, "alert")
+		  sal_alerts.SetVAlign SmartML.GetValue(Settings, "alert/@valign")
+		  sal_alerts.SetHAlign SmartML.GetValue(Settings, "alert/@align")
+		  can_alerts_font.SetFont SmartML.GetValueF(Settings, "alert")
 		  
-		  can_logo.SetImageAsString SmartML.GetValue(App.MyPresentSettings.DocumentElement, "logo")
-		  can_logo_mask.SetImageAsString SmartML.GetValue(App.MyPresentSettings.DocumentElement, "logo_mask")
+		  can_logo.SetImageAsString SmartML.GetValue(Settings, "logo")
+		  can_logo_mask.SetImageAsString SmartML.GetValue(Settings, "logo_mask")
 		  
 		  pop_style_initial_mode.AddRow App.T.Translate("presentation_settings/style/modes/normal/@caption")
 		  pop_style_initial_mode.AddRow App.T.Translate("presentation_settings/style/modes/black/@caption")
@@ -2380,10 +2451,10 @@ End
 		  pop_monitor_mode.AddRow App.T.Translate("songs_mode/selected_song/present/dual_screen/@caption")
 		  pop_monitor_mode.AddRow App.T.Translate("songs_mode/selected_song/present/preview_dual_screen/@caption")
 		  
-		  pop_monitor_mode.Listindex = SmartML.GetValueN(App.MyPresentSettings.DocumentElement, "presentation_mode/@code", True) - 1
+		  pop_monitor_mode.Listindex = SmartML.GetValueN(Settings, "presentation_mode/@code", True) - 1
 		  
 		  Dim temp As String
-		  temp = SmartML.GetValue(App.MyPresentSettings.DocumentElement, "style/@initial_mode")
+		  temp = SmartML.GetValue(Settings, "style/@initial_mode")
 		  Select Case temp
 		  Case "B"
 		    pop_style_initial_mode.ListIndex = 1
@@ -2400,7 +2471,7 @@ End
 		  End Select
 		  
 		  'Josh
-		  temp = SmartML.GetValue(App.MyPresentSettings.DocumentElement, "style/@mouse_cursor")
+		  temp = SmartML.GetValue(Settings, "style/@mouse_cursor")
 		  Select Case temp
 		  Case "arrow"
 		    pop_style_mouse_cursor.ListIndex = 0
@@ -2425,12 +2496,12 @@ End
 		  //++EMP 09/05
 		  // Code for user-selectable transitions
 		  
-		  n = SmartML.GetValueN(App.MyPresentSettings.DocumentElement, "style/@transition_frames", False)
+		  n = SmartML.GetValueN(Settings, "style/@transition_frames", False)
 		  If n = 0 Then n = 5
 		  sld_style_frames.Value = n
 		  edt_style_frames.Text = Str(n)
 		  
-		  n = SmartML.GetValueN(App.MyPresentSettings.DocumentElement, "style/@transition_time", False)
+		  n = SmartML.GetValueN(Settings, "style/@transition_time", False)
 		  If n = 0 Then n = 100
 		  sld_style_time.Value = n
 		  edt_style_time.Text = Str(n)
@@ -2446,16 +2517,16 @@ End
 		  //++EMP, 11/05
 		  // Determine if blanks use the previous or next slide's style
 		  
-		  rad_style_blank_next.Value = SmartML.GetValueB(App.MyPresentSettings.DocumentElement, _
+		  rad_style_blank_next.Value = SmartML.GetValueB(Settings, _
 		  "style/@blank_uses_next", True, True)
 		  rad_style_blank_prev.Value = Not rad_style_blank_next.Value
 		  //--
 		  
-		  chk_settings_export_snapshot.Value = SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "snapshot/@enable", False, False)
-		  edt_settings_snapshot_filename.Text = SmartML.GetValue(App.MyPresentSettings.DocumentElement, "snapshot/filename", False)
-		  chk_settings_export_preview.Value = SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "snapshot/@export_preview", False, False)
-		  chk_settings_export_live_insertions.Value = SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "snapshot/@export_live_insertions", False, True)
-		  chk_settings_export_metadata.Value = SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "snapshot/@export_metadata", False, True)
+		  chk_settings_export_snapshot.Value = SmartML.GetValueB(Settings, "snapshot/@enable", False, False)
+		  edt_settings_snapshot_filename.Text = SmartML.GetValue(Settings, "snapshot/filename", False)
+		  chk_settings_export_preview.Value = SmartML.GetValueB(Settings, "snapshot/@export_preview", False, False)
+		  chk_settings_export_live_insertions.Value = SmartML.GetValueB(Settings, "snapshot/@export_live_insertions", False, True)
+		  chk_settings_export_metadata.Value = SmartML.GetValueB(Settings, "snapshot/@export_metadata", False, True)
 		  
 		  App.CenterInControlScreen Me
 		End Sub
@@ -2552,6 +2623,8 @@ End
 		  
 		  SmartML.SetValueB Settings, "style/@blanks", chk_style_blanks.Value
 		  SmartML.SetValueB Settings, "style/@transition", chk_style_use_transitions.Value
+		  SmartML.SetValueB Settings, "style/@blank_is_slide_change", chk_style_blank_is_slide_change.Value
+		  
 		  
 		  SmartML.SetValueB Settings, "style/@exit_prompt", chk_style_exit_prompt.Value
 		  SmartML.SetValueB Settings, "style/@exit_doubleclick", chk_style_exit_doubleclick.Value
@@ -2784,6 +2857,68 @@ End
 		End Sub
 	#tag EndEvent
 #tag EndEvents
+#tag Events chk_settings_export_snapshot
+	#tag Event
+		Sub Action()
+		  edt_settings_snapshot_filename.Enabled = Me.Value
+		  btn_settings_snapshot_file.Enabled = Me.Value
+		  chk_settings_export_preview.Enabled = Me.Value
+		  chk_settings_export_live_insertions.Enabled = Me.Value
+		  chk_settings_export_metadata.Enabled = Me.Value
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events btn_settings_snapshot_file
+	#tag Event
+		Sub Action()
+		  Dim dlg As New SaveAsDialog
+		  Dim f As FolderItem
+		  
+		  dlg.ActionButtonCaption = App.T.Translate("shared/select/@caption")
+		  dlg.CancelButtonCaption = App.T.Translate("shared/cancel/@caption")
+		  dlg.Title = App.T.Translate("presentation_settings/snapshot_file/@caption")
+		  dlg.PromptText = App.T.Translate("presentation_settings/snapshot_file")
+		  dlg.Filter=ImageFileTypes.JPGFiles
+		  
+		  f = dlg.ShowModal()
+		  If Not IsNull(f) Then
+		    edt_settings_snapshot_filename.Text = f.AbsolutePath()
+		  End If
+		  
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub Open()
+		  Me.SetIcon fileopenpic, fileopenmask
+		  
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events AudioTimer
+	#tag Event
+		Sub Action()
+		  '++JRC
+		  //++EMP 17 Feb 2006
+		  // Commented out for mainstream version
+		  //--
+		  'Just check every few seconds if CurrAudio has finished playing
+		  'Dim error As integer
+		  '
+		  'if IsAudioPlaying = true then
+		  'error = 0
+		  'error = Globals.SXMSAudio.SXMSWinampIsPlaying
+		  'if error  = 0 then
+		  'btn_audio_play.Enabled = true
+		  'btn_audio_stop.Enabled = false
+		  'IsAudioPlaying = false
+		  'btn_audio_play.Caption = App.T.Translate("presentation_settings/audio/play/@caption")
+		  '
+		  'end if
+		  'end if
+		  '--
+		End Sub
+	#tag EndEvent
+#tag EndEvents
 #tag Events btn_audio_browse
 	#tag Event
 		Sub Action()
@@ -2887,68 +3022,6 @@ End
 		  //btn_audio_stop.Enabled = false
 		  //IsAudioPlaying = false
 		  //--
-		  '--
-		End Sub
-	#tag EndEvent
-#tag EndEvents
-#tag Events chk_settings_export_snapshot
-	#tag Event
-		Sub Action()
-		  edt_settings_snapshot_filename.Enabled = Me.Value
-		  btn_settings_snapshot_file.Enabled = Me.Value
-		  chk_settings_export_preview.Enabled = Me.Value
-		  chk_settings_export_live_insertions.Enabled = Me.Value
-		  chk_settings_export_metadata.Enabled = Me.Value
-		End Sub
-	#tag EndEvent
-#tag EndEvents
-#tag Events btn_settings_snapshot_file
-	#tag Event
-		Sub Action()
-		  Dim dlg As New SaveAsDialog
-		  Dim f As FolderItem
-		  
-		  dlg.ActionButtonCaption = App.T.Translate("shared/select/@caption")
-		  dlg.CancelButtonCaption = App.T.Translate("shared/cancel/@caption")
-		  dlg.Title = App.T.Translate("presentation_settings/snapshot_file/@caption")
-		  dlg.PromptText = App.T.Translate("presentation_settings/snapshot_file")
-		  dlg.Filter=ImageFileTypes.JPGFiles
-		  
-		  f = dlg.ShowModal()
-		  If Not IsNull(f) Then
-		    edt_settings_snapshot_filename.Text = f.AbsolutePath()
-		  End If
-		  
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub Open()
-		  Me.SetIcon fileopenpic, fileopenmask
-		  
-		End Sub
-	#tag EndEvent
-#tag EndEvents
-#tag Events AudioTimer
-	#tag Event
-		Sub Action()
-		  '++JRC
-		  //++EMP 17 Feb 2006
-		  // Commented out for mainstream version
-		  //--
-		  'Just check every few seconds if CurrAudio has finished playing
-		  'Dim error As integer
-		  '
-		  'if IsAudioPlaying = true then
-		  'error = 0
-		  'error = Globals.SXMSAudio.SXMSWinampIsPlaying
-		  'if error  = 0 then
-		  'btn_audio_play.Enabled = true
-		  'btn_audio_stop.Enabled = false
-		  'IsAudioPlaying = false
-		  'btn_audio_play.Caption = App.T.Translate("presentation_settings/audio/play/@caption")
-		  '
-		  'end if
-		  'end if
 		  '--
 		End Sub
 	#tag EndEvent

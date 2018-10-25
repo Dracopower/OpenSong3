@@ -1,4 +1,7 @@
-﻿-= Version 2.2 RC =-
+-= Version 2.2.? =-
+presentation_settings/style/blank_is_slide_change
+style_editor/bilingual/size (100% -> 200%)
+-= Version 2.2 RC =-
 style_editor/background/image_fit (including children)
 style_editor/trim_note/@caption
 style_editor/background/position (deleted)

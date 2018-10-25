@@ -372,8 +372,8 @@ Protected Module FileUtils
 		  
 		  Return f <> Nil
 		  
-		Catch e
-		  Return False
+		  Catch e
+		    Return False
 		End Function
 	#tag EndMethod
 
@@ -431,6 +431,58 @@ Protected Module FileUtils
 	#tag EndMethod
 
 	#tag Method, Flags = &h1
+		Protected Function NativePathSeparator() As String
+		  #If TargetMacOS
+		    Return "/"
+		  #elseif TargetWin32
+		    Return "\"
+		  #elseif TargetLinux
+		    Return "/"
+		  #Endif
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function Path(Extends f As FolderItem) As String
+		  //++
+		  // Decorator method to hide the change from AbsolutePath in Xojo/RB versions prior to 2013r1
+		  // to the NativePath introduced in 2013r1
+		  //--
+		  #If RBVersion < 2013.1
+		    Return f.AbsolutePath
+		  #Else
+		    Return f.NativePath
+		  #EndIf
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function PathType() As Integer
+		  //++
+		  // Since the developers are on widely disparate versions of Xojo,
+		  // there are issues implementing FolderItem.PathTypeNative,
+		  // introduced in Xojo 2013.1 as a replacement for FolderItem.PathTypeAbsolute.
+		  // On Windows and Linux, the two are effectively equivalent,
+		  // but on MacOS, PathTypeNative returns a POSIX-style path and
+		  // PathTypeAbsolute returns the older colon-delimited path. This
+		  // creates issues since a file path may have been stored in PathTypeAbsolute
+		  // and used as an argument to a FolderItem.Child call.
+		  //
+		  // This will return PathTypeAbsolute in Xojo versions before 2013r1 and
+		  // PathTypeNative in Xojo versions where it is implemented. That can
+		  // be passed as an argument to FolderItem.Constructor or other places where
+		  // the PathType constants are used.
+		  //--
+		  
+		  #If RBVersion < 2013.1
+		    Return FolderItem.PathTypeAbsolute
+		  #Else
+		    Return FolderItem.PathTypeNative
+		  #EndIf
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h1
 		Protected Function RelativePathToFolderItem(parent As FolderItem, path As String) As FolderItem
 		  Dim i, count As Integer
 		  Dim folder As String
@@ -438,6 +490,7 @@ Protected Module FileUtils
 		  App.DebugWriter.Write "FileUtils.RelativePathToFolderItem: parent is '" + parent.URLPath + "'", 5
 		  App.DebugWriter.Write "FileUtils.RelativePathToFolderItem: path is '" + path + "'", 5
 		  path = ReplaceAll(path, "\", "/")
+		  path = ReplaceAll(path, ":", "/")
 		  App.DebugWriter.Write "FileUtils.RelativePathToFolderItem: path after ReplaceAll '" + path + "'", 5
 		  count = CountFields(path, "/")
 		  App.DebugWriter.Write "FileUtils.RelativePathToFolderItem: count of leaf nodes is " + CStr(count), 5
@@ -506,33 +559,33 @@ Protected Module FileUtils
 			Visible=true
 			Group="ID"
 			InitialValue="-2147483648"
-			InheritedFrom="Object"
+			Type="Integer"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Left"
 			Visible=true
 			Group="Position"
 			InitialValue="0"
-			InheritedFrom="Object"
+			Type="Integer"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Name"
 			Visible=true
 			Group="ID"
-			InheritedFrom="Object"
+			Type="String"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Super"
 			Visible=true
 			Group="ID"
-			InheritedFrom="Object"
+			Type="String"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Top"
 			Visible=true
 			Group="Position"
 			InitialValue="0"
-			InheritedFrom="Object"
+			Type="Integer"
 		#tag EndViewProperty
 	#tag EndViewBehavior
 End Module

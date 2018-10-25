@@ -51,7 +51,7 @@ Begin Window MainWindow Implements ScriptureReceiver
       TabPanelIndex   =   0
       TabStop         =   True
       Top             =   3
-      UseFocusRing    =   True
+      UseFocusRing    =   False
       Visible         =   True
       Width           =   200
    End
@@ -82,7 +82,7 @@ Begin Window MainWindow Implements ScriptureReceiver
       TabPanelIndex   =   0
       TabStop         =   True
       Top             =   3
-      UseFocusRing    =   True
+      UseFocusRing    =   False
       Visible         =   True
       Width           =   200
    End
@@ -120,7 +120,7 @@ Begin Window MainWindow Implements ScriptureReceiver
       Visible         =   True
       Width           =   416
    End
-   Begin PagePanel pge_controls
+   Begin SPagePanel pge_controls
       AutoDeactivate  =   True
       Enabled         =   True
       Height          =   555
@@ -1908,7 +1908,7 @@ Begin Window MainWindow Implements ScriptureReceiver
          End
       End
    End
-   Begin PagePanel pge_contents
+   Begin SPagePanel pge_contents
       AutoDeactivate  =   True
       Enabled         =   True
       Height          =   555
@@ -1927,7 +1927,7 @@ Begin Window MainWindow Implements ScriptureReceiver
       TabIndex        =   5
       TabPanelIndex   =   0
       Top             =   34
-      Value           =   4
+      Value           =   5
       Visible         =   True
       Width           =   591
       Begin Canvas cnv_editor_style_change
@@ -7098,7 +7098,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Visible         =   True
             Width           =   115
          End
-         Begin PagePanel pge_externals
+         Begin SPagePanel pge_externals
             AutoDeactivate  =   True
             Enabled         =   True
             Height          =   316
@@ -8471,6 +8471,11 @@ End
 		  SmartML.SetValue App.MyMainSettings.DocumentElement, "geometry/@width", CStr(Width)
 		  SmartML.SetValue App.MyMainSettings.DocumentElement, "geometry/@height", CStr(Height)
 		  SmartML.SetValue App.MyMainSettings.DocumentElement, "songfolder", Globals.CurrentSongFolder
+		  If pop_sets_sets.ListIndex > 0 And pop_sets_sets.ListIndex < pop_sets_sets.ListCount Then
+		    SmartML.SetValue App.MyMainSettings.DocumentElement, "last_open_set", pop_sets_sets.List(pop_sets_sets.ListIndex)
+		  Else
+		    SmartML.SetValue App.MyMainSettings.DocumentElement, "last_open_set", ""
+		  End If
 		  
 		  App.MouseCursor = Nil
 		  Return False
@@ -10145,7 +10150,7 @@ End
 		  
 		  PresentWindow.Hide
 		  PresentWindow.Present CurrentSet, screenMode, ItemNumber
-		  
+		  PresentWindow.Show
 		  'reset cursor
 		  App.MouseCursor = Nil
 		  
@@ -12786,6 +12791,19 @@ End
 		    pop_sets_sets.ListIndex = -1
 		    pop_sets_sets.ListIndex = idx
 		    '--
+		    if idx = -1 Then
+		      // Saved one from previously?
+		      Dim lastSetName As String
+		      lastSetName = SmartML.GetValue(App.MyMainSettings.DocumentElement, "last_open_set")
+		      If lastSetName.Len > 0 Then
+		        For i = 0 To pop_sets_sets.ListCount - 1
+		          If pop_sets_sets.List(i) = lastSetName Then
+		            pop_sets_sets.ListIndex = i
+		            Exit For
+		          End If
+		        Next
+		      End If
+		    End If
 		    
 		    'If Status_SongChanged Then
 		    ActionSongRevert false //Easier to do here; we've already got a method defined
@@ -14476,6 +14494,89 @@ End
 		Sub DoubleClick()
 		  ActionSongTryChange(True)
 		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub MouseMove(X As Integer, Y As Integer)
+		  Dim overRow As Integer
+		  
+		  overRow = Me.RowFromXY(X, Y)
+		  
+		  If overRow >= 0 And overRow < Me.ListCount - 1 Then
+		    Me.HelpTag = Me.CellTag(overRow, 0)
+		    If Me.HelpTag <> "" Then
+		      Me.HelpTag = Me.HelpTag.Left(Me.HelpTag.Len - 1)
+		    End If
+		  Else
+		    Me.HelpTag = ""
+		  End If
+		  
+		Catch
+		  Me.HelpTag = ""
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Function ConstructContextualMenu(base as MenuItem, x as Integer, y as Integer) As Boolean
+		  //++
+		  // Allow certain actions on the selected song
+		  //--
+		  If Me.SelCount <> 1 Then // Only allow this if a single song is selected
+		    Return True
+		  End If
+		  
+		  Dim mi As MenuItem
+		  
+		  mi = New MenuItem
+		  mi.Text = App.T.Translate("songs_mode/selected_song/rename/@caption")
+		  base.Append mi
+		  
+		  mi = New MenuItem
+		  mi.Text = App.T.Translate("songs_mode/selected_song/move/@caption")
+		  base.Append mi
+		  
+		  mi = New MenuItem
+		  mi.Text = App.T.Translate("songs_mode/selected_song/delete/@caption")
+		  base.Append mi
+		  
+		  mi = New MenuItem
+		  mi.Text = App.T.Translate("songs_mode/selected_song/export/@caption")
+		  base.Append mi
+		  
+		  mi = New MenuItem
+		  mi.Text = App.T.Translate("songs_mode/selected_song/copy/@caption")
+		  base.Append mi
+		  
+		  Return True
+		End Function
+	#tag EndEvent
+	#tag Event
+		Function ContextualMenuAction(hitItem as MenuItem) As Boolean
+		  Dim ret As Boolean = False
+		  Select Case hitItem.Text
+		    
+		  Case App.T.Translate("songs_mode/selected_song/rename/@caption")
+		    ActionSongRename
+		    ret = True
+		    
+		  Case App.T.Translate("songs_mode/selected_song/move/@caption")
+		    ActionSongMove
+		    ret = True
+		    
+		  Case App.T.Translate("songs_mode/selected_song/delete/@caption")
+		    ActionSongRemove
+		    ret = True
+		    
+		  Case App.T.Translate("songs_mode/selected_song/export/@caption")
+		    ActionSongExport
+		    ret = True
+		    
+		  Case App.T.Translate("songs_mode/selected_song/copy/@caption")
+		    ActionSongCopy
+		    ret = True
+		    
+		  End Select
+		  
+		  Return ret
+		End Function
 	#tag EndEvent
 #tag EndEvents
 #tag Events edt_songs_curr_folder
@@ -17795,7 +17896,7 @@ End
 		    
 		    f = dlg.ShowModal
 		    
-		    If f <> Nil Then 
+		    If f <> Nil Then
 		      App.LastImageFolder = f.Parent
 		      
 		      row = lst_image_images.ListIndex
@@ -17858,7 +17959,7 @@ End
 	#tag Event
 		Sub Action()
 		  Dim selCnt As Integer = lst_image_images.SelCount
-		  IF selCnt > 0 Then
+		  If selCnt > 0 Then
 		    For row As Integer = lst_image_images.ListCount - 1 DownTo 0
 		      If lst_image_images.Selected(row) Then
 		        lst_image_images.RemoveRow(row)
@@ -17870,7 +17971,6 @@ End
 		    Status_InSetChanged = True
 		    EnableMenuItems
 		  End If
-		  
 		End Sub
 	#tag EndEvent
 #tag EndEvents
@@ -17892,9 +17992,9 @@ End
 	#tag EndEvent
 	#tag Event
 		Sub Action()
-		  ' for a non-consecutive selection, let all non-selected rows up to one below the last selected one bubble up before all selected ones 
+		  ' for a non-consecutive selection, let all non-selected rows up to one below the last selected one bubble up before all selected ones
 		  Dim focusedIndex As Integer
-		  Dim maxIdx As Integer = -1 'highest idx of an unselected row that needs to move 
+		  Dim maxIdx As Integer = -1 'highest idx of an unselected row that needs to move
 		  Dim idx As Integer
 		  Dim selectedCount As Integer
 		  Dim ok As Boolean
@@ -17927,16 +18027,16 @@ End
 		      End If
 		    Next
 		    maxIdx = maxIdx-1
-		  Wend 
+		  Wend
 		  
 		  If maxIdx >= 0 Then
 		    
-		    #If TargetWin32 Then
+		    #if TargetWin32 Then
 		      Const LB_SETCARETINDEX = &H19E
 		      
 		      Declare Sub SendMessageW Lib "user32" (hwnd as Integer, msg as Integer, wParam as Integer, lParam as Boolean)
 		      
-		      ' this message is not handled; additionally, the imput focus should probably stay on the same item (by contents) as before
+		      ' this message is not handled; additionally, the input focus should probably stay on the same item (by contents) as before
 		      focusedIndex = lst_image_images.ListIndex
 		      SendMessageW(Me.Handle, LB_SETCARETINDEX, focusedIndex, True)
 		    #endif
@@ -17944,7 +18044,6 @@ End
 		    Status_InSetChanged = True
 		    EnableMenuItems
 		  End If
-		  
 		End Sub
 	#tag EndEvent
 #tag EndEvents
@@ -18014,12 +18113,12 @@ End
 		  
 		  If ok Then
 		    
-		    #If TargetWin32 Then
+		    #if TargetWin32 Then
 		      Const LB_SETCARETINDEX = &H19E
 		      
 		      Declare Sub SendMessageW Lib "user32" (hwnd as Integer, msg as Integer, wParam as Integer, lParam as Boolean)
 		      
-		      ' this message is not handled; additionally, the imput focus should probably stay on the same item (by contents) as before
+		      ' this message is not handled; additionally, the input focus should probably stay on the same item (by contents) as before
 		      focusedIndex = lst_image_images.ListIndex
 		      SendMessageW(Me.Handle, LB_SETCARETINDEX, focusedIndex, True)
 		    #endif

@@ -94,8 +94,8 @@ Inherits Canvas
 	#tag EndEvent
 
 	#tag Event
-		Sub Paint(g As Graphics)
-		  drawHandle
+		Sub Paint(g As Graphics, areas() As REALbasic.Rect)
+		  drawHandle g
 		  
 		  Paint g  ' call sub's Paint Event
 		End Sub
@@ -104,7 +104,7 @@ Inherits Canvas
 
 	#tag Method, Flags = &h21
 		Private Sub adjustAttachedControls(d as integer, fromBehave as boolean = false)
-		  dim i, pos, size as integer
+		  Dim i, pos, Size As Integer
 		  dim s as string
 		  dim vis as boolean
 		  
@@ -195,7 +195,9 @@ Inherits Canvas
 		      
 		      #if enableDebugCanvasCode then
 		        if debugCanvas <> nil then debugCanvas.markControl attachedControl(i)
-		      #endif
+		      #EndIf
+		      
+		      RaiseEvent AttachedControlChanged(attachedControl(i))
 		      
 		    end if 'attachedControl(i) <> nil
 		    
@@ -478,7 +480,7 @@ Inherits Canvas
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
-		Private Sub drawBar(x as integer, y as integer)
+		Private Sub drawBar(g as Graphics, x as integer, y as integer)
 		  dim L as integer
 		  dim light, medium, dark as color
 		  
@@ -500,30 +502,30 @@ Inherits Canvas
 		  if isVertical then
 		    
 		    if handleLarge then
-		      graphics.foreColor = light
-		      graphics.DrawLine(x,y-L,x,y+L)
-		      graphics.foreColor = medium
-		      graphics.DrawLine(x-1,y-L,x-1,y+L)  ' darker line 1 pixel to the left
-		      graphics.DrawLine(x-1,y-L,x,y-L)  ' nubs at ends of handle
-		      graphics.DrawLine(x-1,y+L,x,y+L)
+		      g.foreColor = light
+		      g.DrawLine(x,y-L,x,y+L)
+		      g.foreColor = medium
+		      g.DrawLine(x-1,y-L,x-1,y+L)  ' darker line 1 pixel to the left
+		      g.DrawLine(x-1,y-L,x,y-L)  ' nubs at ends of handle
+		      g.DrawLine(x-1,y+L,x,y+L)
 		    else
 		      
-		      graphics.foreColor = dark
-		      graphics.DrawLine(x,y-L,x,y+L)
+		      g.foreColor = dark
+		      g.DrawLine(x,y-L,x,y+L)
 		    end if
 		    
 		  else  'is horizontal
 		    
 		    if handleLarge then
-		      graphics.foreColor = light
-		      graphics.DrawLine(x-L,y,x+L,y)
-		      graphics.foreColor = medium
-		      graphics.DrawLine(x-L,y-1,x+L,y-1)  ' darker line 1 pixel above
-		      graphics.DrawLine(x-L,y-1,x-L,y)  ' nubs at ends of handle
-		      graphics.DrawLine(x+L,y-1,x+L,y)
+		      g.foreColor = light
+		      g.DrawLine(x-L,y,x+L,y)
+		      g.foreColor = medium
+		      g.DrawLine(x-L,y-1,x+L,y-1)  ' darker line 1 pixel above
+		      g.DrawLine(x-L,y-1,x-L,y)  ' nubs at ends of handle
+		      g.DrawLine(x+L,y-1,x+L,y)
 		    else
-		      graphics.foreColor = dark
-		      graphics.DrawLine(x-L,y,x+L,y)
+		      g.foreColor = dark
+		      g.DrawLine(x-L,y,x+L,y)
 		    end if
 		    
 		  end if
@@ -532,13 +534,12 @@ Inherits Canvas
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
-		Private Sub drawDimple(x as integer, y as integer)
-		  dim i, j as integer
+		Private Sub drawDimple(g as Graphics, x as integer, y as integer)
+		  Dim i, j As Integer
 		  dim v as double
 		  dim c as color
 		  
 		  #pragma disableBackgroundTasks
-		  graphics.useOldRenderer = true
 		  
 		  if handleLarge then
 		    
@@ -547,8 +548,8 @@ Inherits Canvas
 		      for j = 1 to 5
 		        for i = 1 to 5
 		          if dimplePixelValue(i,j) >= 0 then
-		            graphics.foreColor = hsv(0,0,dimplePixelValue(i,j))
-		            graphics.drawLine(x-3+i, y-3+j, x-3+i, y-3+j)  ' used drawLine because pixel is unstable when outside range of g
+		            g.foreColor = HSV(0,0,dimplePixelValue(i,j))
+		            g.drawLine(x-3+i, y-3+j, x-3+i, y-3+j)  ' used drawLine because pixel is unstable when outside range of g
 		          end if
 		        next
 		      next
@@ -558,8 +559,8 @@ Inherits Canvas
 		      for j = 1 to 5
 		        for i = 1 to 5
 		          if dimplePixelValueDisabled(i,j) >= 0 then
-		            graphics.foreColor = hsv(0,0,dimplePixelValueDisabled(i,j))
-		            graphics.drawLine(x-3+i, y-3+j, x-3+i, y-3+j)
+		            g.foreColor = HSV(0,0,dimplePixelValueDisabled(i,j))
+		            g.drawLine(x-3+i, y-3+j, x-3+i, y-3+j)
 		          end if
 		        next
 		      next
@@ -571,18 +572,18 @@ Inherits Canvas
 		    if not active and enabled or not initializedSmartSplitter then v = 0.2
 		    
 		    if backgroundDark then   ' darken dimples
-		      graphics.foreColor = hsv(0,0,.68+v)
+		      g.foreColor = HSV(0,0,.68+v)
 		    else
-		      graphics.foreColor = hsv(0,0,.80+v)
+		      g.foreColor = HSV(0,0,.80+v)
 		    end if
-		    graphics.fillRect(x-1, y-1, 3, 3)
+		    g.fillRect(x-1, y-1, 3, 3)
 		    
-		    graphics.foreColor = hsv(0,0,.44+v)
-		    graphics.drawLine(x-1, y, x, y-1)
-		    graphics.foreColor = hsv(0,0,.6+v)
-		    graphics.drawLine(x, y+1, x+1, y)
-		    graphics.foreColor = hsv(0,0,.3+v)
-		    graphics.drawLine(x, y, x, y)
+		    g.foreColor = HSV(0,0,.44+v)
+		    g.drawLine(x-1, y, x, y-1)
+		    g.foreColor = HSV(0,0,.6+v)
+		    g.drawLine(x, y+1, x+1, y)
+		    g.foreColor = HSV(0,0,.3+v)
+		    g.drawLine(x, y, x, y)
 		    
 		  end if
 		  
@@ -590,8 +591,8 @@ Inherits Canvas
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
-		Private Sub drawHandle()
-		  dim x, y, n as integer
+		Private Sub drawHandle(g As Graphics)
+		  Dim x, y, n As Integer
 		  dim spacing as double
 		  
 		  if conceal then return
@@ -602,9 +603,9 @@ Inherits Canvas
 		  n = 0
 		  if top < 0 then n = top
 		  if DisableLiveDrag and mouseDownTriggered then
-		    graphics.foreColor = colorMedium
-		    graphics.clearRect 0+1,n+1,width-2,height-n-2
-		    graphics.drawRect 0,n,width,height-n
+		    g.foreColor = colorMedium
+		    g.clearRect 0+1,n+1,width-2,height-n-2
+		    g.drawRect 0,n,width,height-n
 		  else
 		    'if not targetMacOS then graphics.clearRect 0,n,width,height-n
 		  end if
@@ -616,23 +617,23 @@ Inherits Canvas
 		    
 		    for n = spacing-handleCount*spacing to handleCount*spacing step spacing*2
 		      if isVertical then
-		        drawDimple x, y-n
-		      else
-		        drawDimple x-n, y
-		      end if
-		    next
+		        drawDimple g, x, y-n
+		      Else
+		        drawDimple g, x-n, y
+		      End If
+		    Next
 		    
-		  else
+		  Else
 		    
 		    spacing = 1
-		    if handleLarge then spacing = 1.5
+		    If handleLarge Then spacing = 1.5
 		    
-		    for n = spacing-handleCount*spacing to handleCount*spacing step spacing*2
-		      if isVertical then
-		        drawBar x+n, y
-		      else
-		        drawBar x, y+n
-		      end if
+		    For n = spacing-handleCount*spacing To handleCount*spacing Step spacing*2
+		      If isVertical Then
+		        drawBar g, x+n, y
+		      Else
+		        drawBar g, x, y+n
+		      End If
 		    next
 		    
 		  end if
@@ -1408,7 +1409,9 @@ Inherits Canvas
 		  
 		  if isVertical and c isA PopupMenu then return true
 		  
-		  if c isA GroupBox or c isA PagePanel or c isA TabPanel then return true
+		  If c IsA GroupBox Or c IsA PagePanel Or c IsA TabPanel Then Return True
+		  
+		  If c IsA HTMLViewer Then Return True
 		  
 		  'if c isA SpriteSurface  then return true
 		  
@@ -1520,6 +1523,10 @@ Inherits Canvas
 
 
 	#tag Hook, Flags = &h0
+		Event AttachedControlChanged(c As RectControl)
+	#tag EndHook
+
+	#tag Hook, Flags = &h0
 		Event Close()
 	#tag EndHook
 
@@ -1539,7 +1546,7 @@ Inherits Canvas
 		Event MouseUp(X as Integer, Y as Integer)
 	#tag EndHook
 
-	#tag Hook, Flags = &h0
+	#tag Hook, Flags = &h0, Description = 5468652073706C697474657220686173206265656E206D6F7665642E2054686520706172616D6574657220696E64696361746573207468652064697374616E636520696E20706978656C732E204E656761746976652069732075702F6C6566742C20706F73697469766520697320646F776E2F72696768742E
 		Event Moved(Distance as Integer)
 	#tag EndHook
 
@@ -1901,14 +1908,12 @@ Inherits Canvas
 			Visible=true
 			Group="Behavior"
 			Type="Boolean"
-			InheritedFrom="Canvas"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="AcceptTabs"
 			Visible=true
 			Group="Behavior"
 			Type="Boolean"
-			InheritedFrom="Canvas"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="AutoDeactivate"
@@ -1916,7 +1921,6 @@ Inherits Canvas
 			Group="Appearance"
 			InitialValue="True"
 			Type="Boolean"
-			InheritedFrom="Canvas"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Backdrop"
@@ -1924,7 +1928,6 @@ Inherits Canvas
 			Group="Appearance"
 			Type="Picture"
 			EditorType="Picture"
-			InheritedFrom="Canvas"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="DisableLiveDrag"
@@ -1945,7 +1948,6 @@ Inherits Canvas
 			Group="Behavior"
 			InitialValue="False"
 			Type="Boolean"
-			InheritedFrom="Canvas"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Enabled"
@@ -1953,7 +1955,6 @@ Inherits Canvas
 			Group="Appearance"
 			InitialValue="True"
 			Type="Boolean"
-			InheritedFrom="Canvas"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="EraseBackground"
@@ -1961,7 +1962,6 @@ Inherits Canvas
 			Group="Behavior"
 			InitialValue="True"
 			Type="Boolean"
-			InheritedFrom="Canvas"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="handleCount"
@@ -1987,7 +1987,6 @@ Inherits Canvas
 			Group="Position"
 			InitialValue="100"
 			Type="Integer"
-			InheritedFrom="Canvas"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="HelpTag"
@@ -1995,53 +1994,47 @@ Inherits Canvas
 			Group="Appearance"
 			Type="String"
 			EditorType="MultiLineEditor"
-			InheritedFrom="Canvas"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Index"
 			Visible=true
 			Group="ID"
 			Type="Integer"
-			InheritedFrom="Canvas"
+			EditorType="Integer"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="InitialParent"
-			InheritedFrom="Canvas"
+			Type="String"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Left"
 			Visible=true
 			Group="Position"
 			Type="Integer"
-			InheritedFrom="Canvas"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="LockBottom"
 			Visible=true
 			Group="Position"
 			Type="Boolean"
-			InheritedFrom="Canvas"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="LockLeft"
 			Visible=true
 			Group="Position"
 			Type="Boolean"
-			InheritedFrom="Canvas"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="LockRight"
 			Visible=true
 			Group="Position"
 			Type="Boolean"
-			InheritedFrom="Canvas"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="LockTop"
 			Visible=true
 			Group="Position"
 			Type="Boolean"
-			InheritedFrom="Canvas"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="MaxLimit"
@@ -2076,7 +2069,7 @@ Inherits Canvas
 			Visible=true
 			Group="ID"
 			Type="String"
-			InheritedFrom="Canvas"
+			EditorType="String"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="showWarningsDialogs"
@@ -2109,7 +2102,8 @@ Inherits Canvas
 			Name="Super"
 			Visible=true
 			Group="ID"
-			InheritedFrom="Canvas"
+			Type="String"
+			EditorType="String"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="TabIndex"
@@ -2117,14 +2111,12 @@ Inherits Canvas
 			Group="Position"
 			InitialValue="0"
 			Type="Integer"
-			InheritedFrom="Canvas"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="TabPanelIndex"
 			Group="Position"
 			InitialValue="0"
 			Type="Integer"
-			InheritedFrom="Canvas"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="TabStop"
@@ -2132,14 +2124,20 @@ Inherits Canvas
 			Group="Position"
 			InitialValue="True"
 			Type="Boolean"
-			InheritedFrom="Canvas"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Top"
 			Visible=true
 			Group="Position"
 			Type="Integer"
-			InheritedFrom="Canvas"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Transparent"
+			Visible=true
+			Group="Behavior"
+			InitialValue="True"
+			Type="Boolean"
+			EditorType="Boolean"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="UseFocusRing"
@@ -2147,7 +2145,6 @@ Inherits Canvas
 			Group="Appearance"
 			InitialValue="True"
 			Type="Boolean"
-			InheritedFrom="Canvas"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Visible"
@@ -2155,7 +2152,6 @@ Inherits Canvas
 			Group="Appearance"
 			InitialValue="True"
 			Type="Boolean"
-			InheritedFrom="Canvas"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Width"
@@ -2163,7 +2159,6 @@ Inherits Canvas
 			Group="Position"
 			InitialValue="100"
 			Type="Integer"
-			InheritedFrom="Canvas"
 		#tag EndViewProperty
 	#tag EndViewBehavior
 End Class

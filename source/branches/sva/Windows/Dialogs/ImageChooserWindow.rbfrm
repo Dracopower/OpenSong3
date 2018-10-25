@@ -108,7 +108,6 @@ Begin Window ImageChooserWindow
       Selectable      =   False
       TabIndex        =   2
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   ""
       TextAlign       =   1
       TextColor       =   "&c00000000"
@@ -193,7 +192,6 @@ Begin Window ImageChooserWindow
       TabPanelIndex   =   0
       TabStop         =   True
       Top             =   10
-      Transparent     =   True
       UseFocusRing    =   True
       Visible         =   True
       Width           =   80
@@ -221,7 +219,6 @@ Begin Window ImageChooserWindow
       TabPanelIndex   =   0
       TabStop         =   True
       Top             =   10
-      Transparent     =   True
       UseFocusRing    =   True
       Visible         =   True
       Width           =   80
@@ -249,7 +246,6 @@ Begin Window ImageChooserWindow
       TabPanelIndex   =   0
       TabStop         =   True
       Top             =   10
-      Transparent     =   True
       UseFocusRing    =   True
       Visible         =   True
       Width           =   80
@@ -277,7 +273,6 @@ Begin Window ImageChooserWindow
       TabPanelIndex   =   0
       TabStop         =   True
       Top             =   10
-      Transparent     =   True
       UseFocusRing    =   True
       Visible         =   True
       Width           =   80
@@ -305,7 +300,6 @@ Begin Window ImageChooserWindow
       TabPanelIndex   =   0
       TabStop         =   True
       Top             =   10
-      Transparent     =   True
       UseFocusRing    =   True
       Visible         =   True
       Width           =   80
@@ -333,7 +327,6 @@ Begin Window ImageChooserWindow
       TabPanelIndex   =   0
       TabStop         =   True
       Top             =   90
-      Transparent     =   True
       UseFocusRing    =   True
       Visible         =   True
       Width           =   80
@@ -361,7 +354,6 @@ Begin Window ImageChooserWindow
       TabPanelIndex   =   0
       TabStop         =   True
       Top             =   90
-      Transparent     =   True
       UseFocusRing    =   True
       Visible         =   True
       Width           =   80
@@ -389,7 +381,6 @@ Begin Window ImageChooserWindow
       TabPanelIndex   =   0
       TabStop         =   True
       Top             =   90
-      Transparent     =   True
       UseFocusRing    =   True
       Visible         =   True
       Width           =   80
@@ -417,7 +408,6 @@ Begin Window ImageChooserWindow
       TabPanelIndex   =   0
       TabStop         =   True
       Top             =   90
-      Transparent     =   True
       UseFocusRing    =   True
       Visible         =   True
       Width           =   80
@@ -445,7 +435,6 @@ Begin Window ImageChooserWindow
       TabPanelIndex   =   0
       TabStop         =   True
       Top             =   90
-      Transparent     =   True
       UseFocusRing    =   True
       Visible         =   True
       Width           =   80
@@ -473,7 +462,6 @@ Begin Window ImageChooserWindow
       TabPanelIndex   =   0
       TabStop         =   True
       Top             =   170
-      Transparent     =   True
       UseFocusRing    =   True
       Visible         =   True
       Width           =   80
@@ -501,7 +489,6 @@ Begin Window ImageChooserWindow
       TabPanelIndex   =   0
       TabStop         =   True
       Top             =   170
-      Transparent     =   True
       UseFocusRing    =   True
       Visible         =   True
       Width           =   80
@@ -529,7 +516,6 @@ Begin Window ImageChooserWindow
       TabPanelIndex   =   0
       TabStop         =   True
       Top             =   170
-      Transparent     =   True
       UseFocusRing    =   True
       Visible         =   True
       Width           =   80
@@ -557,7 +543,6 @@ Begin Window ImageChooserWindow
       TabPanelIndex   =   0
       TabStop         =   True
       Top             =   170
-      Transparent     =   True
       UseFocusRing    =   True
       Visible         =   True
       Width           =   80
@@ -585,7 +570,6 @@ Begin Window ImageChooserWindow
       TabPanelIndex   =   0
       TabStop         =   True
       Top             =   170
-      Transparent     =   True
       UseFocusRing    =   True
       Visible         =   True
       Width           =   80
@@ -613,7 +597,6 @@ Begin Window ImageChooserWindow
       TabPanelIndex   =   0
       TabStop         =   True
       Top             =   250
-      Transparent     =   True
       UseFocusRing    =   True
       Visible         =   True
       Width           =   80
@@ -641,7 +624,6 @@ Begin Window ImageChooserWindow
       TabPanelIndex   =   0
       TabStop         =   True
       Top             =   250
-      Transparent     =   True
       UseFocusRing    =   True
       Visible         =   True
       Width           =   80
@@ -669,7 +651,6 @@ Begin Window ImageChooserWindow
       TabPanelIndex   =   0
       TabStop         =   True
       Top             =   250
-      Transparent     =   True
       UseFocusRing    =   True
       Visible         =   True
       Width           =   80
@@ -697,7 +678,6 @@ Begin Window ImageChooserWindow
       TabPanelIndex   =   0
       TabStop         =   True
       Top             =   250
-      Transparent     =   True
       UseFocusRing    =   True
       Visible         =   True
       Width           =   80
@@ -725,7 +705,6 @@ Begin Window ImageChooserWindow
       TabPanelIndex   =   0
       TabStop         =   True
       Top             =   250
-      Transparent     =   True
       UseFocusRing    =   True
       Visible         =   True
       Width           =   80
@@ -752,7 +731,6 @@ Begin Window ImageChooserWindow
       Selectable      =   False
       TabIndex        =   25
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "file name"
       TextAlign       =   0
       TextColor       =   "&c00000000"
@@ -787,7 +765,6 @@ Begin Window ImageChooserWindow
       Selectable      =   False
       TabIndex        =   26
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "file name"
       TextAlign       =   0
       TextColor       =   "&c00000000"
@@ -822,7 +799,6 @@ Begin Window ImageChooserWindow
       Selectable      =   False
       TabIndex        =   27
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "file name"
       TextAlign       =   0
       TextColor       =   "&c00000000"
@@ -857,7 +833,6 @@ Begin Window ImageChooserWindow
       Selectable      =   False
       TabIndex        =   28
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "file name"
       TextAlign       =   0
       TextColor       =   "&c00000000"
@@ -892,7 +867,6 @@ Begin Window ImageChooserWindow
       Selectable      =   False
       TabIndex        =   29
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "file name"
       TextAlign       =   0
       TextColor       =   "&c00000000"
@@ -927,7 +901,6 @@ Begin Window ImageChooserWindow
       Selectable      =   False
       TabIndex        =   30
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "file name"
       TextAlign       =   0
       TextColor       =   "&c00000000"
@@ -962,7 +935,6 @@ Begin Window ImageChooserWindow
       Selectable      =   False
       TabIndex        =   31
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "file name"
       TextAlign       =   0
       TextColor       =   "&c00000000"
@@ -997,7 +969,6 @@ Begin Window ImageChooserWindow
       Selectable      =   False
       TabIndex        =   32
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "file name"
       TextAlign       =   0
       TextColor       =   "&c00000000"
@@ -1032,7 +1003,6 @@ Begin Window ImageChooserWindow
       Selectable      =   False
       TabIndex        =   33
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "file name"
       TextAlign       =   0
       TextColor       =   "&c00000000"
@@ -1067,7 +1037,6 @@ Begin Window ImageChooserWindow
       Selectable      =   False
       TabIndex        =   34
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "file name"
       TextAlign       =   0
       TextColor       =   "&c00000000"
@@ -1102,7 +1071,6 @@ Begin Window ImageChooserWindow
       Selectable      =   False
       TabIndex        =   35
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "file name"
       TextAlign       =   0
       TextColor       =   "&c00000000"
@@ -1137,7 +1105,6 @@ Begin Window ImageChooserWindow
       Selectable      =   False
       TabIndex        =   36
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "file name"
       TextAlign       =   0
       TextColor       =   "&c00000000"
@@ -1172,7 +1139,6 @@ Begin Window ImageChooserWindow
       Selectable      =   False
       TabIndex        =   37
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "file name"
       TextAlign       =   0
       TextColor       =   "&c00000000"
@@ -1207,7 +1173,6 @@ Begin Window ImageChooserWindow
       Selectable      =   False
       TabIndex        =   38
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "file name"
       TextAlign       =   0
       TextColor       =   "&c00000000"
@@ -1242,7 +1207,6 @@ Begin Window ImageChooserWindow
       Selectable      =   False
       TabIndex        =   39
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "file name"
       TextAlign       =   0
       TextColor       =   "&c00000000"
@@ -1277,7 +1241,6 @@ Begin Window ImageChooserWindow
       Selectable      =   False
       TabIndex        =   40
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "file name"
       TextAlign       =   0
       TextColor       =   "&c00000000"
@@ -1312,7 +1275,6 @@ Begin Window ImageChooserWindow
       Selectable      =   False
       TabIndex        =   41
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "file name"
       TextAlign       =   0
       TextColor       =   "&c00000000"
@@ -1347,7 +1309,6 @@ Begin Window ImageChooserWindow
       Selectable      =   False
       TabIndex        =   42
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "file name"
       TextAlign       =   0
       TextColor       =   "&c00000000"
@@ -1382,7 +1343,6 @@ Begin Window ImageChooserWindow
       Selectable      =   False
       TabIndex        =   43
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "file name"
       TextAlign       =   0
       TextColor       =   "&c00000000"
@@ -1417,7 +1377,6 @@ Begin Window ImageChooserWindow
       Selectable      =   False
       TabIndex        =   44
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "file name"
       TextAlign       =   0
       TextColor       =   "&c00000000"
@@ -1612,7 +1571,7 @@ End
 #tag EndEvents
 #tag Events can
 	#tag Event
-		Function MouseDown(X As Integer, Y As Integer) As Boolean
+		Function MouseDown(index as Integer, X As Integer, Y As Integer) As Boolean
 		  // JDL 2/01/2006  Created ImgNdx to use as index in the ImageFiles array.
 		  // JDL 2/01/2006  Also replaced (and modified) hard coded argument with variable.
 		  Dim ImgNdx as Integer
@@ -1639,7 +1598,7 @@ End
 		End Function
 	#tag EndEvent
 	#tag Event
-		Sub Paint(g As Graphics)
+		Sub Paint(index as Integer, g As Graphics)
 		  // JDL 2/01/2006  Created ImgNdx to use as index in the ImageFiles array.
 		  // JDL 2/01/2006  Replaced (and modified) hard coded argument with variable.
 		  // JDL 2/01/2006  Replaced pic.Depth with variable picDepth

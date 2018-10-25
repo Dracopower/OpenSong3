@@ -1489,12 +1489,10 @@ Module SongML
 	#tag EndMethod
 
 	#tag Method, Flags = &h1
-		Protected Sub LyricsToLines(songDoc As XmlDocument, arr() As String)
+		Protected Sub LyricsToLines(lyrics As String, arr() As String)
 		  Dim st, x, strlen As Integer
-		  Dim c, lyrics As String
-		  ReDim arr(0)
-		  
-		  lyrics = SmartML.GetValue(songDoc.DocumentElement, "lyrics")
+		  Dim c As String
+		  Redim arr(0)
 		  
 		  strlen = Len(lyrics)
 		  If strlen <= 0 Then Exit
@@ -1513,13 +1511,25 @@ Module SongML
 	#tag EndMethod
 
 	#tag Method, Flags = &h1
+		Protected Sub LyricsToLines(songDoc As XmlDocument, arr() As String)
+		  Dim lyrics As String
+		  
+		  lyrics = SmartML.GetValue(songDoc.DocumentElement, "lyrics")
+		  
+		  LyricsToLines(lyrics, arr)
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h1
 		Protected Sub LyricsToSections(songElement As XmlNode, ByRef dict As Dictionary, ByRef order As String, ByRef isBilingual As Dictionary)
 		  Dim st, x, strlen As Integer
 		  Dim lyrics, line, section, subsection As String
 		  Dim len As integer
 		  Dim sectionAdded As Boolean = True
+		  Dim includeBlankLines As Boolean
 		  
-		  section = "default"
+		  dict.Clear
+		  order = ""
 		  isBilingual.Value(section) = False
 		  
 		  lyrics = SmartML.GetValue(songElement, "lyrics", True)
@@ -1527,15 +1537,16 @@ Module SongML
 		  strlen = Len(lyrics)
 		  
 		  If strlen > 0 Then
+		    includeBlankLines = SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "style/@blank_is_slide_change")
+		    section = "default"
+		    
 		    lyrics = lyrics + Chr(10)
-		    ' JRC We should update the lengh ;)
 		    strlen = strlen + 1
 		    
 		    st = 1
 		    For x = 1 To strlen
 		      If Mid(lyrics, x, 1) = Chr(10) Then
-		        ' JRC: Fixed, RTrim thinks "à" is a whitespace character?
-		        line = StringUtils.RTrim(Mid(lyrics, st, x-st), StringUtils.WhiteSpaces)
+		        line = StringUtils.RTrim(Mid(lyrics, st, x - st), StringUtils.WhiteSpaces)
 		        If Left(line, 1) = "[" Then
 		          ' add a previous empty section unless done already
 		          If Not sectionAdded Then
@@ -1544,7 +1555,7 @@ Module SongML
 		              order = order + section + " "
 		            End If
 		          End If
-		          section = Trim(Mid(line, 2, Instr(2, line, "]") - 2))
+		          section = Trim(Mid(line, 2, Instr(2, line, "]") - 2)).Replace(" ",&u00A0) ' repace embedded spaces with &nbsp; so the constructed presentation order does not break
 		          sectionAdded = False
 		          If IsBilingualSection(line) Then
 		            isBilingual.Value(section) = True
@@ -1567,7 +1578,7 @@ Module SongML
 		            isBilingual.Value(subsection) = isBilingual.Value(section)
 		          End If
 		          line = StringUtils.Trim(Mid(line, 2), StringUtils.WhiteSpaces)
-		          If Len(line) > 0 Then
+		          If Len(line) > 0 Or includeBlankLines Then
 		            If dict.HasKey(subsection) Then
 		              dict.Value(subsection) = dict.Value(subsection) + Chr(10) + line
 		            Else
@@ -1586,7 +1597,7 @@ Module SongML
 		        order = order + section + " "
 		      End If
 		    End If
-		    order = Left(order, Len(order)-1) // This deletes the trailing seperator
+		    order = StringUtils.Chop(order, 1) // This deletes the trailing seperator
 		  End If
 		End Sub
 	#tag EndMethod
@@ -2055,7 +2066,9 @@ Module SongML
 		  s = s + "  <div id=""presentation"">" + App.T.Translate("general_song_editor/presentation/@caption").HTMLEntityEncode + " " + SmartML.GetValue(songElement, "presentation").HTMLEntityEncode + "</div>" + EndOfLine
 		  '--
 		  Dim slices(0), lines(0) As String
-		  LyricsToLines songElement.OwnerDocument, lines
+		  Dim lyrics As String
+		  lyrics = SmartML.GetValue(songElement, "lyrics")
+		  LyricsToLines lyrics, lines
 		  Dim currSlice, currVerse, lineCount, sliceCount As Integer
 		  
 		  s = s + "<br/>" + EndOfLine
@@ -2199,6 +2212,17 @@ Module SongML
 		  Dim slides, slide As XmlNode
 		  Dim order As String
 		  Dim SubtitleText As String
+		  Dim htmlCode As String
+		  Dim songXmlClone As XmlNode
+		  Dim htmlOptions As New HTMLExportOptions
+		  
+		  htmlOptions.EmbedCSS = True
+		  htmlOptions.StyleSheet = New FolderItem(App.AppFolder.Child("OpenSong Settings").Child("style.css"))
+		  songXmlClone = songElement.Clone(True)
+		  htmlCode = ToHTML(songXmlClone, htmlOptions)
+		  songXmlClone = Nil
+		  songXmlClone = songElement.OwnerDocument.CreateElement("htmldata")
+		  songXmlClone.AppendChild(songElement.OwnerDocument.CreateCDATASection(htmlCode))
 		  
 		  'This routine makes an in-place change of a song XML encoding to slides for use in a set.  The
 		  'XML node that we are passed is modified in-place instead of creating a new one.  That way,
@@ -2206,8 +2230,9 @@ Module SongML
 		  'for repairing the XML linked lists is avoided.
 		  
 		  songElement.Name = "slide_group"
-		  SmartML.SetValue songElement, "@name", SmartML.GetValue(songElement, "title", True)
-		  SmartML.SetValue songElement, "@type", "song"
+		  SmartML.SetValue(songElement, "@name", SmartML.GetValue(songElement, "title", True))
+		  SmartML.SetValue(songElement, "@type", "song")
+		  songElement.AppendChild(songXmlClone)
 		  
 		  Call SmartML.InsertChild(songElement, "subtitle", 0)
 		  SubtitleText = BuildSubtitle(songElement, style)
@@ -2227,7 +2252,7 @@ Module SongML
 		  sections = Split(Trim(presentation), " ")
 		  
 		  If UBound(sections) < 0 Then
-		    'If there is no presentation defined, we just do the sections in order
+		    ' If there is no presentation defined, we just do the sections in order
 		    SmartML.SetValue(songElement, "presentation", order)
 		    sections = Split(order, " ")
 		  End If
@@ -2282,6 +2307,12 @@ Module SongML
 		        separationMark = SetML.SeparationMarkBilingual
 		      Else
 		        separationMark = ""
+		      End If
+		      
+		      // Regularize Line Endings
+		      dict.Value(section) = dict.Value(section).StringValue.FormatUnixEndOfLine
+		      If SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "style/@blank_is_slide_change") Then
+		        dict.Value(section) = ReplaceAll(Trim(dict.Value(section)), EndOfLine.UNIX + EndOfLine.UNIX, EndOfLine.UNIX + "||")
 		      End If
 		      
 		      sub_sections = Split(dict.Value(section), "||")

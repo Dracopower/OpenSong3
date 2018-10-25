@@ -272,9 +272,25 @@ Protected Class StyleImage
 
 	#tag Method, Flags = &h0
 		Function SetImageFromFileName(Filename As String) As Boolean
-		  #if TargetMacOS then
+		  #If TargetMacOS Then
 		    Filename = Filename.ReplaceAll("\", "/")
-		  #elseif TargetWin32 then
+		    //++
+		    // MacOS: also check for possible NativePath instead of AbsolutePath
+		    //--
+		    If FileName.Mid(2, 1) <> ":" Then // Assume that the volume name is not going to be one character long
+		      If FileName.InStr(":") = 0 And FileName.InStr("/") > 0 Then // NativePath?
+		        Dim tempF As FolderItem
+		        #Pragma BreakOnExceptions False
+		        Try
+		          #If RBVersion >= 2013.1
+		            tempF = New FolderItem(Filename, FolderItem.PathTypeNative)
+		          #EndIf
+		          If tempF <> Nil Then Filename = tempF.AbsolutePath
+		        End Try
+		        #Pragma BreakOnExceptions Default
+		      End If
+		    End If
+		  #ElseIf TargetWin32 Then
 		    Filename = Filename.ReplaceAll("/", "\")
 		  #elseif TargetLinux then
 		    Filename = Filename.ReplaceAll("\", "/")
@@ -379,33 +395,33 @@ Protected Class StyleImage
 			Visible=true
 			Group="ID"
 			InitialValue="-2147483648"
-			InheritedFrom="Object"
+			Type="Integer"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Left"
 			Visible=true
 			Group="Position"
 			InitialValue="0"
-			InheritedFrom="Object"
+			Type="Integer"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Name"
 			Visible=true
 			Group="ID"
-			InheritedFrom="Object"
+			Type="String"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Super"
 			Visible=true
 			Group="ID"
-			InheritedFrom="Object"
+			Type="String"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Top"
 			Visible=true
 			Group="Position"
 			InitialValue="0"
-			InheritedFrom="Object"
+			Type="Integer"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="TrimBottom"

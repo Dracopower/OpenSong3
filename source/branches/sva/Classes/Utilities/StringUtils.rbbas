@@ -639,20 +639,13 @@ Module StringUtils
 
 	#tag Method, Flags = &h0
 		Function FormatLocalEndOfLine(Extends str As String) As String
-		  // Sean Lickfold, 2004
-		  
-		  str = ReplaceAll(str.FormatUnixEndOfLine, Chr(10), EndOfLine)
-		  Return str
+		  Return ReplaceLineEndings(str, EndOfLine)
 		End Function
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
 		Function FormatUnixEndOfLine(Extends str As String) As String
-		  // Sean Lickfold, 2004
-		  
-		  str = ReplaceAll(str, Chr(13)+Chr(10), Chr(10))
-		  str = ReplaceAll(str, Chr(13), Chr(10))
-		  Return str
+		  Return ReplaceLineEndings(str, EndOfLine.UNIX)
 		End Function
 	#tag EndMethod
 
