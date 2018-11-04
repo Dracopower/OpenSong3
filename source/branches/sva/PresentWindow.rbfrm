@@ -1438,10 +1438,10 @@ End
 		        slide_group.PreviousSibling = Nil) Then
 		        slide_group = InsertBlankIntoSet(slide_group, True)
 		        slide_group = slide_group.NextSibling
-		        If slide_group.NextSibling = Nil Then
-		          'if we are on the last slide item/group, lets go ahead and add the last blank while we're here.
-		          slide_group = InsertBlankIntoSet(slide_group, False)
-		        End If
+		      End If
+		      If slide_group.NextSibling = Nil Then
+		        'if we are on the last slide item/group, lets go ahead and add the last blank while we're here.
+		        slide_group = InsertBlankIntoSet(slide_group, False)
 		      End If
 		    End If
 		    
