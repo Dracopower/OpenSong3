@@ -2229,7 +2229,7 @@ Begin Window PresentSettingsWindow
       Begin PushButton btn_audio_browse
          AutoDeactivate  =   True
          Bold            =   False
-         ButtonStyle     =   "0"
+         ButtonStyle     =   0
          Cancel          =   False
          Caption         =   "Browse"
          Default         =   False
@@ -2261,7 +2261,7 @@ Begin Window PresentSettingsWindow
       Begin PushButton btn_audio_play
          AutoDeactivate  =   True
          Bold            =   False
-         ButtonStyle     =   "0"
+         ButtonStyle     =   0
          Cancel          =   False
          Caption         =   "Play"
          Default         =   False
@@ -2293,7 +2293,7 @@ Begin Window PresentSettingsWindow
       Begin PushButton btn_audio_stop
          AutoDeactivate  =   True
          Bold            =   False
-         ButtonStyle     =   "0"
+         ButtonStyle     =   0
          Cancel          =   False
          Caption         =   "Stop"
          Default         =   False
@@ -2347,7 +2347,7 @@ Begin Window PresentSettingsWindow
          TabStop         =   True
          Text            =   "File to Play:"
          TextAlign       =   0
-         TextColor       =   &c00000000
+         TextColor       =   "&c00000000"
          TextFont        =   "Arial"
          TextSize        =   11.0
          TextUnit        =   0

@@ -767,15 +767,15 @@ Implements iBible
 		  If Not (wSplash Is Nil) Then wSplash.Show
 		  CanSearch = True
 		  App.DebugWriter.Write "Bible.genindex: Exit"
-		  Exception excep
-		    If Not (out Is Nil) Then out.Close
-		    If Not (newFile Is Nil) Then newFile.delete
-		    
-		    InputBox.Message App.T.Translate("bible/errors/index_generation")
-		    CanSearch = False
-		    If wProgress <> Nil Then wProgress = Nil
-		    If Not (wSplash Is Nil) Then wSplash.Show
-		    App.DebugWriter.Write "Bible.genindex: Exit (exception)"
+		Exception excep
+		  If Not (out Is Nil) Then out.Close
+		  If Not (newFile Is Nil) Then newFile.delete
+		  
+		  InputBox.Message App.T.Translate("bible/errors/index_generation")
+		  CanSearch = False
+		  If wProgress <> Nil Then wProgress = Nil
+		  If Not (wSplash Is Nil) Then wSplash.Show
+		  App.DebugWriter.Write "Bible.genindex: Exit (exception)"
 		End Sub
 	#tag EndMethod
 
@@ -1737,7 +1737,7 @@ Implements iBible
 		  //--
 		  Dim s As String
 		  s = xVerseNode.GetAttribute("e")
-		  If s <> "" Then 
+		  If s <> "" Then
 		    Return s
 		  Else
 		    Return xVerseNode.GetAttribute("enumber")
@@ -1996,19 +1996,19 @@ Implements iBible
 		    Return False
 		  End Select
 		  
-		  Exception err
-		    If wSplash <> Nil Then wSplash.Show
-		    If err IsA XmlException Then
-		      ErrorCode = 3
-		      ErrorString = "Error parsing XML: " + file.AbsolutePath + ": Line " + XmlException(err).Line + ": " + XmlException(err).Node
-		      App.DebugWriter.Write "Bible.LoadBible: Caught an XML exception"
-		      Return False
-		    Else
-		      ErrorCode  = err.ErrorNumber
-		      ErrorString = err.Message
-		      App.DebugWriter.Write "Bible.LoadBible: Caught a " + err.ToString
-		      Return False
-		    End If
+		Exception err
+		  If wSplash <> Nil Then wSplash.Show
+		  If err IsA XmlException Then
+		    ErrorCode = 3
+		    ErrorString = "Error parsing XML: " + file.AbsolutePath + ": Line " + XmlException(err).Line + ": " + XmlException(err).Node
+		    App.DebugWriter.Write "Bible.LoadBible: Caught an XML exception"
+		    Return False
+		  Else
+		    ErrorCode  = err.ErrorNumber
+		    ErrorString = err.Message
+		    App.DebugWriter.Write "Bible.LoadBible: Caught a " + err.ToString
+		    Return False
+		  End If
 		End Function
 	#tag EndMethod
 
@@ -2052,17 +2052,17 @@ Implements iBible
 		  // Add exception block...ran into issue where a 0-length index file
 		  // was left after a debug crash.  Got a OOB exception on the first While
 		  //--
-		  Catch ex
-		    If ex Isa OutOfBoundsException Then
-		      filein.Close
-		      file.Delete // Let's kill it for now
-		      Redim index(-1)
-		      Redim notIndexed(-1)
-		      CanSearch = False
-		    Else // Toss it back up the chain
-		      CanSearch = False
-		      Raise ex
-		    End If
+		Catch ex
+		  If ex Isa OutOfBoundsException Then
+		    filein.Close
+		    file.Delete // Let's kill it for now
+		    Redim index(-1)
+		    Redim notIndexed(-1)
+		    CanSearch = False
+		  Else // Toss it back up the chain
+		    CanSearch = False
+		    Raise ex
+		  End If
 		End Sub
 	#tag EndMethod
 
@@ -2491,33 +2491,33 @@ Implements iBible
 			Visible=true
 			Group="ID"
 			InitialValue="-2147483648"
-			Type="Integer"
+			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Left"
 			Visible=true
 			Group="Position"
 			InitialValue="0"
-			Type="Integer"
+			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Name"
 			Visible=true
 			Group="ID"
-			Type="String"
+			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Super"
 			Visible=true
 			Group="ID"
-			Type="String"
+			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Top"
 			Visible=true
 			Group="Position"
 			InitialValue="0"
-			Type="Integer"
+			InheritedFrom="Object"
 		#tag EndViewProperty
 	#tag EndViewBehavior
 End Class
