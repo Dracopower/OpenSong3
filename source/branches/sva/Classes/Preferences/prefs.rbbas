@@ -7,16 +7,49 @@ Protected Module prefs
 	#tag EndNote
 
 
+	#tag Constant, Name = kCurrentSongFolder, Type = String, Dynamic = False, Default = \"saved_state/songfolder", Scope = Protected
+	#tag EndConstant
+
 	#tag Constant, Name = kDocumentsFolder, Type = String, Dynamic = False, Default = \"documents_folder", Scope = Protected
 	#tag EndConstant
 
 	#tag Constant, Name = kLanguage, Type = String, Dynamic = False, Default = \"language", Scope = Protected
 	#tag EndConstant
 
+	#tag Constant, Name = kLastOpenSet, Type = String, Dynamic = False, Default = \"saved_state/last_open_set", Scope = Protected
+	#tag EndConstant
+
+	#tag Constant, Name = kLastScriptureBook, Type = String, Dynamic = False, Default = \"saved_state/last_scripture/@book", Scope = Protected
+	#tag EndConstant
+
+	#tag Constant, Name = kLastScriptureChapter, Type = String, Dynamic = False, Default = \"saved_state/last_scripture/@chapter", Scope = Protected
+	#tag EndConstant
+
+	#tag Constant, Name = kLastScriptureThru, Type = String, Dynamic = False, Default = \"saved_state/last_scripture/@thru", Scope = Protected
+	#tag EndConstant
+
+	#tag Constant, Name = kLastScriptureVerse, Type = String, Dynamic = False, Default = \"saved_state/last_scripture/@verse", Scope = Protected
+	#tag EndConstant
+
 	#tag Constant, Name = kLyricsReplaceWithSpace, Type = String, Dynamic = False, Default = \"songs/lyrics/whitespace", Scope = Protected
 	#tag EndConstant
 
 	#tag Constant, Name = kPPTViewLocation, Type = String, Dynamic = False, Default = \"pptview_location", Scope = Protected
+	#tag EndConstant
+
+	#tag Constant, Name = kScriptureCharsPerSlide, Type = String, Dynamic = False, Default = \"saved_state/last_scripture/@chars_per_slide", Scope = Protected
+	#tag EndConstant
+
+	#tag Constant, Name = kScriptureFormat, Type = String, Dynamic = False, Default = \"saved_state/last_scripture/@format", Scope = Protected
+	#tag EndConstant
+
+	#tag Constant, Name = kScriptureShowNumbers, Type = String, Dynamic = False, Default = \"saved_state/last_scripture/@show_numbers", Scope = Protected
+	#tag EndConstant
+
+	#tag Constant, Name = kScriptureVersePerSlide, Type = String, Dynamic = False, Default = \"saved_state/last_scripture/@verse_per_slide", Scope = Protected
+	#tag EndConstant
+
+	#tag Constant, Name = kScriptureVersion, Type = String, Dynamic = False, Default = \"saved_state/last_scripture/@version", Scope = Protected
 	#tag EndConstant
 
 	#tag Constant, Name = kSetsLastExportFolder, Type = String, Dynamic = False, Default = \"sets/last_export", Scope = Protected
@@ -35,6 +68,9 @@ Protected Module prefs
 	#tag EndConstant
 
 	#tag Constant, Name = kVideolanLocation, Type = String, Dynamic = False, Default = \"videolan_location", Scope = Protected
+	#tag EndConstant
+
+	#tag Constant, Name = kWindowGeometry, Type = String, Dynamic = False, Default = \"saved_state/app_window/geometry", Scope = Protected
 	#tag EndConstant
 
 

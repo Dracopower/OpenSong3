@@ -1,4 +1,5 @@
 -= Version 2.2.? =-
+general_settings/reload
 presentation_settings/style/blank_is_slide_change
 style_editor/bilingual/size (100% -> 200%)
 -= Version 2.2 RC =-

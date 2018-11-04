@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <language name="Deutsch" author="Stefan von Allmen, Bernd u. Dominic Tubach, Rüdiger Greeb" version="2.1">
 <!-- Diese Sprachdatei basiert auf den Arbeiten von Bernd Tubach, Dominic Tubach und Rüdiger Greeb -->
 
@@ -475,6 +475,10 @@
       <songs caption="link(songs_mode/@caption)"/>
       <sets caption="link(sets_mode/@caption)"/>
     </startmode>
+    <reload caption="Letzte Auswahl bei Start laden">
+      <songfolder caption="Liederordner"/>
+      <set caption="Set"/>
+    </reload>
     <applications caption="Externe Programme">
       <pptview caption="Pfad zum Powerpoint Viewer"/>
       <pptview_browse caption="link(shared/browse/@caption)"/>

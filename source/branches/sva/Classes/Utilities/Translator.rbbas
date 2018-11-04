@@ -261,6 +261,7 @@ Protected Class Translator
 		  Dim controlUsage As String
 		  Dim parts() As String
 		  Dim txFound As Boolean
+		  Dim txText As String
 		  
 		  Dim staticCont As Label
 		  Dim groupCont As GroupBox
@@ -289,13 +290,15 @@ Protected Class Translator
 		      staticCont = Label(cont)
 		      If doCaptions Then
 		        name = ParseHierarchicalName(tag, staticCont) + kAttributeCaption
-		        temp = Translate(name)
-		        If controlUsage = "lbl" Then
-		          staticCont.Caption = temp + ":"
-		        ElseIf controlUsage = "nte" Then
-		          staticCont.Caption = "(" + temp + ")"
-		        Else
-		          staticCont.Caption = temp
+		        temp = Translate(name, txFound)
+		        If txFound Then
+		          If controlUsage = "lbl" Then
+		            staticCont.Caption = temp + ":"
+		          ElseIf controlUsage = "nte" Then
+		            staticCont.Caption = "(" + temp + ")"
+		          Else
+		            staticCont.Caption = temp
+		          End If
 		        End If
 		        
 		        If doFonts And controlUsage = "hdr" Then
@@ -323,7 +326,10 @@ Protected Class Translator
 		      groupCont = GroupBox(cont)
 		      If doCaptions Then
 		        temp = tag + Mid(name, 5) + kAttributeCaption
-		        groupCont.Caption = Translate(temp)
+		        txText = Translate(temp, txFound)
+		        If txFound Then
+		          groupCont.Caption = txText
+		        End If
 		      End If
 		      If doFonts And fonts(1).Name.Len > 0 Then
 		        groupCont.TextFont = fonts(1).Name
@@ -337,7 +343,10 @@ Protected Class Translator
 		    ElseIf cont IsA CheckBox Then
 		      checkCont = CheckBox(cont)
 		      If doCaptions Then
-		        checkCont.Caption = Translate(ParseHierarchicalName(tag, checkCont) + kAttributeCaption)
+		        txText = Translate(ParseHierarchicalName(tag, checkCont) + kAttributeCaption, txFound)
+		        If txFound Then
+		          checkCont.Caption = txText
+		        End If
 		      End If
 		      
 		      If doFonts And fonts(2).Name.Len > 0 Then
@@ -409,7 +418,10 @@ Protected Class Translator
 		    ElseIf cont IsA RadioButton Then
 		      radioCont = RadioButton(cont)
 		      If doCaptions Then
-		        radioCont.Caption = Translate(ParseHierarchicalName(tag, radioCont) + kAttributeCaption)
+		        txText = Translate(ParseHierarchicalName(tag, radioCont) + kAttributeCaption, txFound)
+		        If txFound Then
+		          radioCont.Caption = txText
+		        End If
 		      End If
 		      If doFonts And fonts(2).Name.Len > 0 Then
 		        radioCont.TextFont = fonts(2).Name
@@ -426,7 +438,10 @@ Protected Class Translator
 		        If listCont.ColumnCount > 1 Then
 		          temp = ParseHierarchicalName(tag, listCont)
 		          For j = 0 To listCont.ColumnCount - 1
-		            listCont.Heading(j) = Translate(temp + kAttributeHead + Str(j+1))
+		            txText = Translate(temp + kAttributeHead + Str(j+1), txFound)
+		            If txFound Then
+		              listCont.Heading(j) = txText
+		            End If
 		          Next j
 		        End If
 		        
@@ -445,7 +460,10 @@ Protected Class Translator
 		      If doCaptions Then
 		        temp = ParseHierarchicalName(tag, tabCont)
 		        For j = 0 To tabCont.PanelCount - 1
-		          tabCont.Caption(j) = Translate(temp + kAttributeHead + Str(j+1))
+		          txText = Translate(temp + kAttributeHead + Str(j+1), txFound)
+		          If txFound Then
+		            tabCont.Caption(j) = txText
+		          End If
 		        Next j
 		      End If
 		      If doFonts And fonts(1).Name.Len > 0 Then
@@ -490,7 +508,10 @@ Protected Class Translator
 		    ElseIf cont IsA Slider Then
 		      sldCont = Slider(Cont)
 		      If doCaptions Then
-		        sldCont.HelpTag = Translate(ParseHierarchicalName(tag, sldCont) + "/@helptag")
+		        txText = Translate(ParseHierarchicalName(tag, sldCont) + "/@helptag", txFound)
+		        If txFound Then
+		          sldCont.HelpTag = txText
+		        End If
 		      End If
 		    End If
 		    

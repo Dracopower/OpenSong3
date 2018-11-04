@@ -73,7 +73,7 @@ Inherits Canvas
 
 	#tag Method, Flags = &h0
 		Sub Repaint(g As Graphics)
-		  
+		  Invalidate
 		End Sub
 	#tag EndMethod
 

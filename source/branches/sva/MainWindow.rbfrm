@@ -8466,15 +8466,15 @@ End
 		  
 		  App.MouseCursor = System.Cursors.Wait
 		  
-		  SmartML.SetValue App.MyMainSettings.DocumentElement, "geometry/@y", CStr(Top)
-		  SmartML.SetValue App.MyMainSettings.DocumentElement, "geometry/@x", CStr(Left)
-		  SmartML.SetValue App.MyMainSettings.DocumentElement, "geometry/@width", CStr(Width)
-		  SmartML.SetValue App.MyMainSettings.DocumentElement, "geometry/@height", CStr(Height)
-		  SmartML.SetValue App.MyMainSettings.DocumentElement, "songfolder", Globals.CurrentSongFolder
-		  If pop_sets_sets.ListIndex > 0 And pop_sets_sets.ListIndex < pop_sets_sets.ListCount Then
-		    SmartML.SetValue App.MyMainSettings.DocumentElement, "last_open_set", pop_sets_sets.List(pop_sets_sets.ListIndex)
+		  App.MainPreferences.SetValueN(prefs.kWindowGeometry + "/@y", Top)
+		  App.MainPreferences.SetValueN(prefs.kWindowGeometry + "/@x", Left)
+		  App.MainPreferences.SetValueN(prefs.kWindowGeometry + "/@width", Width)
+		  App.MainPreferences.SetValueN(prefs.kWindowGeometry + "/@height", Height)
+		  App.MainPreferences.SetValue(prefs.kCurrentSongFolder, Globals.CurrentSongFolder)
+		  If pop_sets_sets.ListIndex >= 0 And pop_sets_sets.ListIndex < pop_sets_sets.ListCount Then
+		    App.MainPreferences.SetValue(prefs.kLastOpenSet, pop_sets_sets.List(pop_sets_sets.ListIndex))
 		  Else
-		    SmartML.SetValue App.MyMainSettings.DocumentElement, "last_open_set", ""
+		    App.MainPreferences.SetValue(prefs.kLastOpenSet, "")
 		  End If
 		  
 		  App.MouseCursor = Nil
@@ -8557,16 +8557,6 @@ End
 
 	#tag Event
 		Sub Open()
-		  'Try
-		  'PPT = New PowerPointApplication
-		  'PPT.Visible = 1
-		  'PPT.Presentations.Open "C:\Documents and Settings\slickfold\My Documents\Youth Group\10Commandments_forkids.ppt", True, True, True
-		  'PPT.ActivePresentation.SlideShowSettings.Run
-		  'Catch e as RuntimeException
-		  'MsgBox e.Message
-		  'PPT = Nil
-		  'End Try
-		  
 		  Profiler.BeginProfilerEntry "MainWindow::Open"
 		  App.DebugWriter.Write "MainWindow.Open: Enter"
 		  Dim s As String
@@ -8574,18 +8564,14 @@ End
 		  Dim i As Integer
 		  Dim bibleFiles() As String
 		  
-		  '++JRC
 		  Globals.OldFolderSel = -1
 		  CurrentSetIndex = -1
 		  
 		  pop_sets_sets.AddRow("")
 		  pop_sets_sets.DeleteAllRows
-		  '--
 		  
 		  Splash.SetStatus App.T.Translate("load_data/bible") + "..."
-		  s = SmartML.GetValue(App.MyMainSettings.DocumentElement, "last_scripture/@version")
-		  'If Len(s) > 0 And App.AppFolder.Child("OpenSong Scripture").Child(s).Exists Then
-		  'If App.MyBible.LoadBible(App.AppFolder.Child("OpenSong Scripture").Child(s)) Then
+		  s = App.MainPreferences.GetValue(prefs.kScriptureVersion)
 		  App.MyBible = BibleFactory.GetBible(s)
 		  If App.MyBible <> Nil Then
 		    App.DebugWriter.Write "MainWindow.Open: Successfully loaded saved Bible translation " + s
@@ -8597,12 +8583,10 @@ End
 		    // element 0.  Otherwise, the first valid file isn't shown.
 		    //--
 		    Splash.Hide
-		    'Redim bibleFiles(-1)
 		    bibleFiles = BibleFactory.BibleList
-		    'bibleFiles.Insert 0, ""
 		    
 		    If UBound(bibleFiles) >= 0 Then
-		      '++JRC Notify user that we could not load default Bible
+		      'Notify user that we could not load default Bible
 		      MsgBox App.T.Translate("errors/load_bible", s)
 		      
 		      'run through the list and try to load the next available Bible
@@ -8612,33 +8596,26 @@ End
 		          MsgBox App.T.Translate("bible/load_successful", bibleFiles(i))
 		          
 		          App.DebugWriter.Write "MainWindow.Open: Successfully opened newly selected Bible " + bibleFiles(i)
-		          SmartML.SetValue(App.MyMainSettings.DocumentElement, "last_scripture/@version", bibleFiles(i))
+		          App.MainPreferences.SetValue(prefs.kScriptureVersion, bibleFiles(i))
 		          Exit For
 		        End If
 		        
 		      Next
-		      's = InputBox.Pick(App.T.Translate("scripture_lookup/select_file/@caption"), bibleFiles)
-		      'App.MyBible = BibleFactory.GetBible(s)
 		    Else
-		      '++JRC If no Scripture files were found, set MyBible to Nil and continue operation
+		      'If no Scripture files were found, set MyBible to Nil and continue operation
 		      App.MyBible = Nil
 		    End If
-		    '--
 		    
 		    Splash.Show
 		  End If
 		  
 		  Splash.SetStatus App.T.Translate("load_data/songs_cache") + "..."
-		  'If App.MainPreferences.GetValueB(Prefs.kUseOldFolderDB) Then
-		  'Songs = New FolderDBOld(App.DocsFolder.Child("Songs"))
-		  'Else
-		  '++JRC If DocsFolder is Nil set Songs to Nil as well (and cross our fingers :)
+		  'If DocsFolder is Nil set Songs to Nil as well (and cross our fingers :)
 		  If App.DocsFolder <> Nil Then
 		    Songs = New FolderDB(App.DocsFolder.Child("Songs"))
 		  Else
 		    Songs = Nil
 		  End If
-		  'End If
 		  If Songs <> Nil Then
 		    Songs.SetBuiltinFilters "( " + App.T.Translate("songs_mode/song_folders/filter_all/@caption") + " )", _
 		    "( " + App.T.Translate("/songs_mode/song_folders/filter_main/@caption") + " )"
@@ -8650,7 +8627,11 @@ End
 		  End If
 		  
 		  Splash.SetStatus App.T.Translate("load_data/songs") + "..."
-		  Globals.CurrentSongFolder = SmartML.GetValue(App.MyMainSettings.DocumentElement, "songfolder")
+		  If SmartML.GetValueB(App.MyMainSettings.DocumentElement, "reload/@songfolder", False, True) Then
+		    Globals.CurrentSongFolder = App.MainPreferences.GetValue(prefs.kCurrentSongFolder)
+		  Else
+		    Globals.CurrentSongFolder = ""
+		  End If
 		  If Globals.CurrentSongFolder = "" Then
 		    pop_songs_song_folders.ListIndex = 0
 		  Else
@@ -9140,13 +9121,11 @@ End
 
 	#tag MenuHandler
 		Function mnu_settings_install_module() As Boolean Handles mnu_settings_install_module.Action
-			
 			Dim file As FolderItem
 			Dim XMM As New FileType
 			
 			Dim newBible As Bible
 			
-			'++JRC Fixed GetOpenFolderItem was not being called correctly
 			XMM = FileTypes.OpenSongModule
 			XMM.Name = App.T.Translate("module/file_type")
 			XMM.Extensions = "xmm"
@@ -9167,7 +9146,8 @@ End
 			Return False
 			End If
 			
-			If xfile.DocumentElement.Name = "bible" Then
+			Dim moduleType As String = xfile.DocumentElement.Name
+			If moduleType = "bible" Then
 			toChild = "OpenSong Scripture"
 			ElseIf xfile.DocumentElement.Name = "language" Then
 			toChild = "OpenSong Languages"
@@ -9196,7 +9176,7 @@ End
 			//++
 			// If a Bible, offer to generate the index now.
 			//--
-			If xfile.DocumentElement.Name = "bible" Then
+			If moduleType = "bible" Then
 			newBible = New Bible
 			App.MouseCursor = System.Cursors.Wait
 			If Not newBible.LoadBible(file) Then
@@ -9204,17 +9184,18 @@ End
 			InputBox.Message(App.T.Translate("module/generate_error", file.AbsolutePath))
 			Return True
 			End If
-			End If
-			App.MouseCursor = Nil
-			
-			InputBox.Message App.T.Translate("module/success")
 			
 			'Bible added successfully
 			'If no other Bibles are installed make this the default
 			If  App.MyBible = Nil Then
 			App.MyBible = newbible
-			SmartML.SetValue(App.MyMainSettings.DocumentElement, "last_scripture/@version", file.Name)
+			App.MainPreferences.SetValue(prefs.kScriptureVersion, file.Name)
 			End If
+			End If
+			
+			App.MouseCursor = Nil
+			
+			InputBox.Message App.T.Translate("module/success")
 			
 			Return True
 		End Function
@@ -12794,7 +12775,9 @@ End
 		    if idx = -1 Then
 		      // Saved one from previously?
 		      Dim lastSetName As String
-		      lastSetName = SmartML.GetValue(App.MyMainSettings.DocumentElement, "last_open_set")
+		      If SmartML.GetValueB(App.MyMainSettings.DocumentElement, "reload/@set", False, True) Then
+		        lastSetName = App.MainPreferences.GetValue(prefs.kLastOpenSet)
+		      End If
 		      If lastSetName.Len > 0 Then
 		        For i = 0 To pop_sets_sets.ListCount - 1
 		          If pop_sets_sets.List(i) = lastSetName Then
