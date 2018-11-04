@@ -18014,7 +18014,7 @@ End
 		  
 		  If maxIdx >= 0 Then
 		    
-		    #if TargetWin32 Then
+		    #if TargetWin32 then
 		      Const LB_SETCARETINDEX = &H19E
 		      
 		      Declare Sub SendMessageW Lib "user32" (hwnd as Integer, msg as Integer, wParam as Integer, lParam as Boolean)
@@ -18096,7 +18096,7 @@ End
 		  
 		  If ok Then
 		    
-		    #if TargetWin32 Then
+		    #if TargetWin32 then
 		      Const LB_SETCARETINDEX = &H19E
 		      
 		      Declare Sub SendMessageW Lib "user32" (hwnd as Integer, msg as Integer, wParam as Integer, lParam as Boolean)

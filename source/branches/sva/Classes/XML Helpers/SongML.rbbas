@@ -1,6 +1,82 @@
 #tag Module
 Module SongML
 	#tag Method, Flags = &h21
+		Private Function AdjustSlideBreaks(lyrics As String, isBilingual As Boolean = False) As String
+		  // Regularize Line Endings
+		  lyrics = lyrics.FormatUnixEndOfLine
+		  lyrics = StringUtils.RTrim(lyrics,EndOfLine.UNIX)
+		  If SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "style/@blank_is_slide_change") Then
+		    lyrics = lyrics.ReplaceAll(EndOfLine.UNIX + EndOfLine.UNIX, "||" + EndOfLine.UNIX)
+		  End If
+		  
+		  If isBilingual Then
+		    If InStr(lyrics, "||") > 0 Then
+		      // place slide breaks at the end of a second language line
+		      Dim lines() As String
+		      Dim pos1, pos2 As Integer
+		      Dim line3, line4 As String
+		      Dim i As Integer
+		      
+		      lines = Split(lyrics, EndOfLine.UNIX)
+		      If lines.Ubound() Mod 2 = 0 Then
+		        lines.Append("")
+		      End If
+		      ' going to do the following changes
+		      ' E = split mark at end
+		      ' M = split mark somewhere in the middle
+		      ' 0 = no split mark
+		      ' R = rest after split mark
+		      ' _ = empty line to keep languages in sync
+		      '
+		      '0 1    0 1 2 3  line i+n is -> will be   
+		      'E,E -> 0,E
+		      'E,M -> 0,E,_,R
+		      'E,0 -> 0,E
+		      'M,E -> 0,E,R,_
+		      'M,M -> 0,E,R,R
+		      'M,0 -> 0,E,R,_
+		      '0,0 -> 0,0
+		      '0,E -> 0,E
+		      '0,M -> 0,E,_,R
+		      line3 = ""
+		      line4 = ""
+		      i = 0
+		      While i <= lines.UBound
+		        pos1 = InStr(lines(i), "||")
+		        pos2 = InStr(lines(i+1), "||")
+		        If Pos1 <> 0 Then
+		          If pos1 = lines(i).Len - 2 Then
+		            lines(i) = StringUtils.Chop(lines(i), 2)
+		          Else
+		            line3 = lines(i).Mid(pos2+2)
+		            lines(i) = lines(i).Left(pos2-1)
+		          End If
+		        End If
+		        If pos2 <> 0 Then
+		          If pos2 <> lines(i+1).Len - 2 Then
+		            line4 = lines(i+1).Mid(pos2+2)
+		            lines(i+1) = lines(i+1).Left(pos2+1)
+		          End If
+		        End If
+		        If line3.Len > 0 Or line4.Len > 0 Then
+		          lines.Insert(i+2, line3)
+		          lines.Insert(i+3, line4)
+		          line3 = ""
+		          line4 = ""
+		        End If
+		        i = i + 2
+		      Wend
+		      
+		      lyrics = Join(lines,EndOfLine.UNIX)
+		    End If
+		  End If
+		  
+		  Return lyrics
+		  
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
 		Private Function BuildHeading(Tag As String, Heading As String) As String
 		  //++
 		  // Save some repetitive work building headings
@@ -159,7 +235,7 @@ Module SongML
 		    Dim barpos1, barpos2 As Integer
 		    
 		    // ensure even number of lines to begin with
-		    If Lines.Ubound() Mod 2 = 0 Then
+		    If lines.Ubound() Mod 2 = 0 Then
 		      lines.Append("")
 		    End If
 		    // if lines have to be split either split both or add in a separationMark
@@ -2257,8 +2333,8 @@ Module SongML
 		    sections = Split(order, " ")
 		  End If
 		  
-		  Dim ChorusNr, PresentationIndex as integer 'GP
-		  ChorusNr = 0 'GP
+		  Dim ChorusNr, PresentationIndex As Integer
+		  ChorusNr = 0
 		  
 		  Dim xbacks As XmlNode = SmartML.GetNode(songElement, "backgrounds", True)
 		  Dim xlist As XmlNodeList = Nil
@@ -2301,7 +2377,7 @@ Module SongML
 		        Next
 		      End If
 		      
-		      // CHANGE-PJ: Second language feature - if last character of section name = "L" for "L"anguage -> activate separationMark (detect linebreaks inserted by algorithm)
+		      // Second language feature -> activate separationMark (detect linebreaks inserted by algorithm)
 		      Dim separationMark As String
 		      If isBilingual.Value(section) Then
 		        separationMark = SetML.SeparationMarkBilingual
@@ -2309,17 +2385,13 @@ Module SongML
 		        separationMark = ""
 		      End If
 		      
-		      // Regularize Line Endings
-		      dict.Value(section) = dict.Value(section).StringValue.FormatUnixEndOfLine
-		      If SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "style/@blank_is_slide_change") Then
-		        dict.Value(section) = ReplaceAll(Trim(dict.Value(section)), EndOfLine.UNIX + EndOfLine.UNIX, EndOfLine.UNIX + "||")
-		      End If
+		      dict.Value(section) = AdjustSlideBreaks(dict.Value(section), isBilingual.Value(section))
 		      
 		      sub_sections = Split(dict.Value(section), "||")
 		      xbackIndex = 0
 		      For Each sub_section In sub_sections
 		        slide = SmartML.InsertChild(slides, "slide", slides.ChildCount)
-		        SmartML.SetValue(slide, "body", DeflateString(StringUtils.Trim(sub_section, StringUtils.WhiteSpaces), separationMark)) // CHANGE-PJ: added parameter separationMark (makes only a difference for bilingual sections)
+		        SmartML.SetValue(slide, "body", DeflateString(StringUtils.Trim(sub_section, StringUtils.WhiteSpaces), separationMark))
 		        If section = "default" Then
 		          SmartML.SetValue(slide, "@id", "")
 		        Else
@@ -2327,9 +2399,9 @@ Module SongML
 		        End If
 		        If Lowercase(Left(section, 1)) = "c" Then
 		          SmartML.SetValueB(slide, "@emphasize", True)
-		          SmartML.SetValueN(slide, "@ChorusNr", ChorusNr) 'GP
+		          SmartML.SetValueN(slide, "@ChorusNr", ChorusNr)
 		        End If
-		        SmartML.SetValueN(slide, "@PresentationIndex", PresentationIndex) 'GP
+		        SmartML.SetValueN(slide, "@PresentationIndex", PresentationIndex)
 		        SmartML.SetValueB(slide, "@bilingual", isBilingual.Value(section))
 		        
 		        'Assign the background to the verse slide
