@@ -853,14 +853,16 @@ End
 		  ' rework the column widths to keep the Verse column from growing too big.
 		  ' EMP 01/31/05
 		  '
+		  If lst_all_slides.ListCount < 1 Then Return
+		  
 		  Dim ControlWidth As Integer
 		  Dim pic As New Picture(1, 1, 32)
 		  Dim g As Graphics
 		  Dim WidthString As String
 		  Dim tempWidth As Double
-		  Dim maxlen As Integer
-		  Dim i As Integer
+		  Dim tempText As String
 		  
+		  '§ SvA: what about pic = Self.BitmapForCaching(1,1) instead of below #if (and New above)
 		  #If RBVersion > 2016 Then
 		    pic.Graphics.ScaleX = Self.ScaleFactor
 		    pic.Graphics.ScaleY = Self.ScaleFactor
@@ -871,18 +873,19 @@ End
 		  g.TextSize = lst_all_slides.TextSize
 		  g.TextFont = lst_all_slides.TextFont
 		  
-		  maxlen = 0
-		  if lst_all_slides.ListCount < 1 then return
-		  for i = 0 to lst_all_slides.ListCount - 1
-		    if len(lst_all_slides.cell(i,0)) > len(lst_all_slides.cell(maxlen,0)) then maxlen = i
-		  next i
-		  tempWidth = g.StringWidth(lst_all_slides.cell(maxlen,0))
-		  ControlWidth = ceil((tempwidth / lst_all_slides.Width)*100) + 2 'Fudge Factor
+		  tempWidth = 0
+		  For i As Integer = 0 To lst_all_slides.ListCount - 1
+		    If tempText <> lst_all_slides.cell(i, 0) Then
+		      tempText = lst_all_slides.cell(i, 0)
+		      tempWidth = Max(tempWidth, g.StringWidth(tempText))
+		    End If
+		  Next i
+		  ControlWidth = Ceil((tempwidth / lst_all_slides.Width) * 100) + 2 'Fudge Factor
 		  ControlWidth = Min(ControlWidth, 20)
-		  WidthString = str(ControlWidth) + "%, "
-		  tempWidth = g.StringWidth("MMMM")' four-em width should be good
-		  ControlWidth = ceil((tempWidth / lst_all_slides.Width)*100)
-		  WidthString = WidthString + str(ControlWidth) + " %, *"
+		  WidthString = Str(ControlWidth) + "%, "
+		  tempWidth = g.StringWidth("MMMM") 'four-em width should be good
+		  ControlWidth = Ceil((tempWidth / lst_all_slides.Width) * 100)
+		  WidthString = WidthString + Str(ControlWidth) + " %, *"
 		  lst_all_slides.ColumnWidths = WidthString
 		End Sub
 	#tag EndMethod
