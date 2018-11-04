@@ -115,7 +115,7 @@ Begin Window MainSettingsWindow
       TextUnit        =   0
       Top             =   7
       Underline       =   False
-      Value           =   1
+      Value           =   0
       Visible         =   True
       Width           =   623
       Begin GroupBox grp_settings_general
@@ -339,7 +339,7 @@ Begin Window MainSettingsWindow
          LockRight       =   False
          LockTop         =   False
          Scope           =   0
-         TabIndex        =   1
+         TabIndex        =   3
          TabPanelIndex   =   1
          TabStop         =   True
          TextFont        =   "Arial"
@@ -647,7 +647,7 @@ Begin Window MainSettingsWindow
          LockRight       =   False
          LockTop         =   False
          Scope           =   0
-         TabIndex        =   2
+         TabIndex        =   1
          TabPanelIndex   =   1
          TabStop         =   True
          TextFont        =   "Arial"
@@ -798,7 +798,7 @@ Begin Window MainSettingsWindow
             LockTop         =   False
             Scope           =   0
             State           =   0
-            TabIndex        =   1
+            TabIndex        =   2
             TabPanelIndex   =   4
             TabStop         =   True
             TextFont        =   "Arial"
@@ -830,7 +830,7 @@ Begin Window MainSettingsWindow
             LockRight       =   False
             LockTop         =   False
             Scope           =   0
-            TabIndex        =   2
+            TabIndex        =   1
             TabPanelIndex   =   4
             TabStop         =   True
             TextFont        =   "Arial"
@@ -1535,7 +1535,7 @@ Begin Window MainSettingsWindow
             LockRight       =   False
             LockTop         =   False
             Scope           =   0
-            TabIndex        =   3
+            TabIndex        =   5
             TabPanelIndex   =   2
             TabStop         =   True
             TextFont        =   "Arial"
@@ -1566,7 +1566,7 @@ Begin Window MainSettingsWindow
             Multiline       =   False
             Scope           =   0
             Selectable      =   False
-            TabIndex        =   4
+            TabIndex        =   3
             TabPanelIndex   =   2
             TabStop         =   True
             Text            =   "Location of Videolan client"
@@ -1610,7 +1610,7 @@ Begin Window MainSettingsWindow
             Password        =   False
             ReadOnly        =   True
             Scope           =   0
-            TabIndex        =   5
+            TabIndex        =   4
             TabPanelIndex   =   2
             TabStop         =   True
             Text            =   ""
@@ -1707,7 +1707,7 @@ Begin Window MainSettingsWindow
             Multiline       =   False
             Scope           =   0
             Selectable      =   False
-            TabIndex        =   1
+            TabIndex        =   2
             TabPanelIndex   =   5
             TabStop         =   True
             Text            =   "Labels:"
@@ -1742,7 +1742,7 @@ Begin Window MainSettingsWindow
             Multiline       =   False
             Scope           =   0
             Selectable      =   False
-            TabIndex        =   2
+            TabIndex        =   4
             TabPanelIndex   =   5
             TabStop         =   True
             Text            =   "Text Fields:"
@@ -1777,7 +1777,7 @@ Begin Window MainSettingsWindow
             Multiline       =   False
             Scope           =   0
             Selectable      =   False
-            TabIndex        =   3
+            TabIndex        =   6
             TabPanelIndex   =   5
             TabStop         =   True
             Text            =   "Fixed-width Text:"
@@ -1813,7 +1813,7 @@ Begin Window MainSettingsWindow
             LockRight       =   False
             LockTop         =   False
             Scope           =   0
-            TabIndex        =   4
+            TabIndex        =   1
             TabPanelIndex   =   5
             TabStop         =   True
             Top             =   77
@@ -1842,7 +1842,7 @@ Begin Window MainSettingsWindow
             Multiline       =   False
             Scope           =   0
             Selectable      =   False
-            TabIndex        =   5
+            TabIndex        =   8
             TabPanelIndex   =   5
             TabStop         =   True
             Text            =   "Buttons:"
@@ -1878,7 +1878,7 @@ Begin Window MainSettingsWindow
             LockRight       =   False
             LockTop         =   False
             Scope           =   0
-            TabIndex        =   6
+            TabIndex        =   3
             TabPanelIndex   =   5
             TabStop         =   True
             Top             =   127
@@ -1907,7 +1907,7 @@ Begin Window MainSettingsWindow
             Multiline       =   False
             Scope           =   0
             Selectable      =   False
-            TabIndex        =   7
+            TabIndex        =   10
             TabPanelIndex   =   5
             TabStop         =   True
             Text            =   "Large Headings:"
@@ -1943,7 +1943,7 @@ Begin Window MainSettingsWindow
             LockRight       =   False
             LockTop         =   False
             Scope           =   0
-            TabIndex        =   8
+            TabIndex        =   5
             TabPanelIndex   =   5
             TabStop         =   True
             Top             =   177
@@ -1972,7 +1972,7 @@ Begin Window MainSettingsWindow
             LockTop         =   False
             Scope           =   0
             State           =   0
-            TabIndex        =   9
+            TabIndex        =   12
             TabPanelIndex   =   5
             TabStop         =   True
             TextFont        =   "Arial"
@@ -2005,7 +2005,7 @@ Begin Window MainSettingsWindow
             LockRight       =   False
             LockTop         =   False
             Scope           =   0
-            TabIndex        =   10
+            TabIndex        =   7
             TabPanelIndex   =   5
             TabStop         =   True
             Top             =   227
@@ -2035,7 +2035,7 @@ Begin Window MainSettingsWindow
             LockRight       =   False
             LockTop         =   False
             Scope           =   0
-            TabIndex        =   11
+            TabIndex        =   9
             TabPanelIndex   =   5
             TabStop         =   True
             Top             =   277
@@ -2065,7 +2065,7 @@ Begin Window MainSettingsWindow
             LockRight       =   False
             LockTop         =   False
             Scope           =   0
-            TabIndex        =   12
+            TabIndex        =   11
             TabPanelIndex   =   5
             TabStop         =   True
             Top             =   327
@@ -3410,7 +3410,7 @@ Begin Window MainSettingsWindow
          LockRight       =   False
          LockTop         =   True
          Scope           =   0
-         TabIndex        =   3
+         TabIndex        =   4
          TabPanelIndex   =   1
          TabStop         =   True
          TextFont        =   "Arial"
@@ -3762,6 +3762,97 @@ Begin Window MainSettingsWindow
             Width           =   193
          End
       End
+      Begin GroupBox grp_settings_reload
+         AutoDeactivate  =   True
+         Bold            =   ""
+         Caption         =   "Reload On Starup"
+         Enabled         =   True
+         Height          =   72
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "tab_general_general"
+         Italic          =   ""
+         Left            =   35
+         LockBottom      =   ""
+         LockedInPosition=   False
+         LockLeft        =   False
+         LockRight       =   ""
+         LockTop         =   False
+         Scope           =   0
+         TabIndex        =   2
+         TabPanelIndex   =   1
+         TextFont        =   "Arial"
+         TextSize        =   11
+         TextUnit        =   0
+         Top             =   267
+         Underline       =   ""
+         Visible         =   True
+         Width           =   250
+         Begin CheckBox chk_reload_songfolder
+            AutoDeactivate  =   True
+            Bold            =   ""
+            Caption         =   "Song Folder"
+            DataField       =   ""
+            DataSource      =   ""
+            Enabled         =   True
+            Height          =   20
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "grp_settings_reload"
+            Italic          =   ""
+            Left            =   50
+            LockBottom      =   ""
+            LockedInPosition=   False
+            LockLeft        =   True
+            LockRight       =   ""
+            LockTop         =   True
+            Scope           =   0
+            State           =   0
+            TabIndex        =   0
+            TabPanelIndex   =   1
+            TabStop         =   True
+            TextFont        =   "Arial"
+            TextSize        =   10
+            TextUnit        =   0
+            Top             =   290
+            Underline       =   ""
+            Value           =   False
+            Visible         =   True
+            Width           =   230
+         End
+         Begin CheckBox chk_reload_set
+            AutoDeactivate  =   True
+            Bold            =   ""
+            Caption         =   "Set"
+            DataField       =   ""
+            DataSource      =   ""
+            Enabled         =   True
+            Height          =   20
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "grp_settings_reload"
+            Italic          =   ""
+            Left            =   50
+            LockBottom      =   ""
+            LockedInPosition=   False
+            LockLeft        =   True
+            LockRight       =   ""
+            LockTop         =   True
+            Scope           =   0
+            State           =   0
+            TabIndex        =   1
+            TabPanelIndex   =   1
+            TabStop         =   True
+            TextFont        =   "Arial"
+            TextSize        =   10
+            TextUnit        =   0
+            Top             =   314
+            Underline       =   ""
+            Value           =   False
+            Visible         =   True
+            Width           =   230
+         End
+      End
    End
 End
 #tag EndWindow
@@ -3783,9 +3874,7 @@ End
 		  edt_proxy_host.Text = SmartML.GetValue(App.MyMainSettings.DocumentElement, "proxy/@host")
 		  edt_proxy_port.Text = SmartML.GetValue(App.MyMainSettings.DocumentElement, "proxy/@port")
 		  
-		  '++JRC
 		  chk_linked_prompt.Value = SmartML.GetValueB(App.MyMainSettings.DocumentElement, "linked_songs/@prompt", False)
-		  '--
 		  
 		  chk_rcserver_enable.Value = SmartML.GetValueB(App.MyMainSettings.DocumentElement, "rcserver/@enable", False, False)
 		  edt_rcserver_key.Text = SmartML.GetValue(App.MyMainSettings.DocumentElement, "rcserver/key", False)
@@ -3849,7 +3938,7 @@ End
 		  End Try
 		  
 		  pop_general_language.ListIndex = currlang
-		  //--
+		  
 		  can_fonts_headings.SetFont SmartML.GetValueF(App.MyMainSettings.DocumentElement, "fonts/headings")
 		  can_fonts_labels.SetFont SmartML.GetValueF(App.MyMainSettings.DocumentElement, "fonts/labels")
 		  can_fonts_text_fields.SetFont SmartML.GetValueF(App.MyMainSettings.DocumentElement, "fonts/text_fields")
@@ -3869,26 +3958,25 @@ End
 		  If s.Len = 0 Then s = App.T.Translate("advanced_editor/user3/@caption")
 		  edt_define_user3.Text = s
 		  
-		  //++EMP
 		  // Code for supporting the Start Mode selection
-		  
 		  s = SmartML.GetValue(App.MyMainSettings.DocumentElement, "startmode/@sets", True)
 		  if s = "1" then rad_start_sets.Value = True Else rad_start_songs.Value = True
 		  
-		  // Select which SButton.Paint to use
+		  chk_reload_songfolder.Value = SmartML.GetValueB(App.MyMainSettings.DocumentElement, "reload/@songfolder", True, True)
+		  chk_reload_set.Value = SmartML.GetValueB(App.MyMainSettings.DocumentElement, "reload/@set", True, True)
 		  
+		  // Select which SButton.Paint to use
 		  chk_general_newpaint.Value = SmartML.GetValueB(App.MyMainSettings.DocumentElement, "paint/@new", True, False)
-		  //--
+		  
 		  App.CenterInControlScreen Me
 		  
-		  '++JRC Display DocsFolder Location
+		  // Display DocsFolder Location
 		  If App.IsPortable Then
 		    nte_folder_folder.Text = "Portable Installation"
 		  Else
 		    nte_folder_folder.Text = DocsFolder.FormatFolderName
 		  End If
-		  '--
-		  //++ EMP July 2007
+		  
 		  // Add FolderDB flag
 		  chk_documents_oldfolderdb.Value = App.MainPreferences.GetValueB(Prefs.kUseOldFolderDB)
 		  
@@ -4167,9 +4255,7 @@ End
 		  SmartML.SetValue Settings, "proxy/@host", edt_proxy_host.Text
 		  SmartML.SetValueN Settings, "proxy/@port", Val(edt_proxy_port.Text)
 		  
-		  '++JRC
 		  SmartML.SetValueB Settings, "linked_songs/@prompt", chk_linked_prompt.Value
-		  '--
 		  
 		  SmartML.SetValueB Settings, "rcserver/@enable", chk_rcserver_enable.Value
 		  SmartML.SetValue Settings, "rcserver/key", edt_rcserver_key.Text
@@ -4191,9 +4277,7 @@ End
 		  SmartML.SetValueF Settings, "fonts/buttons", can_fonts_buttons.GetFont
 		  SmartML.SetValueF Settings, "fonts/large_headings", can_fonts_large_headings.GetFont
 		  App.UpdateTranslationFonts
-		  '--
 		  
-		  //++EMP
 		  // Save Start Mode selection
 		  if rad_start_songs.Value Then
 		    SmartML.SetValueN Settings, "startmode/@sets", 0
@@ -4201,10 +4285,11 @@ End
 		    SmartML.SetValueN Settings, "startmode/@sets", 1
 		  End If
 		  
-		  // Drawing style...this affects which SButton.Paint routine is used
+		  SmartML.SetValueB Settings, "reload/@songfolder", chk_reload_songfolder.Value
+		  SmartML.SetValueB Settings, "reload/@set", chk_reload_set.Value
 		  
+		  // Drawing style...this affects which SButton.Paint routine is used
 		  SmartML.SetValueB Settings, "paint/@new", chk_general_newpaint.Value
-		  //--
 		  
 		  ImageDefaults.ResizeToScreenArea = chk_imagedefaults_fit_to_screen.Value
 		  ImageDefaults.ResizeToBodyArea = chk_imagedefaults_fit_to_body.Value
@@ -4276,9 +4361,7 @@ End
 		    SmartML.SetValue(App.MyMainSettings.DocumentElement, "slide_style_color/blank/@color", "")
 		  End If
 		  
-		  //++
-		  // Bug 1462055: Save changes on dialog exit instead of program exit
-		  //
+		  // Save changes on dialog exit instead of program exit
 		  If App.CheckDocumentFolders(App.SETTINGS_FOLDER) <> App.NO_FOLDER Then
 		    If Not SmartML.XDocToFile(App.MyMainSettings, App.DocsFolder.Child(App.STR_SETTINGS).Child("MainSettings")) Then SmartML.DisplayError
 		  Else
@@ -4288,15 +4371,13 @@ End
 		      MsgBox App.T.Translate("errors/no_docs_folder", "")
 		    End If
 		  End If
+		  
 		  // Can't write to MyGlobals if non-admin user
 		  'If Not SmartML.XDocToFile(App.MyGlobals, App.AppFolder.Child("OpenSong Settings").Child("Globals")) Then SmartML.DisplayError
 		  Call App.MainPreferences.Save
-		  //--
 		  
-		  '++JRC
 		  MainWindow.TranslateMe
 		  App.TranslateMe
-		  '--
 		  
 		  Close
 		End Sub

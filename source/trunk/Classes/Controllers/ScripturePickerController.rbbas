@@ -369,22 +369,19 @@ Implements ScriptureNotifier
 		Protected Sub LoadState()
 		  //++
 		  // Get the saved settings from the last ScripturePicker
-		  //
 		  //--
 		  
-		  Dim params As XmlElement
 		  Dim CurrentBibleName As String
 		  
-		  params = App.MyMainSettings.DocumentElement
-		  CurrentBibleName = SmartML.GetValue(params, "last_scripture/@version")
-		  CurrentBook = SmartML.GetValueN(params, "last_scripture/@book")
-		  CurrentChapter = SmartML.GetValueN(params, "last_scripture/@chapter")
-		  CurrentFromVerse = SmartML.GetValueN(params, "last_scripture/@verse")
-		  CurrentThruVerse = SmartML.GetValueN(params, "last_scripture/@thru")
-		  VersesPerSlide = Max(0, Min(SmartML.GetValueN(params, "last_scripture/@verse_per_slide"), 5))
-		  CharsPerSlide = Max(0, Min(SmartML.GetValueN(params, "last_scripture/@chars_per_slide"), 1000))
-		  ShowVerseNumbers = SmartML.GetValueB(params, "last_scripture/@show_numbers", True, True)
-		  FormatParagraph = ("paragraph" = SmartML.GetValue(params, "last_scripture/@format"))
+		  CurrentBibleName = App.MainPreferences.GetValue(prefs.kScriptureVersion)
+		  CurrentBook = App.MainPreferences.GetValueN(prefs.kLastScriptureBook)
+		  CurrentChapter = App.MainPreferences.GetValueN(prefs.kLastScriptureChapter)
+		  CurrentFromVerse = App.MainPreferences.GetValueN(prefs.kLastScriptureVerse)
+		  CurrentThruVerse = App.MainPreferences.GetValueN(prefs.kLastScriptureThru)
+		  VersesPerSlide = Max(0, Min(App.MainPreferences.GetValueN(prefs.kScriptureVersePerSlide), 5))
+		  CharsPerSlide = Max(0, Min(App.MainPreferences.GetValueN(prefs.kScriptureCharsPerSlide), 1000))
+		  ShowVerseNumbers = App.MainPreferences.GetValueB(prefs.kScriptureShowNumbers, False, True)
+		  FormatParagraph = ("paragraph" = App.MainPreferences.GetValue(prefs.kScriptureFormat))
 		  
 		  If VersesPerSlide = 0 Then VersesPerSlide = 3
 		  If CharsPerSlide = 0 Then CharsPerSlide = 500
@@ -392,7 +389,6 @@ Implements ScriptureNotifier
 		  
 		  
 		  If CurrentBible Is Nil Then
-		    '++JRC Catch OutOfBounds Exception
 		    Try
 		      mCurrentBible = BibleFactory.GetBible(BibleFactory.BibleList.Pop)
 		    Catch ex As OutOfBoundsException
@@ -404,7 +400,6 @@ Implements ScriptureNotifier
 		      mCurrentBible = Nil
 		      Return
 		    End Try
-		    '--
 		  End If
 		  
 		  Try
@@ -511,25 +506,19 @@ Implements ScriptureNotifier
 		  // Store the current settings
 		  //--
 		  
-		  Dim params As XmlElement
-		  Dim CurrentBibleName As String
-		  
-		  params = App.MyMainSettings.DocumentElement
-		  SmartML.SetValue(params, "last_scripture/@version", CurrentBible.Name)
-		  SmartML.SetValueN(params, "last_scripture/@book", CurrentBook)
-		  SmartML.SetValueN(params, "last_scripture/@chapter", CurrentChapter)
-		  SmartML.SetValueN(params, "last_scripture/@verse", CurrentFromVerse)
-		  SmartML.SetValueN(params, "last_scripture/@thru", CurrentThruVerse)
-		  SmartML.SetValueN(params, "last_scripture/@verse_per_slide", VersesPerSlide)
-		  SmartML.SetValueN(params, "last_scripture/@chars_per_slide", CharsPerSlide)
-		  SmartML.SetValueB(params, "last_scripture/@show_numbers", ShowVerseNumbers)
-		  
+		  App.MainPreferences.SetValue(prefs.kScriptureVersion, CurrentBible.Name)
+		  App.MainPreferences.SetValueN(prefs.kLastScriptureBook, CurrentBook)
+		  App.MainPreferences.SetValueN(prefs.kLastScriptureChapter, CurrentChapter)
+		  App.MainPreferences.SetValueN(prefs.kLastScriptureVerse, CurrentFromVerse)
+		  App.MainPreferences.SetValueN(prefs.kLastScriptureThru, CurrentThruVerse)
+		  App.MainPreferences.SetValueN(prefs.kScriptureVersePerSlide, VersesPerSlide)
+		  App.MainPreferences.SetValueN(prefs.kScriptureCharsPerSlide), CharsPerSlide
+		  App.MainPreferences.SetValueB(prefs.kScriptureShowNumbers, ShowVerseNumbers)
 		  If FormatParagraph Then
-		    SmartML.SetValue(params, "last_scripture/@format", "paragraph")
+		    App.MainPreferences.SetValue(prefs.kScriptureFormat, "paragraph")
 		  Else
-		    SmartML.SetValue(params, "last_scripture/@format", "verse")
+		    App.MainPreferences.SetValue(prefs.kScriptureFormat, "verse")
 		  End If
-		  
 		End Sub
 	#tag EndMethod
 

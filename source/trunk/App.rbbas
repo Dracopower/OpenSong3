@@ -69,14 +69,12 @@ Inherits Application
 	#tag Event
 		Sub Open()
 		  Dim OK As Boolean
-		  'Profiler.EnableProfiler
 		  Profiler.BeginProfilerEntry "App::Open"
 		  
-		  '++JRC Set ReleaseCandidate Level
+		  'Set ReleaseCandidate Level
 		  'IMPORTANT this value will need to be set to 0
 		  'for a FINAL relase
 		  ReleaseCandidate = 0
-		  '--
 		  
 		  m_statusNotifiers = New Dictionary
 		  
@@ -112,7 +110,7 @@ Inherits Application
 		  End If
 		  
 		  LoadPreferences
-		  '++JRC Couldn't load Preferences, Log error and Bail
+		  'Couldn't load Preferences, Log error and Bail
 		  If MainPreferences = Nil Then
 		    App.DebugWriter.Write("App.Open: Error Loading Preferences ", 1)
 		    Quit
@@ -136,8 +134,8 @@ Inherits Application
 		  SmartML.Init
 		  
 		  
-		  '++JRC Moved translation init to beginning so we can translate error & status Msgs
-		  Dim temp As String
+		  'Moved translation init to beginning so we can translate error & status Msgs
+		  Dim lang As String
 		  
 		  'Can't translate this until we've loaded the translator
 		  'Splash.SetStatus "Loading translation text..."
@@ -145,49 +143,41 @@ Inherits Application
 		  // Updated March 2007: Try to prompt the user before giving up.
 		  // Possibly avoids user having to manually update Globals or the preferences file.
 		  //--
-		  temp = MainPreferences.GetValue(Prefs.kLanguage, "") // Check the new location
-		  if temp  = "" Then
-		    temp = SmartML.GetValue(MyGlobals.DocumentElement, "language/@file") //Check the old location
-		    If temp = "" Then // Prompt the user
-		      temp = SelectLanguage
-		      If temp = "" Then Quit // User cancelled
+		  lang = MainPreferences.GetValue(Prefs.kLanguage, "") // Check the new location
+		  if lang  = "" Then
+		    lang = SmartML.GetValue(MyGlobals.DocumentElement, "language/@file") //Check the old location
+		    If lang = "" Then // Prompt the user
+		      lang = SelectLanguage
+		      If lang = "" Then Quit // User cancelled
 		    End If
 		  End If
 		  
 		  VideolanPresetList = New Dictionary
 		  
-		  T = New Translator(AppFolder.Child("OpenSong Languages").Child(temp))
+		  T = New Translator(AppFolder.Child("OpenSong Languages").Child(lang))
 		  If Not T.IsLoaded Then
-		    '++JRC
 		    App.MouseCursor = Nil
-		    temp = SelectLanguage // Prompt for new selection
-		    If temp = "" Then Quit
-		    T = New Translator(AppFolder.Child("OpenSong Languages").Child(temp))
-		    If Not T.IsLoaded Then //Bail out...something's wrong
-		      'SmartML.DisplayError
-		      InputBox.Message "Language file '" + AppFolder.Child("OpenSong Languages").Child(temp).AbsolutePath +_
+		    lang = SelectLanguage // Prompt for new selection
+		    If lang = "" Then Quit
+		    T = New Translator(AppFolder.Child("OpenSong Languages").Child(lang))
+		    If Not T.IsLoaded Then // Bail out...something's wrong
+		      InputBox.Message "Language file '" + AppFolder.Child("OpenSong Languages").Child(lang).AbsolutePath +_
 		      "' was not found.  OpenSong must exit."
 		      Quit
 		    End If
 		  End If
-		  'moved to globals
-		  'SmartML.SetValue MyGlobals.DocumentElement, "language/@file", temp
-		  MainPreferences.SetValue(Prefs.kLanguage, temp)
+		  MainPreferences.SetValue(Prefs.kLanguage, lang)
 		  
 		  TranslateMe True
-		  '--
 		  
-		  '++JRC translated
 		  Splash.SetStatus T.Translate("load_settings/checking_folders") + "..."
-		  '--
 		  
 		  ' --- CREATE DOCUMENTS FOLDER ---
 		  DocsFolder = GetDocsFolder
 		  If DocsFolder = Nil Then
 		    App.MouseCursor = Nil
-		    '++JRC User canceled, show error msg and bail
+		    'User canceled, show error msg and bail
 		    MsgBox T.Translate("errors/no_docs_folder","...")
-		    '--
 		    Quit
 		  End If
 		  
@@ -205,30 +195,21 @@ Inherits Application
 		  BibleFactory.Folder = ScriptureFolder
 		  
 		  ' Create whatever sub-folders are needed
-		  '++JRC: Fix corner case where the sub-Folders exist but are empty (bug #1803741)
+		  ' Fix corner case where the sub-Folders exist but are empty (bug #1803741)
 		  
-		  '++JRC
 		  If Not ScriptureFolder.Exists OR ScriptureFolder.Count = 0 Then
 		    App.MouseCursor = Nil
 		    MsgBox T.Translate("errors/no_scripture_folder", ScriptureFolder.AbsolutePath)
-		    '++JRC Change behavior here to notify user but continue operation
-		    'Quit
+		    'notify user but continue operation
 		  End If
-		  '--
 		  
-		  //++EMP 11/27/05
-		  '++JRC Moved default folder checks to function
 		  If CheckDefaultFolders(DEFAULTS_FOLDER) <> FOLDER_EXISTS Then
 		    App.MouseCursor = Nil
-		    '++JRC Translated
 		    MsgBox T.Translate("errors/no_defaults_folder", AppFolder.Child(STR_OS_DEFAULTS).AbsolutePath)
-		    '--
-		    'Quit
 		  End If
-		  //--
+		  
 		  Dim result As Integer
 		  
-		  '++JRC Moved document folder checks to function
 		  result = CheckDocumentFolders(DOCUMENTS_FOLDER)
 		  If result = FOLDER_EMPTY Then
 		    'Documents folder is empty, ask the user if want to try to copy the Default Documents to the docs folder
@@ -236,14 +217,11 @@ Inherits Application
 		    App.MouseCursor = Nil
 		    If InputBox.AskYN(App.T.Translate("questions/documents_folder_empty/@caption")) Then
 		      If Not FileUtils.CopyPath(AppFolder.Child(STR_OS_DEFAULTS), DocsFolder) Then
-		        '++JRC Translated
 		        If DocsFolder <> Nil Then
 		          MsgBox T.Translate("errors/no_docs_folder", DocsFolder.AbsolutePath)
 		        Else
 		          MsgBox T.Translate("errors/no_docs_folder", "")
 		        End If
-		        '--
-		        'Quit
 		      End If
 		    End If
 		  ElseIf result = NO_FOLDER Then
@@ -252,20 +230,12 @@ Inherits Application
 		    Else
 		      MsgBox T.Translate("errors/no_docs_folder", "")
 		    End If
-		    'Quit
 		  End If
 		  
-		  //++EMP 11/27/05
-		  '++JRC Moved default folder checks to function
 		  If CheckDefaultFolders(SETTINGS_FOLDER) <> FOLDER_EXISTS Then
 		    App.MouseCursor = Nil
-		    '++JRC Translated
 		    MsgBox  T.Translate("errors/no_settings_folder", AppFolder.Child(STR_OS_DEFAULTS).Child(STR_SETTINGS).AbsolutePath)
-		    '--
-		    'Quit
 		  End If
-		  //--
-		  '++JRC Moved document folder checks to function
 		  
 		  result = CheckDocumentFolders(SETTINGS_FOLDER)
 		  If result = FOLDER_EMPTY Then
@@ -275,11 +245,8 @@ Inherits Application
 		      App.MouseCursor = Nil
 		      If InputBox.AskYN(App.T.Translate("questions/settings_folder_empty/@caption")) Then
 		        If Not FileUtils.CopyPath(AppFolder.Child(STR_OS_DEFAULTS).Child(STR_SETTINGS), DocsFolder.Child(STR_SETTINGS)) Then
-		          '++JRC Translated
 		          MsgBox T.Translate("errors/create_settings_folder", DocsFolder.Child(STR_SETTINGS).AbsolutePath)
 		          MsgBox T.Translate("errors/load_default_settings")
-		          '--
-		          'Quit
 		        End If
 		      End If
 		    End If
@@ -290,20 +257,13 @@ Inherits Application
 		      MsgBox T.Translate("errors/no_docs_folder", "")
 		    End If
 		    MsgBox T.Translate("errors/load_default_settings")
-		    'Quit
 		  End If
-		  //++EMP 11/27/05
-		  '++JRC Moved default folder checks to function
+		  
 		  If CheckDefaultFolders(SONGS_FOLDER) <> FOLDER_EXISTS Then
 		    App.MouseCursor = Nil
-		    '++JRC Translated
 		    MsgBox   T.Translate("errors/no_songs_folder",  AppFolder.Child(STR_OS_DEFAULTS).Child(STR_SONGS).AbsolutePath)
-		    '--
-		    '++JRC Change behavior here to notify user but continue operation
-		    'Quit
 		  End If
-		  //--
-		  '++JRC Moved document folder checks to function
+		  
 		  result =  CheckDocumentFolders(SONGS_FOLDER)
 		  If result = FOLDER_EMPTY Then
 		    'Songs folder is empty, ask the user if want to try to copy the default songs to the docs folder
@@ -312,10 +272,7 @@ Inherits Application
 		      App.MouseCursor = Nil
 		      If InputBox.AskYN(App.T.Translate("questions/songs_folder_empty/@caption")) Then
 		        If Not FileUtils.CopyPath(AppFolder.Child(STR_OS_DEFAULTS).Child(STR_SONGS), DocsFolder.Child(STR_SONGS)) Then
-		          '++JRC Translated
 		          MsgBox T.Translate("errors/copy_default_songs",  DocsFolder.Child(STR_SONGS).AbsolutePath)
-		          '--
-		          'Quit
 		        End If
 		      End If
 		    End If
@@ -325,21 +282,13 @@ Inherits Application
 		    Else
 		      MsgBox T.Translate("errors/no_docs_folder", "")
 		    End If
-		    'Quit
 		  End If
 		  
-		  //++EMP 11/27/05
-		  '++JRC Moved default folder checks to function
 		  If CheckDefaultFolders(SETS_FOLDER) <> FOLDER_EXISTS Then
 		    App.MouseCursor = Nil
-		    '++JRC Translated
 		    MsgBox T.Translate("errors/no_sets_folder",  AppFolder.Child(STR_OS_DEFAULTS).Child(STR_SETS).AbsolutePath)
-		    '--
-		    '++JRC Change behavior here to notify user but continue operation
-		    'Quit
 		  End If
-		  //--
-		  '++JRC Moved document folder checks to function
+		  
 		  result = CheckDocumentFolders(SETS_FOLDER)
 		  If result = FOLDER_EMPTY Then
 		    'Sets folder is empty, ask the user if want to try to copy the default sets to the docs folder
@@ -348,10 +297,7 @@ Inherits Application
 		      App.MouseCursor = Nil
 		      If InputBox.AskYN(App.T.Translate("questions/sets_folder_empty/@caption")) Then
 		        If Not FileUtils.CopyPath(AppFolder.Child(STR_OS_DEFAULTS).Child(STR_SETS), DocsFolder.Child(STR_SETS)) Then
-		          '++JRC Translated
 		          MsgBox T.Translate("errors/create_sets_folder",  DocsFolder.Child(STR_SETS).AbsolutePath)
-		          '--
-		          'Quit
 		        End If
 		      End If
 		    End If
@@ -361,21 +307,13 @@ Inherits Application
 		    Else
 		      MsgBox T.Translate("errors/no_docs_folder", "")
 		    End If
-		    'Quit
 		  End If
 		  
-		  //++EMP 11/27/05
-		  '++JRC Moved default folder checks to function
 		  If CheckDefaultFolders(BACKGROUNDS_FOLDER) <> FOLDER_EXISTS Then
 		    App.MouseCursor = Nil
-		    '++JRC Translated
 		    MsgBox  T.Translate("errors/no_backgrounds_folder",  AppFolder.Child(STR_OS_DEFAULTS).Child(STR_BACKGROUNDS).AbsolutePath)
-		    '--
-		    '++JRC Change behavior here to notify user but continue operation
-		    'Quit
 		  End If
-		  //--
-		  '++JRC Moved document folder checks to function
+		  
 		  result = CheckDocumentFolders(BACKGROUNDS_FOLDER)
 		  If result = FOLDER_EMPTY Then
 		    'Backgrounds folder is empty, ask the user if want to try to copy the default Backgrounds to the docs folder
@@ -384,10 +322,7 @@ Inherits Application
 		      App.MouseCursor = Nil
 		      If InputBox.AskYN(App.T.Translate("questions/backgrounds_folder_empty/@caption")) Then
 		        If Not FileUtils.CopyPath(AppFolder.Child(STR_OS_DEFAULTS).Child(STR_BACKGROUNDS), DocsFolder.Child(STR_BACKGROUNDS)) Then
-		          '++JRC Translated
 		          MsgBox T.Translate("errors/create_backgrounds_folder",  DocsFolder.Child("Backgrounds").AbsolutePath)
-		          '--
-		          'Quit
 		        End If
 		      End If
 		    End If
@@ -397,37 +332,20 @@ Inherits Application
 		    Else
 		      MsgBox T.Translate("errors/no_docs_folder", "")
 		    End If
-		    'Quit
 		  End If
 		  
-		  '++JRC
-		  'If CheckDocumentFolders(DOCUMENTS_FOLDER) = NO_FOLDER  Then
-		  '(Not DocsFolder.Child("Songs").Exists) Or _
-		  '(Not DocsFolder.Child("Sets").Exists) Or _
-		  '(Not DocsFolder.Child("Settings").Exists) Or _
-		  '(Not DocsFolder.Child("Backgrounds").Exists) Then
-		  
-		  'App.MouseCursor = Nil
-		  '++JRC Translated
-		  'MsgBox T.Translate("errors/folder_error")
-		  '--
-		  'Quit
-		  'End If
-		  '--
 		  ' --- LOAD SETTINGS ---
-		  '++JRC: Load default files if settings files in DocsFolder are corrupted (bug #1803741)
+		  'Load default files if settings files in DocsFolder are corrupted (bug #1803741)
 		  'The settings folder should be handled in the Installer/Uninstaller as well
-		  '++JRC translated
+		  
 		  Splash.SetStatus T.Translate("load_settings/main") + "..."
-		  '--
-		  '++JRC
+		  
 		  result = CheckDocumentFolders(SETTINGS_FOLDER)
 		  If result = FOLDER_EXISTS Then
 		    MyMainSettings = SmartML.XDocFromFile(DocsFolder.Child("Settings").Child("MainSettings"))
 		  Else
 		    MyMainSettings = Nil
 		  End If
-		  '--
 		  If MyMainSettings = Nil Then
 		    MyMainSettings = SmartML.XDocFromFile(AppFolder.Child("OpenSong Defaults").Child("Settings").Child("MainSettings"))
 		    If MyMainSettings = Nil Then
@@ -436,14 +354,17 @@ Inherits Application
 		    End If
 		  End If
 		  
+		  // process preferences here, because where we loaded them no splash window was open, and translator was not loaded
+		  // also we might move some settings from MainSettngs to there
+		  UpdatePreferences
+		  
 		  Splash.SetStatus T.Translate("load_settings/print") + "..."
-		  '++JRC
+		  
 		  If result = FOLDER_EXISTS Then
 		    MyPrintSettings = SmartML.XDocFromFile(DocsFolder.Child("Settings").Child("PrintSettings"))
 		  Else
 		    MyPrintSettings = Nil
 		  End If
-		  '--
 		  If MyPrintSettings = Nil Then
 		    MyPrintSettings = SmartML.XDocFromFile(AppFolder.Child("OpenSong Defaults").Child("Settings").Child("PrintSettings"))
 		    If MyPrintSettings = Nil Then
@@ -1577,6 +1498,32 @@ Inherits Application
 		    End If
 		    xnode = xnode.NextSibling
 		  Wend
+		  
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h1
+		Protected Sub UpdatePreferences()
+		  Dim s As String
+		  
+		  s = App.MainPreferences.GetValue(prefs.kScriptureVersion, ".", False)
+		  If s <> "." Then Return // there is scripture setup at the new location
+		  
+		  Dim xNode As XmlNode = SmartML.GetNode(App.MyMainSettings.DocumentElement, "last_scripture")
+		  s = SmartML.GetValue(xNode, "@version", False, ".")
+		  If s = "." Then Return // there is no scripture setup at the old location
+		  
+		  App.MainPreferences.SetValue(prefs.kScriptureVersion, SmartML.GetValue(xNode, "@version", False))
+		  App.MainPreferences.SetValueN(prefs.kLastScriptureBook, SmartML.GetValueN(xNode, "@book", False))
+		  App.MainPreferences.SetValueN(prefs.kLastScriptureChapter, SmartML.GetValueN(xNode, "@chapter", False))
+		  App.MainPreferences.SetValueN(prefs.kLastScriptureVerse, SmartML.GetValueN(xNode, "@verse", False))
+		  App.MainPreferences.SetValueN(prefs.kLastScriptureThru, SmartML.GetValueN(xNode, "@thru", False))
+		  App.MainPreferences.SetValueN(prefs.kScriptureVersePerSlide, SmartML.GetValueN(xNode, "@verse_per_slide", False))
+		  App.MainPreferences.SetValueN(prefs.kScriptureCharsPerSlide, SmartML.GetValueN(xNode, "@chars_per_slide", False))
+		  App.MainPreferences.SetValueB(prefs.kScriptureShowNumbers, SmartML.GetValueB(xNode, "@show_numbers", False))
+		  App.MainPreferences.SetValue(prefs.kScriptureFormat, SmartML.GetValue(xNode, "@format"))
+		  
+		  SmartML.RemoveNode(App.MyMainSettings.DocumentElement, "last_scripture")
 		  
 		End Sub
 	#tag EndMethod

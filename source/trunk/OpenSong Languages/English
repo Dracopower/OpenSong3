@@ -472,6 +472,10 @@
       <songs caption="Songs"/>
       <sets  caption="Sets"/>
     </startmode>
+    <reload caption="Reload On Startup">
+      <songfolder caption="Song Folder"/>
+      <set caption="Set"/>
+    </reload>
     <applications caption="External applications">
       <pptview caption="Location of Powerpoint Viewer"/>
       <pptview_browse caption="link(shared/browse/@caption)"/>

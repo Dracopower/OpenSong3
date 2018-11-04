@@ -475,6 +475,10 @@
       <songs caption="link(songs_mode/@caption)"/>
       <sets caption="link(sets_mode/@caption)"/>
     </startmode>
+    <reload caption="Letzte Auswahl bei Start laden">
+      <songfolder caption="Liederordner"/>
+      <set caption="Set"/>
+    </reload>
     <applications caption="Externe Programme">
       <pptview caption="Pfad zum Powerpoint Viewer"/>
       <pptview_browse caption="link(shared/browse/@caption)"/>
