@@ -865,7 +865,7 @@ Protected Module OpenSongUtils
 		  
 		  If L.ListCount = 0 Then Return
 		  
-		  VisibleRowCount = L.Height \ L.RowHeight
+		  VisibleRowCount = (L.Height - L.HeaderHeight) \ L.RowHeight
 		  SelectedRow = Min(L.ListCount - 1, L.ListIndex + VisibleRowCount)
 		  TopRow = Min(L.ListCount - 1, L.ScrollPosition + VisibleRowCount)
 		  L.ScrollPosition = TopRow
@@ -892,7 +892,7 @@ Protected Module OpenSongUtils
 		  
 		  If L.ListCount = 0 Then Return
 		  
-		  VisibleRowCount = L.Height \ L.RowHeight
+		  VisibleRowCount = (L.Height - L.HeaderHeight) \ L.RowHeight
 		  SelectedRow = Max(0, L.ListIndex - VisibleRowCount)
 		  TopRow = Max(0, L.ScrollPosition - VisibleRowCount)
 		  L.ScrollPosition = TopRow
