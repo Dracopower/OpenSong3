@@ -1927,7 +1927,7 @@ Begin Window MainWindow Implements ScriptureReceiver
       TabIndex        =   5
       TabPanelIndex   =   0
       Top             =   34
-      Value           =   5
+      Value           =   0
       Visible         =   True
       Width           =   591
       Begin Canvas cnv_editor_style_change
@@ -11839,9 +11839,9 @@ End
 		  'Bilingual presentation feature (for sections marked accordingly) - highlight every second line in the editor
 		  
 		  Dim lines() As String = Split(edf_song_lyrics.Text, SmartML.Newline.Left(1))
-		  Dim section As String = ""
 		  Dim k, start As Integer = 0
 		  Dim isBilingual As Boolean = False
+		  Dim setupRead, blankSplitsSlide As Boolean
 		  
 		  // set TextFont and TextSize taken from settings
 		  Dim f As FontFace = SmartML.GetValueF(App.MyMainSettings.DocumentElement, "fonts/fixed_width")
@@ -11853,13 +11853,18 @@ End
 		  
 		  For j As Integer = 0 To UBound(lines)
 		    If Left(lines(j), 1) = "[" Then
-		      section = Mid(lines(j), 2, Instr(2, lines(j), "]") - 2)
 		      isBilingual = IsBilingualSection(lines(j))
+		      If Not setupRead And isBilingual Then
+		        blankSplitsSlide = SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "style/@blank_is_slide_change")
+		        setupRead = True
+		      End If
 		      k = 0
 		    End If
 		    
 		    If isBilingual Then
-		      If Left(lines(j), 1) = " " Then //no chord, no comment, no multiline, no page layout command -> lyric line
+		      If blankSplitsSlide And StringUtils.Trim(lines(j), StringUtils.WhiteSpaces) = "" Then
+		        k = 0
+		      ElseIf Left(lines(j), 1) = " " Then //no chord, no comment, no multiline, no page layout command -> lyric line
 		        
 		        //print every second line in a different color
 		        If k = 0 Then
@@ -16534,20 +16539,17 @@ End
 		    Status_SongChanged = True
 		    EnableMenuItems
 		  End If
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub LostFocus()
-		  ColorizeBilingualSongtext
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub KeyUp(Key As String)
-		  Select Case Asc(key)
-		  Case 10, 13
-		    ColorizeBilingualSongtext
-		  End Select
 		  
+		  Dim CarretPos As Integer = Me.SelStart
+		  If CarretPos <= 1 Or _
+		    Me.Text.Mid(CarretPos -1, 2).InStr(SmartML.Newline.Left(1)) <> 0 Then
+		    ColorizeBilingualSongtext
+		  ElseIf Me.Text.Len > CarretPos Then
+		    Dim sText As StyledText = Me.StyledText
+		    If sText.TextColor(CarretPos - 1, 1) <> sText.TextColor(CarretPos, 1) Then
+		      ColorizeBilingualSongtext
+		    End If
+		  End If
 		End Sub
 	#tag EndEvent
 #tag EndEvents
