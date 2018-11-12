@@ -9341,6 +9341,42 @@ End
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
+		Sub ActionInSetImageRemove()
+		  // does not do anything special to lst_image_images, just deletes selected rows
+		  
+		  Dim listindex As Integer
+		  Dim imgRemoved As Boolean
+		  Dim selCnt As Integer
+		  
+		  listindex = lst_image_images.ListIndex
+		  selCnt = lst_image_images.SelCount
+		  If selCnt > 1 Then
+		    For row As Integer = lst_image_images.ListCount - 1 DownTo 0
+		      If lst_image_images.Selected(row) Then
+		        lst_image_images.RemoveRow(row)
+		        imgRemoved = True
+		        selCnt = selCnt - 1
+		        If selCnt = 0 Then Exit
+		      End If
+		    Next
+		  ElseIf lst_image_images.ListIndex > -1 Then
+		    lst_image_images.RemoveRow(lst_image_images.ListIndex)
+		    imgRemoved = True
+		  End If
+		  
+		  If imgRemoved Then
+		    If listindex >= lst_image_images.ListCount Then
+		      listindex = lst_image_images.ListCount - 1
+		    End If
+		    lst_image_images.ListIndex = listindex
+		    
+		    Status_InSetChanged = True
+		  End If
+		  
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
 		Sub ActionInSetPaste()
 		  '++gerritp
 		  Dim text As String
@@ -9384,18 +9420,9 @@ End
 		  
 		  'if in a lst_images only delete the selected picture, not the whole slide.
 		  If autoDetectDeleteTarget = True And pge_contents.value = 4 And lst_image_images.HasFocus() Then
-		    If lst_image_images.SelCount > 0 Then
-		      For row As Integer = lst_image_images.ListCount - 1 DownTo 0
-		        If lst_image_images.Selected(row) Then
-		          lst_image_images.RemoveRow(row)
-		          Status_InSetChanged = True
-		        End If
-		      Next
-		    ElseIf lst_image_images.ListIndex > -1 Then
-		      lst_image_images.RemoveRow( lst_image_images.ListIndex )
-		      Status_InSetChanged = True
-		    end if
-		  else
+		    ActionInSetImageRemove
+		    
+		  Else
 		    listindex = lst_set_items.ListIndex
 		    If listindex > -1 Then
 		      slide_groups = SmartML.GetNode(CurrentSet.DocumentElement, "slide_groups", True)
@@ -9415,7 +9442,7 @@ End
 		      
 		      Status_SetChanged = True
 		    End If
-		  end if
+		  End If
 		  
 		  EnableMenuItems
 		End Sub
@@ -17943,19 +17970,10 @@ End
 	#tag EndEvent
 	#tag Event
 		Sub Action()
-		  Dim selCnt As Integer = lst_image_images.SelCount
-		  If selCnt > 0 Then
-		    For row As Integer = lst_image_images.ListCount - 1 DownTo 0
-		      If lst_image_images.Selected(row) Then
-		        lst_image_images.RemoveRow(row)
-		        selCnt = selCnt - 1
-		        If selCnt = 0 Then Exit
-		      End If
-		    Next
-		    
-		    Status_InSetChanged = True
-		    EnableMenuItems
-		  End If
+		  ActionInSetImageRemove
+		  
+		  EnableMenuItems
+		  
 		End Sub
 	#tag EndEvent
 #tag EndEvents
