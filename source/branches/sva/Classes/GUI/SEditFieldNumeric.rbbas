@@ -21,23 +21,33 @@ Inherits SEditField
 		    InputBox.Message(App.T.Translate("errors/number_please"))
 		    SetValue InitialValue
 		    SetFocus
-		  ElseIf EnforceRange Then
-		    If Value < Minimum Then
-		      IsError = True
-		      CurrentValue = Minimum
-		      ValueToText
-		    ElseIf Value > Maximum Then
-		      IsError = True
-		      CurrentValue = Maximum
-		      ValueToText
-		    Else
+		  Else
+		    If dirty Then
 		      CurrentValue = CDbl(Text)
 		      ValueToText
+		      CurrentValue = CDbl(Text)  // now we changed it, round it according to DisplayFormat
 		    End If
-		  Else
-		    CurrentValue = CDbl(Text)
+		    If EnforceRange Then
+		      If CurrentValue < Minimum Then
+		        IsError = True
+		        CurrentValue = Minimum
+		        ValueToText
+		      ElseIf CurrentValue > Maximum Then
+		        IsError = True
+		        CurrentValue = Maximum
+		        ValueToText
+		      End If
+		    End If
 		    ValueToText
 		  End If
+		End Sub
+	#tag EndEvent
+
+	#tag Event
+		Sub TextChange()
+		  dirty = True
+		  RaiseEvent TextChange
+		  
 		End Sub
 	#tag EndEvent
 
@@ -86,11 +96,21 @@ Inherits SEditField
 		Protected Sub ValueToText()
 		  If DisplayFormat <> "" Then
 		    Text = Format(CurrentValue, DisplayFormat)
+		    Dim formattedValue As Double = CDbl(Text)
+		    If formattedValue = Floor(formattedValue) And InStr(DisplayFormat, ".#") <> 0 Then
+		      Text = StringUtils.RTrim(Text, StringUtils.DecimalSeparator)
+		    End If
 		  Else
 		    Text = CStr(CurrentValue)
 		  End If
+		  dirty = False
 		End Sub
 	#tag EndMethod
+
+
+	#tag Hook, Flags = &h0
+		Event TextChange()
+	#tag EndHook
 
 
 	#tag Note, Name = Description
@@ -104,14 +124,21 @@ Inherits SEditField
 		Protected CurrentValue As Double
 	#tag EndProperty
 
-	#tag Property, Flags = &h1
+	#tag Property, Flags = &h0
+		#tag Note
+			A change has been made to the text
+		#tag EndNote
+		dirty As Boolean
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
 		#tag Note
 			DisplayFormat contains the format to be used in displaying
 			the value of the control.  This is used instead of the base class's
 			Format property in order to keep OpenSong from trying to
 			re-format the string on input.
 		#tag EndNote
-		Protected DisplayFormat As String
+		DisplayFormat As String
 	#tag EndProperty
 
 	#tag Property, Flags = &h4

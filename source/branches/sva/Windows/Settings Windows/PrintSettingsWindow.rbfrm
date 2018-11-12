@@ -2043,6 +2043,13 @@ End
 		  
 		  ValuesInPoints = SmartML.GetValueB(PS, "page/@points", False)
 		  
+		  edt_page_top.DisplayFormat = "-#,###.##"
+		  edt_page_bottom.DisplayFormat = "-#,###.##"
+		  edt_page_left.DisplayFormat = "-#,###.##"
+		  edt_page_right.DisplayFormat = "-#,###.##"
+		  edt_page_height.DisplayFormat = "-#,###.##"
+		  edt_page_width.DisplayFormat = "-#,###.##"
+		  
 		  rad_page_inches.Value = SmartML.GetValueB(PS, "page/@inches", True, True)
 		  rad_page_cm.Value = Not rad_page_inches.Value
 		  SetupMarginMinimums(Setup, rad_page_inches.Value)

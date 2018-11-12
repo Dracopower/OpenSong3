@@ -850,6 +850,110 @@ Inherits Application
 		  
 		  If MyPrinterSetup <> Nil Then
 		    TempPS.SetupString = MyPrinterSetup.SetupString
+		  Else
+		    Dim s, p, eol As String
+		    Dim pos As Integer
+		    Dim convFact As Double
+		    s = TempPS.SetupString
+		    If s.InStr("DoNotAlterThis=SetupString.2") = 1 And s.InStr("DevModeStructureSizePS=") = 0 Then
+		      pos = Len("DoNotAlterThis=SetupString.2") + 1
+		      If s.InStr(EndOfLine.Windows) = pos Then
+		        eol = EndOfLine.Windows
+		      ElseIf s.InStr(EndOfLine.Macintosh) = pos Then
+		        eol = EndOfLine.Macintosh
+		      ElseIf s.InStr(EndOfLine.UNIX) = pos Then
+		        eol = EndOfLine.UNIX
+		      ElseIf s.Len = Len("DoNotAlterThis=SetupString.2") Then
+		        eol = EndOfLine  // assume native
+		      End If
+		      If eol <> "" Then // if eol is still empty, something is wrong and we leave SetupString alone
+		        If Not (s.Right(eol.Len) = eol) Then
+		          s = s + eol
+		        End If
+		        // we need to convert to 1/100th of a mm
+		        If SmartML.GetValueB(MyPrintSettings.DocumentElement, "page/@points") Then
+		          convFact = 1 / 72 * 2540
+		        ElseIf SmartML.GetValueB(MyPrintSettings.DocumentElement, "page/@inches") Then
+		          convFact = 2540
+		        Else
+		          convFact = 1000
+		        End If
+		        
+		        p = "MarginLeft=" + CStr(Round(SmartML.GetValueN(MyPrintSettings.DocumentElement, "page/@left") * convFact)) + eol
+		        pos = s.InStr(eol + "MarginLeft=")
+		        If pos > 0 Then
+		          s = StringUtils.ReplaceRange(s, pos + eol.Len, s.InStr(pos + eol.Len, eol) - pos, p) 
+		        Else 
+		          s = s + p
+		        End If
+		        
+		        p = "MarginRight=" + CStr(Round(SmartML.GetValueN(MyPrintSettings.DocumentElement, "page/@right") * convFact)) + eol
+		        pos = s.InStr(eol + "MarginRight=")
+		        If pos > 0 Then
+		          s = StringUtils.ReplaceRange(s, pos + eol.Len, s.InStr(pos + eol.Len, eol) - pos, p)
+		        Else
+		          s = s + p
+		        End If
+		        
+		        p = "MarginTop=" + CStr(Round(SmartML.GetValueN(MyPrintSettings.DocumentElement, "page/@top") * convFact)) + eol
+		        pos = s.InStr(eol + "MarginTop=")
+		        If pos > 0 Then
+		          s = StringUtils.ReplaceRange(s, pos + eol.Len, s.InStr(pos + eol.Len, eol) - pos, p)
+		        Else
+		          s = s + p
+		        End If
+		        
+		        p = "MarginBottom=" + CStr(Round(SmartML.GetValueN(MyPrintSettings.DocumentElement, "page/@bottom") * convFact)) + eol
+		        pos = s.InStr(eol + "MarginBottom=")
+		        If pos > 0 Then
+		          s = StringUtils.ReplaceRange(s, pos + eol.Len, s.InStr(pos + eol.Len, eol) - pos, p)
+		        Else
+		          s = s + p
+		        End If
+		        
+		        p = "MinMarginLeft=0" + eol
+		        pos = s.InStr(eol + "MinMarginLeft=")
+		        If pos > 0 Then
+		          s = StringUtils.ReplaceRange(s, pos + eol.Len, s.InStr(pos + eol.Len, eol) - pos, p)
+		        Else
+		          s = s + p
+		        End If
+		        
+		        p = "MinMarginRight=0" + eol
+		        pos = s.InStr(eol + "MinMarginRight=")
+		        If pos > 0 Then
+		          s = StringUtils.ReplaceRange(s, pos + eol.Len, s.InStr(pos + eol.Len, eol) - pos, p)
+		        Else
+		          s = s + p
+		        End If
+		        
+		        p = "MinMarginTop=0" + eol
+		        pos = s.InStr(eol + "MinMarginTop=")
+		        If pos > 0 Then
+		          s = StringUtils.ReplaceRange(s, pos + eol.Len, s.InStr(pos + eol.Len, eol) - pos, p)
+		        Else
+		          s = s + p
+		        End If
+		        
+		        p = "MinMarginBottom=0" + eol
+		        pos = s.InStr(eol + "MinMarginBottom=")
+		        If pos > 0 Then
+		          s = StringUtils.ReplaceRange(s, pos + eol.Len, s.InStr(pos + eol.Len, eol) - pos, p)
+		        Else
+		          s = s + p
+		        End If
+		        
+		        s = s + "PageSetupFlags=8" + eol
+		        s = s + "DevModeStructureSizePS=1076" + eol
+		        s = s + "DevModeStructurePS="
+		        s = s + StringUtils.PadRight("Generic Printer", 1076, Chr(0))
+		        
+		        TempPS.SetupString = s
+		        
+		      End If
+		    End If
+		    
+		    TempPS.Landscape = SmartML.GetValueN(MyPrintSettings.DocumentElement, "page/@width") > SmartML.GetValueN(MyPrintSettings.DocumentElement, "page/@height")
 		  End If
 		  
 		  If ShowDialog Then
